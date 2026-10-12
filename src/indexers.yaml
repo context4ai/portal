@@ -1,0 +1,106 @@
+requirements:
+  - id: context-adopters
+    purpose: >-
+      Help developers and their Agents adopt Context: install it, build and
+      maintain a sourced knowledge base, query it, customize outputs and
+      Indexers, and understand how the workflow, knowledge mechanisms and
+      benchmark results work.
+    reader_goals:
+      - Get a first knowledge base running and understand the workflow
+      - Register sources, review, update and publish knowledge with an Agent
+      - Understand why knowledge is written for Agents with evidence chains
+      - Look up exact CLI commands, project fields, templates and collections
+    questions:
+      - What is Context and who is it for?
+      - How do I install Context and produce my first pages?
+      - How does a source become reviewed, versioned knowledge?
+      - How does Context keep knowledge current when sources change?
+      - How do I build a knowledge service Agent or team Bot on Context?
+      - How much faster and cheaper is answering with Context knowledge?
+    coverage_domains:
+      getting-started: required
+      guides: required
+      how-it-works: required
+      reference: required
+      internal-development: out-of-scope
+    target_scope:
+      targets:
+        - source_ref: repo:20261012/context
+        - source_ref: note:20261012/usage-practices.md
+        - source_ref: note:20261012/compression.md
+        - source_ref: note:20261012/benchmark-summary.md
+        - source_ref: note:20261012/knowledge-service-agent.md
+        - source_ref: note:20261012/faq.md
+    exclusions:
+      - scope:
+          targets:
+            - source_ref: repo:20261012/context
+        paths: [packages/dev-cli, packages/tui, scripts, .github]
+        reason: Repository development tooling is outside the adopter's reader purpose
+  - id: source-graph-adopters
+    purpose: >-
+      Help developers, operators and their Agents use Context Source Graph:
+      understand why pinned code search exists, connect through the website,
+      MCP, HTTP or CLI, register repositories, self-host and operate an
+      instance, and look up exact interfaces, query rules and configuration.
+    reader_goals:
+      - Understand what Source Graph does for Agents and how it pairs with Context
+      - Connect an Agent or script and read code at a fixed commit
+      - Register repositories, deploy, secure and operate an instance
+      - Look up exact routes, MCP tools, CLI flags, search fields and settings
+    questions:
+      - Why read code through Source Graph instead of a local checkout?
+      - How do I connect an MCP client, script or CLI?
+      - How do I register a repository or a monorepo path group?
+      - How do I deploy, sign in, back up and troubleshoot an instance?
+      - Which limits, errors and settings apply to each operation?
+    coverage_domains:
+      how-it-works: required
+      guides: required
+      reference: required
+      internal-development: out-of-scope
+    target_scope:
+      targets:
+        - source_ref: repo:20261012/sourcegraph
+        - source_ref: repo:20261012/context
+    exclusions:
+      - scope:
+          targets:
+            - source_ref: repo:20261012/sourcegraph
+        paths: [scripts, .github, Makefile, build.sh]
+        reason: Repository build and release tooling is outside the reader purpose
+  - id: agent-graph-adopters
+    purpose: >-
+      Help Skill authors, Agent-host integrators and their Agents adopt Agent
+      Graph: understand why a work-contract graph helps long Agent workflows,
+      learn the core model, runs and recovery, connect Skills and Providers,
+      see how Context runs on it, author, test and publish a Provider, and look
+      up the exact specification, CLI and SDK and migration steps.
+    reader_goals:
+      - Decide whether a Skill needs a Graph and understand Graph Engineering
+      - Understand Facts, Routes, Actions, Gates, Outcomes, Runs and Resources
+      - Build, test and publish a first Provider and bind a Skill to it
+      - Look up exact file formats, commands, SDK functions and migration steps
+    questions:
+      - Why use Agent Graph instead of a longer Skill prompt?
+      - How does Agent Graph choose the next step and prove it is done?
+      - How does a long run survive interruption and resume safely?
+      - How does Context use Agent Graph behind one Agent entry?
+      - How do I write, test and publish a Provider?
+      - Which fields, commands and SDK functions are available?
+    coverage_domains:
+      how-it-works: required
+      guides: required
+      reference: required
+      internal-development: out-of-scope
+    target_scope:
+      targets:
+        - source_ref: repo:20261012/agent-graph
+        - source_ref: repo:20261012/context
+        - source_ref: note:20261012/portal-production.md
+    exclusions:
+      - scope:
+          targets:
+            - source_ref: repo:20261012/agent-graph
+        paths: [scripts, .github, tests]
+        reason: Repository build, release and internal test tooling is outside the reader purpose

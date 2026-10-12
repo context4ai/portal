@@ -188,6 +188,11 @@
 .cxh-arch-tool i { margin-left: auto; font-style: normal; font-size: 12px; color: color-mix(in srgb, var(--live) 60%, transparent); }
 .cxh-arch-tool.is-link { transition: border-color .2s, background-color .2s; }
 .cxh-arch-tool.is-link:hover { border-color: var(--live); background: color-mix(in srgb, var(--live) 10%, transparent); }
+.cxh-arch-item.is-link, .cxh-arch-bot.is-link { text-decoration: none; transition: border-color .2s, background-color .2s; }
+.cxh-arch-item.is-link:hover, .cxh-arch-bot.is-link:hover { border-color: var(--live); background: color-mix(in srgb, var(--live) 10%, transparent); }
+.cxh-more { margin-left: .5em; font-weight: 500; color: var(--vp-c-brand-1); text-decoration: none; white-space: nowrap; }
+.cxh-more:hover, .cxh-fig-link:hover { text-decoration: underline; }
+.cxh-fig-link { color: inherit; text-decoration: none; }
 
 /* results: one card per measure, the Context value in accent */
 .cxh-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }

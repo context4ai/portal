@@ -1,0 +1,95 @@
+/* Article diagrams in the homepage vocabulary: paper nodes, hairline rules, thin ink lines and small muted labels.
+   Mermaid scopes its own rules by an element id, so these overrides need !important.
+   Mermaid measures labels before this CSS applies: never widen node text (font family or size), only recolor it. */
+.context-diagram-shell {
+  --dg-ink: var(--vp-c-text-1);
+  --dg-muted: var(--vp-c-text-2);
+  --dg-paper: var(--vp-c-bg);
+  --dg-rule: color-mix(in srgb, var(--vp-c-text-1) 16%, transparent);
+  --dg-line: color-mix(in srgb, var(--vp-c-text-1) 38%, transparent);
+  --dg-faint: color-mix(in srgb, var(--vp-c-text-1) 4%, transparent);
+  --dg-live: var(--context-accent, var(--vp-c-brand-1));
+  border-color: var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--dg-paper);
+}
+.context-diagram-canvas { padding: 24px; }
+
+/* Flowchart nodes */
+.context-diagram-canvas svg .node rect,
+.context-diagram-canvas svg .node polygon,
+.context-diagram-canvas svg .node circle,
+.context-diagram-canvas svg .node ellipse,
+.context-diagram-canvas svg .node path {
+  fill: var(--dg-paper) !important;
+  stroke: var(--dg-rule) !important;
+  stroke-width: 1px !important;
+}
+.context-diagram-canvas svg .node rect { rx: 10px; ry: 10px; }
+.context-diagram-canvas svg .node polygon { stroke: color-mix(in srgb, var(--dg-live) 55%, transparent) !important; }
+.context-diagram-canvas svg .node text,
+.context-diagram-canvas svg .nodeLabel { fill: var(--dg-ink) !important; color: var(--dg-ink) !important; }
+
+/* Groups read as the homepage's dashed boundaries with a small mono caption */
+.context-diagram-canvas svg .cluster rect {
+  fill: var(--dg-faint) !important;
+  stroke: color-mix(in srgb, var(--vp-c-text-1) 22%, transparent) !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 4 3;
+  rx: 12px; ry: 12px;
+}
+.context-diagram-canvas svg .cluster-label text,
+.context-diagram-canvas svg .cluster text {
+  fill: var(--dg-muted) !important;
+  font-size: 11px !important;
+  font-weight: 500;
+  letter-spacing: .04em;
+}
+
+/* Edges: thin ink lines, small markers, labels on paper */
+.context-diagram-canvas svg .flowchart-link,
+.context-diagram-canvas svg .edgePath .path,
+.context-diagram-canvas svg .edgePaths path,
+.context-diagram-canvas svg .transition,
+.context-diagram-canvas svg .relation {
+  stroke: var(--dg-line) !important;
+  stroke-width: 1px !important;
+}
+.context-diagram-canvas svg marker path,
+.context-diagram-canvas svg .arrowheadPath,
+.context-diagram-canvas svg .arrowMarkerPath { fill: var(--dg-line) !important; stroke: none !important; }
+.context-diagram-canvas svg .edgeLabel,
+.context-diagram-canvas svg .edgeLabel rect,
+.context-diagram-canvas svg .labelBkg { fill: var(--dg-paper) !important; background: var(--dg-paper) !important; opacity: 1 !important; }
+.context-diagram-canvas svg .edgeLabel text,
+.context-diagram-canvas svg .edgeLabel span { fill: var(--dg-muted) !important; color: var(--dg-muted) !important; }
+
+/* Sequence diagrams */
+.context-diagram-canvas svg rect.actor { fill: var(--dg-paper) !important; stroke: var(--dg-rule) !important; stroke-width: 1px !important; rx: 10px; ry: 10px; }
+.context-diagram-canvas svg text.actor > tspan { fill: var(--dg-ink) !important; }
+.context-diagram-canvas svg .actor-line { stroke: color-mix(in srgb, var(--vp-c-text-1) 18%, transparent) !important; stroke-width: 1px !important; stroke-dasharray: 3 4; }
+.context-diagram-canvas svg .messageLine0,
+.context-diagram-canvas svg .messageLine1 { stroke: var(--dg-line) !important; stroke-width: 1px !important; }
+.context-diagram-canvas svg .messageText { fill: var(--dg-ink) !important; }
+.context-diagram-canvas svg .note { fill: color-mix(in srgb, var(--dg-live) 5%, var(--dg-paper)) !important; stroke: color-mix(in srgb, var(--dg-live) 55%, transparent) !important; stroke-width: 1px !important; }
+.context-diagram-canvas svg .noteText > tspan { fill: var(--dg-ink) !important; }
+.context-diagram-canvas svg .labelBox { fill: var(--dg-paper) !important; stroke: var(--dg-rule) !important; }
+.context-diagram-canvas svg .loopLine { stroke: var(--dg-rule) !important; stroke-width: 1px !important; }
+.context-diagram-canvas svg .loopText > tspan,
+.context-diagram-canvas svg .labelText > tspan { fill: var(--dg-muted) !important; font-size: 11px !important; }
+
+/* Charts: transparent plot, hairline axes, muted labels, bars in the homepage accent */
+.context-diagram-canvas svg[aria-roledescription="xychart"] .background { fill: transparent !important; }
+.context-diagram-canvas svg[aria-roledescription="xychart"] .plot rect { fill: color-mix(in srgb, var(--dg-live) 72%, var(--dg-paper)) !important; stroke: none !important; }
+.context-diagram-canvas svg[aria-roledescription="xychart"] path,
+.context-diagram-canvas svg[aria-roledescription="xychart"] line { stroke: var(--dg-rule) !important; }
+.context-diagram-canvas svg[aria-roledescription="xychart"] text { fill: var(--dg-muted) !important; }
+.context-diagram-canvas svg[aria-roledescription="xychart"] .chart-title text { fill: var(--dg-ink) !important; }
+
+/* State diagrams */
+.context-diagram-canvas svg .stateGroup rect,
+.context-diagram-canvas svg g.stateGroup rect { fill: var(--dg-paper) !important; stroke: var(--dg-rule) !important; stroke-width: 1px !important; rx: 10px; ry: 10px; }
+.context-diagram-canvas svg .state-start,
+.context-diagram-canvas svg .state-end { fill: var(--dg-live) !important; stroke: var(--dg-live) !important; }
+.context-diagram-canvas svg .stateLabel text,
+.context-diagram-canvas svg .stateGroup text { fill: var(--dg-ink) !important; }

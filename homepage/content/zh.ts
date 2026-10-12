@@ -12,7 +12,7 @@ const content: HomeContent = {
   entries: [
     { area: "context", label: "Context", href: "/context/", primary: true, description: "企业级研发知识工作流：把代码、文档与会话沉淀为有出处、随迭代演进的知识" },
     { area: "source", label: "Source Graph", href: "/sourcegraph/", description: "毫秒级的远程仓库检索：像本地 rg、grep 一样快，指定版本搜索和阅读代码" },
-    { area: "agent", label: "Agent Graph", href: "/context/", description: "让 AI 按稳定的工作流运行：过程可观测、可测试，驱动工作流优化迭代" },
+    { area: "agent", label: "Agent Graph", href: "/context/pages/91e2679fb8eb437a1a32a70050351382.html", description: "让 AI 按稳定的工作流运行：过程可观测、可测试，驱动工作流优化迭代" },
   ],
 };
 

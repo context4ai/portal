@@ -12,7 +12,7 @@ const content: HomeContent = {
   entries: [
     { area: "context", label: "Context", href: "/context/", primary: true, description: "An enterprise knowledge workflow: code, documents and conversations become sourced knowledge that evolves with every iteration" },
     { area: "source", label: "Source Graph", href: "/sourcegraph/", description: "Millisecond remote code search: as fast as a local rg or grep, search and read code at any specified version" },
-    { area: "agent", label: "Agent Graph", href: "/context/", description: "Keep AI on stable workflows: observable, testable, and driving workflow iteration" },
+    { area: "agent", label: "Agent Graph", href: "/context/pages/91e2679fb8eb437a1a32a70050351382.html", description: "Keep AI on stable workflows: observable, testable, and driving workflow iteration" },
   ],
 };
 

@@ -59,12 +59,12 @@ onBeforeUnmount(() => observer?.disconnect())
         <path v-for="(p, i) in wires.paths" :key="i" :d="p.d" :marker-start="p.back ? `url(#${idPrefix}arch-arrow)` : undefined" :marker-end="p.arrow ? `url(#${idPrefix}arch-arrow)` : undefined" />
         <path v-if="wires.tip" class="cxh-arch-tip" :d="`M${wires.tip.x - 6} ${wires.tip.y - 4}l6 4-6 4z`" />
       </svg>
-      <ul class="cxh-arch-side is-entry"><li v-for="it in t.arch.entry.items" :key="it.text"><span class="cxh-arch-item"><Icon :type="it.icon" />{{ it.text }}</span></li></ul>
+      <ul class="cxh-arch-side is-entry"><li v-for="it in t.arch.entry.items" :key="it.text"><component :is="it.href ? 'a' : 'span'" class="cxh-arch-item" :class="{ 'is-link': it.href }" :href="it.href"><Icon :type="it.icon" />{{ it.text }}</component></li></ul>
       <div class="cxh-arch-agent">
         <div class="cxh-arch-head">
           <p class="cxh-arch-label">{{ t.arch.agent.runtime }}</p>
           <p class="cxh-arch-chips"><span v-for="r in t.arch.agent.runtimes" :key="r">{{ r }}</span></p>
-          <span class="cxh-arch-bot"><Icon type="bot" />{{ t.arch.agent.bot }}</span>
+          <component :is="t.arch.agent.botHref ? 'a' : 'span'" class="cxh-arch-bot" :class="{ 'is-link': t.arch.agent.botHref }" :href="t.arch.agent.botHref"><Icon type="bot" />{{ t.arch.agent.bot }}</component>
         </div>
         <div class="cxh-arch-skills">
           <div class="cxh-arch-plugin">
@@ -81,7 +81,7 @@ onBeforeUnmount(() => observer?.disconnect())
   <section class="context-home-section cxh-sec" :aria-labelledby="idPrefix + 'results'">
     <div class="cxh-split cxh-reveal">
       <h2 :id="idPrefix + 'results'" class="cxh-h2">{{ t.results.title }}</h2>
-      <p class="cxh-lede">{{ t.results.deck }}</p>
+      <p class="cxh-lede">{{ t.results.deck }}<a v-if="t.results.more" class="cxh-more" :href="t.results.more.href">{{ t.results.more.text }} →</a></p>
     </div>
     <div class="cxh-cards cxh-reveal">
       <div v-for="c in t.results.cards" :key="c.label" class="cxh-card">
@@ -99,7 +99,7 @@ onBeforeUnmount(() => observer?.disconnect())
       <div class="cxh-part-head">
         <span class="cxh-group-index">01</span>
         <h3>{{ q.name }}</h3>
-        <p>{{ q.text }}</p>
+        <p>{{ q.text }}<a v-if="q.more" class="cxh-more" :href="q.more.href">{{ q.more.text }} →</a></p>
       </div>
       <div class="cxh-blocks">
         <div class="cxh-block">
@@ -121,7 +121,7 @@ onBeforeUnmount(() => observer?.disconnect())
           </dl>
         </div>
         <div class="cxh-block">
-          <p class="cxh-fig">{{ q.chain.title }}</p>
+          <p class="cxh-fig"><a v-if="q.chain.href" class="cxh-fig-link" :href="q.chain.href">{{ q.chain.title }} →</a><template v-else>{{ q.chain.title }}</template></p>
           <p class="cxh-chain-article">{{ q.chain.article }}</p>
           <ol class="cxh-chain">
             <li v-for="(r, i) in q.chain.rows" :key="r.at" :style="{ '--i': i }">
@@ -138,7 +138,7 @@ onBeforeUnmount(() => observer?.disconnect())
       <div class="cxh-part-head">
         <span class="cxh-group-index">02</span>
         <h3>{{ sp.name }}</h3>
-        <p>{{ sp.text }}</p>
+        <p>{{ sp.text }}<a v-if="sp.more" class="cxh-more" :href="sp.more.href">{{ sp.more.text }} →</a></p>
       </div>
       <div class="cxh-blocks two">
         <div class="cxh-block">

@@ -2,6 +2,17 @@
 const LLMS_URL = "https://context4ai.org/context/llms.txt";
 const PLUGIN_URL = "https://github.com/context4ai/context/tree/main/plugins/context";
 const SKILLS_URL = `${PLUGIN_URL}/skills`;
+// Article pages are addressed by identity, so these paths survive title and directory changes.
+const page = id => `/context/pages/${id}.html`;
+const PAGES = {
+  scheduledUpdates: page("1cd68d44766122acf475be1265aca297"),
+  knowledgeService: page("f5d6d79f9a3763c3da3d1efa26331988"),
+  documentationSites: page("089c3c9e0212ca13bb27c8e8d2fe6080"),
+  knowledgeRetrieval: page("06602fd2c6c83d3113540066149a34b9"),
+  knowledgeForAgents: page("5481df1096e6386ed0dcfac3aa3f96ff"),
+  evidenceChains: page("d2f41bdf9360d05ff944e1b475267498"),
+  pinnedReads: page("9b8f7c105b990cf29a3a7936dc0ff462"),
+};
 // Each step names the community skill that carries it; "indexers" stands for the four source-type indexers.
 export const skillHref = skill => (skill === "indexers" ? SKILLS_URL : `${SKILLS_URL}/${skill}/SKILL.md`);
 
@@ -66,13 +77,14 @@ const en = {
   arch: {
     title: "Build a knowledge service on any agent",
     deck: "Bring the Context workflow into the agents you already run and give them knowledge your team can rely on",
-    entry: { name: "Entry", items: [{ icon: "bot", text: "Team bot", duplex: true }, { icon: "terminal", text: "Coding agent", duplex: true }, { icon: "refresh", text: "Scheduled job" }] },
-    agent: { name: "Agent", runtime: "Your service agent", runtimes: ["Claude Code", "Codex", "Cursor", "Managed agent platform"], bot: "Bot prompt", plugin: "Context skill plugin", pluginHref: PLUGIN_URL, skills: [{ text: "Production", skill: "context" }, { text: "Updates", skill: "context-plan" }, { text: "Retrieval", skill: "context-inspect-search" }], tools: [{ icon: "code", text: "Remote search", href: "/sourcegraph/" }, { icon: "upload", text: "Publishing" }] },
+    entry: { name: "Entry", items: [{ icon: "bot", text: "Team bot", duplex: true }, { icon: "terminal", text: "Coding agent", duplex: true }, { icon: "refresh", text: "Scheduled job", href: PAGES.scheduledUpdates }] },
+    agent: { name: "Agent", runtime: "Your service agent", runtimes: ["Claude Code", "Codex", "Cursor", "Managed agent platform"], bot: "Bot prompt", botHref: PAGES.knowledgeService, plugin: "Context skill plugin", pluginHref: PLUGIN_URL, skills: [{ text: "Production", skill: "context" }, { text: "Updates", skill: "context-plan" }, { text: "Retrieval", skill: "context-inspect-search" }], tools: [{ icon: "code", text: "Remote search", href: "/sourcegraph/" }, { icon: "upload", text: "Publishing", href: PAGES.documentationSites }] },
     out: { name: "Outputs", items: [{ icon: "package", text: "Knowledge package" }, { icon: "globe", text: "Knowledge website" }, { icon: "doc", text: "Git workspace" }] },
   },
   results: {
     title: "On the same real questions: more accurate, faster, cheaper",
     deck: "Real developer questions from a large team and production monorepo, against a plain LLM Wiki setup with the code repositories",
+    more: { text: "How it was measured", href: PAGES.knowledgeRetrieval },
     from: "LLM Wiki",
     to: "Context",
     cards: [
@@ -84,6 +96,7 @@ const en = {
     quality: {
       name: "More accurate: knowledge as an index",
       text: "Indexer skills extract content from every source and stack into a compact knowledge index, and record its evidence chain",
+      more: { text: "Knowledge for agents", href: PAGES.knowledgeForAgents },
       extract: { title: "Indexers extract what matters", source: "orders/ · order service", indexer: "Indexer", out: "Knowledge: refund flow", rows: [
         { path: "api/routes.ts", text: "APIs and routes", keep: true },
         { path: "service/refund.ts", text: "Rules and call paths", keep: true },
@@ -93,7 +106,7 @@ const en = {
         { path: "styles/", text: "Styles" },
       ] },
       ratio: { title: "Compression", value: "1/115", from: { label: "Sources", size: "≈ 202 MB", detail: ["5.84M lines · 1,129 documents"] }, to: { label: "Knowledge", size: "≈ 1.75 MB", detail: ["220 reviewed articles"] } },
-      chain: { title: "Evidence chain", article: "knowledge / refund flow", note: "Every claim records its source: file, lines and version", rows: [
+      chain: { title: "Evidence chain", href: PAGES.evidenceChains, article: "knowledge / refund flow", note: "Every claim records its source: file, lines and version", rows: [
         { text: "Refunds need a paid order within 30 days.", at: "service/refund.ts:42-58", rev: "@8f3c2a1" },
         { text: "Refunds over $500 need a manager's approval.", at: "auth/policy.ts:17-24", rev: "@8f3c2a1" },
         { text: "Merchants are notified of the result by webhook.", at: "Runbook §3", rev: "v2.4" },
@@ -102,6 +115,7 @@ const en = {
     speed: {
       name: "Faster and cheaper: knowledge first, then the original remotely",
       text: "Knowledge gives the big picture fast; the evidence chain leads remotely to the original for precise reasoning",
+      more: { text: "Pinned search and reads", href: PAGES.pinnedReads },
       route: { title: "Two routes for one question", direct: "Knowledge is enough · answer directly", agent: "Agent sandbox · nothing cloned", service: "Source Graph remote search", ask: "Ask", knowledge: "Read knowledge", source: "Read original", answer: "Answer", stores: ["Knowledge repo", "Code repo @commit"], returns: ["Evidence chain"] },
       latency: { title: "Time per query", rows: [
         { name: "Local rg", min: 10, max: 740 },
@@ -177,13 +191,14 @@ const zh = {
   arch: {
     title: "在任意 Agent 上搭建知识服务",
     deck: "引入 Context 工作流，增强已有 Agent 的知识能力，为团队助力",
-    entry: { name: "入口", items: [{ icon: "bot", text: "团队 Bot", duplex: true }, { icon: "terminal", text: "编码 Agent", duplex: true }, { icon: "refresh", text: "定时任务" }] },
-    agent: { name: "Agent", runtime: "你的服务 Agent", runtimes: ["Claude Code", "Codex", "Cursor", "托管 Agent 平台"], bot: "Bot 提示词", plugin: "Context 技能插件", pluginHref: PLUGIN_URL, skills: [{ text: "生产", skill: "context" }, { text: "更新", skill: "context-plan" }, { text: "检索", skill: "context-inspect-search" }], tools: [{ icon: "code", text: "远程检索", href: "/sourcegraph/" }, { icon: "upload", text: "知识发布" }] },
+    entry: { name: "入口", items: [{ icon: "bot", text: "团队 Bot", duplex: true }, { icon: "terminal", text: "编码 Agent", duplex: true }, { icon: "refresh", text: "定时任务", href: PAGES.scheduledUpdates }] },
+    agent: { name: "Agent", runtime: "你的服务 Agent", runtimes: ["Claude Code", "Codex", "Cursor", "托管 Agent 平台"], bot: "Bot 提示词", botHref: PAGES.knowledgeService, plugin: "Context 技能插件", pluginHref: PLUGIN_URL, skills: [{ text: "生产", skill: "context" }, { text: "更新", skill: "context-plan" }, { text: "检索", skill: "context-inspect-search" }], tools: [{ icon: "code", text: "远程检索", href: "/sourcegraph/" }, { icon: "upload", text: "知识发布", href: PAGES.documentationSites }] },
     out: { name: "知识出口", items: [{ icon: "package", text: "知识包" }, { icon: "globe", text: "知识网站" }, { icon: "doc", text: "Git 工作区" }] },
   },
   results: {
     title: "同一批真实问题，更准、更快、更省",
     deck: "大型团队和生产 Monorepo 的真实开发者问题，对照纯 LLM Wiki 方案 + 代码库方案",
+    more: { text: "测评方法", href: PAGES.knowledgeRetrieval },
     from: "LLM Wiki",
     to: "Context",
     cards: [
@@ -195,6 +210,7 @@ const zh = {
     quality: {
       name: "更准：知识即索引",
       text: "通过 Indexer 技能，把不同来源、不同技术栈的内容抽取为高压缩的知识索引，并登记证据链",
+      more: { text: "写给 Agent 的知识", href: PAGES.knowledgeForAgents },
       extract: { title: "Indexer 按需提取", source: "orders/ · 订单服务", indexer: "Indexer", out: "知识：退款流程", rows: [
         { path: "api/routes.ts", text: "接口与路由", keep: true },
         { path: "service/refund.ts", text: "业务规则与调用链", keep: true },
@@ -204,7 +220,7 @@ const zh = {
         { path: "styles/", text: "样式" },
       ] },
       ratio: { title: "压缩率", value: "1/115", from: { label: "来源", size: "约 202 MB", detail: ["584 万行代码 · 1,129 份文档"] }, to: { label: "知识", size: "约 1.75 MB", detail: ["220 篇已审核文章"] } },
-      chain: { title: "证据链", article: "knowledge / 退款流程", note: "每段结论都登记出处：文件、行号与版本", rows: [
+      chain: { title: "证据链", href: PAGES.evidenceChains, article: "knowledge / 退款流程", note: "每段结论都登记出处：文件、行号与版本", rows: [
         { text: "退款要求订单已支付且未超过 30 天。", at: "service/refund.ts:42-58", rev: "@8f3c2a1" },
         { text: "超过 500 元的退款需主管审批。", at: "auth/policy.ts:17-24", rev: "@8f3c2a1" },
         { text: "退款结果通过 Webhook 通知商户。", at: "运维手册 §3", rev: "v2.4" },
@@ -213,6 +229,7 @@ const zh = {
     speed: {
       name: "更快、更省：先读知识，再远程取原文",
       text: "通过知识快速了解全局，再沿证据链远程抵达原文，精确推理",
+      more: { text: "固定版本的搜索与阅读", href: PAGES.pinnedReads },
       route: { title: "一次问答的两种路径", direct: "知识足够，直接作答", agent: "Agent 沙箱 · 不克隆仓库", service: "Source Graph 远程检索", ask: "提问", knowledge: "读知识", source: "读原文", answer: "作答", stores: ["知识仓库", "代码仓库 @commit"], returns: ["证据链"] },
       latency: { title: "单次查询耗时", rows: [
         { name: "本地 rg", min: 10, max: 740 },

@@ -368,7 +368,7 @@ function retrievalField(canvas) {
       if (rt > .7) {
         r.k.lit = Math.max(r.k.lit, fade);
         const ka = clamp((rt - .7) / .3) * fade;
-        labels.push(() => tag(r.k.x, kY, kText, ka, C, { kind: "k", link: "/context/", anchor: r.k }));
+        labels.push(() => tag(r.k.x, kY, kText, ka, C, { kind: "k", link: r.sc.link, anchor: r.k }));
       }
       r.ev.forEach(({ u, item }, j) => {
         const st = 1.15 + j * .22, g = ease(clamp((rt - st) / .6));

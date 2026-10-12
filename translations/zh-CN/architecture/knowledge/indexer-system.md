@@ -1,0 +1,55 @@
+---
+title: Indexer 体系
+description: 四个内置 Indexer 技能、工作流如何使用它们，以及团队如何添加自己的 Indexer。
+translation:
+  locale: zh-CN
+  artifact_ref: 6272ae5a-8966-42cd-a06d-5986828764fd
+  source_digest: d503e67101b9259866cc36d78b6c1a14e3281d8bc63826dab1e1b6451f611758
+  translated_at: 2026-10-12T16:45:10.508Z
+---
+
+# Indexer 体系
+
+<!-- context:section id="what" -->
+## Indexer 是什么
+
+Indexer 是一种 Agent 技能，帮助 Agent 展示来源的骨架，并据此撰写基于来源的文章。它是阅读和写作的指引，既不是强制的全量扫描，也不是 CLI 内部的分类器。CLI 负责准备每个阶段、提供资料和验收规则并检查结果；Indexer 贡献的是如何调查和讲解某一类来源。
+<!-- /context:section -->
+
+<!-- context:section id="built-in" -->
+## 四个内置 Indexer
+
+| Indexer | 读取 | 起点 | 源码 |
+| --- | --- | --- | --- |
+| `context-code-indexer` | 仓库模块 | 目录和文件导航、清单文件、入口和注册点；撰写时再详细阅读代码 | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-code-indexer) |
+| `context-markdown-indexer` | 采集的文档和同仓库文档 | 标题、有限的开头摘录以及 H2/H3 大纲；撰写前阅读全文 | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-markdown-indexer) |
+| `context-note-indexer` | 保存的笔记、摘录和观察记录 | 直接阅读，无解析器 | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-note-indexer) |
+| `context-sessions-indexer` | 保存的会话摘要 | 直接阅读，无解析器 | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-sessions-indexer) |
+
+这四个 Indexer 都随插件安装，在所有支持的宿主中都可被发现。安装 Indexer 只是让它可用，并不代表选中它。[社区 Indexer 一览](../../sop/custom-indexers/community-indexers.md)对每个 Indexer 有更详细的介绍。
+<!-- /context:section -->
+
+<!-- context:section id="usage" -->
+## 工作流如何使用它们
+
+```mermaid
+flowchart LR
+  req["需求"] --> plan["计划"]
+  plan -->|"选择 Indexer"| usage["indexer_usage"]
+  usage --> write["阶段撰写"]
+  write -->|"CLI 检查"| cand["候选"]
+```
+
+- `src/indexers.yaml` 只保存已确认的需求：目的、读者目标、覆盖领域和已授权的来源。
+- 在计划阶段，Agent 选择相关的 Indexer，并在临时计划中记录为 `indexer_usage`；这一选择不会持久化到文章上。
+- 多个 Indexer 可以讲解同一模块的不同方面，它们的发现可以共同支撑一篇文章。没有主负责方，没有 Provider 解析步骤，也不对技能做版本或哈希固定。
+- 每个撰写任务在临时目录中产出 Markdown 和引用；CLI 接收它们，并负责候选、审核和正式输出。
+<!-- /context:section -->
+
+<!-- context:section id="create" -->
+## 创建自己的 Indexer
+
+当某种技术或某类文档需要专门指引时，`/c4a:context-indexer-create` 会在你选择的目录中编写一个新的可复用 Indexer 技能。新 Indexer 从有用的骨架起步——来源结构、可识别特征、名称、已确定的数量和入口位置——并可以为其技术添加一个范围有限的辅助工具。它交付一个 `SKILL.md`，外加确实有帮助的参考资料、模板或脚本，并用真实的匿名资料进行验证。它不会登记 Provider 清单，也不会启动知识生产；安装后即可供 Agent 选择。分步指南见[创建 Indexer](../../sop/custom-indexers/creating-an-indexer.md)；组合、替换和禁用 Indexer 的方法见 [Provider 与定制](../../sop/custom-indexers/providers-and-customization.md)。
+
+如果缺少所需的结构性事实，写作指引无法凭空创造——那需要解析器。参见[代码抽取](code-extraction.md)。
+<!-- /context:section -->

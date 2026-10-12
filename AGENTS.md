@@ -31,6 +31,7 @@ Before adding or revising knowledge, read the current map, overview and relevant
 
 ## Diagram style (user editable)
 
+- The site renders every Mermaid diagram in the homepage vocabulary (`src/site/diagrams.css`): paper nodes with hairline borders, thin lines, dashed group boundaries and small muted labels. Change the look there, not in individual diagrams.
 - Keep diagrams minimal: approximately 1px lines, theme-default text and stroke colors, no colorful decoration. Avoid fixed Mermaid palettes, backgrounds and theme initialization. Configure line width in a capable viewer; unsupported styling never blocks authoring.
 - Follow this editable AGENTS.md and explicit current user instructions. Preserve meaningful source colors as labels or a legend instead of discarding their meaning.
 - package.json context.convertVisuals defaults to true. Attempt faithful structural diagram/table conversion when capable; otherwise retain the original. Explicit session opt-out overrides the saved default.

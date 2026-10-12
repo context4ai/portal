@@ -1,1 +1,18 @@
-sources: []
+sources:
+  - name: "20261012"
+    modules:
+      - name: context
+        local: .tmp/context-plans/20261012-portal-kb/repos/context
+        git:
+          remote: https://github.com/context4ai/context.git
+          ref: 3b0ce0a0a1761f5fceb3bb48fb9dc29b54c0786b
+      - name: sourcegraph
+        local: .tmp/context-plans/20261012-portal-kb/repos/sourcegraph
+        git:
+          remote: https://github.com/context4ai/sourcegraph.git
+          ref: 4e5c5552394f4c16e050ae3185aad585fb07785d
+      - name: agent-graph
+        local: .tmp/context-plans/20261012-portal-kb/repos/agent-graph
+        git:
+          remote: https://github.com/context4ai/agent-graph.git
+          ref: 9e8b98a7d4a694a89a1b972e0c9c827c5bd3d772

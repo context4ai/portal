@@ -1,0 +1,114 @@
+---
+title: 运维
+description: 日常运行 Source Graph 实例——健康检查、后台任务、数据保留、限流、磁盘与存储、仓库维护，以及常见错误的含义。
+translation:
+  locale: zh-CN
+  artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
+  source_digest: 5f195d2836f1cd73343737e5f875a1106374fe4f9a23d4f0f191364c01155ca1
+  translated_at: 2026-10-12T17:45:55.217Z
+---
+
+# 运维
+
+<!-- context:section id="goal" -->
+Source Graph 实例基本可以自行运转：后台 worker 会同步仓库、为新的分支最新提交建索引，并移除已退役的索引。运维工作主要是关注健康状态和任务、保证磁盘充足、在需要时回收空间，以及读懂错误码的含义。管理员的大部分操作都可以在网站的 **Operations**（运维）、**Repositories**（仓库）和 **Settings**（设置）页面完成；同样的操作也在 `/sourcegraph/api/admin/` 下提供。
+<!-- /context:section -->
+
+<!-- context:section id="health" -->
+## 健康与状态
+
+| 检查项 | 用途 |
+| --- | --- |
+| `GET /sourcegraph/healthz` | 存活检查——返回 `{"status":"alive"}`；适合用作平台健康检查 |
+| `GET /sourcegraph/readyz` | 就绪检查——仅当仓库目录可读时成功，否则返回 `503` |
+| `GET /sourcegraph/access-policy` | 是否开启了公开阅读和登录 |
+| **Operations** 页面 | 服务状态；search、read 和 `read_many` 的请求数、平均与最长耗时及错误率；活跃任务；以及各实例的心跳 |
+
+设置中的 **Query errors** 页面保留最近 1,000 条失败查询及其请求详情；管理员可以查看或清空。
+<!-- /context:section -->
+
+<!-- context:section id="jobs" -->
+## 后台任务
+
+每个仓库都有自己的任务列表，显示在仓库页面的任务标签页中。
+
+- **类型：** `sync` 拉取监控分支，`index` 为单个提交建索引，`prepare` 同步并为请求的提交建索引，必要时覆盖所有路径组。
+- **状态：** `queued`、`running`、`succeeded`、`failed` 或 `cancelled`。
+- **自动与手动任务** 运行在不同的 worker 上，因此耗时较长的手动准备不会阻塞定时同步。
+- **恢复：** 运行中的任务持有一个 45 秒的租约，由其 worker 续期。如果进程退出，租约到期后会由另一个 worker 接管该任务；重试三次后任务失败并返回 `RECOVERY_EXHAUSTED`。已持久化的任务会在重启后继续执行。
+- **时间预算：** sync 或 index 任务最长可运行 45 分钟；prepare 任务最长可达其 16 倍，逐个路径组依次执行。
+- **容量：** 每个仓库最多 8 个活跃任务（当 Monorepo 的路径组多于 8 个时，每个路径组一个），最多记录 256 个任务。队列已满时返回 `QUEUE_FULL`。
+
+你可以在任务标签页中取消排队中或运行中的任务。已结束的任务会被自动清理（见下文）；设置中的 **Clear completed tasks** 会立即移除所有仓库中已结束的任务记录，保留排队中和运行中的任务、仓库及索引。
+<!-- /context:section -->
+
+<!-- context:section id="retention" -->
+## 保留哪些数据，保留多久
+
+| 数据 | 保留策略 |
+| --- | --- |
+| 符合条件的提交 | 仓库的保留窗口——按天数或提交数计算——每次同步时重新计算 |
+| 搜索索引 | 每个已建索引的提交一份；不再被任何保留提交引用的索引会在后台移除 |
+| Git 镜像 | 保留到仓库被永久删除为止；修改保留策略不会让镜像变小 |
+| 已结束的任务 | 24 小时；如果仍有请求回执引用它们，则保留更久。自动任务最多保留最近 32 条，未发现变更的自动同步会立即丢弃 |
+| 请求回执（幂等） | 24 小时，每个仓库最多 256 条 |
+| 查询错误日志 | 最近 1,000 条 |
+| 统计数据所依据的使用记录 | 30 天 |
+| 浏览器会话 | 90 天 |
+
+身份、设置和已存储的凭据永远不会自动过期；请按照 [自部署与数据库选择](self-hosting.md) 中的说明进行备份。
+<!-- /context:section -->
+
+<!-- context:section id="limits" -->
+## 限流
+
+只有两类流量会被限流，都以一分钟为窗口：
+
+| 流量 | 限制 |
+| --- | --- |
+| 匿名请求 | 每个客户端每分钟 1,200 次，总计每分钟 3,000 次 |
+| 使用个人 API Key 调用 MCP `prepare` | 每个 Key 每分钟 10 次，总计每分钟 60 次 |
+
+匿名客户端按其连接地址识别，不信任 forwarded-for 类请求头。因此在反向代理之后，所有匿名请求都来自代理的地址，共享同一个单客户端额度。触发限制时返回 `429 RATE_LIMITED`，并带有 `Retry-After: 60`。已登录会话、其他个人 Key 流量和服务令牌都不受限流约束，所以请为调用量大的自动化程序分配独立凭据，而不要依赖匿名访问。单请求的上限——分页大小、行数和字节数限制——仍对所有人生效；参见 [HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)。
+<!-- /context:section -->
+
+<!-- context:section id="disk" -->
+## 磁盘与存储
+
+当可用空间低于 `SOURCEGRAPH_MIN_FREE_BYTES`（默认 1 GiB）时，拉取和建索引会停止并返回 `503 INSUFFICIENT_STORAGE`。对现有索引的读取和搜索不受影响。
+
+**Storage**（存储）设置页显示裸 Git 镜像的存放位置，管理员可以将其迁移到服务器上的另一个绝对路径目录；服务会把镜像放在该目录下的 `space` 文件夹中。搜索索引及其清单始终保留在数据根目录中，因此两个位置的容量都要规划好。切换位置会删除旧的 Git 副本和索引，所有仓库会在新位置重新同步和建索引；在旧数据清理完成前，准备操作会暂停。
+<!-- /context:section -->
+
+<!-- context:section id="maintenance" -->
+## 仓库维护
+
+仓库页面提供若干维护操作，每项操作都有预览，显示将保留哪些内容以及将回收多少字节：
+
+- **Add index**——为监控分支的某个近期提交，或保留窗口内的任意完整 SHA 建索引。已就绪的索引会被复用。
+- **Cleanup**——移除除每个监控分支最新索引之外的所有索引。它要求这些最新提交都已建好索引，并且所有路径组都对齐到同一个提交。
+- **Delete**——永久移除仓库、其 Git 镜像和索引。
+
+执行维护前请先停止运行中的任务，否则会返回 `REPOSITORY_BUSY`。也可以在仓库设置中停用或软删除仓库，这样会保留其数据；已停用并删除的仓库在一分钟后可以被彻底清除。
+<!-- /context:section -->
+
+<!-- context:section id="errors" -->
+## 常见错误
+
+| 错误码 | 状态码 | 含义 | 处理方式 |
+| --- | --- | --- | --- |
+| `INDEX_NOT_READY` | 409 | 提交符合条件，但尚未建索引 | 等待分支最新提交的索引，或对该提交执行 prepare |
+| `CONTENT_NOT_READY`、`SCOPE_NOT_READY` | 409 | Monorepo 的某个路径组在该提交上尚未准备或同步 | 为该路径组准备该提交 |
+| `REVISION_NOT_ELIGIBLE` | 404 | 提交或分支最新提交不在保留窗口内 | 使用已保留的提交，或放宽保留策略 |
+| `BRANCH_NOT_MONITORED` | 404 | 该分支不在保留策略中 | 将其加入仓库的分支列表 |
+| `SHORT_SHA_UNSUPPORTED`、`INVALID_REVISION` | 400 | 使用了短 SHA、标签、`HEAD` 或其他引用 | 传入完整的 40 位 SHA 或监控分支 |
+| `DEFAULT_BRANCH_NOT_OBSERVED` | 409 | 尚无同步记录到默认分支 | 等待同步或主动请求同步 |
+| `PATH_NOT_REGISTERED` | 400 | 路径不在 Monorepo 的路径组内 | 搜索已登记的路径，或添加路径组 |
+| `GIT_AUTH_FAILED`、`GIT_ACCESS_DENIED` | 401、403 | Git 托管平台拒绝了凭据 | 更新个人或全局 Git 凭据 |
+| `PARTIAL_CLONE_UNSUPPORTED` | 422 | Git 服务器无法为 Monorepo 模式过滤 blob | 以全量模式登记，或使用支持部分克隆的服务器 |
+| `HISTORY_SCAN_LIMIT` | 422 | 按天数计算的窗口覆盖的历史过多 | 改用提交数，或缩短窗口 |
+| `INSUFFICIENT_STORAGE` | 503 | 可用磁盘低于配置的下限 | 释放或扩充磁盘，或执行清理 |
+| `QUEUE_FULL` | 503 | 活跃或已记录的任务过多 | 等待任务完成、取消部分任务，或清除已结束的任务 |
+| `ENGINE_RESPONSE_TOO_LARGE` | 502 | 即使最小的结果页也超出了预算 | 缩小模式、glob 或路径范围 |
+| `RATE_LIMITED` | 429 | 触发了限流 | 一分钟后重试，或使用凭据 |
+<!-- /context:section -->
