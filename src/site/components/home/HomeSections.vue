@@ -8,6 +8,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 const props = defineProps({
   t: { type: Object, required: true },
   idPrefix: { type: String, default: 'cxh-' },
+  story: { type: Object, default: null },
 })
 
 const fmt = (v, d = 0) => v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d })
@@ -44,7 +45,7 @@ onBeforeUnmount(() => observer?.disconnect())
       <h2 :id="idPrefix + 'flows'" class="cxh-h2">{{ t.flows.title }}</h2>
       <p class="cxh-lede">{{ t.flows.deck }}</p>
     </div>
-    <div class="cxh-flows-scroll cxh-reveal"><FlowLanes :t="t.flows" /></div>
+    <div class="cxh-flows-scroll cxh-reveal"><FlowLanes :t="t.flows" :story="story" /></div>
   </section>
 
   <section class="context-home-section cxh-sec" :aria-labelledby="idPrefix + 'arch'">

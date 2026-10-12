@@ -86,15 +86,17 @@
 .cxh-readers { position: relative; display: flex; align-self: flex-start; gap: 8px; margin-left: auto; }
 .cxh-reader { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border: 1px solid var(--rule); border-radius: 15px; background: var(--vp-c-bg); box-shadow: 0 0 10px 6px var(--vp-c-bg); font-size: 13px; color: var(--muted); transition: color .3s, border-color .3s; }
 .cxh-reader .cxh-icon { width: 13px; height: 13px; }
+/* hovering picks a reader: it lights at once, without the fade used when the story moves on */
+.cxh-reader { cursor: default; user-select: none; }
+.cxh-reader:hover { border-color: color-mix(in srgb, var(--live) 55%, transparent); color: var(--live); transition: none; }
+.cxh-reader:hover .cxh-icon { color: var(--live); }
 .cxh-reader.on { border-color: color-mix(in srgb, var(--live) 55%, transparent); color: var(--live); }
 .cxh-reader.on .cxh-icon { color: var(--live); }
-.cxh-ask { position: absolute; top: calc(100% + 8px); right: 0; padding: 6px 10px; border-radius: 6px; background: var(--vp-c-bg); box-shadow: 0 8px 16px 8px var(--vp-c-bg); text-align: right; white-space: nowrap; opacity: 0; transition: opacity .3s; }
-.cxh-ask.on { opacity: 1; }
-.cxh-ask-q { display: flex; justify-content: flex-end; align-items: center; font-size: 13px; line-height: 1.6; color: var(--live); }
+/* the question: a bubble hanging under the reader who asks */
+.cxh-ask { position: absolute; top: calc(100% + 10px); right: 0; display: flex; align-items: center; padding: 5px 10px; border: 1px solid color-mix(in srgb, var(--live) 45%, transparent); border-radius: 8px; background: var(--vp-c-bg); box-shadow: 0 4px 14px color-mix(in srgb, var(--ink) 6%, transparent); font-size: 13px; line-height: 1.5; color: var(--live); white-space: nowrap; animation: cxh-pop .3s ease both; }
+.cxh-ask::before { content: ""; position: absolute; top: -5px; right: 22px; width: 8px; height: 8px; border: solid color-mix(in srgb, var(--live) 45%, transparent); border-width: 1px 0 0 1px; background: var(--vp-c-bg); transform: rotate(45deg); }
 .cxh-caret { width: 1.5px; height: 14px; margin-left: 2px; background: var(--live); animation: cxh-caret 1s steps(1) infinite; }
 @keyframes cxh-caret { 50% { opacity: 0; } }
-.cxh-ask-a { font-size: 13px; line-height: 1.6; color: var(--live); opacity: 0; transition: opacity .4s; }
-.cxh-ask-a.on { opacity: 1; }
 
 /* sections: one title, at most one line, one visual */
 /* Sections are divided by a rule on top (from the site theme), so the space is split evenly around it. */
@@ -131,6 +133,18 @@
 .cxh-cross .cxh-step-dot { border-color: color-mix(in srgb, var(--live) 55%, transparent); color: var(--live); }
 .cxh-step { position: relative; grid-row: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none !important; }
 .cxh-step-name { font-size: 13px; line-height: 1.3; text-align: center; color: var(--muted); transition: color .2s; }
+/* lit by the hero story: the lane title, the line up to the current step, passed steps and the current one */
+.cxh-lane-head h3 { transition: color .3s; }
+.cxh-lane-head.is-live h3 { color: var(--live); }
+.cxh-track::after, .cxh-cross::after { content: ""; position: absolute; top: 14px; border-top: 1px solid var(--live); opacity: 0; transition: opacity .5s, right .35s ease, width .35s ease; }
+.cxh-track.before::after { left: calc((var(--before) - var(--n) + .5) / var(--before) * 100%); right: calc((1 - var(--fill, 0)) * 100%); }
+.cxh-track.after::after { left: 0; width: calc(var(--fill, 0) * 100%); }
+.cxh-cross::after { right: 0; left: 0; }
+.cxh-track.is-live::after, .cxh-cross.is-live::after { opacity: 1; }
+.cxh-step-dot { transition: color .3s, border-color .3s, box-shadow .3s; }
+.cxh-step.is-done .cxh-step-dot { border-color: color-mix(in srgb, var(--live) 55%, transparent); color: var(--live); }
+.cxh-step.is-on .cxh-step-dot, .cxh-cross.is-on .cxh-step-dot { border-color: var(--live); color: var(--live); box-shadow: 0 0 0 4px color-mix(in srgb, var(--live) 14%, transparent); }
+.cxh-step.is-on .cxh-step-name { color: var(--ink); }
 .cxh-step:hover .cxh-step-dot, .cxh-step:focus-visible .cxh-step-dot { border-color: var(--live); color: var(--live); }
 .cxh-step:hover .cxh-step-name, .cxh-step:focus-visible .cxh-step-name { color: var(--ink); }
 .cxh-tip { position: absolute; bottom: calc(100% + 8px); left: 50%; z-index: 3; display: flex; flex-direction: column; gap: 2px; width: max-content; max-width: 220px; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--vp-c-bg); box-shadow: 0 6px 20px rgba(0, 0, 0, .08); font-size: 12px; line-height: 1.5; color: var(--muted); opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .2s, transform .2s; }

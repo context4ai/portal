@@ -13,9 +13,10 @@ const tags = computed(() => theme.value.contextLocales?.tags || ['en-US'])
 const text = tag => (tag.toLowerCase().startsWith('zh') ? content.zh : content.en)
 
 const root = ref(null)
-// The hero animation drives the readers in the entry row: who asks, the typed question, the answer.
+// The hero animation drives the readers in the entry row (who asks and the typed question)
+// and the flows below (the lane and step it has reached).
 const stories = {}
-const story = tag => (stories[tag] ??= reactive({ reader: -1, typed: '', answer: '', typing: false }))
+const story = tag => (stories[tag] ??= reactive({ reader: -1, typed: '', typing: false, lane: -1, at: -1, hover: -1 }))
 const READER_ICONS = ['bot', 'terminal', 'globe']
 const copied = ref(false)
 async function copy(prompt) {
@@ -72,17 +73,15 @@ onBeforeUnmount(() => observer?.disconnect())
             </button>
             <button type="button" class="cxh-entry" aria-disabled="true">Oncall Bot<span>for Human</span></button>
             <div class="cxh-readers" aria-hidden="true">
-              <span v-for="(u, i) in text(tag).flow.users" :key="u" class="cxh-reader" :class="{ on: story(tag).reader === i }"><Icon :type="READER_ICONS[i]" />{{ u }}</span>
-              <div class="cxh-ask" :class="{ on: story(tag).reader >= 0 }">
-                <p class="cxh-ask-q"><span class="cxh-ask-text">{{ story(tag).typed }}</span><i v-if="story(tag).typing" class="cxh-caret" /></p>
-                <p class="cxh-ask-a" :class="{ on: story(tag).answer }">{{ story(tag).answer }}</p>
-              </div>
+              <span v-for="(u, i) in text(tag).flow.users" :key="u" class="cxh-reader" :class="{ on: story(tag).reader === i }" @mouseenter="story(tag).hover = i" @mouseleave="story(tag).hover = -1"><Icon :type="READER_ICONS[i]" />{{ u }}
+                <span v-if="story(tag).reader === i" class="cxh-ask"><span class="cxh-ask-text">{{ story(tag).typed }}</span><i v-if="story(tag).typing" class="cxh-caret" /></span>
+              </span>
             </div>
           </div>
         </div>
-        <HeroArt class="cxh-hero-art" :t="text(tag).flow" :uid="`cxh-${tag}-flow`" :copy-width="tag.toLowerCase().startsWith('zh') ? 420 : 640" :story="story(tag)" />
+        <HeroArt class="cxh-hero-art" :t="text(tag).flow" :uid="`cxh-${tag}-flow`" :copy-width="tag.toLowerCase().startsWith('zh') ? 420 : 640" :story="story(tag)" :lanes="text(tag).flows.lanes" />
       </section>
-      <HomeSections :t="text(tag)" :id-prefix="`cxh-${tag}-`" />
+      <HomeSections :t="text(tag)" :id-prefix="`cxh-${tag}-`" :story="story(tag)" />
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import Glyph from './Glyph.vue'
 import Pill from './Pill.vue'
 import { fieldGlyphs } from './field.js'
@@ -8,14 +8,19 @@ import { noise, pillWidth } from './glyphs.js'
 // One picture: information scattered above, a half-ellipse of knowledge below. Icons shrink into dots
 // as they near the knowledge. A production run starts with a request typed to the team bot; one to three
 // pieces of information fly into the knowledge and settle as a small area, sending a ripple through the dots
-// around it. A reader in the entry row then types a question; a line runs from it to the new knowledge,
-// the evidence is traced back to the original and the answer appears under the question.
+// around it, and the result shows next to it. A reader in the entry row then types a question; a line runs
+// from it to the new knowledge, the evidence is traced back to the original and the answer shows there.
+// The story also records the lane and step it has reached, so the flows below light up in step.
+// Hovering a reader repeats that reader's part until the pointer leaves: the team bot's production followed
+// by its question, or another reader's questions. A run by someone else stops at once; one by the hovered
+// reader carries on, and leaving lets the current run finish before the usual order resumes.
 // Before mount and with reduced motion only the arranged picture is shown.
 const props = defineProps({
   t: { type: Object, required: true },
   uid: { type: String, default: 'cxh-hero' },
   copyWidth: { type: Number, default: 880 },
   story: { type: Object, required: true },
+  lanes: { type: Array, required: true },
 })
 
 // The canvas reaches TOP above the copy, up to the top of the page, and ends at the bottom row of dots.
@@ -85,19 +90,28 @@ const ask = ref(null)
 let timers = [], runs = 0, qi = -1, ri = -1
 const later = (fn, ms) => timers.push(setTimeout(fn, ms))
 const begin = id => nextTick(() => document.getElementById(id)?.beginElement())
-const FLY = 1300, STAGGER = 200, TYPE = 70
+const FLY = 1300, STAGGER = 200, TYPE = 70, SETTLE = 1500
+const LANES = { production: 0, update: 1, retrieval: 2 }
+// The knowledge column counts as a step: before steps, then the knowledge, then after steps.
+let lane = 0
+const lanes = () => props.lanes[lane]
+function walk(from, to, ms) {
+  for (let k = from; k <= to; k++) later(() => { props.story.at = k }, to > from ? ms * (k - from) / (to - from) : 0)
+}
+const note = ref(null)
 // Types text into the story's question line and calls done once it is complete.
 function type(text, done) {
   const st = props.story, chars = [...text]
-  st.typed = ''; st.answer = ''; st.typing = true
+  st.typed = ''; st.typing = true
   chars.forEach((_, k) => later(() => { st.typed = chars.slice(0, k + 1).join('') }, 120 + k * TYPE))
   later(() => { st.typing = false; done() }, 120 + chars.length * TYPE + 300)
 }
 
-// The team bot is asked to update the knowledge from a source, then the production runs.
+// The team bot is asked to add or update knowledge from a source, then the production runs.
 function request() {
   ri = (ri + 1) % props.t.requests.length
-  props.story.reader = 0
+  lane = LANES[props.t.requests[ri].lane]
+  Object.assign(props.story, { reader: 0, lane, at: 0 })
   type(props.t.requests[ri].q, produce)
 }
 
@@ -108,12 +122,20 @@ function produce() {
   const from = Array.from({ length: n }, (_, k) => ({ g: pool[Math.floor(noise(runs * 3 + k, 53) * pool.length)], d: k * STAGGER / 1000 }))
   const id = runs++
   run.value = { id, from, to }
+  const nb = lanes().before.length, na = lanes().after.length
+  walk(1, nb - 1, FLY)
   later(() => {
     fresh.value = [...fresh.value.slice(-11), { id, ...to, dots: cluster(to) }]
     ripple(to, id)
     run.value = null
-    props.story.answer = props.t.requests[ri].a.replace('{n}', n)
-    later(() => { Object.assign(props.story, { reader: -1, typed: '', answer: '' }); later(() => question(to, from[0].g), 500) }, 1800)
+    walk(nb, nb + na, SETTLE)
+    const text = props.t.requests[ri].a.replace('{n}', n), w = pillWidth(text)
+    note.value = { x: Math.min(Math.max(to.x, 4 + w / 2), W - 4 - w / 2), y: to.y - 26, text }
+    later(() => {
+      note.value = null
+      Object.assign(props.story, { reader: -1, typed: '', lane: -1, at: -1 })
+      later(() => question(to, from[0].g), 500)
+    }, SETTLE + 600)
   }, FLY + (n - 1) * STAGGER)
 }
 
@@ -124,10 +146,20 @@ function toCanvas(x, y) {
   const p = svg.value.createSVGPoint(); p.x = x; p.y = y
   return p.matrixTransform(m.inverse())
 }
+// The next query in order, or the next one asked by the hovered reader.
+function nextQuery() {
+  const qs = props.t.queries, by = props.story.hover ?? -1
+  for (let s = 0; s < qs.length; s++) {
+    qi = (qi + 1) % qs.length
+    if (by < 0 || qs[qi].by === by) break
+  }
+  return qs[qi]
+}
 function question(to, src) {
-  qi = (qi + 1) % props.t.queries.length
-  const q = props.t.queries[qi], st = props.story
-  st.reader = qi
+  const q = nextQuery(), st = props.story
+  lane = LANES.retrieval
+  Object.assign(st, { reader: q.by, lane, at: 0 })
+  const nb = lanes().before.length, na = lanes().after.length
   type(q.q, () => {
     const el = svg.value?.closest('section')?.querySelector('.cxh-ask')
     const r = el?.getBoundingClientRect()
@@ -135,22 +167,40 @@ function question(to, src) {
     if (!from) return later(() => finish(), 2000)
     const line = link(from, to, -.12, 0, 6)
     const ev = link(to, src, src.x < to.x ? .16 : -.16, 6, 11)
-    const w = pillWidth(q.at)
+    const at = `${q.a} · ${q.at}`, w = pillWidth(at)
     let pill = Math.abs(ev.dir.x) > Math.abs(ev.dir.y)
       ? { x: src.x + Math.sign(ev.dir.x) * (14 + w / 2), y: src.y }
       : { x: src.x, y: src.y + Math.sign(ev.dir.y) * 20 }
     if (pill.x - w / 2 < 4 || pill.x + w / 2 > W - 4) pill = { x: Math.min(Math.max(src.x, 4 + w / 2), W - 4 - w / 2), y: src.y - 20 }
-    ask.value = { to, src, line: line.d, evidence: ev.d, pill, at: q.at, step: 1 }
-    later(() => { ask.value.step = 2; begin(`${props.uid}-trace`) }, 800)
-    later(() => { ask.value.step = 3; st.answer = `${q.a} · ${q.at}` }, 1900)
+    ask.value = { to, src, line: line.d, evidence: ev.d, pill, at, step: 1 }
+    walk(1, nb, 500)
+    later(() => { ask.value.step = 2; begin(`${props.uid}-trace`); walk(nb + 1, nb + na - 1, 1100) }, 800)
+    later(() => { ask.value.step = 3; st.at = nb + na }, 1900)
     later(finish, 4800)
   })
 }
 function finish() {
   ask.value = null
-  Object.assign(props.story, { reader: -1, typed: '', answer: '', typing: false })
-  later(request, 600)
+  Object.assign(props.story, { reader: -1, typed: '', typing: false, lane: -1, at: -1 })
+  later(next, 600)
 }
+const next = () => { const h = props.story.hover ?? -1; return h > 0 ? persona(h) : request() }
+// A reader other than the team bot asks about some knowledge already there, traced to a source near it.
+function persona() {
+  const id = runs++, to = targets[Math.floor(noise(id, 56) * targets.length)]
+  const near = sources.filter(g => g.x < to.x + 60 && Math.hypot(g.x - to.x, g.y - to.y) < 380), pool = near.length ? near : sources
+  question(to, pool[Math.floor(noise(id, 57) * pool.length)])
+}
+function stop() {
+  timers.forEach(clearTimeout); timers = []
+  run.value = null; ask.value = null; note.value = null
+  Object.assign(props.story, { reader: -1, typed: '', typing: false, lane: -1, at: -1 })
+}
+watch(() => props.story.hover, h => {
+  if (h < 0 || h === props.story.reader || !ready.value || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  stop()
+  later(next, 120)
+})
 
 const ready = ref(false)
 onMounted(() => {
@@ -180,6 +230,8 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
     <g v-for="c in fresh" :key="'c' + c.id" class="cxh-fresh">
       <circle v-for="(d, i) in c.dots" :key="i" :cx="d.x" :cy="d.y" r="1.7" :style="{ '--o': (Math.hypot(d.x - c.x, d.y - c.y) / 60).toFixed(2) + 's' }" />
     </g>
+
+    <Pill v-if="note" class="cxh-pop" :x="note.x" :y="note.y" :text="note.text" kind="live" />
 
     <!-- retrieval: from the typed question to the knowledge, then out along the evidence to the original -->
     <g v-if="ask">
