@@ -82,9 +82,9 @@ CI only verifies. Deploy manually:
 fly deploy
 ```
 
-The Source Graph upstream is reached over Flycast (`http://context4ai-sourcegraph.flycast`);
-allocate its private address once with
-`fly ips allocate-v6 --private -a context4ai-sourcegraph`.
+The Source Graph upstream is reached over the private network at
+`http://context4ai-sourcegraph.internal:8080`. Flycast is not used because the
+Source Graph app forces HTTPS, which redirects plain proxied requests.
 
 ## Contributing
 
