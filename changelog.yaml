@@ -1,0 +1,221 @@
+entries:
+  - version: 0.8.0
+    date: 2026-10-12T20:30:23.119Z
+    title: Context 0.7.62 and Agent Graph 0.3.1
+    changes:
+      - "Updated for Context v0.7.62: What is Context follows the new
+        positioning as a knowledge workflow for engineering teams and their AI
+        agents, and the getting-started pages match the rewritten README and
+        installation steps."
+      - Release Notes add Context 0.7.62 and Agent Graph 0.3.1; Contributing and
+        Support follow the projects' new contributing and support guides.
+      - "Agent Graph pages document 0.3.1: Provider compatibility ^0.3.0, file,
+        Graph-action and Host-action location envelopes in Routes, and the 0.3.0
+        upgrade steps in Migration."
+      - Core Concepts no longer claims that rejected material keeps a durable
+        fingerprint; Module Layout lists the plugin's bundled Skills.
+      - Source citations follow the moved lines in the updated repositories, and
+        every changed page is available in Simplified Chinese.
+    triggers:
+      - kind: module
+        description: Updated the Context repository source to v0.7.62 and the Agent
+          Graph source to v0.3.1.
+      - kind: translation
+        description: Simplified Chinese translation of the revised pages.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.7.0
+    date: 2026-10-12T18:39:41.972Z
+    title: Context 0.7.61 and the More menu
+    changes:
+      - "More menu: new Release Notes, Contributing and Support pages for
+        Context and Agent Graph."
+      - "Updated for Context v0.7.61: the production entry and the other public
+        Skills, first-paint theme and localized 404 pages on documentation
+        sites, homepage fallback for reader languages, and object-ID comparison
+        when planning broad updates."
+      - "Fixed the More menu order in the Project API reference: custom items
+        come before LLM Docs and Changelog."
+      - Module Layout now states where extractor and evidence-plugin changes
+        land; What is Context links to the Source Graph and Agent Graph
+        sections.
+      - Every changed page is available in Simplified Chinese.
+    triggers:
+      - kind: module
+        description: Updated the Context repository source from v0.7.60 to v0.7.61.
+      - kind: note
+        description: Updated the note on how this site is produced to cover the source
+          update.
+      - kind: navigation
+        description: Added Release Notes, Contributing and Support to the More menu.
+      - kind: translation
+        description: Simplified Chinese translation of the new and revised pages.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.6.0
+    date: 2026-10-12T18:13:22.987Z
+    title: Agent Graph
+    changes:
+      - "How It Works › Agent Graph: why Graph Engineering, the core model, runs
+        and recovery, Skills and Providers, and how Context uses Agent Graph,
+        including how this site was built with Context."
+      - "Guides › Agent Graph: getting started, authoring Graphs with a worked
+        example, and testing and publishing."
+      - "Reference › Agent Graph: the v1 specification, the CLI and SDK, and
+        migration across releases."
+      - Fixed a diagram that did not render on the Skills and Providers page.
+      - Every new page and navigation title is available in Simplified Chinese.
+    triggers:
+      - kind: module
+        description: Added the Agent Graph repository, pinned at v0.3.0, as a source for
+          the fifth stage.
+      - kind: note
+        description: Added a reviewed note describing how this documentation site is
+          produced with Context.
+      - kind: navigation
+        description: Added Agent Graph sections under How It Works, Guides and Reference.
+      - kind: translation
+        description: Simplified Chinese translation of the new pages and navigation.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.5.0
+    date: 2026-10-12T17:46:13.490Z
+    title: "Source Graph: how it works, guides and reference"
+    changes:
+      - "Add a Source Graph group under How It Works: Source Graph Overview,
+        Pinned Search and Reads, Evidence for Context."
+      - "Add a Source Graph group under Guides: Connecting, Registering
+        Repositories, Self-Hosting, Authentication and Access Control,
+        Operations."
+      - "Add a Source Graph group under Reference: HTTP and MCP, CLI, Query
+        Syntax, Configuration."
+      - "Correct the Operations guide: the Storage page moves only Git mirrors;
+        indexes stay in the data root."
+      - Add Simplified Chinese translations for all new pages and navigation
+        titles.
+    triggers:
+      - kind: module
+        description: New pages written from the community Source Graph repository and
+          the Context remote code evidence integration.
+      - kind: navigation
+        description: How It Works, Guides and Reference each gain a Source Graph group.
+      - kind: translation
+        description: Simplified Chinese added for new pages.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.4.0
+    date: 2026-10-12T17:09:09.587Z
+    title: Outputs and sites, knowledge service Agent, workspace maintenance,
+      practices and the Context reference
+    changes:
+      - "Add an Outputs and Sites group: Knowledge Packages, Documentation
+        Sites, Page and Theme Customization, LLM Docs, Multilingual Sites,
+        Custom Output Templates."
+      - "Add a Knowledge Service Agent group: Building a Knowledge Service,
+        Using the Bot in Team Chat, Operational Knowledge."
+      - "Add a Workspace Maintenance group: Preparing, Restoring, Committing."
+      - "Add a Practices group: Best Practices, Choosing Models, Prompt Recipes,
+        Migrating an Existing Knowledge Base, Evaluating Your Knowledge Base."
+      - "Add a Reference section with a Context group: CLI Commands, Project
+        API, Skills, Package Templates, Template Variables, Knowledge
+        Collections."
+      - Link Commands and Skills to the new CLI Commands and Skills references.
+      - Add Simplified Chinese translations for all new pages and navigation
+        titles.
+    triggers:
+      - kind: module
+        description: New guides and reference pages written from the Context
+          repository's CLI, SDK, plugin Skills and manuals.
+      - kind: note
+        description: Practices and knowledge service guides written from reviewed usage,
+          service design and benchmark notes.
+      - kind: navigation
+        description: Guides gain four groups; a top-level Reference section is added.
+      - kind: translation
+        description: Simplified Chinese added for new pages.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.3.0
+    date: 2026-10-12T16:45:41.623Z
+    title: Knowledge workspace overview, commands, large projects and custom Indexers
+    changes:
+      - Add The Context Knowledge Workspace and Commands and Skills to Getting
+        Started.
+      - Add Planning a Large Project to Planning and Production.
+      - "Add a Custom Indexers group: Community Indexers, Creating an Indexer,
+        Code Indexers, Document Indexers, Providers and Customization."
+      - Call the user's repository the Context knowledge workspace throughout
+        Getting Started and How It Works; link the Indexer System to each
+        Indexer's source.
+      - Update Simplified Chinese translations for new and revised pages.
+    triggers:
+      - kind: module
+        description: New guides written from the Context repository's CLI, plugin Skills
+          and manuals.
+      - kind: navigation
+        description: Getting Started reordered; Custom Indexers group added.
+      - kind: translation
+        description: Simplified Chinese updated for new and revised pages.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.2.0
+    date: 2026-10-12T16:12:14.752Z
+    title: Guides for registering sources, production, review, updates and querying
+    changes:
+      - "Guides › Registering Sources: code repositories, document directories,
+        Lark documents, notes, session summaries, source batches, external
+        entrances and same-repository docs."
+      - "Guides › Planning and Production: work-start reports, working with
+        Agents, and managed mode with every confirmation policy switch, custom
+        Bot defaults and task-scoped review policy."
+      - "Guides › Review and Revision: reading review reports, revising a page
+        and reorganizing at scale."
+      - "Guides › Updates and Versions: updating knowledge, capturing from
+        conversations, scheduled updates, writing back upstream, and versions
+        and changelog."
+      - "Guides › Querying Knowledge: asking questions, using packages in Agents
+        and reading code evidence remotely."
+      - Pages use one name, Context knowledge workspace, and are available in
+        Simplified Chinese.
+    triggers:
+      - kind: module
+        description: Second stage of the context4ai.org documentation plan, written from
+          the Context repository and reviewed notes.
+      - kind: repair
+        description: "Review feedback: enumerate all policy switches and unify workspace
+          naming."
+      - kind: translation
+        description: Simplified Chinese translation of the new pages and navigation.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.1.0
+    date: 2026-10-12T15:12:16.797Z
+    title: Getting Started and How It Works for Context
+    changes:
+      - "Getting Started: what Context is, installation, a quick start, the
+        six-step workflow, large projects, core concepts and an FAQ."
+      - "How It Works › Context Architecture: overview, why Context is a
+        workflow, the knowledge lifecycle, module layout, workflow execution,
+        and packages and sites."
+      - "How It Works › Knowledge Mechanisms: knowledge written for Agents,
+        evidence chains and index-first reading, version-aware knowledge,
+        keeping knowledge current, the Indexer system and code extraction."
+      - "How It Works › Benchmark Results: the knowledge retrieval benchmark."
+      - Every page is available in Simplified Chinese, and diagrams follow the
+        site's visual style.
+    triggers:
+      - kind: initial
+        description: First stage of the context4ai.org documentation plan, written from
+          the Context repository and reviewed notes.
+      - kind: translation
+        description: Simplified Chinese translation of the new pages and navigation.
+    actor:
+      name: qiansc
+      kind: git

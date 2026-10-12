@@ -1,0 +1,675 @@
+protocol: context.knowledge-map/v1
+entries:
+  - key: getting-started
+    parent: null
+    title: Getting Started
+    order: 1
+  - key: getting-started/commands-and-skills
+    parent: getting-started
+    title: Commands and Skills
+    order: 5
+    target:
+      artifact_ref: 7a07aeaf-a286-43a3-90c8-d04d2a8a0011
+  - key: getting-started/context-faq
+    parent: getting-started
+    title: FAQ
+    order: 9
+    target:
+      artifact_ref: c159a1f9-e117-446a-92b5-b8a5a46703f9
+  - key: getting-started/core-concepts
+    parent: getting-started
+    title: Core Concepts
+    order: 8
+    target:
+      artifact_ref: 31a5553a-c85b-4bd5-ab0f-29829bc9bbf5
+  - key: getting-started/installation
+    parent: getting-started
+    title: Installation
+    order: 2
+    target:
+      artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
+  - key: getting-started/knowledge-workspace
+    parent: getting-started
+    title: The Context Knowledge Workspace
+    order: 4
+    target:
+      artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
+  - key: getting-started/large-projects
+    parent: getting-started
+    title: Large Projects
+    order: 7
+    target:
+      artifact_ref: 25f7897c-1fd2-4b59-b426-437fc25cb973
+  - key: getting-started/quick-start
+    parent: getting-started
+    title: Quick Start
+    order: 3
+    target:
+      artifact_ref: a5f433c5-3840-4ddf-8306-59b6a59e4dac
+  - key: getting-started/what-is-context
+    parent: getting-started
+    title: What is Context
+    order: 1
+    target:
+      artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
+  - key: getting-started/workflow-at-a-glance
+    parent: getting-started
+    title: The Workflow at a Glance
+    order: 6
+    target:
+      artifact_ref: db32d01a-0cfe-494c-bfc0-644be1583c78
+  - key: guides
+    parent: null
+    title: Guides
+    order: 2
+  - key: guides-agentgraph
+    parent: guides
+    title: Agent Graph
+    order: 10
+  - key: guides-agentgraph/authoring-graphs
+    parent: guides-agentgraph
+    title: Authoring Graphs
+    order: 2
+    target:
+      artifact_ref: 80852a65-4353-42fc-b0e9-f935d3b0c3ee
+  - key: guides-agentgraph/getting-started
+    parent: guides-agentgraph
+    title: Getting Started
+    order: 1
+    target:
+      artifact_ref: 3eab390f-44a1-49e0-a4d5-317b4705b6b9
+  - key: guides-agentgraph/testing-and-publishing
+    parent: guides-agentgraph
+    title: Testing and Publishing
+    order: 3
+    target:
+      artifact_ref: cde7ef93-fa8b-4b5d-95e8-40164f98bb61
+  - key: guides-indexers
+    parent: guides
+    title: Custom Indexers
+    order: 7
+  - key: guides-indexers/code-indexers
+    parent: guides-indexers
+    title: Code Indexers
+    order: 3
+    target:
+      artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
+  - key: guides-indexers/community-indexers
+    parent: guides-indexers
+    title: Community Indexers
+    order: 1
+    target:
+      artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
+  - key: guides-indexers/creating-an-indexer
+    parent: guides-indexers
+    title: Creating an Indexer
+    order: 2
+    target:
+      artifact_ref: 85a7b33c-5b89-45f1-a88b-bd64aaa70ecb
+  - key: guides-indexers/document-indexers
+    parent: guides-indexers
+    title: Document Indexers
+    order: 4
+    target:
+      artifact_ref: a3f38c25-85de-4b6f-9a99-dc86485cf82c
+  - key: guides-indexers/providers-and-customization
+    parent: guides-indexers
+    title: Providers and Customization
+    order: 5
+    target:
+      artifact_ref: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
+  - key: guides-maintenance
+    parent: guides
+    title: Workspace Maintenance
+    order: 11
+  - key: guides-maintenance/committing
+    parent: guides-maintenance
+    title: Committing
+    order: 3
+    target:
+      artifact_ref: dd7b0c11-4cb7-49fc-aa33-b2cdaadeacaa
+  - key: guides-maintenance/preparing
+    parent: guides-maintenance
+    title: Preparing
+    order: 1
+    target:
+      artifact_ref: 307b902e-f337-4e9d-a849-acdc0127be22
+  - key: guides-maintenance/restoring
+    parent: guides-maintenance
+    title: Restoring
+    order: 2
+    target:
+      artifact_ref: 95637888-eeb2-4ea2-816a-490f0ab1ba73
+  - key: guides-outputs
+    parent: guides
+    title: Outputs and Sites
+    order: 6
+  - key: guides-outputs/custom-output-templates
+    parent: guides-outputs
+    title: Custom Output Templates
+    order: 6
+    target:
+      artifact_ref: 145efe1c-4969-48ef-8514-1e016773a775
+  - key: guides-outputs/documentation-sites
+    parent: guides-outputs
+    title: Documentation Sites
+    order: 2
+    target:
+      artifact_ref: e4aba8fd-3086-4983-a371-5bded4db7520
+  - key: guides-outputs/knowledge-packages
+    parent: guides-outputs
+    title: Knowledge Packages
+    order: 1
+    target:
+      artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
+  - key: guides-outputs/llm-docs
+    parent: guides-outputs
+    title: LLM Docs
+    order: 4
+    target:
+      artifact_ref: 1e9f9f30-d8b1-45e7-8092-ad23ddb784ee
+  - key: guides-outputs/multilingual-sites
+    parent: guides-outputs
+    title: Multilingual Sites
+    order: 5
+    target:
+      artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
+  - key: guides-outputs/page-and-theme-customization
+    parent: guides-outputs
+    title: Page and Theme Customization
+    order: 3
+    target:
+      artifact_ref: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
+  - key: guides-practices
+    parent: guides
+    title: Practices
+    order: 12
+  - key: guides-practices/best-practices
+    parent: guides-practices
+    title: Best Practices
+    order: 1
+    target:
+      artifact_ref: 6130b9e4-4934-45ce-980b-2909ab4f206e
+  - key: guides-practices/choosing-models
+    parent: guides-practices
+    title: Choosing Models
+    order: 2
+    target:
+      artifact_ref: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
+  - key: guides-practices/evaluating-your-knowledge-base
+    parent: guides-practices
+    title: Evaluating Your Knowledge Base
+    order: 5
+    target:
+      artifact_ref: 14905f09-233b-41a2-b725-c1c1137d8ebb
+  - key: guides-practices/migrating-a-knowledge-base
+    parent: guides-practices
+    title: Migrating an Existing Knowledge Base
+    order: 4
+    target:
+      artifact_ref: f38982c1-617a-487a-b0bd-13a6a28d01cd
+  - key: guides-practices/prompt-recipes
+    parent: guides-practices
+    title: Prompt Recipes
+    order: 3
+    target:
+      artifact_ref: 5c111951-9200-413d-98d2-5ac1bc2bb128
+  - key: guides-production
+    parent: guides
+    title: Planning and Production
+    order: 2
+  - key: guides-production/managed-mode-and-review-policy
+    parent: guides-production
+    title: Managed Mode and Review Policy
+    order: 3
+    target:
+      artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
+  - key: guides-production/planning-large-projects
+    parent: guides-production
+    title: Planning a Large Project
+    order: 4
+    target:
+      artifact_ref: a68b141a-1f2f-449b-97e2-7942fecaf71d
+  - key: guides-production/start-reports
+    parent: guides-production
+    title: Start Reports
+    order: 1
+    target:
+      artifact_ref: 80ddc71e-bea5-45b3-9a6c-b042566601ad
+  - key: guides-production/working-with-agents
+    parent: guides-production
+    title: Working with Agents
+    order: 2
+    target:
+      artifact_ref: ef41f849-6248-47da-afec-638ab2542c22
+  - key: guides-querying
+    parent: guides
+    title: Querying Knowledge
+    order: 5
+  - key: guides-querying/asking-questions
+    parent: guides-querying
+    title: Asking Questions
+    order: 1
+    target:
+      artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
+  - key: guides-querying/reading-code-evidence-remotely
+    parent: guides-querying
+    title: Reading Code Evidence Remotely
+    order: 3
+    target:
+      artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
+  - key: guides-querying/using-packages-in-agents
+    parent: guides-querying
+    title: Using Packages in Agents
+    order: 2
+    target:
+      artifact_ref: e9c6dca7-c6c3-40f5-8439-726ad9262b15
+  - key: guides-review
+    parent: guides
+    title: Review and Revision
+    order: 3
+  - key: guides-review/reading-review-reports
+    parent: guides-review
+    title: Reading Review Reports
+    order: 1
+    target:
+      artifact_ref: 5b6c8717-a113-4829-8d95-76bcc731fcad
+  - key: guides-review/reorganizing-at-scale
+    parent: guides-review
+    title: Reorganizing at Scale
+    order: 3
+    target:
+      artifact_ref: 271298e1-6876-41ac-861c-902752b63828
+  - key: guides-review/revising-a-page
+    parent: guides-review
+    title: Revising a Page
+    order: 2
+    target:
+      artifact_ref: 7e11e6c2-7029-4e7f-a717-47566aa4153f
+  - key: guides-service
+    parent: guides
+    title: Knowledge Service Agent
+    order: 8
+  - key: guides-service/building-a-knowledge-service
+    parent: guides-service
+    title: Building a Knowledge Service
+    order: 1
+    target:
+      artifact_ref: 0a27d0c5-3057-4806-a0a5-2e8de53b5321
+  - key: guides-service/operational-knowledge
+    parent: guides-service
+    title: Operational Knowledge
+    order: 3
+    target:
+      artifact_ref: da3d3b26-40b2-4183-b9d7-73cff0b8980f
+  - key: guides-service/using-the-bot-in-team-chat
+    parent: guides-service
+    title: Using the Bot in Team Chat
+    order: 2
+    target:
+      artifact_ref: cadb9370-2f17-4d24-8482-f4e4696d0812
+  - key: guides-sourcegraph
+    parent: guides
+    title: Source Graph
+    order: 9
+  - key: guides-sourcegraph/authentication-and-access-control
+    parent: guides-sourcegraph
+    title: Authentication and Access Control
+    order: 4
+    target:
+      artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
+  - key: guides-sourcegraph/connecting
+    parent: guides-sourcegraph
+    title: Connecting
+    order: 1
+    target:
+      artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
+  - key: guides-sourcegraph/operations
+    parent: guides-sourcegraph
+    title: Operations
+    order: 5
+    target:
+      artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
+  - key: guides-sourcegraph/registering-repositories
+    parent: guides-sourcegraph
+    title: Registering Repositories
+    order: 2
+    target:
+      artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
+  - key: guides-sourcegraph/self-hosting
+    parent: guides-sourcegraph
+    title: Self-Hosting
+    order: 3
+    target:
+      artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
+  - key: guides-sources
+    parent: guides
+    title: Registering Sources
+    order: 1
+  - key: guides-sources/code-repositories
+    parent: guides-sources
+    title: Code Repositories
+    order: 1
+    target:
+      artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
+  - key: guides-sources/document-directories
+    parent: guides-sources
+    title: Document Directories
+    order: 2
+    target:
+      artifact_ref: 8a990784-16a3-4b84-957e-f5058ac73c3f
+  - key: guides-sources/external-entrances
+    parent: guides-sources
+    title: External Entrances
+    order: 7
+    target:
+      artifact_ref: 9e5aef24-16bb-4f72-9488-298444ea7de7
+  - key: guides-sources/lark-documents
+    parent: guides-sources
+    title: Lark Documents
+    order: 3
+    target:
+      artifact_ref: 7d229a92-58ec-41c9-8506-0eb4226471f5
+  - key: guides-sources/notes
+    parent: guides-sources
+    title: Notes
+    order: 4
+    target:
+      artifact_ref: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
+  - key: guides-sources/same-repository-docs
+    parent: guides-sources
+    title: Same-Repository Docs
+    order: 8
+    target:
+      artifact_ref: b807271a-bf7a-483f-b571-b9b0c5dc0dd6
+  - key: guides-sources/session-summaries
+    parent: guides-sources
+    title: Session Summaries
+    order: 5
+    target:
+      artifact_ref: 38889376-c545-487e-99b1-c4f2c1d2dcec
+  - key: guides-sources/source-batches
+    parent: guides-sources
+    title: Source Batches
+    order: 6
+    target:
+      artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
+  - key: guides-updates
+    parent: guides
+    title: Updates and Versions
+    order: 4
+  - key: guides-updates/capturing-from-conversations
+    parent: guides-updates
+    title: Capturing from Conversations
+    order: 2
+    target:
+      artifact_ref: d885e8ca-37d8-4ab1-83da-83458e7d9e07
+  - key: guides-updates/scheduled-updates
+    parent: guides-updates
+    title: Scheduled Updates
+    order: 3
+    target:
+      artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
+  - key: guides-updates/updating-knowledge
+    parent: guides-updates
+    title: Updating Knowledge
+    order: 1
+    target:
+      artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
+  - key: guides-updates/versions-and-changelog
+    parent: guides-updates
+    title: Versions and Changelog
+    order: 5
+    target:
+      artifact_ref: bc31d513-0dd9-4f53-b6e2-953feada799a
+  - key: guides-updates/writing-back-upstream
+    parent: guides-updates
+    title: Writing Back Upstream
+    order: 4
+    target:
+      artifact_ref: c69e4047-18f9-463a-8c47-569bc306287b
+  - key: hiw-agentgraph
+    parent: how-it-works
+    title: Agent Graph
+    order: 4
+  - key: hiw-agentgraph/agent-graph-in-context
+    parent: hiw-agentgraph
+    title: Agent Graph in Context
+    order: 5
+    target:
+      artifact_ref: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
+  - key: hiw-agentgraph/core-model
+    parent: hiw-agentgraph
+    title: Core Model
+    order: 2
+    target:
+      artifact_ref: fd95763c-8fc0-4d24-9a8b-a98d660e21ad
+  - key: hiw-agentgraph/runs-and-recovery
+    parent: hiw-agentgraph
+    title: Runs and Recovery
+    order: 3
+    target:
+      artifact_ref: b055036b-c535-4e9c-8366-e9e231559aef
+  - key: hiw-agentgraph/skills-and-providers
+    parent: hiw-agentgraph
+    title: Skills and Providers
+    order: 4
+    target:
+      artifact_ref: ca9de2fb-56b2-49a2-b8a2-2aa04da3aa1e
+  - key: hiw-agentgraph/why-graph-engineering
+    parent: hiw-agentgraph
+    title: Why Graph Engineering
+    order: 1
+    target:
+      artifact_ref: 5cdd4f61-6dd2-434e-a112-cc6352704faf
+  - key: hiw-benchmark
+    parent: how-it-works
+    title: Benchmark Results
+    order: 5
+  - key: hiw-benchmark/knowledge-retrieval
+    parent: hiw-benchmark
+    title: Knowledge Retrieval
+    order: 1
+    target:
+      artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
+  - key: hiw-context
+    parent: how-it-works
+    title: Context Architecture
+    order: 1
+  - key: hiw-context/knowledge-lifecycle
+    parent: hiw-context
+    title: Knowledge Lifecycle
+    order: 3
+    target:
+      artifact_ref: 82e8f37d-332c-47d5-bcd5-ab52653b9cd6
+  - key: hiw-context/module-layout
+    parent: hiw-context
+    title: Module Layout
+    order: 4
+    target:
+      artifact_ref: 05c78d9e-3e0d-43a5-b674-d0110604d8cd
+  - key: hiw-context/overview
+    parent: hiw-context
+    title: Architecture Overview
+    order: 1
+    target:
+      artifact_ref: 1dad94c2-83ac-486f-b792-df0c56d391f5
+  - key: hiw-context/packages-and-sites
+    parent: hiw-context
+    title: Packages and Sites
+    order: 6
+    target:
+      artifact_ref: a0aef936-cc16-4cde-b209-b9c53d6ee254
+  - key: hiw-context/why-a-workflow
+    parent: hiw-context
+    title: Why a Workflow
+    order: 2
+    target:
+      artifact_ref: 0fd00adc-8f91-4c1d-8e50-ec78c403288e
+  - key: hiw-context/workflow-execution
+    parent: hiw-context
+    title: Workflow Execution
+    order: 5
+    target:
+      artifact_ref: 3ff2f5ee-2061-4671-b55c-ee136f92f693
+  - key: hiw-knowledge
+    parent: how-it-works
+    title: Knowledge Mechanisms
+    order: 2
+  - key: hiw-knowledge/code-extraction
+    parent: hiw-knowledge
+    title: Code Extraction
+    order: 6
+    target:
+      artifact_ref: 00e6d166-ec40-4d84-944f-aed8d4dbeb72
+  - key: hiw-knowledge/evidence-chains
+    parent: hiw-knowledge
+    title: Evidence Chains and Index First
+    order: 2
+    target:
+      artifact_ref: dd332587-8faa-4ebe-88ca-247cfb146ba5
+  - key: hiw-knowledge/indexer-system
+    parent: hiw-knowledge
+    title: The Indexer System
+    order: 5
+    target:
+      artifact_ref: 6272ae5a-8966-42cd-a06d-5986828764fd
+  - key: hiw-knowledge/keeping-knowledge-current
+    parent: hiw-knowledge
+    title: Keeping Knowledge Current
+    order: 4
+    target:
+      artifact_ref: e04dd656-57d4-4c93-abd3-568ef2368939
+  - key: hiw-knowledge/knowledge-for-agents
+    parent: hiw-knowledge
+    title: Knowledge for Agents
+    order: 1
+    target:
+      artifact_ref: c83a2ef8-1964-48dc-a3cb-ec5eeadc1acf
+  - key: hiw-knowledge/version-aware-knowledge
+    parent: hiw-knowledge
+    title: Version-Aware Knowledge
+    order: 3
+    target:
+      artifact_ref: 3d544ac4-b9e2-4b40-b1c0-8ce2c0cd0e85
+  - key: hiw-sourcegraph
+    parent: how-it-works
+    title: Source Graph
+    order: 3
+  - key: hiw-sourcegraph/evidence-for-context
+    parent: hiw-sourcegraph
+    title: Evidence for Context
+    order: 3
+    target:
+      artifact_ref: 92010645-02ae-41e0-93f2-09c204c9f2fb
+  - key: hiw-sourcegraph/overview
+    parent: hiw-sourcegraph
+    title: Overview
+    order: 1
+    target:
+      artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
+  - key: hiw-sourcegraph/pinned-search-and-reads
+    parent: hiw-sourcegraph
+    title: Pinned Search and Reads
+    order: 2
+    target:
+      artifact_ref: c1591da5-5eaf-4cf9-86dc-976fc5b2bc40
+  - key: how-it-works
+    parent: null
+    title: How It Works
+    order: 3
+  - key: reference
+    parent: null
+    title: Reference
+    order: 4
+  - key: reference-agentgraph
+    parent: reference
+    title: Agent Graph
+    order: 3
+  - key: reference-agentgraph/cli-and-sdk
+    parent: reference-agentgraph
+    title: CLI and SDK
+    order: 2
+    target:
+      artifact_ref: 86ec3c09-beb2-468a-b28a-60d7a5c8fcce
+  - key: reference-agentgraph/migration
+    parent: reference-agentgraph
+    title: Migration
+    order: 3
+    target:
+      artifact_ref: 6a2cbadf-7325-4e5d-bf36-90738dc10226
+  - key: reference-agentgraph/specification
+    parent: reference-agentgraph
+    title: Specification
+    order: 1
+    target:
+      artifact_ref: 1a8d06d5-bb91-453a-ac52-48ad4e4edc93
+  - key: reference-context
+    parent: reference
+    title: Context
+    order: 1
+  - key: reference-context/cli-commands
+    parent: reference-context
+    title: CLI Commands
+    order: 1
+    target:
+      artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
+  - key: reference-context/knowledge-collections
+    parent: reference-context
+    title: Knowledge Collections
+    order: 6
+    target:
+      artifact_ref: bd4e84ed-7413-4eaf-aad0-2b9c0fde8020
+  - key: reference-context/package-templates
+    parent: reference-context
+    title: Package Templates
+    order: 4
+    target:
+      artifact_ref: ff6d102c-14a5-4f8b-a8fd-8464060dde1d
+  - key: reference-context/project-api
+    parent: reference-context
+    title: Project API
+    order: 2
+    target:
+      artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
+  - key: reference-context/skills
+    parent: reference-context
+    title: Skills
+    order: 3
+    target:
+      artifact_ref: 5adb572a-fc06-4bb9-a0aa-944b7c1dc1bb
+  - key: reference-context/template-variables
+    parent: reference-context
+    title: Template Variables
+    order: 5
+    target:
+      artifact_ref: 2b26b459-d582-4c66-b5d6-d1d2bcac0cdc
+  - key: reference-sourcegraph
+    parent: reference
+    title: Source Graph
+    order: 2
+  - key: reference-sourcegraph/cli
+    parent: reference-sourcegraph
+    title: CLI
+    order: 2
+    target:
+      artifact_ref: 524c7555-fd52-4e08-82d0-93f68236b71d
+  - key: reference-sourcegraph/configuration
+    parent: reference-sourcegraph
+    title: Configuration
+    order: 4
+    target:
+      artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
+  - key: reference-sourcegraph/http-and-mcp
+    parent: reference-sourcegraph
+    title: HTTP and MCP
+    order: 1
+    target:
+      artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
+  - key: reference-sourcegraph/query-syntax
+    parent: reference-sourcegraph
+    title: Query Syntax
+    order: 3
+    target:
+      artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
+revision: sha256:cdf6f96ad5af4732c8086c2f63155b55c7f98dc32d35245934dcdf6d1614d889
