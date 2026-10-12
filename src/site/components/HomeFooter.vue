@@ -44,7 +44,7 @@ const links = [
 .cx-footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
 .cx-footer a { color: var(--vp-c-text-2); text-decoration: none; }
 .cx-footer a:hover { color: var(--vp-c-text-1); }
-.cx-footer .cx-footer-repo { color: var(--vp-c-text-1); text-decoration: underline; text-decoration-color: var(--vp-c-divider); text-underline-offset: 3px; }
-.cx-footer .cx-footer-repo:hover { text-decoration-color: currentColor; }
+.cx-footer .cx-footer-repo { text-decoration: underline; text-decoration-color: var(--vp-c-divider); text-underline-offset: 3px; }
+.cx-footer .cx-footer-repo:hover { color: var(--vp-c-text-1); text-decoration-color: currentColor; }
 @media (max-width: 720px) { .cx-footer { grid-template-columns: 1fr; } }
 </style>
