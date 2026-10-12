@@ -2,11 +2,14 @@ FROM oven/bun:1.3.9 AS bun
 
 FROM node:22-bookworm-slim AS build
 COPY --from=bun /usr/local/bin/bun /usr/local/bin/bun
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 WORKDIR /portal
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 COPY . .
-RUN bun run build
+RUN bun run sources:restore && bun run build
 
 FROM nginx:1.29-alpine
 ENV SOURCEGRAPH_UPSTREAM=http://context4ai-sourcegraph.internal:8080 \

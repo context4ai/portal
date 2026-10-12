@@ -15,7 +15,8 @@
     "build:home": "bun homepage/build.ts",
     "build": "context build && bun homepage/build.ts",
     "typecheck": "tsc --noEmit",
-    "check:links": "bun scripts/check-links.ts"
+    "check:links": "bun scripts/check-links.ts",
+    "sources:restore": "bun scripts/restore-sources.ts"
   },
   "dependencies": {
     "@c4a/context": "0.7.62"
