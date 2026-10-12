@@ -9,7 +9,7 @@ COPY . .
 RUN bun run build
 
 FROM nginx:1.29-alpine
-ENV SOURCEGRAPH_UPSTREAM=http://context4ai-sourcegraph.flycast \
+ENV SOURCEGRAPH_UPSTREAM=http://context4ai-sourcegraph.internal:8080 \
     NGINX_RESOLVER=[fdaa::3]
 COPY deploy/nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY --from=build /portal/dist/home/ /usr/share/nginx/html/
