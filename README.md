@@ -43,9 +43,14 @@ Requires Node.js 22 and Bun 1.3.
 
 ```sh
 bun install
-bun run build         # context build, then the homepage
+bun run sources:restore   # pinned source repositories under .tmp/, once per clone
+bun run build             # context build, then the homepage
 bun run check:links
 ```
+
+The source checkouts let `context verify` and the build check every cited
+region; without them each page is built with a "Source regions need review"
+notice.
 
 `bun run build:home` rebuilds only the homepage into `dist/home/`.
 

@@ -29,10 +29,13 @@ jobs:
 
       - run: bun install --frozen-lockfile
       - run: bun run typecheck
+      - run: bun run sources:restore
       - run: bunx context status
       - run: bunx context verify
       - run: bun run build
       - run: bun run check:links
+      - name: No stale-source notices
+        run: "! grep -rl 'Source regions need review' dist/context-site"
 
       - name: Nginx configuration
         run: |
