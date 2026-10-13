@@ -1,10 +1,10 @@
 ---
 title: Self-Hosting
-description: Run your own Source Graph instance with Docker or from source,
-  choose between one large instance and repository-sharded instances, pick a
-  database, and back it up.
+description: Run your own Source Graph instance with Docker or from source, pick
+  a database and back it up; see Deployment Recommendations for choosing between
+  one instance and sharded instances.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-13T01:46:40.848Z
 ---
 # Self-Hosting
 
@@ -43,27 +43,7 @@ SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 
 <!-- context:section id="topology" -->
 ## Choose a topology
 
-Each instance owns its Git mirrors, search indexes and data directory on local disk; the database holds shared application state. Search speed comes from that locality, so size instances by disk rather than CPU, and place them in the same region as the Agents and services that call them.
-
-```mermaid
-flowchart TB
-  subgraph single["Single instance"]
-    s1["Instance + large volume<br/>all repositories"]
-  end
-  subgraph sharded["Sharded instances"]
-    router["Access layer<br/>routes by repo key"] --> a["Instance A + volume<br/>repos in shard A"]
-    router --> b["Instance B + volume<br/>repos in shard B"]
-    a --> shared[("Shared PostgreSQL<br/>or MongoDB")]
-    b --> shared
-  end
-```
-
-- **One instance with a large disk** is the simplest choice for a team or a moderate number of repositories. Size the volume for the bare Git repositories plus indexes, and keep headroom above `SOURCEGRAPH_MIN_FREE_BYTES` (1 GiB by default), below which fetching and indexing stop with `INSUFFICIENT_STORAGE`.
-- **Sharded instances with repository-sticky routing** scale further. Several instances share one PostgreSQL or MongoDB database, and each serves a disjoint set of repositories from its own volume. The access layer routes every request by its repository key — the `repo` query parameter over HTTP, the `repo` argument of an MCP tool call — using consistent hashing or an explicit table. Requests not tied to one repository, such as listing repositories, may go to any instance.
-
-For sharding, set the same `SOURCEGRAPH_CREDENTIAL_KEY` on every instance so they can decrypt each other's stored credentials, and keep the repository-to-instance mapping stable; moving a repository means it is fetched and indexed again.
-
-Never let two instances serve the same repository or share a data directory. Index ownership is per process: scale by sharding repositories, not by adding replicas.
+Source Graph runs either as one instance with a large disk, or as repository-sharded instances that share one PostgreSQL or MongoDB database and each own a disjoint set of repositories on their own volume. Each instance keeps its Git mirrors and indexes on local disk, so size by disk and place instances in the same region as their callers. [Deployment Recommendations](deployment-recommendations.md) covers how to choose, size and shard.
 <!-- /context:section -->
 
 <!-- context:section id="database" -->
@@ -81,17 +61,7 @@ Pass the connection in `DATABASE_URL`: a SQLite file path, a PostgreSQL DSN or a
 <!-- context:section id="fly" -->
 ## Example: Fly.io
 
-The repository's `fly.toml` deploys one machine with 1 GB of memory, a single shared CPU, automatic stopping disabled, a volume named `sourcegraph_data` mounted at `/data`, and a health check on `/sourcegraph/healthz`:
-
-```bash
-fly apps create <app-name>
-fly volumes create sourcegraph_data --region <region> --size 20 --app <app-name>
-fly deploy --remote-only --ha=false
-```
-
-Start with a volume of at least 20 GB and observe real indexing before changing capacity. Do not scale one app to several machines — they would share repositories; for sharding, deploy one app per shard behind a routing access layer.
-
-To serve Source Graph under another site's domain, reverse-proxy the whole `/sourcegraph/` prefix, preserving query strings, cookies and the `Authorization` header, and set `SOURCEGRAPH_ORIGIN` to the public origin. Do not cache sign-in, API or MCP responses; static assets may be cached.
+The repository's `fly.toml` deploys one instance with a `sourcegraph_data` volume mounted at `/data` and a health check on `/sourcegraph/healthz`. [Deployment Recommendations](deployment-recommendations.md) shows how the public demo is deployed on Fly.io from it, including the commands and the rules for serving Source Graph behind another site's reverse proxy.
 <!-- /context:section -->
 
 <!-- context:section id="backup" -->

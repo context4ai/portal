@@ -4,14 +4,16 @@ description: Source Graph 全部 HTTP 路由与 MCP 工具：路径、输入、�
 translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
-  source_digest: 672676a6dca48f3e01a5b0b66674e45525d5efefd102722a6b9d9936f3d69b53
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: 13f8788955e4706ba69b517404ad146e6c169fe588834ce767b32eea44061c72
+  translated_at: 2026-10-13T01:07:38.210Z
 ---
 
 # HTTP 与 MCP 接口
 
 <!-- context:section id="goal" -->
 所有路由都位于实例源地址的 `/sourcegraph` 前缀下。查询路由在 `/sourcegraph/v1/` 下（搜索为 `/sourcegraph/api/search`），管理路由在 `/sourcegraph/api/admin/` 下，MCP 端点为 `/sourcegraph/mcp`。两类接口调用的是同一个服务，因此版本、限制和错误码完全一致。如何选择凭据，见[接入](../../../sop/source-graph/connecting.md)。
+
+> **可选服务。** Context 并不依赖 Source Graph 或它的 MCP 服务。两者都没有安装或配置时，Context 的查询技能仍会通过浅层、稀疏的部分克隆加 grep 在本地读取代码证据；默认的 `auto` 模式只在有可用的已授权实例时才优先使用 Source Graph。
 <!-- /context:section -->
 
 <!-- context:section id="conventions" -->

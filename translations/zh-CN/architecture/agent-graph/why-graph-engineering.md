@@ -5,8 +5,8 @@ description: Agent Graph 是什么、它为长篇 Agent Skill 解决什么问题
 translation:
   locale: zh-CN
   artifact_ref: 5cdd4f61-6dd2-434e-a112-cc6352704faf
-  source_digest: d72af08881264e0967f54e55052758a67332241ea1c248e5c1ed7cf202838e45
-  translated_at: 2026-10-12T18:13:07.981Z
+  source_digest: ae43372f4a0ff8f673c74ae37b2a2f24b5527f6264f571049c90acc447fc83bd
+  translated_at: 2026-10-13T01:42:25.388Z
 ---
 
 # 为什么是 Graph Engineering
@@ -14,7 +14,7 @@ translation:
 <!-- context:section id="what" -->
 Agent Graph 是面向 Agent Skill 的工作契约层。你把工作流描述成一张由合法步骤组成的小图；运行时，它读取当前的 **Facts**，告诉 Agent 下一步做什么、这一步要读哪些文件，以及什么能证明这一步已经完成。它从不调用模型、不分配 Agent 身份、不搬运共享状态，也不调度 worker——它协调的是工作，而不是 Agent。现有的 Agent 和宿主消费它给出的 Route，并保留各自的执行边界。
 
-Agent Graph 以 `@c4a/agent-graph` 发布：包含带 JSON Schema 的版本化文件规范、一个 Node.js SDK，以及用于编写、检查、测试、构建和恢复工作流的 `agent-graph` CLI。Context 的整套知识工作流都运行在它之上，参见[在 Context 中的应用](agent-graph-in-context.md)。
+Agent Graph 以 `@c4a/agent-graph` 发布：包含带 JSON Schema 的版本化文件规范、一个 Node.js SDK，以及用于编写、检查、测试、构建和恢复工作流的 `agent-graph` CLI。Context 的整套知识工作流都运行在它之上，参见[在 Context 中的应用](agent-graph-in-context.md)。源码、问题反馈与讨论都在 GitHub 仓库 [context4ai/agent-graph](https://github.com/context4ai/agent-graph)。
 
 接下来可以阅读：
 

@@ -4,8 +4,8 @@ description: Context 把代码、文档、笔记和会话整理成经过审核�
 translation:
   locale: zh-CN
   artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
-  source_digest: 36b9f3f5c9b6e30ae9e52a7f6ab6c6fc60c26f1875327a1a82e50e5551dad744
-  translated_at: 2026-10-12T20:29:53.422Z
+  source_digest: 1c47d378668beb1adbafae8ee4c8195a6b1e0d7e7bc3f10876b98e95aff1558c
+  translated_at: 2026-10-13T01:45:31.351Z
 ---
 
 # Context 是什么
@@ -22,12 +22,21 @@ Context 是面向研发团队及其 AI Agent 的知识工作流。它把代码�
 下图展示了从原始材料到提问的人和 Agent 的完整路径。
 
 ```mermaid
-flowchart LR
-  src["代码、文档、笔记、会话"] -->|"登记并采集"| agent["装有 Context 技能的 Agent"]
-  agent -->|"写出候选"| review["人工审核"]
-  review -->|"批准"| kb["已批准的知识"]
-  kb -->|"构建"| out["知识包、站点、LLM Docs"]
-  out -->|"附来源作答"| users["Agent、Bot、开发者"]
+flowchart TB
+  subgraph produce["生产"]
+    direction LR
+    src["代码、文档、笔记、会话"] -->|"登记并采集"| agent["装有 Context 技能的 Agent"]
+  end
+  subgraph approve["审核"]
+    direction LR
+    review["人工审核"] -->|"批准"| kb["已批准的知识"]
+  end
+  subgraph use["使用"]
+    direction LR
+    out["知识包、站点、LLM Docs"] -->|"附来源作答"| users["Agent、Bot、开发者"]
+  end
+  produce -->|"写出候选"| approve
+  approve -->|"构建"| use
 ```
 
 Context 不是一次性的摘要工具。来源快照、审核状态、已批准的知识和知识包清单都保存在本地的 Context 知识工作区中，因此结果可以检查、做版本管理，并在来源变化时刷新。

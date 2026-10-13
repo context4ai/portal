@@ -4,8 +4,8 @@ description: 让 Agent 通过只读代码服务，在固定的提交上读取被
 translation:
   locale: zh-CN
   artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
-  source_digest: 88479aeb39b8856be580c6de8030f0df5aa5cec771bebdb96f0d76c426d70354
-  translated_at: 2026-10-12T16:11:57.590Z
+  source_digest: 1ee9031256e72135aeca033f00070e534276b57b3d328c5d3ea5dcf4b0479f57
+  translated_at: 2026-10-13T01:41:29.142Z
 ---
 
 # 远程读取代码证据
@@ -20,6 +20,8 @@ flowchart LR
   wasm -->|文本 + 引用| agent
   agent -->|在对应提交读取被引用代码| sg
 ```
+
+> **Source Graph 是可选的。** 你不必安装或配置它。没有该服务时，查询技能照样能很好地工作：它在本地读取代码，对记录的提交做浅层、稀疏的部分克隆，再用 grep 或 rg 搜索。默认的 `auto` 模式只在有可用的已授权实例时才优先使用 Source Graph。
 <!-- /context:section -->
 
 <!-- context:section id="enable" -->

@@ -4,7 +4,7 @@ description: Connect a browser, an MCP client, a script or the command-line
   client to Source Graph, choose the right credential, and follow the
   search-then-read loop at one commit.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-13T01:11:43.187Z
 ---
 # Connecting
 
@@ -19,6 +19,14 @@ Every Source Graph instance serves four entry points under the `/sourcegraph/` p
 | A terminal | `sourcegraph-cli`, a small HTTP client for the same routes |
 
 The website's **Connect** page always shows ready-to-copy configuration for the instance you are on, including the right address and whether a token is needed. Prefer it over hand-written examples when they differ.
+<!-- /context:section -->
+
+<!-- context:section id="optional" -->
+## Source Graph is optional
+
+Context does not require Source Graph. If you never install or configure it, Context's query skill still reads code evidence by itself: it makes a shallow, sparse partial clone of the recorded commit and searches it with grep or rg. In the default `auto` mode the skill prefers Source Graph only when an authorized instance is available, so connect one when you want pinned remote reads without local checkouts.
+
+To try it without deploying anything, use the public demo at [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/); its MCP endpoint is `/sourcegraph/mcp`.
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->

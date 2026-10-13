@@ -4,7 +4,7 @@ description: Context Source Graph is a self-hosted code search and reading
   service that answers every request at an exact Git commit, through a website,
   HTTP, MCP and a CLI.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-13T01:43:42.966Z
 ---
 # Source Graph Overview
 
@@ -24,6 +24,14 @@ flowchart LR
 ```
 
 Source Graph is part of the Context project. The name does not imply any affiliation with the Sourcegraph platform.
+<!-- /context:section -->
+
+<!-- context:section id="get-it" -->
+## Code and live demo
+
+- **Source code:** [github.com/context4ai/sourcegraph](https://github.com/context4ai/sourcegraph).
+- **Live demo:** [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/), also reachable at [https://context4ai-sourcegraph.fly.dev/sourcegraph/](https://context4ai-sourcegraph.fly.dev/sourcegraph/). It is the public, read-only instance behind this documentation site's knowledge service and serves `context4ai/context` and `context4ai/sourcegraph`. Its MCP endpoint is `/sourcegraph/mcp`. [Deployment Recommendations](../../sop/source-graph/deployment-recommendations.md) shows how it is deployed.
+- **Optional for Context:** Context works without Source Graph. When no instance is installed or configured, Context's query skill reads code through a shallow, sparse partial clone and grep instead.
 <!-- /context:section -->
 
 <!-- context:section id="why" -->

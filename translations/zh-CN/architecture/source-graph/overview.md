@@ -5,8 +5,8 @@ description: Context Source Graph 是一个自部署的代码搜索与阅读服�
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
-  source_digest: 0ed27d4d628052e806819d82cbdd5c6f5734dadc6a1948c0903b27f7eb7a73b3
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: 4057db640fda00df0041045d58970fdd3fdc27465aba6df067615007eebadedb
+  translated_at: 2026-10-13T01:44:02.625Z
 ---
 
 # Source Graph 定位与能力
@@ -27,6 +27,14 @@ flowchart LR
 ```
 
 Source Graph 是 Context 项目的一部分，名称并不代表它与 Sourcegraph 平台有任何关联。
+<!-- /context:section -->
+
+<!-- context:section id="get-it" -->
+## 源码与在线示例
+
+- **源码：** [github.com/context4ai/sourcegraph](https://github.com/context4ai/sourcegraph)。
+- **在线示例：** [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/)，也可以通过 [https://context4ai-sourcegraph.fly.dev/sourcegraph/](https://context4ai-sourcegraph.fly.dev/sourcegraph/) 访问。它是支撑本文档站知识服务的公开只读实例，提供 `context4ai/context` 与 `context4ai/sourcegraph` 两个仓库。MCP 端点为 `/sourcegraph/mcp`。部署方式见[部署建议](../../sop/source-graph/deployment-recommendations.md)。
+- **对 Context 是可选的：** 没有 Source Graph，Context 也能工作。未安装或未配置实例时，Context 的查询技能改为通过浅层、稀疏的部分克隆加 grep 读取代码。
 <!-- /context:section -->
 
 <!-- context:section id="why" -->

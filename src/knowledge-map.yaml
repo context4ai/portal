@@ -315,7 +315,7 @@ entries:
   - key: guides-sourcegraph/authentication-and-access-control
     parent: guides-sourcegraph
     title: Authentication and Access Control
-    order: 4
+    order: 5
     target:
       artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
   - key: guides-sourcegraph/connecting
@@ -324,10 +324,16 @@ entries:
     order: 1
     target:
       artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
+  - key: guides-sourcegraph/deployment-recommendations
+    parent: guides-sourcegraph
+    title: Deployment Recommendations
+    order: 4
+    target:
+      artifact_ref: 4c404898-5e2f-47f4-9740-e5719162af5c
   - key: guides-sourcegraph/operations
     parent: guides-sourcegraph
     title: Operations
-    order: 5
+    order: 6
     target:
       artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
   - key: guides-sourcegraph/registering-repositories
@@ -672,4 +678,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:cdf6f96ad5af4732c8086c2f63155b55c7f98dc32d35245934dcdf6d1614d889
+revision: sha256:9d51e8fa9d01b7bacfb08f53faf81809362ef0f145603d2224938499ff558ad4
