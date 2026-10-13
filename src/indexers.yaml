@@ -53,6 +53,7 @@ requirements:
       - How do I connect an MCP client, script or CLI?
       - How do I register a repository or a monorepo path group?
       - How do I deploy, sign in, back up and troubleshoot an instance?
+      - Should I run one instance or shard repositories across several, and how is the live demo deployed?
       - Which limits, errors and settings apply to each operation?
     coverage_domains:
       how-it-works: required
@@ -63,6 +64,9 @@ requirements:
       targets:
         - source_ref: repo:20261012/sourcegraph
         - source_ref: repo:20261012/context
+    evidence_source_scope:
+      targets:
+        - source_ref: note:20261013/demo-deployment.md
     exclusions:
       - scope:
           targets:

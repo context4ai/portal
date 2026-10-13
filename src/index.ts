@@ -9,9 +9,10 @@ const sourcegraph = source("20261012", "sourcegraph");
 const agentGraph = source("20261012", "agent-graph");
 const notes = ["usage-practices", "compression", "benchmark-summary", "knowledge-service-agent", "faq", "portal-production"]
   .map((name) => source(`20261012/${name}.md`, { type: "note" }));
+const demoDeployment = source("20261013/demo-deployment.md", { type: "note" });
 
 export default defineProject({
-  sources: [context, sourcegraph, agentGraph, ...notes],
+  sources: [context, sourcegraph, agentGraph, ...notes, demoDeployment],
   phases: [],
   packages: [
     kbPackage({
@@ -34,7 +35,7 @@ export default defineProject({
         // The brand returns to the homepage; Home opens this documentation site's home.
         titleLink: "/",
         nav: [
-          { text: "Home", link: "/context/", locales: { "zh-CN": "首页" } },
+          { text: "Home", link: "/context/", position: "start", locales: { "zh-CN": "首页" } },
         ],
         // Targets are approved articles kept outside the knowledge map, shown only in this menu.
         more: [

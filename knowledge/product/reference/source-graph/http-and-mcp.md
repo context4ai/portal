@@ -3,12 +3,16 @@ title: HTTP and MCP
 description: Every Source Graph HTTP route and MCP tool — paths, inputs,
   credentials, limits, output and error format.
 type: Wiki
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-13T01:07:09.352Z
 ---
 # HTTP and MCP
 
 <!-- context:section id="goal" -->
+
 All routes live under the `/sourcegraph` prefix of the instance's origin. Query routes are under `/sourcegraph/v1/` (search is `/sourcegraph/api/search`), management routes under `/sourcegraph/api/admin/`, and the MCP endpoint is `/sourcegraph/mcp`. Both surfaces call the same service, so revisions, limits and error codes are identical. For how to choose a credential see [Connecting](../../../sop/source-graph/connecting.md).
+
+> **Optional service.** Context does not require Source Graph or its MCP server. When neither is installed or configured, Context's query skill still reads code evidence locally through a shallow, sparse partial clone and grep; in its default `auto` mode it prefers Source Graph only when an authorized instance is available.
+
 <!-- /context:section -->
 
 <!-- context:section id="conventions" -->

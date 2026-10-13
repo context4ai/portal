@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.9.0 — 2026-10-13
+
+### Source Graph deployment recommendations
+
+- New guide, Source Graph Deployment Recommendations: choosing one instance or repository-sharded instances, sizing and sharding rules, and how the public demo behind this site is deployed on Fly.io.
+- HTTP and MCP notes that Source Graph is optional for Context: without it, the query skill reads code through a shallow sparse clone and grep.
+- Every new and changed page is available in Simplified Chinese.
+- Connecting explains that Source Graph is optional and points to the public demo as a ready target.
+- Reading Code Evidence Remotely states up front that Source Graph is optional and that the query skill falls back to a shallow sparse clone with grep.
+- Why Graph Engineering links the Agent Graph GitHub repository.
+- Source Graph Overview adds the GitHub repository, the live demo endpoints that serve this site's knowledge service, and that Source Graph is optional for Context.
+- The How it works diagram on What is Context is split into three rows: produce, review and use.
+- Self-Hosting keeps building, databases and backups, and points to Deployment Recommendations for topology and the Fly.io example.
+
+Trigger: note: Registered a maintainer note on the public Fly.io demo deployment.; navigation: Added Deployment Recommendations to Guides › Source Graph.; translation: Simplified Chinese translation of the new page.; repair: User-requested revisions to existing pages.
+User: qiansc (git)
+
 ## 0.8.0 — 2026-10-12
 
 ### Context 0.7.62 and Agent Graph 0.3.1

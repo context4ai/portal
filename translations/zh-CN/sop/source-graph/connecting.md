@@ -4,8 +4,8 @@ description: 将浏览器、MCP 客户端、脚本或命令行客户端接入 So
 translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  source_digest: e2e70dd98690df98791c3f2bda784398ced5e609baab22f2de24a36d76be7639
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: 9a6e17a1d4987b9b792e98b12a22cba38ee4c49cecee86df2e5d8224884c603d
+  translated_at: 2026-10-13T01:11:58.079Z
 ---
 
 # 接入
@@ -21,6 +21,14 @@ translation:
 | 终端 | `sourcegraph-cli`，一个调用相同路由的小型 HTTP 客户端 |
 
 网站的 **Connect** 页面始终会展示当前实例可直接复制的配置，包括正确的地址以及是否需要令牌。当它与手写示例不一致时，以该页面为准。
+<!-- /context:section -->
+
+<!-- context:section id="optional" -->
+## Source Graph 是可选的
+
+Context 并不依赖 Source Graph。即使从未安装或配置它，Context 的查询技能也能自行读取代码证据：对记录的提交做浅层、稀疏的部分克隆，再用 grep 或 rg 搜索。默认的 `auto` 模式只在有可用的已授权实例时才优先使用 Source Graph，因此当你希望按固定版本远程读取、又不想在本地检出代码时，再接入它。
+
+想不部署就试用，可以直接使用公开示例 [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/)，其 MCP 端点为 `/sourcegraph/mcp`。
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->

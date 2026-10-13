@@ -1,11 +1,11 @@
 ---
 title: 自部署与数据库选择
-description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，在单个大实例与按仓库分片的多实例之间做出选择，选定数据库并做好备份。
+description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，选定数据库并做好备份；在单实例与分片多实例之间如何选择，见部署建议。
 translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
-  source_digest: 33f8ead40b1f6aba6568755b114e868a0aa78cea4a3117e8bec5390dc05d400e
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: a7a924ec3779be0c4fa8d05000c4c7a8031bb5903e5f395b55fe136802aaa5a7
+  translated_at: 2026-10-13T01:46:59.041Z
 ---
 
 # 自部署与数据库选择
@@ -43,29 +43,9 @@ SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 
 <!-- /context:section -->
 
 <!-- context:section id="topology" -->
-## 选择部署拓扑
+## 选择拓扑
 
-每个实例在本地磁盘上独占自己的 Git 镜像、搜索索引和数据目录；数据库保存共享的应用状态。搜索速度来自这种数据本地性，因此应按磁盘而非 CPU 规划实例规格，并将实例部署在与调用它的 Agent 和服务相同的区域。
-
-```mermaid
-flowchart TB
-  subgraph single["单实例"]
-    s1["实例 + 大容量卷<br/>全部仓库"]
-  end
-  subgraph sharded["分片实例"]
-    router["接入层<br/>按仓库键路由"] --> a["实例 A + 卷<br/>分片 A 的仓库"]
-    router --> b["实例 B + 卷<br/>分片 B 的仓库"]
-    a --> shared[("共享 PostgreSQL<br/>或 MongoDB")]
-    b --> shared
-  end
-```
-
-- **单实例加大容量磁盘**最简单，适合一个团队或中等数量的仓库。卷容量要能容纳裸 Git 仓库和索引，并在 `SOURCEGRAPH_MIN_FREE_BYTES`（默认 1 GiB）之上留出余量；可用空间低于该值时，拉取和建索引会停止并返回 `INSUFFICIENT_STORAGE`。
-- **按仓库粘性路由的分片实例**可以进一步扩展。多个实例共享一个 PostgreSQL 或 MongoDB 数据库，每个实例从自己的卷上服务一组互不重叠的仓库。接入层按仓库键路由每个请求（HTTP 中的 `repo` 查询参数，MCP 工具调用中的 `repo` 参数），可使用一致性哈希或显式映射表。不绑定单个仓库的请求（例如列出仓库）可以发往任意实例。
-
-分片部署时，在每个实例上设置相同的 `SOURCEGRAPH_CREDENTIAL_KEY`，以便它们能解密彼此存储的凭据，并保持仓库到实例的映射稳定；迁移仓库意味着要重新拉取并建索引。
-
-绝不要让两个实例服务同一个仓库或共享同一个数据目录。索引归属以进程为单位：通过对仓库分片来扩展，而不是增加副本。
+Source Graph 可以作为单个大磁盘实例运行，也可以按仓库分片为多个实例：多个实例共享一个 PostgreSQL 或 MongoDB 数据库，各自在自己的卷上负责互不重叠的一组仓库。每个实例都把 Git 镜像和索引放在本地磁盘上，因此按磁盘规划容量，并把实例部署在调用方所在的区域。如何选择、规划容量和分片，见[部署建议](deployment-recommendations.md)。
 <!-- /context:section -->
 
 <!-- context:section id="database" -->
@@ -83,17 +63,7 @@ flowchart TB
 <!-- context:section id="fly" -->
 ## 示例：Fly.io
 
-仓库中的 `fly.toml` 会部署一台机器：1 GB 内存、一个共享 CPU、关闭自动停机、名为 `sourcegraph_data` 的卷挂载到 `/data`，并在 `/sourcegraph/healthz` 上配置健康检查：
-
-```bash
-fly apps create <app-name>
-fly volumes create sourcegraph_data --region <region> --size 20 --app <app-name>
-fly deploy --remote-only --ha=false
-```
-
-卷容量至少从 20 GB 起步，观察实际的建索引情况后再调整容量。不要把一个应用扩展到多台机器，否则它们会共享仓库；如需分片，为每个分片部署一个应用，并放在负责路由的接入层之后。
-
-要在其他站点的域名下提供 Source Graph，请反向代理整个 `/sourcegraph/` 前缀，保留查询字符串、Cookie 和 `Authorization` 请求头，并将 `SOURCEGRAPH_ORIGIN` 设置为公开源站。不要缓存登录、API 或 MCP 响应；静态资源可以缓存。
+仓库中的 `fly.toml` 部署一个实例，数据卷 `sourcegraph_data` 挂载在 `/data`，健康检查为 `/sourcegraph/healthz`。[部署建议](deployment-recommendations.md)介绍了公开示例如何据此部署在 Fly.io 上，包括部署命令，以及把 Source Graph 放在其他站点反向代理之后时的规则。
 <!-- /context:section -->
 
 <!-- context:section id="backup" -->

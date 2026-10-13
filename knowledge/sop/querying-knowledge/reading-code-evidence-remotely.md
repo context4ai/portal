@@ -4,11 +4,12 @@ description: Let an Agent read cited code and knowledge at their pinned commits
   through a read-only code service, with the context-evidence plugin attaching
   source references — no clone needed.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-13T01:13:02.602Z
 ---
 # Reading Code Evidence Remotely
 
 <!-- context:section id="goal" -->
+
 Answering from knowledge sometimes needs the code behind it. Cloning repositories into every Agent sandbox is slow; instead, the query Skill can read both the Context knowledge workspace and the source code through a read-only code service, Source Graph, at exactly the commit the knowledge cites. The optional **context-evidence** plugin, a WebAssembly module that runs inside that service, attaches each knowledge section's recorded source references to the text the Agent reads.
 
 ```mermaid
@@ -18,6 +19,9 @@ flowchart LR
   wasm -->|text + references| agent
   agent -->|read cited code at its commit| sg
 ```
+
+> **Source Graph is optional.** You do not need to install or configure it. Without a service, the query Skill still works well by reading code locally: it makes a shallow, sparse partial clone of the recorded commit and searches it with grep or rg. In the default `auto` mode it prefers Source Graph only when an authorized instance is available.
+
 <!-- /context:section -->
 
 <!-- context:section id="enable" -->

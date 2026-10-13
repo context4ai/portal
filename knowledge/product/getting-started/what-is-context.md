@@ -3,7 +3,7 @@ title: What is Context
 description: Context turns code, documents, notes and conversations into
   reviewed, traceable knowledge for Agents, Bots and people.
 type: Wiki
-timestamp: 2026-10-12T20:24:32.970Z
+timestamp: 2026-10-13T01:45:15.701Z
 ---
 # What is Context
 
@@ -16,20 +16,31 @@ You describe what knowledge you need and where the material lives. Your Agent re
 <!-- /context:section -->
 
 <!-- context:section id="overview" -->
+
 ## How it fits together
 
 The diagram shows the path from material to the people and Agents who ask questions.
 
 ```mermaid
-flowchart LR
-  src["Code, documents, notes, sessions"] -->|registered and captured| agent["Your Agent with Context skills"]
-  agent -->|writes candidates| review["Human review"]
-  review -->|approves| kb["Approved knowledge"]
-  kb -->|builds| out["Package, site, LLM Docs"]
-  out -->|answers with sources| users["Agents, Bots, developers"]
+flowchart TB
+  subgraph produce["Produce"]
+    direction LR
+    src["Code, documents, notes, sessions"] -->|registered and captured| agent["Your Agent with Context skills"]
+  end
+  subgraph approve["Review"]
+    direction LR
+    review["Human review"] -->|approves| kb["Approved knowledge"]
+  end
+  subgraph use["Use"]
+    direction LR
+    out["Package, site, LLM Docs"] -->|answers with sources| users["Agents, Bots, developers"]
+  end
+  produce -->|writes candidates| approve
+  approve -->|builds| use
 ```
 
 Context is not a one-shot summarizer. Source snapshots, review state, approved knowledge and package inventories stay in a local Context knowledge workspace, so the result can be inspected, versioned and refreshed when sources change.
+
 <!-- /context:section -->
 
 <!-- context:section id="pillars" -->

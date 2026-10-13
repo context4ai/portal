@@ -4,20 +4,22 @@ description: What Agent Graph is, the problem it solves for long Agent Skills,
   the Graph Engineering principles behind it, and when a Skill should — or
   should not — use a Graph.
 type: Guide
-timestamp: 2026-10-12T18:07:53.547Z
+timestamp: 2026-10-13T01:42:06.859Z
 ---
 # Why Graph Engineering
 
 <!-- context:section id="what" -->
+
 Agent Graph is a work-contract layer for Agent Skills. You describe a workflow as a small graph of legal steps; at runtime it reads the current **Facts** and tells an Agent what to do next, which files to read for that step and what proves the step is done. It never calls a model, assigns Agent identities, moves shared state or schedules workers — it coordinates the work, not the Agents. Existing Agents and hosts consume its Routes and keep the execution boundary.
 
-Agent Graph ships as `@c4a/agent-graph`: versioned file specifications with JSON Schemas, a Node.js SDK and an `agent-graph` CLI for authoring, inspecting, testing, building and resuming workflows. Context runs its whole knowledge workflow on it; see [Agent Graph in Context](agent-graph-in-context.md).
+Agent Graph ships as `@c4a/agent-graph`: versioned file specifications with JSON Schemas, a Node.js SDK and an `agent-graph` CLI for authoring, inspecting, testing, building and resuming workflows. Context runs its whole knowledge workflow on it; see [Agent Graph in Context](agent-graph-in-context.md). The source code, issues and discussions live in the GitHub repository [context4ai/agent-graph](https://github.com/context4ai/agent-graph).
 
 Where to go next:
 
 - **How it works:** [Core Model](core-model.md), [Runs and Recovery](runs-and-recovery.md), [Skills and Providers](skills-and-providers.md).
 - **Guides:** [Getting Started](../../sop/agent-graph/getting-started.md), [Authoring Graphs](../../sop/agent-graph/authoring-graphs.md), [Testing and Publishing](../../sop/agent-graph/testing-and-publishing.md).
 - **Reference:** [Specification](../../product/reference/agent-graph/specification.md), [CLI and SDK](../../product/reference/agent-graph/cli-and-sdk.md), [Migration](../../product/reference/agent-graph/migration.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="problem" -->
