@@ -3,7 +3,7 @@ title: The Indexer System
 description: The four built-in Indexer skills, how the workflow uses them, and
   how teams add their own.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-13T05:37:29.810Z
 ---
 # The Indexer System
 
@@ -16,13 +16,16 @@ An Indexer is an Agent skill that helps the Agent expose a source's skeleton and
 <!-- context:section id="built-in" -->
 ## Four built-in Indexers
 
-| Indexer | Reads | Starts from | Source |
-| --- | --- | --- | --- |
-| `context-code-indexer` | Repository modules | Directory and file navigation, manifests, entries and registrations; detailed code reading during writing | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-code-indexer) |
-| `context-markdown-indexer` | Captured documents and same-repository docs | Titles, bounded opening excerpts and H2/H3 outlines; full text before writing | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-markdown-indexer) |
-| `context-note-indexer` | Saved notes, excerpts and observations | Direct reading, no parser | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-note-indexer) |
-| `context-sessions-indexer` | Saved conversation summaries | Direct reading, no parser | [GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-sessions-indexer) |
+| Indexer | Reads | Starts from |
+| --- | --- | --- |
+| `context-code-indexer` | Repository modules | Directory and file navigation, manifests, entries and registrations; detailed code reading during writing |
+| `context-markdown-indexer` | Captured documents and same-repository docs | Titles, bounded opening excerpts and H2/H3 outlines; full text before writing |
+| `context-note-indexer` | Saved notes, excerpts and observations | Direct reading, no parser |
+| `context-sessions-indexer` | Saved conversation summaries | Direct reading, no parser |
 
+<!-- /context:section -->
+
+<!-- context:section id="built-in-install" -->
 All four are installed with the plugin and discoverable in every supported host. Installing an Indexer makes it available; it does not select it. [Community Indexers](../../sop/custom-indexers/community-indexers.md) describes each one in more detail.
 <!-- /context:section -->
 

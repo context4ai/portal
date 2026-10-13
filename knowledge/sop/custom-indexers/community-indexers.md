@@ -4,7 +4,7 @@ description: The four Indexer Skills and the Indexer creator that ship with the
   community edition of Context, what each one reads and produces, how they are
   installed and selected, and where to find their source.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-13T05:39:56.428Z
 ---
 # Community Indexers
 
@@ -31,13 +31,13 @@ flowchart LR
 <!-- context:section id="at-a-glance" -->
 ## At a glance
 
-| Category | Skill | Source directory |
-| --- | --- | --- |
-| Code | `context-code-indexer` | [plugins/context/skills/context-code-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-code-indexer) |
-| Documents | `context-markdown-indexer` | [plugins/context/skills/context-markdown-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-markdown-indexer) |
-| Notes | `context-note-indexer` | [plugins/context/skills/context-note-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-note-indexer) |
-| Session summaries | `context-sessions-indexer` | [plugins/context/skills/context-sessions-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-sessions-indexer) |
-| Creator | `context-indexer-create` | [plugins/context/skills/context-indexer-create](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-indexer-create) |
+| Category | Skill |
+| --- | --- |
+| Code | `context-code-indexer` |
+| Documents | `context-markdown-indexer` |
+| Notes | `context-note-indexer` |
+| Session summaries | `context-sessions-indexer` |
+| Creator | `context-indexer-create` |
 
 The first four are Indexer Provider Skills that the Context workflow uses during planning and writing. The creator is an authoring assistant: it writes a new Indexer Skill for code, documents, notes or session summaries when you ask for one.
 <!-- /context:section -->
@@ -51,7 +51,7 @@ The first four are Indexer Provider Skills that the Context workflow uses during
 - **Bundled resources:** `references/indexer.md` with investigation and writing guidance, an article catalog for each module profile, diagram and source-visual guidance, and a template for each profile. The profiles cover 16 kinds of module, from monorepo containers, web applications, component and SDK libraries and CLI tools to API services, event consumers, storage repositories, adapters, contract sources and generated sources.
 - **Tests:** anonymized fixture sets under `tests/fixtures/`.
 
-Source: [context-code-indexer on GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-code-indexer).
+Source: `plugins/context/skills/context-code-indexer/`.
 <!-- /context:section -->
 
 <!-- context:section id="documents" -->
@@ -63,7 +63,7 @@ Source: [context-code-indexer on GitHub](https://github.com/context4ai/context/t
 - **Bundled resources:** planning guidance (`references/semantic-planning.md`), writing guidance (`references/indexer.md`), reader outcomes (`references/classification.md`) and article boundaries (`references/structure-and-artifacts.md`), plus article catalogs and templates that are not read by default. Its 13 document profiles range from domain references, product requirements and technical guides to runbooks, FAQs, decision records, incident reviews, test validation, release and migration guides, and documentation sites.
 - **Tests:** anonymized fixture sets under `tests/fixtures/`, such as document-routing cases.
 
-Source: [context-markdown-indexer on GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-markdown-indexer).
+Source: `plugins/context/skills/context-markdown-indexer/`.
 <!-- /context:section -->
 
 <!-- context:section id="notes" -->
@@ -76,7 +76,7 @@ Source: [context-markdown-indexer on GitHub](https://github.com/context4ai/conte
 - **Boundaries:** it does not scan host history, fetch an unapproved URL, alter evidence to fit a claim or write formal knowledge.
 - **Tests:** anonymized profile fixtures under `tests/fixtures/`.
 
-Source: [context-note-indexer on GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-note-indexer).
+Source: `plugins/context/skills/context-note-indexer/`.
 <!-- /context:section -->
 
 <!-- context:section id="sessions" -->
@@ -87,7 +87,7 @@ Source: [context-note-indexer on GitHub](https://github.com/context4ai/context/t
 - **Writing extracts:** the problem, the decisions actually reached, the reasons needed to understand them, remaining questions and applicability — keeping "proposed", "agreed", "implemented" and "verified" distinct. An optional `changes` association (a full `commit` SHA or an `mr` URL) records what was discussed; it does not prove that a change merged, deployed or passed tests.
 - **Bundled resources:** the same kinds of references, templates and article catalogs as the Note Indexer, loaded only when needed.
 
-Source: [context-sessions-indexer on GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-sessions-indexer).
+Source: `plugins/context/skills/context-sessions-indexer/`.
 <!-- /context:section -->
 
 <!-- context:section id="creator" -->
@@ -99,7 +99,7 @@ It writes Skills only: it does not initialize a knowledge workspace or start pro
 
 See [Creating an Indexer](creating-an-indexer.md) for the full walkthrough.
 
-Source: [context-indexer-create on GitHub](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-indexer-create).
+Source: `plugins/context/skills/context-indexer-create/`.
 <!-- /context:section -->
 
 <!-- context:section id="installation" -->
