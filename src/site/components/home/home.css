@@ -333,16 +333,21 @@
 }
 /* Prompt dialog: rendered under <body>, so it uses the site variables rather than the .cxh ones. Backdrop matches the search dialog. */
 .cxh-dialog { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px 16px; background: rgba(15, 17, 21, .18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-.cxh-dialog-card { position: relative; width: min(520px, 100%); padding: 28px 28px 24px; border: 1px solid var(--vp-c-divider); border-radius: 14px; background: var(--vp-c-bg); box-shadow: var(--vp-shadow-4); }
-.cxh-dialog-title { margin: 0 44px 14px 0; font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--vp-c-text-1); }
-.cxh-dialog-code { margin: 0; padding: 14px 16px; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); white-space: pre-wrap; overflow-wrap: anywhere; font: 13.5px/1.7 var(--vp-font-family-mono); color: var(--vp-c-text-1); }
+.cxh-dialog-card { position: relative; width: min(480px, 100%); padding: 24px; border: 1px solid var(--vp-c-divider); border-radius: 16px; background: var(--vp-c-bg); box-shadow: 0 24px 48px -12px rgba(15, 17, 21, .18), 0 2px 6px rgba(15, 17, 21, .06); font-size: 14px; line-height: 1.6; color: var(--vp-c-text-1); }
+.cxh-dialog-title { margin: 0 40px 12px 0; font-size: 14px; font-weight: 600; line-height: 28px; color: var(--vp-c-text-1); }
+.cxh-dialog-code { margin: 0; padding: 12px 14px; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.7 var(--vp-font-family-mono); color: var(--vp-c-text-1); }
 .cxh-dialog-code code { font: inherit; color: inherit; background: none; padding: 0; }
-.cxh-dialog-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; color: var(--vp-c-brand-1); overflow-wrap: anywhere; text-decoration: none; }
-.cxh-dialog-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cxh-dialog-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
+.cxh-dialog-link { display: inline-flex; align-items: center; gap: 6px; min-width: 0; font-size: 13px; color: var(--vp-c-text-2); text-decoration: none; transition: color .16s; }
+.cxh-dialog-link span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cxh-dialog-link:hover { color: var(--vp-c-text-1); }
+.cxh-dialog-link:hover span { text-decoration: underline; text-underline-offset: 3px; }
 .cxh-dialog-link .cxh-icon { width: 14px; height: 14px; }
-.cxh-dialog-confirm { display: block; height: 40px; margin: 22px 0 0 auto; padding: 0 22px; border-radius: 20px; background: var(--vp-c-text-1); font-size: 14px; font-weight: 600; color: var(--vp-c-bg); transition: background-color .16s; }
+.cxh-dialog-confirm { flex: none; height: 36px; padding: 0 20px; border-radius: 18px; background: var(--vp-c-text-1); font-size: 14px; font-weight: 600; color: var(--vp-c-bg); transition: background-color .16s; }
 .cxh-dialog-confirm:hover { background: color-mix(in srgb, var(--vp-c-text-1) 86%, transparent); }
-.cxh-dialog-count { position: absolute; top: 16px; right: 16px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font: 600 12px/1 var(--vp-font-family-mono); color: var(--vp-c-text-2); }
+.cxh-dialog-confirm:focus { outline: none; }
+.cxh-dialog-confirm:focus-visible, .cxh-dialog-count:focus-visible, .cxh-dialog-link:focus-visible { outline: 2px solid color-mix(in srgb, var(--vp-c-text-1) 28%, transparent); outline-offset: 2px; }
+.cxh-dialog-count { position: absolute; top: 24px; right: 24px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font: 600 12px/1 var(--vp-font-family-mono); color: var(--vp-c-text-2); }
 .cxh-dialog-count:hover { color: var(--vp-c-text-1); }
 .cxh-dialog-count svg, .cxh-dialog-count span { grid-area: 1 / 1; }
 .cxh-dialog-count svg { width: 28px; height: 28px; transform: rotate(-90deg); fill: none; stroke: var(--vp-c-divider); stroke-width: 1.5; }

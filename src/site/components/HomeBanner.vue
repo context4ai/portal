@@ -115,8 +115,10 @@ onBeforeUnmount(() => { observer?.disconnect(); closePrompt(); clearTimeout(soon
             </button>
             <p id="cxh-dialog-title" class="cxh-dialog-title">{{ dialog.copied ? text(dialog.tag).hero.copied : text(dialog.tag).hero.copyFailed }}</p>
             <pre class="cxh-dialog-code"><code>{{ text(dialog.tag).hero.prompt }}</code></pre>
-            <a class="cxh-dialog-link" :href="text(dialog.tag).hero.llms" target="_blank" rel="noopener"><Icon type="link" />{{ text(dialog.tag).hero.llms }}</a>
-            <button ref="confirmButton" type="button" class="cxh-dialog-confirm" @click="closePrompt">{{ text(dialog.tag).hero.confirm }}</button>
+            <div class="cxh-dialog-foot">
+              <a class="cxh-dialog-link" :href="text(dialog.tag).hero.llms" target="_blank" rel="noopener"><Icon type="link" /><span>{{ text(dialog.tag).hero.llms }}</span></a>
+              <button ref="confirmButton" type="button" class="cxh-dialog-confirm" @click="closePrompt">{{ text(dialog.tag).hero.confirm }}</button>
+            </div>
           </div>
         </div>
       </Transition>
