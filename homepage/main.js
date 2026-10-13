@@ -239,6 +239,7 @@ function retrievalField(canvas) {
     ctx.lineWidth = 1; ctx.strokeStyle = `rgba(${C.live},${.55 * a})`; ctx.stroke();
     drawMark(x, y, a, C);
   }
+  const hitAt = (x, y, pad = 0) => hits.find(h => x >= h.x0 - pad && x <= h.x1 + pad && y >= h.y0 - pad && y <= h.y1 + pad) || null;
   const runNear = r => [{ x: r.ox, y: r.oy }, r.k, ...r.ev.map(e => e.u)].some(p => Math.hypot(p.x - mouse.px, p.y - mouse.py) < NEAR);
 
   function frame() {
@@ -249,7 +250,7 @@ function retrievalField(canvas) {
     const mspeed = Math.hypot(mouse.vx, mouse.vy), mq = 1 - quiet.at(mouse.x, mouse.y);
 
     if (mouse.px > -999 && (mouse.px !== mouse.x || mouse.py !== mouse.y) && performance.now() - lastMove >= 50) sample(mouse.px, mouse.py, performance.now());
-    hover = hits.find(h => mouse.px >= h.x0 && mouse.px <= h.x1 && mouse.py >= h.y0 && mouse.py <= h.y1) || null;
+    hover = hitAt(mouse.px, mouse.py);
     canvas.style.cursor = hover ? "pointer" : "";
     hits = [];
 
@@ -412,13 +413,22 @@ function retrievalField(canvas) {
     if (now - lastMove >= 50) sample(e.clientX, e.clientY, now);
   });
   document.addEventListener("pointerleave", () => { mouse.x = mouse.y = mouse.px = mouse.py = -999; });
+  // A tap brings no pointermove first, so a press tests its own position; fingers get a wider target.
+  // The link opens on the following click, which mobile browsers accept as a gesture for a new tab.
+  let pressed = null;
   addEventListener("pointerdown", e => {
+    pressed = null;
     if (e.target.closest("a,button,.brand,.top-tools")) return;
-    if (hover) { window.open(hover.href, "_blank", "noopener"); return; }
+    pressed = hitAt(e.clientX, e.clientY, e.pointerType === "mouse" ? 0 : 12);
+    if (pressed) return;
     if (quiet.at(e.clientX, e.clientY, 90) > 0) return;
     lastGesture = sec(); mouse.fired = true;
     waves.push({ x: e.clientX, y: e.clientY, r: 0, a: 1 });
     if (calm(e.clientX, e.clientY) < .5) startRun(e.clientX + PROBE_OFFSET, e.clientY + PROBE_OFFSET, true);
+  });
+  canvas.addEventListener("click", () => {
+    if (pressed) window.open(pressed.href, "_blank", "noopener");
+    pressed = null;
   });
 
   const descs = [...document.querySelectorAll("[data-desc]")];

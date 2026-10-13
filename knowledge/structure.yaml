@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:3a49d6bb5d106c6204b374fdfdac9b47b6e1f8da0ac9fbd5b46d4c79977b4faa
+input_hash: sha256:b043a6431300e58bc1f5780afb01ed8494edb0c4a538780621408e06fdad7052
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -1354,6 +1354,20 @@ articles:
               start_line: 11
               end_line: 27
             content_digest: sha256:40c3d0a15b649e0507f92363b3fa616c6746db43543509052c49616ab5333c51
+      - id: built-in-install
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/README.md
+              start_line: 13
+              end_line: 22
+            content_digest: sha256:2ce6c75a83550d989e21c284098fa7e67289fa3007d8b64e9908d77415c63b68
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-sessions-indexer/SKILL.md
+              start_line: 24
+              end_line: 27
+            content_digest: sha256:434bc6ae3ebcea26c2c5ee466240da38f89eae46c66c0b35faa1f9a9e2cf2791
       - id: usage
         references:
           - source_ref: repo:20261012/context

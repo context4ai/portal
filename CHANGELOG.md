@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.9.1 — 2026-10-13
+
+### Clickable Indexer names and source paths
+
+- The Indexer System drops its separate Source column: each built-in Indexer name now links to its Skill directory at the cited revision.
+- Community Indexers drops the Source directory column; Skill names in the overview and the source path at the end of each section link to the cited revision instead of hand-written GitHub links.
+- Both pages are updated in Simplified Chinese.
+- Upgrades Context to 0.7.65, which links cited repository paths and Skill names in article text.
+
+Trigger: repair: User-requested revision so repository names and paths are clickable instead of listed in separate columns.; translation: Simplified Chinese translations of both revised pages.; other: Context 0.7.65 release.
+User: qiansc (git)
+
 ## 0.9.0 — 2026-10-13
 
 ### Source Graph deployment recommendations

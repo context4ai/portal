@@ -4,8 +4,8 @@ description: Context 社区版自带的四个 Indexer Skill 和 Indexer 创建�
 translation:
   locale: zh-CN
   artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
-  source_digest: 4b2d0941c528911edc4a678da3a19ec440a666d9a8f31deedbb534e1c9d04427
-  translated_at: 2026-10-12T16:45:10.508Z
+  source_digest: d58534ef21804cc429118738a060f0f99bb8b885052011494bacbed52e992b7a
+  translated_at: 2026-10-13T05:40:25.579Z
 ---
 
 # 社区 Indexer 一览
@@ -33,13 +33,13 @@ flowchart LR
 <!-- context:section id="at-a-glance" -->
 ## 概览
 
-| 类别 | Skill | 源码目录 |
-| --- | --- | --- |
-| 代码 | `context-code-indexer` | [plugins/context/skills/context-code-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-code-indexer) |
-| 文档 | `context-markdown-indexer` | [plugins/context/skills/context-markdown-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-markdown-indexer) |
-| 笔记 | `context-note-indexer` | [plugins/context/skills/context-note-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-note-indexer) |
-| 会话摘要 | `context-sessions-indexer` | [plugins/context/skills/context-sessions-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-sessions-indexer) |
-| 创建器 | `context-indexer-create` | [plugins/context/skills/context-indexer-create](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-indexer-create) |
+| 类别 | Skill |
+| --- | --- |
+| 代码 | `context-code-indexer` |
+| 文档 | `context-markdown-indexer` |
+| 笔记 | `context-note-indexer` |
+| 会话摘要 | `context-sessions-indexer` |
+| 创建器 | `context-indexer-create` |
 
 前四个是 Indexer Provider 技能，Context 工作流在规划和撰写时使用它们。创建器是一个编写助手：当你提出要求时，它会为代码、文档、笔记或会话摘要编写新的 Indexer Skill。
 <!-- /context:section -->
@@ -53,7 +53,7 @@ flowchart LR
 - **附带资源：**包含调研与撰写指引的 `references/indexer.md`、每种模块画像对应的文章目录、图表与源码可视化指引，以及每种画像的模板。这些画像涵盖 16 种模块，从 monorepo 容器、Web 应用、组件与 SDK 库、CLI 工具，到 API 服务、事件消费者、存储仓库、适配器、契约来源和生成的源码。
 - **测试：**`tests/fixtures/` 下的匿名化测试夹具集。
 
-源码：[GitHub 上的 context-code-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-code-indexer)。
+源码：`plugins/context/skills/context-code-indexer/`。
 <!-- /context:section -->
 
 <!-- context:section id="documents" -->
@@ -65,7 +65,7 @@ flowchart LR
 - **附带资源：**规划指引（`references/semantic-planning.md`）、撰写指引（`references/indexer.md`）、读者结果（`references/classification.md`）和文章边界（`references/structure-and-artifacts.md`），以及默认不读取的文章目录和模板。它的 13 种文档画像覆盖领域参考、产品需求、技术指南，直到运维手册、FAQ、决策记录、事故复盘、测试验证、发布与迁移指南以及文档站点。
 - **测试：**`tests/fixtures/` 下的匿名化测试夹具集，例如文档路由用例。
 
-源码：[GitHub 上的 context-markdown-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-markdown-indexer)。
+源码：`plugins/context/skills/context-markdown-indexer/`。
 <!-- /context:section -->
 
 <!-- context:section id="notes" -->
@@ -78,7 +78,7 @@ flowchart LR
 - **边界：**它不会扫描宿主历史、抓取未经批准的 URL、为迎合论断篡改证据，也不会写入正式知识。
 - **测试：**`tests/fixtures/` 下的匿名化画像测试夹具。
 
-源码：[GitHub 上的 context-note-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-note-indexer)。
+源码：`plugins/context/skills/context-note-indexer/`。
 <!-- /context:section -->
 
 <!-- context:section id="sessions" -->
@@ -89,7 +89,7 @@ flowchart LR
 - **撰写时提取：**问题、实际达成的决定、理解这些决定所需的理由、遗留问题和适用范围——并区分“提议”“已同意”“已实现”和“已验证”。可选的 `changes` 关联（完整的 `commit` SHA 或 `mr` URL）记录讨论涉及的内容；它并不能证明某个变更已合并、已部署或已通过测试。
 - **附带资源：**与笔记 Indexer 同类的参考、模板和文章目录，只在需要时加载。
 
-源码：[GitHub 上的 context-sessions-indexer](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-sessions-indexer)。
+源码：`plugins/context/skills/context-sessions-indexer/`。
 <!-- /context:section -->
 
 <!-- context:section id="creator" -->
@@ -101,7 +101,7 @@ flowchart LR
 
 完整步骤参见[创建 Indexer](creating-an-indexer.md)。
 
-源码：[GitHub 上的 context-indexer-create](https://github.com/context4ai/context/tree/main/plugins/context/skills/context-indexer-create)。
+源码：`plugins/context/skills/context-indexer-create/`。
 <!-- /context:section -->
 
 <!-- context:section id="installation" -->
