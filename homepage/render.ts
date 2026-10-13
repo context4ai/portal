@@ -30,7 +30,7 @@ function header(en: HomeContent, zh: HomeContent) {
   <nav class="top-tools" aria-label="Site">
     <a class="tool" href="/context/llms.txt">${esc(en.header.llms)}</a>
     <button class="tool tool-icon" type="button" data-theme-toggle data-label-en="${esc(en.header.theme)}" data-label-zh="${esc(zh.header.theme)}"><span class="i-sun">${icon.sun}</span><span class="i-moon">${icon.moon}</span></button>
-    <a class="tool tool-icon" href="https://github.com/context4ai" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">${icon.github}</a>
+    <a class="tool tool-icon" href="https://github.com/context4ai/context" target="_blank" rel="noopener" aria-label="Context on GitHub" title="GitHub">${icon.github}</a>
     <button class="tool" type="button" data-locale-toggle data-label-en="${esc(en.header.switchTitle)}" data-label-zh="${esc(zh.header.switchTitle)}">${both(en.header.switchLabel, zh.header.switchLabel)}</button>
   </nav>
 </header>`;

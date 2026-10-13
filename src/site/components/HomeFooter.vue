@@ -11,7 +11,7 @@ const links = [
   { text: ['Source Graph', 'Source Graph'], href: '/sourcegraph/', self: true },
   { text: ['LLM Docs', 'LLM Docs'], href: withBase('/llms/index.html') },
   { text: ['更新日志', 'Changelog'], href: withBase('/changelog.html') },
-  { text: ['GitHub', 'GitHub'], href: 'https://github.com/context4ai' },
+  { text: ['GitHub', 'GitHub'], href: 'https://github.com/context4ai/context' },
 ]
 </script>
 
