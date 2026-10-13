@@ -4,7 +4,7 @@ description: The four Indexer Skills and the Indexer creator that ship with the
   community edition of Context, what each one reads and produces, how they are
   installed and selected, and where to find their source.
 type: Guide
-timestamp: 2026-10-13T05:39:56.428Z
+timestamp: 2026-10-13T16:59:52.768Z
 ---
 # Community Indexers
 
@@ -127,6 +127,7 @@ Skill names are guidance, not version pins or evidence of completed reading. See
 <!-- /context:section -->
 
 <!-- context:section id="combining" -->
+
 ## Several Indexers on one module
 
 Several Skills may examine different aspects of the same module. The Agent combines their findings without making any one of them the permanent owner. Code establishes implemented behavior, while authorized notes or documents can explain business intent and rationale. Contributions from several selected Skills go into the same article rather than producing copies.
@@ -135,7 +136,8 @@ A note that only supports an existing page is written into that page, using its 
 
 Next:
 
-- [The Indexer System](../../architecture/knowledge/indexer-system.md) explains how Indexers fit into the production lifecycle.
-- [Creating an Indexer](creating-an-indexer.md), [Code Indexers](code-indexers.md) and [Document Indexers](document-indexers.md) cover writing your own.
 - [Providers and Customization](providers-and-customization.md) covers combining, replacing and disabling Indexers.
+- [Creating an Indexer](creating-an-indexer.md), [Code Indexers](code-indexers.md) and [Document Indexers](document-indexers.md) cover writing your own.
+- [The Indexer System](../../architecture/knowledge/indexer-system.md) explains how Indexers fit into the production lifecycle.
+
 <!-- /context:section -->
