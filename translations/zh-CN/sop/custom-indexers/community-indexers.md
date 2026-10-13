@@ -4,8 +4,8 @@ description: Context 社区版自带的四个 Indexer Skill 和 Indexer 创建�
 translation:
   locale: zh-CN
   artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
-  source_digest: d58534ef21804cc429118738a060f0f99bb8b885052011494bacbed52e992b7a
-  translated_at: 2026-10-13T05:40:25.579Z
+  source_digest: 3a24f62668b3cf91fc8a5638cff25344aa032403eadfa9a740a9502ac2865e5c
+  translated_at: 2026-10-13T17:05:10.990Z
 ---
 
 # 社区 Indexer 一览
@@ -137,7 +137,7 @@ Skill 名称只是指引，既不是版本锁定，也不能证明已完成阅�
 
 接下来：
 
-- [Indexer 体系](../../architecture/knowledge/indexer-system.md)说明 Indexer 如何融入生产生命周期。
-- [创建 Indexer](creating-an-indexer.md)、[代码类 Indexer](code-indexers.md) 和[文档类 Indexer](document-indexers.md) 介绍如何编写你自己的 Indexer。
 - [Provider 与定制](providers-and-customization.md)介绍如何组合、替换和禁用 Indexer。
+- [创建 Indexer](creating-an-indexer.md)、[代码类 Indexer](code-indexers.md) 和[文档类 Indexer](document-indexers.md) 介绍如何编写你自己的 Indexer。
+- [Indexer 体系](../../architecture/knowledge/indexer-system.md)说明 Indexer 如何融入生产生命周期。
 <!-- /context:section -->

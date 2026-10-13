@@ -65,7 +65,7 @@ entries:
   - key: guides-agentgraph
     parent: guides
     title: Agent Graph
-    order: 10
+    order: 11
   - key: guides-agentgraph/authoring-graphs
     parent: guides-agentgraph
     title: Authoring Graphs
@@ -109,11 +109,11 @@ entries:
   - key: guides-indexers
     parent: guides
     title: Custom Indexers
-    order: 7
+    order: 9
   - key: guides-indexers/code-indexers
     parent: guides-indexers
     title: Code Indexers
-    order: 3
+    order: 4
     target:
       artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
   - key: guides-indexers/community-indexers
@@ -125,25 +125,25 @@ entries:
   - key: guides-indexers/creating-an-indexer
     parent: guides-indexers
     title: Creating an Indexer
-    order: 2
+    order: 3
     target:
       artifact_ref: 85a7b33c-5b89-45f1-a88b-bd64aaa70ecb
   - key: guides-indexers/document-indexers
     parent: guides-indexers
     title: Document Indexers
-    order: 4
+    order: 5
     target:
       artifact_ref: a3f38c25-85de-4b6f-9a99-dc86485cf82c
   - key: guides-indexers/providers-and-customization
     parent: guides-indexers
     title: Providers and Customization
-    order: 5
+    order: 2
     target:
       artifact_ref: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
   - key: guides-maintenance
     parent: guides
     title: Workspace Maintenance
-    order: 11
+    order: 7
   - key: guides-maintenance/committing
     parent: guides-maintenance
     title: Committing
@@ -165,7 +165,7 @@ entries:
   - key: guides-outputs
     parent: guides
     title: Outputs and Sites
-    order: 6
+    order: 4
   - key: guides-outputs/custom-output-templates
     parent: guides-outputs
     title: Custom Output Templates
@@ -327,7 +327,7 @@ entries:
   - key: guides-sourcegraph
     parent: guides
     title: Source Graph
-    order: 9
+    order: 10
   - key: guides-sourcegraph/authentication-and-access-control
     parent: guides-sourcegraph
     title: Authentication and Access Control
@@ -419,7 +419,7 @@ entries:
   - key: guides-updates
     parent: guides
     title: Updates and Versions
-    order: 4
+    order: 6
   - key: guides-updates/capturing-from-conversations
     parent: guides-updates
     title: Capturing from Conversations
@@ -684,4 +684,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:4ee76a7115b9c8bf3e897b01e025469733fabcd87176943f3c0b3371668c91b5
+revision: sha256:6649a48e83309804715772c4033af6a71d00b8b84358048d8e64bc9be5abfd62

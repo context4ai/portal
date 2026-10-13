@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.1 — 2026-10-13
+
+### Guide order
+
+- Guides reorder their groups to follow how readers meet them: registering sources, planning and production, review, outputs and sites, querying, updates and versions, and workspace maintenance, then the knowledge service Agent, custom Indexers, Source Graph, Agent Graph, practices and evaluation
+- Custom Indexers lists the community Indexers first, then combining, replacing and disabling them, then creating and writing your own; the Community Indexers page's next steps follow the same order
+
+Trigger: navigation: Guide groups and Indexer guides reordered; translation: zh-CN translation of the revised Community Indexers page
+User: qiansc (git)
+
 ## 0.10.0 — 2026-10-13
 
 ### Evaluation guides
