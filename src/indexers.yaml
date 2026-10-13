@@ -17,6 +17,7 @@ requirements:
       - How does Context keep knowledge current when sources change?
       - How do I build a knowledge service Agent or team Bot on Context?
       - How much faster and cheaper is answering with Context knowledge?
+      - How do I design, grade and time an evaluation of my own knowledge base, and which industry methods does it build on?
     coverage_domains:
       getting-started: required
       guides: required
@@ -31,6 +32,7 @@ requirements:
         - source_ref: note:20261012/benchmark-summary.md
         - source_ref: note:20261012/knowledge-service-agent.md
         - source_ref: note:20261012/faq.md
+        - source_ref: note:20261013/evaluation-method.md
     exclusions:
       - scope:
           targets:

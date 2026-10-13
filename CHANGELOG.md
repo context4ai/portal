@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.0 — 2026-10-13
+
+### Evaluation guides
+
+- New Guides › Evaluation group: Evaluating Your Knowledge Base, Scoring and Timing Standard, and Knowledge Retrieval Benchmark; Benchmark Results is no longer under How It Works
+- Evaluating Your Knowledge Base now covers the full design: scope, questions and per-question guides, frozen conditions, evidence, blind grading, attribution, deliverables and a copyable Agent prompt
+- New Scoring and Timing Standard: metrics, material errors, four grades, fairness, calibration, denominators, timing and tool calls, with the industry methods it draws on
+- Knowledge Retrieval Benchmark adds a three-model comparison, error and overhead causes, a startup estimate and next improvements
+- Homepage evidence links follow the default branch, and the Source Graph card on the docs home opens the service directly
+
+Trigger: note: New evaluation method note; navigation: Evaluation group replaces Benchmark Results; repair: Homepage links returned 404; translation: zh-CN translations
+User: qiansc (git)
+
 ## 0.9.1 — 2026-10-13
 
 ### Clickable Indexer names and source paths

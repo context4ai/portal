@@ -10,9 +10,10 @@ const agentGraph = source("20261012", "agent-graph");
 const notes = ["usage-practices", "compression", "benchmark-summary", "knowledge-service-agent", "faq", "portal-production"]
   .map((name) => source(`20261012/${name}.md`, { type: "note" }));
 const demoDeployment = source("20261013/demo-deployment.md", { type: "note" });
+const evaluationMethod = source("20261013/evaluation-method.md", { type: "note" });
 
 export default defineProject({
-  sources: [context, sourcegraph, agentGraph, ...notes, demoDeployment],
+  sources: [context, sourcegraph, agentGraph, ...notes, demoDeployment, evaluationMethod],
   phases: [],
   packages: [
     kbPackage({
