@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:b043a6431300e58bc1f5780afb01ed8494edb0c4a538780621408e06fdad7052
+input_hash: sha256:0d5c8b9ca83571d6ebf2ab10054593bbcfafc45011c6bcd7cc22822d8c42ba05
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -687,6 +687,14 @@ articles:
               start_line: 59
               end_line: 67
             content_digest: sha256:ccaf124db344d5aa99ae7e41780c8b88380ab6b900baa73f484f462a9fffad89
+      - id: models
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 147
+              end_line: 162
+            content_digest: sha256:78e7588aeb7cb61c244ed9f04610a3bafd48af656bab4ad147531f86df1adcbb
       - id: observations
         references:
           - source_ref: note:20261012/benchmark-summary.md
@@ -695,6 +703,36 @@ articles:
               start_line: 69
               end_line: 74
             content_digest: sha256:f8ddbc9ba219b69f7ce4466d5be0856f3174452f4bc404b4bf01bd586f339299
+      - id: attribution
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 164
+              end_line: 170
+            content_digest: sha256:160d718629c61905548c4c272414eeb9089a1188f31c707b9dca5478cd6c4817
+      - id: startup-estimate
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 170
+              end_line: 170
+            content_digest: sha256:7c3e3b8d33d918045b17ab606ec1f038e22d80597d9531e28fb023f21f8f3c62
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 125
+              end_line: 125
+            content_digest: sha256:f160f231925ccf6e0d8dec1fd0bc2f7d335dd3d9c6916af136cb0b5d95af0250
+      - id: priorities
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 172
+              end_line: 172
+            content_digest: sha256:64f902e34761da20df02e6c1f6865e08c5a373562f61e3924458e537343e7137
       - id: cost
         references:
           - source_ref: note:20261012/benchmark-summary.md
@@ -717,6 +755,12 @@ articles:
               start_line: 21
               end_line: 27
             content_digest: sha256:92dc2443abd1412da35b72703e1c5f65529393b2ad1a037399cdd4ee929bf2ef
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 171
+              end_line: 171
+            content_digest: sha256:f94ba1ab3bcb8bb01da47b82e6a16e364c3ef8430e32dd4af23e4831f98fc296
   - article_id: 82e8f37d-332c-47d5-bcd5-ab52653b9cd6
     path: architecture/context/knowledge-lifecycle.md
     collection: architecture
@@ -6627,70 +6671,233 @@ articles:
     sections:
       - id: goal
         references:
-          - source_ref: note:20261012/usage-practices.md
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: usage-practices.md
-              start_line: 73
-              end_line: 75
-            content_digest: sha256:3b7ff2bda69b7b81ffd37be1f7a3a97a09e00098352bd5fc70f2689230abe34e
+              path: evaluation-method.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:7c6aa1830c8836b1f1b8b96ed6fe32acc2119f58d9cb47b53c658f9321480b9b
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 25
+              end_line: 32
+            content_digest: sha256:07814b3b7f001ea257b25bbc361a0650eb1baa89780d06ae0a54f0eeccc12535
+      - id: scope
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 7
+              end_line: 10
+            content_digest: sha256:4b83f43a10152975b0682e385d17ed7f7dc2c8002efbf9bf14a72002ba8eda89
       - id: questions
         references:
-          - source_ref: note:20261012/benchmark-summary.md
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: benchmark-summary.md
-              start_line: 19
-              end_line: 30
-            content_digest: sha256:50af967c09474d29677b86a7158c857201b2a9222d5fbbc293b2c057f1013345
-      - id: measure
+              path: evaluation-method.md
+              start_line: 36
+              end_line: 43
+            content_digest: sha256:bf77ee66c0db1bfb748e118e66ab8f31c0db47077d965cc67a37047bc8e04001
+      - id: guides
         references:
-          - source_ref: note:20261012/benchmark-summary.md
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: benchmark-summary.md
-              start_line: 32
-              end_line: 37
-            content_digest: sha256:3127e164d4dde61939bc82ce52cf2b784e54803f7f4f632733508e0bfd61a6de
-      - id: compare
+              path: evaluation-method.md
+              start_line: 45
+              end_line: 57
+            content_digest: sha256:70a94ed3b398f19fea47225195509d53617aa70dded3781f7888ae384350f1bd
+      - id: freeze
         references:
-          - source_ref: note:20261012/benchmark-summary.md
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: benchmark-summary.md
-              start_line: 38
-              end_line: 38
-            content_digest: sha256:346433a15255f7b3e491e84540d7bfa0a213cda06ea19a7d76beb013dc6c1d4f
-          - source_ref: note:20261012/benchmark-summary.md
+              path: evaluation-method.md
+              start_line: 28
+              end_line: 29
+            content_digest: sha256:50445f758d990f086328e7f70d0724c99282eebe9629e26fd93cd488de3da995
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: benchmark-summary.md
-              start_line: 59
-              end_line: 61
-            content_digest: sha256:bf1baf01a7bec6d291e08f5992700889427766f033e42f0800923288247f8e04
-          - source_ref: note:20261012/benchmark-summary.md
+              path: evaluation-method.md
+              start_line: 34
+              end_line: 34
+            content_digest: sha256:f2444e2573e59bd2edfa146d0b7102f60485d91c2fed2d896b339d09027c51f1
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: benchmark-summary.md
-              start_line: 15
-              end_line: 17
-            content_digest: sha256:3a7871e3f656d5d7a47bb6f76eabd8ee19cb710b277a0d1fe126a379e10c3d59
+              path: evaluation-method.md
+              start_line: 123
+              end_line: 123
+            content_digest: sha256:b53d037c32a5e583d0db4c26396662094754c3fcdf660999382fbffbd0bdf3a9
+      - id: run
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 29
+              end_line: 29
+            content_digest: sha256:f3fd888930fa4128efc002e3f7a2aa1be2a9a7da803a1c9fe202e995d33ffa5f
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 129
+              end_line: 137
+            content_digest: sha256:af1860104a665b9df41d83e684af22e85ec15741d20fceaa83d3b0b58d94827e
+      - id: grade
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 30
+              end_line: 31
+            content_digest: sha256:d232d220e72ebc895d20c297d5327c52d2c2137925a4f138aa07a3e75298caf3
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 87
+              end_line: 89
+            content_digest: sha256:ca8c63e3fb55343d176ac62604c719713c5fe78e8e0e41de4a81d017f1104f49
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 111
+              end_line: 116
+            content_digest: sha256:c0e0753fa690639f9890d6f99aa49ec2d62dba2ca1824122e357e7d74bb5865b
       - id: causes
         references:
-          - source_ref: note:20261012/usage-practices.md
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: usage-practices.md
-              start_line: 75
-              end_line: 75
-            content_digest: sha256:7bd65bd1d733f3a1850ffb10f2b2fab0805e38a525c209be87a8cf0c9e438779
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 69
-              end_line: 74
-            content_digest: sha256:f8ddbc9ba219b69f7ce4466d5be0856f3174452f4bc404b4bf01bd586f339299
+              path: evaluation-method.md
+              start_line: 139
+              end_line: 141
+            content_digest: sha256:49b485eb3bca8d1a6fdf515c9cc91d58fe1d938db6c524a8629e17a264cb1f47
       - id: disclose
         references:
-          - source_ref: note:20261012/benchmark-summary.md
+          - source_ref: note:20261013/evaluation-method.md
             locator:
-              path: benchmark-summary.md
-              start_line: 76
-              end_line: 81
-            content_digest: sha256:67cdb793d4feb1521d351a54c4df8b79e0d708df2b75cadb6f0c99ce8f80c5d6
+              path: evaluation-method.md
+              start_line: 32
+              end_line: 32
+            content_digest: sha256:f1ca4fb70b1f25ca006b3534f6c6cc3a48bda0a638de0d4cb0e26b36c9b13787
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 124
+              end_line: 125
+            content_digest: sha256:030d814f4707293dabbf2751dd7bf3e9378a7ff3ab9a7168d3fe695db6aaa61d
+      - id: deliverables
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 143
+              end_line: 145
+            content_digest: sha256:4f70760e26b7f242124d0b33f52cd9b138b30fae7b6d15548e002434f04f19ca
+      - id: agent-prompt
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 143
+              end_line: 145
+            content_digest: sha256:4f70760e26b7f242124d0b33f52cd9b138b30fae7b6d15548e002434f04f19ca
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 27
+              end_line: 32
+            content_digest: sha256:11d5c88f7b53afc9f889c79b8ba6ff9e22eaa2b7889687419e1e119c1b3ed6fd
+  - article_id: 4cefdc74-779a-435a-8d47-0a9794f8144c
+    path: sop/practices/evaluation-standard.md
+    collection: sop
+    visibility: public
+    sections:
+      - id: overview
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 1
+              end_line: 3
+            content_digest: sha256:79b5c5827a4e28821ac1bf67327c898201fe04a072f54ebdb948f28dbe648916
+      - id: industry
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 12
+              end_line: 23
+            content_digest: sha256:e1611ece46d1cd8734a599c72f9be93ea40d875a2aea4d0ad2f43f9cd8b0703f
+      - id: metrics
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 61
+              end_line: 76
+            content_digest: sha256:f847c9fa5703f6587ee83ef56a426a5978c8bc47835f911b42ba787dfb185d78
+      - id: grades
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 78
+              end_line: 89
+            content_digest: sha256:b1e51d70b39c6a05e3f2ee0a0737a310df66613ce1c4b5f06bf16232037ac93b
+      - id: fairness
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 91
+              end_line: 99
+            content_digest: sha256:63889eabe94aaab2f992c487b57a7087c43dc815158f0eb6a05e8e4bbf5a9854
+      - id: counterexamples
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 101
+              end_line: 103
+            content_digest: sha256:7511fcb8f9ff2b790cb585e12943180f7776fc096bcba12cfd6c082dbfd677ed
+      - id: calibration-examples
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 105
+              end_line: 109
+            content_digest: sha256:2640d9ac07b39b2cacd7eabf20f925182f492343b4b27c37099ce704224e32d7
+      - id: reviewers
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 111
+              end_line: 116
+            content_digest: sha256:c0e0753fa690639f9890d6f99aa49ec2d62dba2ca1824122e357e7d74bb5865b
+      - id: statistics
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 118
+              end_line: 125
+            content_digest: sha256:a51d1396ff73436fd5eea21263cc5d130ca7e2033f4018f524962d41e0fdec79
+      - id: timing
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 127
+              end_line: 134
+            content_digest: sha256:8032252e46d9c8778275639ac87019143e962ad1fa3ecb7735bbe5fb433322f3
+      - id: tools
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 135
+              end_line: 137
+            content_digest: sha256:a691a7486f103d515d19a8b00926aa28e49c7132606f2f4d590c1ec8159adaa2
   - article_id: f38982c1-617a-487a-b0bd-13a6a28d01cd
     path: sop/practices/migrating-a-knowledge-base.md
     collection: sop

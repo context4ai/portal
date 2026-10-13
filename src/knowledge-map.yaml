@@ -84,6 +84,28 @@ entries:
     order: 3
     target:
       artifact_ref: cde7ef93-fa8b-4b5d-95e8-40164f98bb61
+  - key: guides-evaluation
+    parent: guides
+    title: Evaluation
+    order: 13
+  - key: guides-evaluation/evaluating-your-knowledge-base
+    parent: guides-evaluation
+    title: Evaluating Your Knowledge Base
+    order: 1
+    target:
+      artifact_ref: 14905f09-233b-41a2-b725-c1c1137d8ebb
+  - key: guides-evaluation/evaluation-standard
+    parent: guides-evaluation
+    title: Scoring and Timing Standard
+    order: 2
+    target:
+      artifact_ref: 4cefdc74-779a-435a-8d47-0a9794f8144c
+  - key: guides-evaluation/knowledge-retrieval
+    parent: guides-evaluation
+    title: Knowledge Retrieval Benchmark
+    order: 3
+    target:
+      artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
   - key: guides-indexers
     parent: guides
     title: Custom Indexers
@@ -196,12 +218,6 @@ entries:
     order: 2
     target:
       artifact_ref: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
-  - key: guides-practices/evaluating-your-knowledge-base
-    parent: guides-practices
-    title: Evaluating Your Knowledge Base
-    order: 5
-    target:
-      artifact_ref: 14905f09-233b-41a2-b725-c1c1137d8ebb
   - key: guides-practices/migrating-a-knowledge-base
     parent: guides-practices
     title: Migrating an Existing Knowledge Base
@@ -468,16 +484,6 @@ entries:
     order: 1
     target:
       artifact_ref: 5cdd4f61-6dd2-434e-a112-cc6352704faf
-  - key: hiw-benchmark
-    parent: how-it-works
-    title: Benchmark Results
-    order: 5
-  - key: hiw-benchmark/knowledge-retrieval
-    parent: hiw-benchmark
-    title: Knowledge Retrieval
-    order: 1
-    target:
-      artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
   - key: hiw-context
     parent: how-it-works
     title: Context Architecture
@@ -678,4 +684,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:9d51e8fa9d01b7bacfb08f53faf81809362ef0f145603d2224938499ff558ad4
+revision: sha256:4ee76a7115b9c8bf3e897b01e025469733fabcd87176943f3c0b3371668c91b5

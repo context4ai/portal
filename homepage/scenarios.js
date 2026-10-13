@@ -1,9 +1,11 @@
 // Retrieval scenes for the homepage field: a question, the knowledge page that answers it, and the evidence behind it.
-// Evidence links open Source Graph's reader pinned to an indexed commit: /sourcegraph/code?repo=&path=&commit=#L<n>.
+// Evidence links open Source Graph's reader on the default branch: /sourcegraph/code?repo=&path=&commit=main#L<n>.
+// The public instance retains only the latest commit, so a pinned SHA stops resolving after the next push;
+// line numbers follow main and must be rechecked when the cited files change.
 // Knowledge tags open the article that answers the question; site paths derive from the article identity and stay stable.
 const REPOS = {
-  context: { repo: "context4ai/context", commit: "512593e18f1dabb1ccc5d341b74850d2f0ba10e4" },
-  sourcegraph: { repo: "context4ai/sourcegraph", commit: "2093bf9b618a37c7869f56175bf9c8d5cecc8dbe" },
+  context: { repo: "context4ai/context", commit: "main" },
+  sourcegraph: { repo: "context4ai/sourcegraph", commit: "main" },
 };
 const PAGES = {
   "architecture/agent-graph/core-model": "pages/ad65c836debb540be355e741aabf3dcf.html",
@@ -68,7 +70,7 @@ export const SCENARIOS = [
   scene("context", "飞书画板也能变成知识吗？", "Can a Lark whiteboard become knowledge?", "飞书资源", "Lark resources", "sop/registering-sources/lark-documents",
     [code("src/lib/larkWhiteboardExport.ts", 36), doc("manuals/guides/lark-resources.md")]),
   scene("context", "文档站的导航和样式怎么定制？", "How do I customise the docs site?", "站点定制", "Site customisation", "sop/outputs-and-sites/page-and-theme-customization",
-    [code("src/project/packageSite.ts", 45), code("src/project/packageSiteTheme.ts", 504), doc("manuals/guides/page-customization.md")]),
+    [code("src/project/packageSite.ts", 47), code("src/project/packageSiteTheme.ts", 743), doc("manuals/guides/page-customization.md")]),
   scene("context", "一个知识包里到底装了什么？", "What is inside a knowledge package?", "知识包结构", "Package structure", "sop/outputs-and-sites/knowledge-packages",
     [code("src/project/packageKnowledgeProjection.ts", 56), doc("manuals/reference/package-templates.md")]),
   scene("context", "知识包怎么直接给大模型读？", "How does a model read a package directly?", "llms.txt 与知识地图", "llms.txt and the knowledge map", "sop/outputs-and-sites/llm-docs",
@@ -99,9 +101,9 @@ export const SCENARIOS = [
   scene("source", "Agent 怎么读到固定版本的代码？", "How does an agent read a pinned commit?", "Source Graph · 固定版本读取", "Source Graph · pinned reads", "architecture/source-graph/pinned-search-and-reads",
     [code("src/project/evidencePlugin.ts", 54), sg("internal/service/scoped_search.go", 122)]),
   scene("source", "Source Graph 能接 MCP 吗？", "Does Source Graph speak MCP?", "Source Graph · MCP", "Source Graph · MCP", "sop/source-graph/connecting",
-    [sg("docs/interfaces.md", 5), sg("README.md", 49)]),
+    [sg("docs/interfaces.md", 8), sg("README.md", 49)]),
   scene("source", "它提供哪些接口？", "Which interfaces does it offer?", "Source Graph · 接口", "Source Graph · interfaces", "product/reference/source-graph/http-and-mcp",
-    [sg("docs/interfaces.md", 5), sg("docs/interfaces.md", 16)]),
+    [sg("docs/interfaces.md", 8), sg("docs/interfaces.md", 10)]),
   scene("source", "证据行号会随提交漂移吗？", "Do evidence line numbers drift between commits?", "版本锁定的证据", "Pinned evidence", "architecture/source-graph/evidence-for-context",
     [code("src/evidence/blockIdentity.ts", 15), code("src/project/documentEvidenceIndex.ts", 586)]),
   scene("source", "可以自己部署一套吗？", "Can I deploy my own?", "Source Graph · 部署", "Source Graph · deployment", "sop/source-graph/self-hosting",

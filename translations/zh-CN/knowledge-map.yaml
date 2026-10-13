@@ -45,6 +45,18 @@ entries:
   guides-agentgraph/testing-and-publishing:
     title: 测试与发布
     source_digest: 64408adaef84d79e2b1f8f8012c7a8e347e6fd6eeca4360f20221b32a29e6c24
+  guides-evaluation:
+    title: 测评
+    source_digest: b2b147b9f1dc3767c28c25a5693f768bb39b41bfad3bed7aefe26721ffc46fa9
+  guides-evaluation/evaluating-your-knowledge-base:
+    title: 评测知识库效果
+    source_digest: 527eb4e55d0b5f99a5c317535708226cca59315ed883cf72464271ccf8e7e03e
+  guides-evaluation/evaluation-standard:
+    title: 评分与计时标准
+    source_digest: 9b89b6b7af639eedb398e126cf86a8b51b5f8fa51f8f7cb53b654b056516706a
+  guides-evaluation/knowledge-retrieval:
+    title: 知识检索测评
+    source_digest: db14efeb4167f6ea87dac983493b7a7a64c80983e10df8f66a54044c4cd6457f
   guides-indexers:
     title: 定制 Indexer
     source_digest: 8a53e6f517b67ee38d018e07edcb72fb981e39628681a906ab6856e8ed2aa911
@@ -105,9 +117,6 @@ entries:
   guides-practices/choosing-models:
     title: 模型选择
     source_digest: 54ee3e2013052e3f06ef44b059276985d8e9e98476c039231e1db176067be51c
-  guides-practices/evaluating-your-knowledge-base:
-    title: 评测知识库效果
-    source_digest: 527eb4e55d0b5f99a5c317535708226cca59315ed883cf72464271ccf8e7e03e
   guides-practices/migrating-a-knowledge-base:
     title: 迁移已有知识库
     source_digest: c99c2a098892957c1d0964f516027ff7e3fd3bb0f874d8fda0dac34e00ddb65f
@@ -249,12 +258,6 @@ entries:
   hiw-agentgraph/why-graph-engineering:
     title: 为什么是 Graph Engineering
     source_digest: 05968533d3c9419eb3292f2f6de3d2d45450d0983f913762077192370ca42f97
-  hiw-benchmark:
-    title: 测评结果
-    source_digest: 44a934665b4734ac27e06ee70f197dcd34b9084e520b82b701dd6eda8544a526
-  hiw-benchmark/knowledge-retrieval:
-    title: 知识检索
-    source_digest: 1baa43a589c5e7775606319e928ecf232c84cdf55dd1a733c61fe6b3e7e931b3
   hiw-context:
     title: Context 架构
     source_digest: a35230c247600d4eac46f65570713e2098cdd1f1455e7f13145456135bd71a85
