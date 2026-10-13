@@ -1,6 +1,6 @@
 entries:
   - version: 0.9.1
-    date: 2026-10-13T05:40:47.214Z
+    date: 2026-10-13T06:16:57.453Z
     title: Clickable Indexer names and source paths
     changes:
       - "The Indexer System drops its separate Source column: each built-in
@@ -9,12 +9,16 @@ entries:
         overview and the source path at the end of each section link to the
         cited revision instead of hand-written GitHub links.
       - Both pages are updated in Simplified Chinese.
+      - Upgrades Context to 0.7.65, which links cited repository paths and Skill
+        names in article text.
     triggers:
       - kind: repair
         description: User-requested revision so repository names and paths are clickable
           instead of listed in separate columns.
       - kind: translation
         description: Simplified Chinese translations of both revised pages.
+      - kind: other
+        description: Context 0.7.65 release.
     actor:
       name: qiansc
       kind: git
