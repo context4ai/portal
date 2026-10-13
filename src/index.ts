@@ -42,9 +42,9 @@ export default defineProject({
           { text: "Release Notes", target: { artifact_ref: "sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8" }, locales: { "zh-CN": "发布说明" } },
           { text: "Contributing", target: { artifact_ref: "sha256:72f512c94144d0b098315550139d8a361e49260daa79bac892cf4c7c0a4561a5" }, locales: { "zh-CN": "参与贡献" } },
           { text: "Support", target: { artifact_ref: "sha256:9d796e7c1ddbca5eadc0e9604bf8890eff78a8b2eb69cd4d3fa0883cabf07155" }, locales: { "zh-CN": "支持" } },
-          { text: "GitHub", link: "https://github.com/context4ai" },
+          { text: "GitHub", link: "https://github.com/context4ai/context" },
         ],
-        socialLinks: [{ icon: "github", link: "https://github.com/context4ai", ariaLabel: "context4ai on GitHub" }],
+        socialLinks: [{ icon: "github", link: "https://github.com/context4ai/context", ariaLabel: "Context on GitHub" }],
         extensions: {
           slots: { brand: "components/BrandMark.vue", banner: "components/HomeBanner.vue", footer: "components/HomeFooter.vue" },
         },

@@ -331,7 +331,31 @@
   .cxh-h2 { font-size: 24px; }
   .cxh-cards { grid-template-columns: 1fr; }
 }
+/* Prompt dialog: rendered under <body>, so it uses the site variables rather than the .cxh ones. Backdrop matches the search dialog. */
+.cxh-dialog { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px 16px; background: rgba(15, 17, 21, .18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.cxh-dialog-card { position: relative; width: min(520px, 100%); padding: 28px 28px 24px; border: 1px solid var(--vp-c-divider); border-radius: 14px; background: var(--vp-c-bg); box-shadow: var(--vp-shadow-4); }
+.cxh-dialog-title { margin: 0 44px 14px 0; font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--vp-c-text-1); }
+.cxh-dialog-code { margin: 0; padding: 14px 16px; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); white-space: pre-wrap; overflow-wrap: anywhere; font: 13.5px/1.7 var(--vp-font-family-mono); color: var(--vp-c-text-1); }
+.cxh-dialog-code code { font: inherit; color: inherit; background: none; padding: 0; }
+.cxh-dialog-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; color: var(--vp-c-brand-1); overflow-wrap: anywhere; text-decoration: none; }
+.cxh-dialog-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cxh-dialog-link .cxh-icon { width: 14px; height: 14px; }
+.cxh-dialog-confirm { display: block; height: 40px; margin: 22px 0 0 auto; padding: 0 22px; border-radius: 20px; background: var(--vp-c-text-1); font-size: 14px; font-weight: 600; color: var(--vp-c-bg); transition: background-color .16s; }
+.cxh-dialog-confirm:hover { background: color-mix(in srgb, var(--vp-c-text-1) 86%, transparent); }
+.cxh-dialog-count { position: absolute; top: 16px; right: 16px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font: 600 12px/1 var(--vp-font-family-mono); color: var(--vp-c-text-2); }
+.cxh-dialog-count:hover { color: var(--vp-c-text-1); }
+.cxh-dialog-count svg, .cxh-dialog-count span { grid-area: 1 / 1; }
+.cxh-dialog-count svg { width: 28px; height: 28px; transform: rotate(-90deg); fill: none; stroke: var(--vp-c-divider); stroke-width: 1.5; }
+.cxh-dialog-ring { stroke: var(--vp-c-text-2); stroke-dasharray: 75.4; animation: cxh-dialog-ring linear forwards; }
+@keyframes cxh-dialog-ring { to { stroke-dashoffset: 75.4; } }
+.cxh-dialog-enter-active, .cxh-dialog-leave-active { transition: opacity .2s; }
+.cxh-dialog-enter-active .cxh-dialog-card, .cxh-dialog-leave-active .cxh-dialog-card { transition: transform .2s var(--ease, ease); }
+.cxh-dialog-enter-from, .cxh-dialog-leave-to { opacity: 0; }
+.cxh-dialog-enter-from .cxh-dialog-card, .cxh-dialog-leave-to .cxh-dialog-card { transform: translateY(8px) scale(.98); }
+
 @media (prefers-reduced-motion: reduce) {
   .cxh *, .cxh *::before, .cxh *::after { animation: none !important; transition: none !important; }
   .cxh-js .cxh-reveal { opacity: 1 !important; transform: none; }
+  .cxh-dialog, .cxh-dialog * { transition: none !important; }
+  .cxh-dialog-ring { animation: none; }
 }
