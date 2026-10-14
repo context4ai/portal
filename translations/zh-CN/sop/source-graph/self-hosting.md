@@ -4,8 +4,8 @@ description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，
 translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
-  source_digest: a7a924ec3779be0c4fa8d05000c4c7a8031bb5903e5f395b55fe136802aaa5a7
-  translated_at: 2026-10-13T01:46:59.041Z
+  source_digest: cb056f106f47b5dce16a329e3b8f4b1a2706e048967c99439fbbd77ff22413c8
+  translated_at: 2026-10-14T02:39:20.360Z
 ---
 
 # 自部署与数据库选择
@@ -22,7 +22,7 @@ docker run --rm -p 8080:8080 -v sourcegraph-data:/data \
   context-sourcegraph
 ```
 
-打开 `http://localhost:8080/sourcegraph/`。设置 `SOURCEGRAPH_SEED_DEMO=true` 后，实例会登记两个公开示例仓库；公开的 GitHub 仓库无需令牌。未配置登录提供方时，站点是匿名且只读的；要管理站点，请添加 Google 或 GitHub 登录，详见[登录与准入](authentication-and-access-control.md)。
+打开 `http://localhost:8080/sourcegraph/`。设置 `SOURCEGRAPH_SEED_DEMO=true` 后，实例会登记两个公开示例仓库；公开的 GitHub 仓库无需令牌，自定义 Git 托管地址可以在设置中或启动文件里添加，详见[登记仓库](registering-repositories.md#code-sources)。未配置登录提供方时，站点是匿名且只读的；要管理站点，请添加 Google 或 GitHub 登录，详见[登录与准入](authentication-and-access-control.md)。
 
 镜像包含四个二进制文件：服务 `repo-service`、命令行客户端 `sourcegraph-cli`、Git 凭据助手和 Zoekt 搜索服务器。它以非特权用户运行，数据根目录为 `/data`，暴露 8080 端口。
 <!-- /context:section -->
@@ -39,7 +39,7 @@ bun run build
 SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 output/bin/repo-service
 ```
 
-构建完成后，`output/bin` 中包含同样的四个二进制文件。服务会自行启动搜索服务器并管理后台建索引，无需运行其他组件。所有设置都是环境变量，列在[配置](../../product/reference/source-graph/configuration.md)中。凭据只能放在环境变量或平台的密钥存储中，绝不要写进部署 JSON、源代码或镜像。
+构建完成后，`output/bin` 中包含同样的四个二进制文件。服务会自行启动搜索服务器并管理后台建索引，无需运行其他组件。所有设置都是环境变量，代码源还可以由 `SOURCEGRAPH_CONFIG_FILE` 指定的启动文件覆盖；全部设置列在[配置](../../product/reference/source-graph/configuration.md)中。凭据只能放在环境变量或平台的密钥存储中，绝不要写进部署 JSON、源代码或镜像。
 <!-- /context:section -->
 
 <!-- context:section id="topology" -->

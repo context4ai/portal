@@ -65,29 +65,35 @@ entries:
   - key: guides-agentgraph
     parent: guides
     title: Agent Graph
-    order: 11
+    order: 12
   - key: guides-agentgraph/authoring-graphs
     parent: guides-agentgraph
     title: Authoring Graphs
-    order: 2
+    order: 3
     target:
       artifact_ref: 80852a65-4353-42fc-b0e9-f935d3b0c3ee
   - key: guides-agentgraph/getting-started
     parent: guides-agentgraph
-    title: Getting Started
-    order: 1
+    title: Quick Start
+    order: 2
     target:
       artifact_ref: 3eab390f-44a1-49e0-a4d5-317b4705b6b9
+  - key: guides-agentgraph/introduction
+    parent: guides-agentgraph
+    title: What Is Agent Graph
+    order: 1
+    target:
+      artifact_ref: 3a6ac1dd-079a-47fc-b57b-e69032d0f793
   - key: guides-agentgraph/testing-and-publishing
     parent: guides-agentgraph
     title: Testing and Publishing
-    order: 3
+    order: 4
     target:
       artifact_ref: cde7ef93-fa8b-4b5d-95e8-40164f98bb61
   - key: guides-evaluation
     parent: guides
     title: Evaluation
-    order: 13
+    order: 14
   - key: guides-evaluation/evaluating-your-knowledge-base
     parent: guides-evaluation
     title: Evaluating Your Knowledge Base
@@ -205,7 +211,7 @@ entries:
   - key: guides-practices
     parent: guides
     title: Practices
-    order: 12
+    order: 13
   - key: guides-practices/best-practices
     parent: guides-practices
     title: Best Practices
@@ -328,42 +334,52 @@ entries:
     parent: guides
     title: Source Graph
     order: 10
-  - key: guides-sourcegraph/authentication-and-access-control
-    parent: guides-sourcegraph
+  - key: guides-sourcegraph-ops
+    parent: guides
+    title: Operating Source Graph
+    order: 11
+  - key: guides-sourcegraph-ops/authentication-and-access-control
+    parent: guides-sourcegraph-ops
     title: Authentication and Access Control
-    order: 5
+    order: 3
     target:
       artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
+  - key: guides-sourcegraph-ops/deployment-recommendations
+    parent: guides-sourcegraph-ops
+    title: Deployment Recommendations
+    order: 2
+    target:
+      artifact_ref: 4c404898-5e2f-47f4-9740-e5719162af5c
+  - key: guides-sourcegraph-ops/operations
+    parent: guides-sourcegraph-ops
+    title: Operations
+    order: 4
+    target:
+      artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
+  - key: guides-sourcegraph-ops/self-hosting
+    parent: guides-sourcegraph-ops
+    title: Self-Hosting
+    order: 1
+    target:
+      artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
   - key: guides-sourcegraph/connecting
     parent: guides-sourcegraph
     title: Connecting
-    order: 1
+    order: 2
     target:
       artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  - key: guides-sourcegraph/deployment-recommendations
+  - key: guides-sourcegraph/introduction
     parent: guides-sourcegraph
-    title: Deployment Recommendations
-    order: 4
+    title: What Is Source Graph
+    order: 1
     target:
-      artifact_ref: 4c404898-5e2f-47f4-9740-e5719162af5c
-  - key: guides-sourcegraph/operations
-    parent: guides-sourcegraph
-    title: Operations
-    order: 6
-    target:
-      artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
+      artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
   - key: guides-sourcegraph/registering-repositories
     parent: guides-sourcegraph
     title: Registering Repositories
-    order: 2
-    target:
-      artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
-  - key: guides-sourcegraph/self-hosting
-    parent: guides-sourcegraph
-    title: Self-Hosting
     order: 3
     target:
-      artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
+      artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
   - key: guides-sources
     parent: guides
     title: Registering Sources
@@ -480,7 +496,7 @@ entries:
       artifact_ref: ca9de2fb-56b2-49a2-b8a2-2aa04da3aa1e
   - key: hiw-agentgraph/why-graph-engineering
     parent: hiw-agentgraph
-    title: Why Graph Engineering
+    title: Graph Engineering Principles
     order: 1
     target:
       artifact_ref: 5cdd4f61-6dd2-434e-a112-cc6352704faf
@@ -576,7 +592,7 @@ entries:
       artifact_ref: 92010645-02ae-41e0-93f2-09c204c9f2fb
   - key: hiw-sourcegraph/overview
     parent: hiw-sourcegraph
-    title: Overview
+    title: Architecture Overview
     order: 1
     target:
       artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
@@ -684,4 +700,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:6649a48e83309804715772c4033af6a71d00b8b84358048d8e64bc9be5abfd62
+revision: sha256:1f17c87822f4924b7aa899ab1510c48b01df4d890c67287a8bdd218e5cf613f4

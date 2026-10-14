@@ -32,7 +32,7 @@ export default defineProject({
           },
         },
         // Shared with the homepage so the reader's language follows them across `/` and `/context/`.
-        localePreferenceKey: "context4ai-locale",
+        localePreferenceKey: "context-locale",
         // The brand returns to the homepage; Home opens this documentation site's home.
         titleLink: "/",
         nav: [

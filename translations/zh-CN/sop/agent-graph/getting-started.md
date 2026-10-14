@@ -1,25 +1,21 @@
 ---
 title: 快速上手
-description: 选择一条采用路径，然后用固定版本的 CLI，在大约十分钟内创建、校验、测试、评估、路由、运行并构建一个入门 Agent Graph Provider。
+description: 用固定版本的 CLI，在大约十分钟内创建、校验、测试、评估、路由、运行并构建一个入门 Agent Graph Provider。
 translation:
   locale: zh-CN
   artifact_ref: 3eab390f-44a1-49e0-a4d5-317b4705b6b9
-  source_digest: 326c1fa1b1da25c2830cb990590818958ed125a57ea4bca14026f4f1bb365c71
-  translated_at: 2026-10-12T18:13:07.981Z
+  source_digest: 558d5356ec20919ab30c6abd0534482e1c2cbd8b805707c33e9df65e9f8617aa
+  translated_at: 2026-10-14T00:36:55.065Z
 ---
 
 # 快速上手
 
 <!-- context:section id="choose" -->
-Agent Graph 只有作为 Skill 或 Agent 宿主的一部分时才有用；仅安装 CLI 并不会改变任何 Agent 的工作方式。先确定你要改变的是哪一层边界：
+大约十分钟后，你会得到一个可运行的入门 Provider：它能通过校验和 Graph 测试，能为 Agent 的下一步返回 Route，会记录一次 Run，并能构建成可随你自己的包一起发布的可迁移 bundle。
 
-| 你的情况 | 路径 | 从这里开始 |
-| --- | --- | --- |
-| Skill 能用，但已经变得很长、每轮重复上下文、跨会话会丢失进度，或者用文字描述 Gate 和恢复 | 改进现有 Skill | [版本迁移](../../product/reference/agent-graph/migration.md) |
-| 能力尚不存在，其运行契约可以与 Skill 一起设计 | 新建 Skill 或工作流 | 本教程，然后是 [编写 Graph](authoring-graphs.md) |
-| 某个产品已经负责 Agent 发现、命令执行、UI 或工作区状态 | 在宿主中嵌入 Agent Graph | [技能与 Provider](../../architecture/agent-graph/skills-and-providers.md) 和 [CLI 与 SDK](../../product/reference/agent-graph/cli-and-sdk.md) |
+本教程适合新建 Skill 或工作流。执行这些命令只会创建一个 Provider 开发项目，本身不会接入任何 Skill，也不会改变 Agent 的工作方式。如果你要改进现有 Skill，或在产品中嵌入 Agent Graph，请先在 [Agent Graph 是什么](introduction.md) 中选择对应路径。
 
-下面的教程需要 Node.js 20 或更高版本。每条命令都用 `npx @c4a/agent-graph@0.3.0` 固定 CLI 版本，以保证结果可复现。
+你需要 Node.js 20 或更高版本。每条命令都用 `npx @c4a/agent-graph@0.3.0` 固定 CLI 版本，以保证结果可复现。
 <!-- /context:section -->
 
 <!-- context:section id="init" -->

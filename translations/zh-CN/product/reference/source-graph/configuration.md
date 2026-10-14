@@ -1,11 +1,11 @@
 ---
 title: 配置
-description: 一处汇总 Source Graph 的全部设置：环境变量、构建时的部署设置、运行时的站点设置、仓库策略、插件限制和数据目录布局。
+description: 一处汇总 Source Graph 的全部设置：环境变量、构建时的部署设置、代码源、运行时的站点设置、仓库策略、插件限制和数据目录布局。
 translation:
   locale: zh-CN
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
-  source_digest: 72e7be85e0c09f4630fd95ccdb5036df775fca1ecc04a115069b5f318fea8269
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: 963ea3f09d4d05c15d21547c4528b3bb50e3250cf1638f3ae8458e0451867c87
+  translated_at: 2026-10-14T02:20:57.619Z
 ---
 
 # 配置
@@ -20,7 +20,9 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | 站点设置 | 数据库，在 **Settings**（设置）页面编辑 | 管理员 | 立即生效，带版本校验 |
 | 仓库策略 | 数据库，按仓库在登记时或之后设置 | 管理员 | 下次同步时 |
 
-机密信息，包括 Git 令牌、OAuth 客户端密钥、服务令牌、凭据加密密钥以及带密码的数据库 URL，只能放在环境变量或数据库中，绝不能放进部署文件或镜像。部署步骤见[自部署与数据库选择](../../../sop/source-graph/self-hosting.md)。
+代码源由部署默认值、网站上的自定义 Git 设置和可选的启动文件合并而成，见[代码源](#code-sources)。
+
+机密信息，包括 GitHub 和自定义 Git 令牌、OAuth 客户端密钥、服务令牌、凭据加密密钥以及带密码的数据库 URL，只能放在环境变量或数据库中，绝不能放进部署文件、启动文件或镜像。部署步骤见[自部署与数据库选择](../../../sop/source-graph/self-hosting.md)。
 <!-- /context:section -->
 
 <!-- context:section id="environment" -->
@@ -35,13 +37,15 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | `DATABASE_URL` | SQLite 为 `<data root>/sourcegraph.db` | 数据库位置或连接字符串 |
 | `SOURCEGRAPH_MIN_FREE_BYTES` | `1073741824`（1 GiB） | 剩余空间下限，低于该值时拉取和建索引会停止，并返回 `INSUFFICIENT_STORAGE` |
 | `SOURCEGRAPH_API_TOKEN` | 未设置 | 可选的服务令牌，至少 32 个字符；匹配的 Bearer 令牌拥有完整的 HTTP API 访问权限，但站点设置除外，站点设置需要浏览器会话。CLI 也读取同一变量 |
-| `SOURCEGRAPH_CREDENTIAL_KEY` | 在数据根目录中生成的 `code-credentials.key` | 32 字节的 Base64；用于加密已存储的代码托管平台凭据 |
-| `SOURCEGRAPH_GIT_TOKEN` | 未设置 | 旧版全局 GitHub 凭据，仅在尚未保存全局 `github` 凭据时使用 |
+| `SOURCEGRAPH_CREDENTIAL_KEY` | 在数据根目录中生成的 `code-credentials.key` | 32 字节的 Base64；用于加密已存储的代码令牌 |
+| `SOURCEGRAPH_GIT_TOKEN` | 未设置 | GitHub 令牌，仅在尚未保存全局 GitHub 令牌时使用 |
+| `SOURCEGRAPH_CUSTOM_GIT_TOKEN` | 未设置 | 自定义 Git 令牌，仅在尚未保存全局自定义 Git 令牌时使用 |
+| `SOURCEGRAPH_CONFIG_FILE` | 未设置 | 覆盖代码源的 JSON 启动文件路径，见[代码源](#code-sources) |
 | `GOOGLE_CLIENT_ID`、`GOOGLE_CLIENT_SECRET` | 未设置 | Google 登录 |
 | `GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` | 未设置 | GitHub 登录 |
 | `SOURCEGRAPH_SEED_DEMO` | 未设置 | 设为 `true` 时，若 `context4ai/context` 和 `context4ai/sourcegraph` 尚未登记，会在启动时登记它们 |
 
-在已存储凭据后修改 `SOURCEGRAPH_CREDENTIAL_KEY` 会导致这些凭据无法读取；请将该密钥与数据库备份一同保管。使用 PostgreSQL 或 MongoDB 时，多个实例可以共享同一个数据库，同时各自保留自己的数据目录。
+在已存储令牌后修改 `SOURCEGRAPH_CREDENTIAL_KEY` 会导致这些令牌无法读取；请将该密钥与数据库备份一同保管。使用 PostgreSQL 或 MongoDB 时，多个实例可以共享同一个数据库，同时各自保留自己的数据目录。
 <!-- /context:section -->
 
 <!-- context:section id="deployment" -->
@@ -51,7 +55,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 
 | 字段 | 社区版默认值 | 含义 |
 | --- | --- | --- |
-| `code_host` | `https://github.com` | 登记和凭据所针对的代码托管平台 |
+| `code_sources` | GitHub，然后是一个没有托管地址的自定义 Git 代码源 | 本构建提供的代码源，按显示顺序排列，每项包含 `id`、`name`、`host`、`username`、`token_env`、`anonymous` 和 `editable` |
 | `example_repo` | `context4ai/context` | 界面示例中使用的仓库 |
 | `public_url` | `https://context4ai.org/sourcegraph` | 在链接和连接代码片段中显示的公开地址 |
 | `source_repository` | `https://github.com/context4ai/sourcegraph` | 界面中显示的源码链接 |
@@ -60,10 +64,37 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 以自己的名称或地址部署的 fork 需要修改此文件并重新构建；登录所用的客户端 ID 和密钥仍来自环境变量。
 <!-- /context:section -->
 
+<!-- context:section id="code-sources" -->
+## 代码源
+
+每个实例恰好提供两个代码源：先是 GitHub，然后是一个自定义 Git 托管地址，例如自建的 Gitea 或 GitLab。它们的字段由三层合并而成，后面的非空值优先：
+
+1. **部署默认值**：`config/deployment.json` 中的 `code_sources` 决定有哪些代码源及其顺序。自定义代码源默认没有托管地址。
+2. **网站**：管理员在 **Settings › Access settings**（设置 › 访问设置）中编辑自定义代码源的名称、托管地址和 Git 用户名，修改立即生效。
+3. **启动文件**：服务启动时，`SOURCEGRAPH_CONFIG_FILE` 指定的 JSON 文件按代码源 id 覆盖字段。
+
+```json
+{"code_sources": {"git": {"name": "Gitea", "host": "https://git.example.com", "username": "oauth2", "token_env": "SOURCEGRAPH_CUSTOM_GIT_TOKEN"}}}
+```
+
+| 字段 | 规则 |
+| --- | --- |
+| `name` | 显示名称 |
+| `host` | HTTPS 源地址，不含路径、用户、查询参数或片段；以小写存储 |
+| `username` | 随令牌发送的 Git 用户名，1–64 个字母、数字、`.`、`_`、`@` 和 `-`；默认 `oauth2` |
+| `token_env` | 存放默认令牌的环境变量名，只能是大写字母、数字和 `_`；网站上不能设置 |
+
+- 启动文件只能覆盖已有的 id；未知 id 或无效值会导致启动失败。令牌绝不能写进该文件。
+- 启动文件设置的字段在网站上只读；在网站上修改会返回 `409 CODE_SOURCE_LOCKED`。
+- 仓库保留登记时记录的托管地址（`code_host`）。启动时，没有该字段的记录会补上当前托管地址；已记录的地址从不改写，与当前配置不一致时只记日志。
+- 只要有任何仓库记录（包括已删除的）使用自定义代码源，修改其托管地址就会返回 `409 CODE_SOURCE_IN_USE`；名称和用户名仍可修改。
+- `GET /sourcegraph/v1/code-sources` 按顺序返回生效的代码源，`locked` 列出由启动文件设置的字段；它从不返回令牌或变量名。
+<!-- /context:section -->
+
 <!-- context:section id="site" -->
 ## 站点设置
 
-管理员可以在 **Settings** 页面或通过 `/api/admin/settings` 编辑两个分区。每次保存都会携带该分区的当前版本；过期的版本会被拒绝，避免两位管理员在不知情的情况下互相覆盖。
+管理员可以在 **Settings** 页面或通过 `/api/admin/settings` 编辑三个分区。每次保存都会携带该分区的当前版本；过期的版本会被拒绝，避免两位管理员在不知情的情况下互相覆盖。
 
 | 分区 | 字段 | 默认值 | 含义 |
 | --- | --- | --- | --- |
@@ -73,8 +104,9 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | `access` | `public_read` | `true` | 匿名访客能否搜索和阅读公开仓库 |
 | | `allow_registration` | `false` | 首次登录时是否创建账号 |
 | | `registration_notice_zh`、`registration_notice_en` | 内置提示 | 向无法注册的人显示的文本 |
+| `code_source` | `name`、`host`、`username` | 空，即沿用部署中的值 | 自定义 Git 代码源，见[代码源](#code-sources) |
 
-对 `/api/admin/settings` 的请求必须使用浏览器会话；携带 `Authorization` 请求头的请求会被拒绝。**Storage**（存储）页面另外负责迁移 Git 镜像的存放位置；见[运维](../../../sop/source-graph/operations.md)。
+对 `/api/admin/settings` 的请求必须使用浏览器会话；携带 `Authorization` 请求头的请求会被拒绝。全局代码令牌在同一页面单独保存。**Storage**（存储）页面另外负责迁移 Git 镜像的存放位置；见[运维](../../../sop/source-graph/operations.md)。
 <!-- /context:section -->
 
 <!-- context:section id="policy" -->
@@ -89,7 +121,8 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | 同步间隔（分钟） | 1、3、5、10、30、60、180、360、720 或 1440 | 5 |
 | 索引模式 | 整个仓库，或 Monorepo 中已登记的路径组 | 整个仓库 |
 | 公开读取 | 开或关 | 开 |
-| 凭据类型（`code_provider`） | `github` 或 `git`；先尝试登记人自己的该类型凭据，再尝试全局凭据 | `github` |
+| 代码源（`code_provider`） | `github` 或 `git`，登记时确定；先尝试登记人自己为该代码源保存的令牌，再尝试全局令牌 | `github` |
+| 托管地址（`code_host`） | 登记时代码源的托管地址，之后每次拉取都使用它 | — |
 
 关闭公开读取的仓库只对匿名访客隐藏；所有已登录用户仍然可以阅读。分支和保留策略如何决定哪些提交可被搜索，见[登记仓库](../../../sop/source-graph/registering-repositories.md)。
 <!-- /context:section -->

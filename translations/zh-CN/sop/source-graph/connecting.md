@@ -1,17 +1,19 @@
 ---
 title: 接入
-description: 将浏览器、MCP 客户端、脚本或命令行客户端接入 Source Graph，选择合适的凭据，并在同一个提交上遵循“先搜索、再读取”的循环。
+description: 将浏览器、MCP 客户端、脚本或命令行客户端接入 Source
 translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  source_digest: 9a6e17a1d4987b9b792e98b12a22cba38ee4c49cecee86df2e5d8224884c603d
-  translated_at: 2026-10-13T01:11:58.079Z
+  source_digest: 9931ec2825c796e6377e3c6545cb22be62d5857c6a12143c1ffdb492eaf2dc33
+  translated_at: 2026-10-14T02:43:48.316Z
 ---
 
 # 接入
 
 <!-- context:section id="goal" -->
-每个 Source Graph 实例都在其源站的 `/sourcegraph/` 路径下提供四个入口。按调用方选择合适的入口即可；它们执行相同的操作，遵循相同的规则。
+接入后，你的 Agent、脚本或终端无需先克隆仓库，就能在固定提交上搜索和阅读代码。为什么这很重要、什么时候需要它，以及如何试用在线演示，见 [Source Graph 是什么](introduction.md)。
+
+每个 Source Graph 实例都在其源站的 `/sourcegraph/` 路径下提供四个入口。按调用方选择合适的入口即可；它们执行相同的操作，遵循相同的规则，只是一次调用读取多段代码仅 MCP 支持。
 
 | 调用方 | 入口 |
 | --- | --- |
@@ -21,14 +23,6 @@ translation:
 | 终端 | `sourcegraph-cli`，一个调用相同路由的小型 HTTP 客户端 |
 
 网站的 **Connect** 页面始终会展示当前实例可直接复制的配置，包括正确的地址以及是否需要令牌。当它与手写示例不一致时，以该页面为准。
-<!-- /context:section -->
-
-<!-- context:section id="optional" -->
-## Source Graph 是可选的
-
-Context 并不依赖 Source Graph。即使从未安装或配置它，Context 的查询技能也能自行读取代码证据：对记录的提交做浅层、稀疏的部分克隆，再用 grep 或 rg 搜索。默认的 `auto` 模式只在有可用的已授权实例时才优先使用 Source Graph，因此当你希望按固定版本远程读取、又不想在本地检出代码时，再接入它。
-
-想不部署就试用，可以直接使用公开示例 [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/)，其 MCP 端点为 `/sourcegraph/mcp`。
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->

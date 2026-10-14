@@ -1,25 +1,21 @@
 ---
-title: Why Graph Engineering
-description: What Agent Graph is, the problem it solves for long Agent Skills,
-  the Graph Engineering principles behind it, and when a Skill should — or
-  should not — use a Graph.
+title: Graph Engineering Principles
+description: The Graph Engineering principles behind Agent Graph, the problem
+  they address in long Agent Skills, how each principle becomes implementation,
+  and what version 1 deliberately leaves out.
 type: Guide
-timestamp: 2026-10-13T01:42:06.859Z
+timestamp: 2026-10-14T00:33:26.944Z
 ---
-# Why Graph Engineering
+# Graph Engineering Principles
 
 <!-- context:section id="what" -->
-
-Agent Graph is a work-contract layer for Agent Skills. You describe a workflow as a small graph of legal steps; at runtime it reads the current **Facts** and tells an Agent what to do next, which files to read for that step and what proves the step is done. It never calls a model, assigns Agent identities, moves shared state or schedules workers — it coordinates the work, not the Agents. Existing Agents and hosts consume its Routes and keep the execution boundary.
-
-Agent Graph ships as `@c4a/agent-graph`: versioned file specifications with JSON Schemas, a Node.js SDK and an `agent-graph` CLI for authoring, inspecting, testing, building and resuming workflows. Context runs its whole knowledge workflow on it; see [Agent Graph in Context](agent-graph-in-context.md). The source code, issues and discussions live in the GitHub repository [context4ai/agent-graph](https://github.com/context4ai/agent-graph).
+This page explains the design principles behind Agent Graph and how each one becomes part of the implementation. For what Agent Graph is, its purpose, a small worked example and when a Skill should adopt it, start with [What Is Agent Graph](../../sop/agent-graph/introduction.md).
 
 Where to go next:
 
-- **How it works:** [Core Model](core-model.md), [Runs and Recovery](runs-and-recovery.md), [Skills and Providers](skills-and-providers.md).
-- **Guides:** [Getting Started](../../sop/agent-graph/getting-started.md), [Authoring Graphs](../../sop/agent-graph/authoring-graphs.md), [Testing and Publishing](../../sop/agent-graph/testing-and-publishing.md).
+- **How it works:** [Core Model](core-model.md), [Runs and Recovery](runs-and-recovery.md), [Skills and Providers](skills-and-providers.md), [Agent Graph in Context](agent-graph-in-context.md).
+- **Guides:** [Quick Start](../../sop/agent-graph/getting-started.md), [Authoring Graphs](../../sop/agent-graph/authoring-graphs.md), [Testing and Publishing](../../sop/agent-graph/testing-and-publishing.md).
 - **Reference:** [Specification](../../product/reference/agent-graph/specification.md), [CLI and SDK](../../product/reference/agent-graph/cli-and-sdk.md), [Migration](../../product/reference/agent-graph/migration.md).
-
 <!-- /context:section -->
 
 <!-- context:section id="problem" -->
@@ -28,22 +24,6 @@ Where to go next:
 Agents usually know enough. The harder problem in a long task is knowing which part applies **now**, which action is legal next, what proves that action is complete and where to resume after an interruption. Making the prompt longer does not solve this reliably: a complex Skill in one document has a flat topology, every rule sits next to every other and is often loaded together, and the Agent has to infer the current phase from the conversation. Such a workflow is also hard to test without running the whole model behavior.
 
 > Context should be discovered, not accumulated. The plan is explicit; the path is selected from current reality.
-<!-- /context:section -->
-
-<!-- context:section id="example" -->
-## A small example
-
-An Agent has one job: write a draft, check it, finish.
-
-```mermaid
-flowchart LR
-  write["Write draft"] -->|"completed"| check["Check draft"]
-  check -->|"completed"| done(["Done"])
-```
-
-The host can observe two facts: `draft.saved = true` and `review.passed = false`. The draft exists but has not passed the check, so Agent Graph returns **Check draft** as the current Route. Nothing is guessed from the conversation: when `review.passed` becomes `true` the next evaluation reaches **Done**; while it stays `false` the Route stays **Check draft**.
-
-Four ideas carry the example: the **Graph** describes the legal sequence, **Facts** describe what is true now, the **Route** is the next legal step selected from those Facts and the **Action** tells the Agent or host how to perform it. Real workflows add required files, human Gates, explicit Outcomes, choices and recovery paths without changing this loop.
 <!-- /context:section -->
 
 <!-- context:section id="principles" -->
@@ -79,17 +59,4 @@ Four ideas carry the example: the **Graph** describes the legal sequence, **Fact
 | Supply-chain clarity | Action effects, reachable-file bundles, content digests |
 
 Version 1 deliberately does **not** provide arbitrary expressions, self-modifying graphs, cross-Provider calls, model invocation or multi-Agent orchestration, parallel execution, edge-carried artifacts or shared mutable state, schedulers or durable timers, automatic trust in commands or third-party Skills, or semantic proof that an Agent's output is correct. Those limits keep it a standard and toolchain rather than another all-encompassing Agent framework.
-<!-- /context:section -->
-
-<!-- context:section id="when" -->
-## When to use it
-
-Not every Skill needs a Graph. Keep a short, single-session task in `SKILL.md`. Adopt Agent Graph when a host can supply trustworthy external facts and the work truly needs verifiable completion, recovery across sessions, or testable routing and human Gates. It pays off for:
-
-- **large knowledge without a giant prompt** — procedures, schemas and manuals stay files, loaded only when a Route needs them;
-- **long tasks across session boundaries** — Facts and Outcomes reconstruct where the work is; an optional Run adds events and checkpoints;
-- **plans that react without drifting** — the Graph fixes the legal choices and stop conditions, current evidence picks the path;
-- **testing before model behavior** — references, cycles, resource boundaries and expected Routes are checked without a model.
-
-Agent Graph does not rewrite its own plan. Runtime routing follows the evidence; people improve the Graph from events, diagnostics and route tests. Installing the CLI alone does not make an Agent follow a workflow: a Provider defines the contract, a Skill makes it discoverable and a host supplies facts, enforces Gates and records outcomes. Pick your starting point in [Authoring Graphs](../../sop/agent-graph/authoring-graphs.md).
 <!-- /context:section -->

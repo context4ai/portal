@@ -1,11 +1,11 @@
 ---
 title: 登记仓库
-description: 登记仓库并设置分支、保留窗口、可见性和同步间隔，使用凭据接入私有仓库，并将 Monorepo 拆分为路径组。
+description: 登记 GitHub 或自定义 Git 仓库并设置分支、保留窗口、可见性和同步间隔，为私有仓库提供令牌，并将 Monorepo 拆分为路径组。
 translation:
   locale: zh-CN
   artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
-  source_digest: beef77689f8efca0745f44e746b53f5a45993375a56aae579a796d067b343662
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: d444277b3858dda7dbb0478d4b003f7835bd7d9e609cbfd23649805cef66d9c3
+  translated_at: 2026-10-14T02:20:57.619Z
 ---
 
 # 登记仓库
@@ -34,8 +34,8 @@ translation:
 
 | 字段 | 含义 |
 | --- | --- |
-| `name` | 仓库键，格式为 `owner/repository`（允许 `a/b/c` 这样的嵌套路径，最长 512 个字符）。Git 远程地址为 `<code host>/<name>.git` |
-| `code_provider` | `github`（默认）或 `git`；决定使用哪种已存储的凭据 |
+| `name` | 仓库在其代码源上的路径，例如 `owner/repository`（允许 `a/b/c` 这样的嵌套路径，最长 512 个字符）。Git 远程地址为 `<code source host>/<name>.git` |
+| `code_provider` | 代码源：`github`（默认），或表示自定义 Git 托管地址的 `git`。它在登记时确定，同时决定托管地址和要尝试哪些令牌 |
 | `public_read` | 匿名访客能否读取。省略时视为公开 |
 | `index_mode` | `full`（默认）为整个仓库建索引；`monorepo` 只为路径组建索引 |
 | `path_groups` | `monorepo` 模式下必填，见下文 |
@@ -44,18 +44,38 @@ translation:
 | `policy.days` 或 `policy.count` | 保留窗口：天数（1–365）或每个分支的第一父提交数（1–4096），二者只能填一个。两者都省略时使用站点的仓库默认值（初始为 30 天） |
 | `sync_interval_minutes` | 1、3、5、10、30、60、180、360、720 或 1440；默认 5 |
 
-一个策略总共监控一到八个分支，默认分支也计算在内。标签从不拉取，因此无法搜索或读取。代码托管平台属于构建的部署默认值（发布的镜像中为 `https://github.com`），见[配置](../../product/reference/source-graph/configuration.md)。
+一个策略总共监控一到八个分支，默认分支也计算在内。标签从不拉取，因此无法搜索或读取。
+
+## 代码源
+
+每个实例恰好提供两个代码源，始终按以下顺序列出：
+
+| 代码源 | `code_provider` | 托管地址 | 没有令牌时 |
+| --- | --- | --- | --- |
+| GitHub | `github` | `https://github.com` | 公开仓库可以匿名拉取 |
+| 自定义 Git | `git` | 无，需由管理员或启动文件设置 | 必须提供令牌 |
+
+要使用你自己的 Git 服务器，请在 **Settings › Access settings**（设置 › 访问设置）或启动文件中设置自定义代码源的托管地址，见[配置](../../product/reference/source-graph/configuration.md#code-sources)。没有托管地址的代码源不能用于登记（`409 CODE_SOURCE_NOT_CONFIGURED`）。
+
+登记时会把代码源当前的托管地址记录到仓库的 `code_host` 上，之后每次拉取都使用这个地址。因此修改代码源配置永远不会挪动已登记的仓库。
 <!-- /context:section -->
 
 <!-- context:section id="private" -->
-## 私有仓库
+## 私有仓库的令牌
 
-公开的 GitHub 仓库无需凭据。对于私有仓库，将 Git 访问令牌保存在以下两处之一：
+公开的 GitHub 仓库无需令牌。对于私有仓库，请把仓库所属代码源的令牌保存在以下两处之一：
 
-- **你自己的凭据**：已登录用户可以为自己的账号保存令牌，他们登记的仓库会优先使用它。
-- **全局凭据**：管理员可以在设置中保存站点级令牌，作为所有仓库的兜底凭据。
+- **你自己的令牌**：已登录用户可以为自己的账号保存 GitHub 或自定义 Git 令牌，他们登记的仓库会优先使用它。
+- **全局令牌**：管理员在 **Settings › Access settings**（设置 › 访问设置）中为每个代码源保存站点级令牌，每张卡片都会标明它连接的托管地址。它是该代码源所有仓库的兜底令牌。
 
-每种凭据按类型（`github` 或 `git`）分别存储，使用实例的凭据加密密钥加密，状态显示为就绪、即将过期（七天内）、已过期或无效。对于 GitHub，还可以使用 `SOURCEGRAPH_GIT_TOKEN` 环境变量作为旧式全局凭据：内置的 Git 凭据助手只会在访问 `github.com` 的 HTTPS 请求中提供它。
+每次拉取时，服务按仓库的 `code_provider` 依次尝试：
+
+1. 创建者为该代码源保存的令牌；
+2. 该代码源的全局令牌；
+3. 环境令牌——GitHub 用 `SOURCEGRAPH_GIT_TOKEN`，自定义代码源用 `SOURCEGRAPH_CUSTOM_GIT_TOKEN`——仅在该代码源尚未保存全局令牌时使用；
+4. 仅限 GitHub：匿名访问。即使是公开仓库，GitHub 也会拒绝已吊销的令牌，所以匿名访问放在最后尝试，而不是直接跳过。
+
+两个代码源之间从不互用令牌。令牌使用实例的凭据加密密钥加密，状态显示为就绪、即将过期（七天内）、已过期或无效。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 Git 用户名（默认 `oauth2`）。
 
 登记私有仓库并不会对已登录用户隐藏它；`public_read: false` 只会取消匿名访问。要控制谁能成为已登录用户，请使用登录和注册策略，详见[登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->

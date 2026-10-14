@@ -41,7 +41,10 @@ entries:
     source_digest: c6cc5da713acb7e8cc4f8982bcdb6dee974a429d5b66ea370cc02a1db97b1175
   guides-agentgraph/getting-started:
     title: 快速上手
-    source_digest: 4fffc4795ec63b49e927d2023ad08a8084afc2b9c4555b02e874e6979b448350
+    source_digest: a9691e144560208a4c85276afbfc280ee471d5101a3e1957da00fbb0cfd0932e
+  guides-agentgraph/introduction:
+    title: Agent Graph 是什么
+    source_digest: 1684da59d68f12ea408b33abf54f2ae19b346b6de1a4d758068e346148239c60
   guides-agentgraph/testing-and-publishing:
     title: 测试与发布
     source_digest: 64408adaef84d79e2b1f8f8012c7a8e347e6fd6eeca4360f20221b32a29e6c24
@@ -177,24 +180,30 @@ entries:
   guides-sourcegraph:
     title: Source Graph
     source_digest: feeef398bc8e969bbba120bc05eb2a3d7117dc0799bb65000b74b44c2f21ef5e
-  guides-sourcegraph/authentication-and-access-control:
+  guides-sourcegraph-ops:
+    title: 维护 Source Graph 实例
+    source_digest: bf8fa70dbcab4a8caabee3d28479d76ce66aa6b5f5fe957ba925add9a69ddd8d
+  guides-sourcegraph-ops/authentication-and-access-control:
     title: 登录与准入
     source_digest: 296e39a4b1e88aecd0d81a0ea12181dcb0fdb9a8ee927d9ff076fa2ad3b7dfb3
+  guides-sourcegraph-ops/deployment-recommendations:
+    title: 部署建议
+    source_digest: c06893cf04e08d2a81e68da76092dc8473d48010b6020b70f6dd292a7edb6d80
+  guides-sourcegraph-ops/operations:
+    title: 运维
+    source_digest: 56ddadacd19b505f10ee802d4112285bbe52fb5f7f8559f4a9153425c7dbf932
+  guides-sourcegraph-ops/self-hosting:
+    title: 自部署与数据库选择
+    source_digest: 2fbbd45b1721a93e8a92a2490b10dcc51210609e1c9d9dba384efcbbbf10c1c8
   guides-sourcegraph/connecting:
     title: 接入
     source_digest: 7f4759bc08873652183f93c10d6cfc04cb4f6a92ec10204b6649680b3da6c803
-  guides-sourcegraph/deployment-recommendations:
-    title: 部署建议
-    source_digest: c06893cf04e08d2a81e68da76092dc8473d48010b6020b70f6dd292a7edb6d80
-  guides-sourcegraph/operations:
-    title: 运维
-    source_digest: 56ddadacd19b505f10ee802d4112285bbe52fb5f7f8559f4a9153425c7dbf932
+  guides-sourcegraph/introduction:
+    title: Source Graph 是什么
+    source_digest: 7a42fbbe87c1eddf1f1594056150cf506eda55e23a13825cde3eef41fc37bea4
   guides-sourcegraph/registering-repositories:
     title: 登记仓库
     source_digest: 1a6f76c9d1104165a88c8cf8e325f3a67cc8d352fab135755e550650b77eb4ed
-  guides-sourcegraph/self-hosting:
-    title: 自部署与数据库选择
-    source_digest: 2fbbd45b1721a93e8a92a2490b10dcc51210609e1c9d9dba384efcbbbf10c1c8
   guides-sources:
     title: 登记来源
     source_digest: e39f079c6def4369e97362cec8c5b0eafffba58138f58641491cba02904caa4f
@@ -256,8 +265,8 @@ entries:
     title: 技能与 Provider
     source_digest: 0856f91457c377d822c0972ba1f54088a558b9c1c7db7c0da7e569ced72a2317
   hiw-agentgraph/why-graph-engineering:
-    title: 为什么是 Graph Engineering
-    source_digest: 05968533d3c9419eb3292f2f6de3d2d45450d0983f913762077192370ca42f97
+    title: Graph Engineering 设计原则
+    source_digest: 9cced22d04b6085b7e03e7d012d9af06c575b96ecff3104ef208dbabf65c43b7
   hiw-context:
     title: Context 架构
     source_digest: a35230c247600d4eac46f65570713e2098cdd1f1455e7f13145456135bd71a85
@@ -307,8 +316,8 @@ entries:
     title: 与 Context 协同
     source_digest: 7d3db8a80290b38c77e12b29b6d371d27257faa1c64f2edec798c09b8e86f6ea
   hiw-sourcegraph/overview:
-    title: 定位与能力
-    source_digest: 3fc71c61b5cebaf7a077053ec5848cb9c7f0e8ab3237e40f8b5bbd842de8826f
+    title: 架构概览
+    source_digest: 19088bb39058fdde6448c82f3ffc67c82ba6361cbbdc9be2f56827edc2f96638
   hiw-sourcegraph/pinned-search-and-reads:
     title: 固定版本的搜索与阅读
     source_digest: e1ea0a6c85fc53ae1fdcfea6683e4b54c1cf57cce62844fee33ef9e4526f7f0c

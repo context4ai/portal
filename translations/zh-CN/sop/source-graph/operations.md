@@ -4,8 +4,8 @@ description: 日常运行 Source Graph 实例——健康检查、后台任务�
 translation:
   locale: zh-CN
   artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
-  source_digest: 5f195d2836f1cd73343737e5f875a1106374fe4f9a23d4f0f191364c01155ca1
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: c8050f52d9cfda060aabc4e8dd6f8e5c41bda1e18c86997f1cd18e64e166ac14
+  translated_at: 2026-10-14T02:20:57.619Z
 ---
 
 # 运维
@@ -104,7 +104,7 @@ Source Graph 实例基本可以自行运转：后台 worker 会同步仓库、�
 | `SHORT_SHA_UNSUPPORTED`、`INVALID_REVISION` | 400 | 使用了短 SHA、标签、`HEAD` 或其他引用 | 传入完整的 40 位 SHA 或监控分支 |
 | `DEFAULT_BRANCH_NOT_OBSERVED` | 409 | 尚无同步记录到默认分支 | 等待同步或主动请求同步 |
 | `PATH_NOT_REGISTERED` | 400 | 路径不在 Monorepo 的路径组内 | 搜索已登记的路径，或添加路径组 |
-| `GIT_AUTH_FAILED`、`GIT_ACCESS_DENIED` | 401、403 | Git 托管平台拒绝了凭据 | 更新个人或全局 Git 凭据 |
+| `GIT_AUTH_FAILED`、`GIT_ACCESS_DENIED` | 401、403 | Git 托管平台拒绝了令牌 | 更新仓库所属代码源（GitHub 或自定义 Git）的个人或全局令牌 |
 | `PARTIAL_CLONE_UNSUPPORTED` | 422 | Git 服务器无法为 Monorepo 模式过滤 blob | 以全量模式登记，或使用支持部分克隆的服务器 |
 | `HISTORY_SCAN_LIMIT` | 422 | 按天数计算的窗口覆盖的历史过多 | 改用提交数，或缩短窗口 |
 | `INSUFFICIENT_STORAGE` | 503 | 可用磁盘低于配置的下限 | 释放或扩充磁盘，或执行清理 |

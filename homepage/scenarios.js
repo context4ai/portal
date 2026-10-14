@@ -1,11 +1,11 @@
 // Retrieval scenes for the homepage field: a question, the knowledge page that answers it, and the evidence behind it.
-// Evidence links open Source Graph's reader on the default branch: /sourcegraph/code?repo=&path=&commit=main#L<n>.
+// Evidence links open Source Graph's reader on the default branch: /sourcegraph/code?repo=&path=&revision=main#L<n>.
 // The public instance retains only the latest commit, so a pinned SHA stops resolving after the next push;
 // line numbers follow main and must be rechecked when the cited files change.
 // Knowledge tags open the article that answers the question; site paths derive from the article identity and stay stable.
 const REPOS = {
-  context: { repo: "context4ai/context", commit: "main" },
-  sourcegraph: { repo: "context4ai/sourcegraph", commit: "main" },
+  context: { repo: "context4ai/context", revision: "main" },
+  sourcegraph: { repo: "context4ai/sourcegraph", revision: "main" },
 };
 const PAGES = {
   "architecture/agent-graph/core-model": "pages/ad65c836debb540be355e741aabf3dcf.html",
@@ -43,12 +43,12 @@ const RES = `${CLI}/context-workflow/resources`;
 const WF = `${CLI}/context-workflow`;
 const isDoc = path => /\.(md|ya?ml|html)$/.test(path);
 const ref = (key, path, line, type) => {
-  const { repo, commit } = REPOS[key];
+  const { repo, revision } = REPOS[key];
   const name = path.split("/").pop();
   return {
     type: type || (isDoc(path) ? "doc" : "code"),
     label: line ? `${name}:${line}` : name,
-    href: `/sourcegraph/code?${new URLSearchParams({ repo, path, commit })}${line ? `#L${line}` : ""}`,
+    href: `/sourcegraph/code?${new URLSearchParams({ repo, path, revision })}${line ? `#L${line}` : ""}`,
   };
 };
 const code = (file, line) => ref("context", `${CLI}/${file}`, line);

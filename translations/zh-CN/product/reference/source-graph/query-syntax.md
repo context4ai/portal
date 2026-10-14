@@ -4,8 +4,8 @@ description: 如何编写 Source Graph 搜索：rg 风格的模式、字面量�
 translation:
   locale: zh-CN
   artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-  source_digest: 0a73308fea6ba951b1c082ab07dbfac47da44da280824c4c15714bcf71ea0a70
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: 85c2555f582bcb5b40515801721e555422a93ab8ab362ed7c4b3080550212c1b
+  translated_at: 2026-10-14T02:46:29.384Z
 ---
 
 # 搜索语法
@@ -78,7 +78,7 @@ glob 遵循 `rg -g` 和 gitignore 的约定：
 <!-- context:section id="web" -->
 ## 网站搜索链接
 
-网站的搜索页会把同一个请求编码到地址中，使用 API 字段名：`repo`、`pattern`、`fixed_strings=1`、`ignore_case=1`、可重复的 `glob`，以及 `commit`（完整 SHA）或 `revision`（分支）二者之一。代码页接受 `repo`、`path` 以及 `commit` 或 `revision`，行范围写在片段中，例如 `#L20-L40`。因此从网站复制的链接能在同一提交上精确复现当时的搜索或阅读。
+网站的搜索页会把同一个请求编码到地址中，使用 API 字段名：`repo`、`pattern`、`fixed_strings=1`、`ignore_case=1`、可重复的 `glob`，以及 `commit`（完整 SHA；其他取值会按 revision 解析）或 `revision`（分支或标签）二者之一。代码页接受 `repo`、`path` 以及 `commit` 或 `revision`，行范围写在片段中，例如 `#L20-L40`。因此从网站复制的链接能在同一提交上精确复现当时的搜索或阅读。
 <!-- /context:section -->
 
 <!-- context:section id="examples" -->

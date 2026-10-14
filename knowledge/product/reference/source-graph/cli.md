@@ -3,7 +3,7 @@ title: CLI
 description: Commands, flags, environment variables, output and exit codes of
   sourcegraph-cli, and what the Git credential helper does.
 type: Wiki
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-14T02:19:13.383Z
 ---
 # CLI
 
@@ -107,5 +107,13 @@ SOURCEGRAPH_API_TOKEN=... sourcegraph-cli prepare -repo acme/app -revision <full
 <!-- context:section id="helper" -->
 ## Git credential helper
 
-`git-credential-sourcegraph` is used by the service itself, not by people. For every Git fetch, the service selects a credential — the repository creator's stored credential, the global one, or the legacy `SOURCEGRAPH_GIT_TOKEN` value, as described in [Registering Repositories](../../../sop/source-graph/registering-repositories.md) — and passes it to the helper through the `SOURCEGRAPH_GIT_TOKEN` environment variable of that Git process. The helper answers only Git's `get` action and only for HTTPS requests to `github.com`, returning the token as the password; it prints nothing when the token is empty or contains line breaks or NUL characters.
+`git-credential-sourcegraph` is used by the service itself, not by people. For every Git fetch, the service picks a token from the repository's code source — the creator's own token, then the global one, then the source's environment token, and for GitHub finally anonymous access, as described in [Registering Repositories](../../../sop/source-graph/registering-repositories.md#tokens-for-private-repositories). It then runs Git with three environment variables:
+
+| Variable | Value |
+| --- | --- |
+| `SOURCEGRAPH_GIT_TOKEN` | The selected token; empty for an anonymous attempt |
+| `SOURCEGRAPH_GIT_HOST` | The host of the remote being fetched |
+| `SOURCEGRAPH_GIT_USERNAME` | The code source's Git username |
+
+The helper answers only Git's `get` action, and only for HTTPS requests whose host equals `SOURCEGRAPH_GIT_HOST`. It returns the username — `oauth2` when unset — and the token as the password. It prints nothing when the host does not match, the token is empty, or either value contains line breaks or NUL characters, so a token is never offered to another host.
 <!-- /context:section -->

@@ -1,8 +1,8 @@
 import { drawGlyph, GLYPH_HALF, quietZones, scatter } from "./glyphs.js";
 import { SCENARIOS } from "./scenarios.js";
 
-const THEME_KEY = "context-theme:context-kb:/context/";
-const LOCALE_KEY = "context4ai-locale";
+const THEME_KEY = "context-theme";
+const LOCALE_KEY = "context-locale";
 const root = document.documentElement;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const lang = () => root.lang === "zh-CN" ? "zh" : "en";
@@ -25,7 +25,11 @@ document.querySelector("[data-locale-toggle]")?.addEventListener("click", () => 
   applyLocale();
 });
 document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-  const apply = () => store(THEME_KEY, root.classList.toggle("dark") ? "dark" : "light");
+  const apply = () => {
+    const dark = root.classList.toggle("dark");
+    document.querySelector('meta[name="theme-color"]').content = dark ? "#171716" : "#fcfcfb";
+    store(THEME_KEY, dark ? "dark" : "light");
+  };
   if (document.startViewTransition && !reduced) document.startViewTransition(apply);
   else apply();
 });
