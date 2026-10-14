@@ -4,7 +4,7 @@ description: Every Source Graph setting in one place — environment variables,
   build-time deployment settings, code sources, runtime site settings,
   repository policies, plugin limits and the data directory layout.
 type: Wiki
-timestamp: 2026-10-14T02:19:13.383Z
+timestamp: 2026-10-14T08:53:29.911Z
 ---
 # Configuration
 
@@ -36,7 +36,7 @@ Secrets — GitHub and custom Git tokens, OAuth client secrets, the service toke
 | `SOURCEGRAPH_MIN_FREE_BYTES` | `1073741824` (1 GiB) | Free-space floor below which fetching and indexing stop with `INSUFFICIENT_STORAGE` |
 | `SOURCEGRAPH_API_TOKEN` | Unset | Optional service token of at least 32 characters; a matching bearer token gets full HTTP API access, except site settings, which require a browser session. The CLI reads the same variable |
 | `SOURCEGRAPH_CREDENTIAL_KEY` | Generated `code-credentials.key` in the data root | Base64 of 32 bytes; encrypts stored code tokens |
-| `SOURCEGRAPH_GIT_TOKEN` | Unset | GitHub token used only while no global GitHub token has been saved |
+| `SOURCEGRAPH_GITHUB_TOKEN` | Unset | GitHub token used only while no global GitHub token has been saved; the earlier `SOURCEGRAPH_GIT_TOKEN` is still read while this is unset |
 | `SOURCEGRAPH_CUSTOM_GIT_TOKEN` | Unset | Custom Git token used only while no global custom Git token has been saved |
 | `SOURCEGRAPH_CONFIG_FILE` | Unset | Path of a JSON startup file that overrides code sources; see [Code sources](#code-sources) |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Unset | Google sign-in |
@@ -68,7 +68,7 @@ A fork that deploys under its own name or address edits this file and rebuilds; 
 Each instance offers exactly two code sources: GitHub, then a custom Git host such as a self-hosted Gitea or GitLab. Their fields combine three layers, later non-empty values winning:
 
 1. **Deployment defaults** — `code_sources` in `config/deployment.json` decides which sources exist and their order. The custom source has no host by default.
-2. **Website** — administrators edit the custom source's name, host and Git username under **Settings › Access settings**. Changes apply immediately.
+2. **Website** — administrators edit the custom source's name, host and HTTPS username on its card under **System settings › Code sources**, the same card that holds its global token. Changes apply immediately.
 3. **Startup file** — the JSON file named by `SOURCEGRAPH_CONFIG_FILE` overrides fields by source id when the service starts.
 
 ```json
@@ -80,7 +80,7 @@ Each instance offers exactly two code sources: GitHub, then a custom Git host su
 | `name` | Display name |
 | `host` | HTTPS origin without path, user, query or fragment; stored in lowercase |
 | `username` | Git username sent with the token, 1–64 of letters, digits, `.`, `_`, `@` and `-`; default `oauth2` |
-| `token_env` | Name of the environment variable holding the default token, uppercase letters, digits and `_`; the website cannot set it |
+| `token_env` | Name of the environment variable holding the default token, uppercase letters, digits and `_`; the website cannot set it. The GitHub default is `SOURCEGRAPH_GITHUB_TOKEN`, with `legacy_token_env` `SOURCEGRAPH_GIT_TOKEN` read while it is unset; a startup file that sets `token_env` stops reading the earlier name |
 
 - The startup file can only override existing ids; an unknown id or invalid value stops startup. Tokens never go in the file.
 - Fields set in the startup file are read-only on the website; changing them there returns `409 CODE_SOURCE_LOCKED`.

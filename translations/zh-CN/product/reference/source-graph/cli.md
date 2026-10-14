@@ -4,8 +4,8 @@ description: sourcegraph-cli 的命令、参数、环境变量、输出与退出
 translation:
   locale: zh-CN
   artifact_ref: 524c7555-fd52-4e08-82d0-93f68236b71d
-  source_digest: ee496598bd34e3e4bd78de73bf83f826a7022ab500470a6f1828b9a1278556a7
-  translated_at: 2026-10-14T02:20:57.619Z
+  source_digest: 524ee877324cad8efc0d480111adb5ac8188dc122abe4e7960ab8e4361768a2d
+  translated_at: 2026-10-14T08:53:43.639Z
 ---
 
 # CLI
@@ -116,7 +116,7 @@ SOURCEGRAPH_API_TOKEN=... sourcegraph-cli prepare -repo acme/app -revision <full
 | --- | --- |
 | `SOURCEGRAPH_GIT_TOKEN` | 选中的令牌；匿名尝试时为空 |
 | `SOURCEGRAPH_GIT_HOST` | 正在拉取的远程地址的托管地址 |
-| `SOURCEGRAPH_GIT_USERNAME` | 代码源的 Git 用户名 |
+| `SOURCEGRAPH_GIT_USERNAME` | 代码源的 HTTPS 用户名 |
 
 凭据助手只响应 Git 的 `get` 操作，且只处理托管地址等于 `SOURCEGRAPH_GIT_HOST` 的 HTTPS 请求。它返回用户名（未设置时为 `oauth2`），并把令牌作为密码返回。托管地址不匹配、令牌为空，或任一值包含换行符或 NUL 字符时，它不输出任何内容，因此令牌绝不会提供给其他托管地址。
 <!-- /context:section -->
