@@ -6,6 +6,25 @@ translation:
   artifact_ref: 82e8f37d-332c-47d5-bcd5-ab52653b9cd6
   source_digest: 721962afccef6134b152cb3e766c915469a8059b6338f4be6cd587021d6f006c
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: 15bc09ee3f11181b2ad205f1503269e0c703be0e8ebb4d8dabcfba0935783406
+    description: c48f53d913c2c858e7bbed75c09166fc60484ff24bab569e20d4bc427a84d04f
+    order:
+      - stages
+      - indexer
+      - state
+      - after
+    sections:
+      stages: 78088a747091640a9f2dd5128136b989f9460f43a50550f0a4abfe19bf97466c
+      indexer: a437871fb7f5d1e0041809ae42d0156ca0df037301367daab78ed6e4171d0fbc
+      state: 8698075ceba2e395d08e93a9c743405fd1a0608972562b8a52e9a5c1f2fe8754
+      after: 40e9bb1ec3aef973297643e472b444bd9656ad21f57ef4f4e4c9666eb7a3b7d1
+    exterior:
+      '[null,"stages"]': 76b6e5d3a001458586f97798619690ce2e6556fe8cb7b3d922f9b47078f735ab
+      '["stages","indexer"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["indexer","state"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["state","after"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["after",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识生命周期

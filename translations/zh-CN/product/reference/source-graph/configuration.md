@@ -6,6 +6,40 @@ translation:
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
   source_digest: 08bebd03f4e6c8f38a8ea21799db0e7413d10bbcc6fffd0e6501547f07253360
   translated_at: 2026-10-14T08:53:43.639Z
+  source_parts:
+    title: b332c3492d5eb10a118eb6d8b0dcd689bc2477ce2ae16b303753b942b54377bc
+    description: 926967f600be2dab1f6501a13ef4313ee140ffb31340424988b6d4911019f310
+    order:
+      - layers
+      - environment
+      - deployment
+      - code-sources
+      - site
+      - policy
+      - plugins
+      - fixed
+      - data
+    sections:
+      layers: d009b35192f2d6fc26e014263614c062982d67c282c6f2e36a718eff0f52c291
+      environment: 5bcb714449e7094ec0b8679111f8f488b388fb928a57cf88eb6d04d763eb7394
+      deployment: a7d42b84a51acd08e7e77111a28e3a113a0d2bff5f62907a07479e203b16eba9
+      code-sources: 36070361e2ae2b37831044189de0183d9b3744183fa0f91df2663b9adae8f218
+      site: 8dfe110232b4e2b7ddb855b915f88372ac12c4a23ce933f78c1ed9f20eb2b237
+      policy: ea9c88c95b8ff998985aba0e0d1c911ca6a3fcaba3712cbc765e11c511fe5cc4
+      plugins: 7660934f6c9fb45a8e947ac0144c4ccf4ad8bc38e6ed7fef1347b65c0aa39449
+      fixed: d04ea6409936ee5b55f504e19dc1cb573cf31fcf3ba3a0d3bc120674cc2c484e
+      data: 743816384e5238c470a33ba3355ad73f4a2caced4dcd1b727b684506cdc66e5d
+    exterior:
+      '[null,"layers"]': 463a8fcb3ab35c8ef1fdd2f7c3f361be9c53aafce46c4335a02112bf54f28c19
+      '["layers","environment"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["environment","deployment"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["deployment","code-sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["code-sources","site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["site","policy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["policy","plugins"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["plugins","fixed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["fixed","data"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["data",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 配置

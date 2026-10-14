@@ -6,6 +6,40 @@ translation:
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
   source_digest: 4e7e98fe79db789edfc7f51e38b5f837cd6fd19e9f1af10242f1337be2f2fa40
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: 388d541bd9b95d3acab7bd991eca6a19b117096166bab674d9c6e0a91915aa97
+    description: 3a838cf5fef3c34a97c24b9705435812ab1dfa56cd45f8942604207abd360855
+    order:
+      - goal
+      - setup
+      - workflow
+      - tasks
+      - review
+      - delivery
+      - versions
+      - sources
+      - debug
+    sections:
+      goal: 45b42e3478151b0673c2de3a0720b046fd61e915c03051090da112e9c6d479a5
+      setup: fa3d98fa2ab23b66607bae9b5f51be3c4348f743660a40888e225f028bec45e3
+      workflow: 438752902fa38dbce10841260bb51d63bbecc561205e1fa2719f24a05c6762c1
+      tasks: c2820b73a510e7f8c960643219a5a7b9743d8f166bcc105a8a16c74ac0f31bff
+      review: 60e8a1c469937794994e1de7fece6e536655c9527c19608b685ac77859a2e192
+      delivery: 7eda6ca2b1263ca2c407e832b8c5347021d69952ca73f50e8de3cbd19f264774
+      versions: d66bff9e92a60d8fe8d545619903a31589e23c0452a7a5e46153502194437faf
+      sources: aac8d03f425cebc54d742c8876eefa5b7a1e0f181ae53d3e2a9b48a67d69a17a
+      debug: 40512c79cff949bfe3ff879047e48deef939b858cff34c0d9a34a09477cebf54
+    exterior:
+      '[null,"goal"]': 2e42f3181db69c46193ad033044aecb8822fcf255861235abab3bb8c34dfeda5
+      '["goal","setup"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["setup","workflow"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["workflow","tasks"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tasks","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["review","delivery"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["delivery","versions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["versions","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sources","debug"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["debug",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # CLI 命令

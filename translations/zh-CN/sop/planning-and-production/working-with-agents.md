@@ -5,7 +5,38 @@ translation:
   locale: zh-CN
   artifact_ref: ef41f849-6248-47da-afec-638ab2542c22
   source_digest: c117de6a05292d8f9bea538dd18d1e6a1b7ab458b772f6b4191f92fa601ec29f
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 508d2503e22e37640a0bc33591b9fec5b480654ecfd266216dccf18e41984442
+    description: 239d0a7ac4d27e89962656b653a8b692fa41389f085cc3b07fd900459abaa9dd
+    order:
+      - goal
+      - brief
+      - who-decides
+      - progress
+      - mid-task
+      - resume
+      - multi
+      - git
+    sections:
+      goal: 34759864976d641184b86bfba8786d7f43552692a9184fe1826f25ac9901f6ac
+      brief: c86891f93d59209be9f8cb8237afbbff651a6210a41ee804601ab7114aced2cf
+      who-decides: 688df709d85cf1995d96e48c74fe42862876a3093bd4ae431d7d9fc51add57ab
+      progress: 46c744ab361d36a9ba84d0331a0bfb16efb10b5c62a4769eac99fe2b1d509cc8
+      mid-task: b0ecc984f00d447b19bf02c59c62b6a01875c63c3e8ccac3f8d550474d6c7317
+      resume: be9fa3e5c0634082474df38aad953198db20b4d549fe5b7b309671dbaf701ad2
+      multi: ac243d24464bba9b0297dafcb49d56e6bc77036a921a919778e317708ec8882e
+      git: 2a9121ddaa88cfb4891f547df4b5d5b3fb3e85e076cf3d7d712aef10c32d4c69
+    exterior:
+      '[null,"goal"]': 69c1f87ad8535c85f24893c6a673bb3eb611d38bf0cfb0a966d944c2e3342c65
+      '["goal","brief"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["brief","who-decides"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["who-decides","progress"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["progress","mid-task"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["mid-task","resume"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resume","multi"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["multi","git"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["git",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 与 Agent 协作
@@ -26,10 +57,9 @@ translation:
 - **产出**：面向 Agent 的知识包、网站，还是两者都要，以及使用的语言。
 
 ```text
-/c4a:context Initialize a Context knowledge workspace in ./kb and build knowledge for
-../billing-service and ../docs/billing. Readers are on-call engineers who need
-to diagnose failed invoices. Skip the legacy-export module. Investigate first,
-then give me the work-start report.
+/c4a:context 请在 ./kb 初始化 Context 知识工作区，为 ../billing-service 和 ../docs/billing 整理知识。
+读者是需要排查开票失败问题的值班工程师，legacy-export 模块不纳入这次范围。
+请先调研，再给我一份开工报告。
 ```
 
 你已经给出的回答会在整个任务中复用，不会在每一步重复询问。
@@ -63,8 +93,7 @@ then give me the work-start report.
 直接在对话中说明：
 
 ```text
-Add ../docs/refunds to the sources, re-plan the affected part and give me a
-new work-start report.
+请把 ../docs/refunds 加入来源，重新规划受影响的部分，再给我一份新的开工报告。
 ```
 
 在已确认目的范围内的新材料会成为一次计划修订，已完成的工作会保留；新的目的或来源仍需回到你这里确认。要修正某个页面，请参阅[修订页面](../review-and-revision/revising-a-page.md)。

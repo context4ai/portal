@@ -6,6 +6,25 @@ translation:
   artifact_ref: 25f7897c-1fd2-4b59-b426-437fc25cb973
   source_digest: 8cd71371e275d2d6240434abc91d9c2aee25fc5f90d98c31777122d1d2fd360c
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: 1c838706001e4889cb5d80e1e19a21e31052ffdfdd48e37ab04b3486185aa8dd
+    description: bb309f2317dda19e65c60bd23555518d748db2ccb03cfe7e7b5c2464878393a5
+    order:
+      - threshold
+      - plan
+      - limits
+      - steer
+    sections:
+      threshold: 56b7b3b415de1796134c423d030541f3233a1040f2c0271585b04f14824c9ea2
+      plan: 15330dff8163ebc20746c4e63ca2da71da9019eca026c2c1b8e86f55d5ed7903
+      limits: 9f23ae3887cb9f70b2ea37f580d424f4b3a0df65d23a68524403a8d2d8bb709b
+      steer: 7da29f15a17c736f156b2e787da4771d7908794cb61f2f7bb4f0050ed151f729
+    exterior:
+      '[null,"threshold"]': 8a780b7ce21d080a7a09d1180ed615b63064cc5a3f28e228fc76f98b9d8bdc1b
+      '["threshold","plan"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["plan","limits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["limits","steer"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["steer",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 复杂任务

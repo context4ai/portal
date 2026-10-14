@@ -6,6 +6,28 @@ translation:
   artifact_ref: 5adb572a-fc06-4bb9-a0aa-944b7c1dc1bb
   source_digest: 255eab2c8cade551134a4a1cb7477edfc99438a6d62d7b59bb31f76c88a4f9e3
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: 66d0f523a379b2de6f8d5fba3a817ebc395f7bcaa54cc132ca9dfa665d1e9378
+    description: defe298cdb44a1f68b0851cffa7328624ee645183b2b6e1b7fbed611561eb087
+    order:
+      - goal
+      - entries
+      - authoring
+      - indexers
+      - hosts
+    sections:
+      goal: fc5d1a02843783b06c2359edad073bbe34c7b86734486eead776bee9c6f097c0
+      entries: 9434472134fe79576c60a8bf5a79128815cfb47bf65cf438bcfb5e5b9fd3599c
+      authoring: 02cff3d1b875b8560ec89d059bcfb9a7a8fae5474be1379a21d9642fe952ddb6
+      indexers: 53cf83b60413a4278d2958382ae39a3d159486df12378364e8569a07b18a73a3
+      hosts: b3cde3437b0c35891c48515bba4f1f934093d131c44982eb8528d45872d46915
+    exterior:
+      '[null,"goal"]': 794d50f79bd6daaadd007491d12ee219532cc7f2406ecfb84eebd8aec0a58f33
+      '["goal","entries"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["entries","authoring"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["authoring","indexers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["indexers","hosts"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["hosts",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 技能清单

@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
   source_digest: 17028ddb740cdd500134a9d903b9e95a6521c3e9573583fc6afdfc80fa0db24b
-  translated_at: 2026-10-12T17:06:40.056Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 98cd67c11d8039c05ba79134d2070d89bf4c02fd5330d6bba76cdf36c39b3a01
+    description: 3b74f8d724b3b8d930edb3c8d9b7a33bb269a980606552af035aaef18029f017
+    order:
+      - goal
+      - contents
+      - query
+      - declare
+      - choose
+      - build
+      - checks
+    sections:
+      goal: 0da260bb67c5a34728d41bd154fcf1f148fee82798221e16cf252c2d24afe8e4
+      contents: 1c3ed0ac6f589a61d2a57b43031bf46dd8e3ad24e23ad648beb374dcf3b83940
+      query: 3efe55f32f090367b3c5be02a13ac4135977fe0d82a0ad1bdd6727b385302c78
+      declare: d84c55b14ab3bffc516435a56cb1b8e14b7c69d03e54eb24edfc6ef47943ca75
+      choose: 0c2490bb2a2150de92b8a919cb17e699652478770f16bb31d0c043f1230d49cf
+      build: 80b498fa55cab12f38601c204c2cfb6310ba92187aafa0733657019d2dfdb2cb
+      checks: 2e1ef2342a2a3f235f65b90e632c26e82a29cccfbc4b8aad570ce68cbd4f6dbb
+    exterior:
+      '[null,"goal"]': d6435d33351efc3fd66f74748358c9cfb72e253423ceb5dc3e52cf0ce8c062b3
+      '["goal","contents"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["contents","query"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["query","declare"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["declare","choose"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["choose","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["build","checks"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["checks",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识包
@@ -34,14 +62,14 @@ dist/<package-name>/
 │       ├── SKILL.md
 │       └── scripts/search.mjs
 ├── wikis/
-│   ├── index.md          # package entry page
+│   ├── index.md          # 知识包入口页
 │   ├── codeindex/ ...
 │   ├── business/ ...
 │   └── product/ ...
-├── guides/ ...           # architecture, sop, faq, decision, incident
-├── rules/ ...            # standards, test
+├── guides/ ...           # 架构、操作流程、常见问题、决策、故障记录
+├── rules/ ...            # 规范、测试
 ├── feats/ ...
-├── others/assets/ ...    # bundled images and resources
+├── others/assets/ ...    # 随包提供的图片和资源
 └── context-build-inventory.json
 ```
 

@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
   source_digest: b9db8f1e222fa0b1347a4f5d861f3e1ee2646094de60b5444929413dd4cea825
-  translated_at: 2026-10-12T16:45:10.508Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: fe2b21ff0254c3b86e6cc4d3a4811a6087ce9b4bc132704466237fe8c93e7bb8
+    description: ae43f9b9ab12efeeb6097e92fa952ad8b72f1ea78188ddb8c2293949235db725
+    order:
+      - goal
+      - tree
+      - ownership
+      - growing
+      - linked
+      - runtime
+      - rules
+    sections:
+      goal: a3607f75cc2e8610e80c6793cba791ca19b3dc19de7208a14d6c3876c587edac
+      tree: 3f058720f0320f0f8f11ea7024071793870ee7edde760c143c2eb20a9ac9c734
+      ownership: 1960052d31543c6019a3a609f721aa0464469fa3d2b7424f38d159931b001024
+      growing: 3052e152c22e9114f3a0ac38381a4e0cd9cf1711955d77b5f0dafc77237903d7
+      linked: 14c95f9370d435698b449fbbc04a4caeda082b00227cdb0303ec6a0464b5e500
+      runtime: cdf4ef4a62d6f0c92071ce95e9e09f4a2d93108d42a2dc894ee94539a3292e0c
+      rules: 4a1ac4412288bfaf8f4cb037f3457fa40825a8f48009555755a8236856f48291
+    exterior:
+      '[null,"goal"]': 563054d95f4c839d2ae2ac5ac4eda37169cdf570a9371640e22cbf9f8a89e13e
+      '["goal","tree"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tree","ownership"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ownership","growing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["growing","linked"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["linked","runtime"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["runtime","rules"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["rules",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Context 知识工作区
@@ -37,30 +65,30 @@ flowchart LR
 
 ```text
 my-knowledge/
-├── package.json            # version and context.project marker
-├── AGENTS.md               # rules for Agents working here
+├── package.json            # 版本和 context.project 标记
+├── AGENTS.md               # Agent 在此工作时遵循的规则
 ├── README.md
 ├── .gitignore
 ├── src/
-│   ├── index.ts            # sources, capture phases and packages
-│   ├── indexers.yaml       # reader purpose and authorized sources
-│   ├── knowledge-map.yaml  # navigation for sites and LLM Docs
-│   ├── package-templates/  # templates for each package kind
-│   └── site/               # optional website customization
+│   ├── index.ts            # 来源、采集阶段和知识包
+│   ├── indexers.yaml       # 读者需求和已授权的来源
+│   ├── knowledge-map.yaml  # 网站和 LLM Docs 的导航
+│   ├── package-templates/  # 各类知识包的模板
+│   └── site/               # 可选的网站定制
 ├── sources/
-│   ├── repo/index.yaml     # repository sources: remote, commit, modules
-│   ├── file/               # local document sources and snapshots
-│   ├── lark/               # Lark document sources and snapshots
-│   ├── note/YYYYMMDD/      # saved notes
-│   └── sessions/YYYYMMDD/  # saved conversation summaries
+│   ├── repo/index.yaml     # 仓库来源：远端地址、提交和模块
+│   ├── file/               # 本地文档来源及快照
+│   ├── lark/               # 飞书文档来源及快照
+│   ├── note/YYYYMMDD/      # 保存的笔记
+│   └── sessions/YYYYMMDD/  # 保存的会话摘要
 ├── knowledge/
-│   ├── <collection>/…      # approved Markdown pages
-│   └── structure.yaml      # page identities, sections and source references
-├── translations/<locale>/  # translated pages and navigation titles
-├── changelog.yaml          # knowledge version history
-├── CHANGELOG.md            # generated from changelog.yaml
-├── dist/                   # built packages and sites
-└── .tmp/                   # runtime state, reports, Agent scratch
+│   ├── <collection>/…      # 已审核的 Markdown 页面
+│   └── structure.yaml      # 页面标识、章节和来源引用
+├── translations/<locale>/  # 译文和导航标题
+├── changelog.yaml          # 知识版本历史
+├── CHANGELOG.md            # 由 changelog.yaml 生成
+├── dist/                   # 构建后的知识包和网站
+└── .tmp/                   # 运行状态、报告和 Agent 临时文件
 ```
 
 有些文件只有在你用到对应功能时才会出现：`imports.yaml`、`repo-content.yaml` 及其 `repo-content/` 视图、`context-evidence.sourcegraph.wasm`，以及规划项目期间的 `PLAN-*.md`。下文会逐一介绍。

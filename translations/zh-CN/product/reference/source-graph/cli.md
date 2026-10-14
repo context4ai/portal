@@ -6,6 +6,34 @@ translation:
   artifact_ref: 524c7555-fd52-4e08-82d0-93f68236b71d
   source_digest: 524ee877324cad8efc0d480111adb5ac8188dc122abe4e7960ab8e4361768a2d
   translated_at: 2026-10-14T08:53:43.639Z
+  source_parts:
+    title: e759793341ff3757eaa76e814db0170ec13b6b0a988a742d9a81240c505f48ec
+    description: d35f98a48b0c560934e9c86a0941d447e79814c0e9244b67b2db19ae91a6c4c2
+    order:
+      - goal
+      - env
+      - commands
+      - flags
+      - output
+      - examples
+      - helper
+    sections:
+      goal: b5d95140005e1864d2c0eaee128ff82ebe0957081967131253ab78a59e6168a4
+      env: 7f7b45105879b6a4f8bb6ee9941251c7ba1d53cf2d616d6a004323b134cf20ea
+      commands: c3268827ba1b2f3731d27adf5e91e3b66a364c80a3524c35d085c0216f00515c
+      flags: c2f82763f01ef43baa7b068d52a6aa0c5dfbd2429a4f0b06853ae2c9b6635c3b
+      output: 1672b0bad10d0d6ae3f7ef2cea6d6b7d691cec391be4e8cbe1fe8ed3c5f19829
+      examples: 287c827e33889ae996ced04d64e1aee316c4c2057f1dce29f674453a1bb8f88a
+      helper: 73211ce2810cda91e9c285441e588fe085d71742a6cc650b263d4b9143f2d454
+    exterior:
+      '[null,"goal"]': 5a48e3ca33d4199a95b40cbf5994800731850152cf3c7f0c541c1285bc6cb4cd
+      '["goal","env"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["env","commands"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["commands","flags"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["flags","output"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["output","examples"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["examples","helper"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["helper",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # CLI

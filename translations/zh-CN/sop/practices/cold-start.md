@@ -5,7 +5,38 @@ translation:
   locale: zh-CN
   artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
   source_digest: f01d17bdde36783ed41a3d6819ee1d53be6dfd3bc0c428a73cbba69118cea19e
-  translated_at: 2026-10-14T10:25:47.577Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 3d23c59e8b699282ef85d775ea52fc606ed74662435acb23e07202f74a76765b
+    description: a603776cd4ecb46e7dd5ea64140981c9a21afb2a58ae12de56fd92b5428ce5eb
+    order:
+      - goal
+      - explore
+      - screen
+      - baseline
+      - structure
+      - raw
+      - case-business
+      - case-domain
+    sections:
+      goal: d163d210834a1fc5fcee4301b63e53026c2d59f33472b6e0432f62ff8ebcaa4a
+      explore: 25608179a003f63470dd1db44cd06082ae35fa2b0209e76ef4b3d69aad774027
+      screen: 4e05481d8fb3a54bfb9e7701c9ff52b0cd44e372dac543400565f1b14de41d71
+      baseline: cd0ab809095459fba4d35527b04b7ffb14410d9a6d277a3c870fe8233e892002
+      structure: 4526d3cfe4d706ff6f7253433b5182cb889c6f6ffcc1eb67bc8cd0435bfaf7cc
+      raw: 070c295b7e75be9f02b86bf4590f5e8f78c564ea0f2facea1c15fc48441026c5
+      case-business: 31c4c7e7411fe7240cf60313166d4ee8ec93a91a2c363f92aff0200486e367f3
+      case-domain: ce433bed6c6deb5d359ad43264c74514efc7b7037c12a6d8e1412197f93e9c33
+    exterior:
+      '[null,"goal"]': ca23a469c69b627789294c6e1f99705a619586c4fa5445e0b97121511b596590
+      '["goal","explore"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["explore","screen"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["screen","baseline"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["baseline","structure"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["structure","raw"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["raw","case-business"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["case-business","case-domain"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["case-domain",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识库冷启
@@ -91,26 +122,25 @@ flowchart LR
 某前端团队的知识库已有两百多篇工程文章，团队想从一个有几千个节点的文档空间里，补一层代码里看不出来的业务规则。开场这样说：
 
 ```text
-Look at every document under the <area A>, <area B>, <onboarding> and <technical designs> subtrees of the
-<space> document space and cross-check them against the 5 registered repositories. Keep only business
-definitions, rules, processes and boundaries that cannot be read from the code.
+请看一下 <space> 文档空间里 <area A>、<area B>、<onboarding> 和 <technical designs>
+几棵子树下的所有文档，与已登记的 5 个仓库交叉核对。只保留无法从代码中直接了解的业务定义、规则、流程和边界。
 
-Recency:
-- skip documents not updated in 500 days, except top-level designs such as one-pagers, overviews and architecture guides;
-- skip SOPs and conventions not updated in 365 days;
-- always skip daily and weekly reports, surveys, tests, on-call notes, archives and templates.
+时效范围：
+- 超过 500 天未更新的文档不纳入，但 OnePager、全景和架构指南等顶层设计除外；
+- 超过 365 天未更新的 SOP 和规范不纳入；
+- 日报、周报、调研、测试、值班记录、归档和模板均不纳入。
 
-Do not add repositories; use the code only to check the rules in the documents.
-Write me a research plan first: the screening steps, the decision and destination for each document, the
-relation to existing knowledge and how the directory should change. Do not start production before I approve it.
+请不要新增仓库，代码只用来核对文档中的规则。
+先给我一份调研计划，说明筛选步骤、每篇文档的取舍和落点、与现有知识的关系，以及目录调整建议。
+等我批准后再开始生产。
 ```
 
 返回的 PLAN 记录了筛选漏斗：空间里有几千个节点，指定子树里有几百个，按标题、类型、更新时间、内容类型排除后不到两百个，几乎全部抓到全文并阅读。之后每篇文档被判定为*全文录入*（代码里看不出来的业务定义、规则或状态）、*只提关键规则*（技术方案或 SOP，只保留有代码佐证的结论或代码里缺失的约束）、*仅作索引*（导航页或内容已被覆盖，作为延伸阅读链接），或*排除*并写明理由。PLAN 还对照代码抽查了两条结论（其中一条“当前生效”口径在代码里的取法不同），把来源从原文到早期的 LLM 推断分了级，定下“冲突时以代码为准、注明旧说法”的规则，提出只改导航的目录调整方案，把工作拆成 7 个每阶段不超过 30 份来源的阶段，并列出需要决定的事项。回复：
 
 ```text
-The directory proposal is fine, but keep the top-level name and split "events" and "incentives" at the
-second level. For the threshold conflict, write both versions and mark it "to confirm with the business";
-I will ask them. Leave the personal notes out for now. Run the rest as planned, and wait for my review after each stage.
+目录方案可以，顶层名称请保持不变，二级目录里把“活动”和“激励”分开。
+阈值冲突先保留两种说法，标注“待业务确认”，我来找业务同学确认。
+个人笔记暂时不纳入，其余按计划推进，每个阶段完成后等我审核再继续。
 ```
 <!-- /context:section -->
 
@@ -120,34 +150,33 @@ I will ask them. Leave the personal notes out for now. Run the rest as planned, 
 一个基础设施方向（这里以流量接入为例）需要一个知识库，首批面向 XXXX 业务的研发，后续还要支撑知识 Bot 和运维 Skill。来源包括几个新旧混杂的 Wiki 范围、项目里的运维文档、一个团队维护的 LLM Wiki、已安装的运维 Skill，以及散落在各处的基建背景。开场这样说：
 
 ```text
-I want a knowledge base for traffic access. The first readers are XXXX business engineers; later it will
-back a knowledge Bot, operations Skills and operations capabilities such as queries and attribution.
+我想为流量接入建立一个知识库，首批读者是 XXXX 业务的工程师，后续用它提供知识 Bot、
+运维 Skill，以及查询、归因等运维能力。
 
-Sources:
-- every article under wiki range A, including diagrams and embedded tables;
-- range B is the focus; document C is the core and the latest baseline;
-- weigh other documents by update date; where they conflict with C, C and the code win, with the reason recorded;
-- the operations docs under docs/ in the project;
-- the team's LLM Wiki is also a baseline; use it but keep references, it will be linked later;
-- the first few XXXX business services and their repositories: <list>.
+来源：
+- Wiki 范围 A 下的所有文章，包括图表和内嵌表格；
+- 范围 B 是重点，文档 C 是核心，也是最新基准；
+- 其他文档请结合更新日期判断；与 C 冲突时，以 C 和代码为准，并记录原因；
+- 项目 docs/ 下的运维文档；
+- 团队的 LLM Wiki 也是基准，可以使用，但请保留引用，后续会建立关联；
+- 首批 XXXX 业务的几个服务及其仓库：<list>。
 
-Requirements:
-- do not repeat what installed operations Skills cover; write the glossary, key facts and preconditions and link the Skill;
-- fill in infrastructure facts that are not tools (data centres, deployment architecture, network and compliance boundaries);
-- keep articles orthogonal and link them to each other.
+要求：
+- 已安装的运维 Skill 能覆盖的内容不必重复，只需整理术语、关键信息和前置条件，再引用对应 Skill；
+- 请补齐工具之外的基础设施信息，包括数据中心、部署架构、网络和合规边界；
+- 各篇文章的主题尽量不重叠，通过链接相互引用。
 
-Research thoroughly: retrieve the originals and summarize the evidence, then propose topics, a three-level
-structure and each article's content as a PLAN. I will review it before anything is written. Use <existing site> as a structural reference.
+请充分调研：先获取原文、整理证据，再把主题、三级目录和各篇文章的内容安排写成 PLAN。
+我审阅后再开始撰写，结构可以参考 <existing site>。
 ```
 
 PLAN 里应该有：拉取的范围和数量；每份来源的角色，以及它与基准文档、代码、LLM Wiki 的关系和每处冲突的裁决理由；三级结构和文章清单，例如领域概览与术语、接入路径、基础设施与部署约束、首批服务目录、接入与排障手册；与运维 Skill 的边界；分阶段计划和待决定事项。回复：
 
 ```text
-The structure is mostly fine. Do the service catalog for the first 3 services only and move the rest to a
-later stage. The deployment architecture article must state the constraints it puts on XXXX business access,
-not just the concepts. Organize troubleshooting by the problems users hit, not by source; give each guide its
-preconditions, decision path and stop conditions, and leave the queries to the Skills. Where the LLM Wiki
-conflicts with the baseline in two places, the baseline wins; note it in the articles.
+整体结构可以。服务目录先整理首批 3 个服务，其余安排到后续阶段。
+部署架构这篇请写清楚对 XXXX 业务接入的约束，不要只介绍概念。
+排障指南请按用户遇到的问题组织，每篇说明前置条件、判断路径和停止条件，具体查询交给 Skill。
+LLM Wiki 与基准文档冲突的两处，请以基准文档为准，并在文章中注明。
 ```
 
 批准后，各阶段按正常工作流执行，每个阶段都有自己的审核。让结果不跑偏的习惯见[最佳实践](best-practices.md)。

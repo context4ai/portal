@@ -6,6 +6,25 @@ translation:
   artifact_ref: 00e6d166-ec40-4d84-944f-aed8d4dbeb72
   source_digest: 912235a3d956d0c6d5733155df1f40c2e469f77f7753beae3e6abd50a831d77b
   translated_at: 2026-10-12T15:11:42.056Z
+  source_parts:
+    title: d22580a4ff86e68ea0dd6aa73c4276fb433e2d147ed4bce27e4f632cb03500b6
+    description: ce61a8cd0f6d3f6d7ca86a0c5ad2676766be98e9ba9994ad476157d8905ae424
+    order:
+      - role
+      - packages
+      - selection
+      - unsupported
+    sections:
+      role: 82a0ca3065c9702e978a647106642e604d4bcdd6932e7851ed351d149a32c9f9
+      packages: 94c6c6e8a5661c46e4fe18a728e70d70621b6b3a834720a538ed48d1d106c5b5
+      selection: 97f5b50910fdad05bb5b3da399779a30f7646d73c0dcf69d4fd8dbea7c9db9bb
+      unsupported: 9793b798964bdafc303a1c1c78efb15b42ec553f451d815024fa34452043b450
+    exterior:
+      '[null,"role"]': 2c04c3c8ca5f34a84e1795165e71a77e317da8c4828454ef67c6fc326c0590eb
+      '["role","packages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["packages","selection"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["selection","unsupported"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["unsupported",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 代码抽取

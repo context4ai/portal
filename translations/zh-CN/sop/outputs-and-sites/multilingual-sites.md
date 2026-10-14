@@ -6,6 +6,31 @@ translation:
   artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
   source_digest: 418cd7ef76c1a22828fbbecd9acaf0e8cdd0be22b391b1ea76e3ddfe31f95efb
   translated_at: 2026-10-12T18:39:20.106Z
+  source_parts:
+    title: c2faa70353472a28a1a5779130868cd6c37dbb7c5860ecba0838ee6e6ad171c3
+    description: 9ccf0f8966640627ebb27a74ee98e67556a99e063454edb441b04137545a2472
+    order:
+      - goal
+      - declare
+      - storage
+      - freshness
+      - workflow
+      - reading
+    sections:
+      goal: 60967f77a73e1e738cf1df48ad7656c8b0df107fad0139d66c35cef6bcca26c2
+      declare: 7056c68a45762eceedf2c3d42b23491f96af30252f70c7bff177072803d47eaa
+      storage: 9ed2dffeffe4e98a76d7d136577c4546ef8318abdd47629ba01c556643c2b12f
+      freshness: 946161cb7e31d3e03a7f32077091e80f0771b1c32fb330be6cdcf9c6f75d73d5
+      workflow: e0b93b3319a6752f48fef86d69d3d804f169e8ca1a3221023feedb20ed14555e
+      reading: 6d0b2772ce29fca4f9f2b30b6a9cb11359f54a12ea37d7cb4a78a9bec8465b4a
+    exterior:
+      '[null,"goal"]': 5bfad660a4999730d0c396ac0ced35b5fcc36f7317ecc7300a6a332a0a97ad6a
+      '["goal","declare"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["declare","storage"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["storage","freshness"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["freshness","workflow"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["workflow","reading"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["reading",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 多语言站点

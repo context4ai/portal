@@ -6,6 +6,25 @@ translation:
   artifact_ref: da3d3b26-40b2-4183-b9d7-73cff0b8980f
   source_digest: a7fbee372fd89f604653997903ba67639c25cbc1dddffa3a69e8563f92910ab5
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: fb8720981d1fa1b9165fe862334a1e9731c4d1af8660fb119a93b6adc88b9a55
+    description: b5ce62a3644419c33a3354c8fc848a187851b5736155d058d9f9952c8176356c
+    order:
+      - goal
+      - capture
+      - secrets
+      - maintain
+    sections:
+      goal: a33b865ed45fa78765c9a3252bf6672a11d467f6ecf08d953213a74cf3849b74
+      capture: 7b124b5e31c2383af949a7b90261c40e43909af79ce847634e8b8d354914ed24
+      secrets: 3f86047052462f3fc76ed3b55b1a3663fe4c8cbf6ef2e9b716d4f9c6cdede7dd
+      maintain: ca4b1a0404679bbcc04c95f66675f9574f017aacc93d5375f273b2b7aadad4b8
+    exterior:
+      '[null,"goal"]': c7ac395e61bff59ea3e8264eb1a61365ee8820dcf0c27dfc040ec45a3d3920d8
+      '["goal","capture"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["capture","secrets"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["secrets","maintain"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["maintain",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 运维知识

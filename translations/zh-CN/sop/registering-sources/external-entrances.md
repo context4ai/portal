@@ -6,6 +6,28 @@ translation:
   artifact_ref: 9e5aef24-16bb-4f72-9488-298444ea7de7
   source_digest: e52ff628ed5a184987d51bf694007ad91b576aaf7f7e0e7db8103fbe984730a5
   translated_at: 2026-10-14T10:25:47.577Z
+  source_parts:
+    title: b64c08c437b1e9aa7355642b5937ac17bca95292a7494c32cbbdc21a0ffe2cea
+    description: d20c49d72111a018b9cc689e14337c62800a92af0a30dd1401458da9c298c793
+    order:
+      - goal
+      - declare
+      - link
+      - evidence
+      - raw-material
+    sections:
+      goal: 00cb786b167887863a4b02ce0d5c5889d5bc85317f432224ee1d50716a4e53c0
+      declare: 0ef9c0c61d4b1d95d27d39aad3acdb924f3c54833d75c626f2a48c52be2c1861
+      link: 5d2e6ba9ccea9cfb9842820211debb61fc1858ed8fca9f8e402338e39f14f321
+      evidence: 1e09e9e56e9f9e7b6681e8cbed4f4ba5a69c876d4002656a4ec8dabc3b9ca422
+      raw-material: 09b78c2ba1287386ffac88df424527f260904535c3faa59d920d34e79405a429
+    exterior:
+      '[null,"goal"]': 7dbf9c93b383c6b9e8e603a5142e94ab4e48ed4926ce6b45aa28e8e8560a6a3e
+      '["goal","declare"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["declare","link"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["link","evidence"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["evidence","raw-material"]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      '["raw-material",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 外部入口

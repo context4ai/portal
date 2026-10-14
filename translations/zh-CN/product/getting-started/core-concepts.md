@@ -6,6 +6,34 @@ translation:
   artifact_ref: 31a5553a-c85b-4bd5-ab0f-29829bc9bbf5
   source_digest: 971695d6c28f5714662b64d56ca08f19e4816471d627ca7b53b929db2187e067
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: 6116686315702983b1d201a2553fbc3bd88b76920edf6839fe178bd8b46914a9
+    description: e5f4ba0f6212d8d7cb79d7d48a832dace3234355bec1a6a78307071a3f0f6f5c
+    order:
+      - map
+      - workspace
+      - sources
+      - indexers
+      - candidates
+      - packages
+      - route
+    sections:
+      map: fa6beb3457516149ada04cf558e70e4c646631d275840322eaa3dca2a8fbb89b
+      workspace: 45726e56a2001ec003b01c391076fb43cd1d28b6c505496201d2907612cb8ea8
+      sources: 9fcfe19b911b422acdfa16b3a621d32a3ffd2114312962bf9ca16c92e8bf03bc
+      indexers: 492afcacb6ed20d4580cd1e91b9838a3ae7e5b2f6f53eca0c4574c699b41c3a9
+      candidates: 02b6cb86da68b6d49e621cb0a553cf494f6e888228625400b2d23035efb84b01
+      packages: a7f2dc6fff641be383d04d7538304039a2b031fefe7f7fbf6df6a84ea63ddb8d
+      route: 83beb1a88ff73c86c56b2dcbddff6de3882f68e5c6a9483d62b74ffcfa44017e
+    exterior:
+      '[null,"map"]': 339160bf3dca103519f3afa073015b40c25fafa92a9ba3e8d7f3e59bcbdac80e
+      '["map","workspace"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["workspace","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sources","indexers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["indexers","candidates"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["candidates","packages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["packages","route"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["route",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 核心概念

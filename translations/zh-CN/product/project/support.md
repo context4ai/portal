@@ -6,6 +6,25 @@ translation:
   artifact_ref: sha256:9d796e7c1ddbca5eadc0e9604bf8890eff78a8b2eb69cd4d3fa0883cabf07155
   source_digest: 94449ef09f2a9af54c08c2ea90179c33adfd499f558f65e2e9d6d52add164864
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: be91940b79f469101df9a50544b6873aa5509a12f1f93f1cb5e3be3990d344b3
+    description: 62c3e07fdd39361616f627cf7e15c4c0f453c0d855a0c13ece8397aad8e70933
+    order:
+      - channels
+      - diagnose
+      - bug-reports
+      - security
+    sections:
+      channels: 3c296ed1edf0e2e342cda61be2e176d97ce1961259b0de5e1882e88b85112763
+      diagnose: adf70e6948cca01972042de49755ad2d067ab13a73b7a5a02c43e1689ec60688
+      bug-reports: 012f4310728ebdec53969f087a60d53ed8d8760a6e46fbacd73ec8f11f461cec
+      security: 822d694d13f7050f517e52b192b954c8211493ab369550e9e63ee9c777b77a05
+    exterior:
+      '[null,"channels"]': 507b0f684071ded2e25d59e1f80e932c186a0c9f6b2c965bc10d078c6694345d
+      '["channels","diagnose"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["diagnose","bug-reports"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["bug-reports","security"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["security",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 支持

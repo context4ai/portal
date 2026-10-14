@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
   source_digest: ef7a1bb981ad54e5e8b37daa4434a68aa5f5afea07d54f98cb5613124d508d8d
-  translated_at: 2026-10-12T16:45:10.508Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 186dc0e9b56be41df5eb06f0a7aa80188b4383bc5796b012bce10a4857ce3512
+    description: 250d1a53e22cfd4e8efd748dc854ba223a311402adb0c065df05de58463064b3
+    order:
+      - goal
+      - responsibilities
+      - skeleton
+      - helpers
+      - writing
+      - example
+      - tests
+    sections:
+      goal: ef3937e2bfd61e1452bc36c6c0ff0a531aee3eb2e138285b57bda24e9e8ed270
+      responsibilities: 71c5b7cc53aabb7899ed0d4ef41b68cd752645b3390100a9863b00801320807f
+      skeleton: 5ca480078198623fe044f1044d3bb441412e9e040b1a11be8feffa93d032e1d4
+      helpers: 8f77ef9489b53644ed6862ca1c3cb0e28b0b74113d540a7a2058ba5c31ee63dc
+      writing: eaa742db578e1cc5bbe994823efe9c3fff42ff91639f51dc1c8b1ee6c7e7fa22
+      example: c9eceb90cb85de81f91f73c95bf5e164a0fee60cadc1cbea83b97966467ceffc
+      tests: 131b9226a13bc0c0ca291e1b71ca1b4ea0593967cc3c017b590d3afb28dcd6d4
+    exterior:
+      '[null,"goal"]': 5c918b2e7232bd149086c8d69a6f6000503ffe1e9eff600fa7ea5e3b4cb1528c
+      '["goal","responsibilities"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["responsibilities","skeleton"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["skeleton","helpers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["helpers","writing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["writing","example"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["example","tests"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tests",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 代码类 Indexer
@@ -74,12 +102,12 @@ Indexer 可以为路由组或组件这类功能类别建议一套重复使用的
 acme-rpc-indexer/
   SKILL.md
   references/
-    investigate.md   # where services, methods and middleware are declared
-    writing.md       # integration and maintenance guide outlines
+    investigate.md   # 服务、方法和中间件的声明位置
+    writing.md       # 接入和维护指南的大纲
   scripts/
-    list-services.mjs  # bounded: given paths, prints service and method names with locations
+    list-services.mjs  # 限定在给定路径内，输出服务和方法名称及位置
   tests/fixtures/
-    orders-service/  # anonymous sample module
+    orders-service/  # 匿名化的示例模块
 ```
 
 ```markdown

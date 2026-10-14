@@ -5,7 +5,26 @@ translation:
   locale: zh-CN
   artifact_ref: c69e4047-18f9-463a-8c47-569bc306287b
   source_digest: 15724dfa2f4114b231340360cbae71bce39a78fa7239226115b9a89f747b303d
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 4676457a60ab22ce71abaf81089d82ad6c51e899a61c274d6da8fb0510122172
+    description: 1ec0df558468737f17a728f1dc4b6acd76ae8ba7f2f776b184bd8f8e8819f0e7
+    order:
+      - goal
+      - setup
+      - judge
+      - write
+    sections:
+      goal: 2fbf321f5fab8718bd2d3504bdc7589bb90489277d8ccd01e95d6f0795bb24f5
+      setup: a13d94c6abce3b0ea49f79966f8f98a91baa31393271129a6e680b2741437e60
+      judge: 4616bb66ce7f9c371197db133cfaeb8576a7573906781867de218fa7f146098a
+      write: 0b51adbea487d8db5bd46006c6e3e8b84ce88f7a3ecdac050410cf839bc65154
+    exterior:
+      '[null,"goal"]': b714eb00702251d52215b4b45b0057e282d8c9a91fb9db71ef578e8d68bb8a49
+      '["goal","setup"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["setup","judge"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["judge","write"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["write",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 回写上游
@@ -29,11 +48,9 @@ flowchart LR
 在任务开始时加入这条指令，或者把它永久写进 Context 知识工作区的 `AGENTS.md`：
 
 ```text
-When a revision is caused by documentation lagging behind the code, record it
-in update-remote/<date>-<topic>.md with the context, the judgment and the
-suggested change. After the task, work through update-remote: find each
-upstream document and either revise it or give a concise suggestion for me
-to decide on.
+如果这次修订是因为文档落后于代码，请在 update-remote/<date>-<topic>.md 记录背景、判断和修改建议。
+任务完成后，请逐项处理 update-remote：找到对应的上游文档，直接修订，
+或给我一份简短的建议，由我来决定。
 ```
 
 这样上游文档就能及时跟上，知识和原文也不会长期脱节。

@@ -6,6 +6,28 @@ translation:
   artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
   source_digest: 1ee9031256e72135aeca033f00070e534276b57b3d328c5d3ea5dcf4b0479f57
   translated_at: 2026-10-13T01:41:29.142Z
+  source_parts:
+    title: cab93654e6b329f62bf1465865b17355df85f64827e9c1daa6e94a4811ea172e
+    description: 66e17015fd12de4eddb046e58ea5bf479485b2d0e1935fb5e78c18bcf5ae16ce
+    order:
+      - goal
+      - enable
+      - read
+      - limits
+      - next
+    sections:
+      goal: 98317f27946f53c4e0800134547cd15a82bf523556812feca6e4086d025f1949
+      enable: d61fb06ec8927bbc41fdfe4e1754f032fa972b478b6fe64df876e5e8dd9a0ab5
+      read: d5f31d4ae5e587cb075916b8e92f5dcb9bc8681b5e1ead0e7a3cf3a2a34afdd2
+      limits: 26a8eacc18cf71d8accfcf96ff59886c67402ec54c64062e02bed1c8638424d3
+      next: 4eeb1471b3f2fe570f0c752f44a8ff33253f85991a2a32c7fc5594ccdad72d03
+    exterior:
+      '[null,"goal"]': c64358d2fc480039d4d2f9d89f73c7caf002092ada8c30b789f50692b5bb93f9
+      '["goal","enable"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["enable","read"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["read","limits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["limits","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 远程读取代码证据

@@ -6,6 +6,25 @@ translation:
   artifact_ref: 1dad94c2-83ac-486f-b792-df0c56d391f5
   source_digest: f50d379432e7766491969a498266d6c4e84f67b1a5fc2b073103aeb4f84c3fac
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: 6513af4d080b646bb60a4deba7188a6ad8427afe476e4eedf4cec6158b23770d
+    description: ab9317da2eb33c533d805643ee3ae1d1131b5e86ff36a759af606b1c81de1e5a
+    order:
+      - topology
+      - local-first
+      - division
+      - flow
+    sections:
+      topology: 1ac0fce0a04217a33baa95018211a90093d1644c09078e7fcca6e1705a9e27ae
+      local-first: 22425c90edd6a6db29a4a562821e45bdefa18440427b3dcfeab7d6fa657ec14f
+      division: d9eb45dc3c42d0109b4ee591b4876a063a009733094df180f3ed121fde45ed64
+      flow: 06825b040fe57cbdbb57e37529e046feaf92e3ffdab6b428f73c71feb5c08712
+    exterior:
+      '[null,"topology"]': 26c06ad25df8aab67c64aebc1c4cc2fcd062e036ef05fb903b1cfe3804eb808f
+      '["topology","local-first"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["local-first","division"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["division","flow"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["flow",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 总体架构

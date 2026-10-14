@@ -6,6 +6,31 @@ translation:
   artifact_ref: 145efe1c-4969-48ef-8514-1e016773a775
   source_digest: bc09bf8019acd1d9e6cd0ea0c04ad55d32f3eb1879c078baa588fd767460b745
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: 942dc94a6d94e9b6d4f52c3c4142cb3f8de8bb9d6aa4862b8a240d282276c5c0
+    description: 0e7e6860901e75c552f31b998bffbae877b0701f75b6ba0f4a542049a0e84fc0
+    order:
+      - goal
+      - layout
+      - review
+      - entry
+      - skill
+      - rules
+    sections:
+      goal: 22cc51d6ab7385b0d05022614202aba8db14eb42375bc834ea7be6bf2a2db159
+      layout: 971ea24f7fb44c555c165fe828050d7326f7122edbc83f4df5e2fed936b7b38a
+      review: e664f199fb74854db78dd9301621c36c8a27a788f5e8c796aa47363e24870c87
+      entry: d950b177666887bc147195e0fa55da85616d1cbbab90f65552e5c9640a601112
+      skill: fe988c3823034ae521cfd9357bdbe40fbe9f2d6b0a70584b3ae3c03e58ce3b5d
+      rules: ec1f12100fe8ef73c521f0fc5938ba90f5c2e25d518cdc8f7a69d5ffd34aed13
+    exterior:
+      '[null,"goal"]': 52002367ef4b1b22d31bd259e4cb25ec20bf5fcdc1a018ae29206a7b263d5a2a
+      '["goal","layout"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["layout","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["review","entry"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["entry","skill"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["skill","rules"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["rules",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 定制输出模板

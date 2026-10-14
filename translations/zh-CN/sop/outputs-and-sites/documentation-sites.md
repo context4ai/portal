@@ -6,6 +6,31 @@ translation:
   artifact_ref: e4aba8fd-3086-4983-a371-5bded4db7520
   source_digest: 8bd3c4886b66aa93f66409e05108895a77ecfa68994018a90d3c450c0b67a0b3
   translated_at: 2026-10-12T18:39:20.106Z
+  source_parts:
+    title: fc4b4781ec8c5fe8e31397d29a8de024badc864bad1522647bc26974cd07f251
+    description: 9f2ff46b41e803cc243b9f076297913b30724766ca80d9701663dc4538cabec6
+    order:
+      - goal
+      - enable
+      - features
+      - navigation
+      - build
+      - deploy
+    sections:
+      goal: 3d88b1dc95594fee32c2324c9942a80d160c1278723f39002a288c8521716750
+      enable: e069c681c8d13a3d2b633fd96ce331cd64c5cdf3db6b6257a6c08d9721f2d741
+      features: 06c0620cf2d1cb2ed090583b12860bc5ca84b3f190b1681cf9a67438901fdb26
+      navigation: 2eb3bff9ec7f99647095e5d7713ea71714e61f46e7ee0f0028e4408474ff80af
+      build: 70a968b6941ac5b7a2331a25310cb296353ab266274d1e0378d16f2a6cf133d4
+      deploy: 8326f8ed6b57ac009d2c58c749719937eff78c91793f9d77e76725a2a3174657
+    exterior:
+      '[null,"goal"]': 4ad53edb56ed3eb1123124c204bfab4630929d626ec724b7605c6bb50ce85a24
+      '["goal","enable"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["enable","features"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["features","navigation"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["navigation","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["build","deploy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["deploy",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 文档站

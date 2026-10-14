@@ -6,6 +6,25 @@ translation:
   artifact_ref: 05c78d9e-3e0d-43a5-b674-d0110604d8cd
   source_digest: f072cd04c0a7ccffb86bc54e4a3f74beef6ff7ea4af14a514517ab128ed562d3
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: cebcff2e0ff16176f8a099107a5bc87cacef070e3c66c698e5d0ad6bd01d4905
+    description: 3c19046a6c29a3faf0ff5843499a1e501bd9f9823cc33f141223f99675438627
+    order:
+      - graph
+      - packages
+      - cli-inside
+      - blast
+    sections:
+      graph: 646d3bd409af9cd2c692eb6ea97f245a54bfcf752217ef795f9f6a09d7ab6830
+      packages: 044d6aba3859a96c1231704480afcee3d200cbb3a30d2c7b6592e61f32471b45
+      cli-inside: 1c97863960e4c6902c5f9704ae30faf51f64b7ba94b0c02e8ce5b064e1784fa0
+      blast: 486d607cf2407b6afd56cf9b05679cdeff637162eeb3cdf4b492ed860f29da54
+    exterior:
+      '[null,"graph"]': a1c50e31d002ce966fce88e53a65bbdffebf87a7de536a2838a86a05d96914b0
+      '["graph","packages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["packages","cli-inside"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["cli-inside","blast"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["blast",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 模块划分

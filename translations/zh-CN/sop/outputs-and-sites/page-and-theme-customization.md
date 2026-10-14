@@ -6,6 +6,34 @@ translation:
   artifact_ref: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
   source_digest: ef23621802218e81bd16f803c7295c5bfad69a21381b531bfa9b6c9d9e5e4f31
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: 94d0195a8c8aaa89bedb68fe8d27fd9bdc19d58cb98be41194cb8f65620f4e02
+    description: 0a3a47b602994970cfdc0f458003eafb5754467603fd3a2b21fc3c0f8bb828c7
+    order:
+      - goal
+      - extensions
+      - slots
+      - floating
+      - pages
+      - theme
+      - check
+    sections:
+      goal: e884447ea1cb95743c1f300b71134deb7c112b9402c1f47cc3fc794972a95453
+      extensions: 1e1d11108beea91f289824e3b1ea2ec98531cecc88495b479041d1fa43aefa46
+      slots: d1c75e2b6fde06e06b772f2d2457ad176e8650b0dd92ae5009d39101022f6cc7
+      floating: 76133f0a7401c0d0752550bb659675856bf3802ec033becc46c20539387d8907
+      pages: 74097293225dc2bfd819a5aee2e0de008a34dae1ea88c81c62b5ec17f1d8dc5e
+      theme: b43402f96086050af80cbe519b05705e6380997253f24adbd95d773b31852f4b
+      check: ac71caa0ba2ddaa73a3eab6522d5073b0b78bd141583a3ea3f2f0349924c6d84
+    exterior:
+      '[null,"goal"]': ec7d80b4102de45c66c191cf3adb286bf12bbd71bf6db849a0a1a5e5a6661e1d
+      '["goal","extensions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["extensions","slots"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["slots","floating"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["floating","pages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["pages","theme"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["theme","check"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["check",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 页面与主题定制

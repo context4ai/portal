@@ -5,7 +5,32 @@ translation:
   locale: zh-CN
   artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
   source_digest: 3c170e8b7ae6c07097bf0c2dc9cd8b01e258345efeaefa0bd45e8761e44feb8e
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 78d3fdf34a72fb86816b6040410b26911a46f09d24f5f85731a939b245899c2e
+    description: 49bb1cab3fb86de82b4c272b472ee3eedeecbc90a0a028284b00021273b2fe6b
+    order:
+      - goal
+      - ask
+      - search
+      - modes
+      - answer
+      - gaps
+    sections:
+      goal: 55feca3956effdedf1287bf756234bd1ecc48a90604a6ce4986122734742cde4
+      ask: 8eab1e18e37e06631e79c1837c11a96713b858f43d6c3bfa6aecbb992e1ccba2
+      search: c64e813d35e3642bb47833a72cfb09e7b16eaaaae05b64bb3acd8019581b5176
+      modes: 9d6d6d643d997db1c57f6d73d14f3b6350c502935dc960f0d0aaa4f5dd59389e
+      answer: 0aeff98c3e2f56642ce0e67ced405b929909f3b3d79c97da9399ebb35f3071bc
+      gaps: 28df8e31697f2199e0809d98bd9377a628caeae0cbaedd04831ac770d40770fd
+    exterior:
+      '[null,"goal"]': d79c78a2f17fbd2b3e2f0798ac286d9673c53c1eb30d192e3161142a3d6315fe
+      '["goal","ask"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ask","search"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["search","modes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["modes","answer"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["answer","gaps"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["gaps",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 提问
@@ -27,8 +52,8 @@ flowchart LR
 ## 提问方式
 
 ```text
-/c4a:context-inspect-search Why does a refund stay pending after the
-provider confirms it? Cite the code.
+/c4a:context-inspect-search 服务商已经确认退款了，为什么状态还停留在 pending？
+请帮我找一下原因，并引用相关代码。
 ```
 
 知识工作区不是必需的：该 Skill 可以只基于已安装或提供的知识包作答。查询是只读的——它从不修改来源登记、快照、任务、批准或你的代码检出，也从不为了回答而执行构建。

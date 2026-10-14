@@ -5,7 +5,32 @@ translation:
   locale: zh-CN
   artifact_ref: 271298e1-6876-41ac-861c-902752b63828
   source_digest: b763012bf537d5adf733cf60e0db4e5ccb63d8bdf0ec286c5ef52f7f77a78791
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: de5362f885a63aa94c03fea4c7ef29a03242a0c9bcdd5dd17ab10a16a9502d05
+    description: 40f8d26893e81604a21de1f7a82e983b015d1cff1b488847aed498b3185d7ac9
+    order:
+      - goal
+      - tools
+      - map
+      - split
+      - retire
+      - record
+    sections:
+      goal: 12e539f5addabb5f5110fa1a70c5812ec7fd02af7fc432c4e1e1478dcbf0fba3
+      tools: e0dcf1172745b8058ef52ce45966f140b84d9c14970ff283db010e3c89cc1320
+      map: 036c4a0248ab2b2478a9cd6f4e632f5da25e9c52b1cc200b128baaa11ea63adf
+      split: 29ebc511ab53584ea408e268b33f1486532a890d13e22abf9c05cc51054fff46
+      retire: d062d02af1ffd76c1d8e95b85fa2191784ee613af2ecdd4d2465471bb2c41035
+      record: 4c536729189cfcbf84f2b19dc017897d31a3e31d00a085cafcdd8f18cf53a3a7
+    exterior:
+      '[null,"goal"]': a951992a58fa7c40a29e7b26be37723ca587dc9eb49b342914130f7d0237e005
+      '["goal","tools"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tools","map"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["map","split"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["split","retire"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["retire","record"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["record",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 大规模重组
@@ -14,8 +39,8 @@ translation:
 第一轮的标题往往偏抽象，最初的目录结构也很少是理想的。当知识库达到可用的规模后，Agent 可以梳理已批准的内容，提出一个更易读、更直接的结构——此时它的方案会优于规划阶段能做到的任何方案，因为内容已经存在。落实之后，再观察一轮。重组是一系列修订，成本远低于重新生产。
 
 ```text
-Survey the approved knowledge and propose a more direct directory and title
-structure. Show me the before/after, then revise once I confirm.
+请帮我梳理一下已审核的知识，看看目录和标题能否更清楚一些。
+先给我看看调整前后的对比，等我确认后再修订。
 ```
 <!-- /context:section -->
 

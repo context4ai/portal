@@ -6,6 +6,28 @@ translation:
   artifact_ref: b807271a-bf7a-483f-b571-b9b0c5dc0dd6
   source_digest: 8973fd01b0d5073521c53a844a8a899677c179873cffaf4eb2fbd793aeddc9fc
   translated_at: 2026-10-12T16:11:57.590Z
+  source_parts:
+    title: f356a48d42beddd15234ae7bebb718436569fd83b5554fe544261d20234ac356
+    description: 00bdc53227b01dcdd08f94f289277ab21591299a3410c031174154d149048b8d
+    order:
+      - goal
+      - register
+      - cite
+      - page
+      - fix
+    sections:
+      goal: 656359e599045e36058397b45aad0213f22826e58da5a194e1356c295a6c9bab
+      register: 29116f59747bd759358237362d29e112810655cbf8e7e2abaa787aa54cd534e3
+      cite: 90b370ed35fddfa2121dc0bc53b34e1bc92a9b2e696aa09298e7d588a2b0ae95
+      page: c88a18e213d8ad157fef57f91563eb44e1529a3288d80bda8581a5ee53c2fe64
+      fix: 8a162165913f46a76535952dfb6bde557353af5c381a8888d4cf03ab2daf17b1
+    exterior:
+      '[null,"goal"]': f2d17e737d59aec0785761cadc8fe4fdd9084f22bb8fd51b5948bda991523a8d
+      '["goal","register"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["register","cite"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["cite","page"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["page","fix"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["fix",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 同仓库文档

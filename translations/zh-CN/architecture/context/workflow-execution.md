@@ -6,6 +6,31 @@ translation:
   artifact_ref: 3ff2f5ee-2061-4671-b55c-ee136f92f693
   source_digest: d8903c7465bf7fd2b6871d8ca6a0aabac7f1787fb429b2030dfb14884eef441f
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: 504f883a1692a0d43895f45673ce2b6c7ddda52fe2f25d5dc07dd3ec97e661d8
+    description: 1249b3124ddcbbe5d6d2caea4675c1eb2385f16361443801e2193b50ee536c47
+    order:
+      - loop
+      - graphs
+      - gates
+      - revision
+      - resume
+      - improve
+    sections:
+      loop: 20f9f22b72506dbfd3a1587720e934ef940cc42f2a982ebd0a8062d6a0704381
+      graphs: ca6d4835f409d8ddb7c94575eb66b15b06fb622c94b7b90b2911356da3198c2f
+      gates: 76f435434ce45c793171beeab7fdd481ba0799fbe0341e06798e5746573ebdaa
+      revision: 897fcba216f3cc24df60ac19fbe73c1a346a1cfc9a449c03e763fd9dbb266155
+      resume: 0160fa3010532d9484920da29044123ce14d2aadaec961d34dbdf1ec7f0f76f5
+      improve: 48757dd6ffc197007c9c84f520c93aacddec60b090b8401b34c78afeadb46d65
+    exterior:
+      '[null,"loop"]': 21c7fc7e99d839d7d5591eea94725870d8c6bffb807cf7b4697d7442ebb061e0
+      '["loop","graphs"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["graphs","gates"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["gates","revision"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["revision","resume"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resume","improve"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["improve",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 工作流运行

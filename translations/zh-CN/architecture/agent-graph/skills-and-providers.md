@@ -7,6 +7,37 @@ translation:
   artifact_ref: ca9de2fb-56b2-49a2-b8a2-2aa04da3aa1e
   source_digest: 58eddfc5f2837cb1865962abaf091f8ea8b95d449e2ad3278933a3864a449be0
   translated_at: 2026-10-12T18:13:07.981Z
+  source_parts:
+    title: a38131bd0e14262feb4c7612178faee1bea739d957632c85c04c810c8610a489
+    description: 2bc9f8dec9758481167aef37ba31e0f0d3a93bc45939bc942f5d2119ac1190c6
+    order:
+      - layers
+      - binding
+      - locators
+      - sharing
+      - resources
+      - materialize
+      - receipts
+      - sdk
+    sections:
+      layers: 15b768eb965508fc320b3f80382397bc0c0e55c95cef5ca9a431cc099de8f140
+      binding: f7093ae2fed905f2332152882e15c52037f28958708af0714cc293d6842edf25
+      locators: 02dda8e333a85d15be421af3f36a055c52425a2a0b71e70724ae6a1df60ed12f
+      sharing: be9621dcd6ff24687753918b9d711a3e912b27bf526d22c28bdde175e2a75fdc
+      resources: 331dd9ec94d18e0c38b108b75801a0fd3d1ba43d7d7f0876e939664b1935eb7c
+      materialize: 2bb76b4a4338b6c4fb8bed45cb94208618b4083afcb3977ad81b92031925d2c7
+      receipts: e2b4b6db6e6c22398710322992ed7b7f31557c58bd32a0f7e7c5a7eb50e19276
+      sdk: 6b88931fee1e45cc9da03701f75b356b4b37fb9ebf28980425ca5d6b535798a1
+    exterior:
+      '[null,"layers"]': 77750cf43c0660f216215486895c4cc35c0bad04f42ed70b4f6d3dcf228c819a
+      '["layers","binding"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["binding","locators"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["locators","sharing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sharing","resources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resources","materialize"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["materialize","receipts"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["receipts","sdk"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sdk",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 技能与 Provider

@@ -7,6 +7,31 @@ translation:
   artifact_ref: 92010645-02ae-41e0-93f2-09c204c9f2fb
   source_digest: 0aebc5e6c4dc92b51b444f54629db3b8cb0ef917d4285146abc703102fd7cb11
   translated_at: 2026-10-12T17:45:55.217Z
+  source_parts:
+    title: 3e68cf5cd62ae836e105dcb08b006a5b77af5cdb72655599a8403ca7030cb13f
+    description: 6d0ef6e25a94c316f933aba7af70f47e767cafa5ae37009dd5bedb8910eaddd4
+    order:
+      - goal
+      - plugin
+      - install
+      - query
+      - code
+      - next
+    sections:
+      goal: afd81e26809fb49966232af2b99fbc7b8182f5746120b14c2c49b405a0dc5507
+      plugin: 14dede7d213221caf6c14b9458c88cde507ec3cf8aeb57f47428415d2def289d
+      install: 5f4130ef074a68a5c49be1f822152187d6d7d504a8f22d38dc3ec25029b44714
+      query: fd0aebc1692bea73f32e079564529dd5142921d52833cc6bb5acce04921a5996
+      code: 066cea223062986e5dcb2f70b72fbb8fdf0a8017211f006cc449e6b71b0e569c
+      next: 20163006616140ac88252cc3a5cd61cb1fe0d61246064dc496b1f4740c79d6db
+    exterior:
+      '[null,"goal"]': 08911589129f70d49b4985c5a959e77942219e959cfcaafaae4e26e974dbae41
+      '["goal","plugin"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["plugin","install"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["install","query"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["query","code"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["code","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 与 Context 协同

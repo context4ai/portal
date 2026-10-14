@@ -5,7 +5,26 @@ translation:
   locale: zh-CN
   artifact_ref: f38982c1-617a-487a-b0bd-13a6a28d01cd
   source_digest: 822d952e22b2ddcb87e8c18120add84884f7c0a7c165fc519a54c7c172aeea1d
-  translated_at: 2026-10-12T17:06:40.056Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 790f523aa5ffe407e30fc91eb4f3ec6cffcb162ad91d8c2d6199cc8b3de70616
+    description: de49170ec4db78e28abeea7d55a20cb37427fb95c6cf052348b5abf63a8d570a
+    order:
+      - goal
+      - prompt
+      - sources
+      - validate
+    sections:
+      goal: 6aeeb4f1fae1272bf13c57cbdd44f04721fdcb6652cd9329aa257779e7b769fe
+      prompt: f8b90554cdf127cd5db620461dc090d328b23d094cd2bfc49cde6ad77880995b
+      sources: 863341dc0fa7a8b1e8448ec571c8101518fad5613a820d2cbdef1ca8c22dcbaf
+      validate: 2986a86f0edcbc39ff2e90d1d46a5c1729e0711fec83f26a2ff0db8f1bdddddb
+    exterior:
+      '[null,"goal"]': fc7a42ef766c73b4479ed7fc225d3079d20f85ce1a67579959bdaab813408835
+      '["goal","prompt"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["prompt","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sources","validate"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["validate",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 迁移已有知识库
@@ -20,15 +39,15 @@ translation:
 知识工作区创建好后，从下面这段开始：
 
 ```text
-Research what Context can do, then migrate the current knowledge base:
+请先调研 Context 的能力，再帮我迁移现有知识库：
 
-- Location, content and document scope of the current knowledge base:
-- How it is produced today (scripts, prompts, and so on):
-- Desired published structure and form: keep it as is, or new requirements
-- Historical Q&A or an evaluation question set, to show how the knowledge base is used
+- 现有知识库的位置、内容和文档范围：
+- 目前的生产方式（脚本、提示语等）：
+- 期望的发布结构和形式：保留现状，还是有新的要求
+- 历史问答或评测题集，用来了解知识库的实际使用方式
 
-Turn this into a research report, continue up to the work-start report and pause.
-I will review the approach and plan the batches.
+请整理成调研报告，继续推进到开工报告后先停下来。
+我会审阅方案，再安排分批处理。
 ```
 
 最后一项最重要：真实问题能告诉 Agent 这个知识库是*用来做什么的*，之后它们也会成为你的评估题集。

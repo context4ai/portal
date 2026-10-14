@@ -6,6 +6,31 @@ translation:
   artifact_ref: cadb9370-2f17-4d24-8482-f4e4696d0812
   source_digest: f59e8e9f005b72d7c9e8cc884200de452e5677309ec62db7f3ee9a5898a47f20
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: 764a46010ba14a6edc368e770edf3be8f6850215eedb3cb272b625ed7699d405
+    description: b41de721625d7e2be26f500422e1031d891d37ef5edbeca1fb1564db659dd444
+    order:
+      - goal
+      - messages
+      - answers
+      - capture
+      - speed
+      - boundaries
+    sections:
+      goal: e2418e083bc707e624f4bebf413a9a63127f25b0c96ddda015f11091b6699554
+      messages: 00d46683666c58ea0ab98ab7e372cc4b81c371d2ec3fb30254650dbbee42a379
+      answers: b9b08d72b65eff1d4d2c7de20f61b2494e394d80fc464c443d08dd60e9d3ffd8
+      capture: 08e2208ccea05054e5ecb527b44be355413b70b2135c5bcd62e5372eb98dabd9
+      speed: dd2fa3248f1c5d319abca1cc961832f18350ea337074761295c680501d91f70a
+      boundaries: 3e5e5dd1361ef2d8534e48f503d7900881dccb2d4cc242f53d8d84ebb34ca397
+    exterior:
+      '[null,"goal"]': fa0930cabdc5c99dff3fec5a41b97d1188f64bdf99c25312c5930897cdb6e1df
+      '["goal","messages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["messages","answers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["answers","capture"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["capture","speed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["speed","boundaries"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["boundaries",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 在团队聊天中使用 Bot

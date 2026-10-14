@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: 7d229a92-58ec-41c9-8506-0eb4226471f5
   source_digest: 2450c0687dfea7992c2c643967045fe923fd91ff27d9cee2ac1ca824f1d54823
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: ecfc55f4eca8c03f535b6d85a5a14f708bcaec9fa0eb49d907571516dfd4a486
+    description: 1b722c4a5c40e2936078763c60d274a27dfe0904ae4bfd0e82f51b7b672e8f3c
+    order:
+      - goal
+      - register
+      - identity
+      - resources
+      - images
+      - storage
+      - prefetched
+    sections:
+      goal: 334b54b6871f26f02cd3795c0ec61b682869c23caa1ffe6240455efb900aabe1
+      register: f57eadbc3d78cbd7a5e2db5976ef985925cd33cd2706c774652b3fdcc7f832df
+      identity: b376adc085bef89f19fcf1bcc882305595c80bfcb72daec142f2dfb86643df0c
+      resources: 2230c03209a9a5e0378ddc325dd3ee74a7135a55ff5f8ac54674bf8e25a74c12
+      images: 9f3d7d64d54f674975d9f89fd81bbeea28cb6c949ed5f98ba6f25ea2ebd7ee62
+      storage: d6f248e674dae05c2cf8e52b75c4a1ec265fd85c12bc29d4f323172032202964
+      prefetched: 5afd63224f21d8f82e3520336a6aecfc1421857834e4bfea9e951125f9a76dd2
+    exterior:
+      '[null,"goal"]': d974abbc8aae288cd800ba6913e068142f176363711def72953fc5c7ac50068f
+      '["goal","register"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["register","identity"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["identity","resources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resources","images"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["images","storage"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["storage","prefetched"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["prefetched",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 飞书文档
@@ -84,13 +112,13 @@ captureLark({ source: handbook, resources: { gifs: "reference-only" } });
 
 ```text
 sources/lark/<date>/
-├── <module>.md               # captured body
-├── manifest.json             # compact inventory with hashes
+├── <module>.md               # 采集的正文
+├── manifest.json             # 含哈希值的精简清单
 └── assets/<module>/
-    ├── source.xml            # structured source
-    ├── capture-report.json   # fidelity and resource handling
-    └── materialized/**       # downloaded files and exports
-knowledge/assets/<kind>/<sha256>.<ext>   # only resources approved pages use
+    ├── source.xml            # 结构化原文
+    ├── capture-report.json   # 内容保真和资源处理情况
+    └── materialized/**       # 下载的文件和导出内容
+knowledge/assets/<kind>/<sha256>.<ext>   # 仅保留已审核页面使用的资源
 ```
 
 来源资产是证据快照的一部分，因此请把它们保留在 Git 中；二进制文件较多的仓库可以把 `materialized/` 存放在 Git LFS 中。当文档或截图有访问控制时，请将 Context 知识工作区设为私有。

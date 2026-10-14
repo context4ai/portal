@@ -6,6 +6,31 @@ translation:
   artifact_ref: 5b6c8717-a113-4829-8d95-76bcc731fcad
   source_digest: b356340bcd29ffe49e1ef521d7d83e89bc28b95d55ac8825674cd44156567f76
   translated_at: 2026-10-12T16:11:57.590Z
+  source_parts:
+    title: 2f856549ef7f25bd8084cb9f6d1493633e2026576fedfba52f75a59e76d19882
+    description: 541b2f314e0dcc1876992fee8a95d05b97661433af0e5b75e978ff74db33f1e6
+    order:
+      - goal
+      - layout
+      - three-checks
+      - answer
+      - partial
+      - after
+    sections:
+      goal: 85ad27aa86a8145abc5734c4145acb69d6f5e0c5580492983e77a1b961af18a8
+      layout: 760fcd049413d60157371c978c6c1e5d7ef3d0937d544b362991e510da18c486
+      three-checks: 3d8302433e50bb493ce3f6a29eb2a0f17bdaf0bc08b389841a5e81f5b78e8d10
+      answer: 28b16b4ff285048cee4dfbf146367382beb3f0f427bb0d2c352177625f769806
+      partial: 78a5bec06ef2f7ca900143ad037ba2a7b858400899c479fa0b5ce67cca4e7f6b
+      after: ef0e8267a6d765c4970d6d9c9ed58a2ba9dd0cd96f66ae0339ee8d3af2f9bbf8
+    exterior:
+      '[null,"goal"]': 0241526a4adf3b0dee4a062457f4d36daac09ea468202944ac1cbbe7c566603f
+      '["goal","layout"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["layout","three-checks"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["three-checks","answer"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["answer","partial"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["partial","after"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["after",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 阅读审核报告

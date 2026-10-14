@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.1 — 2026-10-14
+
+### Natural Chinese example prompts and language-stable anchors
+
+- Translate plain-text example prompts and explanatory comments into natural Chinese while preserving commands, paths and placeholders.
+- Links to a section keep the Chinese reader on the Chinese page and scroll to the matching heading, including repeated clicks and back/forward.
+
+Trigger: translation: Refresh Chinese text blocks without changing approved source articles.; module: Context CLI 0.7.70 permits translated prose in text, txt and plaintext fences, keeps anchors in the reader's language and records translation baselines for incremental updates.
+User: qiansc (git)
+
 ## 0.12.0 — 2026-10-14
 
 ### Cold-starting a knowledge base

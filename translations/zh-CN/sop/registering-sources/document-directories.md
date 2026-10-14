@@ -5,7 +5,32 @@ translation:
   locale: zh-CN
   artifact_ref: 8a990784-16a3-4b84-957e-f5058ac73c3f
   source_digest: 23c8d84d7df23ccd5af73921d9901c872c43905c975534b0a3ed7ded099fcba7
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 9c3a83044e5888b9297bc11707ee21e69696963394b0106b7ae8ae5bab22ec91
+    description: 070595428a22c0232d34c0dd0e72cf0b35af033bcdb0a8ffb913ab29b8d0bd19
+    order:
+      - goal
+      - ask
+      - register
+      - capture
+      - sites
+      - later
+    sections:
+      goal: 2d78059a99c17466788b7db83c80089981de9d80357e39feeb28a70254dea76a
+      ask: 0413ecfbb17378b5d133992afccf5454a393cb41f034ac16f28a2b7231783743
+      register: 9f922597501dbde82a96be8eaf34679f80354fb6950c0680655d48088750c8f2
+      capture: 3a5bba8cbe1a3893142d63c94edc1590d57ef1f84fa492a3b1eb9aad72801c19
+      sites: cd05079d8b0499b88867643b2aefc6cb382d62e2e0cb720d8228b9cada830e75
+      later: 0a3fcbe170ee60ffa4d47eb999ab7471c919baf9ea04ff5fe369ab2f81dca859
+    exterior:
+      '[null,"goal"]': 011d5b3c7d7824a4f506b52877b57e1d5a0dd46584dbb892ff0569311228c462
+      '["goal","ask"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ask","register"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["register","capture"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["capture","sites"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sites","later"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["later",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 文档目录
@@ -27,8 +52,7 @@ flowchart LR
 说明要导入哪些文档，而不只是你当前所在的文件夹：
 
 ```text
-Ingest ../docs/user-guide as product documentation. Only the getting-started
-and billing chapters.
+请将 ../docs/user-guide 纳入产品文档来源，这次只需要 getting-started 和 billing 章节。
 ```
 
 你交给 Agent 的运行说明、手册、计划或批次清单都会被视为任务指引，而不是来源，除非你明确要求导入它们。如果要采集哪些文档并不明确，Agent 会询问一次，而不是把这些指引本身采集进去。

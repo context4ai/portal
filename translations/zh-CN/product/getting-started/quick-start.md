@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: a5f433c5-3840-4ddf-8306-59b6a59e4dac
   source_digest: 87641adbae979755889ecd133c4b937211611d8bafa981b0276ad2e89c4ad298
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 328908a83269e0db2035621d0110a68fba3dad6330d66d58a7371cb377e0d5e4
+    description: b252e0f2517c9ef3ad807f7c820b639b3b38387c3c2d8c82d3b3719feda86e27
+    order:
+      - goal
+      - init
+      - register
+      - plan
+      - produce
+      - build
+      - next
+    sections:
+      goal: 4dc3c443055dc32b18336ca4554f9cd450c4c8efe17d01a471e6c6b75b5726a4
+      init: 9ea2e847f747f627553a02716a07b7480a106c1feee64372a4675ff2ac0de570
+      register: dbfbcbb7dfa7624b73b5dbcaad1e2fda0ca4f5d9da3dfc410499f37874246298
+      plan: 94a4f9820316d7f4a8141eb3dce8b92078ebc14075db2a71198928dad2ce393d
+      produce: c15c1fca393c655f6bf532886f1c71d70be71c8fd15d9327410ce05d1d04f1d4
+      build: e6c87db1809b75a7203c79b6e144da605ec915255af42539ffdf185f9f8f29c3
+      next: 16c4bb84ef772cf82005d786d139fcaaa03b8527c2ef0c0c0ebe7d8f4f8d9429
+    exterior:
+      '[null,"goal"]': bd10c71d5833dd1f060139a4bd316c14614fee305b4475e0450a07b40ed8cfb1
+      '["goal","init"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["init","register"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["register","plan"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["plan","produce"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["produce","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["build","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 快速开始
@@ -22,8 +50,8 @@ translation:
 告诉 Agent Context 知识工作区放在哪里、用来做什么：
 
 ```text
-/c4a:context Create a Context knowledge workspace in ./context for our component library
-and its product docs. Readers are frontend developers new to the library.
+/c4a:context 请在 ./context 创建一个 Context 知识工作区，整理我们的组件库和产品文档。
+读者是刚开始使用这个组件库的前端开发者。
 ```
 
 Agent 会初始化目录并安装依赖：
@@ -39,12 +67,12 @@ context status --format json
 
 ```text
 context/
-├── AGENTS.md       # guidance for the Agent
-├── src/            # source, phase and package declarations
-├── sources/        # registered sources and captured evidence
-├── knowledge/      # approved knowledge (empty for now)
-├── dist/           # built packages (ignored by Git)
-└── .tmp/           # runtime state and reports (ignored by Git)
+├── AGENTS.md       # 给 Agent 的使用说明
+├── src/            # 来源、阶段和知识包声明
+├── sources/        # 已登记的来源和采集到的证据
+├── knowledge/      # 已审核的知识（目前为空）
+├── dist/           # 构建后的知识包（Git 忽略）
+└── .tmp/           # 运行状态和报告（Git 忽略）
 ```
 <!-- /context:section -->
 
@@ -54,8 +82,8 @@ context/
 说明要用哪些材料，以及 Agent 应该跳过什么：
 
 ```text
-Use ../component-lib for code and ../docs for product documents.
-Skip the deprecated v1 folder.
+代码请使用 ../component-lib，产品文档使用 ../docs。
+已经废弃的 v1 文件夹就不纳入了。
 ```
 
 Agent 会逐一登记每个边界。登记只记录范围内有哪些内容，并不决定要写什么。
