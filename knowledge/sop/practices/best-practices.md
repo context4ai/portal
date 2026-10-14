@@ -4,7 +4,7 @@ description: Habits that make Context knowledge production go well — from the
   first conversation and early previews to review, reorganizing and keeping
   upstream documents honest.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-14T10:24:19.082Z
 ---
 # Best Practices
 
@@ -18,6 +18,9 @@ These practices come from teams using Context to build knowledge for large engin
 After initializing the Context knowledge workspace, have a free conversation before any production. Explain what the knowledge should cover, where it comes from — document links, repository addresses, the modules you care about — and what form you expect. The Agent researches and asks back until it can write a **work-start report**: the confirmed configuration and scope, the planned content, and the expected package or site layout. See [Start Reports](../planning-and-production/start-reports.md).
 
 Production then takes time — on average about one minute per task. The Agent keeps reporting progress and the total number of tasks, and you can ask for a local preview at any point. After publication, check the package and other outputs; the Agent commits the workspace to Git to close the production.
+
+When the first knowledge base starts from many documents of mixed quality — a large wiki, years of designs and reports, several repositories — use that conversation to explore the code first, screen the documents against it and settle the site structure before anything is written. [Cold-Starting a Knowledge Base](cold-start.md) shows how, with two example conversations.
+
 <!-- /context:section -->
 
 <!-- context:section id="preview" -->

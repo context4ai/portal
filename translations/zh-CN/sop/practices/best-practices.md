@@ -4,8 +4,8 @@ description: 让 Context 知识生产更顺利的习惯：从第一次对话、�
 translation:
   locale: zh-CN
   artifact_ref: 6130b9e4-4934-45ce-980b-2909ab4f206e
-  source_digest: f924eff5683c1e7fd2729979335283e7c2bf6ae208df7cb057c9ec0e5464eed2
-  translated_at: 2026-10-12T17:06:40.056Z
+  source_digest: 777c24e38e2a1ec5009728ccb5c58f10d7003a2de6f9d9a86fed4259eaa3ec08
+  translated_at: 2026-10-14T10:25:47.577Z
 ---
 
 # 最佳实践
@@ -20,6 +20,8 @@ translation:
 初始化 Context 知识工作区后，先自由对话，不要急于开始生产。说明知识应覆盖什么、来自哪里（文档链接、仓库地址、你关心的模块），以及你期望的形式。Agent 会调研并反问，直到能写出一份**开工报告**：已确认的配置和范围、计划产出的内容，以及预期的知识包或站点结构。参见[开工报告](../planning-and-production/start-reports.md)。
 
 之后的生产需要一些时间，平均每个任务约一分钟。Agent 会持续汇报进度和任务总数，你随时可以要求本地预览。发布后，检查知识包和其他产物；Agent 会把知识工作区提交到 Git，结束本次生产。
+
+第一个知识库来自大量质量参差的文档（一个大型 Wiki、多年的方案和报告、几个代码仓库）时，借这次对话先探索代码、对照代码筛选文档，并在写任何内容之前定好站点结构。[知识库冷启](cold-start.md)给出了做法和两个对话示例。
 <!-- /context:section -->
 
 <!-- context:section id="preview" -->

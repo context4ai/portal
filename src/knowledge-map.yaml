@@ -221,19 +221,25 @@ entries:
   - key: guides-practices/choosing-models
     parent: guides-practices
     title: Choosing Models
-    order: 2
+    order: 3
     target:
       artifact_ref: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
+  - key: guides-practices/cold-start
+    parent: guides-practices
+    title: Cold-Starting a Knowledge Base
+    order: 2
+    target:
+      artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
   - key: guides-practices/migrating-a-knowledge-base
     parent: guides-practices
     title: Migrating an Existing Knowledge Base
-    order: 4
+    order: 5
     target:
       artifact_ref: f38982c1-617a-487a-b0bd-13a6a28d01cd
   - key: guides-practices/prompt-recipes
     parent: guides-practices
     title: Prompt Recipes
-    order: 3
+    order: 4
     target:
       artifact_ref: 5c111951-9200-413d-98d2-5ac1bc2bb128
   - key: guides-production
@@ -700,4 +706,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:1f17c87822f4924b7aa899ab1510c48b01df4d890c67287a8bdd218e5cf613f4
+revision: sha256:e1d694b32eafd76763dc2d55e95a2f170cefd92b45d6e845eb9c40322f6951fa

@@ -4,8 +4,8 @@ description: 常见 Context 请求的示例说法：开工、补充材料、修�
 translation:
   locale: zh-CN
   artifact_ref: 5c111951-9200-413d-98d2-5ac1bc2bb128
-  source_digest: a87c542af44207f84a7dbfbf90994a1dd5cd2b873519e82c136ae4bdf53a8c52
-  translated_at: 2026-10-12T17:06:40.056Z
+  source_digest: f5df9124d22803b32c60b0f96807be76bc824e6a66c97876a200cfa3d3ff635e
+  translated_at: 2026-10-14T10:25:47.577Z
 ---
 
 # 常用提示词
@@ -24,6 +24,7 @@ translation:
 | 修订 | “修订 `<article>`：`<problem>`。保留来源引用。” | 一个修订任务，以及针对变更页面的审核报告 |
 | 重新组织 | “重新调研已批准的知识，提出更直观的目录和标题结构。等我确认后再修订。” | 先给出结构方案，然后执行修订 |
 | 规划大型项目 | “为 `<repositories and documents>` 规划一个知识项目。” | `context-plan` Skill 进行调研，并写出一份 `PLAN-*.md` 供审核 |
+| 来源多、质量参差时冷启 | “先探索 `<repositories>`，再对照代码筛选 `<wiki range>` 下的所有文档。`<date>` 之后没有更新的跳过，顶层设计除外；以 `<document>` 为基准。在开始生产之前，给我一份 PLAN，包含每篇文档的结论和三级目录结构。” | 只读探索、来源筛选，以及一份供审核的 PLAN；见[知识库冷启](cold-start.md) |
 <!-- /context:section -->
 
 <!-- context:section id="maintain" -->

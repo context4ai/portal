@@ -1,4 +1,29 @@
 entries:
+  - version: 0.12.0
+    date: 2026-10-14T10:26:05.289Z
+    title: Cold-starting a knowledge base
+    changes:
+      - "New guide Cold-Starting a Knowledge Base: explore code before
+        registering, screen each source group by relevance, reader fit,
+        authority, recency, verifiability and conflict, name a baseline, settle
+        a three-level structure before writing, and keep raw material apart from
+        sources, with two example opening conversations."
+      - "Knowledge for Agents explains how deep code knowledge goes: locating
+        and contract layers up front, implementation read on demand at a pinned
+        commit."
+      - External Entrances separates registered sources, entrances and a raw
+        folder; Best Practices and Prompt Recipes link the new guide.
+    triggers:
+      - kind: note
+        description: A desensitized note on cold-start practice and two example
+          conversations.
+      - kind: navigation
+        description: Cold-Starting a Knowledge Base placed second under Practices.
+      - kind: translation
+        description: Chinese translations for the new and revised pages.
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.11.3
     date: 2026-10-14T08:53:49.632Z
     title: Source Graph code source settings
