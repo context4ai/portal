@@ -1,6 +1,5 @@
 // Check out every registered repository module at its pinned commit, so a fresh
-// clone (CI, the image build) can verify cited source regions and build pages
-// without "Source regions need review" notices.
+// clone (CI) can verify cited source regions.
 import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { $ } from "bun";

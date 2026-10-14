@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.11.2 — 2026-10-14
+
+### Context 0.7.67
+
+- The site opens in light mode regardless of the system color scheme; the reader's light/dark and language choices are shared across sites on this origin.
+- Pages are built without reading the source repositories; CI fails when context verify reports a changed or moved cited source region.
+
+Trigger: other: Upgrade to Context 0.7.67, which leaves source-region checks to verify.
+User: qiansc (git)
+
 ## 0.11.1 — 2026-10-14
 
 ### Source Graph code sources
