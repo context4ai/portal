@@ -6,6 +6,28 @@ translation:
   artifact_ref: e04dd656-57d4-4c93-abd3-568ef2368939
   source_digest: 85f7786de63130780e2685f0074bad4d845124e76f599fbf0b4d77456ce9a59a
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: c513d3cd069084075d588c6b4c2673407fe7f16453f8594df7329478b89bdd2b
+    description: a4cd359603f867a29ef896fdf491f009c5707ee8065e24596276a1685dd4565c
+    order:
+      - flow
+      - decide
+      - baseline
+      - scope
+      - triggers
+    sections:
+      flow: bd588e86daba9b73dfd5fd0b73bddf24c499c432fa5e620314986f467b730092
+      decide: 5ec9902b8ba303ad3f727fbb01d2549c6d371ac1285dc88ea1bb6e7733d549fb
+      baseline: 8ba419c5fd1a959a6bc8369b7ba898488780dfffad1ccdd4b7af12d347dc685c
+      scope: ffffd93e8fa944b29c3918cd63aed6dc1efe47ca5e3efd508e9887a5b1f50f0e
+      triggers: 7fb1504b094bddef6e1fd6ebac2b94b3e59c88a7049f0efcb7ed804923a05407
+    exterior:
+      '[null,"flow"]': cef5d0fe73f18e5b2c030178eb1745d75e936359c48055da418eac26ab909c8f
+      '["flow","decide"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["decide","baseline"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["baseline","scope"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["scope","triggers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["triggers",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识的持续更新

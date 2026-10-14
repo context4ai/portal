@@ -6,6 +6,25 @@ translation:
   artifact_ref: 1e9f9f30-d8b1-45e7-8092-ad23ddb784ee
   source_digest: 42dd69678e59b99424db4e700ded46be83124f361f5dc2f1b88d5cd9a5516cb4
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: ff100b1f617551a636db76678d990baac8d4f26c1b251128c886f13c18b4a80e
+    description: ec181d1b20b55aec53ade9dfdcb43ac5a393ec75ced8a195e767ec47a0203257
+    order:
+      - goal
+      - files
+      - standalone
+      - freshness
+    sections:
+      goal: 7930f5c1e76dddb55720df431be3c98b762ad3103868365ad035c16a5fa340a7
+      files: 860527ebd9b1cb579887b50160ce474c188040897f7fb987f3e4e317efe73a69
+      standalone: eaad1678b67643dd1a435e5037034e39416517b0bd04ed4a6d18466058d2cda7
+      freshness: b45d70883ee0f87ef5d7c9037dc126f2e904ca976bba63d1a447bc17df2169da
+    exterior:
+      '[null,"goal"]': 3e3ddf1d2772c44a74c672a838289c6e907c46796a617074285657ee9c0857e9
+      '["goal","files"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["files","standalone"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["standalone","freshness"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["freshness",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # LLM Docs

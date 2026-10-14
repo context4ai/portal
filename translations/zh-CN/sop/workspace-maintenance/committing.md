@@ -6,6 +6,25 @@ translation:
   artifact_ref: dd7b0c11-4cb7-49fc-aa33-b2cdaadeacaa
   source_digest: f85f5b943f3e4bdb0380227b11b81a10c48c1f6a2f0c0251e773f32f5c7822a3
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: a44edf411a127920f5f6780eba07ddf3a9192c5830f24d4e6139c2f49b2c2d80
+    description: f36d061dd00c2103f638050d8603e6d727f45b7b4a226f9b382fbace95a661b3
+    order:
+      - goal
+      - select
+      - commit
+      - verify
+    sections:
+      goal: 68befefe6fa1382439e62922f3f541732bceaa9fa44cfd67b279f318853dde18
+      select: c5dfac7b54ca5bda63944066570e2e22bb73f3ec952e3e2d929aa6ba4f87e13a
+      commit: bec472274f950d7d349a9499f142095b6de5b6c43146524e3d0417504ee69059
+      verify: e55f30765fcdcce51fcd9cf80be987f698fa6a28ae8cfdcd9b30c57d572e8fb7
+    exterior:
+      '[null,"goal"]': 12d38bbd574198d59ca33e3409615d560d6b5c2eb9fce0522ee3663ec17f54fb
+      '["goal","select"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["select","commit"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["commit","verify"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["verify",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 提交结果

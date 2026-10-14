@@ -7,6 +7,25 @@ translation:
   artifact_ref: 5cdd4f61-6dd2-434e-a112-cc6352704faf
   source_digest: e3206d657ab6ec2a9ca252ceaafbb765981b3703c0086220ed77cd7be0e6e6c2
   translated_at: 2026-10-14T00:33:49.600Z
+  source_parts:
+    title: e5d660a65300115b468c42f081fb586d522d01ca17275d8ee0c954476b5a7a2d
+    description: 20c60eb8023eacf30f86c1868c240ece55ab7b63f5c767223881b29cbb36542a
+    order:
+      - what
+      - problem
+      - principles
+      - mapping
+    sections:
+      what: 0e7d219092babbc771b2c9f936933a9a1f61e7eda3188661e0cc2ef052d79cba
+      problem: 7d5b8d8c94484fdad903b5f900876d6d4717cb5685fcd2498317aef118cd8b09
+      principles: 23b3dc7ba2b919925db5b1bf452a59d0840ba1bf9c56fdb457c7e154c4406d3f
+      mapping: 35941d558c25e4b614ac67ee6cfc4f4eecdf2ce376d069d4516d61fafadaa5fc
+    exterior:
+      '[null,"what"]': ea0ec4ff91ce1a8f853d69040f4242b8fe33356e4ff5b54d9b1e4a5ca8da17ec
+      '["what","problem"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["problem","principles"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["principles","mapping"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["mapping",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Graph Engineering 设计原则

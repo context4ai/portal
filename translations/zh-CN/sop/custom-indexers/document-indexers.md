@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: a3f38c25-85de-4b6f-9a99-dc86485cf82c
   source_digest: baec5db2cbbbb0424a94209641c4995e02a22de48d9e117809d26fde9fb032e3
-  translated_at: 2026-10-12T16:45:10.508Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 08bccde178ab8d8a52bd672fa32726c95f716630af37d3b7f1a225f3b0edf36b
+    description: 276718dd6cb362ef28860584c1fa12fd4a2a82e301d925170802dff3d7c4b21d
+    order:
+      - goal
+      - sources
+      - planning
+      - writing
+      - visuals
+      - example
+      - tests
+    sections:
+      goal: 1885f59d6fa86d4fbc66a5cbfbf2d6c4ec3bb8358bcb1a37890275b01eb0787e
+      sources: 827031551c10322a36c6f7aa9e91e1b9a2749a8cbad1ef973c5cded555d64fa6
+      planning: 2d32045209a264a317796d8914796b2c1da7001c8c1a875ccb191567823d4b1b
+      writing: 01d6f63c9b85a34a5937f45741a0b640f8e690a9352a5e03cca22845dad3dfed
+      visuals: a9e35f8a822b47358f45d3b4fe23fbbbd16c8c730cfcbcac997e5ab06c425c51
+      example: 25f45ac6a382aa96f7623df64194b936e60f27a6dac02d2f2528032dc04b3b20
+      tests: f9bb0a2820df5226af88a2b361d3d2b8b27dc329f0a5e708975057a765d01532
+    exterior:
+      '[null,"goal"]': 46122d887c1f98187ed3f62400a63095ac3718f39fe8fc27ca8dc7366cbecb9b
+      '["goal","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sources","planning"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["planning","writing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["writing","visuals"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["visuals","example"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["example","tests"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tests",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 文档类 Indexer
@@ -67,9 +95,9 @@ Indexer 处理的是已授权、已采集的 Markdown 及其来源标识。采�
 design-review-indexer/
   SKILL.md
   references/
-    writing.md     # decision record and architecture guide outlines
+    writing.md     # 决策记录和架构指南的大纲
   tests/fixtures/
-    reviews/       # three anonymous design reviews, one superseded
+    reviews/       # 三份匿名化设计评审，其中一份已被替代
 ```
 
 ```markdown

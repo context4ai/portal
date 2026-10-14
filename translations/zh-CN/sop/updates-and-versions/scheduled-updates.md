@@ -5,7 +5,26 @@ translation:
   locale: zh-CN
   artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
   source_digest: f10201c246b8ed1c7d6c952d189e28c14b5123176bb4732f55e5583a37d62f7c
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: dd7de71c95e636fd7a263bb57245422674e0b5ec246fa97f0f0892d2db6f52aa
+    description: fe62149180d5ed578d6857a1f508ab10a10ae468bdf5fc91213acdf882d00a63
+    order:
+      - goal
+      - prompt
+      - policy
+      - what-runs
+    sections:
+      goal: 8a42553f3ac93f1355546d8ccef7efbfce1ce8993b57d44c5954ef8f8df52818
+      prompt: f30a25495a5ac0eb1f87a3bb634f0bd6ab278aa252a1089d7d74a117f20da212
+      policy: 4bf869c68af23e83027a1ac1f701e50fb7890592c7840364d7fe8d4ef7fac992
+      what-runs: eeb3e8f68fde590679a21e97a02048b95c5e8c7dac56bedde2d56344fa7d1bc3
+    exterior:
+      '[null,"goal"]': 3e6a1e00b02bfb183c08195bb415a788c4e6b587c8276269f3385618dd57aca5
+      '["goal","prompt"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["prompt","policy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["policy","what-runs"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["what-runs",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 定时更新
@@ -33,10 +52,9 @@ flowchart LR
 - **交付**——是否构建，以及是否允许发布任何内容。
 
 ```text
-/c4a:context In ./kb, check billing-service and the billing docs for changes
-since the last processed version. If nothing changed, report "no change" and
-stop. Otherwise prepare the update and stop at Knowledge Review. Do not
-publish or commit.
+/c4a:context 请在 ./kb 检查 billing-service 和账单文档，看看与上次处理的版本相比有没有变化。
+如果没有变化，回复“无变化”后结束即可；如果有，请准备更新，到 Knowledge Review 时停下来。
+请不要发布或提交。
 ```
 <!-- /context:section -->
 

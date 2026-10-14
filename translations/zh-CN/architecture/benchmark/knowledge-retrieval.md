@@ -7,6 +7,49 @@ translation:
   artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
   source_digest: ba3e17cb1258423962cf0f68e400453b8c4fe8f7f02b3a8d9c3de371eb82f3f4
   translated_at: 2026-10-13T08:58:57.547Z
+  source_parts:
+    title: 4934d502ff3f348830728741545790bdf9ac26a5b10748135bf836a3840ef19b
+    description: 382d688108e421eb26f3b6653e83616298d28ddb3b9d185abc25d9e9858131df
+    order:
+      - summary
+      - setup
+      - questions
+      - common
+      - same-model
+      - models
+      - observations
+      - attribution
+      - startup-estimate
+      - priorities
+      - cost
+      - limits
+    sections:
+      summary: dbb59dd2a2e3aa856aa09d31418d60377d40881a9e63a9c0f6eaac6a9ba41fae
+      setup: 939195f82fe485e78625b8bd0216c281e369531e4be48489b758f27238e8010f
+      questions: 21ad483fd164366f3ea11d15a6daeae5fc386da974e712b1b931f79186d463b2
+      common: a0aba952d09707a8e865cfe0b77fedae6d376a9debaf26e203ef2566ddf25571
+      same-model: 1c06b5dcda2ad646ea1f61c9169c0ab8a1de76ffb13edf4fde2f0c5ed3a6d39d
+      models: 1e7b47c336ba74952df31e44c9854bceb4e5e876fe57b28d4c96778a8b067e1d
+      observations: ce969602562e586c91897b8d0182d27130792233a74bcd22b8540c05329b4bbc
+      attribution: 2ae55c15ea9cf6c4e80f81eed225e9b7f07c517ddd01869a750a193da8d840f1
+      startup-estimate: 0de3ee1a8a73dccd6614765f6f5a7a976c7113b1651568552a967087a4269ca2
+      priorities: eaa1c8900e7adbd7dcc7649233be2a708b261fe0f50f94d69216cd7d32580a8b
+      cost: 2ec9c9e1643cc0ff038c532631c3003191bff5d42b5d0a8f9a63cd9ae752f422
+      limits: a2d80d8447cb0fca02ebdae4221c756e5300eb7345648531e8870388e48d6750
+    exterior:
+      '[null,"summary"]': f7109aa8089e979c17d0da3bea5c16e7815afc7b188f200a6088730b52cb17f7
+      '["summary","setup"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["setup","questions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["questions","common"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["common","same-model"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["same-model","models"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["models","observations"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["observations","attribution"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["attribution","startup-estimate"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["startup-estimate","priorities"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["priorities","cost"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["cost","limits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["limits",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识检索测评

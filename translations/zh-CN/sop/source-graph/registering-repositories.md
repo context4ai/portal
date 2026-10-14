@@ -6,6 +6,28 @@ translation:
   artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
   source_digest: 6ce48d5fc51bccb68abedd5a1c52039889c221595c00432d13f8a00a96da9db6
   translated_at: 2026-10-14T08:53:43.639Z
+  source_parts:
+    title: 314fd346ad986615ed2d1924b7419eb863524b96e3eab4edc14cd51639e13a8a
+    description: d18c94e8d700c6d6a6dd7183bb9f27302ef414c5d53225e45ddbe3ab15b1a91e
+    order:
+      - goal
+      - fields
+      - private
+      - monorepo
+      - after
+    sections:
+      goal: 7fea1ba84de9292580708644470d1b63e6ea07509f9121547f5d1e974cab0961
+      fields: 4bdc6fe4dec3b1fcd05d5905e1c7da6121ccf783af1c9377fa4206a8c8c01545
+      private: 478966f99947b29aa670c7cc8120c820c49dced4357c6b9f11a1446e14b1e34b
+      monorepo: c99bfd3535aa8a8811cc321a12392125b05f0969f6c4d41eb0379ab723d25c3d
+      after: 37baa77e92ead3119833098c10fccba8f3c098d32ad8a7dbf57c0d57ebc3d1a0
+    exterior:
+      '[null,"goal"]': 25ae8564da2f1c53ac18aef46fe0e42c35f2b89ffd01ec6e30d324bbefe0428f
+      '["goal","fields"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["fields","private"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["private","monorepo"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["monorepo","after"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["after",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 登记仓库

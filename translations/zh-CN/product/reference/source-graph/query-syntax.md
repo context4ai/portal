@@ -6,6 +6,34 @@ translation:
   artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
   source_digest: 85c2555f582bcb5b40515801721e555422a93ab8ab362ed7c4b3080550212c1b
   translated_at: 2026-10-14T02:46:29.384Z
+  source_parts:
+    title: ea3a5afce3defcce0b5a4635f7c27474412d47b02d077edb5d1e794364d23a83
+    description: bd37f622cb09c144fb7277f02448cbab79f78730dbc7e1962e6311b03575e95d
+    order:
+      - goal
+      - pattern
+      - globs
+      - paths
+      - results
+      - web
+      - examples
+    sections:
+      goal: 76d60b23c54cbcf2bbd3765e4ac1d9d5163bb949a83965145077fb0e5fb0e601
+      pattern: a26081400e971196ad8a8b9be633826c8d1a5302df2ede31f7cdd63c7236fed0
+      globs: 94bd0b0bc831641262a9279a2e0f4a7bb1fee1601546163e9a497fc7b54f7662
+      paths: 933c757e235ebd1db3f7635d46de33738680377b714baf61409c73d223a53349
+      results: d2f2f41973725047ddd3f40ac39f80656a7bffe4f832f9c7491483628108fa7b
+      web: 670c9b996eeb215bdceeaef40f3adc0a6593e7e1405c6c09d825690553615b2e
+      examples: bdf9998cc6e1227d2016a4ef39bc72b95472f31ebbda3bdba3a6f86d584b8f2e
+    exterior:
+      '[null,"goal"]': 91d193ebebf7e57a3405666296b65a43a4af0a130b7b56bb4f855686576e2453
+      '["goal","pattern"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["pattern","globs"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["globs","paths"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["paths","results"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["results","web"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["web","examples"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["examples",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 搜索语法

@@ -6,6 +6,37 @@ translation:
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
   source_digest: fdcfb367e0595ccfe3763bed3e0804265f660eff4df114645b1cc2d22f62052e
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: bd4702c187a9a655880be010957d7688c186852ddb6252d52bda2e299649cb9d
+    description: a590521bc7946c0c9c647996096bc7ca049950cef1b3d899e74b0b0045f550e8
+    order:
+      - overview
+      - context-0762
+      - context-0761
+      - context-0760
+      - context-0750
+      - context-074x
+      - context-0735
+      - agent-graph
+    sections:
+      overview: cddc6ee640c0f8804a973a45f12d4db9eb8b61c643992f4cf4b43500127e0220
+      context-0762: 3d1b855e63326207e21fefe2702b5b94786629c5e86c357ea8efbbc82c74c88c
+      context-0761: 275594614224db9e0c15d542493b88c378b6d84f7c23a812a318e85faabf3b0e
+      context-0760: 7dab6163b0482146c38d1fae702276f06cee28edd5c9212a73722733e1d21762
+      context-0750: 2dd8dc2ca1ac810580dc3a2fdb2688a3d4001130e7ea8c8a6b86001d79994290
+      context-074x: 3b30dbb531736f8e4aa0766c1fc4f98b6328a3fa2612ddf17190cbff9b4416a4
+      context-0735: aaa8760f838481bb252e105e36e2555c1cfdc1b60af56775e809d43e8e8caff0
+      agent-graph: 45e3f9a90a354d6f43765f45e200d5af6a791b6254e57dec42d4ee41738d7121
+    exterior:
+      '[null,"overview"]': 4bcd92943b881b8e927b3b6dbc19ce298d07b539a5e4fac98e03046f9f7145d0
+      '["overview","context-0762"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["context-0762","context-0761"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["context-0761","context-0760"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["context-0760","context-0750"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["context-0750","context-074x"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["context-074x","context-0735"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["context-0735","agent-graph"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["agent-graph",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 发布说明

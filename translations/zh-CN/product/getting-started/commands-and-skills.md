@@ -6,6 +6,31 @@ translation:
   artifact_ref: 7a07aeaf-a286-43a3-90c8-d04d2a8a0011
   source_digest: e343c3fb2524996729fa1bed9764de57be42b5a64932aa2037b17b685f296ef8
   translated_at: 2026-10-12T18:39:20.106Z
+  source_parts:
+    title: 551889e3861b307253c671afb3de4c39e0483a53cfda4f32c544f71972fe1a2d
+    description: 1fd9afd055e682d6198e12548ba0f9c2ea4eb74b56f93cde99f4752515739bf6
+    order:
+      - goal
+      - invoke
+      - hosts
+      - automatic
+      - never
+      - requests
+    sections:
+      goal: c54ead24b4e40b234d4bf6c5e8ba98abb9afebb8b6a6c72fc577d99fcc4e74b7
+      invoke: 96dec651d77ed0cd32dece8ee44e55ce451fabcd3b0a3968546f9171c80a9c5a
+      hosts: 51e9736dc0496eb71d216513fd50d160b2ebf997a9d415c13538a506f5e65e7e
+      automatic: e336afd33c6a9145472a98812ff674323105de0c38b05664684d101cdc952fad
+      never: 46d68a933e524908a0367e5440166accfb2bd6a362eb7ab5cca889e8242817fb
+      requests: 8e6eda579bbd5f0a6573f629a60c76b2a760c2eedf068bce0fa7c9321c83c401
+    exterior:
+      '[null,"goal"]': 1305505b487ba7327366db5457ea25e59d67b0f0ad1b7e3180a305dadd01a98d
+      '["goal","invoke"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["invoke","hosts"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["hosts","automatic"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["automatic","never"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["never","requests"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["requests",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 命令与技能

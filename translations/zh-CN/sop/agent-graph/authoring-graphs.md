@@ -6,7 +6,41 @@ translation:
   locale: zh-CN
   artifact_ref: 80852a65-4353-42fc-b0e9-f935d3b0c3ee
   source_digest: 6f01d9dde53e367432d3543ff8cb53d10cac58ed998f1f2652b4a04e2c129a30
-  translated_at: 2026-10-12T18:13:07.981Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: a87d4615446c2b4cb2f29e268d3b92ac530db526965e12db6c5baf4bf6d2ccc4
+    description: 7d76ce81db315ebcf815d38e5417007bb5a23b766c46990b7f51e3d2370c8eb1
+    order:
+      - design
+      - layout
+      - example
+      - actions
+      - facts
+      - edges
+      - gates
+      - resources
+      - subgraphs
+    sections:
+      design: 5c5cd80de0c10770241cb2f1b80b6ea49058ae643cc8812e3cf0352b30ab2946
+      layout: 67e3b9b47e568e3f6d9ba9f45f9835ce5c8019e58c1b2a635e7b265de144cf8e
+      example: 812d05c9488c0a8096260c2096afecefadb80082fb3d3672d6279f1cb517f405
+      actions: e645dc9da07fd368d6035be7e5569eb3465fd059892670f6fbbd57491a185e5f
+      facts: 10429f95ac5beb7888c82af658395ba6918ba62d145a572b9c31c51f8b1597e1
+      edges: 529e7e819a54f1cecd8cf1235d359969740a9b3d92bc746eac0d84ab2966130d
+      gates: 0c28e6b03799b361908c20bfba9ba5d89d59598ced071edb5b4e642d83ed507e
+      resources: 50e442c0a7b2e58abea841cea24e5f1789248b3eff363215eca8922e8e8a49eb
+      subgraphs: 15d62a4e4091b0076e14b9866dd85d06d2e208a5b2008883b0e3a0703a1ef3c9
+    exterior:
+      '[null,"design"]': 31c9eaefc9b56d3edddfc27c41c0b47a100734179a512b31423b9f6f81c30061
+      '["design","layout"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["layout","example"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["example","actions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["actions","facts"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["facts","edges"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["edges","gates"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["gates","resources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resources","subgraphs"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["subgraphs",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 编写 Graph
@@ -32,13 +66,13 @@ translation:
 目录名只是约定，不属于协议。所有引用都相对于 Provider 清单，加载器会拒绝任何逃出 Provider 根目录的路径。
 
 ```text
-provider.yaml   Provider ID, version, Graph list, optional Code Catalog
-graphs/         Graph definitions
-actions/        Action contracts
-skills/         Agent Skills used by agent Actions
-resources/      Procedures, templates, schemas, dynamic view descriptors
-schemas/        Action input and output schemas
-tests/          Graph tests (not shipped in the bundle)
+provider.yaml   Provider ID、版本、Graph 列表和可选的 Code Catalog
+graphs/         Graph 定义
+actions/        Action 契约
+skills/         Agent Action 使用的 Agent Skill
+resources/      流程说明、模板、Schema 和动态视图描述
+schemas/        Action 输入和输出的 Schema
+tests/          Graph 测试（不随包分发）
 ```
 <!-- /context:section -->
 

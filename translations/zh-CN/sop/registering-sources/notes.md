@@ -5,7 +5,29 @@ translation:
   locale: zh-CN
   artifact_ref: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
   source_digest: 5a4fe12c42a6f43eb41ca8c4471f5d4b28b4696485a3b64fb0a0e6161d218ed9
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 8a7525b1492fb84833f5c4a69b30f4bfbb134f9b666b61a2c1872d63d234c085
+    description: bd73a8b8e33251233ee3bc0fb1f091f63e46953b48e623eb8efc721f31d8f131
+    order:
+      - goal
+      - prepare
+      - save
+      - writing
+      - correct
+    sections:
+      goal: 834178baba2d98fbcf50493039ad00d7b65a9dc3cf16a8edb6037347b1ef23ca
+      prepare: 19fa6dbfc12c05763486d43090aefb0de048930ac374d9d82a8053bb946a4744
+      save: c8127c661195f7238b1f763f5f4cdba2cf120c38167b0483910c5f55563c61df
+      writing: 26fa3b3ba783e9a9070683a014502d7116055528340a98b02881e42b365e32a2
+      correct: fc13e5e61b24ab9c8654462581b52b78b529f8af05c00410f30d13ef027aa36a
+    exterior:
+      '[null,"goal"]': a510c5cf6eb3f60d592443e63d03bcda952e157eea94c9cd76a4695426cb51e9
+      '["goal","prepare"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["prepare","save"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["save","writing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["writing","correct"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["correct",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 笔记
@@ -35,8 +57,7 @@ translation:
 用自然语言告诉 Agent：
 
 ```text
-Save these release-process notes as a Context note, then use them for a
-page on hotfix releases.
+请把这些发布流程笔记保存为 Context 笔记，再用它们整理一篇热修复发布指南。
 ```
 
 Agent 会通过 `context source import` 保存正文。仅保存不会启动任何知识工作。要在生产任务中使用该笔记，Agent 会在 `src/index.ts` 中加入它的类型化引用，同时保留已有的来源和阶段：

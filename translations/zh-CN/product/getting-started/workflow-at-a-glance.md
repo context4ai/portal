@@ -6,6 +6,25 @@ translation:
   artifact_ref: db32d01a-0cfe-494c-bfc0-644be1583c78
   source_digest: d86325f616287d40348da52a24419e53a8f48beb456197a8a59d459e55d4ed46
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: 1f4fd4e531b929007075bcbd276259a1c92f06801d3d2ce0d0d3e05a2f30ba7d
+    description: 1bf91fb2de075223ddd15a3c3e4d5e8e345cdd3f9f1d5ea01d80a2763a4c0d9e
+    order:
+      - steps
+      - durations
+      - lanes
+      - loop
+    sections:
+      steps: 3bae387fe41bd510c00a03bab7f54988ec6af6a73f8b6e996f0b3d1f17456a40
+      durations: d7ff16b4ac66b5d7f778b1ffc1974d5f735ea267916241f033e1c2548d4d9ba3
+      lanes: 70258592976392a91d29182a31aa3f51a5fe64ad3d9d52ca27229f8bbd27c8c4
+      loop: 42ff50645d2bf1833592d8083e9198c7d488be51b6f0bced63db7cf827210ca7
+    exterior:
+      '[null,"steps"]': 15478ddb9c43c1c2154aee556c985feb25c2b93329940270225696f130a13bed
+      '["steps","durations"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["durations","lanes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["lanes","loop"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["loop",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 工作流概览

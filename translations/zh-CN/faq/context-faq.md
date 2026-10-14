@@ -6,6 +6,25 @@ translation:
   artifact_ref: c159a1f9-e117-446a-92b5-b8a5a46703f9
   source_digest: 3016a6ce3c15d078485b7b45d43552a13b66846e885ae824d5986970e3d1d0f5
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: dbc468a14b601d5d9240aeb72b9fcd2f8aed2f4e30932876edf8d16ec313846b
+    description: 4b6c198f80701b98645b912520d90068020aa26c09d013becaf429d3bb627e0f
+    order:
+      - central-or-local
+      - quality
+      - package-vs-wiki
+      - maintainer-steps
+    sections:
+      central-or-local: 0a3bc84618224b239731d1846c883ee385453a9c7b87aa3c735f023cbbd4df25
+      quality: 2368c18cc6e09222fb949bb45359c9b40a0fa4226219a76bde581a4a419695c3
+      package-vs-wiki: 382a6bda52c077f74d3102bda843b8d05f8ee864ea51c5eed291023911cb2942
+      maintainer-steps: 7738c4c855fd61dc7335f18f41782d8124b43dcb498b0462c3e99cc38db0b98c
+    exterior:
+      '[null,"central-or-local"]': 55c515123d1848de1d09d780eba2493376e27db968bdd550a3f6b179332e3d64
+      '["central-or-local","quality"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["quality","package-vs-wiki"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["package-vs-wiki","maintainer-steps"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["maintainer-steps",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 常见问题

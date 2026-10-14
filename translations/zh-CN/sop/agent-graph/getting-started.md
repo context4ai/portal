@@ -6,6 +6,34 @@ translation:
   artifact_ref: 3eab390f-44a1-49e0-a4d5-317b4705b6b9
   source_digest: 558d5356ec20919ab30c6abd0534482e1c2cbd8b805707c33e9df65e9f8617aa
   translated_at: 2026-10-14T00:36:55.065Z
+  source_parts:
+    title: 328908a83269e0db2035621d0110a68fba3dad6330d66d58a7371cb377e0d5e4
+    description: 47b0b4d89cd7823d31d4db6807ee41db00eed7f179dc03527850dc9b41920874
+    order:
+      - choose
+      - init
+      - validate
+      - evaluate
+      - run
+      - build
+      - next
+    sections:
+      choose: 1d1e0662f6369c8adb6ec05f0267aee29e846a914f95d7e58d83d0a80fd1f55c
+      init: 069cbc9d154bcdc82725c4d21c2f2f5ae228bf577bfb94fa2954cbbebfe89a4c
+      validate: 29223e8af79b24e25ab02e1c98ed336840a58da69036a63f0e0bdf7e50bfb00c
+      evaluate: 7fae2422fa7c2bc293a9046bac726e6be5b98f53ffb95888d3823c7baf508eba
+      run: d3ec00fdca315e60ea1b8cb73d74a6648e105568f7518cca408fb371873659eb
+      build: a728d9d1b054ddbbc26081710b1df91dab647ac83cec36c5b93b96d386b75c41
+      next: 208fa6d4f3bc02af001ad70429df69faba795ac4fa9a9ea7190795738658d4b2
+    exterior:
+      '[null,"choose"]': bd10c71d5833dd1f060139a4bd316c14614fee305b4475e0450a07b40ed8cfb1
+      '["choose","init"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["init","validate"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["validate","evaluate"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["evaluate","run"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["run","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["build","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 快速上手

@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
   source_digest: 5264cf9165a0fd9fa38548f0b5b5818ffbf0624f82df5a3df80606e2f5dc3976
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 2d414746fb663bb53f2dba62bd400f602eee5f1a912fdeb1f1bab0d70e37061f
+    description: ac641134c708ca204315dfd2c9dca9aa84453dbb59cae2a13bc42890383ad8ad
+    order:
+      - goal
+      - ask
+      - recorded
+      - monorepo
+      - parsers
+      - clones
+      - later
+    sections:
+      goal: fdd36c5cf8b4f699eedc74383aca478efc4d42128f7c5ba87d3355cdcc7e0f09
+      ask: bb8f184984dd70cfa2f4f680f921e50e850eb8e3bdcc59f18cd0d9acd636ca02
+      recorded: 784068965004d4919e248dd2d78aa250a4ff6e4f9896ebf9a2fc5a98bc90558f
+      monorepo: d1ce2f3c46d45fa1437ed1456246a7e16eb29acc5b0285fdcab119d4f85761c6
+      parsers: e82066450190874d549b5d590f92be3375a1b8da0d56d4b82d784e6d9d6eeaf7
+      clones: 67c923a0476e6768a26c27e88125e13ce94dae388af2623f7a36a79f0cf2ec69
+      later: 536030fcd68c5483c6191ba6a1f0ace5c4129af9165d37648620b6662f500248
+    exterior:
+      '[null,"goal"]': 2e56e6bd767fd0c2769cf540471ebffee370b28c32fbb212913faefdf6bdbdcb
+      '["goal","ask"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ask","recorded"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["recorded","monorepo"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["monorepo","parsers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["parsers","clones"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["clones","later"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["later",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 代码仓库
@@ -28,8 +56,7 @@ flowchart LR
 说明检出目录以及读者需要其中的哪一部分，用自然语言即可：
 
 ```text
-Use ../payments-service as a code source. Readers need the refund flow;
-skip the legacy admin module.
+请把 ../payments-service 作为代码来源。读者需要了解退款流程，旧的管理模块就不纳入了。
 ```
 
 如果你的请求已经点名了确切的本地模块，Agent 不会让你重复，也不会要求你提供远程 URL：它会把每个名称解析到一个本地目录，并让 CLI 读取该检出的 Git 根目录、`origin` 和当前 commit。只有当名称有歧义、没有匹配项，或选择某个匹配项会扩大你给定的范围时，它才会询问。

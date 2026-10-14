@@ -5,7 +5,38 @@ translation:
   locale: zh-CN
   artifact_ref: a68b141a-1f2f-449b-97e2-7942fecaf71d
   source_digest: af69ae44d050f30d8d075b0daec1cfec9533a358a09b696ecefca23a6e3e32e6
-  translated_at: 2026-10-12T18:39:20.106Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 5b001f0d42ee4747d8777c579f6aba94216446b59dc3340291dc179b94f45561
+    description: 06cacddd0da7163ccbbafcd81d196e96987eabcc21bb514811f88d7c31473c21
+    order:
+      - goal
+      - when
+      - research
+      - report
+      - limits
+      - review
+      - stages
+      - resume
+    sections:
+      goal: 7c586e95186c2f38cae14692a49fdb98c4cdf42ccc3d93e80e6c4472ce04bf71
+      when: 31adc7056e4ef4d45a6ed303e8b588c56004603278f98e931cf8f8f00f3d8ea4
+      research: d38d43a8afc1cca964f5886b15d3d12cf93fa20945a3bec93ddee5251bbc169c
+      report: 17c869058e3f372a4bb98995759b9adc9f7a46ece6cb1931eface0b544b85f73
+      limits: 939cc628f786bbe70dcc8575a9dee58f08609eff5832f33b2b06a267c4950917
+      review: 7e82b220038af40f7621ad5518f62c326c125e77a87ec0f0c3a6c368389a03e3
+      stages: 75e8085f303978ed00a0bcef8abd2d7abfc520205e6b4322038821cf1df20930
+      resume: 767a954dc0f56fc69f4c4c110f5c9694efb0312c3c8cb6b32e9979b71cd1b54e
+    exterior:
+      '[null,"goal"]': efbd857b6162df9942b0166fb4661cfb1c8af16e663364b8e067e51d4682b7ca
+      '["goal","when"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["when","research"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["research","report"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["report","limits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["limits","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["review","stages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["stages","resume"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resume",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 规划大型项目
@@ -31,9 +62,8 @@ flowchart TD
 当范围包含**超过 30 份来源文档，或至少两个需要深入调研的仓库**，或需要跨来源版本做大范围更新时，使用规划模式。你可以显式调用 `/c4a:context-plan`（Cursor 中为 `/c4a-context-plan`），继续一份已有的 `PLAN-*.md`，或者在已授权任务超过阈值时由 `/c4a:context` 转交。边界明确的小任务直接通过 `/c4a:context` 继续。
 
 ```text
-/c4a:context-plan Build a knowledge base for our three payment services and the
-design folder. Readers are new backend engineers. Plan it in stages and report
-after each stage.
+/c4a:context-plan 请帮我们为三个支付服务和设计文档目录建立知识库，读者是新加入的后端工程师。
+请分阶段安排，每个阶段完成后汇报一下进展。
 ```
 
 如果是包含多个业务方向的超大 monorepo，可能更适合每个方向各建一个 Context 知识工作区；规划模式不会自行迁移已有的知识工作区。
@@ -48,10 +78,10 @@ Agent 在项目 Git 根目录下的临时空间中工作：
 <project-git-root>/
   PLAN-YYYYMMDD-slug.md
   .tmp/context-plans/YYYYMMDD-slug/
-    repos/          # new checkouts, when existing local ones cannot be reused
-    documents/      # retrieved document bodies and resources
-    research/       # inventory and investigation notes
-    stage-inputs/   # the current stage's production handoff
+    repos/          # 无法复用本地仓库时新检出的代码
+    documents/      # 获取的文档正文和资源
+    research/       # 清单和调研笔记
+    stage-inputs/   # 当前阶段的生产交接材料
 ```
 
 它从目录元数据、版本和已有覆盖情况入手，阅读有代表性的材料和代码入口，只扩展到足以拆分工作的程度。仓库的 `latest` 或某个分支在用作证据之前，会先解析为确切的提交。临时数据不进入 Git；提交的 PLAN 保留足够的来源标识，即使临时文件丢失也能恢复。

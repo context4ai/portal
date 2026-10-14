@@ -6,6 +6,31 @@ translation:
   artifact_ref: cde7ef93-fa8b-4b5d-95e8-40164f98bb61
   source_digest: 06d0bfecead43126560082e9a3f018337f2d25f50772eaae33e55560afae542e
   translated_at: 2026-10-12T18:13:07.981Z
+  source_parts:
+    title: f3851f31fda0ec2b1ab26369aea672bd6b06e79c5ad608da7d141048050daa35
+    description: 37d16e838b689b344cd77e50f08a5be3fdd3ccf9c416aebdb79f9c57e30630bd
+    order:
+      - tests
+      - matrix
+      - ci
+      - bundle
+      - ship
+      - security
+    sections:
+      tests: 079319bd9ee097f083d8d81ff82683f2be48e3d44369218a0330214c5df2fa22
+      matrix: e8d90cc46fd5495f3c2ce740f0bbec8dabeb452a85ae6f9796727df40be7cbea
+      ci: 228271a778af39066f39edf4474540714fc7e9014667426435004cb476b7eff5
+      bundle: 5153f37670da1d95daf5bc18b63387ae50b3675334654f4253e23f8aac5a38d5
+      ship: 172f2954cf25432e05705b549fce441caaf77c266d0a8330719915a968db0d35
+      security: bb0371316b81ed5e46734f92d6b1b2c6ad63f5c8a08798b77282b39bc0ddd342
+    exterior:
+      '[null,"tests"]': 8ac96b4a52e5eaeb8120c49dae9100783aa3e18a4487d3dc2c91a01af93c230f
+      '["tests","matrix"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["matrix","ci"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ci","bundle"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["bundle","ship"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ship","security"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["security",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 测试与发布

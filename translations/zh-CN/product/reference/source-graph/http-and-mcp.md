@@ -6,6 +6,43 @@ translation:
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
   source_digest: 67c87b13afe434cc042094ab8f6d6f4f1375903cf8dcc2dcc13a2d58e334180d
   translated_at: 2026-10-14T02:20:57.619Z
+  source_parts:
+    title: 45ef7bdc9ac8e551aaab1070374c3c2429f71c903433d93bec7e3a212736b6b5
+    description: 62f49084be5cf5fe59e96ffa0837dbee39118917b09ba9bada19106849603543
+    order:
+      - goal
+      - conventions
+      - query
+      - admin
+      - other
+      - mcp
+      - tools
+      - output
+      - limits
+      - errors
+    sections:
+      goal: 53461181b1475cac2dc92860b5749916b2c0a168b005790cbbe6fc6026b178cd
+      conventions: d13c9f9fbf52b87ffa2a7de47a831116b126357bffd504e2667dce45b344370f
+      query: d62f2f3d043bf0aea89de808305eb98cf0bf397f44f0740c3549c7d8a0ab9d38
+      admin: 8f52d081d0583b04c7eba7f56fc7d2c7f317ca4fcab73374f2bd59e58076ea3e
+      other: c3725803a3982875f6ff672ada33472140efa063d5911108fa63f5428b53a5a9
+      mcp: 4688f1f7fdbf007755999dbe1184d0d2def7349fb5a99c814e90e73a95b9a66e
+      tools: 1679d01cec1412e0e515558eb7a2e722cb533cb48a5903ed5d33d7a3f0acd6de
+      output: 7be61c13c8270436ff94857942bfa36f3d53378c272fdf1400950edf21631671
+      limits: 92d6c27d211d5073309eb16347b3edf55d4a698abe0528837d02cd5179368c72
+      errors: 23f24e5933ede13b6f9118ec3d1442d9459db306c78e8f7815c7d5ea603841af
+    exterior:
+      '[null,"goal"]': d1311a6d67374214c72ecaf20263321a4e23084d113cea2a20cb6acc91dfc319
+      '["goal","conventions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["conventions","query"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["query","admin"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["admin","other"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["other","mcp"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["mcp","tools"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tools","output"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["output","limits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["limits","errors"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["errors",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # HTTP 与 MCP 接口

@@ -5,7 +5,35 @@ translation:
   locale: zh-CN
   artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
   source_digest: 4cc415a1c558df20e71a6ff0c515cd03266609c8c439094d485871c3403629a5
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: e363c2912bc337aa463f875e4d6572fbe274005711c000d4dd53339fda61ad74
+    description: 96690d11338c8cad8625813712f683b11dd91dfd7efbaecd1d7d38ad2753fa55
+    order:
+      - goal
+      - switches
+      - managed
+      - bot
+      - policy
+      - required
+      - where-it-stops
+    sections:
+      goal: 9afc2d50fb55b8dd3c4704e106eefca44f513f33094f7ee1a5a2e46dfc76b888
+      switches: d9d80d85bae1dd282282a82343d8d4db36442f1768fba17a755304c205c965c3
+      managed: d1ee079a3a40dbdf216f5fce3366fa4d95027ea7348e098a5ec74d6a67113b84
+      bot: 4f4c549cff697489052701a3ca109f098ccb9d164a04ca33519330254e46c227
+      policy: 3094cab97dd23375f8f20c615636a2a1e433f0f2e6ada7692579d841094b317f
+      required: 50d1c4ac1c4d92bbe3413e49d4f747377553147e46a155a1f1363f84c414b54e
+      where-it-stops: 96827c0f4585bebe9e4a306dd803dc7dde9bba9ae03f5e34f10bc438d7b28cc3
+    exterior:
+      '[null,"goal"]': 968b014662038a8e16e3b1458bd7dbed6e892c1bd03c123fcdb80ee7b1b86fb9
+      '["goal","switches"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["switches","managed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["managed","bot"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["bot","policy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["policy","required"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["required","where-it-stops"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["where-it-stops",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 托管模式与审核策略
@@ -68,10 +96,10 @@ flowchart LR
 当你基于 Context 构建团队 Bot 或知识服务时，它的实例配置——即其提示词中的可信指令——可以为该 Bot 运行的所有任务覆盖任意开关。例如，一个审核人始终阅读 HTML 报告、并且可以在已配置目标内打包和发布的 Bot，可以这样声明：
 
 ```text
-Context policy for this Bot:
-- context.gate.knowledge_review: ask — always send the HTML review report.
-- context.gate.package_output: choose within the configured delivery.
-- context.gate.repository_clone: restore registered repositories without asking.
+这个 Bot 的 Context 策略：
+- context.gate.knowledge_review: ask — 每次都请发送 HTML 审核报告。
+- context.gate.package_output: 在已配置的交付范围内选择。
+- context.gate.repository_clone: 恢复已登记的仓库，无需再次询问。
 ```
 
 Bot 设置优先于全托管默认值和普通默认值。但它仍然不允许 Agent 修改源代码、绕过 Route 标记为需要人来决定的 Gate，或伪造批准：如果 Route 不顾策略仍要求人工决定，Agent 会停下并报告这一不一致。如果 Bot 将 `knowledge_review` 保持为 `ask`，即使是全托管运行也不会自行越过审核。

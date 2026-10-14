@@ -7,6 +7,34 @@ translation:
   artifact_ref: 2b26b459-d582-4c66-b5d6-d1d2bcac0cdc
   source_digest: 4b8273af59b130249f603b4f95c0f47a91d733c01c9dcf1fd23252092c84d69d
   translated_at: 2026-10-12T17:06:40.056Z
+  source_parts:
+    title: 2c8c29f914654fdeaf8252363b7e4172961efcf46c68a7fff67956f282b120d0
+    description: c2a69d1b6a14935a3f9611e2fcb4ec378a46bf9fc982c5a1a33ff71379aca3a5
+    order:
+      - goal
+      - syntax
+      - builtins
+      - items
+      - groups
+      - tree
+      - starter
+    sections:
+      goal: bb9ce493840f1e6ffd79a24921969228678e1c8d4025bc4952509fd7955ad814
+      syntax: 25368d64e86bff5033b9516090ababa65eafdd9ad416c3b9f503e873d7b296c4
+      builtins: 1183777fc4b5047e19f90264761d2f7840d8dc0b12061d2a70e63c684e220b59
+      items: f6193e1cc5a205ef14627ec52fab46b77d9af95404175f8cd3618ea5f32af73f
+      groups: 0fd86bd6131807b8a6345effc41451b8fc42bf9aa6c360903c79e1a4ac270a47
+      tree: bb727f462f963fe4961ced771e74fa7583b1fc4aef3d4e0e7b6291a5b95c7976
+      starter: 97ad26c3488e32c6973c1e9253b43bd5f7f509e2ca89feb408d22bfc544789e5
+    exterior:
+      '[null,"goal"]': 19ceb69dc27ff90bb2bda918be232e3630492e08eeda5c757a60272d28f4054e
+      '["goal","syntax"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["syntax","builtins"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["builtins","items"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["items","groups"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["groups","tree"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["tree","starter"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["starter",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 模板变量

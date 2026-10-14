@@ -5,7 +5,32 @@ translation:
   locale: zh-CN
   artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
   source_digest: 6758edf71bba2733f39d389c971f47bd9397bed6bf91cb378df8cd8d55118aa3
-  translated_at: 2026-10-12T16:11:57.590Z
+  translated_at: 2026-10-14T11:06:04.950Z
+  source_parts:
+    title: 59a00eb0ff745dd506bd6389f34793a60156b0bd04f021f09318f74c8954f0a6
+    description: cb9ce749ec93683b176fb8efa6e918631249730e18aa60ecc6a4d27ba522cf8e
+    order:
+      - goal
+      - ask
+      - acquire
+      - submit
+      - review
+      - only-needed
+    sections:
+      goal: 44641790c1045738db30a225090a237d97063dd6d9d4914b985dd0f35e2e8fa7
+      ask: fc88dc151da98885651d7162c765398c16685e5e0a1f85d9fcc9f49d1d1767e1
+      acquire: 516c98f9230e57c731b5f7c08ac41c74749549824b598eb2c304f302b663da96
+      submit: 9b488484697d2fc2896b3e763db3f3a01473c1ae1d46a547a1acef3a509c0a88
+      review: bbc9720cb0e6eef25ecd25fcb6882fb55eee2c9b35b6d69c0302909314de29b9
+      only-needed: 7e995e90bcdcca6adc2114e94f84099f6534a87925b92cfba42126823afc4ffd
+    exterior:
+      '[null,"goal"]': cffb5b116b5e6091032da4fb9b5ce59a335dd9d1d7b512e44bfaefc68b8914c5
+      '["goal","ask"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["ask","acquire"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["acquire","submit"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["submit","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["review","only-needed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["only-needed",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 更新知识
@@ -30,8 +55,8 @@ flowchart LR
 指定范围——整个仓库、部分模块或特定文档——必要时再说明版本：
 
 ```text
-billing-service has moved to the release-2.4 merge. Locate the affected knowledge
-and update it. Only the invoicing and refunds modules.
+billing-service 已合入 release-2.4，请帮我找到受影响的知识并更新。
+这次只处理 invoicing 和 refunds 两个模块。
 ```
 
 如果只是单个页面的文本有误，更适合用[修订](../review-and-revision/revising-a-page.md)。如果 Context 知识工作区中还有其他未完成的工作，Agent 也会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。

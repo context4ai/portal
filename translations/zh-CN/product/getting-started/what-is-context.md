@@ -6,6 +6,31 @@ translation:
   artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
   source_digest: 1c47d378668beb1adbafae8ee4c8195a6b1e0d7e7bc3f10876b98e95aff1558c
   translated_at: 2026-10-13T01:45:31.351Z
+  source_parts:
+    title: 70470bfed33ea9e95e6416c79f8e8a369c321e46756f53ea84465363a5fe10b6
+    description: d632fa1eeac1349f0418ec7828c7d06baf833d1bc8819dc41b37da39b435a820
+    order:
+      - definition
+      - overview
+      - pillars
+      - who
+      - companions
+      - delivery
+    sections:
+      definition: 0630d1fef8f75848765f4750f20f6fb15e3822101fa65205337fa2331835cbfb
+      overview: 9f1bfc57deaba5d68d3e68b9511e8c6c2583d61fa17e0b625ec5b6f077ca978f
+      pillars: 45b9c6adfb973c15d67c96e1aa7b16bb798e2724066002b2831c707e99b1464a
+      who: 68a47f44778a3c86a919327a97241b549e8d5be1f97e03e03778e04ebb1c3293
+      companions: 4e39e31815f31150a7aab81b12c724c6152d7c5a1dbbe08b6df3574b014650f6
+      delivery: c6fc7589811885a601f253b6356e350196f605a07ecfcf82a1c2df486d99bfd8
+    exterior:
+      '[null,"definition"]': 33f32deaf9e6437989a4bf330390f11ab14292a8192c76b22a4c8e1c4f9fca7e
+      '["definition","overview"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["overview","pillars"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["pillars","who"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["who","companions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["companions","delivery"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["delivery",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Context 是什么

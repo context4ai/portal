@@ -7,6 +7,37 @@ translation:
   artifact_ref: fd95763c-8fc0-4d24-9a8b-a98d660e21ad
   source_digest: 18f10a01aa410368f0ad24003de3b8690735e376f7fdb0d8f97bda943eecabe9
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: 2abfeb00770ffe5bbc5023d55335d3081b749c10637c486615e85090f3752495
+    description: 4574730569df18a6e1502eb383c8bcf6f53594edbfa1cf23b94832ea508b9190
+    order:
+      - loop
+      - provider-graph
+      - facts
+      - outcomes
+      - evaluation
+      - route
+      - gates
+      - reasons
+    sections:
+      loop: 6780260bfe72e49ced7c0e4d36930fc236b3d11f9c0a1bea97b94d38066355c4
+      provider-graph: cb4dad1f35c4811265b95e83ce043cb0d8c36f42bfe71994452dbf9a2fdd4ffe
+      facts: 09b061fc3fef97c8e735aafc86a10e7311f8cd72337da2e6e7f1b351073e1f66
+      outcomes: a6bd1515eeb2e2d369b8391cb3e69d906b89f565356373ffeecfa218588d222c
+      evaluation: 3404b39bf39a6c18d97fb797ba13d8d6843be3b479d3778ec36c7ef3fdfbac9d
+      route: 8808ec6f3427d30171f30362068c41456f839bda7441208ff25f893cd07d11df
+      gates: 0fb98ef36305e3296d0c09206c2ae343e38a18a45e7764ea6b41d81d052ac496
+      reasons: 3c450bea9d7e45f65332a7f2ed1d7d38454ca37bea4b25e61577f0550051be08
+    exterior:
+      '[null,"loop"]': 7a2643329b0783202ff005531cc5b2cdb89599969d35b79a506461dfad973a74
+      '["loop","provider-graph"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["provider-graph","facts"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["facts","outcomes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["outcomes","evaluation"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["evaluation","route"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["route","gates"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["gates","reasons"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["reasons",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 核心模型

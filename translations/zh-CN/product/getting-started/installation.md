@@ -6,6 +6,28 @@ translation:
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
   source_digest: 8669837a37ba36c92024ecac33a87f95abdd0979f5fb38117ebf5e8c26fd34bc
   translated_at: 2026-10-12T18:39:20.106Z
+  source_parts:
+    title: c3fc54aa5390dc2c333d4bb596a339d552ad787337c1fdaac3957ca5a7facf50
+    description: c32f32d7ec7b0d751766624d4ab2f91417f68723bc2ab5f74d455247dff5f962
+    order:
+      - prerequisites
+      - install
+      - entries
+      - local
+      - verify
+    sections:
+      prerequisites: b7079bf47a596a52e8bce6aa310c1f81b24fc72062d764bf8b789177fe13a4d2
+      install: 89decf3a1eb9035c2a8570736ff4b559b71a66d124d95e020bcf66e1a360820d
+      entries: 750895887d71cd34724765f3166ba07e1f442c181933ddcb335aeb485618f45a
+      local: 7eb3c6f34a89328675c452e857ad47f58cb85f1b553d9327be8181055f3383ab
+      verify: 4805e21b49de1fb6272122d4d2827f167dba1709063cc17104cc628daf1e7423
+    exterior:
+      '[null,"prerequisites"]': cc5c68c903b218bb1131f58837f039c54cf3e53a71a6e451f9a347fb886487e6
+      '["prerequisites","install"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["install","entries"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["entries","local"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["local","verify"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["verify",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 安装

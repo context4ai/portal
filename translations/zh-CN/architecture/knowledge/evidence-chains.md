@@ -6,6 +6,28 @@ translation:
   artifact_ref: dd332587-8faa-4ebe-88ca-247cfb146ba5
   source_digest: 293faab9054497d09a6448f7b738557ce1c30f8cd84e28bf1ef055e203947a00
   translated_at: 2026-10-12T16:45:10.508Z
+  source_parts:
+    title: a6df28bbcafb55c80528181c7dbcefe8dd329a5baf7c3eae7814b23c6e91b152
+    description: 416ea4877802430e553d97d8b67f6e64903eb6fcdc6c88a9d5b04d9995b8c404
+    order:
+      - chain
+      - sections
+      - verify
+      - index-first
+      - site
+    sections:
+      chain: ebfde52d775d6d0bd56337fc3da14073425a9753d054d45707c0ad42d508f72e
+      sections: 883ac64875c1add606eb053a13bc2b1d4a5447a09e8c49516ef0cc8d90263bdb
+      verify: 3486d347654558dc5c63b8adc8a06f988854eb9bed21f01e80b4cac135f91d54
+      index-first: 94af68cafc81ef90062f7d08d1ee47cbf65b2d2d46fe074e925410e63a639144
+      site: 2f95540f5fc7445dbf2872584f7f656c4e7fb2e96aa2571ac962e90ff4600e84
+    exterior:
+      '[null,"chain"]': 3ab45e44e6b05496b528d87c6ea26f7bcb61325172d8bc3f2ad9d99c73540c7a
+      '["chain","sections"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["sections","verify"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["verify","index-first"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["index-first","site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["site",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 证据链与索引优先

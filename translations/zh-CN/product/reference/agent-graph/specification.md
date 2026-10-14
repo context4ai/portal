@@ -8,6 +8,49 @@ translation:
   artifact_ref: 1a8d06d5-bb91-453a-ac52-48ad4e4edc93
   source_digest: 6732ae9c2e36204a0524445224798d7be56b79bb9a2b1271d403eba57ec4e492
   translated_at: 2026-10-12T20:29:53.422Z
+  source_parts:
+    title: 397324160ebbc766bbf841c44bc3fa7e7d3edb4de06bc88edaaf837194ba9bf6
+    description: d9b5c7d9b399e7d61b32cdc0412a48e8ea54d40d6a7c7ac639a8a0983b432959
+    order:
+      - scope
+      - provider
+      - graph
+      - facts
+      - gates
+      - edges
+      - actions
+      - resources
+      - codes
+      - evaluation
+      - run
+      - compat
+    sections:
+      scope: e6171f856646333401f8162a8a0415f0cc6f7905ce12039f7828eab7ffb461f1
+      provider: d7652af7a204aff1ccd7bab7b7601198d9a137b04331c131905181d2e6d534af
+      graph: 0ef7e6ce7ebd6d4111d0356c5462691c9571e4b155a41eb08d37925e3ecad7cd
+      facts: 4622a38541ef5745f8a812434ee1746b4e7c8609928844e854d9289ce211d336
+      gates: f28488a750419097dc9b6b4be1692c3d70e6a221f85160629282955d85f2b2fe
+      edges: efb8e88d560cf56faa72bc2d08af9c4f6d174ef111b03d0e2c8ffcabe076fd6e
+      actions: c19bfaf07d9d8ec2a6d1e6c7584064d6dcaac433a4eddb386ca5cdc1e5f3f992
+      resources: 8ad533200c42bff64c6ec79538437bba829ec828a1d361095680c53142b82159
+      codes: 1a12bedf7bab38b368407d64aeb4fe85eec7967421f0a970778ef6e57536a6e4
+      evaluation: ba763885ba28e4fe7000961b564e71ccabd3d8a9653dd37646240421b192d090
+      run: c0acf4a63e42b34058bbe6a5c917a47ab1d068cc3cf4a9ddbd6d03d6c513fcc0
+      compat: af898cf741bcfc0d12c4ef9ed63d8829811bb4393c13383ddbc8ed06f587ff3a
+    exterior:
+      '[null,"scope"]': f43af3d9aad828ef7a75eb5fe812a979f2dce542fa0c0d708d3fc27df30762ab
+      '["scope","provider"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["provider","graph"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["graph","facts"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["facts","gates"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["gates","edges"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["edges","actions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["actions","resources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["resources","codes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["codes","evaluation"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["evaluation","run"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["run","compat"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["compat",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 规范

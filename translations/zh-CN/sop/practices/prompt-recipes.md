@@ -6,6 +6,25 @@ translation:
   artifact_ref: 5c111951-9200-413d-98d2-5ac1bc2bb128
   source_digest: f5df9124d22803b32c60b0f96807be76bc824e6a66c97876a200cfa3d3ff635e
   translated_at: 2026-10-14T10:25:47.577Z
+  source_parts:
+    title: 3bff60a0066ef0a285d852e48f968adf7ba1b11ccaa395fcb810515bd3540670
+    description: fc70aaa1fb202f236e82cff347a8043d80717dfb07e4b84ed3e620c551368a3f
+    order:
+      - goal
+      - produce
+      - maintain
+      - deliver
+    sections:
+      goal: e66d0c0c7bc1df1cd4248989c387d0e87ab7424271e290141c755c5a2e980215
+      produce: b4c94aec1bfd71dd4603054f423e8e5d4605780920bfa5abfaae914c1fba01e3
+      maintain: 6dfa9fdf112f0980ae548b0af852fc4c0fffac2de1c60a0f1ede42593eb269ad
+      deliver: 6146d47688c53b8ac60d5d8c370c3905b71ba1f094d040662ba8160027cc913e
+    exterior:
+      '[null,"goal"]': 26fc227cf5d29804287ce3035c44cb858b6d1cacb38a50c70400b7fa208757b6
+      '["goal","produce"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["produce","maintain"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["maintain","deliver"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      '["deliver",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 常用提示词
