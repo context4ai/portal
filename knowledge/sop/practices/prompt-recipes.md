@@ -4,7 +4,7 @@ description: Example phrasing for common Context requests — starting, adding
   material, revising, reorganizing, updating, evaluating, migrating, planning,
   building and asking.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-14T10:24:19.082Z
 ---
 # Prompt Recipes
 
@@ -22,6 +22,8 @@ You drive Context by talking to your Agent. These are phrasings that work for co
 | Revise | "Revise `<article>`: `<problem>`. Keep the source references." | A revision task and a review report for the changed page |
 | Reorganize | "Research the approved knowledge again and propose a more intuitive directory and title structure. Revise after I confirm." | A structure proposal, then revisions |
 | Plan a large project | "Plan a knowledge project for `<repositories and documents>`." | The `context-plan` Skill researches and writes a `PLAN-*.md` for review |
+| Cold start with many mixed-quality sources | "Explore `<repositories>` first, then screen every document under `<wiki range>` against the code. Skip documents not updated since `<date>` except top-level designs; `<document>` is the baseline. Give me a PLAN with each document's decision and a three-level structure before any production." | Read-only exploration, source screening and a PLAN for review; see [Cold-Starting a Knowledge Base](cold-start.md) |
+
 <!-- /context:section -->
 
 <!-- context:section id="maintain" -->

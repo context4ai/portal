@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:2400b7223561294cc189fc54b6a0e40f2b8bb758ee1fb79a81d5e6702035941f
+input_hash: sha256:143b1e4e7f8e8a1c9473890a5f229e16b939ab4e4d2891ec5dd9832322e252ea
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -1550,6 +1550,20 @@ articles:
               start_line: 47
               end_line: 51
             content_digest: sha256:462b44b83a7898eea1e7fdeaef4a467c296580a31cf1a3f8229e38f0e5203162
+      - id: code-depth
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 41
+              end_line: 47
+            content_digest: sha256:5a1135a01bdfd51e70e6bd6527cbe0b794eea6e366ccfbbe92bac9f732704a00
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-code-indexer/SKILL.md
+              start_line: 16
+              end_line: 19
+            content_digest: sha256:fa8222094a21125b1bb1952ed6d5d5ab211f66b92ab6866ef8d367bbfea249bb
       - id: ratio
         references:
           - source_ref: note:20261012/compression.md
@@ -6727,6 +6741,123 @@ articles:
               start_line: 76
               end_line: 79
             content_digest: sha256:8ee3b4048138fb9bcabf27bd2bfefb47e2945e70262a46eaf1a84965a84ac0d5
+  - article_id: f211b25b-8b5f-4134-8d16-36aabef6dd0e
+    path: sop/practices/cold-start.md
+    collection: sop
+    visibility: public
+    sections:
+      - id: goal
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 5
+              end_line: 17
+            content_digest: sha256:70d169adff491254cd8c76b0817a41954b03da585ce4659a5e9e8e722083e59c
+      - id: explore
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 10
+              end_line: 17
+            content_digest: sha256:9c1d923d0c5a47de7c2f50447dafd6f3b11e36040ffc4b3a7a40b2c39367cd38
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/SKILL.md
+              start_line: 16
+              end_line: 19
+            content_digest: sha256:840961d0e3d3a4935c7d02faf4b6bc105e2045e2bdb0bc468f9cc9f1bb69564c
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/SKILL.md
+              start_line: 44
+              end_line: 48
+            content_digest: sha256:30cb7bfd92bcf6b666b70b456b9254ec7bcf899c5708c172b55a7d96279b3f2b
+      - id: screen
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 19
+              end_line: 32
+            content_digest: sha256:f57c1caf3de2146f278d0970c19acaccc879c28b0e8b09dbe0dc72e6cc8aa6aa
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
+              start_line: 39
+              end_line: 45
+            content_digest: sha256:bab21f599f577544221447ab98d01b5b060e43d3211430fe3cb2871b15e1b6af
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/references/project-planning.md
+              start_line: 66
+              end_line: 73
+            content_digest: sha256:fc3441255760960d02293cf4b1c62d0d79bbf21040432aefac71f90779456ab2
+      - id: baseline
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 33
+              end_line: 34
+            content_digest: sha256:03a8537ddb476d44c119e72befb0b56545b56fc683cfab4bbfeddb7f8e2fca33
+      - id: structure
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 14
+              end_line: 17
+            content_digest: sha256:c0d7d2a09bf8b81acc1dc21f37ed3ddb213c6a630c79859c80211a26f243bb81
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 38
+              end_line: 38
+            content_digest: sha256:aae7842f4636954149a65e53aa2ce1c6dec4be30d493a763edef763c66fbb6f2
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/references/project-planning.md
+              start_line: 164
+              end_line: 167
+            content_digest: sha256:19e8c89069a40fd815fda4fc3d0f52780e3d46458a3277263cf2857c57b39f87
+      - id: raw
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 39
+              end_line: 39
+            content_digest: sha256:dd4415d9b93973eb99d5bdba38aeb5ab6535fd5498fd0561c9a68e57537341b1
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context/references/imports.md
+              start_line: 64
+              end_line: 70
+            content_digest: sha256:bd29f6675f86e43c9173b828f46fdad3dc469bbfa9c35612c1d75a42a48f2fe3
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 46
+              end_line: 46
+            content_digest: sha256:08c8d539e52920a5b067829156601a5dd3023ed70f5b398a831b004c61c129c6
+      - id: case-business
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 49
+              end_line: 76
+            content_digest: sha256:bb9b189df685473b1a8d25e82d97959a684d03487d7c565f005e1b1ab4687426
+      - id: case-domain
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 78
+              end_line: 113
+            content_digest: sha256:c97afb26d92a9326b64599fc98271ea26dbe507a0826549ba08d1d8d8b791401
   - article_id: 14905f09-233b-41a2-b725-c1c1137d8ebb
     path: sop/practices/evaluating-your-knowledge-base.md
     collection: sop
@@ -7557,6 +7688,20 @@ articles:
               start_line: 39
               end_line: 48
             content_digest: sha256:dab8d8baf7a341ee9bca4415b014095aeebf2d0b39ff621711883173d21f7ffb
+      - id: raw-material
+        references:
+          - source_ref: note:20261014/cold-start-practice.md
+            locator:
+              path: cold-start-practice.md
+              start_line: 39
+              end_line: 39
+            content_digest: sha256:dd4415d9b93973eb99d5bdba38aeb5ab6535fd5498fd0561c9a68e57537341b1
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context/references/imports.md
+              start_line: 64
+              end_line: 70
+            content_digest: sha256:bd29f6675f86e43c9173b828f46fdad3dc469bbfa9c35612c1d75a42a48f2fe3
   - article_id: 7d229a92-58ec-41c9-8506-0eb4226471f5
     path: sop/registering-sources/lark-documents.md
     collection: sop

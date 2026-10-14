@@ -3,7 +3,7 @@ title: External Entrances
 description: Declare external knowledge sites and Skills in imports.yaml so
   readers can navigate to them, without capturing them as evidence.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-14T10:24:19.082Z
 ---
 # External Entrances
 
@@ -61,4 +61,18 @@ The page lists declared metadata only. Check that every entrance suits the audie
 ## Entrances are not evidence
 
 An import adds nothing to `knowledge/structure.yaml` references and has no citation format. When asked to check imports, the Agent compares current versions with `version` using its own authorized tools; a target it cannot reach is reported as "version unknown", never as a change. The CLI itself never contacts providers.
+<!-- /context:section -->
+<!-- context:section id="raw-material" -->
+## Entrances, sources and a raw folder
+
+While researching a new knowledge base it is natural to collect originals in a `raw/` folder with a YAML list of document links. Keep that inventory from becoming a second source system:
+
+| Material | Where it goes |
+| --- | --- |
+| Conclusions that must stay traceable or tracked for change | Registered as a source and captured with a snapshot |
+| Content readers only need to jump to | Declared in `imports.yaml` as an entrance |
+| Hand-collected evidence that cannot be captured reliably | A `raw/` folder, each item labelled with its origin, retrieval time, version, authority status and what it replaces |
+
+An entrance never becomes evidence by being listed, and a `raw/` file does not replace capture when the conclusion depends on it. The screening that decides which documents belong in each row is described in [Cold-Starting a Knowledge Base](../practices/cold-start.md).
+
 <!-- /context:section -->

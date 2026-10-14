@@ -4,8 +4,8 @@ description: 在 imports.yaml 中声明外部知识站点和 Skill，让读者�
 translation:
   locale: zh-CN
   artifact_ref: 9e5aef24-16bb-4f72-9488-298444ea7de7
-  source_digest: 1c63eed8a462e2dd5926ca7bce606f3e168061992f75a98af2acc57f069e02c0
-  translated_at: 2026-10-12T16:11:57.590Z
+  source_digest: e52ff628ed5a184987d51bf694007ad91b576aaf7f7e0e7db8103fbe984730a5
+  translated_at: 2026-10-14T10:25:47.577Z
 ---
 
 # 外部入口
@@ -64,4 +64,18 @@ kbPackage({ name: "handbook", template: { path: "src/package-templates/kb" }, im
 ## 入口不是证据
 
 导入项不会向 `knowledge/structure.yaml` 的引用中添加任何内容，也没有引用格式。当你要求检查导入项时，Agent 会使用自身获得授权的工具，把当前版本与 `version` 进行比较；无法访问的目标会报告为“版本未知”，而不会报告为发生了变化。CLI 本身从不联系 Provider。
+<!-- /context:section -->
+
+<!-- context:section id="raw-material" -->
+## 入口、来源与 raw 目录
+
+为新知识库调研时，很自然会把原文收集到一个 `raw/` 目录，再配一份记录文档链接的 YAML。别让这份清单变成第二套来源系统：
+
+| 材料 | 放在哪里 |
+| --- | --- |
+| 需要保持可追溯、需要跟踪变化的结论 | 登记为来源，并保留快照 |
+| 读者只需要跳转过去的内容 | 在 `imports.yaml` 里声明为入口 |
+| 无法稳定采集、手工收集的证据 | `raw/` 目录，每项标明来源、获取时间、版本、权威状态以及它替代了什么 |
+
+入口不会因为被列出来就变成证据；结论依赖某份材料时，放进 `raw/` 也不能代替采集。决定每份文档归入哪一行的筛选过程，见[知识库冷启](../practices/cold-start.md)。
 <!-- /context:section -->
