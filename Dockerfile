@@ -9,7 +9,7 @@ WORKDIR /portal
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 COPY . .
-RUN bun run sources:restore && bun run build
+RUN bun run build
 
 FROM nginx:1.29-alpine
 ENV SOURCEGRAPH_UPSTREAM=http://context4ai-sourcegraph.internal:8080 \

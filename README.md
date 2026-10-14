@@ -44,13 +44,14 @@ Requires Node.js 22 and Bun 1.3.
 ```sh
 bun install
 bun run sources:restore   # pinned source repositories under .tmp/, once per clone
+bunx context verify       # checks every cited source region
 bun run build             # context build, then the homepage
 bun run check:links
 ```
 
-The source checkouts let `context verify` and the build check every cited
-region; without them each page is built with a "Source regions need review"
-notice.
+Only `context verify` reads the source checkouts; it reports cited regions that
+changed or moved, and CI fails on them. The build does not need them, so the
+image build skips the checkouts.
 
 `bun run build:home` rebuilds only the homepage into `dist/home/`.
 

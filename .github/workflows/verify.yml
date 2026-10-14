@@ -32,10 +32,10 @@ jobs:
       - run: bun run sources:restore
       - run: bunx context status
       - run: bunx context verify
+      - name: No changed source regions
+        run: bunx context verify --format json | jq -e '[.issues[] | select(.code | startswith("approved-source-region"))] | length == 0'
       - run: bun run build
       - run: bun run check:links
-      - name: No stale-source notices
-        run: "! grep -rl 'Source regions need review' dist/context-site"
 
       - name: Nginx configuration
         run: |
