@@ -3,7 +3,7 @@ title: CLI
 description: Commands, flags, environment variables, output and exit codes of
   sourcegraph-cli, and what the Git credential helper does.
 type: Wiki
-timestamp: 2026-10-14T02:19:13.383Z
+timestamp: 2026-10-14T08:53:29.911Z
 ---
 # CLI
 
@@ -113,7 +113,7 @@ SOURCEGRAPH_API_TOKEN=... sourcegraph-cli prepare -repo acme/app -revision <full
 | --- | --- |
 | `SOURCEGRAPH_GIT_TOKEN` | The selected token; empty for an anonymous attempt |
 | `SOURCEGRAPH_GIT_HOST` | The host of the remote being fetched |
-| `SOURCEGRAPH_GIT_USERNAME` | The code source's Git username |
+| `SOURCEGRAPH_GIT_USERNAME` | The code source's HTTPS username |
 
 The helper answers only Git's `get` action, and only for HTTPS requests whose host equals `SOURCEGRAPH_GIT_HOST`. It returns the username — `oauth2` when unset — and the token as the password. It prints nothing when the host does not match, the token is empty, or either value contains line breaks or NUL characters, so a token is never offered to another host.
 <!-- /context:section -->

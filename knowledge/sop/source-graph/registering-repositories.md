@@ -4,7 +4,7 @@ description: Register a GitHub or custom Git repository with its branches,
   retention window, visibility and sync interval, supply tokens for private
   repositories, and split a monorepo into path groups.
 type: Guide
-timestamp: 2026-10-14T02:19:13.383Z
+timestamp: 2026-10-14T08:53:29.911Z
 ---
 # Registering Repositories
 
@@ -53,7 +53,7 @@ Every instance offers exactly two code sources, always listed in this order:
 | GitHub | `github` | `https://github.com` | Public repositories can be fetched anonymously |
 | Custom Git | `git` | None until an administrator or the startup file sets one | A token is required |
 
-To use your own Git server, set the custom source's host under **Settings › Access settings** or in the startup file; see [Configuration](../../product/reference/source-graph/configuration.md#code-sources). A source without a host cannot be used for registration (`409 CODE_SOURCE_NOT_CONFIGURED`).
+To use your own Git server, set the custom source's host on its card under **System settings › Code sources** or in the startup file; see [Configuration](../../product/reference/source-graph/configuration.md#code-sources). A source without a host cannot be used for registration (`409 CODE_SOURCE_NOT_CONFIGURED`).
 
 Registration records the source's current host on the repository as `code_host`, and every later fetch uses that host. Changing a code source's configuration therefore never moves a repository that is already registered.
 <!-- /context:section -->
@@ -63,17 +63,17 @@ Registration records the source's current host on the repository as `code_host`,
 
 Public GitHub repositories need no token. For private ones, store a token for the repository's code source in one of two places:
 
-- **Your own token** — signed-in users save a GitHub or custom Git token for their account. Repositories they register use it first.
-- **The global token** — administrators save a site-wide token for each source under **Settings › Access settings**. Each card names the host it connects to. It is the fallback for every repository of that source.
+- **Your own token** — signed-in users save a GitHub or custom Git token under **User settings › Code source tokens**, one per code source. Repositories they register use it first.
+- **The global token** — administrators save a site-wide token under **System settings › Code sources**, which shows one card per code source naming the host it fetches from. The custom Git card also holds the source's name, host and HTTPS username; the GitHub card holds only the token. Each token can carry an optional expiry, used to warn seven days ahead. It is the fallback for every repository of that source.
 
 For each fetch the service follows the repository's `code_provider`:
 
 1. the creator's own token for that source;
 2. the global token for that source;
-3. the environment token — `SOURCEGRAPH_GIT_TOKEN` for GitHub, `SOURCEGRAPH_CUSTOM_GIT_TOKEN` for the custom source — used only while no global token of that source has been saved;
+3. the environment token — `SOURCEGRAPH_GITHUB_TOKEN` for GitHub (the earlier `SOURCEGRAPH_GIT_TOKEN` is still read while it is unset), `SOURCEGRAPH_CUSTOM_GIT_TOKEN` for the custom source — used only while no global token of that source has been saved;
 4. for GitHub only, anonymous access. GitHub rejects a revoked token even for a public repository, so anonymous access is tried last rather than skipped.
 
-The two sources never use each other's tokens. Tokens are encrypted with the instance's credential key and shown as ready, expiring (within seven days), expired or invalid. The bundled Git credential helper hands the chosen token only to the host of the repository being fetched, with the source's Git username (`oauth2` by default).
+The two sources never use each other's tokens. Tokens are encrypted with the instance's credential key and shown as ready, expiring (within seven days), expired or invalid. The bundled Git credential helper hands the chosen token only to the host of the repository being fetched, with the source's HTTPS username (`oauth2` by default).
 
 Registering a private repository does not hide it from signed-in users; `public_read: false` only removes it from anonymous access. Use sign-in and registration policy to control who is a signed-in user, as described in [Authentication and Access Control](authentication-and-access-control.md).
 <!-- /context:section -->

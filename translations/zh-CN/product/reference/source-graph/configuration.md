@@ -4,8 +4,8 @@ description: 一处汇总 Source Graph 的全部设置：环境变量、构建�
 translation:
   locale: zh-CN
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
-  source_digest: 963ea3f09d4d05c15d21547c4528b3bb50e3250cf1638f3ae8458e0451867c87
-  translated_at: 2026-10-14T02:20:57.619Z
+  source_digest: 08bebd03f4e6c8f38a8ea21799db0e7413d10bbcc6fffd0e6501547f07253360
+  translated_at: 2026-10-14T08:53:43.639Z
 ---
 
 # 配置
@@ -38,7 +38,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | `SOURCEGRAPH_MIN_FREE_BYTES` | `1073741824`（1 GiB） | 剩余空间下限，低于该值时拉取和建索引会停止，并返回 `INSUFFICIENT_STORAGE` |
 | `SOURCEGRAPH_API_TOKEN` | 未设置 | 可选的服务令牌，至少 32 个字符；匹配的 Bearer 令牌拥有完整的 HTTP API 访问权限，但站点设置除外，站点设置需要浏览器会话。CLI 也读取同一变量 |
 | `SOURCEGRAPH_CREDENTIAL_KEY` | 在数据根目录中生成的 `code-credentials.key` | 32 字节的 Base64；用于加密已存储的代码令牌 |
-| `SOURCEGRAPH_GIT_TOKEN` | 未设置 | GitHub 令牌，仅在尚未保存全局 GitHub 令牌时使用 |
+| `SOURCEGRAPH_GITHUB_TOKEN` | 未设置 | GitHub 令牌，仅在尚未保存全局 GitHub 令牌时使用；未设置时仍读取旧变量 `SOURCEGRAPH_GIT_TOKEN` |
 | `SOURCEGRAPH_CUSTOM_GIT_TOKEN` | 未设置 | 自定义 Git 令牌，仅在尚未保存全局自定义 Git 令牌时使用 |
 | `SOURCEGRAPH_CONFIG_FILE` | 未设置 | 覆盖代码源的 JSON 启动文件路径，见[代码源](#code-sources) |
 | `GOOGLE_CLIENT_ID`、`GOOGLE_CLIENT_SECRET` | 未设置 | Google 登录 |
@@ -70,7 +70,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 每个实例恰好提供两个代码源：先是 GitHub，然后是一个自定义 Git 托管地址，例如自建的 Gitea 或 GitLab。它们的字段由三层合并而成，后面的非空值优先：
 
 1. **部署默认值**：`config/deployment.json` 中的 `code_sources` 决定有哪些代码源及其顺序。自定义代码源默认没有托管地址。
-2. **网站**：管理员在 **Settings › Access settings**（设置 › 访问设置）中编辑自定义代码源的名称、托管地址和 Git 用户名，修改立即生效。
+2. **网站**：管理员在 **System settings › Code sources**（系统设置 › 代码源）的自定义 Git 卡片上编辑该代码源的名称、托管地址和 HTTPS 用户名，全局令牌也在同一张卡片上，修改立即生效。
 3. **启动文件**：服务启动时，`SOURCEGRAPH_CONFIG_FILE` 指定的 JSON 文件按代码源 id 覆盖字段。
 
 ```json
@@ -82,7 +82,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | `name` | 显示名称 |
 | `host` | HTTPS 源地址，不含路径、用户、查询参数或片段；以小写存储 |
 | `username` | 随令牌发送的 Git 用户名，1–64 个字母、数字、`.`、`_`、`@` 和 `-`；默认 `oauth2` |
-| `token_env` | 存放默认令牌的环境变量名，只能是大写字母、数字和 `_`；网站上不能设置 |
+| `token_env` | 存放默认令牌的环境变量名，只能是大写字母、数字和 `_`；网站上不能设置。GitHub 默认为 `SOURCEGRAPH_GITHUB_TOKEN`，未设置时读取 `legacy_token_env` 中的旧变量 `SOURCEGRAPH_GIT_TOKEN`；启动文件设置 `token_env` 后不再读取旧变量 |
 
 - 启动文件只能覆盖已有的 id；未知 id 或无效值会导致启动失败。令牌绝不能写进该文件。
 - 启动文件设置的字段在网站上只读；在网站上修改会返回 `409 CODE_SOURCE_LOCKED`。

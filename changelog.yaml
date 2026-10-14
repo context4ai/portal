@@ -1,4 +1,25 @@
 entries:
+  - version: 0.11.3
+    date: 2026-10-14T08:53:49.632Z
+    title: Source Graph code source settings
+    changes:
+      - Registering Repositories and Configuration now describe the Code sources
+        settings page, with one card per source holding its token and, for the
+        custom Git source, its name, host and HTTPS username, and the personal
+        Code source tokens.
+      - The GitHub environment token is SOURCEGRAPH_GITHUB_TOKEN, with
+        SOURCEGRAPH_GIT_TOKEN still read while it is unset.
+      - Source Graph pages cite its new code sources and tokens reference; their
+        other guidance is unchanged.
+    triggers:
+      - kind: module
+        description: Source Graph reorganized its code source settings, renamed the
+          GitHub environment token and added a code sources reference.
+      - kind: translation
+        description: Chinese translations for the revised pages.
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.11.2
     date: 2026-10-14T04:39:35.230Z
     title: Context 0.7.67

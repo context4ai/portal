@@ -4,8 +4,8 @@ description: 登记 GitHub 或自定义 Git 仓库并设置分支、保留窗口
 translation:
   locale: zh-CN
   artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
-  source_digest: d444277b3858dda7dbb0478d4b003f7835bd7d9e609cbfd23649805cef66d9c3
-  translated_at: 2026-10-14T02:20:57.619Z
+  source_digest: 6ce48d5fc51bccb68abedd5a1c52039889c221595c00432d13f8a00a96da9db6
+  translated_at: 2026-10-14T08:53:43.639Z
 ---
 
 # 登记仓库
@@ -55,7 +55,7 @@ translation:
 | GitHub | `github` | `https://github.com` | 公开仓库可以匿名拉取 |
 | 自定义 Git | `git` | 无，需由管理员或启动文件设置 | 必须提供令牌 |
 
-要使用你自己的 Git 服务器，请在 **Settings › Access settings**（设置 › 访问设置）或启动文件中设置自定义代码源的托管地址，见[配置](../../product/reference/source-graph/configuration.md#code-sources)。没有托管地址的代码源不能用于登记（`409 CODE_SOURCE_NOT_CONFIGURED`）。
+要使用你自己的 Git 服务器，请在 **System settings › Code sources**（系统设置 › 代码源）中自定义 Git 卡片上或启动文件中设置自定义代码源的托管地址，见[配置](../../product/reference/source-graph/configuration.md#code-sources)。没有托管地址的代码源不能用于登记（`409 CODE_SOURCE_NOT_CONFIGURED`）。
 
 登记时会把代码源当前的托管地址记录到仓库的 `code_host` 上，之后每次拉取都使用这个地址。因此修改代码源配置永远不会挪动已登记的仓库。
 <!-- /context:section -->
@@ -65,17 +65,17 @@ translation:
 
 公开的 GitHub 仓库无需令牌。对于私有仓库，请把仓库所属代码源的令牌保存在以下两处之一：
 
-- **你自己的令牌**：已登录用户可以为自己的账号保存 GitHub 或自定义 Git 令牌，他们登记的仓库会优先使用它。
-- **全局令牌**：管理员在 **Settings › Access settings**（设置 › 访问设置）中为每个代码源保存站点级令牌，每张卡片都会标明它连接的托管地址。它是该代码源所有仓库的兜底令牌。
+- **你自己的令牌**：已登录用户在 **User settings › Code source tokens**（用户设置 › 代码源令牌）中为每个代码源保存 GitHub 或自定义 Git 令牌，他们登记的仓库会优先使用它。
+- **全局令牌**：管理员在 **System settings › Code sources**（系统设置 › 代码源）中保存站点级令牌，这里每个代码源一张卡片，标明它从哪个托管地址拉取。自定义 Git 卡片还包含该代码源的名称、托管地址和 HTTPS 用户名，GitHub 卡片只有令牌。每个令牌可以设置过期时间，用于提前七天预警。它是该代码源所有仓库的兜底令牌。
 
 每次拉取时，服务按仓库的 `code_provider` 依次尝试：
 
 1. 创建者为该代码源保存的令牌；
 2. 该代码源的全局令牌；
-3. 环境令牌——GitHub 用 `SOURCEGRAPH_GIT_TOKEN`，自定义代码源用 `SOURCEGRAPH_CUSTOM_GIT_TOKEN`——仅在该代码源尚未保存全局令牌时使用；
+3. 环境令牌——GitHub 用 `SOURCEGRAPH_GITHUB_TOKEN`（未设置时仍读取旧变量 `SOURCEGRAPH_GIT_TOKEN`），自定义代码源用 `SOURCEGRAPH_CUSTOM_GIT_TOKEN`——仅在该代码源尚未保存全局令牌时使用；
 4. 仅限 GitHub：匿名访问。即使是公开仓库，GitHub 也会拒绝已吊销的令牌，所以匿名访问放在最后尝试，而不是直接跳过。
 
-两个代码源之间从不互用令牌。令牌使用实例的凭据加密密钥加密，状态显示为就绪、即将过期（七天内）、已过期或无效。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 Git 用户名（默认 `oauth2`）。
+两个代码源之间从不互用令牌。令牌使用实例的凭据加密密钥加密，状态显示为就绪、即将过期（七天内）、已过期或无效。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 HTTPS 用户名（默认 `oauth2`）。
 
 登记私有仓库并不会对已登录用户隐藏它；`public_read: false` 只会取消匿名访问。要控制谁能成为已登录用户，请使用登录和注册策略，详见[登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->
