@@ -1,12 +1,11 @@
 ---
 title: 接入
 description: 将浏览器、MCP 客户端、脚本或命令行客户端接入 Source
-  Graph，无需克隆即可在固定提交上搜索和读取代码；选择合适的凭据，并遵循“先搜索、再读取”的循环。
 translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  source_digest: 6cb62f2cb0d66eb0d16021ca0176fe42d8ca7682e43b8cf31c1723941c473fd4
-  translated_at: 2026-10-14T00:35:17.174Z
+  source_digest: 9931ec2825c796e6377e3c6545cb22be62d5857c6a12143c1ffdb492eaf2dc33
+  translated_at: 2026-10-14T02:43:48.316Z
 ---
 
 # 接入
@@ -14,7 +13,7 @@ translation:
 <!-- context:section id="goal" -->
 接入后，你的 Agent、脚本或终端无需先克隆仓库，就能在固定提交上搜索和阅读代码。为什么这很重要、什么时候需要它，以及如何试用在线演示，见 [Source Graph 是什么](introduction.md)。
 
-每个 Source Graph 实例都在其源站的 `/sourcegraph/` 路径下提供四个入口。按调用方选择合适的入口即可；它们执行相同的操作，遵循相同的规则。
+每个 Source Graph 实例都在其源站的 `/sourcegraph/` 路径下提供四个入口。按调用方选择合适的入口即可；它们执行相同的操作，遵循相同的规则，只是一次调用读取多段代码仅 MCP 支持。
 
 | 调用方 | 入口 |
 | --- | --- |

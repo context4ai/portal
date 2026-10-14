@@ -4,7 +4,7 @@ description: "How Context Source Graph works: one contract across the website,
   HTTP, MCP and CLI, how a self-hosted instance is put together from Git
   mirrors, a Zoekt index and its application database, and who can do what."
 type: Guide
-timestamp: 2026-10-14T00:31:46.764Z
+timestamp: 2026-10-14T02:36:42.665Z
 ---
 # Architecture Overview
 
@@ -27,7 +27,7 @@ The source code is at [github.com/context4ai/sourcegraph](https://github.com/con
 <!-- context:section id="surfaces" -->
 ## One contract, four surfaces
 
-All four entry points expose the same operations:
+All four entry points share these operations; `read_many` is available through MCP only:
 
 | Operation | What it does |
 | --- | --- |

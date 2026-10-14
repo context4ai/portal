@@ -1,12 +1,11 @@
 ---
 title: 架构概览
 description: Context Source Graph 如何工作：网站、HTTP、MCP 与 CLI 共享同一套接口约定，自部署实例如何由 Git
-  镜像、Zoekt 索引和应用数据库组成，以及谁能做什么。
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
-  source_digest: 92adcb86f852577600acd4f8ac299e466d53ea88b588e8896e013110be65c28d
-  translated_at: 2026-10-14T00:32:09.098Z
+  source_digest: 9106f5d4af095d71b5f79327d8b57c4b322c157bfb1a1a76177eb0ff57f4e0ef
+  translated_at: 2026-10-14T02:37:19.175Z
 ---
 
 # 架构概览
@@ -30,7 +29,7 @@ flowchart LR
 <!-- context:section id="surfaces" -->
 ## 一套接口约定，四种入口
 
-四种入口都提供相同的操作：
+四种入口共享以下操作，其中 `read_many` 只能通过 MCP 使用：
 
 | 操作 | 作用 |
 | --- | --- |

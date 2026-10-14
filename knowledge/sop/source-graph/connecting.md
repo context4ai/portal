@@ -4,14 +4,14 @@ description: Connect a browser, an MCP client, a script or the command-line
   client to Source Graph to search and read code at a pinned commit without
   cloning, choose the right credential, and follow the search-then-read loop.
 type: Guide
-timestamp: 2026-10-14T00:35:05.888Z
+timestamp: 2026-10-14T02:43:34.309Z
 ---
 # Connecting
 
 <!-- context:section id="goal" -->
 Connecting gives your Agent, script or terminal code search and reading at a pinned commit, without cloning the repository first. [What Is Source Graph](introduction.md) explains why that matters, when you need it and how to try the live demo.
 
-Every Source Graph instance serves four entry points under the `/sourcegraph/` path of its origin. Pick the one that fits the caller; all of them run the same operations with the same rules.
+Every Source Graph instance serves four entry points under the `/sourcegraph/` path of its origin. Pick the one that fits the caller; all of them run the same operations with the same rules, except that only MCP reads several ranges in one call.
 
 | Caller | Entry point |
 | --- | --- |

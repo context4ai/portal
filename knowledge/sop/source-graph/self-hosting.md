@@ -4,7 +4,7 @@ description: Run your own Source Graph instance with Docker or from source, pick
   a database and back it up; see Deployment Recommendations for choosing between
   one instance and sharded instances.
 type: Guide
-timestamp: 2026-10-13T01:46:40.848Z
+timestamp: 2026-10-14T02:39:00.281Z
 ---
 # Self-Hosting
 
@@ -20,7 +20,7 @@ docker run --rm -p 8080:8080 -v sourcegraph-data:/data \
   context-sourcegraph
 ```
 
-Open `http://localhost:8080/sourcegraph/`. With `SOURCEGRAPH_SEED_DEMO=true` it registers two public example repositories; public GitHub repositories need no token. Without sign-in providers the site is anonymous and read-only — add Google or GitHub sign-in to administer it, as described in [Authentication and Access Control](authentication-and-access-control.md).
+Open `http://localhost:8080/sourcegraph/`. With `SOURCEGRAPH_SEED_DEMO=true` it registers two public example repositories; public GitHub repositories need no token, and a custom Git host can be added under Settings or in a startup file, as described in [Registering Repositories](registering-repositories.md#code-sources). Without sign-in providers the site is anonymous and read-only — add Google or GitHub sign-in to administer it, as described in [Authentication and Access Control](authentication-and-access-control.md).
 
 The image contains four binaries — the service `repo-service`, the command-line client `sourcegraph-cli`, the Git credential helper and the Zoekt search server — and runs as an unprivileged user with `/data` as its data root and port 8080 exposed.
 <!-- /context:section -->
@@ -37,7 +37,7 @@ bun run build
 SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 output/bin/repo-service
 ```
 
-`output/bin` then holds the same four binaries. The service starts the search server itself and manages background indexing; there is nothing else to run. Every setting is an environment variable, listed in [Configuration](../../product/reference/source-graph/configuration.md). Put credentials only in environment variables or your platform's secret store, never in the deployment JSON, source code or images.
+`output/bin` then holds the same four binaries. The service starts the search server itself and manages background indexing; there is nothing else to run. Every setting is an environment variable, and code sources can also be overridden by the startup file that `SOURCEGRAPH_CONFIG_FILE` names; all are listed in [Configuration](../../product/reference/source-graph/configuration.md). Put credentials only in environment variables or your platform's secret store, never in the deployment JSON, source code or images.
 <!-- /context:section -->
 
 <!-- context:section id="topology" -->

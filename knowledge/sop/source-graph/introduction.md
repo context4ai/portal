@@ -4,7 +4,7 @@ description: What Context Source Graph is, the problem it solves for AI Agents
   reading code, how it pairs with Context, when it is worth connecting and how
   to start with the live demo or your own instance.
 type: Guide
-timestamp: 2026-10-14T00:29:03.049Z
+timestamp: 2026-10-14T02:41:59.387Z
 ---
 # What Is Source Graph
 
@@ -27,7 +27,7 @@ Source Graph moves that work ahead of the question: it keeps each registered rep
 
 - **Fast search.** Indexed search typically completes in under 5 ms on the server; in the same region as its callers, a full request including the network stays well under 100 ms. On the demo, a literal search that takes `rg` about 61 ms over a local checkout returns in about 1 ms. [Pinned Search and Reads](../../architecture/source-graph/pinned-search-and-reads.md) explains where the speed comes from.
 - **Reproducible reads.** Branches and tags resolve to one commit before anything is read, so a search hit, the file it points to and a later diff describe the same snapshot.
-- **Ready for Agents.** The same operations — list repositories, search, read one range or several, list a directory, diff two commits — are available on a website, an HTTP API, an MCP server and a command-line client. Any MCP client that speaks Streamable HTTP can connect, and anonymous access is read-only and limited to public repositories.
+- **Ready for Agents.** The same operations — list repositories, search, read a range, list a directory, diff two commits — are available on a website, an HTTP API, an MCP server and a command-line client, and MCP can also read several ranges in one call. Any MCP client that speaks Streamable HTTP can connect, and anonymous access is read-only and limited to public repositories.
 - **Small footprint.** One process manages the Git mirrors, the search engine and background indexing. SQLite is the default database; PostgreSQL and MongoDB are supported.
 <!-- /context:section -->
 

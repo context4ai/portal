@@ -1,6 +1,6 @@
 entries:
   - version: 0.11.1
-    date: 2026-10-14T02:21:13.014Z
+    date: 2026-10-14T02:51:29.797Z
     title: Source Graph code sources
     changes:
       - "Registering Repositories now explains the two code sources, GitHub and

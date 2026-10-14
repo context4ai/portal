@@ -1,12 +1,11 @@
 ---
 title: Source Graph 是什么
 description: Context Source Graph 是什么、为 AI Agent 读代码解决什么问题、如何与 Context
-  配合、什么时候值得接入，以及如何从在线演示或自己的实例开始使用。
 translation:
   locale: zh-CN
   artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
-  source_digest: 85198e5676dfcc02ebd9c0ab0f3669f02d0327c72089b9ee729c933dd1151918
-  translated_at: 2026-10-14T00:30:19.237Z
+  source_digest: 88ed066d576af5836612d6712415480a8942c8ca2fdc3c7d90ea9b17a11e87b6
+  translated_at: 2026-10-14T02:42:13.456Z
 ---
 
 # Source Graph 是什么
@@ -30,7 +29,7 @@ Source Graph 把这部分工作挪到提问之前：它在后台为每个已登�
 
 - **快速搜索。** 服务端的索引搜索通常在 5 ms 内完成；与调用方部署在同一区域时，含网络在内的完整请求也远低于 100 ms。在演示实例上，一次在本地检出目录里 `rg` 约需 61 ms 的字面量搜索，大约 1 ms 就能返回。速度从何而来，见[固定版本的搜索与阅读](../../architecture/source-graph/pinned-search-and-reads.md)。
 - **可复现的读取。** 分支和标签在读取任何内容之前都先解析为一个提交，因此搜索命中、它指向的文件和之后的差异，描述的是同一个快照。
-- **为 Agent 而生。** 列出仓库、搜索、读取一段或多段代码、列出目录、比较两个提交，这些操作在网站、HTTP API、MCP 服务器和命令行客户端上都一样可用。任何支持 Streamable HTTP 的 MCP 客户端都能接入；匿名访问为只读，且仅限公开仓库。
+- **为 Agent 而生。** 列出仓库、搜索、读取一段代码、列出目录、比较两个提交，这些操作在网站、HTTP API、MCP 服务器和命令行客户端上都一样可用；MCP 还能在一次调用中读取多段代码。任何支持 Streamable HTTP 的 MCP 客户端都能接入；匿名访问为只读，且仅限公开仓库。
 - **占用小。** 一个进程同时管理 Git 镜像、搜索引擎和后台建索引。默认数据库为 SQLite，也支持 PostgreSQL 和 MongoDB。
 <!-- /context:section -->
 

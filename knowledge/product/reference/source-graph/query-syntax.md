@@ -4,7 +4,7 @@ description: How Source Graph searches are written — rg-style patterns, litera
   and case options, globs and paths — and how the website, HTTP, MCP and CLI
   spell the same request.
 type: Wiki
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-14T02:46:15.240Z
 ---
 # Query Syntax
 
@@ -76,7 +76,7 @@ A search with no hits is not proof of absence outside that coverage or beyond th
 <!-- context:section id="web" -->
 ## Website search links
 
-The website's search page encodes the same request in its address, using the API field names: `repo`, `pattern`, `fixed_strings=1`, `ignore_case=1`, repeated `glob`, and either `commit` (a full SHA) or `revision` (a branch). Code pages accept `repo`, `path` and `commit` or `revision`, with a line range in the fragment such as `#L20-L40`. Links copied from the website therefore reproduce the exact search or read at the same commit.
+The website's search page encodes the same request in its address, using the API field names: `repo`, `pattern`, `fixed_strings=1`, `ignore_case=1`, repeated `glob`, and either `commit` (a full SHA; any other value is read as a revision) or `revision` (a branch or tag). Code pages accept `repo`, `path` and `commit` or `revision`, with a line range in the fragment such as `#L20-L40`. Links copied from the website therefore reproduce the exact search or read at the same commit.
 <!-- /context:section -->
 
 <!-- context:section id="examples" -->
