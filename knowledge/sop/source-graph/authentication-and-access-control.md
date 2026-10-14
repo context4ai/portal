@@ -4,7 +4,7 @@ description: Set up Google or GitHub sign-in, understand how the first
   administrator is chosen, control who may register, and decide what anonymous
   visitors, API keys and the service token can do.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-14T02:19:13.383Z
 ---
 # Authentication and Access Control
 
@@ -14,7 +14,7 @@ Source Graph has five kinds of caller, and every request is treated as exactly o
 | Caller | How it is recognized | Can do |
 | --- | --- | --- |
 | Anonymous | No `Authorization` header, while public reading is on | Read-only operations on repositories marked public; rate-limited |
-| Signed-in user | A browser session after Google or GitHub sign-in | Read every registered repository; create personal API keys; save a personal Git credential |
+| Signed-in user | A browser session after Google or GitHub sign-in | Read every registered repository; create personal API keys; save personal GitHub or custom Git tokens |
 | Administrator | A signed-in user with the administrator role | Everything a user can, plus registering and maintaining repositories, site settings, users and global credentials |
 | Personal API key | `Authorization: Bearer sgk_…` | Its owner's reads over HTTP and MCP; administrator keys created with prepare permission may also request indexing over MCP |
 | Service token | `Authorization: Bearer <SOURCEGRAPH_API_TOKEN>` | Every HTTP and MCP operation, for automation |
@@ -34,7 +34,7 @@ Source Graph signs users in with Google (OpenID Connect) or GitHub (OAuth). A pr
 
 `<origin>` is the value of `SOURCEGRAPH_ORIGIN`, the public origin without a path. Register exactly that callback with the provider: for Google, create an OAuth client of type **Web application** and add it as an authorized redirect URI; for GitHub, create an **OAuth App** and use it as the authorization callback URL. Store the secrets in your platform's secret store, restart the service, and sign in. When the public origin changes — for example when the service moves behind another domain — update `SOURCEGRAPH_ORIGIN` and both provider callbacks together.
 
-GitHub sign-in only identifies users; it does not grant repository access. Git credentials for private repositories are configured separately, as described in [Registering Repositories](registering-repositories.md).
+GitHub sign-in only identifies users; it does not grant repository access. Tokens for private repositories are configured separately for each code source, as described in [Registering Repositories](registering-repositories.md#tokens-for-private-repositories).
 <!-- /context:section -->
 
 <!-- context:section id="admin" -->

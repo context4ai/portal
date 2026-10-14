@@ -4,8 +4,8 @@ description: 配置 Google 或 GitHub 登录，了解首位管理员如何产生
 translation:
   locale: zh-CN
   artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
-  source_digest: 31a265e2da784a24f024a67420577e4451c08c7a75da71e5b10f7146ff11f748
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: efe24ff4ff80152db877f27de04f9179dea10016b8f21a7ae889b20942e18698
+  translated_at: 2026-10-14T02:20:57.619Z
 ---
 
 # 登录与准入
@@ -16,7 +16,7 @@ Source Graph 有五类调用方，每个请求都会被认定为其中恰好一�
 | 调用方 | 识别方式 | 可执行的操作 |
 | --- | --- | --- |
 | 匿名访客 | 开启公开阅读时，请求不带 `Authorization` 头 | 对标记为公开的仓库执行只读操作；受限流约束 |
-| 已登录用户 | 通过 Google 或 GitHub 登录后的浏览器会话 | 读取所有已登记的仓库；创建个人 API Key；保存个人 Git 凭据 |
+| 已登录用户 | 通过 Google 或 GitHub 登录后的浏览器会话 | 读取所有已登记的仓库；创建个人 API Key；保存个人 GitHub 或自定义 Git 令牌 |
 | 管理员 | 拥有管理员角色的已登录用户 | 拥有普通用户的全部权限，另可登记和维护仓库，管理站点设置、用户和全局凭据 |
 | 个人 API Key | `Authorization: Bearer sgk_…` | 以其所有者身份通过 HTTP 和 MCP 读取；管理员创建且带 prepare 权限的 Key 还可通过 MCP 请求建索引 |
 | 服务令牌 | `Authorization: Bearer <SOURCEGRAPH_API_TOKEN>` | 可执行所有 HTTP 和 MCP 操作，供自动化使用 |
@@ -36,7 +36,7 @@ Source Graph 支持通过 Google（OpenID Connect）或 GitHub（OAuth）登录�
 
 `<origin>` 是 `SOURCEGRAPH_ORIGIN` 的值，即不含路径的公开源地址。请在提供方处登记完全一致的回调地址：在 Google 中创建类型为 **Web application** 的 OAuth 客户端，并将其添加为已授权的重定向 URI；在 GitHub 中创建 **OAuth App**，并将其用作授权回调 URL。把密钥存入你所用平台的密钥存储，重启服务后即可登录。当公开源地址变化时（例如服务迁移到另一个域名之后），请同时更新 `SOURCEGRAPH_ORIGIN` 和两个提供方的回调地址。
 
-GitHub 登录只用于识别用户，并不授予仓库访问权限。私有仓库的 Git 凭据需要另行配置，详见 [登记仓库](registering-repositories.md)。
+GitHub 登录只用于识别用户，并不授予仓库访问权限。私有仓库的令牌需要按代码源另行配置，详见[登记仓库](registering-repositories.md#tokens-for-private-repositories)。
 <!-- /context:section -->
 
 <!-- context:section id="admin" -->

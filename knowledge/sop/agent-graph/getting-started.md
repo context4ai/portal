@@ -1,23 +1,18 @@
 ---
-title: Getting Started
-description: Pick an adoption path, then create, validate, test, evaluate,
-  route, run and build a starter Agent Graph Provider with the pinned CLI in
-  about ten minutes.
+title: Quick Start
+description: Create, validate, test, evaluate, route, run and build a starter
+  Agent Graph Provider with the pinned CLI in about ten minutes.
 type: Guide
-timestamp: 2026-10-12T18:07:53.547Z
+timestamp: 2026-10-14T00:36:43.613Z
 ---
-# Getting Started
+# Quick Start
 
 <!-- context:section id="choose" -->
-Agent Graph is useful only as part of a Skill or an Agent host; installing the CLI does not by itself change how any Agent works. Decide which boundary you are changing first:
+In about ten minutes you will have a runnable starter Provider: it validates, passes its graph test, returns a Route for the Agent's next step, records a Run and builds into a relocatable bundle you can ship inside your own package.
 
-| Your situation | Path | Start with |
-| --- | --- | --- |
-| A Skill works but has grown long, repeats context every turn, loses its place across sessions, or describes Gates and recovery in prose | Improve an existing Skill | [Migration](../../product/reference/agent-graph/migration.md) |
-| The capability does not exist yet and its operating contract can be designed with the Skill | Create a new Skill or workflow | This tutorial, then [Authoring Graphs](authoring-graphs.md) |
-| A product already owns Agent discovery, command execution, UI or workspace state | Embed Agent Graph in a host | [Skills and Providers](../../architecture/agent-graph/skills-and-providers.md) and [CLI and SDK](../../product/reference/agent-graph/cli-and-sdk.md) |
+This tutorial suits creating a new Skill or workflow. Running the commands creates a Provider development project; it does not by itself integrate a Skill or change how any Agent works. If you are improving an existing Skill or embedding Agent Graph in a product, pick that path in [What Is Agent Graph](introduction.md) first.
 
-The tutorial below needs Node.js 20 or later. Every command pins the CLI with `npx @c4a/agent-graph@0.3.0` so the results are reproducible.
+You need Node.js 20 or later. Every command pins the CLI with `npx @c4a/agent-graph@0.3.0` so the results are reproducible.
 <!-- /context:section -->
 
 <!-- context:section id="init" -->

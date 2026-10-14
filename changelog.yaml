@@ -1,4 +1,55 @@
 entries:
+  - version: 0.11.1
+    date: 2026-10-14T02:21:13.014Z
+    title: Source Graph code sources
+    changes:
+      - "Registering Repositories now explains the two code sources, GitHub and
+        a custom Git host, that the repository host is fixed at registration,
+        and the token order: your own, global, environment, then anonymous for
+        GitHub."
+      - Configuration gained a Code sources section covering deployment
+        defaults, the custom Git settings on the website and the
+        SOURCEGRAPH_CONFIG_FILE startup file, locked fields and the in-use host
+        rule; SOURCEGRAPH_CUSTOM_GIT_TOKEN is listed.
+      - HTTP and MCP lists GET /v1/code-sources and the code_source settings
+        section; the CLI page describes the host-bound credential helper;
+        Authentication and Operations now refer to per-source tokens.
+    triggers:
+      - kind: module
+        description: Source Graph added configurable GitHub and custom Git code sources.
+      - kind: translation
+        description: Chinese translations for the six revised pages.
+    actor:
+      name: qiansc
+      kind: git
+  - version: 0.11.0
+    date: 2026-10-14T00:36:58.309Z
+    title: Source Graph and Agent Graph introductions
+    changes:
+      - Added What Is Source Graph and What Is Agent Graph as the first Guide
+        pages, explaining why each exists, what problem it solves and where to
+        start.
+      - Moved self-hosting, deployment, sign-in and operations pages into a
+        separate Operating Source Graph group so Source Graph users see the
+        introduction, connecting and registering first.
+      - Renamed Agent Graph Getting Started to Quick Start and replaced its path
+        table with what the tutorial delivers and a link to the introduction.
+      - Connecting to Source Graph now opens with why to connect and links the
+        introduction; the optional-use note moved there.
+      - Renamed Why Graph Engineering to Graph Engineering Principles and
+        removed the example and usage guidance now covered by the introduction.
+      - Renamed the Source Graph overview to Architecture Overview and kept it
+        to surfaces, components and access, linking the introduction for
+        purpose.
+    triggers:
+      - kind: navigation
+        description: Guides now lead with introduction pages; operator pages and renamed
+          How It Works pages moved accordingly.
+      - kind: translation
+        description: Chinese translations for the new and revised pages.
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.10.1
     date: 2026-10-13T17:05:31.372Z
     title: Guide order

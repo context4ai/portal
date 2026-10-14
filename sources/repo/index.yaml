@@ -10,7 +10,7 @@ sources:
         local: .tmp/context-plans/20261012-portal-kb/repos/sourcegraph
         git:
           remote: https://github.com/context4ai/sourcegraph.git
-          ref: 4e5c5552394f4c16e050ae3185aad585fb07785d
+          ref: 47dd77d9aefba1dbd3995f8feac4019dadde4219
       - name: agent-graph
         local: .tmp/context-plans/20261012-portal-kb/repos/agent-graph
         git:

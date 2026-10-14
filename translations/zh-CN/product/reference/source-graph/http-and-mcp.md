@@ -4,8 +4,8 @@ description: Source Graph 全部 HTTP 路由与 MCP 工具：路径、输入、�
 translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
-  source_digest: 13f8788955e4706ba69b517404ad146e6c169fe588834ce767b32eea44061c72
-  translated_at: 2026-10-13T01:07:38.210Z
+  source_digest: 67c87b13afe434cc042094ab8f6d6f4f1375903cf8dcc2dcc13a2d58e334180d
+  translated_at: 2026-10-14T02:20:57.619Z
 ---
 
 # HTTP 与 MCP 接口
@@ -35,7 +35,7 @@ translation:
 | --- | --- | --- | --- |
 | GET | `/v1/capabilities` | — | 协议与支持的操作 |
 | GET | `/v1/repos` | —（用 `after` 翻到下一页） | 已登记的仓库，每页 100 个 |
-| GET | `/v1/repo/availability` | — | 单个仓库：保留的版本、分支最新提交、路径组和任务，附带 `ETag` |
+| GET | `/v1/repo/availability` | — | 单个仓库：保留的版本、分支最新提交、路径组和任务，以及它的 `code_provider` 和登记时固定的 `code_host`，附带 `ETag` |
 | GET | `/v1/repo/commits` | — | 与 availability 相同 |
 | GET | `/v1/repo/plugins` | —（可选 `revision`） | 该提交中发现的仓库插件，不会运行它们 |
 | POST | `/v1/repo/resolve` | `{"Revision"}` | 解析出的固定提交及其是否已建索引 |
@@ -81,9 +81,10 @@ translation:
 | `GET /readyz` | 开放 | 就绪检查；无法读取仓库目录时返回 `503` |
 | `GET /access-policy` | 开放 | `public_read`、`public_prepare`（始终为 `false`）和 `sso_enabled` |
 | `GET /site-settings` | 开放 | 公开的仓库默认值 |
+| `GET /v1/code-sources` | 开放 | 按显示顺序列出已配置的代码源——`id`、`name`、`host`、`username`、`anonymous`、`editable`，以及列出启动文件所设字段的 `locked`；从不返回令牌 |
 | `/auth/…` | 浏览器 | 登录提供方、登录与回调、当前用户、退出登录、`api-keys`、用户管理 |
-| `/auth/code-credentials` | 已登录会话 | 你自己的 Git 凭据 |
-| `/api/admin/settings/…` | 仅限管理员会话 | 站点设置各分区、`code-credentials`、`query-errors`、`jobs/clear`、`storage` |
+| `/auth/code-credentials` | 已登录会话 | 你自己的 GitHub 和自定义 Git 令牌 |
+| `/api/admin/settings/…` | 仅限管理员会话 | 站点设置各分区，包括 `code_source`（用 `PATCH` 提交 `revision` 和 `values` 中的 `name`、`host`、`username`），以及 `code-credentials`、`query-errors`、`jobs/clear`、`storage` |
 
 `/api/admin/settings` 下的站点管理会拒绝任何携带 `Authorization` 请求头的请求，只能从已登录管理员的浏览器访问。
 <!-- /context:section -->

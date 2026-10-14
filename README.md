@@ -76,8 +76,8 @@ Open <http://localhost:8088/>.
 | `/llms.txt` | Redirects to `/context/llms.txt` |
 | `/healthz` | Health check |
 
-The homepage and the docs site share the theme (`context-theme:context-kb:/context/`)
-and language (`context4ai-locale`) preferences.
+The homepage, the docs site and Source Graph share the theme (`context-theme`, light
+by default) and language (`context-locale`) preferences.
 
 ## Deploy
 

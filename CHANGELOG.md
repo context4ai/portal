@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.11.1 — 2026-10-14
+
+### Source Graph code sources
+
+- Registering Repositories now explains the two code sources, GitHub and a custom Git host, that the repository host is fixed at registration, and the token order: your own, global, environment, then anonymous for GitHub.
+- Configuration gained a Code sources section covering deployment defaults, the custom Git settings on the website and the SOURCEGRAPH\_CONFIG\_FILE startup file, locked fields and the in-use host rule; SOURCEGRAPH\_CUSTOM\_GIT\_TOKEN is listed.
+- HTTP and MCP lists GET /v1/code-sources and the code\_source settings section; the CLI page describes the host-bound credential helper; Authentication and Operations now refer to per-source tokens.
+
+Trigger: module: Source Graph added configurable GitHub and custom Git code sources.; translation: Chinese translations for the six revised pages.
+User: qiansc (git)
+
+## 0.11.0 — 2026-10-14
+
+### Source Graph and Agent Graph introductions
+
+- Added What Is Source Graph and What Is Agent Graph as the first Guide pages, explaining why each exists, what problem it solves and where to start.
+- Moved self-hosting, deployment, sign-in and operations pages into a separate Operating Source Graph group so Source Graph users see the introduction, connecting and registering first.
+- Renamed Agent Graph Getting Started to Quick Start and replaced its path table with what the tutorial delivers and a link to the introduction.
+- Connecting to Source Graph now opens with why to connect and links the introduction; the optional-use note moved there.
+- Renamed Why Graph Engineering to Graph Engineering Principles and removed the example and usage guidance now covered by the introduction.
+- Renamed the Source Graph overview to Architecture Overview and kept it to surfaces, components and access, linking the introduction for purpose.
+
+Trigger: navigation: Guides now lead with introduction pages; operator pages and renamed How It Works pages moved accordingly.; translation: Chinese translations for the new and revised pages.
+User: qiansc (git)
+
 ## 0.10.1 — 2026-10-13
 
 ### Guide order

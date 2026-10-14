@@ -1,10 +1,10 @@
 ---
 title: Registering Repositories
-description: Register a repository with its branches, retention window,
-  visibility and sync interval, connect private repositories with credentials,
-  and split a monorepo into path groups.
+description: Register a GitHub or custom Git repository with its branches,
+  retention window, visibility and sync interval, supply tokens for private
+  repositories, and split a monorepo into path groups.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-14T02:19:13.383Z
 ---
 # Registering Repositories
 
@@ -32,8 +32,8 @@ The request returns `202 Accepted` and queues the first sync; the repository pag
 
 | Field | Meaning |
 | --- | --- |
-| `name` | The repository key, `owner/repository` (nested `a/b/c` paths are allowed, up to 512 characters). The Git remote is `<code host>/<name>.git` |
-| `code_provider` | `github` (default) or `git`; selects which stored credential kind is used |
+| `name` | The repository's path on its code source, such as `owner/repository` (nested `a/b/c` paths are allowed, up to 512 characters). The Git remote is `<code source host>/<name>.git` |
+| `code_provider` | The code source: `github` (default) or `git` for the custom Git host. It is fixed at registration and decides both the host and which tokens are tried |
 | `public_read` | Whether anonymous visitors may read it. Omitted means public |
 | `index_mode` | `full` (default) indexes the whole repository; `monorepo` indexes only path groups |
 | `path_groups` | Required for `monorepo`; see below |
@@ -42,18 +42,38 @@ The request returns `202 Accepted` and queues the first sync; the repository pag
 | `policy.days` or `policy.count` | The retention window — exactly one of days (1–365) or first-parent commits per branch (1–4096). Omit both to use the site's repository defaults (initially 30 days) |
 | `sync_interval_minutes` | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440; default 5 |
 
-A policy monitors one to eight branches in total, counting the default branch. Tags are never fetched, so they cannot be searched or read. The code host is part of the build's deployment defaults (`https://github.com` in the published image); see [Configuration](../../product/reference/source-graph/configuration.md).
+A policy monitors one to eight branches in total, counting the default branch. Tags are never fetched, so they cannot be searched or read.
+
+## Code sources
+
+Every instance offers exactly two code sources, always listed in this order:
+
+| Source | `code_provider` | Host | Without a token |
+| --- | --- | --- | --- |
+| GitHub | `github` | `https://github.com` | Public repositories can be fetched anonymously |
+| Custom Git | `git` | None until an administrator or the startup file sets one | A token is required |
+
+To use your own Git server, set the custom source's host under **Settings › Access settings** or in the startup file; see [Configuration](../../product/reference/source-graph/configuration.md#code-sources). A source without a host cannot be used for registration (`409 CODE_SOURCE_NOT_CONFIGURED`).
+
+Registration records the source's current host on the repository as `code_host`, and every later fetch uses that host. Changing a code source's configuration therefore never moves a repository that is already registered.
 <!-- /context:section -->
 
 <!-- context:section id="private" -->
-## Private repositories
+## Tokens for private repositories
 
-Public GitHub repositories need no credential. For private ones, store a Git access token in one of two places:
+Public GitHub repositories need no token. For private ones, store a token for the repository's code source in one of two places:
 
-- **Your own credential** — signed-in users can save a token for their account. Repositories they register use it first.
-- **The global credential** — administrators can save a site-wide token in settings. It is the fallback for every repository.
+- **Your own token** — signed-in users save a GitHub or custom Git token for their account. Repositories they register use it first.
+- **The global token** — administrators save a site-wide token for each source under **Settings › Access settings**. Each card names the host it connects to. It is the fallback for every repository of that source.
 
-Each credential is stored per kind (`github` or `git`), encrypted with the instance's credential key, and shown as ready, expiring (within seven days), expired or invalid. As an alternative for GitHub, the `SOURCEGRAPH_GIT_TOKEN` environment variable acts as a legacy global credential: the bundled Git credential helper supplies it only for HTTPS requests to `github.com`.
+For each fetch the service follows the repository's `code_provider`:
+
+1. the creator's own token for that source;
+2. the global token for that source;
+3. the environment token — `SOURCEGRAPH_GIT_TOKEN` for GitHub, `SOURCEGRAPH_CUSTOM_GIT_TOKEN` for the custom source — used only while no global token of that source has been saved;
+4. for GitHub only, anonymous access. GitHub rejects a revoked token even for a public repository, so anonymous access is tried last rather than skipped.
+
+The two sources never use each other's tokens. Tokens are encrypted with the instance's credential key and shown as ready, expiring (within seven days), expired or invalid. The bundled Git credential helper hands the chosen token only to the host of the repository being fetched, with the source's Git username (`oauth2` by default).
 
 Registering a private repository does not hide it from signed-in users; `public_read: false` only removes it from anonymous access. Use sign-in and registration policy to control who is a signed-in user, as described in [Authentication and Access Control](authentication-and-access-control.md).
 <!-- /context:section -->

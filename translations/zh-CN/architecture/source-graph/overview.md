@@ -1,20 +1,18 @@
 ---
-title: Source Graph 定位与能力
-description: Context Source Graph 是一个自部署的代码搜索与阅读服务，每个请求都在一个确定的 Git
-  提交上作答，可通过网站、HTTP、MCP 和 CLI 使用。
+title: 架构概览
+description: Context Source Graph 如何工作：网站、HTTP、MCP 与 CLI 共享同一套接口约定，自部署实例如何由 Git
+  镜像、Zoekt 索引和应用数据库组成，以及谁能做什么。
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
-  source_digest: 4057db640fda00df0041045d58970fdd3fdc27465aba6df067615007eebadedb
-  translated_at: 2026-10-13T01:44:02.625Z
+  source_digest: 92adcb86f852577600acd4f8ac299e466d53ea88b588e8896e013110be65c28d
+  translated_at: 2026-10-14T00:32:09.098Z
 ---
 
-# Source Graph 定位与能力
+# 架构概览
 
 <!-- context:section id="goal" -->
-**Context Source Graph** 是一个自部署服务，用于在固定的 Git 版本上搜索和阅读代码。它基于 Go、Git 和 Zoekt 三元组（trigram）索引构建，面向 AI 编码 Agent 带来的典型负载：针对 Agent 并未检出的代码，进行大量小而精确的「先搜索、再阅读」往返。
-
-每个请求在读取任何内容之前都会先解析到一个确定的提交，因此搜索命中、它指向的文件以及之后的差异，描述的都是同一个快照。同样的操作可以在浏览器中使用，也可以通过 HTTP、作为 MCP 服务器或通过命令行客户端调用。
+本页说明 **Context Source Graph** 如何工作：四个入口共享的操作、单个实例如何组成，以及谁能做什么。它是一个基于 Git 和 Zoekt 三元组（trigram）索引、可自部署的 Go 应用；每个请求在读取任何内容之前都会先解析到一个确定的提交。它为什么存在、适合做什么以及如何开始，请阅读 [Source Graph 是什么](../../sop/source-graph/introduction.md)。
 
 ```mermaid
 flowchart LR
@@ -26,26 +24,7 @@ flowchart LR
   git -->|"后台同步与建索引"| engine
 ```
 
-Source Graph 是 Context 项目的一部分，名称并不代表它与 Sourcegraph 平台有任何关联。
-<!-- /context:section -->
-
-<!-- context:section id="get-it" -->
-## 源码与在线示例
-
-- **源码：** [github.com/context4ai/sourcegraph](https://github.com/context4ai/sourcegraph)。
-- **在线示例：** [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/)，也可以通过 [https://context4ai-sourcegraph.fly.dev/sourcegraph/](https://context4ai-sourcegraph.fly.dev/sourcegraph/) 访问。它是支撑本文档站知识服务的公开只读实例，提供 `context4ai/context` 与 `context4ai/sourcegraph` 两个仓库。MCP 端点为 `/sourcegraph/mcp`。部署方式见[部署建议](../../sop/source-graph/deployment-recommendations.md)。
-- **对 Context 是可选的：** 没有 Source Graph，Context 也能工作。未安装或未配置实例时，Context 的查询技能改为通过浅层、稀疏的部分克隆加 grep 读取代码。
-<!-- /context:section -->
-
-<!-- context:section id="why" -->
-## 为什么需要它
-
-Agent 回答代码问题时，通常只需要少量确切的代码行，而不是整个仓库。把每个仓库都按正确版本克隆到每个 Agent 沙箱中很慢；在检出目录上运行 `rg` 或 `git grep`，每次调用又要重复同样的扫描。Source Graph 为每个仓库维护一份索引，直接作答：
-
-- **快。** 带索引的搜索在服务端通常几毫秒内完成。当服务与调用方位于同一地域时，包含网络在内的完整请求也远低于 100 ms。[固定版本的搜索与阅读](pinned-search-and-reads.md)解释了速度从何而来，并给出实测对比。
-- **可复现。** 分支会先解析为提交；完整提交 SHA 只有在仓库的保留窗口内才会被接受，因此在一次对话中途，答案不会漂移到另一个快照。
-- **为 Agent 而生。** MCP 端点是无状态的 Streamable HTTP，可与任何 MCP 客户端配合使用。匿名访问为只读，且仅限公开仓库。
-- **占用小。** 一个进程即可管理 Git 镜像、搜索引擎和后台建索引；默认数据库为 SQLite。
+源码位于 [github.com/context4ai/sourcegraph](https://github.com/context4ai/sourcegraph)。名称并不代表它与 Sourcegraph 平台有任何关联。
 <!-- /context:section -->
 
 <!-- context:section id="surfaces" -->
@@ -87,10 +66,9 @@ Agent 回答代码问题时，通常只需要少量确切的代码行，而不�
 <!-- context:section id="next" -->
 ## 下一步
 
-[context4ai.org/sourcegraph](https://context4ai.org/sourcegraph/) 上的公开演示实例为 Context 和 Source Graph 仓库建了索引，并允许匿名阅读。
-
 | 如果你想… | 阅读 |
 | --- | --- |
+| 了解 Source Graph 为什么存在以及如何开始 | [Source Graph 是什么](../../sop/source-graph/introduction.md) |
 | 了解固定版本搜索和速度对比 | [固定版本的搜索与阅读](pinned-search-and-reads.md) |
 | 了解 Context 知识与 Source Graph 如何结合 | [与 Context 协同](evidence-for-context.md) |
 | 接入浏览器、MCP 客户端、脚本或 CLI | [接入](../../sop/source-graph/connecting.md) |

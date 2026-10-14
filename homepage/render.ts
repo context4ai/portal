@@ -2,8 +2,8 @@ import type { HomeContent } from "./content/types";
 
 export interface RenderInput { en: HomeContent; zh: HomeContent; assets: { css: string; js: string } }
 
-export const THEME_KEY = "context-theme:context-kb:/context/";
-export const LOCALE_KEY = "context4ai-locale";
+export const THEME_KEY = "context-theme";
+export const LOCALE_KEY = "context-locale";
 const MARK = "0111010001100011000101110";
 
 const esc = (value: string) => value.replace(/[&<>"']/gu, c => `&#${c.charCodeAt(0)};`);
@@ -59,7 +59,7 @@ function stage(en: HomeContent, zh: HomeContent) {
 function bootScript(en: HomeContent, zh: HomeContent) {
   const meta = { "en-US": en.meta, "zh-CN": zh.meta };
   return `(function(){var d=document.documentElement,t=null,l=null;try{t=localStorage.getItem(${JSON.stringify(THEME_KEY)});l=localStorage.getItem(${JSON.stringify(LOCALE_KEY)})}catch(e){}
-if(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))d.classList.add("dark");
+if(t==="dark"){d.classList.add("dark");document.querySelector('meta[name="theme-color"]').content="#171716"}
 if(l!=="zh-CN"&&l!=="en-US")l=(navigator.languages||[navigator.language]).some(function(x){return /^zh/i.test(x)})?"zh-CN":"en-US";
 d.lang=l;document.title=${JSON.stringify(meta)}[l].title;})();`;
 }
@@ -72,8 +72,7 @@ export function renderHome({ en, zh, assets }: RenderInput) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(en.meta.title)}</title>
 <meta name="description" content="${esc(en.meta.description)}">
-<meta name="theme-color" content="#fcfcfb" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#171716" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fcfcfb">
 <link rel="canonical" href="https://context4ai.org/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">

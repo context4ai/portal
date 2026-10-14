@@ -1,10 +1,10 @@
 ---
 title: Configuration
 description: Every Source Graph setting in one place — environment variables,
-  build-time deployment settings, runtime site settings, repository policies,
-  plugin limits and the data directory layout.
+  build-time deployment settings, code sources, runtime site settings,
+  repository policies, plugin limits and the data directory layout.
 type: Wiki
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-14T02:19:13.383Z
 ---
 # Configuration
 
@@ -18,7 +18,9 @@ Source Graph is configured in four layers, each with a different owner and lifet
 | Site settings | Database, edited on the **Settings** page | Administrators | Immediately, with revision checks |
 | Repository policy | Database, set per repository at registration or later | Administrators | On the next synchronization |
 
-Secrets — Git tokens, OAuth client secrets, the service token, the credential key and database URLs with passwords — belong only in environment variables or the database, never in the deployment file or the image. For deployment steps see [Self-hosting](../../../sop/source-graph/self-hosting.md).
+Code sources combine deployment defaults, the website's custom Git settings and an optional startup file; see [Code sources](#code-sources).
+
+Secrets — GitHub and custom Git tokens, OAuth client secrets, the service token, the credential key and database URLs with passwords — belong only in environment variables or the database, never in the deployment file, the startup file or the image. For deployment steps see [Self-hosting](../../../sop/source-graph/self-hosting.md).
 <!-- /context:section -->
 
 <!-- context:section id="environment" -->
@@ -33,13 +35,15 @@ Secrets — Git tokens, OAuth client secrets, the service token, the credential 
 | `DATABASE_URL` | `<data root>/sourcegraph.db` for SQLite | Database location or connection string |
 | `SOURCEGRAPH_MIN_FREE_BYTES` | `1073741824` (1 GiB) | Free-space floor below which fetching and indexing stop with `INSUFFICIENT_STORAGE` |
 | `SOURCEGRAPH_API_TOKEN` | Unset | Optional service token of at least 32 characters; a matching bearer token gets full HTTP API access, except site settings, which require a browser session. The CLI reads the same variable |
-| `SOURCEGRAPH_CREDENTIAL_KEY` | Generated `code-credentials.key` in the data root | Base64 of 32 bytes; encrypts stored code-host credentials |
-| `SOURCEGRAPH_GIT_TOKEN` | Unset | Legacy global GitHub credential, used only while no global `github` credential has been saved |
+| `SOURCEGRAPH_CREDENTIAL_KEY` | Generated `code-credentials.key` in the data root | Base64 of 32 bytes; encrypts stored code tokens |
+| `SOURCEGRAPH_GIT_TOKEN` | Unset | GitHub token used only while no global GitHub token has been saved |
+| `SOURCEGRAPH_CUSTOM_GIT_TOKEN` | Unset | Custom Git token used only while no global custom Git token has been saved |
+| `SOURCEGRAPH_CONFIG_FILE` | Unset | Path of a JSON startup file that overrides code sources; see [Code sources](#code-sources) |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Unset | Google sign-in |
 | `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | Unset | GitHub sign-in |
 | `SOURCEGRAPH_SEED_DEMO` | Unset | `true` registers `context4ai/context` and `context4ai/sourcegraph` at startup if they are missing |
 
-Changing `SOURCEGRAPH_CREDENTIAL_KEY` after credentials have been stored makes them unreadable; keep the key with the database backup. With PostgreSQL or MongoDB, several instances can share one database while each keeps its own data directory.
+Changing `SOURCEGRAPH_CREDENTIAL_KEY` after tokens have been stored makes them unreadable; keep the key with the database backup. With PostgreSQL or MongoDB, several instances can share one database while each keeps its own data directory.
 <!-- /context:section -->
 
 <!-- context:section id="deployment" -->
@@ -49,7 +53,7 @@ Changing `SOURCEGRAPH_CREDENTIAL_KEY` after credentials have been stored makes t
 
 | Field | Community default | Meaning |
 | --- | --- | --- |
-| `code_host` | `https://github.com` | Code host that registrations and credentials target |
+| `code_sources` | GitHub, then a custom Git source with no host | The code sources this build offers, in display order, each with `id`, `name`, `host`, `username`, `token_env`, `anonymous` and `editable` |
 | `example_repo` | `context4ai/context` | Repository used in interface examples |
 | `public_url` | `https://context4ai.org/sourcegraph` | Public address shown in links and connection snippets |
 | `source_repository` | `https://github.com/context4ai/sourcegraph` | Source link shown in the interface |
@@ -58,10 +62,37 @@ Changing `SOURCEGRAPH_CREDENTIAL_KEY` after credentials have been stored makes t
 A fork that deploys under its own name or address edits this file and rebuilds; sign-in client IDs and secrets still come from the environment.
 <!-- /context:section -->
 
+<!-- context:section id="code-sources" -->
+## Code sources
+
+Each instance offers exactly two code sources: GitHub, then a custom Git host such as a self-hosted Gitea or GitLab. Their fields combine three layers, later non-empty values winning:
+
+1. **Deployment defaults** — `code_sources` in `config/deployment.json` decides which sources exist and their order. The custom source has no host by default.
+2. **Website** — administrators edit the custom source's name, host and Git username under **Settings › Access settings**. Changes apply immediately.
+3. **Startup file** — the JSON file named by `SOURCEGRAPH_CONFIG_FILE` overrides fields by source id when the service starts.
+
+```json
+{"code_sources": {"git": {"name": "Gitea", "host": "https://git.example.com", "username": "oauth2", "token_env": "SOURCEGRAPH_CUSTOM_GIT_TOKEN"}}}
+```
+
+| Field | Rules |
+| --- | --- |
+| `name` | Display name |
+| `host` | HTTPS origin without path, user, query or fragment; stored in lowercase |
+| `username` | Git username sent with the token, 1–64 of letters, digits, `.`, `_`, `@` and `-`; default `oauth2` |
+| `token_env` | Name of the environment variable holding the default token, uppercase letters, digits and `_`; the website cannot set it |
+
+- The startup file can only override existing ids; an unknown id or invalid value stops startup. Tokens never go in the file.
+- Fields set in the startup file are read-only on the website; changing them there returns `409 CODE_SOURCE_LOCKED`.
+- Repositories keep the host recorded at registration (`code_host`). On startup, records without one get the current host; a recorded host is never rewritten, and a mismatch with the current configuration is only logged.
+- While any repository record, including deleted ones, uses the custom source, changing its host returns `409 CODE_SOURCE_IN_USE`. The name and username can still change.
+- `GET /sourcegraph/v1/code-sources` returns the effective sources in order, with `locked` listing fields set by the startup file; it never returns tokens or variable names.
+<!-- /context:section -->
+
 <!-- context:section id="site" -->
 ## Site settings
 
-Administrators edit two sections on the **Settings** page or through `/api/admin/settings`. Each save carries the section's current revision; a stale revision is rejected so two administrators cannot silently overwrite each other.
+Administrators edit three sections on the **Settings** page or through `/api/admin/settings`. Each save carries the section's current revision; a stale revision is rejected so two administrators cannot silently overwrite each other.
 
 | Section | Field | Default | Meaning |
 | --- | --- | --- | --- |
@@ -71,8 +102,9 @@ Administrators edit two sections on the **Settings** page or through `/api/admin
 | `access` | `public_read` | `true` | Whether anonymous visitors can search and read public repositories |
 | | `allow_registration` | `false` | Whether a first-time sign-in creates an account |
 | | `registration_notice_zh`, `registration_notice_en` | A built-in notice | Text shown to people who cannot register |
+| `code_source` | `name`, `host`, `username` | Empty, so the deployment values apply | The custom Git source; see [Code sources](#code-sources) |
 
-Requests to `/api/admin/settings` must use a browser session; requests carrying an `Authorization` header are refused. The **Storage** page separately moves where Git mirrors are kept; see [Operations](../../../sop/source-graph/operations.md).
+Requests to `/api/admin/settings` must use a browser session; requests carrying an `Authorization` header are refused. Global code tokens are saved separately on the same page. The **Storage** page separately moves where Git mirrors are kept; see [Operations](../../../sop/source-graph/operations.md).
 <!-- /context:section -->
 
 <!-- context:section id="policy" -->
@@ -87,7 +119,8 @@ Each registration has its own policy, initialized from the repository defaults:
 | Sync interval (minutes) | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440 | 5 |
 | Index mode | Whole repository, or registered path groups for a monorepo | Whole repository |
 | Public read | On or off | On |
-| Credential kind (`code_provider`) | `github` or `git`; the registrant's own credential of that kind is tried first, then the global one | `github` |
+| Code source (`code_provider`) | `github` or `git`, fixed at registration; the registrant's own token for that source is tried first, then the global one | `github` |
+| Code host (`code_host`) | The source's host at registration, kept for every later fetch | — |
 
 A repository with public read off is hidden from anonymous visitors only; every signed-in user can still read it. See [Registering repositories](../../../sop/source-graph/registering-repositories.md) for how branches and retention decide which commits are searchable.
 <!-- /context:section -->

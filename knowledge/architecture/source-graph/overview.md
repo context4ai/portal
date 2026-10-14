@@ -1,17 +1,15 @@
 ---
-title: Source Graph Overview
-description: Context Source Graph is a self-hosted code search and reading
-  service that answers every request at an exact Git commit, through a website,
-  HTTP, MCP and a CLI.
+title: Architecture Overview
+description: "How Context Source Graph works: one contract across the website,
+  HTTP, MCP and CLI, how a self-hosted instance is put together from Git
+  mirrors, a Zoekt index and its application database, and who can do what."
 type: Guide
-timestamp: 2026-10-13T01:43:42.966Z
+timestamp: 2026-10-14T00:31:46.764Z
 ---
-# Source Graph Overview
+# Architecture Overview
 
 <!-- context:section id="goal" -->
-**Context Source Graph** is a self-hosted service for searching and reading code at pinned Git revisions. It is built on Go, Git and the Zoekt trigram index, and it exists for the workload AI coding Agents create: many small, precise *search, then read* round trips against code the Agent has not checked out.
-
-Every request resolves to one exact commit before anything is read, so a search hit, the file it points to and a later diff all describe the same snapshot. The same operations are available in a browser, over HTTP, as an MCP server and from a command-line client.
+This page describes how **Context Source Graph** works: the operations it shares across its four surfaces, how one instance is put together and who can do what. It is a self-hosted Go application built on Git and the Zoekt trigram index; every request resolves to one exact commit before anything is read. For why it exists, what it is good for and how to start, read [What Is Source Graph](../../sop/source-graph/introduction.md).
 
 ```mermaid
 flowchart LR
@@ -23,26 +21,7 @@ flowchart LR
   git -->|background sync and indexing| engine
 ```
 
-Source Graph is part of the Context project. The name does not imply any affiliation with the Sourcegraph platform.
-<!-- /context:section -->
-
-<!-- context:section id="get-it" -->
-## Code and live demo
-
-- **Source code:** [github.com/context4ai/sourcegraph](https://github.com/context4ai/sourcegraph).
-- **Live demo:** [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/), also reachable at [https://context4ai-sourcegraph.fly.dev/sourcegraph/](https://context4ai-sourcegraph.fly.dev/sourcegraph/). It is the public, read-only instance behind this documentation site's knowledge service and serves `context4ai/context` and `context4ai/sourcegraph`. Its MCP endpoint is `/sourcegraph/mcp`. [Deployment Recommendations](../../sop/source-graph/deployment-recommendations.md) shows how it is deployed.
-- **Optional for Context:** Context works without Source Graph. When no instance is installed or configured, Context's query skill reads code through a shallow, sparse partial clone and grep instead.
-<!-- /context:section -->
-
-<!-- context:section id="why" -->
-## Why it exists
-
-An Agent answering a question about code usually needs a handful of exact lines, not a whole repository. Cloning every repository into every Agent sandbox at the right revision is slow, and running `rg` or `git grep` over a checkout repeats the same scan on each call. Source Graph keeps an index per repository and answers instead:
-
-- **Fast.** Indexed search typically completes in a few milliseconds on the server. With the service in the same region as its callers, a full request including the network stays well under 100 ms. [Pinned Search and Reads](pinned-search-and-reads.md) explains where the speed comes from and shows the measured comparison.
-- **Reproducible.** Branches resolve to a commit first, and full commit SHAs are accepted only inside the repository's retention window, so answers never drift to a different snapshot mid-conversation.
-- **Agent-ready.** The MCP endpoint is stateless Streamable HTTP and works with any MCP client. Anonymous access is read-only and limited to public repositories.
-- **Small footprint.** One process manages the Git mirrors, the search engine and background indexing; SQLite is the default database.
+The source code is at [github.com/context4ai/sourcegraph](https://github.com/context4ai/sourcegraph). The name does not imply any affiliation with the Sourcegraph platform.
 <!-- /context:section -->
 
 <!-- context:section id="surfaces" -->
@@ -84,10 +63,9 @@ Without any sign-in provider configured, an instance is an anonymous, read-only 
 <!-- context:section id="next" -->
 ## Where to go next
 
-A public demo instance at [context4ai.org/sourcegraph](https://context4ai.org/sourcegraph/) indexes the Context and Source Graph repositories and allows anonymous reading.
-
 | To… | Read |
 | --- | --- |
+| Learn why Source Graph exists and how to start | [What Is Source Graph](../../sop/source-graph/introduction.md) |
 | Understand pinned search and the speed comparison | [Pinned Search and Reads](pinned-search-and-reads.md) |
 | See how Context knowledge and Source Graph combine | [Evidence for Context](evidence-for-context.md) |
 | Connect a browser, MCP client, script or the CLI | [Connecting](../../sop/source-graph/connecting.md) |

@@ -3,7 +3,7 @@ title: HTTP and MCP
 description: Every Source Graph HTTP route and MCP tool — paths, inputs,
   credentials, limits, output and error format.
 type: Wiki
-timestamp: 2026-10-13T01:07:09.352Z
+timestamp: 2026-10-14T02:19:13.383Z
 ---
 # HTTP and MCP
 
@@ -34,7 +34,7 @@ These are available anonymously when public reading is enabled, and to every cre
 | --- | --- | --- | --- |
 | GET | `/v1/capabilities` | — | Protocol and supported operations |
 | GET | `/v1/repos` | — (`after` for the next page) | Registered repositories, 100 per page |
-| GET | `/v1/repo/availability` | — | One repository: retained versions, heads, groups and jobs, with an `ETag` |
+| GET | `/v1/repo/availability` | — | One repository: retained versions, heads, groups and jobs, its `code_provider` and the `code_host` pinned at registration, with an `ETag` |
 | GET | `/v1/repo/commits` | — | Same as availability |
 | GET | `/v1/repo/plugins` | — (optional `revision`) | Repository plugins found at that commit, without running them |
 | POST | `/v1/repo/resolve` | `{"Revision"}` | The fixed commit and whether it is indexed |
@@ -80,9 +80,10 @@ Registration fields are listed in [Registering Repositories](../../../sop/source
 | `GET /readyz` | Open | Readiness; `503` when the catalog cannot be read |
 | `GET /access-policy` | Open | `public_read`, `public_prepare` (always `false`) and `sso_enabled` |
 | `GET /site-settings` | Open | Public repository defaults |
+| `GET /v1/code-sources` | Open | The configured code sources in display order — `id`, `name`, `host`, `username`, `anonymous`, `editable`, and `locked` for fields set by the startup file; never tokens |
 | `/auth/…` | Browser | Providers, sign-in and callback, current user, sign-out, `api-keys`, user administration |
-| `/auth/code-credentials` | Signed-in session | Your own Git credentials |
-| `/api/admin/settings/…` | Administrator session only | Site settings sections, `code-credentials`, `query-errors`, `jobs/clear`, `storage` |
+| `/auth/code-credentials` | Signed-in session | Your own GitHub and custom Git tokens |
+| `/api/admin/settings/…` | Administrator session only | Site settings sections, including `code_source` (`PATCH` with `revision` and `values` `name`, `host`, `username`), plus `code-credentials`, `query-errors`, `jobs/clear`, `storage` |
 
 Site administration under `/api/admin/settings` refuses any request that carries an `Authorization` header — it is reachable only from a signed-in administrator's browser.
 <!-- /context:section -->
