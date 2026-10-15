@@ -6,28 +6,6 @@ translation:
   artifact_ref: bd4e84ed-7413-4eaf-aad0-2b9c0fde8020
   source_digest: a06e58f29ec4617d472f24288248d6c6d68f7b6a032ed41c89fac31806465bbc
   translated_at: 2026-10-12T17:06:40.056Z
-  source_parts:
-    title: 0472d0c740ba7fd48b356e350fc014bb9e9db722708d0c1ccd5ca3108d7e04bc
-    description: bdcfafd62b7371730b0e6ed9388c40fea765a188df221e1669af0d5851a3de84
-    order:
-      - goal
-      - table
-      - roots
-      - choose
-      - reserved
-    sections:
-      goal: af65be465d4bae28b3cbafb327b1eddf3274323006bc1762ae5f8db8346886ed
-      table: 91187d2ae96984122910fd49a7726f4cd4a315b2b8b2f84236f8cc1f89c5a648
-      roots: 00d2159fad625a70c9c2dbe6f19fc59b52e3aad262cb5c003ce4ff53149b2565
-      choose: ba3444714a3d780db3ea6740fa1bbd86e0a81c00d270e618c7b978ae5f36c0e6
-      reserved: bdae6194ad2ec807aecd11b632af4bc888c5d638539b9456bf553e4c095a3956
-    exterior:
-      '[null,"goal"]': 3ed9fc52d5a37916fd3f9389d8019be6e0732388206d28ad837867be20385d99
-      '["goal","table"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["table","roots"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["roots","choose"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["choose","reserved"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["reserved",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识分类

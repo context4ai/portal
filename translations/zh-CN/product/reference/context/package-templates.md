@@ -4,39 +4,8 @@ description: kbPackage 与 llmsPackage 声明的字段、包结构、目录索�
 translation:
   locale: zh-CN
   artifact_ref: ff6d102c-14a5-4f8b-a8fd-8464060dde1d
-  source_digest: d70c65e37902fdef1321ea619045cdafd72ac1ef905929639f2e62e18c620aab
-  translated_at: 2026-10-12T17:06:40.056Z
-  source_parts:
-    title: b73b7d62c3257c75ef7f88fbf0cafe6fa0488c373cb5e29f5f43837c45d938f0
-    description: 1c3811ffba6c3d925610f2e55ab0be65f9f7db71039d8964d4a1731e0f80d278
-    order:
-      - goal
-      - fields
-      - assets
-      - layout
-      - indexes
-      - profile
-      - build
-      - select
-    sections:
-      goal: ac6169562bfb85822bcdb2c0162cd42b2a551922c5a0914397fb9c400747c24e
-      fields: 459335503ca9fe32fae614e3195dc3c7ba62a248056a4d0fe8c078ad904975f2
-      assets: 02ce2f6c1ab6b5e60a3f596d7cbfc8b00104bed629151d809c49d72e103ee56f
-      layout: f11d90010ef87b82a9b5f1bb74785827cca13ececc66efc8c79974907e3b6158
-      indexes: 3070c3b16f01b2219cfbaeb0149dfd22642a68755eee511f454dddf55d64973b
-      profile: b650728c0a43fdcd5daf949dd16363ead5af7797ababd2cd658c2193838703cd
-      build: 5c054e9060bf094a86fb7361ebaf90a8e5de85034dd050b8ed293b2496b457a6
-      select: 08d478f30a5ca5c4ae36018df3498cbe02b04331e09000d2ff8ab5c04fa44173
-    exterior:
-      '[null,"goal"]': 201b61ee137d62d4e25892ef4107da892273b730a1a05ba612b926f8f53b4a56
-      '["goal","fields"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["fields","assets"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["assets","layout"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["layout","indexes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["indexes","profile"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["profile","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["build","select"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["select",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: 3a15d1c5ce2234aa152feaf73ed1f19a40f0aff26dac482a67f58afdaacee681
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 包模板
@@ -129,7 +98,7 @@ feats/...
 | 归属 | 内容 |
 | --- | --- |
 | 已批准的 Markdown | `title`、`type`、`description`、ISO UTC 格式的 `timestamp`；可选的 `resource` 和 `tags` |
-| `knowledge/structure.yaml` | 稳定的 `article_id`、`path`、`collection`、`visibility`，以及每个 section 的引用（每个 section 最多三条：`source_ref`、`locator { path, start_line, end_line }`、`content_digest`） |
+| `knowledge/structure.yaml` | 稳定的 `article_id`、`path`、`collection`、`visibility`，以及每个 section 的引用（每个片段最多引用三个来源文件、总计最多八个区域：`source_ref`、`locator { path, start_line, end_line }`、`content_digest`） |
 
 Markdown 中的 section 标记只包含 ID：`<!-- context:section id="usage" -->` … `<!-- /context:section -->`。包内页面保留面向读者的元数据，并根据引用生成一个 Sources 小节；仓库链接会带上文件和行号范围。
 <!-- /context:section -->

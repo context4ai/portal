@@ -6,28 +6,6 @@ translation:
   artifact_ref: e9c6dca7-c6c3-40f5-8439-726ad9262b15
   source_digest: 3a9c86454e67279608167fd196e6a90901c8961b40a2efaac9f7eba366551437
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: bfb0bd649edde84ebf2e6c9b15c259000e67973ebc93aca0944bf7e84be35ea1
-    description: d1a93d21b288df748087612dec5cf877e8b46c06f30950e2f9ce3a98dd262080
-    order:
-      - goal
-      - layout
-      - query
-      - share
-      - sources
-    sections:
-      goal: 51389ad3070d6c3432f950b3837d8bcf46933a5b1e3a5b973232448fccb1a95b
-      layout: 28c2e0fb9e96b508f9e1411bbfe1a55e837e3a2c32560eb3c77f4ef27285cc4b
-      query: 30b0abac31639047e98ef524b3a3f7fce53f3050c3aafdca71dfa4470ffde5ff
-      share: 028a069021c4e0432f7be3d7a449926578055973b7cdbef73f1b977e172f3819
-      sources: f56ad0280dd4ea448aee0918eaf86cf194333392be605ec18eb52ade56d6c21f
-    exterior:
-      '[null,"goal"]': de540cabca0a10f863eda3f7d63d2b41058490e1e319096ea4a74bde8a36016e
-      '["goal","layout"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["layout","query"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["query","share"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["share","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sources",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 在 Agent 中使用知识包

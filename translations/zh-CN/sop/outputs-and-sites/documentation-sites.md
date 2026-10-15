@@ -4,33 +4,8 @@ description: 如何为知识包添加文档网站，生成的站点提供哪些�
 translation:
   locale: zh-CN
   artifact_ref: e4aba8fd-3086-4983-a371-5bded4db7520
-  source_digest: 8bd3c4886b66aa93f66409e05108895a77ecfa68994018a90d3c450c0b67a0b3
-  translated_at: 2026-10-12T18:39:20.106Z
-  source_parts:
-    title: fc4b4781ec8c5fe8e31397d29a8de024badc864bad1522647bc26974cd07f251
-    description: 9f2ff46b41e803cc243b9f076297913b30724766ca80d9701663dc4538cabec6
-    order:
-      - goal
-      - enable
-      - features
-      - navigation
-      - build
-      - deploy
-    sections:
-      goal: 3d88b1dc95594fee32c2324c9942a80d160c1278723f39002a288c8521716750
-      enable: e069c681c8d13a3d2b633fd96ce331cd64c5cdf3db6b6257a6c08d9721f2d741
-      features: 06c0620cf2d1cb2ed090583b12860bc5ca84b3f190b1681cf9a67438901fdb26
-      navigation: 2eb3bff9ec7f99647095e5d7713ea71714e61f46e7ee0f0028e4408474ff80af
-      build: 70a968b6941ac5b7a2331a25310cb296353ab266274d1e0378d16f2a6cf133d4
-      deploy: 8326f8ed6b57ac009d2c58c749719937eff78c91793f9d77e76725a2a3174657
-    exterior:
-      '[null,"goal"]': 4ad53edb56ed3eb1123124c204bfab4630929d626ec724b7605c6bb50ce85a24
-      '["goal","enable"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["enable","features"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["features","navigation"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["navigation","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["build","deploy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["deploy",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: c5d8449c64cc0902f90013770878ee34623facddd53cd1ad6c31ddd195536817
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 文档站
@@ -87,12 +62,12 @@ kbPackage({
 ## 站点提供什么
 
 - **首页**——每个一级知识地图分区显示为一张卡片，附有其页面的有限预览，另有 LLM Docs 和 Changelog。
-- **导航**——顶栏显示各分区；左侧边栏只显示当前分区的下级内容。
+- **导航**——顶栏显示各分区；左侧边栏只显示当前分区的下级内容。每个分区的落地页把其一级分组显示为卡片，每行两张，窄屏时每行一张。不属于任何分区的页面——“更多”菜单目标、LLM Docs 和更新日志——不显示侧边栏，也不高亮任何分区。
 - **搜索**——本地搜索，可通过搜索按钮或 Cmd/Ctrl+K 打开；不依赖搜索服务。
-- **主题**——浅色和深色，在读者自行选择之前跟随操作系统；选择会被记住，并从首次绘制起生效，页面加载时不会闪现另一种配色。
+- **主题**——浅色和深色。无论系统配色如何，站点都以浅色模式打开；读者的选择保存在整个源（origin）共用的 `context-theme` 键下，因此同一源下的站点共享该选择，并从首次绘制起生效，页面加载时不会闪现另一种配色。
 - **缺失页面**——访问不存在的地址时显示居中的 404 页面，使用读者的语言，并提供返回站点首页的链接。
 - **图表**——Mermaid 在浏览器中渲染，提供适应、100%、缩放、全屏和查看源码等控件。无效的图表会保留源码并显示提示，而不会阻止发布。
-- **来源**——每篇文章末尾列出其来源：仓库条目链接到记录的修订版本，文档条目链接到其登记的 URL。
+- **来源**——每篇文章末尾列出其来源：仓库条目链接到记录的修订版本，文档条目链接到其登记的 URL。文章正文中的行内代码如果是被引用仓库的文件、其中某个目录或此类目录的唯一名称（例如 Skill 名称），会链接到记录版本中的对应路径；未被引用或有歧义的名称保持为普通代码。
 
 代码示例和原始 HTML 只作为内容展示，绝不会被执行。
 <!-- /context:section -->
@@ -104,7 +79,7 @@ kbPackage({
 
 | 设置 | 添加的内容 |
 | --- | --- |
-| `site.nav` | 顶栏中阅读分区之后的链接 |
+| `site.nav` | 顶栏中阅读分区之后的链接，或设置 `position: "start"` 后显示在分区之前——例如文档首页链接；指向当前页的导航链接会被高亮 |
 | `site.more` | “更多”菜单中的条目，位于 LLM Docs 和 Changelog 之前；条目可以指向保留在知识地图之外的已批准文章，例如发布说明 |
 | `socialLinks` | 顶栏中的图标链接（仅限 `https`） |
 | `titleLink` | 点击站点标题时前往的地址；像 `/` 这样的根相对链接指向源站根路径，而不是 `base` |
@@ -116,6 +91,8 @@ kbPackage({
 ## 构建与预览
 
 站点会先在暂存文件夹中生成，然后才替换任何内容，因此网站构建失败时会保留之前的知识包和站点。移除 `site` 后，下一次成功构建会删除旧站点。`dist/<base>-site/context-site-map.json` 记录每篇文章的已批准路径、知识包路径和站点路径，以及菜单和所有未解析的目标。
+
+构建不比对被引用的来源区域，因此发布构建不需要已登记来源的检出副本；`context verify` 仍会报告变化、移动或缺失的区域，所以发布前请先运行它。
 
 通过本地 HTTP 服务器预览：
 

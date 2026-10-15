@@ -6,34 +6,6 @@ translation:
   artifact_ref: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
   source_digest: b254653da124eb2e3fcc2f72ea90d09a0cc88a319fb1903d37b868128a3ba779
   translated_at: 2026-10-12T16:45:10.508Z
-  source_parts:
-    title: dbc87d09e0649ffa76c1a9cf70d16ac267cecad591ddb4fae0ff6362a8da3fc4
-    description: ae8d96ed3186c31e99b02cc6a4d2a2e8dcc0dc780351f32990ba298e3673baba
-    order:
-      - goal
-      - selection
-      - combine
-      - steer
-      - where
-      - records
-      - manifest
-    sections:
-      goal: 32aaeb020e48b34d2ce0fe9f495a76ebef33bfd4e74bb1400826b3ca7db9751c
-      selection: e2d524a61411ffce3dcd40cc90adae9c37a1eb6c57dbf0795bdcf83335532a9e
-      combine: bb7c2a1c817a4953b41df56104fb076fc02dc3b01342493a1c8e46b10752b2df
-      steer: 65e7a517798448af19a7a3c8a357717618ec09ec67b9b249d9530d526a26fe52
-      where: 7fa3f0a5094df3e3d8bf280f5c82c4b17753d7d24f49a42522d0b05b269564db
-      records: 0d693073b16da44bb2cce6937200ac65a385c201187d62d5aaa119f18d1e2b42
-      manifest: 4928f1d6ec30c2d1676285c22171b6da7272379945ba153dd5d0ecc29de43d73
-    exterior:
-      '[null,"goal"]': 10f1eff751590aa31b0b932f189dab061495781e81326e6cad68e7914b1e0d3e
-      '["goal","selection"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["selection","combine"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["combine","steer"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["steer","where"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["where","records"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["records","manifest"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["manifest",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Provider 与定制

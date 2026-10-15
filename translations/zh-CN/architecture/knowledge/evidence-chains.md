@@ -4,30 +4,8 @@ description: Context 知识的每个章节如何始终关联到确切的来源�
 translation:
   locale: zh-CN
   artifact_ref: dd332587-8faa-4ebe-88ca-247cfb146ba5
-  source_digest: 293faab9054497d09a6448f7b738557ce1c30f8cd84e28bf1ef055e203947a00
-  translated_at: 2026-10-12T16:45:10.508Z
-  source_parts:
-    title: a6df28bbcafb55c80528181c7dbcefe8dd329a5baf7c3eae7814b23c6e91b152
-    description: 416ea4877802430e553d97d8b67f6e64903eb6fcdc6c88a9d5b04d9995b8c404
-    order:
-      - chain
-      - sections
-      - verify
-      - index-first
-      - site
-    sections:
-      chain: ebfde52d775d6d0bd56337fc3da14073425a9753d054d45707c0ad42d508f72e
-      sections: 883ac64875c1add606eb053a13bc2b1d4a5447a09e8c49516ef0cc8d90263bdb
-      verify: 3486d347654558dc5c63b8adc8a06f988854eb9bed21f01e80b4cac135f91d54
-      index-first: 94af68cafc81ef90062f7d08d1ee47cbf65b2d2d46fe074e925410e63a639144
-      site: 2f95540f5fc7445dbf2872584f7f656c4e7fb2e96aa2571ac962e90ff4600e84
-    exterior:
-      '[null,"chain"]': 3ab45e44e6b05496b528d87c6ea26f7bcb61325172d8bc3f2ad9d99c73540c7a
-      '["chain","sections"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sections","verify"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["verify","index-first"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["index-first","site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["site",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: 6304922c3a5cc019ebe1c539c942bcadad98f39cdb5d23e0caef658dbdddc3fa
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 证据链与索引优先
@@ -49,7 +27,7 @@ flowchart LR
 <!-- context:section id="sections" -->
 ## 章节自带证据
 
-已批准的文章按章节划分。每个写作片段最多引用三个来源位置，每个位置由一个 `source_ref` 加上文件和行号 `locator` 组成。提交文章时，CLI 会检查每个被引用的来源是否已授权给该任务，读取当前采集到的文本，并计算该区域的内容摘要。未知或未授权的路径以及来源版本漂移都是错误，而不是警告。无需另外维护事实表或论断台账——引用本身就是证据。
+已批准的文章按章节划分。每个写作片段引用已登记来源的区域：最多三个不同的来源文件，同一文件可引用多个区域，总计最多八个区域。每条引用由一个 `source_ref` 加上一个 `locator` 组成。Agent 可以用行号范围、Markdown 标题（可带 `##` 标记，同时限定标题层级）或一段精确引文定位区域；CLI 会在采集文本中解析标题或引文，并保存为行号范围。提交文章时，CLI 会检查每个被引用的来源是否已授权给该任务，读取当前采集到的文本，并计算该区域的内容摘要。未知或未授权的路径以及来源版本漂移都是错误，而不是警告。无需另外维护事实表或论断台账——引用本身就是证据。
 
 `source_ref` 的值是不透明的、经过校验的标识。Agent 需原样复制它们；它们不是文件系统路径。
 <!-- /context:section -->
@@ -57,7 +35,7 @@ flowchart LR
 <!-- context:section id="verify" -->
 ## 交付前再次检查
 
-`context verify` 会在 close 和构建之前重新检查已批准的页面：来源引用是否最新、是否逐字匹配，frontmatter 标识、章节块、资源文件以及派生结构。验证错误会阻止 close 和构建。已批准的 Markdown 在 frontmatter 和章节元数据中保持稳定的标识，因此页面可以修订而不丢失历史。
+`context verify` 会在 close 和构建之前重新检查已批准的页面：来源引用是否最新、是否逐字匹配，frontmatter 标识、章节块、资源文件以及派生结构。验证错误会阻止 close 和构建。`context build` 本身不再比对被引用的来源区域，因此发布构建不需要已登记来源的检出副本；`verify` 仍会报告变化、移动或缺失的区域，所以发布前请先运行它。已批准的 Markdown 在 frontmatter 和章节元数据中保持稳定的标识，因此页面可以修订而不丢失历史。阅读页还会把每个片段 ID 暴露为锚点，因此 `page.md#upgrade` 这样的链接可以直接定位，除非该页已有标题占用了同一个 slug。
 <!-- /context:section -->
 
 <!-- context:section id="index-first" -->

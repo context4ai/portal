@@ -5,42 +5,8 @@ description: src/index.ts 可以用 @c4a/context SDK 声明哪些内容——来
 translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
-  source_digest: a67dc693a4f68af644b3e1cb86be08228596c86dbae47cd891fe01f102c473fd
-  translated_at: 2026-10-12T18:39:20.106Z
-  source_parts:
-    title: 3c784f425e7a88b4b0b97be174973fc67fd54ff6b53780bab7ef0b8144e93b11
-    description: 2c56d1e80eb74e255a489595cd8132b8aac2c22229d1097b73a20030864dfe74
-    order:
-      - goal
-      - define
-      - sources
-      - capture
-      - custom
-      - packages
-      - site
-      - requirements
-      - state
-    sections:
-      goal: d9b0f7a7a39fd2d7c7dea94059dfaea60ba48ef28d5a60c9b94c4426a3a986be
-      define: 95d5f6e963ccff8a0eb67dbbfe5c0269b278e29ace390c66ef1445ec271dbe27
-      sources: e6781a21d74b08fdee387ea3534f7a688ac2d6e590f5b6aeb8022d1ee655f674
-      capture: 11aa052422df6455f79a92edea42d3f3c8c1c54dbbc5a7283dbe37bc4e3483c9
-      custom: 065c6b6830f31027668cefed25ebde44588b30fd99a4e2f63417cdff0eac6865
-      packages: c9b0845d2d063ab967d9a162142361378a26a1ea001fa4dcc71099e64a31b655
-      site: ed5ab5e5d9025a9b4b251f1fd3c3396e068d377f1329ab1a163a463702e4bf08
-      requirements: 6618f324e71aa693a6311437b818f18d3807b79ef7c1390d23b387ceb9f3190f
-      state: 3c5e78181467d412e9e8339b8f8c3c5660049136177a18339b6623a0fd5cc8f5
-    exterior:
-      '[null,"goal"]': e952969027168fe77d74002c463f95e7cb9075dc96bf81683f8e4a783fccf3ba
-      '["goal","define"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["define","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sources","capture"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["capture","custom"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["custom","packages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["packages","site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["site","requirements"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["requirements","state"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["state",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: db176cde535b551a1cef77c0fd7372ed681cbed5c8c99a9dc1b64326b4d061f9
+  translated_at: 2026-10-15T06:57:53.750Z
 ---
 
 # Project API
@@ -172,7 +138,7 @@ llmsPackage({
 | `titleLink` | 顶栏标题的链接目标；默认为站点首页 |
 | `home` | `title`、`slogan`、`description`、首屏 `actions`（`text`、`link`、`theme`），以及 `resources`（每项需要 `href`、`command` 或两者兼有） |
 | `locales` | 额外的读者语言，以 BCP 47 标签为键，每项可选 `label`、`title`、`description`、`home`；不能与 `lang` 相同 |
-| `nav` | 知识分区之后的顶部链接：`text`、`link`，可选按语言提供的 `locales` 文本 |
+| `nav` | 顶部链接：`text`、`link`，可选按语言提供的 `locales` 文本和 `position`——`"start"` 把链接放在知识分区之前，默认 `"end"` 放在之后 |
 | `more` | 放在“更多”菜单中内置的 LLM Docs 和 Changelog 之前的条目：`text`，并且 `link` 与 `target.artifact_ref`（仅在此处显示的已批准文章）二者只能选一 |
 | `socialLinks` | `icon`（`github`、`discord`、`x`、`youtube`、`slack`、`linkedin`、`mastodon`、`npm`）、一个 https `link`，可选 `ariaLabel` |
 | `localePreferenceKey` | 共享的存储键，让同一源下的多个站点保持相同的读者语言 |

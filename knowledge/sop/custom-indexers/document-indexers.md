@@ -4,7 +4,7 @@ description: What a document Indexer for a family of documents should contain �
   outline-first planning, full reading before writing, topic grouping, images
   and tests — with an example outline.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Document Indexers
 
@@ -43,11 +43,13 @@ Age, archive location and polished language prove neither authority nor irreleva
 <!-- /context:section -->
 
 <!-- context:section id="writing" -->
+
 ## Writing and repairs
 
-Before writing, the Agent reads the actual passages each article needs, and keeps authoritative rules, examples, decisions and proposals distinct — a suggestion in a meeting summary is not implemented behavior. Each section cites at most three real source regions; the CLI handles digests and safety, the Agent judges whether the evidence supports the explanation. A local failure is repaired at the reported section, and finished tasks can be submitted without waiting for the rest of a batch.
+Before writing, the Agent reads the actual passages each article needs, and keeps authoritative rules, examples, decisions and proposals distinct — a suggestion in a meeting summary is not implemented behavior. Each fragment cites real source regions from at most three files, up to eight regions in total; the CLI handles digests and safety, the Agent judges whether the evidence supports the explanation. A local failure is repaired at the reported section, and finished tasks can be submitted without waiting for the rest of a batch.
 
 Revisions keep stable article and section identities and preserve useful steps, examples, images and limitations. Do not inflate page counts, write one page per heading or turn missing evidence into speculative prose.
+
 <!-- /context:section -->
 
 <!-- context:section id="visuals" -->

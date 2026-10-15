@@ -7,37 +7,6 @@ translation:
   artifact_ref: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
   source_digest: 84957b5e6053e36d31c3aa3f2e6ba4ea5ab284d114ca1adde401d7d00430ed85
   translated_at: 2026-10-12T18:39:20.106Z
-  source_parts:
-    title: b6da697c750df1ee34cfc855f6b278d4d15197ab95ff4a92e99e767f0016b121
-    description: 957fa964f138a05a07f610d81f84aece771eee1795b701551772f1ee813fd2a4
-    order:
-      - why
-      - layers
-      - entry
-      - workflow
-      - managed
-      - idempotent
-      - replay
-      - this-site
-    sections:
-      why: 77a94c1cf5bbf8fcb78a601cefd0f1f7dbdea4a8746d78190f7893463c7e2fc5
-      layers: afa53c1f380e9c7eb04649fff4ee77bfa6d96b8b1742b09882a19efc2f77a160
-      entry: 68d6154132ea104333649e66f344631d661a102a9ec1150a84470461ff26abb6
-      workflow: da7405d0f010127ded558b04ab095eb03ae629c109147bd46f21dc56ce3916e7
-      managed: 84c3c663e09936c5c71651edf37b14f7b8cfb094a2ce9e53c3c84433b094bc3e
-      idempotent: 95d7c83340c31b62ead916c1d68066e4274182ce1f7e332ab945149bd74f8793
-      replay: 1160c471d29fe60d70e22720bb73eb69af6f93e52d3a9fc76ebda02280359e27
-      this-site: e23b54abea3790359a6fa6df240b3d0d6cdbf66b82ae23b6889521966451925c
-    exterior:
-      '[null,"why"]': 927e0b1c3e9f3994bf52ae40ec1502fad0dd0f5d086f3affe974381d4e20e5b6
-      '["why","layers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["layers","entry"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["entry","workflow"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["workflow","managed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["managed","idempotent"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["idempotent","replay"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["replay","this-site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["this-site",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 在 Context 中的应用

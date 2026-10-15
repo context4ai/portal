@@ -1,10 +1,10 @@
 ---
 title: Commands and Skills
-description: A short checklist of the entries you invoke in the conversation,
-  how each Agent host spells them, and the Skills that run without being
-  invoked.
+description: The entries you invoke in the conversation, how each Agent host
+  spells them, the requests you will use most, and what runs without being
+  typed.
 type: Wiki
-timestamp: 2026-10-12T18:36:23.504Z
+timestamp: 2026-10-15T03:52:07.709Z
 ---
 # Commands and Skills
 
@@ -31,9 +31,9 @@ flowchart LR
 | `/c4a:context` | Create a Context knowledge workspace, continue one, and run production, review, update and build | *"Build reviewed knowledge for ../billing-service for on-call engineers."* |
 | `/c4a:context-plan` | Plan a large project or a broad update in stages before production | *"Plan knowledge for these three repositories and the design folder."* |
 | `/c4a:context-inspect-search` | Ask questions against knowledge packages or approved knowledge, with sources | *"How are refunds retried? Cite the code."* |
-| `/c4a:context-repo-content` | Register or edit documentation and authored Skills in the same repository, without starting production | *"Register docs/ and .agents/skills as repository content."* |
+| `/c4a:context-repo-content` | Let Context reference docs and authored Skills your project already maintains in the same repository, instead of producing them again | *"Register docs/ and .agents/skills as repository content."* |
 
-`/c4a:context` is the production entry for new and existing knowledge workspaces. The other three entries do not drive production themselves: a plan, an answer that points to a gap, or registered repository content is handed back to `/c4a:context` when knowledge should be produced. A conversation where Context is already active continues without invoking it again; ordinary coding or design conversations never start it on their own.
+`/c4a:context` is the production entry for new and existing knowledge workspaces. The other three entries do not drive production themselves: a plan, an answer that points to a gap, or registered repository content is handed back to `/c4a:context` when knowledge should be produced. Repository content keeps evolving with the project, and the knowledge links to it; see [Referencing Same-Repository Docs and Skills](../../sop/registering-sources/same-repository-docs.md). A conversation where Context is already active continues without invoking it again; ordinary coding or design conversations never start it on their own.
 
 To create a new Indexer, ask in plain language — *"Create an Indexer Skill for our RPC framework in ./skills"*. The `context-indexer-create` Skill picks this up; it is not a menu command.
 
@@ -52,30 +52,6 @@ To create a new Indexer, ask in plain language — *"Create an Indexer Skill for
 Restart or refresh the host after installing or updating the plugin so it loads the current entries. See [Installation](installation.md).
 <!-- /context:section -->
 
-<!-- context:section id="automatic" -->
-
-## Skills that run on their own
-
-| Skill | When it runs |
-| --- | --- |
-| `context-code-indexer`, `context-markdown-indexer`, `context-note-indexer`, `context-sessions-indexer` | The Agent selects them for the current sources and requirements during planning and writing. Installing one makes it available; it is not enabled for every knowledge workspace. See [Community Indexers](../../sop/custom-indexers/community-indexers.md). |
-| `context-inspect-search` | Also when a host or Bot configuration routes knowledge questions to it. |
-| Workflow step Skills: `work-production-stage`, `translate-site-locales`, `record-workspace-version`, the Indexer lifecycle steps, and `recover-workspace` | Each runs when the current Route selects its step — writing a production stage, translating the site, recording a version, or recovering a stuck task. |
-
-Indexer Skills are installed without a plugin namespace, so they keep the same names in every host.
-
-Every Skill in the Agent plugin, with its trigger and hand-off, is listed in the [Skills reference](../reference/context/skills.md).
-
-<!-- /context:section -->
-
-<!-- context:section id="never" -->
-
-## What you never need to type
-
-The lifecycle commands — `context source add`, `context review …`, `context build` and the rest — are run by the Agent with the exact revision the Route returns. You will see them in progress messages, but you describe goals instead. There is no `context continue` command: when the Agent starts, `context entry` and `context status` observe the knowledge workspace and return the next step. The full command list is in the [CLI Commands reference](../reference/context/cli-commands.md).
-
-<!-- /context:section -->
-
 <!-- context:section id="requests" -->
 ## Requests you will use often
 
@@ -85,5 +61,21 @@ The lifecycle commands — `context source add`, `context review …`, `context 
 | Add material | *"Add ../docs/refunds to the sources and re-plan the affected part."* | [Working with Agents](../../sop/planning-and-production/working-with-agents.md) |
 | Fix a page | *"Revise the retry page: the limit is five, not three."* | [Revising a Page](../../sop/review-and-revision/revising-a-page.md) |
 | Follow a change | *"The billing repository moved to a new release; update the affected pages."* | [Updating Knowledge](../../sop/updates-and-versions/updating-knowledge.md) |
-| Hand off review | Add a `CONTEXT_RUN_POLICY` block to the task | [Managed Mode and Review Policy](../../sop/planning-and-production/managed-mode-and-review-policy.md) |
+| Let an Agent review one task for you | Include a task-scoped `CONTEXT_RUN_POLICY` block that delegates the review decisions; without it, the run asks you | [Managed Mode and Review Policy](../../sop/planning-and-production/managed-mode-and-review-policy.md) |
+<!-- /context:section -->
+
+<!-- context:section id="automatic" -->
+## Skills that run on their own
+
+Some Skills are never invoked by name. The Indexer Skills (`context-code-indexer`, `context-markdown-indexer`, `context-note-indexer`, `context-sessions-indexer`) are selected for the current sources and requirements during planning and writing; installing one makes it available, not enabled for every workspace. `context-inspect-search` also runs when a host configuration routes knowledge questions to it. The workflow's own step Skills — writing a production stage, translating the site, recording a version, recovering a stuck task — run when the current Route selects their step.
+
+Indexer Skills are installed without a plugin namespace, so they keep the same names in every host. Every Skill, with its trigger and hand-off, is listed in the [Skills reference](../reference/context/skills.md); the Indexers are described in [Community Indexers](../../sop/custom-indexers/community-indexers.md).
+<!-- /context:section -->
+
+<!-- context:section id="never" -->
+
+## What you never need to type
+
+The lifecycle commands — `context source add`, `context review …`, `context build` and the rest — are run by the Agent with the exact revision the Route returns. You will see them in progress messages, but you describe goals instead. There is no `context continue` command: when the Agent starts, `context entry` and `context status` observe the knowledge workspace and return the next step. The full command list is in the [CLI Commands reference](../reference/context/cli-commands.md).
+
 <!-- /context:section -->

@@ -6,28 +6,6 @@ translation:
   artifact_ref: 38889376-c545-487e-99b1-c4f2c1d2dcec
   source_digest: 9c0a52edcf88041a74e53a4e0441e3d7bc8939abbb3690947782601ce5c81889
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: f6bcb42b0bac9e7317ab35240064ee3ca8089cf519b8cf94141873c7403b69e0
-    description: e722544543073ff6eb6a3f1f625384aed04476f52fb8cc05ffade5068e4bd9bc
-    order:
-      - goal
-      - prepare
-      - save
-      - use
-      - correct
-    sections:
-      goal: c2dda54ad8128c543ec7fd9dd52e34cbe22f9d9b2a78a4aff9fbd34f0f2f2026
-      prepare: 01a71e0233c6381813574a1714a58f69fbb59dd689ddc1ff36c35ce4cc1cce36
-      save: 892f55f7487cbd8690d8be2896d48e40bb3e9c36ae9b1145a4cbe50c3c9a8477
-      use: a094d79160593c5b541c82a397f16055ee8dc8657a4637ff6680111ca85513b8
-      correct: 03b3dfa3d6d5fd4bbf06203b82ed66f15a03bbc0e31a069db8b025d935cbb542
-    exterior:
-      '[null,"goal"]': ab6e6ee282e5f993dd2cebfb63795bd9c45c527665cad6b9ab64db843b348d6f
-      '["goal","prepare"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["prepare","save"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["save","use"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["use","correct"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["correct",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 会话摘要

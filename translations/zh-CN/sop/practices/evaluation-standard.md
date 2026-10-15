@@ -6,46 +6,6 @@ translation:
   artifact_ref: 4cefdc74-779a-435a-8d47-0a9794f8144c
   source_digest: d039a5b68e9cbb006e215f312430ce2881d813b5864676700180d67568163714
   translated_at: 2026-10-13T08:56:28.112Z
-  source_parts:
-    title: bc44e71a8ba3f6ad31ead8bfff9bbf0062bef34a0d05610890ccc1e5f96a2d0c
-    description: 36828724fcbb3e1073b0e95686fd366f2a294ffc2091e900324e4245d00371b5
-    order:
-      - overview
-      - industry
-      - metrics
-      - grades
-      - fairness
-      - counterexamples
-      - calibration-examples
-      - reviewers
-      - statistics
-      - timing
-      - tools
-    sections:
-      overview: 9040c09a4666e32c48f62c5204365a2d61b8c06f560d8dfd8bceb62bc1e262a1
-      industry: 1b2e0f06ced374b3347c299218096d076909580285cdb86735b47d02f296ea1c
-      metrics: ef4bcae9ee6a9bed25fe5bcc8c489dfd62e7df9f1643a89f676a6665b7a47057
-      grades: 71f6008292b119901ec9fafcd492d2f0da27a72dc207b039e1a562616867452d
-      fairness: 32e478d29ef26ed431bf86d6fe5452b1b3ad577202268076ea7f4ad195cf14e4
-      counterexamples: f47674ad7d43f9e55f4fe57655c4e063ecd67e74e0c8cbe9c759651259dcbdd9
-      calibration-examples: aadeecb0b5c52381fc1d82c598decab79d774d9249c450bc2228a229b9211ce0
-      reviewers: 9457ee0d5198c01edec1456af610dfd024129c77abfc16e11dc517aafcb71442
-      statistics: 9eae5a39c58f19b1106e45c470276726e7ce7767c106f916deebe5c250465049
-      timing: 16e2fd9e6d0fc282c33e2b5645afc20cbe745395d1f38bb2a56ae033b3962b42
-      tools: c72b5be74e3960fb3e2b418e84556364e7038d5cf206fb4e3b3b521921422229
-    exterior:
-      '[null,"overview"]': 1f86d8c6ca2dd579792365f82550d0fcafe007fa539ceeab81bcd34cfc2df51b
-      '["overview","industry"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["industry","metrics"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["metrics","grades"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["grades","fairness"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["fairness","counterexamples"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["counterexamples","calibration-examples"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["calibration-examples","reviewers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["reviewers","statistics"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["statistics","timing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["timing","tools"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["tools",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 测评评分与计时标准

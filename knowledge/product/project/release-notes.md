@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-10-12T20:24:32.970Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Release Notes
 
@@ -11,6 +11,41 @@ timestamp: 2026-10-12T20:24:32.970Z
 These notes summarize recent product releases by what readers and Agents notice. The complete history is in the [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) and the [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md). The site's own **Changelog** entry in the More menu is different: it lists the versions of this documentation, not product releases.
 
 To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session; see [Installation](../getting-started/installation.md). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+<!-- /context:section -->
+
+<!-- context:section id="context-0771" -->
+## Context 0.7.70 and 0.7.71 (2026-10-14)
+
+**Installation**
+
+- Claude Code and Codex can also install the `c4a` plugin by adding the context4ai/context repository as a plugin marketplace; the CLI is still installed from npm. The installation instructions list Bun next to Node.js 20, because knowledge workspaces install their dependencies with `bun install`. See [Installation](../getting-started/installation.md).
+
+**Revisions and updates**
+
+- A revised section that omits `references` keeps its validated citations; listing references re-confirms them against the task's sources. Citations can be located by Markdown heading or exact quote, and a fragment may cite regions from up to three source files, eight regions in total. Earlier CLIs cannot read structures with more than three regions in a fragment.
+- Rejected references and incomplete source-update decisions are reported as user input, naming the fragment, the input path and the allowed sources or pages. A revision that needs a source outside its scope explains how to register it, associate it with the requirement in `src/indexers.yaml` and run `context task adjust`; the added source stays citable by the remaining queued pages.
+- When a source update settles, citations of kept pages whose text only moved are relocated. Kept pages whose cited text changed or cannot be confirmed are listed in `reference_warnings`, to be corrected with `context revise` after the update queue finishes.
+
+**Translation**
+
+- `translate prepare` is incremental: each pending article gets a draft — its stale translation, or the approved source when missing — and a `source_diff` when Git history holds the version it was translated from. Edited drafts are kept and drafts are removed after a successful submission. Translations no longer store `source_parts`.
+- Prose in `text`, `txt` and `plaintext` code blocks may be translated. In-page and cross-page anchors keep the reader's language, and reader pages expose each fragment ID as an anchor.
+
+See [Revising a Page](../../sop/review-and-revision/revising-a-page.md), [Updating Knowledge](../../sop/updates-and-versions/updating-knowledge.md) and [Multilingual Sites](../../sop/outputs-and-sites/multilingual-sites.md).
+<!-- /context:section -->
+
+<!-- context:section id="context-0767" -->
+## Context 0.7.63 to 0.7.67 (2026-10-13 to 2026-10-14)
+
+**Knowledge websites**
+
+- Sites open in light mode regardless of the system color scheme. The reader's light/dark and language choices are remembered per origin by default, so sites on one origin share them.
+- `context build` no longer compares cited source regions, so publishing builds do not need the registered source checkouts; run `context verify` before publishing.
+- Inline code that names a cited repository file, one of its directories or the unique name of such a directory links to that path at the recorded revision; uncited or ambiguous names stay plain text.
+- Section landing pages show each first-level group as a card. A `site.nav` link with `position: "start"` appears before the sections, pages outside every section show no sidebar, and the homepage highlights a nav link to the current page instead of the first section.
+- Custom slots such as a homepage banner no longer collapse for readers in dark mode, and collapsed changelog cards keep long titles on one truncated line.
+
+See [Documentation Sites](../../sop/outputs-and-sites/documentation-sites.md).
 <!-- /context:section -->
 
 <!-- context:section id="context-0762" -->

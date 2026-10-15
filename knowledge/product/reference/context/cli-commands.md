@@ -3,7 +3,7 @@ title: CLI Commands
 description: Every command and subcommand of the context CLI, grouped by
   purpose, with what each does and its key options.
 type: Wiki
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # CLI Commands
 
@@ -74,6 +74,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 <!-- /context:section -->
 
 <!-- context:section id="delivery" -->
+
 ## Delivery
 
 | Command | What it does | Key options |
@@ -82,9 +83,10 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context verify` | Validates the workspace | `--compact`, `--view diagnostics`, `--page-size`, `--page-token` |
 | `context build` | Builds the declared packages and sites | `--verbose` |
 | `context translate status` | Reports translation freshness per locale | |
-| `context translate prepare` | Writes the pending translation task | |
+| `context translate prepare` | Writes a draft per pending article — its stale translation, or the approved source when missing — with a `source_diff` when Git history holds the version it was translated from, plus a submission file | |
 | `context translate submit` | Validates and saves translated articles and navigation titles | `--input` |
 | `context translate skip` | Publishes pending translations in the primary language for now | |
+
 <!-- /context:section -->
 
 <!-- context:section id="versions" -->

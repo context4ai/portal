@@ -6,28 +6,6 @@ translation:
   artifact_ref: 4c404898-5e2f-47f4-9740-e5719162af5c
   source_digest: 2a59fa8e7f57aa0acf61dd1c1c9953bfe32949215687d1aa4ad74dcfe6c5e4cd
   translated_at: 2026-10-13T00:58:46.061Z
-  source_parts:
-    title: 926222fe0f9363f060a1e9bc4c8d6b32195831a9e32263353b89ae29606f246d
-    description: 420a2395bbdf7e324b6230cd8b928044709340e19a75746f32d04a1ad5a85ca9
-    order:
-      - goal
-      - choose
-      - single
-      - sharded
-      - demo
-    sections:
-      goal: fea0c15766d4586ad8b5b5327f4d39285bbcabd29890ff6d48e8c0732eb105c0
-      choose: e56e1c5923bc4c4f805137fd7bf1355eb22cae583976f83d6d9da30fa0873009
-      single: 604c5c3fffb58df83ae819af522cbbb38a12f893f5d6ac647c7b50cf8aa1020e
-      sharded: c9ecb71c50105d2d5fa1ada057113b3704e3246a0657a80a6403eeac6dc83d15
-      demo: c0779b05a14091784202a901bae6508a0684587e8fd7a0678505d76918bc3396
-    exterior:
-      '[null,"goal"]': 275f9d05f94492ecf340d28b10d109d7f38eecafaa77990cc2b620f0b56a489f
-      '["goal","choose"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["choose","single"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["single","sharded"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sharded","demo"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["demo",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 部署建议

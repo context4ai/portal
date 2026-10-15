@@ -4,33 +4,8 @@ description: 修正单个页面——无论是仍在审核中的候选，还是�
 translation:
   locale: zh-CN
   artifact_ref: 7e11e6c2-7029-4e7f-a717-47566aa4153f
-  source_digest: 3c5bdd11edf893217b337443d88b9115e5ee3241b65e12c1eb5837023b62b2e0
-  translated_at: 2026-10-12T16:11:57.590Z
-  source_parts:
-    title: fff94ac93d75b6855f7a68ca0e13a139f3fa52a4c8fec03c3fe9024264adf359
-    description: 8ccff24081c57408b69ac183fa32366b2469845c268956148eaec8a232913542
-    order:
-      - goal
-      - which
-      - how
-      - move
-      - generated
-      - source-wrong
-    sections:
-      goal: e6be8b8828e8f539e46a3932d37560cddff42d73cd8d8a51ca452f3657e653a7
-      which: b66a5f57a02de193548cc203110495aaa3a020c9d6fddf8939a9b6e6950ce513
-      how: 1783c602a2ee1eb3a14de3292a261a4ceb99d846e3a7895dd7c96019c24bcbdc
-      move: 037fad9f9691d25e4b6cfec91bc10c595a3934d85fc8b5e8a65ba3362ecb849c
-      generated: df3e7b119c4f8ea609b15bbde8ea6791831e7dfc3dd45d7f680d736bfe6056ef
-      source-wrong: 9cf5cc3b1b441fe8376a153259ec2ce0ea5a38047466260b47582cdceb692044
-    exterior:
-      '[null,"goal"]': ac5e48d3d4d729ce40b390dba337934d7685b5aead75fa016dfc453c0d7697cb
-      '["goal","which"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["which","how"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["how","move"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["move","generated"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["generated","source-wrong"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["source-wrong",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: dc9818154a2c9908372637f50a798f30f7ab37b6c3dd6d5bd67f77ade1e5a450
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 修订页面
@@ -57,6 +32,8 @@ translation:
 - 仅修改措辞时，只依据已批准的文本；不会重新采集或重新解析来源。
 - 修改事实时，读取相关的已登记材料。只存在于你指令中的新事实，会先保存为来源，例如一条[笔记](../registering-sources/notes.md)。
 - 可以编辑单个章节或整个页面。编辑章节时，其他章节及其引用保持不变；修改引用会替换该章节的引用，Context 会重新计算其指纹。
+- 编辑省略 `references` 时，保留该章节已验证的引用；列出引用则会按本次修订的来源重新确认。引用可以用 Markdown 标题或精确引文代替行号来定位，并以行号范围保存。
+- 修正需要修订范围之外的来源作为证据时，登记该来源，在 `src/indexers.yaml` 中将其关联到需求，并运行 `context task adjust`。新增的来源对同一修订中排队的其余页面仍可引用。
 
 提交之前，Agent 可以预览组装后的页面和之前的文本，而不必接受这次编辑。
 <!-- /context:section -->

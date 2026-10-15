@@ -7,37 +7,6 @@ translation:
   artifact_ref: 3a6ac1dd-079a-47fc-b57b-e69032d0f793
   source_digest: ac237ccf85af9657dad4aca1cadf08307cc14a0b863c0efa2f90b010072fd89f
   translated_at: 2026-10-14T00:30:31.472Z
-  source_parts:
-    title: 2e5bbbbf759ec6e4ae4e513f1da4263b5a90e200413a155505842b962d5975c4
-    description: f346725f3e64a1d0056736ddcaa9a6d4009acb438b87fd5cafae2723d12ac0ea
-    order:
-      - purpose
-      - what
-      - problem
-      - example
-      - benefits
-      - context
-      - when
-      - start
-    sections:
-      purpose: fe9c948a5bd59af9ffd06f97b18635dba16a0297c87d411964d6a0713c415225
-      what: 77a804ca332e3416457a297e93cfd21bf3ef8fa510706d93323ddb27b3dbf2d7
-      problem: 3a4dec1292a52fbb6e30405ebdaa11108c7d14da4d6f9c55380b24924f5cf703
-      example: be04569d386cce53f4d98356ff42c64984a73167ccbbf549d081ca3c18b22901
-      benefits: 5a9b75bb6613ea7e8e2d92297c728dc938f1b4e1554fdf9b357da58735ef1479
-      context: 5b72d77f23f0570c70305a46239578ccc747fdcb19f0e213d7def5cdbacb0f88
-      when: 5cd7ce2418fbfb0afc5b13cc0f5b325b3e4e52e8bc4579ddc5e1b946d0182132
-      start: f4e08bf68e3c65fdc0e8e4ef227f32fc986d8efb4638bce2f111806555693a6f
-    exterior:
-      '[null,"purpose"]': d4afeadd0c6824928022d05552a50ece919ce1fa0a16bef48f505af9674af637
-      '["purpose","what"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["what","problem"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["problem","example"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["example","benefits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["benefits","context"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context","when"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["when","start"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["start",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Agent Graph 是什么

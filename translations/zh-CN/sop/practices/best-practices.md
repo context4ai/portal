@@ -6,34 +6,6 @@ translation:
   artifact_ref: 6130b9e4-4934-45ce-980b-2909ab4f206e
   source_digest: 777c24e38e2a1ec5009728ccb5c58f10d7003a2de6f9d9a86fed4259eaa3ec08
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 46d9a34a79d27b3869085ea8961f543cc9425756c6ddf26628d6f5fa7df73b36
-    description: 40c77c8be3e17d956c64770894927fe9b9750d0c0cec84cdfdf480fc8ed2543a
-    order:
-      - goal
-      - start
-      - preview
-      - review
-      - reorganize
-      - upstream
-      - batches
-    sections:
-      goal: bb856ef83b3e743519460483eaa181bd73de7f3d3072f0892256503ecab84bc0
-      start: e1695da6944f0107c9b2271699c0cd584f45e2439d2e32cbca6c08ad0bc4f0be
-      preview: 7198f4bd5815b795c156fc3a141944e0bde3dbfdeb7c0c2d75716efade3d04ce
-      review: e783a4cb6641d608b12f54a54cba91ef44d0a0cab6b6eee6fef0fd16d9d199dc
-      reorganize: 3c0962d00ca811ccc78a5461882297f8e898677671983522d97a136cbae10911
-      upstream: ad5d9d9696d69e3b54259fac57a4f175e923d4fd5990dad436d4211e91f7d9f4
-      batches: 0ab4eb08f7a205cc80e349ca81aae7a59ca2c91f22b66814f36f50f062ebc563
-    exterior:
-      '[null,"goal"]': e510bd97508d147481dfeb3476908f9687fcdcc85ff8d8a0a3c58aecaafdc124
-      '["goal","start"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["start","preview"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["preview","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["review","reorganize"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["reorganize","upstream"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["upstream","batches"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["batches",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 最佳实践

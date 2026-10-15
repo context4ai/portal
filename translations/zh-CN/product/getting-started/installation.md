@@ -4,30 +4,8 @@ description: 为 Claude Code、Codex 或 Cursor 安装 Context CLI 和 Agent 插
 translation:
   locale: zh-CN
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
-  source_digest: 8669837a37ba36c92024ecac33a87f95abdd0979f5fb38117ebf5e8c26fd34bc
-  translated_at: 2026-10-12T18:39:20.106Z
-  source_parts:
-    title: c3fc54aa5390dc2c333d4bb596a339d552ad787337c1fdaac3957ca5a7facf50
-    description: c32f32d7ec7b0d751766624d4ab2f91417f68723bc2ab5f74d455247dff5f962
-    order:
-      - prerequisites
-      - install
-      - entries
-      - local
-      - verify
-    sections:
-      prerequisites: b7079bf47a596a52e8bce6aa310c1f81b24fc72062d764bf8b789177fe13a4d2
-      install: 89decf3a1eb9035c2a8570736ff4b559b71a66d124d95e020bcf66e1a360820d
-      entries: 750895887d71cd34724765f3166ba07e1f442c181933ddcb335aeb485618f45a
-      local: 7eb3c6f34a89328675c452e857ad47f58cb85f1b553d9327be8181055f3383ab
-      verify: 4805e21b49de1fb6272122d4d2827f167dba1709063cc17104cc628daf1e7423
-    exterior:
-      '[null,"prerequisites"]': cc5c68c903b218bb1131f58837f039c54cf3e53a71a6e451f9a347fb886487e6
-      '["prerequisites","install"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["install","entries"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["entries","local"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["local","verify"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["verify",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: 2afaf1e3e8dd89798d6cba08ba3beeaad254f5e08baf932de2924d576b49d8db
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 安装
@@ -35,9 +13,10 @@ translation:
 <!-- context:section id="prerequisites" -->
 ## 准备工作
 
-你需要：
+Context 每台机器（或远程 Agent 环境）只需安装一次，而不是每个任务安装一次。你需要：
 
 - Node.js 20 或更高版本，以及 npm；
+- [Bun](https://bun.sh)：新建的知识工作区在初始化后会立即用 `bun install` 安装依赖；
 - 至少一个 Agent 宿主：Claude Code、Codex 或 Cursor；
 - 对计划整理成知识的仓库和文档有读取权限。
 
@@ -63,6 +42,17 @@ flowchart LR
 ```
 
 全局安装会创建带命名空间的 Context 入口，同时以无命名空间的形式投影四个 Indexer Provider 技能——`context-code-indexer`、`context-markdown-indexer`、`context-note-indexer` 和 `context-sessions-indexer`——让每个宿主都能找到它们。安装 Provider 只是让它可被发现；具体用哪些 Provider，由工作流按任务选择。
+
+### 或者从插件市场安装插件
+
+[context4ai/context](https://github.com/context4ai/context) 仓库本身就是一个插件市场。在 Claude Code 或 Codex 中，可以添加该市场并通过宿主安装 `c4a` 插件，代替运行 `context plugin install`：
+
+```bash
+claude plugin marketplace add context4ai/context && claude plugin install c4a@c4a
+codex plugin marketplace add context4ai/context && codex plugin add c4a@c4a
+```
+
+CLI 仍是必需的：请先用 `npm install -g @c4a/context-cli@latest` 安装，因为插件会把工作流和内置 Indexer 交给它执行。每个宿主选择一种方式即可——两种方式提供的是同一个 `c4a` 插件；Cursor 请使用 `context plugin install`。
 <!-- /context:section -->
 
 <!-- context:section id="entries" -->
@@ -73,7 +63,7 @@ flowchart LR
 | `/c4a:context` | 创建或继续知识工作区，执行生产、审核、更新和构建 |
 | `/c4a:context-plan` | 在生产前分阶段规划大型项目 |
 | `/c4a:context-inspect-search` | 基于知识包或知识工作区中已批准的知识提问，并附带来源 |
-| `/c4a:context-repo-content` | 登记或编辑同仓库文档和自编 Skill，不启动生产 |
+| `/c4a:context-repo-content` | 登记同一仓库中已维护的文档和 Skill，让 Context 直接引用而不是重新生产 |
 
 `/c4a:context` 是新建和已有知识工作区的生产入口；其他三个入口负责规划、回答或登记内容，并把生产交回给它。你不需要学习生命周期命令，用日常语言描述知识目标即可。普通的编码或设计对话不会自动启动 Context——需要显式调用它，或在进行中的 Context 对话里继续。[命令与技能](commands-and-skills.md)列出了全部入口、各宿主中的写法，以及无需调用即可运行的 Skill。
 <!-- /context:section -->

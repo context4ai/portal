@@ -7,31 +7,6 @@ translation:
   artifact_ref: 6a2cbadf-7325-4e5d-bf36-90738dc10226
   source_digest: 005807b13b5d4dd38f464cd139ab012d8b02e9a3e7c81aaa29db913414d1029d
   translated_at: 2026-10-12T20:29:53.422Z
-  source_parts:
-    title: cc149190687e0c3fcc7a9ee1c83d2da2a0dbbd63a897daeb4f217f8f5b79388b
-    description: e9acbf3df3756679774dd83a236ae6063d3339e8a6f49b19fc5dea6195451ebe
-    order:
-      - releases
-      - to-020
-      - to-030
-      - import-skill
-      - import-other
-      - review
-    sections:
-      releases: 2a4ad93aa978f3dd8e86acd21c8451a63f38d0585e44f1809f53ac5e7cdab3ce
-      to-020: ba76a0f09bbdfc0fb14d6bddc808425b6a46bf33a1be7c0569379c2dee6142f4
-      to-030: 564fc47b1734498d066d64fb0a7364097f0473124d12cdfd8fd099d3013b4fb4
-      import-skill: 767d5239a61d9b7233ecc27f09e09fbb4e94e6525fb7bb9a88c9d687e8b68d17
-      import-other: bec64123504cc442f958cf1cf551d4c99c5eeb04ba095eaeb77ea2f6b9d89d1e
-      review: b19bd8894abf7192648186ea1efdb876d54b24ed0e54e5a65f064c6c26d16859
-    exterior:
-      '[null,"releases"]': ea537a45ea1b945738ab35268be5baf6ba841b03873fc0cddd86602bc3cc740d
-      '["releases","to-020"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["to-020","to-030"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["to-030","import-skill"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["import-skill","import-other"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["import-other","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["review",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 版本迁移

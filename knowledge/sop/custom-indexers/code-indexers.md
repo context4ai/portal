@@ -4,7 +4,7 @@ description: What a code Indexer for a framework or technology should contain �
   investigation signals, bounded helpers, writing guidance and tests — with an
   example outline.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Code Indexers
 
@@ -56,11 +56,13 @@ It must not execute repository code, read credentials, traverse unrelated direct
 <!-- /context:section -->
 
 <!-- context:section id="writing" -->
+
 ## Writing guidance
 
 Once the work-start report is confirmed, the Agent reads the source each article needs. Guide it to explain contracts, state changes, failure behavior and integration points — what the module is responsible for, how to enter it, what it hands off. Parsing can locate declarations; it is not proof of runtime behavior. Preserve expressions without executing project code, keep declared defaults apart from implemented defaults, and state unknowns.
 
-An Indexer may suggest a recurring outline for a feature family such as route groups or components, but not a fixed page count: a component manual may need component-by-component reading, while one page per symbol or a catch-all page for a large module are both wrong. Each section cites at most three real source locations; split an explanation when it needs separate evidence.
+An Indexer may suggest a recurring outline for a feature family such as route groups or components, but not a fixed page count: a component manual may need component-by-component reading, while one page per symbol or a catch-all page for a large module are both wrong. Each fragment cites real source regions from at most three files — several regions of one file are fine, up to eight regions in total; split an explanation when it needs separate evidence.
+
 <!-- /context:section -->
 
 <!-- context:section id="example" -->

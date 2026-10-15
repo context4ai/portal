@@ -6,25 +6,6 @@ translation:
   artifact_ref: sha256:72f512c94144d0b098315550139d8a361e49260daa79bac892cf4c7c0a4561a5
   source_digest: 9dd4ab4d413556768e092a7958c40dc6d0665973419b69fb93a51fa6f594b153
   translated_at: 2026-10-12T20:29:53.422Z
-  source_parts:
-    title: 2b18598c711f43c293b07a684a115fcccd7f616dc451c5a1e29779792e3c1ed3
-    description: 3ca2016be3096e774e7e44092db1f84f6e2c95d08afa627448e763078e16e8f5
-    order:
-      - overview
-      - context
-      - agent-graph
-      - docs
-    sections:
-      overview: a19a590bb012727f2b547a44dd002a18e6dbab2261b9161e09ee1516672d8251
-      context: 511f196f1fe4d74fa103ed9854c00b447027ebeab361cc9c2230662970589307
-      agent-graph: 0956f8ce275a048d2b632a625ff09f6fc970e83aea4981a4f5633190f089ed37
-      docs: cf8636f90f551d113641a6cfd74c3af424b9fc3c1ec72b49ffa4e0a7a0a05cb1
-    exterior:
-      '[null,"overview"]': e19cd405d79aa7ebe0e317c98545b13e2e0d5c08f69023528b62a7c5c1c94865
-      '["overview","context"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context","agent-graph"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["agent-graph","docs"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["docs",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 参与贡献

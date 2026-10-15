@@ -3,7 +3,7 @@ title: Package Templates
 description: The kbPackage and llmsPackage declarations, their fields, package
   layout, directory indexes, build behavior and selection rules.
 type: Wiki
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Package Templates
 
@@ -90,14 +90,16 @@ The default template ships `skills/knowledge-query/SKILL.md` (a reusable query S
 <!-- /context:section -->
 
 <!-- context:section id="profile" -->
+
 ## Article metadata
 
 | Owned by | Holds |
 | --- | --- |
 | Approved Markdown | `title`, `type`, `description`, ISO UTC `timestamp`; optional `resource` and `tags` |
-| `knowledge/structure.yaml` | Stable `article_id`, `path`, `collection`, `visibility`, and each section's references (at most three per section: `source_ref`, `locator { path, start_line, end_line }`, `content_digest`) |
+| `knowledge/structure.yaml` | Stable `article_id`, `path`, `collection`, `visibility`, and each section's references (regions from at most three source files and up to eight regions per fragment: `source_ref`, `locator { path, start_line, end_line }`, `content_digest`) |
 
 Section markers in Markdown contain only their ID: `<!-- context:section id="usage" -->` … `<!-- /context:section -->`. Package pages keep reader metadata and receive a generated Sources section from the references; repository links include file and line ranges.
+
 <!-- /context:section -->
 
 <!-- context:section id="build" -->

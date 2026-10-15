@@ -6,28 +6,6 @@ translation:
   artifact_ref: d885e8ca-37d8-4ab1-83da-83458e7d9e07
   source_digest: bbfc66b62aa7e9b55aaac03598a6e2a1766e49468254fa8564cb06539c473b1e
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 15d2f71a32ffa2a05ead885a1f1919d3312a8ec60383bf87505500dc353fad10
-    description: d30933e07056f358c6b0560bad2d497e9bc0253a9cef39fc64a333e32632d4cc
-    order:
-      - goal
-      - what
-      - how
-      - when
-      - boundaries
-    sections:
-      goal: 2f1570dc0c614d5e162f1fab700f731b45743cce94e739b8f14a51e2364297c2
-      what: 0632b5367a9b8a27a34ea1ed6ecaa9884edb18ed1817f3059483173f719c5498
-      how: dbb1043b3684bd859bce96231d632cd8876a28d180705dd995a5b594f772bea2
-      when: 8bc5be1b2a976c78230bcdf58e97bbf236abd26e42c43870ee2a728a2d223415
-      boundaries: 6cef973e2655ee74cc92634d29e30cc3b0851cb56ed66ac3a3a9619c73c689d8
-    exterior:
-      '[null,"goal"]': 8075b1b4b70c36b96bfaf6ddb22280938ac13ff35656c516e83399c5a8b08b7e
-      '["goal","what"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["what","how"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["how","when"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["when","boundaries"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["boundaries",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 从对话中采集

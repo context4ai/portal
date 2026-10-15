@@ -6,43 +6,6 @@ translation:
   artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
   source_digest: 3a24f62668b3cf91fc8a5638cff25344aa032403eadfa9a740a9502ac2865e5c
   translated_at: 2026-10-13T17:05:10.990Z
-  source_parts:
-    title: f7ecd5c55a64cac078351a1a6c8bfddf07d4b896760fb586dffff948e7d0b602
-    description: 490db2fe0ad446be98e33bca6bf7f28533b3f9d29cbbeb25399a1aacacd3327b
-    order:
-      - goal
-      - at-a-glance
-      - code
-      - documents
-      - notes
-      - sessions
-      - creator
-      - installation
-      - selection
-      - combining
-    sections:
-      goal: c97dd2796c10f80188e3d70d1356a7af88540e36c22947a79ad0e05be5c4426a
-      at-a-glance: 4f10bf3c344da7c76b967afff2ebf88c44bc72cb6b5e6a6ff23c9bd90b12fffd
-      code: 11ba6e7078d80e1aea500059e3c710536cd8719f6438c676da04ee830670cceb
-      documents: f4f07dfdf391c6afab11da6582d694fa87344b532507090c29f81a908cf84148
-      notes: 103c4d24880be197375c7670fe63d93efb740251aac61079a9b9e98ff7684e39
-      sessions: d6376d30ae30e35dcb90797cff552421bf74732149eff2d64d4969fb5d30e1ec
-      creator: b61cc9c76e7f38c9babdf887469bfd602bf1d4755b8e6e7923d2cda061a7221f
-      installation: 0217ec04ec2798bec9dce5f4ded98eb6edb197916f80c5b232490dcd1ab032dc
-      selection: 4645013bc4d6f96a39c50a12522a0a261ac65efe122a11744532b9c1081c5dfe
-      combining: 8a123ff8d22497b784aee161d79509975be315616336f6c8df49745356936e47
-    exterior:
-      '[null,"goal"]': 2ae25b105025fbbc47f00f7f0f7d87e1dc3ea9e18abd6b1292b79eb7bafd6006
-      '["goal","at-a-glance"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["at-a-glance","code"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["code","documents"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["documents","notes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["notes","sessions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sessions","creator"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["creator","installation"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["installation","selection"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["selection","combining"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["combining",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 社区 Indexer 一览

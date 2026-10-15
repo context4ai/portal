@@ -4,7 +4,7 @@ description: How every section of Context knowledge stays tied to exact source
   regions, and how Agents use that chain to go from an answer back to the
   original.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Evidence Chains and Index First
 
@@ -23,17 +23,21 @@ An answer starts from the knowledge map, lands on an article section, and from t
 <!-- /context:section -->
 
 <!-- context:section id="sections" -->
+
 ## Sections carry their own evidence
 
-Approved articles are divided into sections. Each written fragment cites at most three source positions, each a `source_ref` plus a file and line `locator`. When an article is submitted, the CLI checks that each cited source is authorized for that task, reads the current captured text and computes the region's content digest. Unknown or unauthorized paths and source-version drift are errors, not warnings. There is no separate fact table or claim ledger to maintain — the references are the evidence.
+Approved articles are divided into sections. Each written fragment cites regions of registered sources: at most three distinct source files, several regions of one file allowed, up to eight regions in total. Each reference is a `source_ref` plus a `locator`. An Agent may locate a region by line range, by a Markdown heading (optionally with its `##` marker, which also selects the heading level) or by an exact quote; the CLI resolves the heading or quote against the captured text and stores the line range. When an article is submitted, the CLI checks that each cited source is authorized for that task, reads the current captured text and computes the region's content digest. Unknown or unauthorized paths and source-version drift are errors, not warnings. There is no separate fact table or claim ledger to maintain — the references are the evidence.
 
 `source_ref` values are opaque, verified identities. Agents copy them exactly; they are not file-system paths.
+
 <!-- /context:section -->
 
 <!-- context:section id="verify" -->
+
 ## Checked again before delivery
 
-`context verify` re-checks approved pages before close and build: source references for freshness and verbatim match, frontmatter identity, section blocks, assets and the derived structure. Verification errors block close and build. Approved Markdown keeps a stable identity in frontmatter and section metadata, so a page can be revised without losing its history.
+`context verify` re-checks approved pages before close and build: source references for freshness and verbatim match, frontmatter identity, section blocks, assets and the derived structure. Verification errors block close and build. `context build` itself no longer compares cited source regions, so a publishing build does not need the registered source checkouts; `verify` still reports changed, moved or missing regions, so run it before publishing. Approved Markdown keeps a stable identity in frontmatter and section metadata, so a page can be revised without losing its history. Reader pages also expose each fragment ID as an anchor, so a link such as `page.md#upgrade` resolves unless a heading on that page already owns the slug.
+
 <!-- /context:section -->
 
 <!-- context:section id="index-first" -->

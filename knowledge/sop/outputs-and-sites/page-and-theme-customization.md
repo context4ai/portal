@@ -3,7 +3,7 @@ title: Page and Theme Customization
 description: How to replace homepage sections, add a logo or chat widget,
   publish custom pages and change site colors without touching generated output.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-15T06:56:50.800Z
 ---
 # Page and Theme Customization
 
@@ -40,6 +40,7 @@ Paths are relative to `root`. The folder may contain Vue components, CSS, Markdo
 <!-- /context:section -->
 
 <!-- context:section id="slots" -->
+
 ## Homepage and page slots
 
 | Slot | Default | Customization |
@@ -51,9 +52,10 @@ Paths are relative to `root`. The folder may contain Vue components, CSS, Markdo
 | `floating` | Empty | Client-only component fixed bottom right on all pages |
 | `brand` | Site title text | Component at the start of the top bar, such as a logo |
 
-Omit a slot to keep its default, or set it to `false` to hide it. A component replaces only its slot — never the global navigation, language switch or article provenance. Components can use VitePress `useData()` and `useRoute()` and import scoped CSS. Pages prerender in the light theme; for readers starting in dark mode, slot components mount again after load so markup bound to `isDark` matches.
+Omit a slot to keep its default, or set it to `false` to hide it. A component replaces only its slot — never the global navigation, language switch or article provenance. Components can use VitePress `useData()` and `useRoute()` and import scoped CSS. Pages prerender in the light theme; for readers whose saved choice is dark mode, slot components mount again after load so markup bound to `isDark` matches. The remounted slots finish loading before they replace the prerendered markup, so the old and new content swap in the same frame and a custom slot such as a homepage banner does not collapse.
 
 To show the right language from the first paint, render each language and mark it with `data-context-locales="<tag>"`; the site stylesheet hides the others. `useData().lang` gives the reader's language after mount.
+
 <!-- /context:section -->
 
 <!-- context:section id="floating" -->
@@ -81,6 +83,7 @@ Place it in navigation with an ordinary knowledge-map entry whose target is `art
 <!-- /context:section -->
 
 <!-- context:section id="theme" -->
+
 ## Colors
 
 The first website build creates `src/site/theme.json` with the default light and dark palettes if it is missing; builds never overwrite your values, and deleting the file restores the defaults. Each `light` and `dark` object accepts `brand`, `accent`, `background`, `surface`, `text`, `mutedText` and `border` as hexadecimal colors; missing keys inherit defaults.
@@ -93,7 +96,8 @@ kbPackage({ site: { theme: {
 } } })
 ```
 
-Precedence is built-in defaults, then `theme.json`, then `site.theme`. Offline Review reports and Mermaid diagrams use the same colors. Custom components should read `--context-brand`, `--context-accent`, `--context-background`, `--context-surface`, `--context-text`, `--context-muted-text` and `--context-border` instead of hard-coding colors.
+Precedence is built-in defaults, then `theme.json`, then `site.theme`. Websites open in light mode regardless of the system color scheme; the reader's light/dark choice is remembered under the origin-wide `context-theme` key, so sites on one origin share it. Offline Review reports and Mermaid diagrams use the same colors. Custom components should read `--context-brand`, `--context-accent`, `--context-background`, `--context-surface`, `--context-text`, `--context-muted-text` and `--context-border` instead of hard-coding colors.
+
 <!-- /context:section -->
 
 <!-- context:section id="check" -->

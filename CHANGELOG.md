@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.13.2 — 2026-10-15
+
+### Citations re-confirmed against Context 0.7.71 sources
+
+- Citations on 42 pages point to the current source positions; 17 cited passages had changed (version numbers, links, the Bun requirement, marketplace install text) and were re-read.
+- Project API documents the nav link position option; Page and Theme Customization notes that sites open in light mode and remember the reader's choice per origin.
+- Chinese translations follow both changes.
+
+Trigger: repair: Source regions cited by pages written before region baselines existed no longer matched the 0.7.71 sources.
+User: qiansc (git)
+
+## 0.13.1 — 2026-10-15
+
+### Plugin marketplace install and Context 0.7.63–0.7.71 updates
+
+- Installation adds installing the c4a plugin in Claude Code or Codex by adding the context4ai/context repository as a plugin marketplace; the CLI is still installed from npm.
+- The knowledge-workspace page links to Referencing Same-Repository Docs and Skills by its current title.
+- Release Notes add Context 0.7.63–0.7.67 (light-mode default, builds without source checkouts, inline code links, section landing cards, start nav links) and 0.7.70–0.7.71 (marketplace install, heading and quote locators, up to eight regions per fragment, kept citations on revision, relocated citations after updates, incremental translation drafts).
+- Documentation Sites, Page and Theme Customization, Multilingual Sites, Revising a Page, Updating Knowledge, Evidence Chains, CLI Commands, Package Templates and the Code and Document Indexer guides follow these changes.
+- Chinese translations follow every change.
+
+Trigger: module: Context and Agent Graph sources updated to the Context 0.7.71 release.; other: Requested documentation of the plugin marketplace installation and a corrected link title.
+User: qiansc (git)
+
+## 0.13.0 — 2026-10-15
+
+### Clearer getting-started path, cost guidance and same-repository content
+
+- What is Context states its main strength (building systematic knowledge step by step from existing docs and code), defines LLM Wiki, says what a round produces and sets the reading order.
+- The Workflow at a Glance now has five steps after a one-time installation, marks the two decisions that are yours, and adds token cost from experience for a first build, updates and answers.
+- Quick Start drops commands the Agent runs for you, adds resuming after an interruption and a first question; Core Concepts explains the work-start report and managed mode and separates knowledge/structure.yaml from the navigation map.
+- Commands and Skills puts common requests first and summarizes automatic Skills; Installation adds Bun and notes it happens once per machine.
+- Same-Repository Docs is now Referencing Same-Repository Docs and Skills: register docs and Skills maintained beside the code so Context references them instead of producing them again; related pages and the FAQ link to it.
+- Chinese translations follow every change.
+
+Trigger: note: New getting-started guidance note: main strengths, reading order and token cost.; other: Port reader-facing refinements from another Context knowledge base's getting-started pages, excluding organization-specific infrastructure.; translation: Update zh-CN translations of the revised pages.
+User: qiansc (git)
+
 ## 0.12.1 — 2026-10-14
 
 ### Natural Chinese example prompts and language-stable anchors

@@ -4,7 +4,7 @@ description: What src/index.ts can declare with the @c4a/context SDK — sources
   capture phases, custom phases, packages and site options — and how it relates
   to src/indexers.yaml.
 type: Wiki
-timestamp: 2026-10-12T18:36:23.504Z
+timestamp: 2026-10-15T06:56:50.800Z
 ---
 # Project API
 
@@ -136,7 +136,7 @@ Packages read approved `knowledge/` only; `dist/` is generated. Details are in [
 | `titleLink` | Target of the top-bar title; defaults to the site home |
 | `home` | `title`, `slogan`, `description`, hero `actions` (`text`, `link`, `theme`), and `resources` (each needs `href`, `command` or both) |
 | `locales` | Additional reader languages keyed by BCP 47 tag, each with optional `label`, `title`, `description`, `home`; must differ from `lang` |
-| `nav` | Top links after the knowledge sections: `text`, `link`, optional per-locale `locales` text |
+| `nav` | Top links: `text`, `link`, optional per-locale `locales` text and `position` — `"start"` places a link before the knowledge sections, the default `"end"` after them |
 | `more` | Items placed in the More menu before the built-in LLM Docs and Changelog entries: `text` with exactly one of `link` or `target.artifact_ref` (an approved article shown only there) |
 | `socialLinks` | `icon` (`github`, `discord`, `x`, `youtube`, `slack`, `linkedin`, `mastodon`, `npm`), an https `link`, optional `ariaLabel` |
 | `localePreferenceKey` | Shared storage key so sites on one origin keep the same reader language |

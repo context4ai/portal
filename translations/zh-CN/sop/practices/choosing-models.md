@@ -6,22 +6,6 @@ translation:
   artifact_ref: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
   source_digest: c37ef9866af271198f81a483fb753073d3230873e49417dd5f54776784aefdda
   translated_at: 2026-10-12T17:06:40.056Z
-  source_parts:
-    title: 1f41e3d47cf6f3ba92b45da9da641455bb1d5cd15482429e7cdc20524de6a9e6
-    description: 6f2a14bc7d21c1442e3a8ec58e5f18cd75d6155bee96531dcfe5056741f6246d
-    order:
-      - goal
-      - roles
-      - evidence
-    sections:
-      goal: c8eaa9066cf842b31edb9d6775f29e9ff49c680224b90d960189605ca01feb78
-      roles: 48c8cfbb2273ff4ecc07095487a2a36f6fb6c26a35f199baf3347836eb898046
-      evidence: d8db88290aa1eb0f47531b6ca7520da8139b04cd2a74a4dbbb347f44e5fda95d
-    exterior:
-      '[null,"goal"]': 7df4ac94254f002de2f5ee53e95d27d0cd8734e1684ee2cf0615e259b1190b96
-      '["goal","roles"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["roles","evidence"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["evidence",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 模型选择

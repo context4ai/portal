@@ -6,28 +6,6 @@ translation:
   artifact_ref: 0a27d0c5-3057-4806-a0a5-2e8de53b5321
   source_digest: 69fe1fb1ea04ff4295f04ff24262cc9de2c4ba67442563c9b0e32b65a87263f9
   translated_at: 2026-10-12T17:06:40.056Z
-  source_parts:
-    title: d60457b60ebd7c836aa90533a253cc700fc10ffba3d9f8766f3ffb10163f9e20
-    description: 194ec309a0553e2607ef089cf24919f7ed18761a6a24679db5592bad42f9727a
-    order:
-      - goal
-      - layers
-      - flows
-      - runtime
-      - configure
-    sections:
-      goal: 8c42db8def435f5476fc83730e2d1ce9e06a9e4a6545626073ec658c087f69bc
-      layers: 7936054ab39eaeb3f8fce67588441c06dce6c177982dfb7d67d2529339fd2bec
-      flows: 5ce859a9914938b470e768575f9fe4d8e16b0e72fff32373440356d1f3ab4e82
-      runtime: 5f41ca6cf334418d243e44f6d47f0326e91e65ab0b562a98068484eed9d85e00
-      configure: 29b3d641a549b5750f93fe675cfcf2002c0a0627e4a0d0a61e23be56f54d191d
-    exterior:
-      '[null,"goal"]': aee02cbafc6d6b4cda42faed6a21b3be926ee7f465c74412995fd7a2bc726328
-      '["goal","layers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["layers","flows"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["flows","runtime"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["runtime","configure"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["configure",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 搭建知识服务

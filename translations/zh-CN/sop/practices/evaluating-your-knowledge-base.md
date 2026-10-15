@@ -6,46 +6,6 @@ translation:
   artifact_ref: 14905f09-233b-41a2-b725-c1c1137d8ebb
   source_digest: f16715558b7d724a28cd0804883d01604f4518159e87efb4cfa10d96e9ba830b
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: f77a5917efa3a2c33242f24480425e452ae3a18d77fd2f6a9ed93356c935cbc5
-    description: 68bc337b048d203b87a0fc652b750d9788053c09d00e8bc88cee74751de838cd
-    order:
-      - goal
-      - scope
-      - questions
-      - guides
-      - freeze
-      - run
-      - grade
-      - causes
-      - disclose
-      - deliverables
-      - agent-prompt
-    sections:
-      goal: 696f10c9c30611ac2c10cb9b66394bd669fc3c7ef4d34ec6b9f565c5d0974acf
-      scope: d77beecf2191e48fd2cf128c42bd232a83d0381729512c47aa6aca05b935e02c
-      questions: 24a17abdf6459266eb2c424a9ea3b5eda7764d3698550e678f2c594ea994ead9
-      guides: 44c7f60563d699a962b81b4b3c9086e7732f5931d1cb70ff2b3ee7b960bdba94
-      freeze: 14fde6e8a2be9e108419e1bfbcd47b96d1bab92d6b3bcc668a2b079ba8e8919f
-      run: 75298ff6e9b214f332448e78e517898d76585fbdab6630a2c743baee1ddd9399
-      grade: 70e371a97c1ee4813f4270e5fa137620e8e1065c5c5f82eed95924b7bc7a7f7f
-      causes: b11cae2afe8364ec1c7850ba117921926dfacb3e389a3c0e59d17fde82fe124e
-      disclose: 38108cac83ae7fb51a4ed546fc7f256c51503b96fde02b4e623d9642108ada63
-      deliverables: 3eab394d55d5ef77358975a3cd3966341176da6a29807b95d77f921240fd01f0
-      agent-prompt: dd3e9f57881d645aed746763f811453ba245aa8c47cabf23d9f13b297df223e1
-    exterior:
-      '[null,"goal"]': 4511217b935fca3f569f703acc04ab2c0554046f6a0a5de0ea32c82082e80e48
-      '["goal","scope"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["scope","questions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["questions","guides"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["guides","freeze"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["freeze","run"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["run","grade"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["grade","causes"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["causes","disclose"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["disclose","deliverables"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["deliverables","agent-prompt"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["agent-prompt",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 评测知识库效果

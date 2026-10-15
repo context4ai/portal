@@ -6,28 +6,6 @@ translation:
   artifact_ref: 6272ae5a-8966-42cd-a06d-5986828764fd
   source_digest: a95e9eb11571231816e2386f547e476283396f3dcbb6f1f95de5e6224c0b300d
   translated_at: 2026-10-13T05:38:06.765Z
-  source_parts:
-    title: 80aaff382c3c920336942f6fa9d52bcb4faa4d2cd2bdbca1e6f0d26f9feb90d3
-    description: 09c9132c5c436d8b4579bfd3ae7c611782b3d20c5a1a04d8cf3470eaa9791351
-    order:
-      - what
-      - built-in
-      - built-in-install
-      - usage
-      - create
-    sections:
-      what: 722e34d236b7b7442f4de2e73b5b2d6674d630fd9ca733625f57ca4bfcb998f3
-      built-in: 3104b499022ddda377cdca17daa8e4f46d39f49b070aa65d76b95378c7ffe7cc
-      built-in-install: ff19e556130ebbdde59810521b74e0702c205ffa983fc8f138039ed860b29ce8
-      usage: a3d4e02293f0e6cff4c6bea791ad4e58c5f35f4f6b961956e8a53758b2e079f6
-      create: 744d805529b3e82cf597cacce771f2d2bf5cfcdd8ca807622266606c987f7b00
-    exterior:
-      '[null,"what"]': 68bd72b3fb37187fa78d254d8e8b1dddef35bad43bc0661649426522ac4c7a97
-      '["what","built-in"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["built-in","built-in-install"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["built-in-install","usage"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["usage","create"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["create",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Indexer 体系

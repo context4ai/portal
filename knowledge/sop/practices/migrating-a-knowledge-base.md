@@ -3,7 +3,7 @@ title: Migrating an Existing Knowledge Base
 description: How to move an existing LLM Wiki, Skills collection or similar
   knowledge base into Context without losing what it already does well.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-15T03:52:07.709Z
 ---
 # Migrating an Existing Knowledge Base
 
@@ -32,13 +32,15 @@ The last item matters most: real questions tell the Agent what the knowledge bas
 <!-- /context:section -->
 
 <!-- context:section id="sources" -->
+
 ## Bringing the existing material in
 
 Existing material can be connected in different ways, depending on whether it should become a source of new articles or stay where it is:
 
 - **Document directories** — register a folder of existing documents as a source so its contents are captured and cited. See [Document Directories](../registering-sources/document-directories.md).
-- **Same-repository docs and Skills** — documents and authored Skills already kept in the same repository are registered as an entrance; the originals stay where they are and remain the only place to edit them. See [Same-Repository Docs](../registering-sources/same-repository-docs.md).
+- **Same-repository docs and Skills** — documents and authored Skills already kept in the same repository are registered as repository content; the originals stay where they are and keep evolving with the project, and Context references them instead of migrating them. See [Referencing Same-Repository Docs and Skills](../registering-sources/same-repository-docs.md).
 - **External entrances** — content elsewhere that pages should link to, declared in `imports.yaml` without downloading or capturing it. See [External Entrances](../registering-sources/external-entrances.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="validate" -->

@@ -4,39 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: fdcfb367e0595ccfe3763bed3e0804265f660eff4df114645b1cc2d22f62052e
-  translated_at: 2026-10-12T20:29:53.422Z
-  source_parts:
-    title: bd4702c187a9a655880be010957d7688c186852ddb6252d52bda2e299649cb9d
-    description: a590521bc7946c0c9c647996096bc7ca049950cef1b3d899e74b0b0045f550e8
-    order:
-      - overview
-      - context-0762
-      - context-0761
-      - context-0760
-      - context-0750
-      - context-074x
-      - context-0735
-      - agent-graph
-    sections:
-      overview: cddc6ee640c0f8804a973a45f12d4db9eb8b61c643992f4cf4b43500127e0220
-      context-0762: 3d1b855e63326207e21fefe2702b5b94786629c5e86c357ea8efbbc82c74c88c
-      context-0761: 275594614224db9e0c15d542493b88c378b6d84f7c23a812a318e85faabf3b0e
-      context-0760: 7dab6163b0482146c38d1fae702276f06cee28edd5c9212a73722733e1d21762
-      context-0750: 2dd8dc2ca1ac810580dc3a2fdb2688a3d4001130e7ea8c8a6b86001d79994290
-      context-074x: 3b30dbb531736f8e4aa0766c1fc4f98b6328a3fa2612ddf17190cbff9b4416a4
-      context-0735: aaa8760f838481bb252e105e36e2555c1cfdc1b60af56775e809d43e8e8caff0
-      agent-graph: 45e3f9a90a354d6f43765f45e200d5af6a791b6254e57dec42d4ee41738d7121
-    exterior:
-      '[null,"overview"]': 4bcd92943b881b8e927b3b6dbc19ce298d07b539a5e4fac98e03046f9f7145d0
-      '["overview","context-0762"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context-0762","context-0761"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context-0761","context-0760"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context-0760","context-0750"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context-0750","context-074x"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context-074x","context-0735"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context-0735","agent-graph"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["agent-graph",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: fc98fdd0e6e9fe020adba0d453da2b348cefcf72c31976acfa36ada90b78cbe0
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 发布说明
@@ -45,6 +14,41 @@ translation:
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
 升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；参见[安装](../getting-started/installation.md)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+<!-- /context:section -->
+
+<!-- context:section id="context-0771" -->
+## Context 0.7.70 与 0.7.71（2026-10-14）
+
+**安装**
+
+- Claude Code 和 Codex 也可以把 context4ai/context 仓库添加为插件市场来安装 `c4a` 插件；CLI 仍从 npm 安装。安装说明在 Node.js 20 旁列出了 Bun，因为知识工作区使用 `bun install` 安装依赖。参见[安装](../getting-started/installation.md)。
+
+**修订与更新**
+
+- 修订时省略 `references` 的章节会保留已验证的引用；列出引用则会按任务来源重新确认。引用可以用 Markdown 标题或精确引文定位，一个片段最多可引用三个来源文件中的区域，总计八个区域。较早的 CLI 无法读取片段中超过三个区域的结构。
+- 被拒绝的引用和不完整的来源更新决定会作为用户输入问题报告，指明片段、输入路径以及允许的来源或页面。修订需要超出其范围的来源时，会说明如何登记该来源、在 `src/indexers.yaml` 中将其关联到需求，并运行 `context task adjust`；新增来源对队列中其余页面仍可引用。
+- 来源更新收尾时，保留页面中仅位置移动的引用会被重新定位。被引用文本已变化或无法确认的保留页面会列在 `reference_warnings` 中，待更新队列完成后用 `context revise` 修正。
+
+**翻译**
+
+- `translate prepare` 改为增量方式：每篇待翻译文章都会得到一份草稿——过期的现有译文，或缺失时的已批准原文；当 Git 历史中保有其翻译所依据的版本时，还会附带 `source_diff`。编辑过的草稿会被保留，成功提交后草稿会被删除。译文不再保存 `source_parts`。
+- `text`、`txt` 和 `plaintext` 代码块中的说明文字可以翻译。页内和跨页锚点会保持读者的语言，阅读页还会把每个片段 ID 暴露为锚点。
+
+参见[修订页面](../../sop/review-and-revision/revising-a-page.md)、[更新知识](../../sop/updates-and-versions/updating-knowledge.md)和[多语言站点](../../sop/outputs-and-sites/multilingual-sites.md)。
+<!-- /context:section -->
+
+<!-- context:section id="context-0767" -->
+## Context 0.7.63 至 0.7.67（2026-10-13 至 2026-10-14）
+
+**知识网站**
+
+- 无论系统配色如何，站点都以浅色模式打开。读者的浅色／深色和语言选择默认按源（origin）记住，因此同一源下的站点共享这些选择。
+- `context build` 不再比对被引用的来源区域，因此发布构建不需要已登记来源的检出副本；发布前请运行 `context verify`。
+- 文章中的行内代码如果是被引用仓库的文件、其中某个目录或此类目录的唯一名称，会链接到记录版本中的对应路径；未被引用或有歧义的名称保持纯文本。
+- 分区落地页把每个一级分组显示为卡片。带 `position: "start"` 的 `site.nav` 链接显示在各分区之前，不属于任何分区的页面不显示侧边栏，首页会高亮指向当前页的导航链接，而不是第一个分区。
+- 主页横幅等自定义插槽在深色模式下不再塌陷，折叠的更新日志卡片会把长标题截断显示在一行内。
+
+参见[文档站点](../../sop/outputs-and-sites/documentation-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0762" -->

@@ -3,7 +3,7 @@ title: Revising a Page
 description: Correct one page — a candidate still in Review or an already
   approved page — while keeping its identity, URL and source citations.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Revising a Page
 
@@ -23,14 +23,18 @@ For an approved page outside the active batch, the revision is queued and runs a
 <!-- /context:section -->
 
 <!-- context:section id="how" -->
+
 ## What the Agent does
 
 - Reads the whole page first and keeps explanations that are still correct, including your earlier contributions.
 - For a wording-only change, uses the approved text alone; it does not recapture or re-parse the source.
 - For a changed fact, reads the relevant registered material. A new fact that only exists in your instruction is first saved as a source, such as a [note](../registering-sources/notes.md).
 - Edits one section or the whole page. Section edits leave other sections and their citations untouched; a citation change replaces that section's references, which Context re-fingerprints.
+- Keeps a section's validated citations when the edit omits `references`; listing references re-confirms them against the revision's sources. A citation can be located by a Markdown heading or an exact quote instead of line numbers, and is stored as a line range.
+- When the correction needs evidence from a source outside the revision's scope, registers that source, associates it with the requirement in `src/indexers.yaml` and runs `context task adjust`. The added source stays citable by the remaining pages queued in the same revision.
 
 Before submitting, the Agent can preview the assembled page and the previous text without accepting the edit.
+
 <!-- /context:section -->
 
 <!-- context:section id="move" -->

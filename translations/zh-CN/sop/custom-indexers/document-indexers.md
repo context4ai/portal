@@ -4,36 +4,8 @@ description: 面向某类文档的文档 Indexer 应包含什么——以大纲�
 translation:
   locale: zh-CN
   artifact_ref: a3f38c25-85de-4b6f-9a99-dc86485cf82c
-  source_digest: baec5db2cbbbb0424a94209641c4995e02a22de48d9e117809d26fde9fb032e3
-  translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 08bccde178ab8d8a52bd672fa32726c95f716630af37d3b7f1a225f3b0edf36b
-    description: 276718dd6cb362ef28860584c1fa12fd4a2a82e301d925170802dff3d7c4b21d
-    order:
-      - goal
-      - sources
-      - planning
-      - writing
-      - visuals
-      - example
-      - tests
-    sections:
-      goal: 1885f59d6fa86d4fbc66a5cbfbf2d6c4ec3bb8358bcb1a37890275b01eb0787e
-      sources: 827031551c10322a36c6f7aa9e91e1b9a2749a8cbad1ef973c5cded555d64fa6
-      planning: 2d32045209a264a317796d8914796b2c1da7001c8c1a875ccb191567823d4b1b
-      writing: 01d6f63c9b85a34a5937f45741a0b640f8e690a9352a5e03cca22845dad3dfed
-      visuals: a9e35f8a822b47358f45d3b4fe23fbbbd16c8c730cfcbcac997e5ab06c425c51
-      example: 25f45ac6a382aa96f7623df64194b936e60f27a6dac02d2f2528032dc04b3b20
-      tests: f9bb0a2820df5226af88a2b361d3d2b8b27dc329f0a5e708975057a765d01532
-    exterior:
-      '[null,"goal"]': 46122d887c1f98187ed3f62400a63095ac3718f39fe8fc27ca8dc7366cbecb9b
-      '["goal","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sources","planning"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["planning","writing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["writing","visuals"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["visuals","example"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["example","tests"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["tests",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: 3abb3666d170b4925eead93add101e2fffca120da280440f3b966ff9af370a37
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 文档类 Indexer
@@ -75,7 +47,7 @@ Indexer 处理的是已授权、已采集的 Markdown 及其来源标识。采�
 <!-- context:section id="writing" -->
 ## 撰写与修复
 
-撰写之前，Agent 会阅读每篇文章所需的实际段落，并把权威规则、示例、决定和提议区分开——会议纪要中的一条建议并不是已实现的行为。每个小节最多引用三个真实的来源区域；CLI 负责摘要值和安全性，Agent 判断证据是否支撑讲解。局部失败在报告的小节处修复，已完成的任务可以直接提交，无需等待同一批次的其余任务。
+撰写之前，Agent 会阅读每篇文章所需的实际段落，并把权威规则、示例、决定和提议区分开——会议纪要中的一条建议并不是已实现的行为。每个片段引用的真实来源区域最多来自三个文件，总计最多八个区域；CLI 负责摘要值和安全性，Agent 判断证据是否支撑讲解。局部失败在报告的小节处修复，已完成的任务可以直接提交，无需等待同一批次的其余任务。
 
 修订会保持文章和小节的标识稳定，并保留有用的步骤、示例、图片和限制。不要虚增页数，不要每个标题写一页，也不要把缺失的证据变成推测性的文字。
 <!-- /context:section -->
