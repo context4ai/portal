@@ -3,7 +3,7 @@ title: Page and Theme Customization
 description: How to replace homepage sections, add a logo or chat widget,
   publish custom pages and change site colors without touching generated output.
 type: Guide
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-15T06:56:50.800Z
 ---
 # Page and Theme Customization
 
@@ -83,6 +83,7 @@ Place it in navigation with an ordinary knowledge-map entry whose target is `art
 <!-- /context:section -->
 
 <!-- context:section id="theme" -->
+
 ## Colors
 
 The first website build creates `src/site/theme.json` with the default light and dark palettes if it is missing; builds never overwrite your values, and deleting the file restores the defaults. Each `light` and `dark` object accepts `brand`, `accent`, `background`, `surface`, `text`, `mutedText` and `border` as hexadecimal colors; missing keys inherit defaults.
@@ -95,7 +96,8 @@ kbPackage({ site: { theme: {
 } } })
 ```
 
-Precedence is built-in defaults, then `theme.json`, then `site.theme`. Offline Review reports and Mermaid diagrams use the same colors. Custom components should read `--context-brand`, `--context-accent`, `--context-background`, `--context-surface`, `--context-text`, `--context-muted-text` and `--context-border` instead of hard-coding colors.
+Precedence is built-in defaults, then `theme.json`, then `site.theme`. Websites open in light mode regardless of the system color scheme; the reader's light/dark choice is remembered under the origin-wide `context-theme` key, so sites on one origin share it. Offline Review reports and Mermaid diagrams use the same colors. Custom components should read `--context-brand`, `--context-accent`, `--context-background`, `--context-surface`, `--context-text`, `--context-muted-text` and `--context-border` instead of hard-coding colors.
+
 <!-- /context:section -->
 
 <!-- context:section id="check" -->

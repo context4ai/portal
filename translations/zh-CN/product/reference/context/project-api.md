@@ -5,8 +5,8 @@ description: src/index.ts 可以用 @c4a/context SDK 声明哪些内容——来
 translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
-  source_digest: a67dc693a4f68af644b3e1cb86be08228596c86dbae47cd891fe01f102c473fd
-  translated_at: 2026-10-12T18:39:20.106Z
+  source_digest: db176cde535b551a1cef77c0fd7372ed681cbed5c8c99a9dc1b64326b4d061f9
+  translated_at: 2026-10-15T06:57:53.750Z
 ---
 
 # Project API
@@ -138,7 +138,7 @@ llmsPackage({
 | `titleLink` | 顶栏标题的链接目标；默认为站点首页 |
 | `home` | `title`、`slogan`、`description`、首屏 `actions`（`text`、`link`、`theme`），以及 `resources`（每项需要 `href`、`command` 或两者兼有） |
 | `locales` | 额外的读者语言，以 BCP 47 标签为键，每项可选 `label`、`title`、`description`、`home`；不能与 `lang` 相同 |
-| `nav` | 知识分区之后的顶部链接：`text`、`link`，可选按语言提供的 `locales` 文本 |
+| `nav` | 顶部链接：`text`、`link`，可选按语言提供的 `locales` 文本和 `position`——`"start"` 把链接放在知识分区之前，默认 `"end"` 放在之后 |
 | `more` | 放在“更多”菜单中内置的 LLM Docs 和 Changelog 之前的条目：`text`，并且 `link` 与 `target.artifact_ref`（仅在此处显示的已批准文章）二者只能选一 |
 | `socialLinks` | `icon`（`github`、`discord`、`x`、`youtube`、`slack`、`linkedin`、`mastodon`、`npm`）、一个 https `link`，可选 `ariaLabel` |
 | `localePreferenceKey` | 共享的存储键，让同一源下的多个站点保持相同的读者语言 |

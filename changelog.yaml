@@ -1,4 +1,22 @@
 entries:
+  - version: 0.13.2
+    date: 2026-10-15T06:58:22.895Z
+    title: Citations re-confirmed against Context 0.7.71 sources
+    changes:
+      - Citations on 42 pages point to the current source positions; 17 cited
+        passages had changed (version numbers, links, the Bun requirement,
+        marketplace install text) and were re-read.
+      - Project API documents the nav link position option; Page and Theme
+        Customization notes that sites open in light mode and remember the
+        reader's choice per origin.
+      - Chinese translations follow both changes.
+    triggers:
+      - kind: repair
+        description: Source regions cited by pages written before region baselines
+          existed no longer matched the 0.7.71 sources.
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.13.1
     date: 2026-10-15T06:25:57.941Z
     title: Plugin marketplace install and Context 0.7.63–0.7.71 updates

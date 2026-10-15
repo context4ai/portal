@@ -4,8 +4,8 @@ description: 如何替换首页区块、添加 Logo 或聊天组件、发布自�
 translation:
   locale: zh-CN
   artifact_ref: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
-  source_digest: b514b0a78649ff0e45e9b2d6481b0385ac5acaad297bf15b8e8642e689d606fb
-  translated_at: 2026-10-15T06:25:34.171Z
+  source_digest: 0ec130a63879014af3c210ae9c74e98c75bb8e36a58b3b33a27cee6aca4e5f99
+  translated_at: 2026-10-15T06:57:53.750Z
 ---
 
 # 页面与主题定制
@@ -96,7 +96,7 @@ kbPackage({ site: { theme: {
 } } })
 ```
 
-优先级依次为内置默认值、`theme.json`、`site.theme`。离线审核报告和 Mermaid 图表也使用相同的颜色。自定义组件应读取 `--context-brand`、`--context-accent`、`--context-background`、`--context-surface`、`--context-text`、`--context-muted-text` 和 `--context-border`，而不是硬编码颜色。
+优先级依次为内置默认值、`theme.json`、`site.theme`。无论系统配色如何，网站都以浅色模式打开；读者的浅色／深色选择保存在整个源（origin）共用的 `context-theme` 键下，因此同一源下的站点共享这一选择。离线审核报告和 Mermaid 图表也使用相同的颜色。自定义组件应读取 `--context-brand`、`--context-accent`、`--context-background`、`--context-surface`、`--context-text`、`--context-muted-text` 和 `--context-border`，而不是硬编码颜色。
 <!-- /context:section -->
 
 <!-- context:section id="check" -->

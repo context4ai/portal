@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.13.2 — 2026-10-15
+
+### Citations re-confirmed against Context 0.7.71 sources
+
+- Citations on 42 pages point to the current source positions; 17 cited passages had changed (version numbers, links, the Bun requirement, marketplace install text) and were re-read.
+- Project API documents the nav link position option; Page and Theme Customization notes that sites open in light mode and remember the reader's choice per origin.
+- Chinese translations follow both changes.
+
+Trigger: repair: Source regions cited by pages written before region baselines existed no longer matched the 0.7.71 sources.
+User: qiansc (git)
+
 ## 0.13.1 — 2026-10-15
 
 ### Plugin marketplace install and Context 0.7.63–0.7.71 updates
