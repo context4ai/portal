@@ -6,37 +6,6 @@ translation:
   artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
   source_digest: f01d17bdde36783ed41a3d6819ee1d53be6dfd3bc0c428a73cbba69118cea19e
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 3d23c59e8b699282ef85d775ea52fc606ed74662435acb23e07202f74a76765b
-    description: a603776cd4ecb46e7dd5ea64140981c9a21afb2a58ae12de56fd92b5428ce5eb
-    order:
-      - goal
-      - explore
-      - screen
-      - baseline
-      - structure
-      - raw
-      - case-business
-      - case-domain
-    sections:
-      goal: d163d210834a1fc5fcee4301b63e53026c2d59f33472b6e0432f62ff8ebcaa4a
-      explore: 25608179a003f63470dd1db44cd06082ae35fa2b0209e76ef4b3d69aad774027
-      screen: 4e05481d8fb3a54bfb9e7701c9ff52b0cd44e372dac543400565f1b14de41d71
-      baseline: cd0ab809095459fba4d35527b04b7ffb14410d9a6d277a3c870fe8233e892002
-      structure: 4526d3cfe4d706ff6f7253433b5182cb889c6f6ffcc1eb67bc8cd0435bfaf7cc
-      raw: 070c295b7e75be9f02b86bf4590f5e8f78c564ea0f2facea1c15fc48441026c5
-      case-business: 31c4c7e7411fe7240cf60313166d4ee8ec93a91a2c363f92aff0200486e367f3
-      case-domain: ce433bed6c6deb5d359ad43264c74514efc7b7037c12a6d8e1412197f93e9c33
-    exterior:
-      '[null,"goal"]': ca23a469c69b627789294c6e1f99705a619586c4fa5445e0b97121511b596590
-      '["goal","explore"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["explore","screen"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["screen","baseline"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["baseline","structure"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["structure","raw"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["raw","case-business"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["case-business","case-domain"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["case-domain",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识库冷启

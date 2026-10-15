@@ -7,34 +7,6 @@ translation:
   artifact_ref: 85a7b33c-5b89-45f1-a88b-bd64aaa70ecb
   source_digest: f354a86ae01b6e16b9dcc3209336d6921b2c1c1d55113275bb0ed3a8e55590e7
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: e214c86607d0516c78a905a8e8e5611090ad9bb995210673fc7fc8c46cc48d52
-    description: 507b8808ad0523186836d8f066132458ad17bf2effc606838651d061d032a724
-    order:
-      - goal
-      - when
-      - asking
-      - output
-      - anatomy
-      - validation
-      - install
-    sections:
-      goal: 3e7cd7febb3cc9a950255d326f85b4a2f05852aa75f160cab9d05e2f5cceaefb
-      when: f5909435c213b828cba43445ff3066a8179961389e8bc571c66b2e986d83c040
-      asking: 5b55f32412c05947ef0375f9e586a1e4c7ede0bf496e955ad0dc1ab91e6af5c5
-      output: 5eebb34319d91ec2393ed375d06672a540a46b177c7044ae8a313e01c72e9c66
-      anatomy: 866f96c5061dd913b724948879f3f9b97b47b510abec1e5ef955c883f8a3cbf4
-      validation: 65518861e8471e71eee856afbe441f4a086a92e1aa6e2b964d8eec7a81eeebe3
-      install: 3d16a1b7a94d0cba8edfe6f4f238c767610828f5c2dea8f27fead18af3bd66d5
-    exterior:
-      '[null,"goal"]': db08b4506c68e2920371ba05d67f011302fac759c18d363d9d3c295e4c0f32e3
-      '["goal","when"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["when","asking"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["asking","output"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["output","anatomy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["anatomy","validation"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["validation","install"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["install",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 创建 Indexer

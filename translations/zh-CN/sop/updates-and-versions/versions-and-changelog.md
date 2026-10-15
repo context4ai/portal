@@ -6,31 +6,6 @@ translation:
   artifact_ref: bc31d513-0dd9-4f53-b6e2-953feada799a
   source_digest: b473223bf37b4551927c6d8d50db88b52b788b73d051de8109181fb255c293b9
   translated_at: 2026-10-12T16:11:57.590Z
-  source_parts:
-    title: 48f524e28eb370a038e9c5f174ea0995e9405e5adedf2f8c921e0f4e9e646572
-    description: 04e2e75ececab8a0d295367ad91aaf6af61d0354626658bd6d8f95ffd610d363
-    order:
-      - goal
-      - bump
-      - record
-      - retries
-      - readers
-      - restore
-    sections:
-      goal: b5f0045402c6791ad62be4292595d01164542886a03306c04c4b4b5a26a554e0
-      bump: 4326a820e4a49b2adcbe526d73d8e90383e5807f61ef71090810be966281f60e
-      record: 4fe35a82b580ab6e826ddfc1825b765da5d8c70165f524bf64758f8dfd8263bc
-      retries: fa4eadb7c0b5a35529d1b4cd51d196d3b68a17c38baa31edc33532cca55f7c85
-      readers: 09a7f91da23ade2dbfebb65b733a9eb7c8fd0eceafc75374eee43d10b8932cd7
-      restore: f96c000be91dce9ae0a34831a776527828ebc7612be6425f698fbe557736b201
-    exterior:
-      '[null,"goal"]': 6ef19e89e60c365509b19d02780642734764f4cbcb553f8062b214265465f932
-      '["goal","bump"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["bump","record"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["record","retries"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["retries","readers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["readers","restore"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["restore",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 版本与 Changelog

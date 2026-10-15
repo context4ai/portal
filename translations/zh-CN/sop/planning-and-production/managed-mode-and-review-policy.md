@@ -6,34 +6,6 @@ translation:
   artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
   source_digest: 4cc415a1c558df20e71a6ff0c515cd03266609c8c439094d485871c3403629a5
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: e363c2912bc337aa463f875e4d6572fbe274005711c000d4dd53339fda61ad74
-    description: 96690d11338c8cad8625813712f683b11dd91dfd7efbaecd1d7d38ad2753fa55
-    order:
-      - goal
-      - switches
-      - managed
-      - bot
-      - policy
-      - required
-      - where-it-stops
-    sections:
-      goal: 9afc2d50fb55b8dd3c4704e106eefca44f513f33094f7ee1a5a2e46dfc76b888
-      switches: d9d80d85bae1dd282282a82343d8d4db36442f1768fba17a755304c205c965c3
-      managed: d1ee079a3a40dbdf216f5fce3366fa4d95027ea7348e098a5ec74d6a67113b84
-      bot: 4f4c549cff697489052701a3ca109f098ccb9d164a04ca33519330254e46c227
-      policy: 3094cab97dd23375f8f20c615636a2a1e433f0f2e6ada7692579d841094b317f
-      required: 50d1c4ac1c4d92bbe3413e49d4f747377553147e46a155a1f1363f84c414b54e
-      where-it-stops: 96827c0f4585bebe9e4a306dd803dc7dde9bba9ae03f5e34f10bc438d7b28cc3
-    exterior:
-      '[null,"goal"]': 968b014662038a8e16e3b1458bd7dbed6e892c1bd03c123fcdb80ee7b1b86fb9
-      '["goal","switches"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["switches","managed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["managed","bot"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["bot","policy"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["policy","required"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["required","where-it-stops"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["where-it-stops",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 托管模式与审核策略

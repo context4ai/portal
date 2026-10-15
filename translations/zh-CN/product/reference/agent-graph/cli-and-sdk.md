@@ -7,37 +7,6 @@ translation:
   artifact_ref: 86ec3c09-beb2-468a-b28a-60d7a5c8fcce
   source_digest: 3bbf502cdd7b2d789705d694db2af070a7489b8c2df3b2e6993cf7db85f88f4f
   translated_at: 2026-10-12T20:29:53.422Z
-  source_parts:
-    title: 14d227ffa792cbfa3ae7cf133c3f0ae158bd6d5e1fe718ddeb4d46da36ff1d2a
-    description: 3c273e89ac498cb9eef3691cb78e9a319bc0b0ab0b661d8577019bc8350ad36e
-    order:
-      - install
-      - authoring
-      - discovery
-      - routing
-      - run
-      - resource
-      - errors
-      - sdk
-    sections:
-      install: 80231e23da7ead77696f15b47639e91b0ce16da8a6d81b3dce1aa0512725a933
-      authoring: 73af4a1777d36bd98d8fee849c5ec2c0fbf4f1dd3fb6f635c748fa198b5cc253
-      discovery: 95b74ca65e52578fe69460ca291ea7b278e6e7f3e1d73c0f69cae57a41ef960a
-      routing: e32ed6f423f5d382eeefd96285d482569ec3765428bd2c7b73a985dce9e946b5
-      run: f598ce4f2186aebcf401dd33facb7675b20f64cf5bfb2709600d85fe9d73060e
-      resource: 81335a8e7444fd5ee681850356e8c1c34846f8325d743dfe7f0cd9cebfb5c7be
-      errors: a7f21fec2f1396ff2887c8419f5af819c7aa8b82f7b947edac8bf41a9b08add1
-      sdk: cacb747c8b9cf16baff13d1591eeefdab59e091a9d68b65fbf519036b27a57a2
-    exterior:
-      '[null,"install"]': a51dc985939ba71ff99c77da36fcc6340b0972f9a4f87cf2c587f5cc949cadca
-      '["install","authoring"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["authoring","discovery"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["discovery","routing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["routing","run"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["run","resource"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["resource","errors"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["errors","sdk"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sdk",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # CLI 与 SDK

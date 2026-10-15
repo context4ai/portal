@@ -226,8 +226,8 @@ entries:
     title: 笔记
     source_digest: ac80d051721d90bdc2f40a6a48b39d10448d0cff34bdeb331ee0de0b7c3ba883
   guides-sources/same-repository-docs:
-    title: 同仓库文档
-    source_digest: 56b8b0a23791d99d34e496713d9cfd0ccc2adfd8448aef21bc6f5bde8482f8f6
+    title: 引用同仓库的文档与 Skill
+    source_digest: 1cb20b0062e6e777df3d961b30679eaed24fc44ccedb92269c80cab21b20a610
   guides-sources/session-summaries:
     title: 会话摘要
     source_digest: 5488172f852a04bf509bc25aa5cdc92315737b97505c2fce910de18162480db7

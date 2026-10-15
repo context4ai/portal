@@ -6,25 +6,6 @@ translation:
   artifact_ref: c83a2ef8-1964-48dc-a3cb-ec5eeadc1acf
   source_digest: c0d2010e0ac87bea63df58ded0fb16bd487eb8c60e6866088b0069393f907da2
   translated_at: 2026-10-14T10:25:47.577Z
-  source_parts:
-    title: a48211b273fa75209d79da7372e8ce2faecd9473bd75ea997c9ce086834df3c2
-    description: 6bd6e94bd512f7e5bfef51f74b0d5b04dfce43fe52d050bba04625ef62206f7a
-    order:
-      - principle
-      - on-demand
-      - code-depth
-      - ratio
-    sections:
-      principle: 536d2c699c35029cff35db05822e90fb72b08d537e958cd28fdd864302c17c39
-      on-demand: d35f0bc366dd67dab8dfd1ee3d3966f563543897a508b4e390bf17da09a4ff3d
-      code-depth: 24e50792be25c5e67d40fdbd408d63c1ec64cc7fbf719b5a0a45a942e96ebcbe
-      ratio: 0a4ba7816283cdee9e9059862335f3b489d5ae37914541085fd7c0ccf4725b07
-    exterior:
-      '[null,"principle"]': 6e4b7ce312473e7214c2697e20531c174da95a2767bdfdad7ccee5b5df1d1760
-      '["principle","on-demand"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["on-demand","code-depth"]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-      '["code-depth","ratio"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["ratio",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 写给 Agent 的知识

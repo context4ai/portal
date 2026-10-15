@@ -3,7 +3,7 @@ title: What is Context
 description: Context turns code, documents, notes and conversations into
   reviewed, traceable knowledge for Agents, Bots and people.
 type: Wiki
-timestamp: 2026-10-13T01:45:15.701Z
+timestamp: 2026-10-15T03:52:07.709Z
 ---
 # What is Context
 
@@ -11,7 +11,7 @@ timestamp: 2026-10-13T01:45:15.701Z
 
 Context is a knowledge workflow for engineering teams and their AI agents. It turns code repositories, documents, notes and conversations into reviewed, versioned knowledge in which every claim leads back to its source, then builds that knowledge into Agent knowledge packages, documentation sites and LLM documents. Agents read the knowledge first and follow its evidence chain to the original only when they need exact detail.
 
-You describe what knowledge you need and where the material lives. Your Agent reads the evidence, proposes a structure and explains its decisions. Context keeps the process legal and repeatable: it records source boundaries, checks evidence coverage, stages reviewable candidates, preserves provenance, verifies the approved result and builds the output you chose.
+You describe what knowledge you need and where the material lives. Your Agent reads the evidence, proposes a structure and explains its decisions. Context makes sure each step is allowed and can be repeated: it records source boundaries, checks evidence coverage, stages reviewable candidates, preserves provenance, verifies the approved result and builds the output you chose.
 
 <!-- /context:section -->
 
@@ -54,16 +54,18 @@ Context is not a one-shot summarizer. Source snapshots, review state, approved k
 <!-- /context:section -->
 
 <!-- context:section id="who" -->
+
 ## Who it is for
 
-Context helps when knowledge exists but is not yet ready for an Agent to use. Typical requests:
+Context helps when knowledge exists but is not yet ready for an Agent to use. Its main strength is helping a team build systematic knowledge step by step from the documents and repository code it already has, taking it from nothing to a complete knowledge base; it suits knowledge that has to keep evolving with the code over a long time. Typical requests:
 
 - turn product, architecture, operations or FAQ documents into a navigable knowledge base;
 - connect code structure with explanatory documents while keeping exact source evidence;
 - combine several repositories and document sets into one reviewed knowledge package;
 - update an existing knowledge workspace when its sources change, without rebuilding everything.
 
-In a measured comparison on real developer questions, Agents answering from Context knowledge fully solved more questions with far fewer tool calls than with an LLM Wiki; see [Knowledge Retrieval benchmark](../../architecture/benchmark/knowledge-retrieval.md).
+In a measured comparison on real developer questions, Agents answering from Context knowledge fully solved more questions with far fewer tool calls than with an LLM Wiki (a wiki an LLM generated once, which the Agent searches and reads locally); see [Knowledge Retrieval benchmark](../../architecture/benchmark/knowledge-retrieval.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="companions" -->
@@ -81,6 +83,8 @@ Two companion projects carry parts of the workflow:
 
 ## How you get it
 
-Context is delivered as an npm CLI plus an Agent plugin. Install both once, restart the Agent session, then describe the knowledge goal to the `/c4a:context` entry in plain language. Continue with [Installation](installation.md) and [Quick Start](quick-start.md).
+Context is delivered as an npm CLI plus an Agent plugin. Install both once, restart the Agent session, then describe the knowledge goal to the `/c4a:context` entry in plain language. At the end of a round you have reviewed Markdown pages in a Git-versioned knowledge workspace, plus the package and site built from them.
+
+Read [The Workflow at a Glance](workflow-at-a-glance.md) next, then [Installation](installation.md) and [Quick Start](quick-start.md).
 
 <!-- /context:section -->

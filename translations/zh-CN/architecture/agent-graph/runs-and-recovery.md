@@ -7,37 +7,6 @@ translation:
   artifact_ref: b055036b-c535-4e9c-8366-e9e231559aef
   source_digest: 55e472aa45db588ab37117565bbfc5e46ff9bafdaa46a6a0033ece886f2f4b9d
   translated_at: 2026-10-12T18:13:07.981Z
-  source_parts:
-    title: 2f996227f31e069736aa840656b41bd314368cb78762a3e9e6a57cbb90c58045
-    description: a5a628bfda6db84d0027ea1a54db5b8c8d1abef4d66eaddd8e22947b85aa8259
-    order:
-      - facts-first
-      - run
-      - loops
-      - failure
-      - checkpoint
-      - stale
-      - authority
-      - host
-    sections:
-      facts-first: 96a59a2ed38e8d66bf376703e630d5cecf1ff0f051a4e1ae5ca0c69f0e9dd857
-      run: 65b193563c5937e714c77fa5a7fbd1473ff05a9f653e9f71bcc0180510beebb7
-      loops: 8472c8e72b808e8f0fb93cd1d8dc143bab438ff715a4a00c03608156c0ce3fbc
-      failure: 0d20c68c4f55064255a00d8cc95fac362ebc3c1d1e9fde3e7dec47ecc9a6a95e
-      checkpoint: 426e90d646ed4bacb71fdcabdc6c140749e825bbec6104be47ac8306b51e1c84
-      stale: 05c87cfa70251b4e61a8ad969c40dbda8fe08e8635ec99210afcd4ef11e1063a
-      authority: b375790f91cafb9e02a5ffda9c37918c0178f489035e5a41cf235275dbf31a23
-      host: 1c87e09c4f3e0e5f03e92bd3e0a7b0d705dad6216a14969374d3c8cbd39ccb7f
-    exterior:
-      '[null,"facts-first"]': e9e3f69ef1d27c420cddd5a09c51f5d6b201fec6407fb0b51a387fa45be692f9
-      '["facts-first","run"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["run","loops"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["loops","failure"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["failure","checkpoint"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["checkpoint","stale"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["stale","authority"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["authority","host"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["host",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 运行与恢复

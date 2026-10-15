@@ -1,47 +1,19 @@
 ---
 title: 快速开始
-description: 创建 Context 知识工作区，登记一个仓库和一个文档目录，并把第一批审核通过的页面构建成知识包和站点。
+description: 创建 Context 知识工作区，登记一个仓库和一个文档目录，把第一批审核通过的页面构建成知识包和站点，并提出第一个问题。
 translation:
   locale: zh-CN
   artifact_ref: a5f433c5-3840-4ddf-8306-59b6a59e4dac
-  source_digest: 87641adbae979755889ecd133c4b937211611d8bafa981b0276ad2e89c4ad298
-  translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 328908a83269e0db2035621d0110a68fba3dad6330d66d58a7371cb377e0d5e4
-    description: b252e0f2517c9ef3ad807f7c820b639b3b38387c3c2d8c82d3b3719feda86e27
-    order:
-      - goal
-      - init
-      - register
-      - plan
-      - produce
-      - build
-      - next
-    sections:
-      goal: 4dc3c443055dc32b18336ca4554f9cd450c4c8efe17d01a471e6c6b75b5726a4
-      init: 9ea2e847f747f627553a02716a07b7480a106c1feee64372a4675ff2ac0de570
-      register: dbfbcbb7dfa7624b73b5dbcaad1e2fda0ca4f5d9da3dfc410499f37874246298
-      plan: 94a4f9820316d7f4a8141eb3dce8b92078ebc14075db2a71198928dad2ce393d
-      produce: c15c1fca393c655f6bf532886f1c71d70be71c8fd15d9327410ce05d1d04f1d4
-      build: e6c87db1809b75a7203c79b6e144da605ec915255af42539ffdf185f9f8f29c3
-      next: 16c4bb84ef772cf82005d786d139fcaaa03b8527c2ef0c0c0ebe7d8f4f8d9429
-    exterior:
-      '[null,"goal"]': bd10c71d5833dd1f060139a4bd316c14614fee305b4475e0450a07b40ed8cfb1
-      '["goal","init"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["init","register"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["register","plan"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["plan","produce"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["produce","build"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["build","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: 009c15daff6c7f07a9fe712a330f1f32cd6aaca5b1365d9b31ba43ba6042a67b
+  translated_at: 2026-10-15T03:57:38.476Z
 ---
 
 # 快速开始
 
 <!-- context:section id="goal" -->
-本教程把一个代码模块和一个本地文档目录整理成经过审核的知识包，并附带可浏览的站点。你用自然语言下达指令，Agent 执行工作流返回的命令。下文列出的命令都是 Agent 代你执行的，方便你在它的进度消息中认出它们。
+本教程把一个代码模块和一个本地文档目录整理成经过审核的知识包，并附带可浏览的站点。你用自然语言下达指令，Agent 执行工作流返回的命令，所以下面的示例只展示你要说的话。
 
-请先完成[安装](installation.md)，并重启 Agent 会话以加载插件。
+请先完成[安装](installation.md)——包括 Node.js 20 和用于为新知识工作区安装依赖的 Bun——并重启 Agent 会话以加载插件。
 <!-- /context:section -->
 
 <!-- context:section id="init" -->
@@ -54,16 +26,7 @@ translation:
 读者是刚开始使用这个组件库的前端开发者。
 ```
 
-Agent 会初始化目录并安装依赖：
-
-```bash
-context init ./context
-cd ./context
-bun install
-context status --format json
-```
-
-得到的目录结构如下：
+Agent 会创建目录并安装依赖。得到的目录结构如下：
 
 ```text
 context/
@@ -88,18 +51,15 @@ context/
 
 Agent 会逐一登记每个边界。登记只记录范围内有哪些内容，并不决定要写什么。
 
-```bash
-context source add repo 20260901 --module component-lib --local ../component-lib --configure
-context source add file 20260901 --module product-docs --local ../docs --configure
-```
-
 对于 monorepo，挑出读者真正需要的包或服务即可。无关材料会浪费阅读时间和 token，但也不要仅因为文件名看起来旧就把它排除。
+
+> 如果要为整个领域或业务开始建设复杂的知识库，请参阅[规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
 <!-- /context:section -->
 
 <!-- context:section id="plan" -->
 ## 3. 确认开工报告
 
-Agent 会阅读有代表性的材料，就可能改变范围的问题向你确认，把读者目标记录到 `src/indexers.yaml`，然后给出一份**开工报告**，包括：
+Agent 会阅读有代表性的材料，就可能改变范围的问题向你确认，记录读者目标，然后给出一份**开工报告**，包括：
 
 - 已确认的来源和范围；
 - 将使用的 Indexer 技能；
@@ -111,7 +71,7 @@ Agent 会阅读有代表性的材料，就可能改变范围的问题向你确�
 <!-- context:section id="produce" -->
 ## 4. 让它写作，然后审核
 
-批准后，Agent 逐页写作，引用精确到来源行，并提交检查覆盖度和过期输入。
+批准后，Agent 逐页写作，引用精确到来源行，并提交检查覆盖度和过期输入。每个写作任务大约需要一分钟；Agent 会汇报进度和任务总数，你也可以随时要求本地预览。
 
 写作完成后，你会收到一份审核报告，列出每个页面的标题、路径、摘要和内容。你可以批准、拒绝部分页面，或要求修订。批准的页面以 Markdown 形式落入 `knowledge/`；被拒绝或要求修订的页面回到写作环节。
 
@@ -120,32 +80,40 @@ flowchart LR
   write["Agent 写作页面"] --> review["你来审核"]
   review -->|"修订"| write
   review -->|"批准"| kn["knowledge/"]
-  kn --> build["context build"]
+  kn --> build["构建"]
   build --> kb["dist/component-kb/"]
   build --> site["dist/component-site/"]
 ```
+
+**如果中途被打断**，可以先关闭对话，稍后在知识工作区中再次调用 `/c4a:context`。它会根据知识工作区记录的状态继续，而不是根据对话，因此不会重做任何工作。
 <!-- /context:section -->
 
 <!-- context:section id="build" -->
 ## 5. 构建知识包和站点
 
-对于新的知识工作区，Agent 默认会建议构建一个知识包加一个网站。`src/index.ts` 中的知识包声明如下：
+对于新的知识工作区，Agent 默认会建议两个产物，构建会同时产出：
 
-```ts
-kbPackage({
-  name: "component-kb",
-  template: "src/package-templates/kb",
-  site: { title: "Component knowledge", lang: "en-US", base: "/" },
-});
+- `dist/component-kb/`——供 Agent 安装和查询的知识包；
+- `dist/component-site/`——供人阅读的静态文档站点，包含文章页面和本地搜索。
+
+想查看站点时，可以说 *“在本地预览站点。”* 产物声明位于 `src/index.ts`；如果需要其他产物，参见[知识包](../../sop/outputs-and-sites/knowledge-packages.md)。把知识工作区提交到 Git，以便之后检查、做版本管理和刷新。
+<!-- /context:section -->
+
+<!-- context:section id="ask" -->
+## 6. 提出第一个问题
+
+马上试用新知识：
+
+```text
+/c4a:context-inspect-search Button 组件是如何处理加载状态的？请引用代码。
 ```
 
-随后 `context build` 会产出供 Agent 使用的 `dist/component-kb/`，以及供人阅读的 `dist/component-site/`——一个包含文章页面和本地搜索的静态站点。把知识工作区提交到 Git，以便之后检查、做版本管理和刷新。
+回答会引用已批准的页面及其背后的来源行。回答中暴露的缺口很适合作为下一轮的内容：告诉 `/c4a:context` 缺了什么。
 <!-- /context:section -->
 
 <!-- context:section id="next" -->
 ## 下一步
 
-- 用 `/c4a:context-inspect-search` 基于新知识包提问。
 - 代码或文档变化时，告诉 `/c4a:context` 改了什么；它只会重新打开受影响的页面。
 - 范围更大时，请阅读[复杂任务](large-projects.md)。
 - 所有可调用的入口，以及会自行运行的 Skill，见[命令与技能](commands-and-skills.md)。

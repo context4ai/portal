@@ -6,25 +6,6 @@ translation:
   artifact_ref: 0fd00adc-8f91-4c1d-8e50-ec78c403288e
   source_digest: db9a152a6c4feb733d76022ec0dcf2c3933ab8be9a055607bcb81cf6763739d4
   translated_at: 2026-10-12T20:29:53.422Z
-  source_parts:
-    title: 1dcb4a6da8f8d371c75802e88b8f6bf88bb7b89fdcf36e36ad20c6f943a98176
-    description: 57074a8859427206582c4fbb63aef9bd021b51b9c33f1c65b36a6e51352aea7a
-    order:
-      - premise
-      - split
-      - contract
-      - service
-    sections:
-      premise: 7e7bd8cd14ba84aeddba906fe1e5b733cefc1582796541fea7bcb1cc0a8c9033
-      split: a1ec574357f82367cbb00971574f118a66cfc4dbebd03673a5610b3c6db27f65
-      contract: a0fd4ebf854fdf2df0c2bcd4f1a88462bd0403a1edc518536e2435af42cf8807
-      service: 021129fa3a2958c9b13f9c70046e2eaba4b6858005c12fb29aed05a34da11f7c
-    exterior:
-      '[null,"premise"]': 76d11762cdd3505a89f16955a0f800a7bcd2c6441e921d3d47d01a9322846fdd
-      '["premise","split"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["split","contract"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["contract","service"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["service",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 为什么是工作流

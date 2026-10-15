@@ -4,36 +4,8 @@ description: 面向某个框架或技术的代码 Indexer 应包含什么——�
 translation:
   locale: zh-CN
   artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
-  source_digest: ef7a1bb981ad54e5e8b37daa4434a68aa5f5afea07d54f98cb5613124d508d8d
-  translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 186dc0e9b56be41df5eb06f0a7aa80188b4383bc5796b012bce10a4857ce3512
-    description: 250d1a53e22cfd4e8efd748dc854ba223a311402adb0c065df05de58463064b3
-    order:
-      - goal
-      - responsibilities
-      - skeleton
-      - helpers
-      - writing
-      - example
-      - tests
-    sections:
-      goal: ef3937e2bfd61e1452bc36c6c0ff0a531aee3eb2e138285b57bda24e9e8ed270
-      responsibilities: 71c5b7cc53aabb7899ed0d4ef41b68cd752645b3390100a9863b00801320807f
-      skeleton: 5ca480078198623fe044f1044d3bb441412e9e040b1a11be8feffa93d032e1d4
-      helpers: 8f77ef9489b53644ed6862ca1c3cb0e28b0b74113d540a7a2058ba5c31ee63dc
-      writing: eaa742db578e1cc5bbe994823efe9c3fff42ff91639f51dc1c8b1ee6c7e7fa22
-      example: c9eceb90cb85de81f91f73c95bf5e164a0fee60cadc1cbea83b97966467ceffc
-      tests: 131b9226a13bc0c0ca291e1b71ca1b4ea0593967cc3c017b590d3afb28dcd6d4
-    exterior:
-      '[null,"goal"]': 5c918b2e7232bd149086c8d69a6f6000503ffe1e9eff600fa7ea5e3b4cb1528c
-      '["goal","responsibilities"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["responsibilities","skeleton"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["skeleton","helpers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["helpers","writing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["writing","example"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["example","tests"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["tests",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: f158c97da74552ef1629a3af70c7d52dedc1ab53e40bedc10c82a71455422aeb
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 代码类 Indexer
@@ -90,7 +62,7 @@ flowchart LR
 
 开工报告确认后，Agent 会阅读每篇文章所需的源码。引导它讲解契约、状态变化、失败行为和集成点——模块负责什么、如何进入、交出什么。解析可以定位声明，但不能证明运行时行为。保留表达式原样而不执行项目代码，把声明的默认值与实现的默认值分开，并写明未知之处。
 
-Indexer 可以为路由组或组件这类功能类别建议一套重复使用的大纲，但不能规定固定的页数：组件手册可能需要逐个组件阅读，而每个符号一页或为大模块写一个大杂烩页面都是错误的。每个小节最多引用三个真实的源码位置；如果一段讲解需要不同的证据，就把它拆开。
+Indexer 可以为路由组或组件这类功能类别建议一套重复使用的大纲，但不能规定固定的页数：组件手册可能需要逐个组件阅读，而每个符号一页或为大模块写一个大杂烩页面都是错误的。每个片段引用的真实源码区域最多来自三个文件——同一文件可引用多个区域，总计最多八个区域；如果一段讲解需要不同的证据，就把它拆开。
 <!-- /context:section -->
 
 <!-- context:section id="example" -->

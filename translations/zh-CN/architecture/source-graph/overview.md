@@ -6,28 +6,6 @@ translation:
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
   source_digest: 9106f5d4af095d71b5f79327d8b57c4b322c157bfb1a1a76177eb0ff57f4e0ef
   translated_at: 2026-10-14T02:37:19.175Z
-  source_parts:
-    title: 6513af4d080b646bb60a4deba7188a6ad8427afe476e4eedf4cec6158b23770d
-    description: 2ca07f44c091cf0cbec517c23e630660893c8a6687ec3c06f5ba2278432bc50a
-    order:
-      - goal
-      - surfaces
-      - components
-      - access
-      - next
-    sections:
-      goal: 15142fc417256422a0183d56928f56593bd71c92d7325385cb64c08c75dad124
-      surfaces: 3f5b943fd99a52aa832d2d3b9f0fadb929687cbe2b1127e0608b9eefbab4d65a
-      components: da3995058e0976da8be514095dec6d8b1402dbae342ec3ced51787bf0bfb456a
-      access: 210e298ebd9d979e4f2206c61534a36bb4b64c5cdbaf36854669db9a46477a26
-      next: 0e6bb9c124dc4d6e8e45b4d65af72db44b523ec377c2ad0c8b9e1af41c347481
-    exterior:
-      '[null,"goal"]': 26c06ad25df8aab67c64aebc1c4cc2fcd062e036ef05fb903b1cfe3804eb808f
-      '["goal","surfaces"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["surfaces","components"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["components","access"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["access","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 架构概览

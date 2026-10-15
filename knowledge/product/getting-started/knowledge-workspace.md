@@ -3,7 +3,7 @@ title: The Context Knowledge Workspace
 description: What a Context knowledge workspace is, what every directory and
   file in it holds, who writes each part, and what goes into Git.
 type: Wiki
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # The Context Knowledge Workspace
 
@@ -89,11 +89,13 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 <!-- /context:section -->
 
 <!-- context:section id="linked" -->
+
 ## Files for linked content
 
 - **`imports.yaml`** at the root declares external entrances — content elsewhere that pages may link to — without downloading or capturing it. See [External Entrances](../../sop/registering-sources/external-entrances.md).
-- **`repo-content.yaml`** registers documentation and authored Skills that live in the same repository; **`repo-content/`** is a symlink view of them, and the originals stay where they are. See [Same-Repository Docs](../../sop/registering-sources/same-repository-docs.md).
+- **`repo-content.yaml`** registers documentation and authored Skills that live in the same repository; **`repo-content/`** is a symlink view of them, and the originals stay where they are. See [Referencing Same-Repository Docs and Skills](../../sop/registering-sources/same-repository-docs.md).
 - **`context-evidence.sourcegraph.wasm`** is an optional plugin for reading code evidence remotely. `context evidence install` maintains it; queries never install it on their own. See [Reading Code Evidence Remotely](../../sop/querying-knowledge/reading-code-evidence-remotely.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="runtime" -->
@@ -110,11 +112,13 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->
+
 ## Rules that keep it healthy
 
 - **Do not edit CLI-owned state by hand.** `sources/`, `knowledge/`, `dist/` and `.tmp/context-runtime/` change only through Context commands. To change a page, ask for a [revision](../../sop/review-and-revision/revising-a-page.md).
 - **One knowledge workspace per directory.** Do not create a hidden second workspace, and do not mix revisions, tasks or `.tmp/` files with a parent directory that is also a knowledge workspace.
 - **Repair through the Route.** When something looks broken, follow the recovery action the current Route returns instead of deleting runtime files.
 
-Next: [Commands and Skills](commands-and-skills.md) lists what you can invoke in this knowledge workspace, and [Core Concepts](core-concepts.md) explains how its parts relate.
+See also: [Core Concepts](core-concepts.md) explains how these parts relate, and the [CLI Commands reference](../reference/context/cli-commands.md) lists the commands that write them.
+
 <!-- /context:section -->

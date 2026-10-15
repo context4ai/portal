@@ -6,31 +6,6 @@ translation:
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
   source_digest: cb056f106f47b5dce16a329e3b8f4b1a2706e048967c99439fbbd77ff22413c8
   translated_at: 2026-10-14T02:39:20.360Z
-  source_parts:
-    title: 334bf372dde434cb8c59c1eca00db380578d9cf449f96c0a2a7858ca1aae2e19
-    description: 71719cfa0ebeece93f413524d49887ac64cbec2aa3b90ac1aee8d6cd4bb6c2d4
-    order:
-      - goal
-      - source
-      - topology
-      - database
-      - fly
-      - backup
-    sections:
-      goal: bc3515ba38fd526ff69c5539c3f869772d1094efb3f796ed3013acc95b898ba7
-      source: 794ef8e3a89e8b2bbf2dd687c5a5e4b9453e513df73764945f0bd4a521f8888a
-      topology: 7ba360bd6798c38737929a580d80073f015cfedc9c443fe40e0a1d7bdb85b50b
-      database: 12b51e3a2363666cf06bd861454d9ed09e8563d4c9658c8ff2d23374a5b88a52
-      fly: 03abed21c1de29e67f506de198fc8a7254573f653062e4d60d2f3ee18e1f2091
-      backup: 2545680d61da832bbffcab91f6ea2ddd3b0216147d0840d98288c6db2cbf9511
-    exterior:
-      '[null,"goal"]': 2197760eb0daca5bf9b80fd07fcac8355d099fb0e6ffde459d7b3f73a4f06e8b
-      '["goal","source"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["source","topology"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["topology","database"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["database","fly"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["fly","backup"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["backup",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 自部署与数据库选择

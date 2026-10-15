@@ -6,31 +6,6 @@ translation:
   artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
   source_digest: efe24ff4ff80152db877f27de04f9179dea10016b8f21a7ae889b20942e18698
   translated_at: 2026-10-14T02:20:57.619Z
-  source_parts:
-    title: c472dbdc27e62c6d39a1417f6e0ad205075ec2ea377a25c8d4199b69e5f9d1aa
-    description: 48a2cfd6226ebb9efa1b5365541796ece246161cbce3c0d556ca8eec3fb9d7da
-    order:
-      - goal
-      - providers
-      - admin
-      - registration
-      - sessions
-      - errors
-    sections:
-      goal: 2fb1a93e1b229c360fbbf8d5249366b5db419df449111c5ad73dfcac7eab91a2
-      providers: d098405b81aa4f20f2e2c20785b5772b5d2a55bda84ce36d0895f0d83de400d8
-      admin: 91b38914a68b397f2c54725fc54f939113df81889cdd29fc79f4b048e287e795
-      registration: 5e264f6b1bec7fe32b7c3501e582babdca7a14756e5c447cb05436215535e04e
-      sessions: 4ae6cbdeb559c7ffa0a33707c392320c7120bd85b86076526c8a98d35f1755af
-      errors: f2863a75b14cc68bb5d0df71265518b974922e4b71efce1b84ddf9e47c8603b7
-    exterior:
-      '[null,"goal"]': e2cd55a64f6669f7c5a4c6cf16948f3fbd8054823732c23cf38aa03c2a2ebea5
-      '["goal","providers"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["providers","admin"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["admin","registration"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["registration","sessions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sessions","errors"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["errors",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 登录与准入

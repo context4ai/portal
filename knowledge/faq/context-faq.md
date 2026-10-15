@@ -2,16 +2,18 @@
 title: FAQ
 description: Short answers to the questions teams ask before and while adopting Context.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-15T03:52:07.709Z
 ---
 # FAQ
 
 <!-- context:section id="central-or-local" -->
+
 ## Does a small module need a central knowledge base?
 
 Not necessarily. A central knowledge base suits knowledge that many people share and use remotely: the team registers its repositories, documents and meeting notes once, and its Bot, documentation site and each member's coding Agent all read the same reviewed knowledge.
 
-Content for a small module or a single maintainer can stay in the repository's `docs/`. Context can register same-repository documents as repository content without copying them into knowledge.
+Content for a small module or a single maintainer can stay in the repository's `docs/`, where it keeps evolving with the code. Registered as repository content, it stays at its original location: Context references it instead of producing it again or copying it into knowledge. See [Referencing Same-Repository Docs and Skills](../sop/registering-sources/same-repository-docs.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="quality" -->

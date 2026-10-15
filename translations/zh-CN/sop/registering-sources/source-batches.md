@@ -6,25 +6,6 @@ translation:
   artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
   source_digest: 9690c4dce03276c3911b1f424c7ec2206204008f7f0cf03dd5c9d55dcab19736
   translated_at: 2026-10-12T16:11:57.590Z
-  source_parts:
-    title: 624dcefd615a58b38cd49a71811e38e41d35e7152f9144191220c519b7175832
-    description: 4585745bbadea2bdc0efce7fc6af1a2b2656f3588d744ea118f8a386a2b42014
-    order:
-      - goal
-      - payload
-      - checkpoint
-      - failure
-    sections:
-      goal: 9e96dbb3b08310bf52ce8ee20c53ee2d83fe225b366641f4976e77f13e18cd72
-      payload: 17189fc412fe12aea2464fa42d7e4abca30365bc93402d9b3c5e4c424cbfd3bc
-      checkpoint: d7763425b8094361bfc393e7dd03967c1a9e3c9d31d52c9b0f77f71d9746e38f
-      failure: 03926b3daf8bfd1c6cbcaae250afb44a76d63aac9cf72a0b93f3bc4f635603a4
-    exterior:
-      '[null,"goal"]': 9c0e08f32f5809c9a89033dcc249236b6c2b08f97c37079701953d3fc9f0e9a3
-      '["goal","payload"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["payload","checkpoint"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["checkpoint","failure"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["failure",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 来源批次

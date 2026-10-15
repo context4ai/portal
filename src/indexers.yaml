@@ -35,6 +35,7 @@ requirements:
         - source_ref: note:20261012/faq.md
         - source_ref: note:20261013/evaluation-method.md
         - source_ref: note:20261014/cold-start-practice.md
+        - source_ref: note:20261015/getting-started-guidance.md
     exclusions:
       - scope:
           targets:

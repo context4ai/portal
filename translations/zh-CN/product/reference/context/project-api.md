@@ -7,40 +7,6 @@ translation:
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
   source_digest: a67dc693a4f68af644b3e1cb86be08228596c86dbae47cd891fe01f102c473fd
   translated_at: 2026-10-12T18:39:20.106Z
-  source_parts:
-    title: 3c784f425e7a88b4b0b97be174973fc67fd54ff6b53780bab7ef0b8144e93b11
-    description: 2c56d1e80eb74e255a489595cd8132b8aac2c22229d1097b73a20030864dfe74
-    order:
-      - goal
-      - define
-      - sources
-      - capture
-      - custom
-      - packages
-      - site
-      - requirements
-      - state
-    sections:
-      goal: d9b0f7a7a39fd2d7c7dea94059dfaea60ba48ef28d5a60c9b94c4426a3a986be
-      define: 95d5f6e963ccff8a0eb67dbbfe5c0269b278e29ace390c66ef1445ec271dbe27
-      sources: e6781a21d74b08fdee387ea3534f7a688ac2d6e590f5b6aeb8022d1ee655f674
-      capture: 11aa052422df6455f79a92edea42d3f3c8c1c54dbbc5a7283dbe37bc4e3483c9
-      custom: 065c6b6830f31027668cefed25ebde44588b30fd99a4e2f63417cdff0eac6865
-      packages: c9b0845d2d063ab967d9a162142361378a26a1ea001fa4dcc71099e64a31b655
-      site: ed5ab5e5d9025a9b4b251f1fd3c3396e068d377f1329ab1a163a463702e4bf08
-      requirements: 6618f324e71aa693a6311437b818f18d3807b79ef7c1390d23b387ceb9f3190f
-      state: 3c5e78181467d412e9e8339b8f8c3c5660049136177a18339b6623a0fd5cc8f5
-    exterior:
-      '[null,"goal"]': e952969027168fe77d74002c463f95e7cb9075dc96bf81683f8e4a783fccf3ba
-      '["goal","define"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["define","sources"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["sources","capture"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["capture","custom"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["custom","packages"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["packages","site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["site","requirements"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["requirements","state"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["state",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Project API

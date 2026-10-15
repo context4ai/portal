@@ -4,33 +4,8 @@ description: 将已有页面更新到新的提交或文档版本——选定范�
 translation:
   locale: zh-CN
   artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
-  source_digest: 6758edf71bba2733f39d389c971f47bd9397bed6bf91cb378df8cd8d55118aa3
-  translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: 59a00eb0ff745dd506bd6389f34793a60156b0bd04f021f09318f74c8954f0a6
-    description: cb9ce749ec93683b176fb8efa6e918631249730e18aa60ecc6a4d27ba522cf8e
-    order:
-      - goal
-      - ask
-      - acquire
-      - submit
-      - review
-      - only-needed
-    sections:
-      goal: 44641790c1045738db30a225090a237d97063dd6d9d4914b985dd0f35e2e8fa7
-      ask: fc88dc151da98885651d7162c765398c16685e5e0a1f85d9fcc9f49d1d1767e1
-      acquire: 516c98f9230e57c731b5f7c08ac41c74749549824b598eb2c304f302b663da96
-      submit: 9b488484697d2fc2896b3e763db3f3a01473c1ae1d46a547a1acef3a509c0a88
-      review: bbc9720cb0e6eef25ecd25fcb6882fb55eee2c9b35b6d69c0302909314de29b9
-      only-needed: 7e995e90bcdcca6adc2114e94f84099f6534a87925b92cfba42126823afc4ffd
-    exterior:
-      '[null,"goal"]': cffb5b116b5e6091032da4fb9b5ce59a335dd9d1d7b512e44bfaefc68b8914c5
-      '["goal","ask"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["ask","acquire"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["acquire","submit"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["submit","review"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["review","only-needed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["only-needed",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: bd0a93284209fa56a1c2105ac5a688b6e973d7833b2b08ef4e6167f2a8afbdb0
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # 更新知识
@@ -91,6 +66,8 @@ Agent 通过 `context update --input <file>` 提交该请求。省略模块引�
 ## 审核与基线
 
 变更的页面会出现在审核报告中，变更的区块与之前的文本并排展示。只有当每个选中的修订都已批准、关闭并构建——或明确得出无需变更的结论之后，已处理的基线才会推进。获取新版本时或第一个页面获批后，基线都不会移动，因此中断的更新可以恢复执行，而不会丢失剩余工作的进度。
+
+更新收尾时，保留页面中仅在新版本里移动了位置的引用会被重新定位，`context verify` 不再报告它们。被引用文本已变化或无法确认的保留页面会列在完成结果的 `reference_warnings` 中，其引用保留原位置。更新队列完成后，用[修订](../review-and-revision/revising-a-page.md)修正其中需要处理的页面。
 <!-- /context:section -->
 
 <!-- context:section id="only-needed" -->

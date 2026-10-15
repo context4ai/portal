@@ -4,33 +4,8 @@ description: Context 把代码、文档、笔记和会话整理成经过审核�
 translation:
   locale: zh-CN
   artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
-  source_digest: 1c47d378668beb1adbafae8ee4c8195a6b1e0d7e7bc3f10876b98e95aff1558c
-  translated_at: 2026-10-13T01:45:31.351Z
-  source_parts:
-    title: 70470bfed33ea9e95e6416c79f8e8a369c321e46756f53ea84465363a5fe10b6
-    description: d632fa1eeac1349f0418ec7828c7d06baf833d1bc8819dc41b37da39b435a820
-    order:
-      - definition
-      - overview
-      - pillars
-      - who
-      - companions
-      - delivery
-    sections:
-      definition: 0630d1fef8f75848765f4750f20f6fb15e3822101fa65205337fa2331835cbfb
-      overview: 9f1bfc57deaba5d68d3e68b9511e8c6c2583d61fa17e0b625ec5b6f077ca978f
-      pillars: 45b9c6adfb973c15d67c96e1aa7b16bb798e2724066002b2831c707e99b1464a
-      who: 68a47f44778a3c86a919327a97241b549e8d5be1f97e03e03778e04ebb1c3293
-      companions: 4e39e31815f31150a7aab81b12c724c6152d7c5a1dbbe08b6df3574b014650f6
-      delivery: c6fc7589811885a601f253b6356e350196f605a07ecfcf82a1c2df486d99bfd8
-    exterior:
-      '[null,"definition"]': 33f32deaf9e6437989a4bf330390f11ab14292a8192c76b22a4c8e1c4f9fca7e
-      '["definition","overview"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["overview","pillars"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["pillars","who"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["who","companions"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["companions","delivery"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["delivery",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: c5daab2eb1fba79756c7334e6077d78ea2ee20ada790fc62aef09d387f270c13
+  translated_at: 2026-10-15T03:57:38.476Z
 ---
 
 # Context 是什么
@@ -38,7 +13,7 @@ translation:
 <!-- context:section id="definition" -->
 Context 是面向研发团队及其 AI Agent 的知识工作流。它把代码仓库、文档、笔记和会话转化为经过审核、带版本的知识，其中每一条论述都能追溯到来源；再把这些知识构建成 Agent 知识包、文档站点和 LLM 文档。Agent 先读知识，只有需要精确细节时才沿证据链回到原文。
 
-你只需说明需要什么知识、材料在哪里。Agent 负责阅读证据、提出结构并解释自己的决策。Context 则保证整个过程合规且可重复：记录来源边界、检查证据覆盖、暂存可审核的候选、保留出处、验证已批准的结果，并构建你选择的产物。
+你只需说明需要什么知识、材料在哪里。Agent 负责阅读证据、提出结构并解释自己的决策。Context 则确保每一步都被允许、且可以重复执行：记录来源边界、检查证据覆盖、暂存可审核的候选、保留出处、验证已批准的结果，并构建你选择的产物。
 <!-- /context:section -->
 
 <!-- context:section id="overview" -->
@@ -80,14 +55,14 @@ Context 不是一次性的摘要工具。来源快照、审核状态、已批准
 <!-- context:section id="who" -->
 ## 适合谁
 
-当知识已经存在、但还不能直接给 Agent 使用时，Context 就能派上用场。典型需求包括：
+当知识已经存在、但还不能直接给 Agent 使用时，Context 就能派上用场。它的主要优势是帮助团队从已有的文档和仓库代码出发，逐步建立系统化的知识，从无到有形成一套完整的知识库；它适合需要随代码长期演进的知识。典型需求包括：
 
 - 把产品、架构、运维或 FAQ 文档整理成便于浏览的知识库；
 - 把代码结构和解释性文档关联起来，同时保留精确的来源证据；
 - 把多个仓库和多套文档合并成一个经过审核的知识包；
 - 在来源变化时更新已有的知识工作区，而不必全部重建。
 
-在一次基于真实开发者问题的对比测评中，基于 Context 知识作答的 Agent 完全解决的问题更多，工具调用次数也远少于使用 LLM Wiki 时；参见[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)。
+在一次基于真实开发者问题的对比测评中，基于 Context 知识作答的 Agent 完全解决的问题更多，工具调用次数也远少于使用 LLM Wiki（由 LLM 一次性生成、Agent 在本地检索阅读的 Wiki）时；参见[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)。
 <!-- /context:section -->
 
 <!-- context:section id="companions" -->
@@ -102,5 +77,7 @@ Context 不是一次性的摘要工具。来源快照、审核状态、已批准
 <!-- context:section id="delivery" -->
 ## 如何获取
 
-Context 以 npm CLI 加 Agent 插件的形式交付。两者只需安装一次，重启 Agent 会话后，用自然语言向 `/c4a:context` 入口描述你的知识目标即可。接下来请阅读[安装](installation.md)和[快速开始](quick-start.md)。
+Context 以 npm CLI 加 Agent 插件的形式交付。两者只需安装一次，重启 Agent 会话后，用自然语言向 `/c4a:context` 入口描述你的知识目标即可。一轮结束时，你会在 Git 版本化的知识工作区中得到已审核的 Markdown 页面，以及由它们构建的知识包和站点。
+
+接下来先读[工作流概览](workflow-at-a-glance.md)，再读[安装](installation.md)和[快速开始](quick-start.md)。
 <!-- /context:section -->

@@ -6,25 +6,6 @@ translation:
   artifact_ref: 3d544ac4-b9e2-4b40-b1c0-8ce2c0cd0e85
   source_digest: a833230587b8d2e0422d67ec9b9259452de785170ccea1a827813dd04c799c93
   translated_at: 2026-10-12T16:45:10.508Z
-  source_parts:
-    title: 4c849c537e0186fedd68dc8c5c017f857059b19c9a7cf06bc171fdf37a4ae860
-    description: 08f5016b458b488dbc68d568c7aa559952b79827a5ada28611bb6f9c22e5d377
-    order:
-      - pinned
-      - processed
-      - workspace-version
-      - restore
-    sections:
-      pinned: de92be088af8309948b6cb68555ac4df34911805b80882878ce98fd46836e429
-      processed: 012265a3f80f55bab3669744e5610005db4553207e3ed5ae95dbbc4689caca8f
-      workspace-version: 9f8eaa9999f7a20ecbd2436db4f772b4079038f3b0b3f2a18c10a6c0d32b48b7
-      restore: 12b6683be426423d9f3b82200625a39cfa92cb4e7f0fba1b2b9419d064bf51ce
-    exterior:
-      '[null,"pinned"]': 793cff13d5fbeb61f81a2853618f5d34e535050c1f1397b8d96bc271a9be2df6
-      '["pinned","processed"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["processed","workspace-version"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["workspace-version","restore"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["restore",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 版本感知的知识

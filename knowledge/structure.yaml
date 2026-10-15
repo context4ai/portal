@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:143b1e4e7f8e8a1c9473890a5f229e16b939ab4e4d2891ec5dd9832322e252ea
+input_hash: sha256:bf7dfb92fe2dab2fb121af9a2358a4effa1d22840563ad55a6ebb5184b9fe041
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -1276,7 +1276,7 @@ articles:
               path: packages/context/docs/reference/indexer-provider-protocol.md
               start_line: 257
               end_line: 264
-            content_digest: sha256:f2405039041016bc946e8b509f8230ef2722af5b7ba186b2f13e031994fd7f22
+            content_digest: sha256:7b304d5a39ce961273b8a49519d0d5d1f003246984a2f45e68e84a2e0aad5de0
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/reference/indexer-provider-protocol.md
@@ -1286,9 +1286,15 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 189
-              end_line: 190
+              start_line: 198
+              end_line: 199
             content_digest: sha256:a2ba425fdd717a43d88fd4894cb0ac4fb715d5707632e48f070bc8dc0391e8a2
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/context-workflow/resources/procedures/approved-revision.md
+              start_line: 176
+              end_line: 187
+            content_digest: sha256:2aa9c6b832b714f391574dba023b0930c095318862be5823bb5ce543c9f745c2
       - id: verify
         references:
           - source_ref: repo:20261012/context
@@ -1303,6 +1309,18 @@ articles:
               start_line: 275
               end_line: 277
             content_digest: sha256:e484bc263387655e39346232fea770f77e42a5d1cb1ed5481cfe626def5bc632
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 36
+              end_line: 36
+            content_digest: sha256:9cc2f185aa6473b27edcb9ffb90ef562e859450ad8b205e6ba792caa39262461
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 16
+              end_line: 16
+            content_digest: sha256:bcb4a028e4b59d3034be46e67a787babf6778f0793acfe031bddf9f8f73bcc5a
       - id: index-first
         references:
           - source_ref: repo:20261012/context
@@ -1440,8 +1458,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/getting-started.md
-              start_line: 155
-              end_line: 157
+              start_line: 157
+              end_line: 159
             content_digest: sha256:c976a0ac7e4767194c1f5d034625fc9359ee9f4ede3228df435313e0c1cd8578
       - id: decide
         references:
@@ -1502,8 +1520,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/getting-started.md
-              start_line: 155
-              end_line: 157
+              start_line: 157
+              end_line: 159
             content_digest: sha256:c976a0ac7e4767194c1f5d034625fc9359ee9f4ede3228df435313e0c1cd8578
   - article_id: c83a2ef8-1964-48dc-a3cb-ec5eeadc1acf
     path: architecture/knowledge/knowledge-for-agents.md
@@ -1947,6 +1965,12 @@ articles:
               start_line: 5
               end_line: 7
             content_digest: sha256:40aca620eb298ad13805e1e5533e84fad60ff83c79bceb353cbf44f0ce86136d
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/repo-content.md
+              start_line: 1
+              end_line: 5
+            content_digest: sha256:20b69c208b628cc92b3b348495845c7b85a7589247bbe8aff2ea29ece1d7a090
       - id: quality
         references:
           - source_ref: note:20261012/faq.md
@@ -1995,21 +2019,21 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 61
-              end_line: 73
+              start_line: 70
+              end_line: 82
             content_digest: sha256:9978e523fb6d844b32526dc5863a5ff8813d2ecb45b290c329c8790de3fb2ca6
-          - source_ref: repo:20261012/context
-            locator:
-              path: ARCHITECTURE.md
-              start_line: 358
-              end_line: 366
-            content_digest: sha256:fd81b516cf144f256403a7e17f2573e065f1db7a74c1d4316541d282e5722a12
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-indexer-create/SKILL.md
               start_line: 1
               end_line: 16
             content_digest: sha256:0ef5e86fb6b89b879a1e4b76b6a881bedebe647ed00824fceb2f169a1287bc81
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/repo-content.md
+              start_line: 1
+              end_line: 5
+            content_digest: sha256:20b69c208b628cc92b3b348495845c7b85a7589247bbe8aff2ea29ece1d7a090
       - id: hosts
         references:
           - source_ref: repo:20261012/context
@@ -2030,6 +2054,20 @@ articles:
               start_line: 10
               end_line: 17
             content_digest: sha256:90b2738927efa49a30bb498ad7f04e0c7bcab65054e88f5dc51027a23ddd2fc1
+      - id: requests
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/getting-started.md
+              start_line: 157
+              end_line: 159
+            content_digest: sha256:c976a0ac7e4767194c1f5d034625fc9359ee9f4ede3228df435313e0c1cd8578
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/agent-guide.md
+              start_line: 17
+              end_line: 42
+            content_digest: sha256:28a58a2f942fdaf6e97b3caef4018b7ab56e35cfabf04303e95dcee6262ef547
       - id: automatic
         references:
           - source_ref: repo:20261012/context
@@ -2058,20 +2096,6 @@ articles:
               start_line: 94
               end_line: 107
             content_digest: sha256:ad492cb61e603a68e8412fdb28b35ca12f3f90bcd5be72c17e3e533b3ded1f67
-      - id: requests
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/getting-started.md
-              start_line: 155
-              end_line: 157
-            content_digest: sha256:c976a0ac7e4767194c1f5d034625fc9359ee9f4ede3228df435313e0c1cd8578
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/agent-guide.md
-              start_line: 17
-              end_line: 42
-            content_digest: sha256:28a58a2f942fdaf6e97b3caef4018b7ab56e35cfabf04303e95dcee6262ef547
   - article_id: 31a5553a-c85b-4bd5-ab0f-29829bc9bbf5
     path: product/getting-started/core-concepts.md
     collection: product
@@ -2082,9 +2106,15 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: README.md
-              start_line: 80
-              end_line: 92
+              start_line: 92
+              end_line: 104
             content_digest: sha256:56e19121b1a2e4eaabbc229d04df2f299ba477b5bdd87ceb10da00a4e9f85da9
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/getting-started.md
+              start_line: 107
+              end_line: 114
+            content_digest: sha256:a896f24f5b4c6a35953f3713941cb37312559e0bf850a3291af887d069322708
       - id: workspace
         references:
           - source_ref: repo:20261012/context
@@ -2133,19 +2163,27 @@ articles:
               start_line: 5
               end_line: 7
             content_digest: sha256:afe8b295889d4a5392f5d9b4a860b6fa9561652b7235f49e140833ab44af5e5f
+      - id: start-report
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/getting-started.md
+              start_line: 107
+              end_line: 114
+            content_digest: sha256:a896f24f5b4c6a35953f3713941cb37312559e0bf850a3291af887d069322708
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/getting-started.md
+              start_line: 130
+              end_line: 133
+            content_digest: sha256:e0720aaba3dd7693e7269fb61f6eeb7665812826f55b557b394b5fb9bd3f8594
       - id: candidates
         references:
           - source_ref: repo:20261012/context
             locator:
-              path: README.md
-              start_line: 87
-              end_line: 90
-            content_digest: sha256:f1fc7c67d884684f2de0cdc1f25fcc110ca8a52a011227743e7636e2a87a4556
-          - source_ref: repo:20261012/context
-            locator:
               path: packages/context/docs/getting-started.md
-              start_line: 133
-              end_line: 136
+              start_line: 135
+              end_line: 138
             content_digest: sha256:229ed3e3240ce5844d1b83da9359e5c103e9af0ba4158ba84b2004430632ce31
           - source_ref: repo:20261012/context
             locator:
@@ -2153,6 +2191,12 @@ articles:
               start_line: 158
               end_line: 158
             content_digest: sha256:6dd161a31231d3f45be7bd56c175774106a299c60ffed739d48a86bd8721213b
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 123
+              end_line: 127
+            content_digest: sha256:85d1e14aeb0cf162b07eecc585016a1e83d29537fb3835f4c3515db2f8221ef1
       - id: packages
         references:
           - source_ref: repo:20261012/context
@@ -2172,9 +2216,15 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 99
-              end_line: 107
+              start_line: 108
+              end_line: 116
             content_digest: sha256:f88026a3629e8520038f5d220767a8c838e267f9d5433c51c0007bb3e99a861f
+          - source_ref: repo:20261012/context
+            locator:
+              path: README.md
+              start_line: 106
+              end_line: 109
+            content_digest: sha256:460209f6e2e8dc4edc6209c57e498e499d6496dad231715093bb97a047414f40
   - article_id: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
     path: product/getting-started/installation.md
     collection: product
@@ -2194,19 +2244,25 @@ articles:
               start_line: 28
               end_line: 32
             content_digest: sha256:463a9c513f0c9d509b753d36d37c35878d2b118c08491f175cd5a55ab7db2209
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/getting-started.md
+              start_line: 31
+              end_line: 38
+            content_digest: sha256:38e9b88170e01115590c9733357b53314bd2bd19ab152f5fe97b8dc0b8b470b8
       - id: install
         references:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
               start_line: 34
-              end_line: 41
-            content_digest: sha256:912f24d243d94797978bdcacb49d75fb0624dafab448fd0cf6506b5154d5b03a
+              end_line: 44
+            content_digest: sha256:f7c9e55729bcf21ad8840b46f3150ab5735d8078af8cc883fa1b159b231dc2a2
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 55
-              end_line: 59
+              start_line: 64
+              end_line: 68
             content_digest: sha256:bec9eaa740c0e235175b74c16e989495d6f70414717c28180abe884756482e8a
           - source_ref: repo:20261012/context
             locator:
@@ -2214,6 +2270,12 @@ articles:
               start_line: 13
               end_line: 22
             content_digest: sha256:2ce6c75a83550d989e21c284098fa7e67289fa3007d8b64e9908d77415c63b68
+          - source_ref: repo:20261012/context
+            locator:
+              path: README.md
+              start_line: 55
+              end_line: 63
+            content_digest: sha256:32a57173c027f4a8341cd6cbd230ba8406e0b97824309562e8ede97b235f5e61
       - id: entries
         references:
           - source_ref: repo:20261012/context
@@ -2478,15 +2540,21 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/getting-started.md
-              start_line: 47
-              end_line: 50
-            content_digest: sha256:5cecfe732888488b59705db5ff3ae343fde3cd03190fabd10b040745767cd740
+              start_line: 29
+              end_line: 38
+            content_digest: sha256:b63410b3f2ce8bb66e939e8e1202fa785e99dceecb8f57884e2cd9a2b717e5d2
           - source_ref: repo:20261012/context
             locator:
               path: README.md
               start_line: 45
               end_line: 53
             content_digest: sha256:877bb3b65877a9128fbccdd1f3318d91bf20bc466e521bdd094a609b7c28805f
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 22
+              end_line: 22
+            content_digest: sha256:20976d56c2f205408c9238a364dd9879459216d064ca12fd2ca047e43fa246a4
       - id: init
         references:
           - source_ref: repo:20261012/context
@@ -2506,9 +2574,15 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/getting-started.md
-              start_line: 47
-              end_line: 60
+              start_line: 49
+              end_line: 62
             content_digest: sha256:3b603553f3f3f94d862501c5c99298d788ec241d94cfcb452ffb3147efd01989
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 9
+              end_line: 9
+            content_digest: sha256:a8c6e5ebc9c7fa2b8888578c340b678b9b27790652db7a1d294f0a5110211be6
       - id: plan
         references:
           - source_ref: repo:20261012/context
@@ -2521,16 +2595,22 @@ articles:
         references:
           - source_ref: repo:20261012/context
             locator:
-              path: README.md
-              start_line: 87
-              end_line: 88
-            content_digest: sha256:a1eb170cccda092f59e582a682a4ee9d581cf714e6ec5d3037ba65f91ad96510
+              path: packages/context/docs/getting-started.md
+              start_line: 122
+              end_line: 138
+            content_digest: sha256:7cb0aeb4ef2abd019724d2f939cfb049876deaf1c5ec53aa507b99d32a0d9a3e
+          - source_ref: note:20261012/usage-practices.md
+            locator:
+              path: usage-practices.md
+              start_line: 8
+              end_line: 8
+            content_digest: sha256:866fdc68db641bd263b352d6141c150a932db0069f1e51c55f1c6de8eb895028
           - source_ref: repo:20261012/context
             locator:
-              path: packages/context/docs/getting-started.md
-              start_line: 120
-              end_line: 136
-            content_digest: sha256:7cb0aeb4ef2abd019724d2f939cfb049876deaf1c5ec53aa507b99d32a0d9a3e
+              path: README.md
+              start_line: 106
+              end_line: 109
+            content_digest: sha256:460209f6e2e8dc4edc6209c57e498e499d6496dad231715093bb97a047414f40
       - id: build
         references:
           - source_ref: repo:20261012/context
@@ -2551,20 +2631,28 @@ articles:
               start_line: 76
               end_line: 98
             content_digest: sha256:41e0f221b9ab879dabb3fd42ee8f9ce91584566589f0154ac1a526f9fa2ce58e
-      - id: next
+      - id: ask
         references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/getting-started.md
-              start_line: 155
-              end_line: 157
-            content_digest: sha256:c976a0ac7e4767194c1f5d034625fc9359ee9f4ede3228df435313e0c1cd8578
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-inspect-search/SKILL.md
               start_line: 1
               end_line: 3
             content_digest: sha256:f051b8cbb9ecbe08c2876dcfc87b66d25332687250bf4f2f38270314d1db8389
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 22
+              end_line: 22
+            content_digest: sha256:20976d56c2f205408c9238a364dd9879459216d064ca12fd2ca047e43fa246a4
+      - id: next
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/getting-started.md
+              start_line: 157
+              end_line: 159
+            content_digest: sha256:c976a0ac7e4767194c1f5d034625fc9359ee9f4ede3228df435313e0c1cd8578
   - article_id: e510e5c1-951c-4073-9607-efcf7caee18e
     path: product/getting-started/what-is-context.md
     collection: product
@@ -2595,8 +2683,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: README.md
-              start_line: 80
-              end_line: 92
+              start_line: 92
+              end_line: 104
             content_digest: sha256:56e19121b1a2e4eaabbc229d04df2f299ba477b5bdd87ceb10da00a4e9f85da9
           - source_ref: repo:20261012/context
             locator:
@@ -2635,9 +2723,21 @@ articles:
           - source_ref: note:20261012/benchmark-summary.md
             locator:
               path: benchmark-summary.md
+              start_line: 13
+              end_line: 13
+            content_digest: sha256:40eebee1482f8010a0253bf5e3a98149bee3ec77397655294a9b5ee44ec7b140
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
               start_line: 40
               end_line: 49
             content_digest: sha256:e9f54fd4cbcc3b9b9c2ab1057db7b2ea215362c5f14277f153e557587d963865
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 7
+              end_line: 8
+            content_digest: sha256:7c450c69147613e6b79f03074ddbb296b924a7d68c554051de5be7297046b5de
       - id: companions
         references:
           - source_ref: repo:20261012/context
@@ -2660,6 +2760,18 @@ articles:
               start_line: 43
               end_line: 58
             content_digest: sha256:a960bb0add8e2a980cd8c99346dd3cb5ba4afb4e798b7c56d9b90158c7cc05f8
+          - source_ref: repo:20261012/context
+            locator:
+              path: README.md
+              start_line: 29
+              end_line: 31
+            content_digest: sha256:8a36012d5a90c5d7bf04f8f44d960bd22d552eb6dd0651ca32a74d87ec5ec657
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 20
+              end_line: 20
+            content_digest: sha256:e8411f5f9e5af7d1a66571f2990902b98b909a3c30ec7356ffbee071ffc2082c
   - article_id: db32d01a-0cfe-494c-bfc0-644be1583c78
     path: product/getting-started/workflow-at-a-glance.md
     collection: product
@@ -2676,15 +2788,29 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: README.md
-              start_line: 80
-              end_line: 92
+              start_line: 92
+              end_line: 104
             content_digest: sha256:56e19121b1a2e4eaabbc229d04df2f299ba477b5bdd87ceb10da00a4e9f85da9
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 20
+              end_line: 21
+            content_digest: sha256:8171ebd4da08a6819b0e2682fd17378951256d9f7ee06f923032ec8ddc952e45
+      - id: loop
+        references:
           - source_ref: repo:20261012/context
             locator:
-              path: packages/context-cli/docs/quickstart.md
-              start_line: 67
-              end_line: 72
-            content_digest: sha256:0526677262ad6cf93201c171fae71ab1faaed7b1cb702c2cb5d57d8c8efaa6d4
+              path: packages/context-cli/README.md
+              start_line: 80
+              end_line: 111
+            content_digest: sha256:5c118e1bad386614f94964cca3593e69e73158dc12457456ebc01387de660bcf
+          - source_ref: repo:20261012/context
+            locator:
+              path: README.md
+              start_line: 106
+              end_line: 109
+            content_digest: sha256:460209f6e2e8dc4edc6209c57e498e499d6496dad231715093bb97a047414f40
       - id: durations
         references:
           - source_ref: note:20261012/usage-practices.md
@@ -2699,6 +2825,12 @@ articles:
               start_line: 16
               end_line: 22
             content_digest: sha256:eab5fb11f8e4f9f5a11d394234418b9b32d92f7d5ef47c3469ff198f33b875cd
+          - source_ref: note:20261015/getting-started-guidance.md
+            locator:
+              path: getting-started-guidance.md
+              start_line: 13
+              end_line: 16
+            content_digest: sha256:6153e5a087652355a1999d61d57508a85ebecc28bd60dcec26b88d8bac4e6421
       - id: lanes
         references:
           - source_ref: repo:20261012/context
@@ -2713,20 +2845,6 @@ articles:
               start_line: 1
               end_line: 3
             content_digest: sha256:f051b8cbb9ecbe08c2876dcfc87b66d25332687250bf4f2f38270314d1db8389
-      - id: loop
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-cli/README.md
-              start_line: 80
-              end_line: 111
-            content_digest: sha256:5c118e1bad386614f94964cca3593e69e73158dc12457456ebc01387de660bcf
-          - source_ref: repo:20261012/context
-            locator:
-              path: README.md
-              start_line: 94
-              end_line: 97
-            content_digest: sha256:460209f6e2e8dc4edc6209c57e498e499d6496dad231715093bb97a047414f40
   - article_id: sha256:72f512c94144d0b098315550139d8a361e49260daa79bac892cf4c7c0a4561a5
     path: product/project/contributing.md
     collection: product
@@ -2825,6 +2943,52 @@ articles:
               start_line: 45
               end_line: 53
             content_digest: sha256:877bb3b65877a9128fbccdd1f3318d91bf20bc466e521bdd094a609b7c28805f
+      - id: context-0771
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 5
+              end_line: 21
+            content_digest: sha256:3892e3d5be2831a0329018337c17688072d0f1d478464d7e294f696508efc127
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 23
+              end_line: 31
+            content_digest: sha256:8dc31d9202fc567f93ad628d1ee2467767aa079a32ae970c0d856a71cfccfa73
+      - id: context-0767
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 33
+              end_line: 36
+            content_digest: sha256:4cebcce0254ebef12b4588866be8ef7cdee218df3842b06cacf225b17e19e3c6
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 38
+              end_line: 40
+            content_digest: sha256:dab992ebcca9a1d0f2dda68b13f6b4dd9ce93af69b46b9904ca62f5417547e74
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 42
+              end_line: 45
+            content_digest: sha256:5f765ec9ddb6a6ec947a494b852070e022203f482b39829a0269656da696c531
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 47
+              end_line: 50
+            content_digest: sha256:04f09cfbe132733751027ce3985dd4d633e7d2b37484ef9611f1d12ba6dbecb5
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 52
+              end_line: 56
+            content_digest: sha256:f226bfb0f47523923863eb6602899288fa8c2e76d0b417631eb13fcd1b7517c6
       - id: context-0762
         references:
           - source_ref: repo:20261012/context
@@ -2838,8 +3002,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: CHANGELOG.md
-              start_line: 10
-              end_line: 16
+              start_line: 63
+              end_line: 69
             content_digest: sha256:4cc7fe699d5d1c1aab0c577c13178be6e9d03d6bd7111ef2e4e96e86e20e932c
       - id: context-0760
         references:
@@ -3391,7 +3555,13 @@ articles:
               path: packages/context-cli/src/commands/translateCommands.ts
               start_line: 28
               end_line: 84
-            content_digest: sha256:6d3e67b1f3349ce78f4f77831f96959886addf39f1b46ed5499cd64bf5423826
+            content_digest: sha256:bec61fb1741d6a73c1041624f70669dced9804aa5c2303522792262a546a3600
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/site-translation.md
+              start_line: 77
+              end_line: 97
+            content_digest: sha256:3d72a843e86aa49e58acf89a468869d79613d85873ed262c4ceac559eb36be87
       - id: versions
         references:
           - source_ref: repo:20261012/context
@@ -3579,7 +3749,13 @@ articles:
               path: packages/context/docs/reference/package-templates.md
               start_line: 302
               end_line: 327
-            content_digest: sha256:7687fa549f87a99b7404d214e4bac7a5536cf107e4d5e53494d7554067fd954f
+            content_digest: sha256:b14f617efb3b71a4dd77ba6d9425f408960b7741d4bf2abab783b881e01c5b3f
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/reference/indexer-provider-protocol.md
+              start_line: 257
+              end_line: 264
+            content_digest: sha256:7b304d5a39ce961273b8a49519d0d5d1f003246984a2f45e68e84a2e0aad5de0
       - id: build
         references:
           - source_ref: repo:20261012/context
@@ -4948,8 +5124,8 @@ articles:
             locator:
               path: packages/context/docs/guides/code-indexer-skill-authoring.md
               start_line: 38
-              end_line: 50
-            content_digest: sha256:378efdd6f4fde86d9c1f25ad1656c63a14ca4f9991000125aa650bdfee6ec707
+              end_line: 51
+            content_digest: sha256:b32a24e1630c59d11a7622ece846701abcfbfbb6f1a198d2e8ebc8f391341c1c
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-code-indexer/references/indexer.md
@@ -4962,6 +5138,12 @@ articles:
               start_line: 84
               end_line: 98
             content_digest: sha256:9602097fd41ffc2b1f59d0fd4c0345ef643b45206e040bb17ccb8bbeb845c6c9
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-code-indexer/references/indexer.md
+              start_line: 132
+              end_line: 133
+            content_digest: sha256:630ec10be054408d64bb1c500b28c725dcd6d7b2292d04c1cd5a2e50c7e38cc3
       - id: example
         references:
           - source_ref: repo:20261012/context
@@ -5006,8 +5188,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 55
-              end_line: 59
+              start_line: 64
+              end_line: 68
             content_digest: sha256:bec9eaa740c0e235175b74c16e989495d6f70414717c28180abe884756482e8a
       - id: at-a-glance
         references:
@@ -5122,8 +5304,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 55
-              end_line: 59
+              start_line: 64
+              end_line: 68
             content_digest: sha256:bec9eaa740c0e235175b74c16e989495d6f70414717c28180abe884756482e8a
           - source_ref: repo:20261012/context
             locator:
@@ -5358,7 +5540,7 @@ articles:
               path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
               start_line: 33
               end_line: 50
-            content_digest: sha256:2df7c975629482c1788524e9e407baaf2eb315b0611445e2ba6406210172bcaa
+            content_digest: sha256:4695de8713e9b77689d4905a84a7f9d038149129a00b4a1c31f1a0ca914e6ce1
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
@@ -5825,15 +6007,33 @@ articles:
             content_digest: sha256:250fb38e83bfa41fc51b895c903d28321cbd0ed3236997e4e91b4d5b593d0483
           - source_ref: repo:20261012/context
             locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 140
+              end_line: 148
+            content_digest: sha256:7d310342ad9b2549c282007180196897832dbbc025aba0aa3d446a6e85bebdbd
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 183
+              end_line: 183
+            content_digest: sha256:1b759c7ad2ac8e9f32b82769d12ff292e6760856ed4d8b2c73ff2716c597bd18
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 572
+              end_line: 574
+            content_digest: sha256:7a4a00d1df6d0fe99bc83d59607cb3ef47d8c1abd612afcd99ff5c0716a9d55f
+          - source_ref: repo:20261012/context
+            locator:
               path: CHANGELOG.md
-              start_line: 10
-              end_line: 14
-            content_digest: sha256:b3b980f2ab7b35f4f184bfde7aa0068be090918bea113a8b26a8e7e244439242
+              start_line: 63
+              end_line: 69
+            content_digest: sha256:4cc7fe699d5d1c1aab0c577c13178be6e9d03d6bd7111ef2e4e96e86e20e932c
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/src/project/packageSiteTheme.ts
-              start_line: 329
-              end_line: 334
+              start_line: 402
+              end_line: 407
             content_digest: sha256:8b41e91f28435042243ccd04724dfa089049f4d2193dd87ca73219b85666e619
       - id: navigation
         references:
@@ -5841,8 +6041,8 @@ articles:
             locator:
               path: packages/context/docs/guides/package-outputs.md
               start_line: 123
-              end_line: 150
-            content_digest: sha256:e9ef064e51659eb262bc81cd698b6a31f8d49d1cf61205a350a2aa9585274908
+              end_line: 160
+            content_digest: sha256:0d86ffbf6c6b90c142f9931d9ea797b8782f9ea44a805f2f7482090545f7f304
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/page-customization.md
@@ -5854,15 +6054,21 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/package-outputs.md
-              start_line: 167
-              end_line: 182
-            content_digest: sha256:c0f257e79acb2c6093266881c81719dadc8af7b40adbd9021da3a46c85552b63
+              start_line: 177
+              end_line: 191
+            content_digest: sha256:d89b8d8f2c359d4ff1518bbff0527eb0313701cd8d7018c8bf16f7f67d66a645
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/package-outputs.md
-              start_line: 454
-              end_line: 461
+              start_line: 463
+              end_line: 470
             content_digest: sha256:38ffa205100a76f5ab9a289ea40cdd98319b4a773914cde8b1e5497e1759e7a5
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 36
+              end_line: 36
+            content_digest: sha256:9cc2f185aa6473b27edcb9ffb90ef562e859450ad8b205e6ba792caa39262461
       - id: deploy
         references:
           - source_ref: repo:20261012/context
@@ -6065,21 +6271,21 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/package-outputs.md
-              start_line: 152
-              end_line: 166
-            content_digest: sha256:b733003f35b06bd3e95dbaad88a125abc0be5809c7e8c460151b7ac3e89ce697
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-cli/src/project/packageSite.ts
-              start_line: 170
-              end_line: 187
-            content_digest: sha256:06e15824817b913201ee79ee799e11445e6b2a57ba69d5fcb662fa5befd9da2e
+              start_line: 161
+              end_line: 176
+            content_digest: sha256:b72fb1ab0ab034c52471e76b3a9ba30dc5d00b7cdaa28037741384fa5c57daa5
           - source_ref: repo:20261012/context
             locator:
               path: CHANGELOG.md
-              start_line: 10
-              end_line: 13
-            content_digest: sha256:8cac3b6d053b475430692664ca996e4c117b95a757bafb787284894b4722b020
+              start_line: 63
+              end_line: 69
+            content_digest: sha256:4cc7fe699d5d1c1aab0c577c13178be6e9d03d6bd7111ef2e4e96e86e20e932c
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 35
+              end_line: 35
+            content_digest: sha256:9aeffb6a9ad225521286c3487341ad31891dfb0f8cc253acbe5d220246f4f099
       - id: storage
         references:
           - source_ref: repo:20261012/context
@@ -6114,22 +6320,34 @@ articles:
             locator:
               path: packages/context/docs/guides/site-translation.md
               start_line: 28
-              end_line: 63
-            content_digest: sha256:64abbcce5caa4b46303f39e6ac6a669dd57ef4edd5e584b5c8d36ea2f9924860
+              end_line: 66
+            content_digest: sha256:3e10f2aef06a989bd07c6d60edf9559fa9edcf4983d0ff2fbf76b3b30afb9567
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/site-translation.md
+              start_line: 77
+              end_line: 97
+            content_digest: sha256:3d72a843e86aa49e58acf89a468869d79613d85873ed262c4ceac559eb36be87
       - id: reading
         references:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/site-translation.md
-              start_line: 65
-              end_line: 72
+              start_line: 68
+              end_line: 75
             content_digest: sha256:cc9ff07c6add8df5f1888a28758de9195e51a9de422f38964c471c1dd18573c2
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/package-outputs.md
-              start_line: 162
-              end_line: 163
-            content_digest: sha256:98fa82bc804c7b6706d7d841a4cee9fef5604aa87cbc8c54abca75f66ecb21f8
+              start_line: 164
+              end_line: 169
+            content_digest: sha256:8b28f5b78a8227bda193c150431481489efca4b1177837ba6f3988bb47406f28
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 31
+              end_line: 31
+            content_digest: sha256:8f1104dc488a14749fbbe4541da1f4bb86d13c5cc4b1e2a8d9cc82862a51f2ec
   - article_id: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
     path: sop/outputs-and-sites/page-and-theme-customization.md
     collection: sop
@@ -6165,6 +6383,12 @@ articles:
               start_line: 26
               end_line: 55
             content_digest: sha256:d0395a9cfabede7067e687ef5a980d8e3cc85631c3b9ee1806149dd3fafe327b
+          - source_ref: repo:20261012/context
+            locator:
+              path: CHANGELOG.md
+              start_line: 38
+              end_line: 40
+            content_digest: sha256:dab992ebcca9a1d0f2dda68b13f6b4dd9ce93af69b46b9904ca62f5417547e74
       - id: floating
         references:
           - source_ref: repo:20261012/context
@@ -7891,16 +8115,54 @@ articles:
             locator:
               path: plugins/context/skills/context-repo-content/SKILL.md
               start_line: 1
-              end_line: 4
-            content_digest: sha256:8a2b599db72d843342f2ff089277f531af1b3ecb999e52fe9361c306e67ea234
-      - id: register
+              end_line: 11
+            content_digest: sha256:32c5886da0c2b6e115092775753f69113ff143ac2006d2364af0f115b789ac8f
+      - id: boundaries
         references:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/guides/repo-content.md
-              start_line: 7
+              start_line: 69
+              end_line: 71
+            content_digest: sha256:597346afb4ee0487c29af53ee3f49d0da049174ec5bd26c53f9ece504efe305f
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 29
               end_line: 31
-            content_digest: sha256:88b903b6f2f129b428bc50ad31440140a44b06c6885873dce6653b2cc3e73862
+            content_digest: sha256:451e9b733354b7212ec973b95318ee375f2e4aa48c3224d433d2ab0de31a994f
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 60
+              end_line: 62
+            content_digest: sha256:ba1e4b051e211b7f87e103fc752ddcff4a5e7868aa1f13da58e4c066ff726a55
+      - id: register
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 9
+              end_line: 11
+            content_digest: sha256:b461347855eda0df8cd94988fff1c42c8471f639f7dfc751d609c1a0e7876850
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 20
+              end_line: 28
+            content_digest: sha256:e6ea8a99fe50ce7904fcf0fdbfc5afe1da39f6944e27bc6535fe17e0b6cda482
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 35
+              end_line: 35
+            content_digest: sha256:4794bca51af5c3f890a5d618024323df4eb10eb2568e90c076469fe327b9f5b4
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 42
+              end_line: 44
+            content_digest: sha256:bbed683a08bbcfccaf1b8457b8ad190bfcd586fed8c95caf3b264a5e3fae70ec
       - id: cite
         references:
           - source_ref: repo:20261012/context
@@ -7909,6 +8171,12 @@ articles:
               start_line: 43
               end_line: 48
             content_digest: sha256:868c99a326f60a032a9863853080a1de85802c545f0d04cd3af928de8015d700
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/SKILL.md
+              start_line: 11
+              end_line: 14
+            content_digest: sha256:751d519b7d945f7581f12ef00ced780708dbb5b4b535bd92738060a16fd67720
       - id: page
         references:
           - source_ref: repo:20261012/context
@@ -7917,6 +8185,40 @@ articles:
               start_line: 50
               end_line: 67
             content_digest: sha256:2704da47f28ec16967c61e601e46fe2cd5b708a77eb209600e6c0a90e9a15b3f
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 20
+              end_line: 23
+            content_digest: sha256:c698af8eb293352f13790a82e658cb3a5ee67593a2bfc80447cde6dccfa53e3d
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/src/project/repoContentPages.ts
+              start_line: 150
+              end_line: 170
+            content_digest: sha256:51a1125ea93a9a980d9bcf1a640f7c5e936a6cc2b5bb42762768e37ec6e42e9a
+      - id: updates
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/knowledge-updates.md
+              start_line: 21
+              end_line: 30
+            content_digest: sha256:6129e2fea29fd1fa614748d14f452eaa2b5fec79107625b7e500cfb47630cbc1
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-repo-content/SKILL.md
+              start_line: 53
+              end_line: 58
+            content_digest: sha256:61e195528769f651b190eb1afc32a3bf938adfc38c9467a5b3ae3f292cdac843
+      - id: registry
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/repo-content.md
+              start_line: 7
+              end_line: 31
+            content_digest: sha256:88b903b6f2f129b428bc50ad31440140a44b06c6885873dce6653b2cc3e73862
       - id: fix
         references:
           - source_ref: repo:20261012/context
@@ -8117,8 +8419,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context/docs/getting-started.md
-              start_line: 133
-              end_line: 136
+              start_line: 135
+              end_line: 138
             content_digest: sha256:229ed3e3240ce5844d1b83da9359e5c103e9af0ba4158ba84b2004430632ce31
   - article_id: 271298e1-6876-41ac-861c-902752b63828
     path: sop/review-and-revision/reorganizing-at-scale.md
@@ -8246,10 +8548,28 @@ articles:
             content_digest: sha256:b23ef992995b99db7e7e6a7ef48388523c9d4512955540fef2be2a93028c174b
           - source_ref: repo:20261012/context
             locator:
+              path: packages/context-cli/context-workflow/resources/procedures/approved-revision.md
+              start_line: 28
+              end_line: 38
+            content_digest: sha256:d55aa450acfc8601b58e69eb822777bad28864a4f758dca4d383d2270b475599
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/context-workflow/resources/procedures/approved-revision.md
+              start_line: 130
+              end_line: 140
+            content_digest: sha256:d1a1c902ada02c143ded7ef0ef7026e915bc1a76cf6f5817632d23130dbad2cc
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/context-workflow/resources/procedures/approved-revision.md
+              start_line: 176
+              end_line: 187
+            content_digest: sha256:2aa9c6b832b714f391574dba023b0930c095318862be5823bb5ce543c9f745c2
+          - source_ref: repo:20261012/context
+            locator:
               path: packages/context/docs/guides/knowledge-updates.md
               start_line: 323
               end_line: 343
-            content_digest: sha256:750310a3de5bafda956efd824a82a89eb30afb543fc979a9c0a4fff617d945da
+            content_digest: sha256:7dab4aa073b9566ff9a2a693f0dfd462f2d057afa2ea4f45c9421f3872146320
       - id: move
         references:
           - source_ref: repo:20261012/context
@@ -9227,8 +9547,8 @@ articles:
           - source_ref: repo:20261012/context
             locator:
               path: packages/context-cli/README.md
-              start_line: 337
-              end_line: 340
+              start_line: 346
+              end_line: 349
             content_digest: sha256:1d931d14f0ee053bc4f73d195d8b5f77d0825a3db0937f9a5086d0e2ab9c93ba
           - source_ref: repo:20261012/context
             locator:
@@ -9236,6 +9556,12 @@ articles:
               start_line: 76
               end_line: 82
             content_digest: sha256:aa99fa6608fc84c0598715e37c9456fa975583a7a72e8671a5b21c6d330de86c
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/context-workflow/resources/procedures/source-update.md
+              start_line: 29
+              end_line: 34
+            content_digest: sha256:44df637cb4578aa02351bff8b7f016f1a6f5095b5cb4b381e63c28a80fa2d178
       - id: only-needed
         references:
           - source_ref: repo:20261012/context
@@ -9515,13 +9841,19 @@ processed_scopes:
     processed_version: sha256:676edf5a62bc55f651ffea6da702602e56849179bee3781d2bc4ddcc97e9bf98
   - requirement_ref: agent-graph-adopters
     source_ref: repo:20261012/agent-graph
-    processed_version: 9e8b98a7d4a694a89a1b972e0c9c827c5bd3d772
+    processed_version: ee93426527b1ce4dbfb750b03ee9b2965198e5ce
   - requirement_ref: agent-graph-adopters
     source_ref: repo:20261012/context
     processed_version: 3b0ce0a0a1761f5fceb3bb48fb9dc29b54c0786b
   - requirement_ref: context-adopters
+    source_ref: note:20261012/usage-practices.md
+    processed_version: sha256:3a838fa0ef87201215af48e87726994930080010abdb6eaa64af18fd17651572
+  - requirement_ref: context-adopters
+    source_ref: note:20261015/getting-started-guidance.md
+    processed_version: sha256:63606db95fae9df0dc5e079263ffe401775e10aff57c3d96146187ab7b69f187
+  - requirement_ref: context-adopters
     source_ref: repo:20261012/context
-    processed_version: 3b0ce0a0a1761f5fceb3bb48fb9dc29b54c0786b
+    processed_version: c3a1eab3883b96fc0ba520150ebb11ec8c3efa9a
   - requirement_ref: source-graph-adopters
     source_ref: note:20261013/demo-deployment.md
     processed_version: sha256:50487aff0bfb0bde1cebf92ac5301f98f50236bdbc7f415af55606ec8f4671b0

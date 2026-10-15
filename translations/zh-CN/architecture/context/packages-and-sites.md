@@ -6,28 +6,6 @@ translation:
   artifact_ref: a0aef936-cc16-4cde-b209-b9c53d6ee254
   source_digest: 21e11807c58f2ccb33467ecc40d18574e1be6ae370dc201c28af7a1fa6b944fa
   translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: ac5a33615a7496d76511abaefe958444ba737a4fc5cf9cae611b414a5d13415e
-    description: 1a774139166fcbfb5cd33082c15cdd521590cd9febe128a7e4bd6d12c52965fd
-    order:
-      - outputs
-      - kb
-      - site
-      - llms
-      - custom
-    sections:
-      outputs: e74c12a8018f734e5c63dceafffd3f5a8d546538412ed4860c3ebaf738d6dbbd
-      kb: 0938357c1998632328a557584379799127a0a4190f2594de1428587d1eaf236a
-      site: 3920d5bff30e4abc9c7d2f76251d1854d6487de65a4c5f93a0aaa8ef08127ecb
-      llms: 7408c678876524fb63ca62d317646d43f40d51c73803e1501c6a37079a2667c7
-      custom: 8459e448aa979519b425c222d6339814f270d8a3be03c4f592b20a85ddeb5637
-    exterior:
-      '[null,"outputs"]': d4653a46480de190fc47a9df270d49d819e14199b67ddb785a59752b08cd7cbe
-      '["outputs","kb"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["kb","site"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["site","llms"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["llms","custom"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["custom",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 知识包与站点构建

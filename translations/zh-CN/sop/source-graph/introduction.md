@@ -6,34 +6,6 @@ translation:
   artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
   source_digest: 88ed066d576af5836612d6712415480a8942c8ca2fdc3c7d90ea9b17a11e87b6
   translated_at: 2026-10-14T02:42:13.456Z
-  source_parts:
-    title: 931ffe75557588a0d1967e36e4cdcf0fbb3c1eeced8df5c1939fe3d2a61b15de
-    description: 44497f4dd8f87ad8227b11a0b3bfb6b60f0c7f018bace830f072fb83629ae0bb
-    order:
-      - purpose
-      - problem
-      - what
-      - context
-      - when
-      - start
-      - next
-    sections:
-      purpose: 80665302253d444209646f24d5d04a17bdc7fded93985bab481883ed62a94247
-      problem: 44b7d56fb2431a55f89d115d685ba66c694ad1ce4a7d33d1c0ef83d7e1f60acb
-      what: 976f2ea5fc72f7a346d315c8a5635d50d148b6fb319b637ec680b88794ca6a71
-      context: 84042b57521eb7e5002d640258c72772b8426694a689cb41e93b7c7bb8aa9f23
-      when: 272ecd5f59f20ffb4e6df744336c335c500210725386bfc3f1ff987008a1984d
-      start: 8c66a7e3b8e4b6a9d88e5907a606fb63eed0f998c678cc33027ba55d13995847
-      next: 26a02d1c80aac48174b1b65b20b18002d511b10deb3399d73ef954d6383cfb43
-    exterior:
-      '[null,"purpose"]': 8fe9cd2206b45277432f7123b4ce16c31993a9b22119a08fdf6da0720c666c46
-      '["purpose","problem"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["problem","what"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["what","context"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["context","when"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["when","start"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["start","next"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["next",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # Source Graph 是什么

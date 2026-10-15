@@ -4,27 +4,8 @@ description: 团队在采用 Context 之前和使用过程中最常问的问题�
 translation:
   locale: zh-CN
   artifact_ref: c159a1f9-e117-446a-92b5-b8a5a46703f9
-  source_digest: 3016a6ce3c15d078485b7b45d43552a13b66846e885ae824d5986970e3d1d0f5
-  translated_at: 2026-10-12T16:45:10.508Z
-  source_parts:
-    title: dbc468a14b601d5d9240aeb72b9fcd2f8aed2f4e30932876edf8d16ec313846b
-    description: 4b6c198f80701b98645b912520d90068020aa26c09d013becaf429d3bb627e0f
-    order:
-      - central-or-local
-      - quality
-      - package-vs-wiki
-      - maintainer-steps
-    sections:
-      central-or-local: 0a3bc84618224b239731d1846c883ee385453a9c7b87aa3c735f023cbbd4df25
-      quality: 2368c18cc6e09222fb949bb45359c9b40a0fa4226219a76bde581a4a419695c3
-      package-vs-wiki: 382a6bda52c077f74d3102bda843b8d05f8ee864ea51c5eed291023911cb2942
-      maintainer-steps: 7738c4c855fd61dc7335f18f41782d8124b43dcb498b0462c3e99cc38db0b98c
-    exterior:
-      '[null,"central-or-local"]': 55c515123d1848de1d09d780eba2493376e27db968bdd550a3f6b179332e3d64
-      '["central-or-local","quality"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["quality","package-vs-wiki"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["package-vs-wiki","maintainer-steps"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["maintainer-steps",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: ab3ba58be0c016b55d4caf7f7e1c315f4da27184b185f215e8dd5bbbe4a554da
+  translated_at: 2026-10-15T03:57:38.476Z
 ---
 
 # 常见问题
@@ -34,7 +15,7 @@ translation:
 
 不一定。中心知识库适合多人共享、需要远程使用的知识：团队把仓库、文档和会议纪要登记一次，团队的 Bot、文档站点和每位成员的编码 Agent 读到的都是同一份经过审核的知识。
 
-小模块或只有一位维护者的内容，放在仓库的 `docs/` 里即可。Context 可以把同仓库的文档登记为仓库内容，而不必复制进知识库。
+小模块或只有一位维护者的内容，放在仓库的 `docs/` 里即可，它会随代码持续演进。登记为仓库内容后，它仍留在原位置：Context 直接引用它，不再重新生产，也不复制进知识库。参见[引用同仓库的文档与 Skill](../sop/registering-sources/same-repository-docs.md)。
 <!-- /context:section -->
 
 <!-- context:section id="quality" -->

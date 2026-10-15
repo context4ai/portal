@@ -6,37 +6,6 @@ translation:
   artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
   source_digest: c8050f52d9cfda060aabc4e8dd6f8e5c41bda1e18c86997f1cd18e64e166ac14
   translated_at: 2026-10-14T02:20:57.619Z
-  source_parts:
-    title: 358cc201f87d9dc9defd3eac467a62fae720aa99a76be8b98e0fc9b3893a427d
-    description: 9e8a7cf5a421f1a64c5ce0c81bd8dafbfe80c348788bed4d9ec92db678bc9c5c
-    order:
-      - goal
-      - health
-      - jobs
-      - retention
-      - limits
-      - disk
-      - maintenance
-      - errors
-    sections:
-      goal: e8682c8465edc7b3026557b925b1c43bc8b33d30b4056d3b668bdf740979f6e7
-      health: 642330f03560d358d840649ded8eb9f7e18c3b1643891857d0ec8ba567aa34b2
-      jobs: 7b390d0b0630264f5eec21ff537f85e774e88786c1146b58fe2b46cd52a56eb8
-      retention: 2568ad72e556aa34e2e2a62e81e490e8b875d1310cde332bed1a8b0a4c12edbd
-      limits: 85df6b588252e76facd80c9b88a257ce4c70f8bdfc860900aaaf690c17c2c667
-      disk: 3e706b819f24ca8cad4befc7c92530507a20602518caea133c1530c308bec90b
-      maintenance: 24c49d419fc4952a75609ad8f7532be0ab655ac1c57e7d9eb500f0e6608f6e6a
-      errors: b74ad3270268ab899ad277693c27cbd0496ab8f457016e34ab49ff608e6036bc
-    exterior:
-      '[null,"goal"]': cdf3cb85dc3148b8af0b016095297f552340f4174cf615f655808aba2064e913
-      '["goal","health"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["health","jobs"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["jobs","retention"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["retention","limits"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["limits","disk"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["disk","maintenance"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["maintenance","errors"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["errors",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 运维

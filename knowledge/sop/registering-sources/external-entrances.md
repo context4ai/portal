@@ -3,18 +3,20 @@ title: External Entrances
 description: Declare external knowledge sites and Skills in imports.yaml so
   readers can navigate to them, without capturing them as evidence.
 type: Guide
-timestamp: 2026-10-14T10:24:19.082Z
+timestamp: 2026-10-15T03:52:07.709Z
 ---
 # External Entrances
 
 <!-- context:section id="goal" -->
+
 Some content belongs next to your knowledge without becoming part of it: a team's engineering handbook on another site, a Skill published in another repository. `imports.yaml` at the root of the Context knowledge workspace declares such **entrances**. Context never downloads, installs or captures them; it only knows where they are so pages and packages can link to them.
 
 | You need | Use |
 | --- | --- |
 | A link readers can follow | An import in `imports.yaml` |
 | A conclusion that must be traceable and tracked for change | A registered, captured source |
-| Docs or Skills in this same repository | [Same-Repository Docs](same-repository-docs.md) |
+| Docs or Skills in this same repository | [Referencing Same-Repository Docs and Skills](same-repository-docs.md) |
+
 <!-- /context:section -->
 
 <!-- context:section id="declare" -->

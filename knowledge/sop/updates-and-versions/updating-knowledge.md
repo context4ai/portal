@@ -4,7 +4,7 @@ description: Bring existing pages up to a new commit or document version —
   choose the scope, let the Agent locate affected pages, review the changes and
   advance the baseline.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-15T06:21:46.519Z
 ---
 # Updating Knowledge
 
@@ -61,9 +61,13 @@ The Agent submits this with `context update --input <file>`. Omitting module ref
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
+
 ## Review and the baseline
 
 Changed pages appear in the review report with their changed blocks next to the previous text. The processed baseline advances only after every selected revision is approved, closed and built — or after an explicit conclusion that nothing needs to change. It does not move on acquisition or after the first approved page, so an interrupted update can resume without losing track of what remains.
+
+When the update settles, citations on kept pages whose text only moved in the new version are relocated, so `context verify` no longer reports them. Kept pages whose cited text changed or cannot be confirmed are listed in the completion result's `reference_warnings`; their citations keep the previous locations. After the update queue finishes, correct each listed page that needs it with a [revision](../review-and-revision/revising-a-page.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="only-needed" -->

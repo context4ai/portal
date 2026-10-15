@@ -3,7 +3,7 @@ title: Operational Knowledge
 description: How to write CLI-driven operations procedures as knowledge articles
   and run them through an Agent conversation without exposing credentials.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-15T03:52:07.709Z
 ---
 # Operational Knowledge
 
@@ -12,15 +12,17 @@ Operations skills that drive command-line tools — deploying, rotating a cache,
 <!-- /context:section -->
 
 <!-- context:section id="capture" -->
+
 ## Getting the procedure into the knowledge base
 
 Pick the source that matches where the procedure lives today:
 
 - **Notes** for procedures that only exist in people's heads or chat threads. Save the steps as a note — original text, verbatim excerpts or a labeled summary — and let the Note Indexer turn it into a reader-facing article. Proposals stay proposals; the article does not turn them into facts. See [Notes](../registering-sources/notes.md).
-- **Same-repository docs** for runbooks and authored Skills already kept next to the code, such as under `docs/` or `.agents/skills/`. Register them as an entrance; the originals remain the only place to edit them. See [Same-Repository Docs](../registering-sources/same-repository-docs.md).
+- **Same-repository docs** for runbooks and authored Skills already kept next to the code, such as under `docs/` or `.agents/skills/`. Register them as repository content: they keep evolving with the code and Context references them instead of producing them again. See [Referencing Same-Repository Docs and Skills](../registering-sources/same-repository-docs.md).
 - **Document sources** for runbooks maintained in a document system.
 
 Write each procedure as concrete steps: the commands, the expected output, how to tell success from failure, and when to stop and ask a person.
+
 <!-- /context:section -->
 
 <!-- context:section id="secrets" -->

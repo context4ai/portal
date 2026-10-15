@@ -6,31 +6,6 @@ translation:
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
   source_digest: 9931ec2825c796e6377e3c6545cb22be62d5857c6a12143c1ffdb492eaf2dc33
   translated_at: 2026-10-14T02:43:48.316Z
-  source_parts:
-    title: d403c686f6a1048014bdd230f59963271b0123ea48245754fc9f264b962a2182
-    description: 0fd51b10d59dc4c24ec9ae06bdeafb5fd1b033cde7e21af9dfafb14f68b4fbac
-    order:
-      - goal
-      - credentials
-      - mcp
-      - http
-      - cli
-      - loop
-    sections:
-      goal: b6f2806f1261706d9d55dae2bb29157e5204566849ca7dde71c0666ae0bc548b
-      credentials: c7e3656d6d1d423ccd15b78a340a082ca6660beb25b0d5a1dd9fefc68d92516b
-      mcp: 036058d39f69514b33fa0e284b41a0b6b5230d214eaae5f764074fa13e126f34
-      http: 40aff1c37b6c0f3833ad7bdcb10d3f3e6198f18bdfa174275b2ebbf60db2ce43
-      cli: b5214d4fc316c994604d88b68d231e3128f245b8d551bd9c1ae104dfeaa284b9
-      loop: 6fb2f3e0944f80a01f1e7247fa527a9da8b202e4cc0d4401c8db932d4174f110
-    exterior:
-      '[null,"goal"]': 6c91b04167b647d460b0cb419494a3c1412e2c19744191306a6df80a0d555b87
-      '["goal","credentials"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["credentials","mcp"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["mcp","http"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["http","cli"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["cli","loop"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["loop",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 接入

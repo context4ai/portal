@@ -4,36 +4,8 @@ description: Context 知识工作区是什么、其中每个目录和文件存�
 translation:
   locale: zh-CN
   artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
-  source_digest: b9db8f1e222fa0b1347a4f5d861f3e1ee2646094de60b5444929413dd4cea825
-  translated_at: 2026-10-14T11:06:04.950Z
-  source_parts:
-    title: fe2b21ff0254c3b86e6cc4d3a4811a6087ce9b4bc132704466237fe8c93e7bb8
-    description: ae43f9b9ab12efeeb6097e92fa952ad8b72f1ea78188ddb8c2293949235db725
-    order:
-      - goal
-      - tree
-      - ownership
-      - growing
-      - linked
-      - runtime
-      - rules
-    sections:
-      goal: a3607f75cc2e8610e80c6793cba791ca19b3dc19de7208a14d6c3876c587edac
-      tree: 3f058720f0320f0f8f11ea7024071793870ee7edde760c143c2eb20a9ac9c734
-      ownership: 1960052d31543c6019a3a609f721aa0464469fa3d2b7424f38d159931b001024
-      growing: 3052e152c22e9114f3a0ac38381a4e0cd9cf1711955d77b5f0dafc77237903d7
-      linked: 14c95f9370d435698b449fbbc04a4caeda082b00227cdb0303ec6a0464b5e500
-      runtime: cdf4ef4a62d6f0c92071ce95e9e09f4a2d93108d42a2dc894ee94539a3292e0c
-      rules: 4a1ac4412288bfaf8f4cb037f3457fa40825a8f48009555755a8236856f48291
-    exterior:
-      '[null,"goal"]': 563054d95f4c839d2ae2ac5ac4eda37169cdf570a9371640e22cbf9f8a89e13e
-      '["goal","tree"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["tree","ownership"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["ownership","growing"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["growing","linked"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["linked","runtime"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["runtime","rules"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["rules",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  source_digest: 6578c192108a6c107234ee48f70063263095c035ff5323b80a01034fd88b28a7
+  translated_at: 2026-10-15T06:25:34.171Z
 ---
 
 # Context 知识工作区
@@ -123,7 +95,7 @@ my-knowledge/
 ## 用于关联内容的文件
 
 - 根目录下的 **`imports.yaml`** 声明外部入口——页面可以链接到的其他位置的内容——但不会下载或采集它们。参见[外部入口](../../sop/registering-sources/external-entrances.md)。
-- **`repo-content.yaml`** 登记位于同一仓库中的文档和自编 Skill；**`repo-content/`** 是它们的符号链接视图，原文件保持原位不动。参见[同仓库文档](../../sop/registering-sources/same-repository-docs.md)。
+- **`repo-content.yaml`** 登记位于同一仓库中的文档和自编 Skill；**`repo-content/`** 是它们的符号链接视图，原文件保持原位不动。参见[引用同仓库的文档与 Skill](../../sop/registering-sources/same-repository-docs.md)。
 - **`context-evidence.sourcegraph.wasm`** 是一个用于远程读取代码证据的可选插件。它由 `context evidence install` 维护；查询过程从不会自行安装它。参见[远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
 <!-- /context:section -->
 
@@ -147,5 +119,5 @@ my-knowledge/
 - **每个目录只有一个知识工作区。** 不要创建隐藏的第二个知识工作区，也不要把修订、任务或 `.tmp/` 文件与同样是知识工作区的父目录混在一起。
 - **通过 Route 修复。** 发现异常时，按当前 Route 返回的恢复动作处理，而不是删除运行时文件。
 
-下一步：[命令与技能](commands-and-skills.md)列出了你可以在这个知识工作区中调用的内容，[核心概念](core-concepts.md)则说明各部分之间的关系。
+另请参阅：[核心概念](core-concepts.md)说明这些部分之间的关系，[CLI 命令参考](../reference/context/cli-commands.md)列出了写入它们的命令。
 <!-- /context:section -->

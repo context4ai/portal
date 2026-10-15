@@ -422,7 +422,7 @@ entries:
       artifact_ref: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
   - key: guides-sources/same-repository-docs
     parent: guides-sources
-    title: Same-Repository Docs
+    title: Referencing Same-Repository Docs and Skills
     order: 8
     target:
       artifact_ref: b807271a-bf7a-483f-b571-b9b0c5dc0dd6
@@ -706,4 +706,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:e1d694b32eafd76763dc2d55e95a2f170cefd92b45d6e845eb9c40322f6951fa
+revision: sha256:836f72d7c19e573b8183d752a7bbfc13f40fa08277a2472b53622dfcb4474d0a

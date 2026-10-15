@@ -6,28 +6,6 @@ translation:
   artifact_ref: 80ddc71e-bea5-45b3-9a6c-b042566601ad
   source_digest: b5f7391986084c0776fdd36e21a5616f12001280c91b6f8cd224f7685a5019fe
   translated_at: 2026-10-12T16:11:57.590Z
-  source_parts:
-    title: e1be1d4ba9a12240ec95caebf7efd13310e08f3290f2cb7192f4302b3b672f84
-    description: ef41a5aef0d54f8b484f6a419befada671d3275da6f9878abe98129d5c05d778
-    order:
-      - goal
-      - before
-      - contents
-      - answer
-      - large
-    sections:
-      goal: 0c3aef77c9e7e2a2cc878e033da6b030f10f9823790841f2766582915754cacd
-      before: 0921283d9c1bbf2cebec109f455253c321473529254efcc8441d396bab12dd7f
-      contents: 0d88f9971913bc8457e6db0add31911d4c1039693c8ee1ef1c18547f919444b6
-      answer: 00abc6fb68606fdf22ba20a7c554071af0ffd2f806d9f519f11fe8f3d5f54f57
-      large: fb864c3bacead7d2c99dd45696ac07ecf802089c2503a2b08b6d855f967c7b26
-    exterior:
-      '[null,"goal"]': f55ba4f34a62b2aa52ec0318ad93cef6973dedc59219fbc3136b7e11c4671de1
-      '["goal","before"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["before","contents"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["contents","answer"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["answer","large"]': 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-      '["large",null]': e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ---
 
 # 开工报告
