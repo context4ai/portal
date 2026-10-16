@@ -25,7 +25,10 @@ if (!bundle.success) {
 const asset = (ext: string) => `/assets/${basename(bundle.outputs.find(o => o.path.endsWith(ext))!.path)}`;
 const assets = { css: asset(".css"), js: asset(".js") };
 
-await writeFile(join(out, "index.html"), renderHome({ en, zh, assets }));
+const home = renderHome({ en, zh, assets });
+await writeFile(join(out, "index.html"), home);
+await mkdir(join(out, "intro"), { recursive: true });
+await writeFile(join(out, "intro/index.html"), home);
 await writeFile(join(out, "zh/index.html"), renderZhRedirect());
 await writeFile(join(out, "favicon.svg"), faviconSvg());
 await writeFile(join(out, "favicon.ico"), faviconIco(data => deflateSync(data)));

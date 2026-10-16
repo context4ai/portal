@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.13.3 — 2026-10-16
+
+### Introduction video and a quieter documentation home
+
+- The documentation home uses one blue for links and highlights, and lighter borders across the site.
+- Site Map and Tools and Resources share the heading, card and spacing of the sections above; section names on site-map cards are no longer shrunk to small gray text.
+- Benchmark and compression figures use the body font in ink; blue marks only links, knowledge figures and the live path.
+- Homepage diagrams use one dash pattern, lighter lines and labels of at least 12px; the footer keeps a single rule.
+- The homepage slogan and docs home open the three-minute introduction at /intro/, with native fullscreen playback on phones and tablets.
+- Local preview serves the homepage and documentation together; outlined entry buttons use a solid page-colored background.
+- Build tooling uses Context SDK and CLI 0.7.72.
+
+Trigger: other: Review of the documentation home found sections with different heading, card and color styles; the quieter variant was chosen without changing the layout.; other: Requested the introduction video, local preview and solid button backgrounds.
+User: qiansc (git)
+
 ## 0.13.2 — 2026-10-15
 
 ### Citations re-confirmed against Context 0.7.71 sources

@@ -22,6 +22,11 @@ const icon = {
   github: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>',
   sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>',
+  intro: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4.5"/><path d="M10 9.3v5.4l4.6-2.7z"/></svg>',
+  play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M8 5.5v13l10.5-6.5z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>',
+  replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>',
+  close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
 };
 
 function header(en: HomeContent, zh: HomeContent) {
@@ -45,7 +50,7 @@ function stage(en: HomeContent, zh: HomeContent) {
   return `<main class="stage" id="main">
   <div class="copy">
     <h1 class="name reveal">Context for AI</h1>
-    <p class="slogan reveal">${both(en.slogan, zh.slogan)}</p>
+    <p class="slogan reveal"><a class="intro-open" href="/intro/" data-intro-open>${icon.intro}<span class="sr">${both(en.intro.open, zh.intro.open)}</span><span class="intro-words">${both(en.slogan, zh.slogan)}</span></a></p>
     <div class="ctas reveal">
       ${entries}
     </div>
@@ -56,9 +61,29 @@ function stage(en: HomeContent, zh: HomeContent) {
 </main>`;
 }
 
+/** The intro video at /intro/: the same document as /, shown over the field once the homepage copy fades out. */
+function intro(en: HomeContent, zh: HomeContent) {
+  const labels = { en: en.intro, zh: zh.intro };
+  return `<section class="intro" data-intro data-src="${esc(en.intro.video)}" data-labels="${esc(JSON.stringify(labels))}" aria-labelledby="intro-title">
+  <h2 class="sr" id="intro-title">${both(en.intro.title, zh.intro.title)}</h2>
+  <video class="intro-video" data-intro-video playsinline preload="none"></video>
+  <div class="intro-end" data-intro-end>
+    <button class="btn" type="button" data-intro-replay>${icon.replay}${both(en.intro.replay, zh.intro.replay)}</button>
+    <a class="btn btn-main" href="/" data-intro-back>${both(en.intro.back, zh.intro.back)}</a>
+  </div>
+  <div class="intro-bar" data-intro-bar>
+    <button class="intro-ctl" type="button" data-intro-toggle><span class="i-play">${icon.play}</span><span class="i-pause">${icon.pause}</span></button>
+    <div class="intro-track" data-intro-track role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><b data-intro-buffer></b><i data-intro-fill></i></div>
+    <span class="intro-time" data-intro-time>0:00</span>
+  </div>
+  <a class="intro-ctl intro-close" href="/" data-intro-back data-label-en="${esc(en.intro.back)}" data-label-zh="${esc(zh.intro.back)}">${icon.close}</a>
+</section>`;
+}
+
 function bootScript(en: HomeContent, zh: HomeContent) {
   const meta = { "en-US": en.meta, "zh-CN": zh.meta };
   return `(function(){var d=document.documentElement,t=null,l=null;try{t=localStorage.getItem(${JSON.stringify(THEME_KEY)});l=localStorage.getItem(${JSON.stringify(LOCALE_KEY)})}catch(e){}
+if(/^\\/intro\\/?$/.test(location.pathname))d.classList.add("intro-on","intro-arrive");
 if(t==="dark"){d.classList.add("dark");document.querySelector('meta[name="theme-color"]').content="#171716"}
 if(l!=="zh-CN"&&l!=="en-US")l=(navigator.languages||[navigator.language]).some(function(x){return /^zh/i.test(x)})?"zh-CN":"en-US";
 d.lang=l;document.title=${JSON.stringify(meta)}[l].title;})();`;
@@ -88,6 +113,7 @@ export function renderHome({ en, zh, assets }: RenderInput) {
 <canvas class="field" data-field aria-hidden="true"></canvas>
 ${header(en, zh)}
 ${stage(en, zh)}
+${intro(en, zh)}
 </body>
 </html>
 `;

@@ -1,5 +1,11 @@
+<script>
+// Docs pages opt in to cross-document view transitions (home.css) only so /intro/ can fade back into them.
+// A navigation that leaves a docs page never runs one.
+if (typeof window !== 'undefined') addEventListener('pageswap', event => event.viewTransition?.skipTransition())
+</script>
+
 <script setup>
-// The brand slot is mounted on every page, so it also carries the site-wide diagram styling.
+// The brand slot is mounted on every page, so it also carries the site-wide diagram styling and the listener above.
 import '../diagrams.css'
 // The homepage mark: a 5x5 dot matrix with a live corner dot.
 const MARK = '0111010001100011000101110'

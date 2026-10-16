@@ -67,13 +67,81 @@ html:lang(zh-CN) [data-l="en"], html:not(:lang(zh-CN)) [data-l="zh"] { display: 
 
 .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.on { opacity: 1; transform: none; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* The slogan opens the intro video; hovering draws a dotted underline whose dots keep flowing, like the field's dashed paths. */
+.intro-open { display: inline-flex; align-items: center; gap: 10px; transition: color 0.2s; }
+.intro-open svg { flex: none; width: 1.3em; height: 1.3em; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+.intro-ctl .fill, .intro-end .fill { fill: currentColor; stroke: none; }
+.intro-words { position: relative; }
+.intro-words::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px;
+  background: radial-gradient(circle, currentColor 0.8px, transparent 1.1px) 0 50% / 6px 2px repeat-x;
+  clip-path: inset(0 100% 0 0); transition: clip-path 0.45s var(--ease);
+}
+.intro-open:hover, .intro-open:focus-visible { color: var(--ink); }
+.intro-open:hover .intro-words::after, .intro-open:focus-visible .intro-words::after { clip-path: inset(0); animation: dots 0.9s linear infinite; }
+@keyframes dots { to { background-position-x: 6px; } }
+
+/* Entering /intro/: the copy fades out, then the video fades in over the field; leaving reverses it. */
+html { background: var(--paper); }
+.top, .stage { transition: opacity 0.5s var(--ease) 0.3s, visibility 0s 0.3s; }
+.intro-on .top, .intro-on .stage { opacity: 0; visibility: hidden; transition: opacity 0.45s var(--ease), visibility 0s 0.45s; }
+.intro { position: fixed; inset: 0; z-index: 3; opacity: 0; visibility: hidden; transition: opacity 0.4s var(--ease), visibility 0s 0.4s; }
+.intro-on .intro { opacity: 1; visibility: visible; transition: opacity 0.6s var(--ease) 0.35s, visibility 0s 0.35s; }
+.intro-arrive .intro { animation: intro-in 0.7s var(--ease) both; }
+@keyframes intro-in { from { opacity: 0; } }
+html.intro-leave body { opacity: 0; transition: opacity 0.45s var(--ease); }
+
+.native-video:not(:fullscreen) { position: fixed; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.intro-video { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* Controls show while the pointer moves and hide a second after it rests; the bar sits above the burned-in subtitles. */
+.intro:not(.is-awake) { cursor: none; }
+.intro:not(.is-awake) .intro-bar:not(:focus-within), .intro:not(.is-awake) .intro-close:not(:focus-visible) { opacity: 0; pointer-events: none; }
+.intro-close { position: absolute; top: 14px; right: max(16px, calc((100% - 1440px) / 2 + 24px)); width: 36px; height: 36px; border-radius: 10px; background: color-mix(in oklab, var(--paper) 82%, transparent); backdrop-filter: blur(10px); transition: opacity 0.3s var(--ease), color 0.2s; }
+.intro-close svg { width: 18px; height: 18px; }
+
+.intro-bar {
+  /* The video is contained: its frame is min(100vh, 16:9 of the width) tall and centred; the bar clears the subtitles in its lower 13%. */
+  --frame: min(100vh, 56.25vw);
+  position: absolute; left: 50%; bottom: calc((100vh - var(--frame)) / 2 + var(--frame) * 0.15); transform: translateX(-50%);
+  display: flex; align-items: center; gap: 12px; width: min(720px, calc(100% - 32px)); padding: 6px 10px;
+  border: 1px solid var(--rule); border-radius: 12px; background: color-mix(in oklab, var(--paper) 82%, transparent); backdrop-filter: blur(10px);
+  transition: opacity 0.3s var(--ease);
+}
+.intro-ctl { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 8px; color: var(--muted); transition: color 0.2s, background-color 0.2s; }
+.intro-ctl:hover { color: var(--ink); background: var(--field); }
+.intro-ctl svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.intro .i-pause, .intro.is-playing .i-play { display: none; }
+.intro.is-playing .i-pause { display: block; }
+.intro-track { position: relative; flex: 1; height: 24px; cursor: pointer; touch-action: none; }
+.intro-track::before, .intro-track b, .intro-track i { content: ""; position: absolute; left: 0; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px; }
+.intro-track::before { right: 0; background: var(--rule); }
+.intro-track b { background: color-mix(in oklab, var(--ink) 16%, transparent); }
+.intro-track i { background: var(--live); }
+.intro-track i::after { content: ""; position: absolute; right: -6px; top: -4.5px; width: 12px; height: 12px; border-radius: 50%; background: var(--live); transform: scale(0); transition: transform 0.15s var(--ease); }
+.intro-track:hover i::after, .intro-track:focus-visible i::after { transform: none; }
+.intro-time { flex: none; min-width: 6.5em; font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; color: var(--muted); }
+
+.intro-end {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 18px;
+  background: color-mix(in oklab, var(--paper) 72%, transparent); backdrop-filter: blur(6px);
+  opacity: 0; visibility: hidden; transition: opacity 0.4s var(--ease), visibility 0s 0.4s;
+}
+.intro-on .intro.is-done .intro-end { opacity: 1; visibility: visible; transition: opacity 0.4s var(--ease), visibility 0s; }
+.intro-end svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
 @media (max-width: 720px) {
   .top { padding: 0 16px; }
   .ctas { gap: 12px; }
   .desc { height: 3.2em; }
   .desc > span { white-space: normal; }
+  .intro-bar { bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .desc > span { transition: none; }
+  .reveal, .desc > span, .top, .stage, .intro, .intro-end, .intro-bar, .intro-close { transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+  .intro-words::after { transition: none; animation: none !important; }
+  .intro-arrive .intro { animation: none; }
 }
