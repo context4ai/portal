@@ -36,6 +36,7 @@ and [Multilingual Sites](https://context4ai.org/context/pages/c1dc07fb24e9ea500f
 | `deploy/nginx.conf.template` | Routing, caching and the Source Graph proxy |
 | `Dockerfile`, `fly.toml` | Static image on nginx, deployed to Fly.io as `context4ai-portal` |
 | `scripts/check-links.ts` | Internal link check over the combined output |
+| `scripts/preview.ts` | Local preview of the homepage and docs site with the image layout |
 
 ## Develop
 
@@ -55,7 +56,18 @@ image build skips the checkouts.
 
 `bun run build:home` rebuilds only the homepage into `dist/home/`.
 
-To preview the combined site with the production routing:
+To preview the homepage and the docs site together after a build:
+
+```sh
+bun run preview           # PORT=4180 by default
+```
+
+It serves `dist/home/` at <http://127.0.0.1:4180/> and `dist/context-site/` at
+<http://127.0.0.1:4180/context/> in place, so `bun run build:home` or
+`bun run build:site` shows up on reload without restarting. `/sourcegraph/` is
+not proxied there.
+
+To preview with the production nginx routing, including the Source Graph proxy:
 
 ```sh
 mkdir -p .tmp/www && cp -R dist/home/. .tmp/www/ && cp -R dist/context-site .tmp/www/context
@@ -72,6 +84,7 @@ Open <http://localhost:8088/>.
 | Path | Served by |
 | --- | --- |
 | `/`, `/zh/` | Homepage |
+| `/intro/` | The homepage document playing the intro video; the slogan and the docs home link to it. Phones and tablets play it in the system full-screen player instead |
 | `/context/` | Documentation site, one URL per page for every language; `/context` redirects here |
 | `/sourcegraph/` | Proxied to Source Graph with its prefix, query, cookies and authorization intact |
 | `/llms.txt` | Redirects to `/context/llms.txt` |

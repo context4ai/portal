@@ -5,6 +5,7 @@ import { content } from './home/content.js'
 import HeroArt from './home/HeroArt.vue'
 import Icon from './home/Icon.vue'
 import HomeSections from './home/HomeSections.vue'
+import { INTRO_VIDEO, nativePlayback, playNative } from './home/nativeVideo.js'
 import './home/home.css'
 
 const { theme } = useData()
@@ -47,6 +48,23 @@ function comingSoon(tag) {
   soonTimer = setTimeout(() => { soon.value = '' }, 1600)
 }
 
+// The intro video lives on the brand page at /intro/. The whole page fades out first; Back there returns here
+// (the key is read by homepage/intro.js) and this page fades in through a cross-document view transition.
+// /intro/ fades itself in, and BrandMark skips the transition on the way there.
+const INTRO = '/intro/'
+const INTRO_RETURN_KEY = 'context-intro-return'
+const INTRO_FADE = 450
+function openIntro(event) {
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.button) return
+  event.preventDefault()
+  if (nativePlayback()) return playNative(INTRO_VIDEO)
+  try { sessionStorage.setItem(INTRO_RETURN_KEY, location.pathname + location.search) } catch {}
+  document.documentElement.classList.add('cxh-leaving')
+  setTimeout(() => location.assign(INTRO), reduced() ? 0 : INTRO_FADE)
+}
+// A page restored from the back-forward cache keeps the faded-out state it left in.
+const onPageShow = event => { if (event.persisted) document.documentElement.classList.remove('cxh-leaving') }
+
 // Blocks fade in once and their numbers count up the first time they scroll into view.
 let observer = null
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -75,8 +93,8 @@ function observe() {
   }, { rootMargin: '0px 0px -10% 0px', threshold: .1 })
   root.value.querySelectorAll('.cxh-reveal:not(.is-visible)').forEach(el => observer.observe(el))
 }
-onMounted(() => { root.value.classList.add('cxh-js'); observe() })
-onBeforeUnmount(() => { observer?.disconnect(); closePrompt(); clearTimeout(soonTimer) })
+onMounted(() => { root.value.classList.add('cxh-js'); observe(); addEventListener('pageshow', onPageShow) })
+onBeforeUnmount(() => { observer?.disconnect(); closePrompt(); clearTimeout(soonTimer); removeEventListener('pageshow', onPageShow) })
 </script>
 
 <template>
@@ -94,6 +112,7 @@ onBeforeUnmount(() => { observer?.disconnect(); closePrompt(); clearTimeout(soon
               <template v-if="soon === tag">{{ text(tag).hero.soon }}</template>
               <template v-else>Oncall Bot<span>for Human</span></template>
             </button>
+            <a class="cxh-entry" :href="INTRO" target="_self" :title="text(tag).hero.intro.title" @click="openIntro"><svg class="cxh-icon cxh-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" /></svg>{{ text(tag).hero.intro.label }}<span>{{ text(tag).hero.intro.sub }}</span></a>
             <div class="cxh-readers" aria-hidden="true">
               <span v-for="(u, i) in text(tag).flow.users" :key="u" class="cxh-reader" :class="{ on: story(tag).reader === i }" @mouseenter="story(tag).hover = i" @mouseleave="story(tag).hover = -1"><Icon :type="READER_ICONS[i]" />{{ u }}
                 <span v-if="story(tag).reader === i" class="cxh-ask"><span class="cxh-ask-text">{{ story(tag).typed }}</span><i v-if="story(tag).typing" class="cxh-caret" /></span>

@@ -28,6 +28,7 @@ const en = {
     confirm: "OK",
     close: "Close",
     soon: "Coming soon...",
+    intro: { label: "Intro", sub: "3 min video", title: "Watch Context for AI in 3 minutes" },
   },
   flow: {
     label: "Information from many sources condenses into a dome of knowledge; agents, bots and people ask it, and every answer is traced back to the original",
@@ -147,6 +148,7 @@ const zh = {
     confirm: "确定",
     close: "关闭",
     soon: "Coming soon...",
+    intro: { label: "Intro", sub: "3 分钟视频", title: "3 分钟了解 Context for AI" },
   },
   flow: {
     label: "不同来源的信息逐渐沉淀为知识；Agent、Bot 和团队向它提问，每个回答都能追溯到原文",

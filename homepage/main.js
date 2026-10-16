@@ -1,4 +1,5 @@
 import { drawGlyph, GLYPH_HALF, quietZones, scatter } from "./glyphs.js";
+import { intro } from "./intro.js";
 import { SCENARIOS } from "./scenarios.js";
 
 const THEME_KEY = "context-theme";
@@ -39,6 +40,7 @@ setTimeout(() => reveals.forEach((el, i) => setTimeout(() => el.classList.add("o
 
 const canvas = document.querySelector("[data-field]");
 if (canvas) retrievalField(canvas);
+intro(root, reduced);
 
 // The background: a field of source marks. Questions trace to a knowledge page, then to the evidence behind it.
 function retrievalField(canvas) {
@@ -249,6 +251,14 @@ function retrievalField(canvas) {
   function frame() {
     const now = sec(), t = now - t0, C = palette();
     ctx.clearRect(0, 0, W, H);
+    // While the intro video plays, retrieval and knowledge updates stop at once and none start; the field keeps drifting.
+    const hush = root.classList.contains("intro-on");
+    if (hush && (runs.length || builds.length || blooms.length || waves.length)) {
+      builds.forEach(b => b.src.forEach(s => { s.pull = null; }));
+      runs = []; builds = []; blooms = []; waves = [];
+      for (const u of units) u.lit = u.tint = u.merge = u.glow = 0;
+      probe.a = 0; mouse.fired = true;
+    }
     for (const k in fl) fl[k] += ((focus === k ? 1 : 0) - fl[k]) * .08;
     mouse.vx *= .85; mouse.vy *= .85;
     const mspeed = Math.hypot(mouse.vx, mouse.vy), mq = 1 - quiet.at(mouse.x, mouse.y);
@@ -261,7 +271,7 @@ function retrievalField(canvas) {
     const userRun = runs.some(r => r.user);
     // Dwell: a blue "?" follows the resting pointer, then turns into the question card.
     const still = now - mouse.movedAt;
-    const canAsk = !mouse.fired && !hover && mouse.x > 0 && calm(mouse.x, mouse.y) < .5 && quiet.at(mouse.x, mouse.y, 90) === 0 &&
+    const canAsk = !hush && !mouse.fired && !hover && mouse.x > 0 && calm(mouse.x, mouse.y) < .5 && quiet.at(mouse.x, mouse.y, 90) === 0 &&
       !runs.some(r => r.user && !r.dismissed && runNear(r));
     const px = mouse.x + PROBE_OFFSET, py = mouse.y + PROBE_OFFSET;
     if (probe.a <= 0) { probe.x = px; probe.y = py; } else { probe.x += (px - probe.x) * .35; probe.y += (py - probe.y) * .35; }
@@ -275,13 +285,13 @@ function retrievalField(canvas) {
     }
 
     // Autoplay only while the reader is not driving the scene; hovering an entry counts as an invitation.
-    const autoOK = !reduced && !userRun && (focus || now - Math.max(lastGesture, lastUserRunGone) > USER_COOLDOWN);
+    const autoOK = !hush && !reduced && !userRun && (focus || now - Math.max(lastGesture, lastUserRunGone) > USER_COOLDOWN);
     if (t > 1.6 && autoOK && now > nextRun) {
       const oy = Math.random() < .5 ? 90 + Math.random() * 140 : H - 90 - Math.random() * 140;
       if (startRun(Math.random() * W, oy, false)) nextRun = now + (4.2 - fl.context * 1.6) + Math.random() * 1.5;
     }
     // Knowledge updates run on their own clock, regardless of what the reader is doing.
-    if (t > 3 && !reduced && now > nextBuild) nextBuild = now + (startBuild() ? (7 - fl.context * 2.5) + Math.random() * 2.5 : .5);
+    if (t > 3 && !hush && !reduced && now > nextBuild) nextBuild = now + (startBuild() ? (7 - fl.context * 2.5) + Math.random() * 2.5 : .5);
 
     for (const u of units) u.pin = 0;
     for (const r of runs) { r.k.pin = 1; r.ev.forEach(e => e.u.pin = 1); }
@@ -422,7 +432,7 @@ function retrievalField(canvas) {
   let pressed = null;
   addEventListener("pointerdown", e => {
     pressed = null;
-    if (e.target.closest("a,button,.brand,.top-tools")) return;
+    if (root.classList.contains("intro-on") || e.target.closest("a,button,.brand,.top-tools")) return;
     pressed = hitAt(e.clientX, e.clientY, e.pointerType === "mouse" ? 0 : 12);
     if (pressed) return;
     if (quiet.at(e.clientX, e.clientY, 90) > 0) return;
