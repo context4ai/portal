@@ -15,8 +15,8 @@ const content: HomeContent = {
     { area: "agent", label: "Agent Graph", href: "/context/pages/9fb722d61652eb09bd4609cb38748ba5.html", description: "Keep Agents on stable workflows: the knowledge and skills each step needs, consistent results across runs" },
   ],
   intro: {
-    video: "https://github.com/context4ai/portal/releases/download/intro-video-2026-10-15/context4ai-intro.mp4",
-    title: "Context for AI in 3 minutes",
+    video: "https://github.com/context4ai/portal/releases/download/intro-video-2026-10-15/context4ai-v2-with-music.mp4",
+    title: "Context for AI in 4 minutes",
     open: "Play the intro video: ",
     play: "Play",
     pause: "Pause",
