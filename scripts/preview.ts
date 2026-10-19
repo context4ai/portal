@@ -7,8 +7,10 @@ const root = join(import.meta.dir, "..");
 const mounts: [prefix: string, dir: string][] = [["/context/", join(root, "dist/context-site")], ["/", join(root, "dist/home")]];
 const port = Number(process.env.PORT ?? 4180);
 
-for (const [prefix, dir] of mounts) {
-  if (!existsSync(dir)) console.warn(`${relative(root, dir)} is missing; ${prefix} returns 404 until it is built`);
+const missing = mounts.filter(([, dir]) => !existsSync(join(dir, "index.html")));
+if (missing.length) {
+  console.error(`Preview output missing: ${missing.map(([, dir]) => relative(root, dir)).join(", ")}. Run bun run build, then bun run preview.`);
+  process.exit(1);
 }
 
 function lookup(path: string) {
@@ -26,6 +28,13 @@ const server = Bun.serve({
     const path = decodeURIComponent(new URL(request.url).pathname);
     if (path === "/context") return Response.redirect("/context/", 301);
     if (path === "/llms.txt") return Response.redirect("/context/llms.txt", 302);
+    const [, dir] = mounts.find(([prefix]) => path.startsWith(prefix))!;
+    if (!existsSync(join(dir, "index.html"))) {
+      return new Response("Preview is rebuilding or its output is missing. Wait for bun run build to finish, then reload. If no build is running, run bun run build.", {
+        status: 503,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "retry-after": "3" },
+      });
+    }
     const file = lookup(path);
     if (file) return new Response(Bun.file(file));
     const notFound = join(mounts.find(([p]) => path.startsWith(p))![1], "404.html");

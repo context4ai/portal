@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'v
 import { useData } from 'vitepress'
 import { content } from './home/content.js'
 import HeroArt from './home/HeroArt.vue'
+import HeroFragments from './home/HeroFragments.vue'
 import Icon from './home/Icon.vue'
 import HomeSections from './home/HomeSections.vue'
 import { INTRO_VIDEO, nativePlayback, playNative } from './home/nativeVideo.js'
@@ -101,6 +102,7 @@ onBeforeUnmount(() => { observer?.disconnect(); closePrompt(); clearTimeout(soon
   <div ref="root" class="cxh">
     <div v-for="tag in tags" :key="tag" :data-context-locales="tag" :lang="tag">
       <section class="context-home-section cxh-hero" :aria-labelledby="`cxh-${tag}-hero-title`">
+        <HeroFragments />
         <div class="cxh-hero-top">
           <div class="cxh-hero-copy">
             <h1 :id="`cxh-${tag}-hero-title`" class="cxh-title">{{ text(tag).hero.title }}</h1>

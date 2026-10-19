@@ -11,21 +11,21 @@
   "scripts": {
     "check": "context status",
     "verify": "context verify",
-    "build:site": "context build",
+    "build:site": "context build && bun run build:home",
     "build:home": "bun homepage/build.ts",
-    "build": "context build && bun homepage/build.ts",
+    "build": "bun run build:site",
     "typecheck": "tsc --noEmit",
     "check:links": "bun scripts/check-links.ts",
     "preview": "bun scripts/preview.ts",
     "sources:restore": "bun scripts/restore-sources.ts"
   },
   "dependencies": {
-    "@c4a/context": "0.7.72"
+    "@c4a/context": "0.7.73"
   },
   "devDependencies": {
-    "@c4a/context-cli": "0.7.72",
+    "@c4a/context-cli": "0.7.73",
     "@types/bun": "^1.3.0",
     "typescript": "^5.5.4"
   },
-  "version": "0.13.3"
+  "version": "0.13.4"
 }

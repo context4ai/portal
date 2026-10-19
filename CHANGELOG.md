@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.13.4 — 2026-10-19
+
+### Responsive homepage and portable preview workflow
+
+- Improve phone and tablet homepage layouts and keep documentation navigation clear of the brand.
+- Serve a useful temporary response while preview output is rebuilding.
+- Restore pinned source caches as self-contained repositories.
+- Upgrade Context SDK and CLI to 0.7.73.
+
+Trigger: repair: Publish the reviewed homepage, preview and source restoration improvements.
+User: qiansc (git)
+
 ## 0.13.3 — 2026-10-16
 
 ### Introduction video and a quieter documentation home

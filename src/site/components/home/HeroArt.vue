@@ -197,18 +197,27 @@ function stop() {
   Object.assign(props.story, { reader: -1, typed: '', typing: false, lane: -1, at: -1 })
 }
 watch(() => props.story.hover, h => {
-  if (h < 0 || h === props.story.reader || !ready.value || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  if (h < 0 || h === props.story.reader || !ready.value || staticMedia?.matches) return
   stop()
   later(next, 120)
 })
 
 const ready = ref(false)
+let staticMedia
+function updateMotion() {
+  stop()
+  if (!staticMedia.matches) later(request, 700)
+}
 onMounted(() => {
   ready.value = true
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  later(request, 700)
+  staticMedia = matchMedia('(max-width: 959px), (prefers-reduced-motion: reduce)')
+  staticMedia.addEventListener('change', updateMotion)
+  updateMotion()
 })
-onBeforeUnmount(() => timers.forEach(clearTimeout))
+onBeforeUnmount(() => {
+  stop()
+  staticMedia?.removeEventListener('change', updateMotion)
+})
 </script>
 
 <template>

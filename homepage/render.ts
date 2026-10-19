@@ -10,6 +10,11 @@ const esc = (value: string) => value.replace(/[&<>"']/gu, c => `&#${c.charCodeAt
 /** Both languages are in the page; the boot script picks one before first paint. */
 const both = (en: string, zh: string) => `<span data-l="en">${esc(en)}</span><span data-l="zh" lang="zh-CN">${esc(zh)}</span>`;
 
+const sloganWords = (value: HomeContent["slogan"]) => typeof value === "string"
+  ? esc(value)
+  : value.map(line => `<span class="slogan-line">${esc(line)}</span>`).join(" ");
+const slogans = (en: HomeContent["slogan"], zh: HomeContent["slogan"]) => `<span data-l="en">${sloganWords(en)}</span><span data-l="zh" lang="zh-CN">${sloganWords(zh)}</span>`;
+
 function mark(size = 22) {
   const dots = [...MARK].map((bit, i) => {
     const x = (i % 5) * 4.8 + 2.4, y = Math.floor(i / 5) * 4.8 + 2.4;
@@ -50,7 +55,7 @@ function stage(en: HomeContent, zh: HomeContent) {
   return `<main class="stage" id="main">
   <div class="copy">
     <h1 class="name reveal">Context for AI</h1>
-    <p class="slogan reveal"><a class="intro-open" href="/intro/" data-intro-open>${icon.intro}<span class="sr">${both(en.intro.open, zh.intro.open)}</span><span class="intro-words">${both(en.slogan, zh.slogan)}</span></a></p>
+    <p class="slogan reveal"><a class="intro-open" href="/intro/" data-intro-open>${icon.intro}<span class="sr">${both(en.intro.open, zh.intro.open)}</span><span class="intro-words">${slogans(en.slogan, zh.slogan)}</span></a></p>
     <div class="ctas reveal">
       ${entries}
     </div>

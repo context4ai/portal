@@ -70,18 +70,34 @@ html:lang(zh-CN) [data-l="en"], html:not(:lang(zh-CN)) [data-l="zh"] { display: 
 
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* The slogan opens the intro video; hovering draws a dotted underline whose dots keep flowing, like the field's dashed paths. */
-.intro-open { display: inline-flex; align-items: center; gap: 10px; transition: color 0.2s; }
-.intro-open svg { flex: none; width: 1.3em; height: 1.3em; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+/* On hover, dots descend from the play icon before flowing beneath the slogan. */
+.intro-open { position: relative; display: inline-flex; align-items: center; gap: 10px; transition: color 0.2s; }
+.intro-open svg { transform: translateY(1px); flex: none; width: 1.3em; height: 1.3em; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
 .intro-ctl .fill, .intro-end .fill { fill: currentColor; stroke: none; }
 .intro-words { position: relative; }
+.intro-open::before {
+  content: ""; position: absolute; left: calc(0.65em - 1px); bottom: -5px; width: 10px; height: 10px;
+  pointer-events: none;
+  background: radial-gradient(circle at 1px 1px, currentColor 0.8px, transparent 1.1px),
+    radial-gradient(circle at 3.35px 6.65px, currentColor 0.8px, transparent 1.1px),
+    radial-gradient(circle at 9px 9px, currentColor 0.8px, transparent 1.1px);
+  clip-path: inset(0 0 100% 0); transition: clip-path 0.12s ease-out 0.34s;
+}
+.intro-open::after {
+  content: ""; position: absolute; left: calc(0.65em - 1px); top: calc(50% + 0.45em + 2px); bottom: 5px; width: 2px;
+  pointer-events: none;
+  background: radial-gradient(circle, currentColor 0.8px, transparent 1.1px) 50% 100% / 2px 6px repeat-y;
+  clip-path: inset(0 0 100% 0); transition: clip-path 0.08s ease-out 0.46s;
+}
 .intro-words::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px;
+  content: ""; position: absolute; left: calc(-0.65em + 2px); right: 0; bottom: -5px; height: 2px; pointer-events: none;
   background: radial-gradient(circle, currentColor 0.8px, transparent 1.1px) 0 50% / 6px 2px repeat-x;
-  clip-path: inset(0 100% 0 0); transition: clip-path 0.45s var(--ease);
+  clip-path: inset(0 100% 0 0); transition: clip-path 0.34s ease-out;
 }
 .intro-open:hover, .intro-open:focus-visible { color: var(--ink); }
-.intro-open:hover .intro-words::after, .intro-open:focus-visible .intro-words::after { clip-path: inset(0); animation: dots 0.9s linear infinite; }
+.intro-open:hover::before, .intro-open:focus-visible::before { clip-path: inset(0); transition-duration: 0.12s; transition-delay: 0.04s; }
+.intro-open:hover::after, .intro-open:focus-visible::after { clip-path: inset(0); transition-duration: 0.08s; transition-delay: 0s; }
+.intro-open:hover .intro-words::after, .intro-open:focus-visible .intro-words::after { clip-path: inset(0); transition-delay: 0.12s; animation: dots 1.2s linear infinite; }
 @keyframes dots { to { background-position-x: 6px; } }
 
 /* Entering /intro/: the copy fades out, then the video fades in over the field; leaving reverses it. */
@@ -139,9 +155,14 @@ html.intro-leave body { opacity: 0; transition: opacity 0.45s var(--ease); }
   .desc > span { white-space: normal; }
   .intro-bar { bottom: 12px; }
 }
+/* Shrink the two-line English copy to its longest line, centering it with the icon. */
+@media (max-width: 420px) {
+  html:not(:lang(zh-CN)) .intro-words { width: max-content; text-align: left; }
+  html:not(:lang(zh-CN)) .slogan-line { display: block; }
+}
 @media (prefers-reduced-motion: reduce) {
   .reveal, .desc > span, .top, .stage, .intro, .intro-end, .intro-bar, .intro-close { transition: none !important; }
   .reveal { opacity: 1; transform: none; }
-  .intro-words::after { transition: none; animation: none !important; }
+  .intro-open::before, .intro-open::after, .intro-words::after { transition: none; animation: none !important; }
   .intro-arrive .intro { animation: none; }
 }
