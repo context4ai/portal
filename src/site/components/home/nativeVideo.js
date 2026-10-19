@@ -1,6 +1,6 @@
 // Touch devices play the intro in the browser's own full-screen player instead of opening /intro/.
 // Same behaviour as playNative in homepage/intro.js, which ships in a separate bundle.
-export const INTRO_VIDEO = "https://github.com/context4ai/portal/releases/download/intro-video-2026-10-15/context4ai-intro.mp4"
+export const INTRO_VIDEO = "https://github.com/context4ai/portal/releases/download/intro-video-2026-10-15/context4ai-v2-with-music.mp4"
 
 export const nativePlayback = () => matchMedia("(hover: none) and (pointer: coarse)").matches
 

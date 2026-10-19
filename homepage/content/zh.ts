@@ -15,8 +15,8 @@ const content: HomeContent = {
     { area: "agent", label: "Agent Graph", href: "/context/pages/9fb722d61652eb09bd4609cb38748ba5.html", description: "让 Agent 按稳定的工作流运行：具备充足知识技能，保证多次任务结果一致" },
   ],
   intro: {
-    video: "https://github.com/context4ai/portal/releases/download/intro-video-2026-10-15/context4ai-intro.mp4",
-    title: "3 分钟了解 Context for AI",
+    video: "https://github.com/context4ai/portal/releases/download/intro-video-2026-10-15/context4ai-v2-with-music.mp4",
+    title: "4 分钟了解 Context for AI",
     open: "播放介绍视频：",
     play: "播放",
     pause: "暂停",
