@@ -1,0 +1,15 @@
+/* Keep the top-level directory visible on smaller desktops. */
+@media (min-width: 720px) and (max-width: 1279px) {
+  .Layout .VPNavBarMenu { display: flex !important; position: static !important; transform: none !important; }
+  .Layout .VPNavBar .content { flex: 1; }
+  .Layout .VPNavBarHamburger, .Layout .VPNavScreen { display: none !important; }
+  .Layout .VPNavBar .title { flex: 0 0 auto; }
+  .Layout .VPNavBarMenuLink, .Layout .VPNavBarMenuGroup .button { padding: 0 7px !important; }
+}
+
+@media (min-width: 720px) and (max-width: 979px) {
+  .Layout .VPNavBarTitle .context-brand > span {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .Layout .VPNavBarMenuLink, .Layout .VPNavBarMenuGroup .button { padding: 0 4px !important; font-size: 12px; }
+}

@@ -63,9 +63,16 @@ bun run preview           # PORT=4180 by default
 ```
 
 It serves `dist/home/` at <http://127.0.0.1:4180/> and `dist/context-site/` at
-<http://127.0.0.1:4180/context/> in place, so `bun run build:home` or
-`bun run build:site` shows up on reload without restarting. `/sourcegraph/` is
-not proxied there.
+<http://127.0.0.1:4180/context/> in place; rebuilt files show up on reload without
+restarting. Both `bun run build` and `bun run build:site` rebuild the docs and then
+the homepage, because the underlying `context build` clears `dist/home/`.
+Homepage-only changes need just `bun run build:home`. Use these scripts instead
+of invoking `context build` directly for local preview.
+
+The preview refuses to start if either site's index is missing and prints the
+build command. While a running preview is being rebuilt, missing output returns
+503 with a rebuild message instead of an unexplained 404. Reload after the build
+finishes. `/sourcegraph/` is not proxied there.
 
 To preview with the production nginx routing, including the Source Graph proxy:
 
