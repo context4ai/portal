@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
   source_digest: 3b3d76752739bb711c415c22790b959be0891c4fe17b8dcd2979aefdc67ba6a1
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T03:42:50.656Z
 ---
 
 # Context 是什么
@@ -45,11 +45,11 @@ Context 不是一次性的摘要工具。来源快照、审核状态、已批准
 <!-- context:section id="pillars" -->
 ## 有何不同
 
-- **带证据链的索引，而不是照搬原文。** Indexer 只保留能回答读者问题的内容，并记录每条论述的出处。在一个大型生产 monorepo 中，约 202 MB 的代码和文档最终变成约 1.75 MB 经过审核的知识，约为源材料体量的 1/115。参见[写给 Agent 的知识](../../architecture/knowledge/knowledge-for-agents.md)和[证据链与索引优先](../../architecture/knowledge/evidence-chains.md)。
-- **技能和 CLI 就在你已在用的 Agent 里。** Context 本身不调用 LLM，也不是托管平台。它的技能运行在 Claude Code、Codex、Cursor 或托管 Agent 中，确定性的工作由本地 CLI 完成。参见[为什么是工作流](../../architecture/context/why-a-workflow.md)。
-- **发布前必须审核。** 目标、来源授权、结构和审核决策都由人来定；草稿只有通过审核才会成为已批准的 Markdown。参见[知识生命周期](../../architecture/context/knowledge-lifecycle.md)。
-- **知识跟随来源变化。** 来源会固定版本，之后的变更只会重新打开受影响的页面。参见[知识的持续更新](../../architecture/knowledge/keeping-knowledge-current.md)。
-- **一份知识，多种产物。** 同一批已批准的页面可以构建出 Agent 知识包、文档站和 LLM Docs，每种产物都通过构建清单映射回知识工作区。参见[知识包与站点构建](../../architecture/context/packages-and-sites.md)。
+- **带证据链的索引，而不是照搬原文。** Indexer 只保留能回答读者问题的内容，并记录每条论述的出处。在一个大型生产 monorepo 中，约 202 MB 的代码和文档最终变成约 1.75 MB 已批准的知识，约为源材料体量的 1/115。参见 [写给 Agent 的知识](../../architecture/knowledge/knowledge-for-agents.md) 和 [证据链与索引优先](../../architecture/knowledge/evidence-chains.md)。
+- **技能和 CLI 就在你正在使用的 Agent 里。** Context 本身不调用 LLM，也不是托管平台。它的技能运行在 Claude Code、Codex、Cursor 或托管 Agent 中，确定性的工作由本地 CLI 完成。参见 [为什么是工作流](../../architecture/context/why-a-workflow.md)。
+- **发布前必须审核。** 目标、来源授权、结构和审核决策都由人来定；草稿只有通过审核才会成为已批准的 Markdown。参见 [知识生命周期](../../architecture/context/knowledge-lifecycle.md)。
+- **知识随来源保持更新。** 来源会固定版本，之后的变更只会重新打开受影响的页面。参见 [知识的持续更新](../../architecture/knowledge/keeping-knowledge-current.md)。
+- **一份知识，多种产物。** 同一批已批准的页面可以构建出 Agent 知识包、文档站和 LLM Docs，每种产物都通过构建清单映射回知识工作区。参见 [知识包与站点构建](../../architecture/context/packages-and-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="who" -->
@@ -62,7 +62,7 @@ Context 不是一次性的摘要工具。来源快照、审核状态、已批准
 - 把多个仓库和多套文档合并成一个经过审核的知识包；
 - 在来源变化时更新已有的知识工作区，而不必全部重建。
 
-在来自一个大型生产 monorepo 的 24 个真实开发者问题上，结合 Context 知识与 Source Graph 的 Agent，比阅读 LLM Wiki（由 LLM 一次性生成、Agent 在本地检索阅读的 Wiki）的 Agent 完全解决了更多问题，用时不到一半，估算成本约为九分之一。仅使用 Context 并在本地检索时，同样解决了更多问题，而且工具调用次数少得多。参见[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)。
+在来自一个大型生产 monorepo 的 24 个真实开发者问题上，结合 Context 知识与 Source Graph 的 Agent，比阅读 LLM Wiki（由 LLM 一次性生成、Agent 在本地检索阅读的 Wiki）的 Agent 完全解决了更多问题，用时不到一半，估算成本约为九分之一。仅使用 Context 并在本地检索时，同样解决了更多问题，而且工具调用次数少得多。参见 [知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)。
 <!-- /context:section -->
 
 <!-- context:section id="companions" -->
@@ -70,14 +70,14 @@ Context 不是一次性的摘要工具。来源快照、审核状态、已批准
 
 工作流中的部分环节由两个配套项目承担。入门时两者都不是必需的。
 
-- **Source Graph** 通过网页、MCP、HTTP 和 CLI，在固定提交上搜索和阅读仓库。Context 提供一个可选的证据插件：Agent 通过 Source Graph 阅读代码时，也能同时拿到所读知识章节的来源，无需克隆仓库。参见 [Source Graph 概览](../../architecture/source-graph/overview.md)和[远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
-- **Agent Graph** 是 Context 工作流底层的一层，它根据 Context 在知识工作区中观察到的事实选出每一个下一步，从而让漫长的工作流可以中断恢复、可以测试。参见[为什么是 Graph Engineering](../../architecture/agent-graph/why-graph-engineering.md)和[工作流运行](../../architecture/context/workflow-execution.md)。
+- **Source Graph** 通过网页、MCP、HTTP 和 CLI，在固定提交上搜索和阅读仓库。Context 提供一个可选的证据插件：Agent 通过 Source Graph 阅读代码时，也能同时拿到所读知识章节的来源，无需克隆仓库。参见 [Source Graph 概览](../../architecture/source-graph/overview.md) 和 [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
+- **Agent Graph** 是 Context 工作流底层的一层，它根据 Context 在知识工作区中观察到的事实选出每一个下一步，从而让漫长的工作流可以中断恢复、可以测试。参见 [为什么是 Graph Engineering](../../architecture/agent-graph/why-graph-engineering.md) 和 [工作流运行](../../architecture/context/workflow-execution.md)。
 <!-- /context:section -->
 
 <!-- context:section id="delivery" -->
 ## 如何获取
 
-Context 以 npm CLI（`@c4a/context-cli` 提供的 `context`）加 Agent 插件的形式交付。两者只需安装一次，重启 Agent 会话后，用自然语言向 `/c4a:context` 入口描述你的知识目标即可。一轮结束时，你会在知识工作区中得到已审核的 Markdown 页面（由 Agent 提交到 Git），以及由它们构建的知识包和文档站。
+Context 以 npm CLI（`@c4a/context-cli` 提供的 `context`）加 Agent 插件的形式交付。两者只需安装一次，重启 Agent 会话后，用自然语言向 `/c4a:context` 入口描述你的知识目标即可。一轮结束时，你会在知识工作区中得到已批准的 Markdown 页面（由 Agent 提交到 Git），以及由它们构建的知识包和文档站。
 
-接下来先读[工作流概览](workflow-at-a-glance.md)，再读[安装](installation.md)和[快速开始](quick-start.md)。
+接下来先读 [工作流概览](workflow-at-a-glance.md)，再读 [安装](installation.md) 和 [快速开始](quick-start.md)。
 <!-- /context:section -->

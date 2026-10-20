@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: db32d01a-0cfe-494c-bfc0-644be1583c78
   source_digest: 0d44df68836251a3360de8d6a8e1e074a8221344a0ad1fb1affcea549df679b8
-  translated_at: 2026-10-15T03:57:38.476Z
+  translated_at: 2026-10-20T03:42:50.656Z
 ---
 
 # 工作流概览
@@ -13,7 +13,7 @@ translation:
 <!-- context:section id="steps" -->
 ## 五个步骤
 
-安装之前先读这一页，了解一个 Context 任务是什么样子。安装事先在每台机器上完成一次即可（见[安装](installation.md)）；之后的每个任务——无论只涉及一套文档还是多个仓库——都遵循相同的五个步骤。你和 Agent 对话；Agent 按 CLI 返回的工作流执行。
+在安装之前，先读这一页，了解一个 Context 任务是什么样子。安装事先在每台机器上完成一次即可（见[安装](installation.md)）；之后的每个任务——无论只涉及一套文档还是多个仓库——都遵循相同的五个步骤。你和 Agent 对话；Agent 按 CLI 返回的工作流执行。
 
 ```mermaid
 flowchart LR
@@ -44,9 +44,9 @@ flowchart LR
 <!-- context:section id="durations" -->
 ## 预期耗时与 Token 消耗
 
-生产是耗时最长的一步：平均每个写作任务约一分钟。想在浏览器里查看页面时，随时可以要求预览。开工报告和审核报告是你的判断对结果影响最大的两个时刻；指南中关于审核的章节说明了需要关注什么。
+生产是耗时最长的一步：平均每个写作任务约一分钟。想在浏览器里查看页面时，随时可以要求预览。开工报告和审核报告是两个最需要你拍板的环节；指南中关于审核的章节说明了需要关注什么。
 
-Token 消耗的经验值：约 200 篇文档的知识库，输入约 600M tokens（约 97% 命中缓存），输出约 6M tokens。按 Opus 5.5 API 计费，平均每篇文档 1–2 美元。这是首次建立知识库的预估成本；如果使用订阅额度（例如 Claude 或 GPT 的 Max 20 档），成本可降至约 20%。按实践经验，可以先在本地完成首次建立并推送知识仓库，后续的新增和迭代再在远程进行。知识库建立后，每次更新一个页面约 0.1–0.2 美元，回答一个问题平均约 0.2–0.3 美元；回答成本的对比见[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)。
+Token 消耗的经验值：约 200 篇文档的知识库，输入约 600M tokens（缓存命中率约 97%），输出约 6M tokens。按 Opus 5.5 API 计费，平均每篇文档 1–2 美元。这是首次建立知识库的预估成本；如果使用订阅额度（例如 Claude 或 GPT 的 Max 20 档套餐），成本可降至约 20%。按实践经验，可以先在本地完成首次建立并推送知识仓库，后续的新增和迭代再在远程进行。知识库建立后，每次更新一个页面约 0.1–0.2 美元，回答一个问题平均约 0.2–0.3 美元；回答成本的对比见[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)。
 <!-- /context:section -->
 
 <!-- context:section id="lanes" -->

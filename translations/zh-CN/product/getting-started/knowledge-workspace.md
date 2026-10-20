@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
   source_digest: 7bd3e1955c8db55e30f7c0e57315fb9632f384dccd1f445423304c66042fccdb
-  translated_at: 2026-10-19T20:00:34.513Z
+  translated_at: 2026-10-20T03:42:50.656Z
 ---
 
 # Context 知识工作区
@@ -73,7 +73,7 @@ my-knowledge/
 | --- | --- | --- |
 | `package.json`、`AGENTS.md`、`README.md` | 由 `context init` 创建；版本号由 CLI 更新 | 是 |
 | `src/index.ts`、`src/indexers.yaml`、`src/package-templates/`、`src/site/` | 你或 Agent，仅在当前 Route 要求修改配置时 | 是 |
-| `src/knowledge-map.yaml` | CLI，依据 Agent 提交的导航调整 | 是 |
+| `src/knowledge-map.yaml` | CLI，根据 Agent 提交的导航改动更新 | 是 |
 | `sources/` 中的登记信息、快照、笔记和摘要 | CLI | 是——但 `sources/repo/` 下的仓库检出除外，它们会根据 `index.yaml` 恢复 |
 | `knowledge/` | CLI，在你批准一次 Review 时 | 是 |
 | `translations/`、`changelog.yaml`、`CHANGELOG.md` | CLI，依据 Agent 写好的翻译和变更说明 | 是 |
@@ -109,11 +109,11 @@ my-knowledge/
 | `.tmp/install/` | 安装依赖时使用的临时文件 |
 | `.tmp/context-plans/<date-slug>/` | 规划项目的调研材料：`repos/`、`documents/`、`research/`、`stage-inputs/` |
 
-`.tmp/context-runtime/` 并不是进度的唯一记录。交付成功后，CLI 会移除已完成任务的状态，而已批准的知识连同 `structure.yaml` 会保留后续更新所需的信息。它不存在，绝不意味着已接受的工作可以重放。规划项目还会在 Git 根目录保留 `PLAN-YYYYMMDD-slug.md`，并提交到 Git，以便工作可以恢复；参见[分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
+`.tmp/context-runtime/` 并不是进度的唯一记录。交付成功后，CLI 会移除已完成任务的状态，而已批准的知识连同 `structure.yaml` 会保留后续更新所需的信息。它不存在，绝不意味着已完成的工作可以重新执行。规划项目还会在 Git 根目录保留 `PLAN-YYYYMMDD-slug.md`，并提交到 Git，以便工作可以恢复；参见[分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->
-## 保持健康的规则
+## 保持工作区健康的规则
 
 - **不要手动编辑 CLI 管理的状态。** `sources/`、`knowledge/`、`dist/` 和 `.tmp/context-runtime/` 只能通过 Context 命令修改。要修改页面，请申请[修订](../../sop/review-and-revision/revising-a-page.md)。
 - **每个目录只有一个知识工作区。** 不要创建隐藏的第二个知识工作区，也不要把修订、任务或 `.tmp/` 文件与同样是知识工作区的父目录混在一起。
