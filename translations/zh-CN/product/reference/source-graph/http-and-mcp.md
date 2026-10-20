@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
   source_digest: 67c87b13afe434cc042094ab8f6d6f4f1375903cf8dcc2dcc13a2d58e334180d
-  translated_at: 2026-10-14T02:20:57.619Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # HTTP 与 MCP 接口
 
 <!-- context:section id="goal" -->
-所有路由都位于实例源地址的 `/sourcegraph` 前缀下。查询路由在 `/sourcegraph/v1/` 下（搜索为 `/sourcegraph/api/search`），管理路由在 `/sourcegraph/api/admin/` 下，MCP 端点为 `/sourcegraph/mcp`。两类接口调用的是同一个服务，因此版本、限制和错误码完全一致。如何选择凭据，见[接入](../../../sop/source-graph/connecting.md)。
+所有路由都位于实例源地址的 `/sourcegraph` 前缀下。查询路由在 `/sourcegraph/v1/` 下（搜索为 `/sourcegraph/api/search`），管理路由在 `/sourcegraph/api/admin/` 下，MCP 端点为 `/sourcegraph/mcp`。两类接口调用的是同一个服务，因此版本、限制和错误码完全一致。如何选择凭据，见 [接入](../../../sop/source-graph/connecting.md)。
 
 > **可选服务。** Context 并不依赖 Source Graph 或它的 MCP 服务。两者都没有安装或配置时，Context 的查询技能仍会通过浅层、稀疏的部分克隆加 grep 在本地读取代码证据；默认的 `auto` 模式只在有可用的已授权实例时才优先使用 Source Graph。
 <!-- /context:section -->
@@ -39,7 +39,7 @@ translation:
 | GET | `/v1/repo/commits` | — | 与 availability 相同 |
 | GET | `/v1/repo/plugins` | —（可选 `revision`） | 该提交中发现的仓库插件，不会运行它们 |
 | POST | `/v1/repo/resolve` | `{"Revision"}` | 解析出的固定提交及其是否已建索引 |
-| POST | `/api/search` | `{"Revision","Pattern","FixedStrings","IgnoreCase","Glob","Paths","Output"}` | 搜索命中和 `Meta`；见[搜索语法](query-syntax.md) |
+| POST | `/api/search` | `{"Revision","Pattern","FixedStrings","IgnoreCase","Glob","Paths","Output"}` | 搜索命中和 `Meta`；见 [搜索语法](query-syntax.md) |
 | POST | `/v1/repo/read` | `{"Revision","Path","StartLine","EndLine"}` | 一个文件的指定行范围 |
 | POST | `/v1/repo/list` | `{"Revision","Path","First","After"}` | 单个目录的直接子项 |
 | POST | `/v1/repo/diff` | `{"Base","Head","Paths","First","After"}` | 两个提交之间变更的文件与补丁 |
@@ -69,7 +69,7 @@ translation:
 | POST | `/api/admin/v1/repo/jobs/cancel` | `{"job_id"}` | 取消任务 |
 | POST | `/api/admin/v1/repo/purge` | `If-Match` 版本 | 清除已停用且已删除的仓库 |
 
-登记字段见[登记仓库](../../../sop/source-graph/registering-repositories.md)。
+登记字段见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
 <!-- /context:section -->
 
 <!-- context:section id="other" -->

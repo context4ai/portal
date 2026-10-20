@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
   source_digest: 4763752f37eec2501b073b902d04acccbc9fde9852806fc9c496e3dc13a8186b
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 笔记与会话摘要
@@ -17,7 +17,7 @@ translation:
 | --- | --- |
 | 你手头已有的文本：摘录、摘要、观察记录、检查清单 | 笔记 |
 | Agent 对话中确定下来的内容：决策、约束、未决问题 | 会话摘要 |
-| Context 能自行读取的文档 | 改用[文档目录](document-directories.md)或[飞书文档](lark-documents.md)来源 |
+| Context 能自行读取的文档 | 改用 [文档目录](document-directories.md)或 [飞书文档](lark-documents.md)来源 |
 <!-- /context:section -->
 
 <!-- context:section id="prepare" -->
@@ -82,7 +82,7 @@ Agent 以实际的对话日期命名摘要，若未知则使用采集日期，�
 
 保存不会启动任何知识工作。开启新的读者主题的摘要会经过常规的规划、写作和审核；只用于支撑已有页面的摘要会被纳入该页面的阅读范围，页面仍保留其主要来源。无论哪种情况，知识都会把结论转化为回答、讲解和步骤，而不是会议纪要，Context 也会记录哪些章节引用了该摘要。
 
-问答之后的完整流程见[从对话中采集](../updates-and-versions/capturing-from-conversations.md)。
+问答之后的完整流程见 [从对话中采集](../updates-and-versions/capturing-from-conversations.md)。
 <!-- /context:section -->
 
 <!-- context:section id="writing" -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: bc31d513-0dd9-4f53-b6e2-953feada799a
   source_digest: 814cb1408beadfd536617d88c9e7fc291a9474d8c9e92a984be8003307cc6dab
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 版本、Changelog 与恢复
@@ -78,5 +78,5 @@ translation:
 - 该版本使用的来源——仓库版本、文档快照和附件。丢失的旧快照绝不会用较新的远程内容代替，仍然可用的来源也不会重新拉取。
 - 现有产出会被报告为已过时，直到你要求重新构建。恢复旧配置不会启动完整的重新索引；如果旧格式不兼容，Agent 会告诉你需要做出的选择，而不是悄悄重写页面。
 
-随后，Agent 会对照目标检查恢复后的文件，并确认没有无关内容发生变化。如果某些来源无法恢复，它会报告部分结果，并说明缺少哪些访问权限或版本。恢复本身不会提交或推送；满意后请让 Agent 提交恢复后的状态——参见[开始新任务与保存工作](../workspace-maintenance/preparing.md)。
+随后，Agent 会对照目标检查恢复后的文件，并确认没有无关内容发生变化。如果某些来源无法恢复，它会报告部分结果，并说明缺少哪些访问权限或版本。恢复本身不会提交或推送；满意后请让 Agent 提交恢复后的状态——参见 [开始新任务与保存工作](../workspace-maintenance/preparing.md)。
 <!-- /context:section -->

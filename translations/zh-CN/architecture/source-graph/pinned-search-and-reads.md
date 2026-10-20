@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: c1591da5-5eaf-4cf9-86dc-976fc5b2bc40
   source_digest: f841eeff5e6267b747196adf0897fa4fbaeabcc828f5566e2594918325ee3e2e
-  translated_at: 2026-10-12T17:45:55.217Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 固定版本的搜索与阅读
@@ -88,5 +88,5 @@ sequenceDiagram
 
 服务端时间是引擎报告的搜索耗时。本地工具运行在 Apple M4 Pro 上，页缓存已预热。端到端延迟还需加上网络往返——同一地域内为几毫秒。仓库越大，差距越明显；而且该服务还省去了把每个仓库按正确版本检出的需要。
 
-速度取决于本地性：每个实例都把自己的 Git 镜像和索引保存在自己的磁盘上，因此应把实例部署在与调用它的 Agent 相同的地域。Context 自己关于使用与不使用 Source Graph 作答的对比测量，见[知识检索](../benchmark/knowledge-retrieval.md)。
+速度取决于本地性：每个实例都把自己的 Git 镜像和索引保存在自己的磁盘上，因此应把实例部署在与调用它的 Agent 相同的地域。Context 自己关于使用与不使用 Source Graph 作答的对比测量，见 [知识检索](../benchmark/knowledge-retrieval.md)。
 <!-- /context:section -->

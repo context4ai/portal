@@ -7,13 +7,13 @@ translation:
   locale: zh-CN
   artifact_ref: 1a8d06d5-bb91-453a-ac52-48ad4e4edc93
   source_digest: 6732ae9c2e36204a0524445224798d7be56b79bb9a2b1271d403eba57ec4e492
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 规范
 
 <!-- context:section id="scope" -->
-本页汇总 `@c4a/agent-graph@0.3.1` 所实现的 `agent-graph.*.v1` 协议。包内 `schemas/` 目录随附的 JSON Schema 是文件结构的规范依据；本页列出字段和行为规则。设计背后的考量见[核心模型](../../../architecture/agent-graph/core-model.md)；分步用法见[编写 Graph](../../../sop/agent-graph/authoring-graphs.md)。
+本页汇总 `@c4a/agent-graph@0.3.1` 所实现的 `agent-graph.*.v1` 协议。包内 `schemas/` 目录随附的 JSON Schema 是文件结构的规范依据；本页列出字段和行为规则。设计背后的考量见 [核心模型](../../../architecture/agent-graph/core-model.md)；分步用法见 [编写 Graph](../../../sop/agent-graph/authoring-graphs.md)。
 
 | Schema 标识 | 对象 |
 | --- | --- |
@@ -223,7 +223,7 @@ Route（`agent-graph.route.v1`）携带 `revision` 和 `routeId`、Graph、节�
 
 Run（`agent-graph.run.v1`）是可选的、由宿主持有的记忆：包括 Provider、Graph、入口、可选的知识工作区、Facts、每个状态键的最新 Outcome、会话授权、只追加的编号事件和时间戳。检查点是不含授权的已校验副本；恢复会把它复制到显式指定的路径，清除授权并追加一条事件。不存在默认的状态目录。
 
-Graph 测试（`agent-graph.test.v1`）声明 `state`（`facts`、`outcomes`、`authorities`）和 `expect` 断言，绝不执行 Action，也不调用模型；见[测试与发布](../../../sop/agent-graph/testing-and-publishing.md)。
+Graph 测试（`agent-graph.test.v1`）声明 `state`（`facts`、`outcomes`、`authorities`）和 `expect` 断言，绝不执行 Action，也不调用模型；见 [测试与发布](../../../sop/agent-graph/testing-and-publishing.md)。
 
 `build` 会校验所有可达内容，复制可达文件，写入规范化的 `provider.yaml` 以及包含 catalog、文件摘要、Graph 依赖索引和整体摘要的 `manifest.json`；它会排除测试，拒绝覆盖源文件，并拒绝任何包含源绝对路径的文件。加载产物包时，会拒绝摘要不匹配、文件缺失或多余、catalog 不完整、标识不匹配以及依赖索引不一致的情况。
 <!-- /context:section -->
@@ -231,5 +231,5 @@ Graph 测试（`agent-graph.test.v1`）声明 `state`（`facts`、`outcomes`、`
 <!-- context:section id="compat" -->
 ## 兼容性
 
-在 `@c4a/agent-graph` 达到 `1.0.0` 之前，v1 系列处于公开草案定稿阶段：`0.x` 版本可以收紧某个必填字段或不变量，但必须记录这一破坏性变更，并更新所有随附的模板、示例和测试。`0.2.0` 使 Action 和 Gate 的 `reasonCode` 成为必填，并用显式的 Graph 和 Entry 字段补全了 Skill 绑定；`0.3.0` 用相互独立的 file、Graph-action 和 Host-action 协议取代了带编号的 Resource 和 Resource Location 协议。`1.0.0` 之后，不兼容的语义需要新的 schema 版本，兼容的新增内容需要已定义的扩展点。宿主应根据 schema 标识、状态码、原因码和诊断码进行分支判断——绝不依据人类可读文本。各版本的变更见[版本迁移](migration.md)。
+在 `@c4a/agent-graph` 达到 `1.0.0` 之前，v1 系列处于公开草案定稿阶段：`0.x` 版本可以收紧某个必填字段或不变量，但必须记录这一破坏性变更，并更新所有随附的模板、示例和测试。`0.2.0` 使 Action 和 Gate 的 `reasonCode` 成为必填，并用显式的 Graph 和 Entry 字段补全了 Skill 绑定；`0.3.0` 用相互独立的 file、Graph-action 和 Host-action 协议取代了带编号的 Resource 和 Resource Location 协议。`1.0.0` 之后，不兼容的语义需要新的 schema 版本，兼容的新增内容需要已定义的扩展点。宿主应根据 schema 标识、状态码、原因码和诊断码进行分支判断——绝不依据人类可读文本。各版本的变更见 [版本迁移](migration.md)。
 <!-- /context:section -->

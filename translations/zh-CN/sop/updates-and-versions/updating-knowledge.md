@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
   source_digest: 9566545daa4e0a77daa1c1e4677b7274646b3034db3b5a68c05663d730996a43
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 更新知识
@@ -33,7 +33,7 @@ billing-service 已合入 release-2.4，请帮我找到受影响的知识并更�
 这次只处理 invoicing 和 refunds 两个模块。
 ```
 
-如果只是单个页面的文本有误，更适合用[修订](../review-and-revision/revising-a-page.md)。如果知识工作区中还有其他未完成的工作，Agent 会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。
+如果只是单个页面的文本有误，更适合用 [修订](../review-and-revision/revising-a-page.md)。如果知识工作区中还有其他未完成的工作，Agent 会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。
 <!-- /context:section -->
 
 <!-- context:section id="acquire" -->
@@ -59,15 +59,15 @@ Agent 首先找出每一个引用了变更材料的页面。这是有意放宽�
 <!-- context:section id="review" -->
 ## 审核与完成
 
-变更的页面会出现在审核报告中，变更的区块与之前的文本并排展示。按[阅读审核报告](../review-and-revision/reading-review-reports.md)中的方式批准、评论或要求修改。
+变更的页面会出现在审核报告中，变更的区块与之前的文本并排展示。按 [阅读审核报告](../review-and-revision/reading-review-reports.md)中的方式批准、评论或要求修改。
 
 当每个选中的修订都已批准、已批准的页面已应用且产物已重新构建——或 Agent 得出无需变更的结论时，更新才算完成。只有到这时，新版本才会被记录为已处理。获取新版本时或第一个页面获批后都不会记录，因此中断的更新可以恢复执行，而不会丢失剩余工作的进度。
 
-在保持不变的页面中，仅在新版本里移动了位置的引用会被自动更新，验证不再报告它们。如果被引用的文本确实发生了变化或已无法确认，Agent 会在更新完成时列出这些页面；它们的引用仍指向之前的位置。对列出的页面中需要处理的，用[修订](../review-and-revision/revising-a-page.md)逐一修正。
+在保持不变的页面中，仅在新版本里移动了位置的引用会被自动更新，验证不再报告它们。如果被引用的文本确实发生了变化或已无法确认，Agent 会在更新完成时列出这些页面；它们的引用仍指向之前的位置。对列出的页面中需要处理的，用 [修订](../review-and-revision/revising-a-page.md)逐一修正。
 <!-- /context:section -->
 
 <!-- context:section id="only-needed" -->
 ## 只需要更新所用的来源
 
-更新时无需检出不相关的仓库。笔记、仅涉及文档的变更、措辞修正或导航变更完全不需要代码。当所需代码缺失时，Agent 只会在记录的提交上恢复那一个仓库；参见[代码仓库](../registering-sources/code-repositories.md#checkouts-on-another-machine)。
+更新时无需检出不相关的仓库。笔记、仅涉及文档的变更、措辞修正或导航变更完全不需要代码。当所需代码缺失时，Agent 只会在记录的提交上恢复那一个仓库；参见 [代码仓库](../registering-sources/code-repositories.md#checkouts-on-another-machine)。
 <!-- /context:section -->

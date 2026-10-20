@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: a68b141a-1f2f-449b-97e2-7942fecaf71d
   source_digest: 995fca6a8a2250cf646f78955fe66426b73a1f05b2c77dfcf3bcaa866cb82a9e
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 分阶段规划大型项目
 
 <!-- context:section id="goal" -->
-大型知识项目拆成边界明确的小块更容易做好。**规划模式**，即 `context-plan` Skill，会调研整个范围，提出一份把工作拆分为若干**阶段**的 **PLAN 报告**，然后一次一个阶段地交给普通工作流运行。每个阶段仍有自己的[开工报告](start-reports.md)、撰写和审核。
+大型知识项目拆成边界明确的小块更容易做好。**规划模式**，即 `context-plan` Skill，会调研整个范围，提出一份把工作拆分为若干**阶段**的 **PLAN 报告**，然后一次一个阶段地交给普通工作流运行。每个阶段仍有自己的 [开工报告](start-reports.md)、撰写和审核。
 
 ```mermaid
 flowchart TD
@@ -88,7 +88,7 @@ Agent 在不进入 Git 的临时空间中工作。它从目录列表、版本和
 <!-- context:section id="review" -->
 ## 谁来审核 PLAN
 
-默认情况下，Agent 会请你审核 PLAN，在全托管模式下也是如此。你可以在某个任务中把这项审核交给 Agent（参见[全托管模式](managed-mode-and-review-policy.md)）；Agent 随后会阅读整份报告，检查范围、阶段限制、依赖、重叠、证据缺口和发布设置，并在记录决定之前补齐缺失的部分。文章审核是独立的：委托 PLAN 审核不会改变页面的审核方式。
+默认情况下，Agent 会请你审核 PLAN，在全托管模式下也是如此。你可以在某个任务中把这项审核交给 Agent（参见 [全托管模式](managed-mode-and-review-policy.md)）；Agent 随后会阅读整份报告，检查范围、阶段限制、依赖、重叠、证据缺口和发布设置，并在记录决定之前补齐缺失的部分。文章审核是独立的：委托 PLAN 审核不会改变页面的审核方式。
 
 Agent 还会确认你希望如何获知进度：所有阶段完成后汇报一次，还是每个阶段后都汇报——对于阶段汇报，还要确认是自动继续还是等待你的回复。仅调研的请求会在报告后停下；执行计划需要你明确同意。
 <!-- /context:section -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: b807271a-bf7a-483f-b571-b9b0c5dc0dd6
   source_digest: af4d0e3337aa73261dca5c041eedb60f76cb5abc0f8570c1580fc57f2d1e1e07
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 链接已有的文档与 Skill
@@ -24,8 +24,8 @@ flowchart LR
 <!-- context:section id="boundaries" -->
 ## 何时改用其他方式
 
-- **其他仓库或外部安装的 Skill** 不属于仓库内容，请将它们声明为[外部入口](external-entrances.md)。
-- **为特定读者改写选定的文档**属于普通生产：把这些文档登记为[文档来源](document-directories.md)，由 Agent 撰写、你来审核页面。仓库内容从不会被整体镜像到知识中。
+- **其他仓库或外部安装的 Skill** 不属于仓库内容，请将它们声明为 [外部入口](external-entrances.md)。
+- **为特定读者改写选定的文档**属于普通生产：把这些文档登记为 [文档来源](document-directories.md)，由 Agent 撰写、你来审核页面。仓库内容从不会被整体镜像到知识中。
 <!-- /context:section -->
 
 <!-- context:section id="register" -->
@@ -70,7 +70,7 @@ flowchart LR
 <!-- context:section id="registry" -->
 ## 登记保存在哪里
 
-Skill 把登记保存在知识工作区根目录的 `repo-content.yaml` 中，路径相对于 Git 根目录；你可以让它为条目分组，或跳过某个条目内的文件。它旁边的 `repo-content/` 是原件的视图，不是第二个编辑位置；请编辑原件。这些文件在工作区其他文件中的位置见 [Context 知识工作区](../../product/getting-started/knowledge-workspace.md)；该 Skill 做什么、不做什么，列在[技能清单](../../product/reference/context/skills.md)参考中。
+Skill 把登记保存在知识工作区根目录的 `repo-content.yaml` 中，路径相对于 Git 根目录；你可以让它为条目分组，或跳过某个条目内的文件。它旁边的 `repo-content/` 是原件的视图，不是第二个编辑位置；请编辑原件。这些文件在工作区其他文件中的位置见 [Context 知识工作区](../../product/getting-started/knowledge-workspace.md)；该 Skill 做什么、不做什么，列在 [技能清单](../../product/reference/context/skills.md)参考中。
 <!-- /context:section -->
 
 <!-- context:section id="fix" -->

@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: ff6d102c-14a5-4f8b-a8fd-8464060dde1d
   source_digest: 3a15d1c5ce2234aa152feaf73ed1f19a40f0aff26dac482a67f58afdaacee681
-  translated_at: 2026-10-15T06:25:34.171Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 包模板
 
 <!-- context:section id="goal" -->
-知识包会把已批准的知识投影到 `dist/<package-name>/`。本页是 API 与模板参考；如何选择输出，见[知识包](../../../sop/outputs-and-sites/knowledge-packages.md)；如何编辑模板，见[定制输出模板](../../../sop/outputs-and-sites/custom-output-templates.md)。
+知识包会把已批准的知识投影到 `dist/<package-name>/`。本页是 API 与模板参考；如何选择输出，见 [知识包](../../../sop/outputs-and-sites/knowledge-packages.md)；如何编辑模板，见 [定制输出模板](../../../sop/outputs-and-sites/custom-output-templates.md)。
 
 ```ts
 import { kbPackage, llmsPackage } from "@c4a/context";
@@ -121,7 +121,7 @@ Markdown 中的 section 标记只包含 ID：`<!-- context:section id="usage" --
 <!-- context:section id="select" -->
 ## 选择顺序
 
-1. `collections`——内部知识分类，例如 `architecture`、`sop`、`standards`、`feats`（见[知识分类](./knowledge-collections.md)）。
+1. `collections`——内部知识分类，例如 `architecture`、`sop`、`standards`、`feats`（见 [知识分类](./knowledge-collections.md)）。
 2. `okfRoots`——映射后的输出根目录：`wikis`、`guides`、`rules`、`feats`。
 3. `include`——相对于 `knowledge/` 的路径模式。
 4. `exclude`——在前面的过滤之后移除匹配项。

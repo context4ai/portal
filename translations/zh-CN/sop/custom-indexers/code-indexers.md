@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
   source_digest: cb17ecfbbba70d82adeff39b6ba498a3e9db769335c18d631f34b70b2f44e528
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 编写 Indexer 指引
 
 <!-- context:section id="goal" -->
-当你在编写或审阅自己的 Indexer 时阅读本页，通常是在[创建 Indexer](creating-an-indexer.md) 中请创建器生成第一版之后。Indexer 教 Agent 如何阅读某一种技术或某一类文档：规划期间可以低成本查看什么，讲解之前需要完整阅读什么，以及如何围绕读者问题组织文章。它指导调研和撰写；接下来做什么仍由 Context 工作流决定。
+当你在编写或审阅自己的 Indexer 时阅读本页，通常是在 [创建 Indexer](creating-an-indexer.md) 中请创建器生成第一版之后。Indexer 教 Agent 如何阅读某一种技术或某一类文档：规划期间可以低成本查看什么，讲解之前需要完整阅读什么，以及如何围绕读者问题组织文章。它指导调研和撰写；接下来做什么仍由 Context 工作流决定。
 
 两类 Indexer 遵循相同的节奏：先看低成本的骨架或大纲，再由你在开工报告中确认读者主题，然后完整阅读每篇文章所需的来源。下面两节分别参照自带的 `context-code-indexer` 和 `context-markdown-indexer`。
 
@@ -60,13 +60,13 @@ flowchart LR
 
 脚本是可选的，只服务于一个具体的、重复的任务。好的辅助工具接受明确的已授权路径和有限的选项，保持源文件只读，返回简洁的输出或把文件写到提供的临时区域，并在预算内停止。它报告已检查和未检查的范围，能继续时返回续接点，并为不完整的计数加上标注。
 
-它不得执行仓库代码、读取凭据、遍历无关目录或联系外部服务。不支持的语法和未完成的遍历要与零匹配分开报告。完整解析属于选定文章的撰写阶段；如果某个结构性事实需要真正的解析器，请使用[代码抽取](../../architecture/knowledge/code-extraction.md)中介绍的内置抽取器。
+它不得执行仓库代码、读取凭据、遍历无关目录或联系外部服务。不支持的语法和未完成的遍历要与零匹配分开报告。完整解析属于选定文章的撰写阶段；如果某个结构性事实需要真正的解析器，请使用 [代码抽取](../../architecture/knowledge/code-extraction.md)中介绍的内置抽取器。
 <!-- /context:section -->
 
 <!-- context:section id="writing" -->
 ### 撰写指引
 
-开工报告确认后（参见[确认开工报告](../planning-and-production/start-reports.md)），Agent 会阅读每篇文章所需的源码。引导它讲解契约、状态变化、失败行为和集成点——模块负责什么、如何进入、交出什么。解析可以定位声明，但不能证明运行时行为。保留表达式原样而不执行项目代码，把声明的默认值与实现的默认值分开，并写明未知之处。
+开工报告确认后（参见 [确认开工报告](../planning-and-production/start-reports.md)），Agent 会阅读每篇文章所需的源码。引导它讲解契约、状态变化、失败行为和集成点——模块负责什么、如何进入、交出什么。解析可以定位声明，但不能证明运行时行为。保留表达式原样而不执行项目代码，把声明的默认值与实现的默认值分开，并写明未知之处。
 
 Indexer 可以为路由组或组件这类功能类别建议一套重复使用的大纲，但不能规定固定的页数：组件手册可能需要逐个组件阅读，而每个符号一页或为大模块写一个大杂烩页面都是错误的。每个小节引用的真实源码区域最多来自三个不同文件，总计最多八个区域；如果一段讲解需要不同的证据，就把它拆开。
 <!-- /context:section -->
@@ -141,7 +141,7 @@ Indexer 处理的是已授权、已采集的文档。采集证明的是哪些内
 - 拆分不同的读者任务或生命周期；合并回答同一任务的来源。像“运维”这样宽泛的共用标签，并不意味着其下所有流程都要合并成一篇摘要。
 - 文件数和标题数都不决定文章数。一份文档可以支撑多篇文章，多份文档也可以支撑一篇文章。
 
-年代、归档位置和文字是否精炼，既不能证明权威性，也不能证明无关；要比较实质内容、受众和适用范围。第一版计划会展示在开工报告中，并在批量撰写之前等待你的反馈，全托管模式下也是如此；参见[确认开工报告](../planning-and-production/start-reports.md)。
+年代、归档位置和文字是否精炼，既不能证明权威性，也不能证明无关；要比较实质内容、受众和适用范围。第一版计划会展示在开工报告中，并在批量撰写之前等待你的反馈，全托管模式下也是如此；参见 [确认开工报告](../planning-and-production/start-reports.md)。
 <!-- /context:section -->
 
 <!-- context:section id="doc-writing" -->
@@ -196,5 +196,5 @@ without a recorded decision is not adopted behavior.
 
 覆盖该 Skill 声称支持的文档形式：普通的一对一文章、综合多份文档的文章、复用已有主题、小节修复、来源行变化、链接和图片，以及材料缺失。既要检查对来源的忠实度，也要检查最终页面；保持示例匿名，并验证打包后的链接。
 
-创建流程参见[创建 Indexer](creating-an-indexer.md)，同时使用多个 Skill 参见[选择、替换与停用 Indexer](providers-and-customization.md)。
+创建流程参见 [创建 Indexer](creating-an-indexer.md)，同时使用多个 Skill 参见 [选择、替换与停用 Indexer](providers-and-customization.md)。
 <!-- /context:section -->

@@ -5,15 +5,15 @@ translation:
   locale: zh-CN
   artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
   source_digest: e364bae889d2e4797b840015ad044adec76d6cfc2035a3095a19b51a968da340
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 选择添加材料的方式
 
 <!-- context:section id="goal" -->
-在 Agent 写任何内容之前，它需要知道可以阅读和引用哪些材料。本小节介绍如何添加每一类材料。添加来源只记录哪些内容在范围内；它并不决定要写什么，那是之后在[开工报告](../planning-and-production/start-reports.md)中决定的。
+在 Agent 写任何内容之前，它需要知道可以阅读和引用哪些材料。本小节介绍如何添加每一类材料。添加来源只记录哪些内容在范围内；它并不决定要写什么，那是之后在 [开工报告](../planning-and-production/start-reports.md)中决定的。
 
-添加大量来源并不等同于生产一个大型知识库。如果工作涉及超过 30 份文档，或需要对两个及以上仓库做实质性调研，Agent 会先把它分阶段规划；参见[分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
+添加大量来源并不等同于生产一个大型知识库。如果工作涉及超过 30 份文档，或需要对两个及以上仓库做实质性调研，Agent 会先把它分阶段规划；参见 [分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
 <!-- /context:section -->
 
 <!-- context:section id="material-kinds" -->

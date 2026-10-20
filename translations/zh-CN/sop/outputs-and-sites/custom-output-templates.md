@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 145efe1c-4969-48ef-8514-1e016773a775
   source_digest: 3466d517ffa89c138ea3b281cf44bc6a737b8ee8c4662d08aab388e5d42e32ba
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 定制输出模板
@@ -77,7 +77,7 @@ src/package-templates/
 | `{{knowledgeTreeNodes}}`、`{{knowledgeTree}}` | 嵌套树，或其 Markdown 预览 |
 | `{{wikisRoot}}` … `{{featsRoot}}` | 相对于知识包的根路径，用于 Skill 内的链接 |
 
-包括循环、条件和辅助函数在内的完整列表见[模板变量](../../product/reference/context/template-variables.md)。你自己的值可以作为自定义变量传给模板。
+包括循环、条件和辅助函数在内的完整列表见 [模板变量](../../product/reference/context/template-variables.md)。你自己的值可以作为自定义变量传给模板。
 <!-- /context:section -->
 
 <!-- context:section id="skill" -->
@@ -94,5 +94,5 @@ src/package-templates/
 - **链接必须有效。** 每个根索引和生成的子索引中的链接都必须能在知识包内解析；失效的链接会被报告。
 - **在源头修复。** 修复模板、已批准的页面或知识包声明，然后重新构建；永远不要修补 `dist/`。
 
-这些检查覆盖的是结构，而不是选中的知识对你的读者是否有意义，请自己检查产出。模板 API 见[包模板](../../product/reference/context/package-templates.md)。
+这些检查覆盖的是结构，而不是选中的知识对你的读者是否有意义，请自己检查产出。模板 API 见 [包模板](../../product/reference/context/package-templates.md)。
 <!-- /context:section -->
