@@ -1,63 +1,46 @@
 ---
 title: Reading Code Evidence Remotely
-description: Let an Agent read cited code and knowledge at their pinned commits
-  through a read-only code service, with the context-evidence plugin attaching
-  source references — no clone needed.
+description: Let your Agent read cited knowledge and code at their pinned
+  commits through Source Graph, with each section's sources attached, so answers
+  are checked against the original code without cloning.
 type: Guide
-timestamp: 2026-10-13T01:13:02.602Z
+timestamp: 2026-10-19T18:55:52.431Z
 ---
 # Reading Code Evidence Remotely
 
 <!-- context:section id="goal" -->
+Answering from knowledge sometimes needs the code behind it. Cloning repositories into every Agent sandbox is slow; instead, your Agent can read both the knowledge workspace and the source code through Source Graph, a read-only code service, at exactly the commit the knowledge cites, and get each section's sources attached to what it reads.
 
-Answering from knowledge sometimes needs the code behind it. Cloning repositories into every Agent sandbox is slow; instead, the query Skill can read both the Context knowledge workspace and the source code through a read-only code service, Source Graph, at exactly the commit the knowledge cites. The optional **context-evidence** plugin, a WebAssembly module that runs inside that service, attaches each knowledge section's recorded source references to the text the Agent reads.
-
-```mermaid
-flowchart LR
-  agent["Agent with<br/>context-inspect-search"] -->|read knowledge at commit| sg["Source Graph<br/>read-only MCP"]
-  sg --> wasm["context-evidence plugin<br/>joins sections to references"]
-  wasm -->|text + references| agent
-  agent -->|read cited code at its commit| sg
-```
-
-> **Source Graph is optional.** You do not need to install or configure it. Without a service, the query Skill still works well by reading code locally: it makes a shallow, sparse partial clone of the recorded commit and searches it with grep or rg. In the default `auto` mode it prefers Source Graph only when an authorized instance is available.
-
+> **Source Graph is optional.** You do not need to install or configure it. Without it, your Agent still checks answers against code by reading it locally: it makes a small partial clone of the cited commit and searches that. By default it uses Source Graph only when an authorized instance is connected.
 <!-- /context:section -->
 
 <!-- context:section id="enable" -->
 ## Turn it on
 
-1. Connect your Agent host to a read-only Source Graph MCP service that covers the knowledge workspace and its source repositories. Endpoints and credentials belong to the host configuration, never to the Skill or the knowledge.
-2. Choose the access policy with `CONTEXT_QUERY_ACCESS_MODE`:
+1. **Connect your Agent host to Source Graph** over MCP, naming the server `context-sourcegraph` so the query Skill can find it. [Connecting](../source-graph/connecting.md) walks through the Connect page and the credential you may need. The instance must cover the knowledge workspace and its source repositories; if one is missing, see [Registering Repositories](../source-graph/registering-repositories.md).
+2. **Choose how strictly to read remotely.** By default your Agent reuses suitable local material, otherwise prefers Source Graph before any local checkout. You can also have it read only through Source Graph and never clone, even on failure, or only locally with no service at all. An explicit request in your conversation, such as "work offline", always wins. The setting comes from your Agent host or Bot configuration; [Asking Questions](asking-questions.md) lists it with the other query settings.
 
-| Value | Behavior |
-| --- | --- |
-| `auto` (default) | Reuse suitable local material, otherwise prefer the remote service before any local checkout |
-| `remote` | Read knowledge and code only through the service; never clone automatically, even on failure |
-| `local` | Local retrieval only; no service required |
-
-An explicit request to work locally or offline always wins.
+Endpoints and credentials belong to your Agent host's configuration, never to the Skill or the knowledge itself. On the Context side nothing else needs configuring: the evidence plugin ships compiled with the CLI.
 <!-- /context:section -->
 
 <!-- context:section id="read" -->
-## What happens on a read
+## What you get
 
-- The Agent reads knowledge pages from the configured knowledge workspace at one pinned commit, searching within `knowledge/**`.
-- With the plugin enabled — it is on by default for `read` and `read_many` where the service supports that — each returned file carries a `references:` list: the recorded sources of the sections in that range, as commit-specific URLs where the remote supports it. The Agent reuses them instead of looking up the structure and source registries.
-- For code, the Agent passes the exact repository and the recorded full commit as the revision, with repository-root-relative paths, and reads only the ranges that decide the answer.
-- The knowledge workspace's commit and each source's recorded commit are kept separate; neither is replaced by a default branch.
+- **Answers checked at the cited commit.** Your Agent reads the knowledge pages at one pinned commit, then reads only the code ranges that decide the answer at each source's recorded commit. The knowledge commit and each source commit are kept separate, and neither is swapped for a newer default branch.
+- **Sources attached to every page read.** Each knowledge page your Agent reads comes back with the sources its sections were written from, as commit-specific links where the code host supports it, so the Agent can go straight to the code.
+- **No clone time.** Nothing is checked out in the Agent's sandbox.
 <!-- /context:section -->
 
 <!-- context:section id="limits" -->
-## What it does not do
+## How it works and what can go wrong
 
-The plugin joins existing section markers, `knowledge/structure.yaml` and source registrations. It does not verify source contents, search code, restore sources or modify knowledge, and a reference is not proof that the source was reread in this query. It has no network, filesystem or process access; the host binds every read to the invocation's repository, immutable revision and readable scope.
+The sources come from the optional **context-evidence** plugin, a small read-only WebAssembly module that runs inside Source Graph and joins each section of a knowledge page to its recorded sources. It does not check source contents, search code or change knowledge, and a listed source shows where a statement came from; it does not prove the source was reread in this answer. [Evidence for Context](../../architecture/source-graph/evidence-for-context.md) explains the plugin in detail.
 
-When the service or plugin is unavailable, the Agent keeps the readable text and continues; in `auto` it may fall back to local retrieval, in `remote` it qualifies the affected claims instead of cloning.
+If Source Graph or the plugin is unavailable, your Agent keeps what it could read and continues. By default it may fall back to reading locally; if you asked for remote reading only, it qualifies the affected parts of the answer instead of cloning.
 <!-- /context:section -->
 
 <!-- context:section id="next" -->
 ## Running the service
 
-Deploying and connecting Source Graph itself — repositories, monorepo path groups, authentication and operations — is covered in the Source Graph guides. On the Context side, nothing else needs configuring: the evidence plugin ships compiled with the CLI.
+Registering repositories, monorepo path groups, self-hosting, authentication and day-to-day operations are covered in the other Source Graph guides. Start with [What Is Source Graph](../source-graph/introduction.md).
 <!-- /context:section -->

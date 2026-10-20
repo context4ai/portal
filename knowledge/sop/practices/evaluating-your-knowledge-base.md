@@ -1,18 +1,18 @@
 ---
 title: Evaluating Your Knowledge Base
-description: How to design an evaluation of a knowledge base end to end — what
-  to measure, building and freezing questions and per-question guides, running
-  and recording, blind grading, attribution and reporting — and how to hand the
+description: How to design an evaluation of a knowledge base on real questions —
+  what to measure, building and freezing questions and per-question guides,
+  running, blind grading, finding causes and reporting — and how to hand the
   design to an Agent.
 type: Guide
-timestamp: 2026-10-13T08:52:43.396Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Evaluating Your Knowledge Base
 
 <!-- context:section id="goal" -->
 Answer quality and speed depend on the knowledge — its accuracy, completeness and links to evidence — but also on the model, the runtime, retrieval planning and how tools are executed. A good evaluation compares your knowledge base against an alternative, or against its own earlier version, on real questions, and then uses the run traces to find out *why* answers were slow or wrong.
 
-This page is the design guide: follow it, or hand it to an Agent, to plan an evaluation for your own business. The exact grading, statistics and timing rules are in [Evaluation Scoring and Timing Standard](./evaluation-standard.md); a complete worked run is [Knowledge Retrieval Benchmark](../../architecture/benchmark/knowledge-retrieval.md).
+This page is the design guide: follow it, or hand it to an Agent, to plan an evaluation for your own business. The exact grading, calibration, statistics and timing rules are in [Scoring and Timing Standard](./evaluation-standard.md); a complete worked run is [Knowledge Retrieval Benchmark](../../architecture/benchmark/knowledge-retrieval.md).
 
 ```mermaid
 flowchart LR
@@ -75,20 +75,13 @@ Start a new task for every question and send every setup exactly the same text. 
 <!-- context:section id="run" -->
 ## Run and keep the evidence
 
-For every attempt, keep the start and end timestamps with time zone, task or session IDs and links, the complete final answer, the raw tool events, the status, timing precision and any anomaly. The first progress message is not the answer; even when a platform marks a task done, check that the answer was actually delivered.
-
-Keep the original receipts of platform failures, timeouts, cancellations, quota refusals and retries. An extra run is linked to the attempt it repeats; never replace a result with the best of several. If a question needs the user to supply more information, define one multi-turn protocol for every setup and label any ad hoc follow-up or resume.
-
-If the Agent under test is configured for a chat channel — for example it assembles reply cards — a direct-call evaluation may still run channel checks and card preparation. To measure answering alone, switch to a reply policy suited to direct calls, or record that overhead separately.
+For every attempt, keep the start and end timestamps, task or session links, the complete final answer and the raw tool events. Never replace a result with the best of several runs. What exactly to record — failures, retries, multi-turn follow-ups, timing events — and how to handle channel overhead when an Agent configured for a chat channel is called directly are in the "Timing" and "Tool calls, run evidence and channel overhead" sections of [Scoring and Timing Standard](./evaluation-standard.md).
 <!-- /context:section -->
 
 <!-- context:section id="grade" -->
 ## Grade blind, then review
 
-- Give each answer a random alias per question and record the seed. First-pass graders see neither the setup nor the time, tool count or earlier scores. Links or wording inside an answer can still reveal its origin, so call this *limited* anonymity.
-- Check material errors first, then whether the question was fully answered, and assign one of four grades — or *pending verification* when a deciding fact cannot yet be checked. The rules are in the [standard](./evaluation-standard.md).
-- Review every material error, pending item, partial resolution and borderline call, and spot-check full resolutions. Graders must give reasons someone else can check; length, style, tool order and whether the process is shown are not reasons on their own.
-- Check grader consistency with separate calibration samples: the same facts in a short and a long version, as a paragraph and as a table, and the same pair shown in swapped order should get the same grade. Without human-labelled samples, call it *internal consistency review*, not human calibration.
+Grade each answer without knowing which setup produced it, check material errors before coverage, assign one of four grades or *pending verification*, and review every error, pending item and borderline call. The grades, the review rules and how to check grader consistency with calibration samples are in the "Four grades and the grading order" and "Grader calibration and review" sections of [Scoring and Timing Standard](./evaluation-standard.md).
 <!-- /context:section -->
 
 <!-- context:section id="causes" -->
@@ -122,12 +115,12 @@ For the target business: a question document with origins, a separate scoring st
 <!-- context:section id="agent-prompt" -->
 ## Have an Agent design it
 
-An Agent can draft the whole plan if it reads this page and the standard first. Copy the prompt below, fill in the brackets, and review the result before any run:
+An Agent can draft the whole plan if it reads this page and the standard first. Copy the request below, fill in the brackets, and review the result before any run:
 
 ```text
-Read the "Evaluation" group of the Context documentation at
+Read the "Practices and Evaluation" group of the Context documentation at
 https://context4ai.org/context/llms.txt — "Evaluating Your Knowledge Base",
-"Evaluation Scoring and Timing Standard" and "Knowledge Retrieval Benchmark".
+"Scoring and Timing Standard" and "Knowledge Retrieval Benchmark".
 Then design an evaluation of [knowledge base or assistant] against [baseline or
 earlier version] for [business area].
 

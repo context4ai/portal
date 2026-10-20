@@ -1,65 +1,48 @@
 ---
-title: Using Packages in Agents
-description: What a knowledge package contains, how an Agent navigates it with
-  the bundled query Skill and search script, and how to make it available to
-  another Agent.
+title: Using a Package in Your Agent
+description: Give your Agent a knowledge package to use, know what it does with
+  the package when you ask questions, and follow citations back to the sources.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
-# Using Packages in Agents
+# Using a Package in Your Agent
 
 <!-- context:section id="goal" -->
-`context build` turns approved knowledge into a **knowledge package** under `dist/<name>/`: a plain folder of Markdown that any Agent can read, with a bundled Skill that teaches it how. The package is what you hand to Agents that should *use* the knowledge without the Context knowledge workspace that produced it.
-<!-- /context:section -->
+A knowledge package is a plain folder of Markdown with a bundled query Skill, built from approved knowledge. It lets your Agent *use* the knowledge without the knowledge workspace that produced it — handy when you consume knowledge someone else maintains, or want answers in a project that has no workspace of its own.
 
-<!-- context:section id="layout" -->
-## What is inside
-
-```text
-dist/<package>/
-├── AGENTS.md                       # how to use this package
-├── skills/knowledge-query/         # bundled query Skill and search script
-├── wikis/index.md                  # entities and relationships
-├── guides/                         # architecture, procedures, FAQs, decisions
-├── rules/                          # standards, constraints, test scenarios
-├── context-build-inventory.json    # package coverage
-├── context-site-map.json           # page → website URL
-└── others/assets/                  # images and files the pages use
-```
-
-Approved collections map to roots: `codeindex`, `business` and `product` go to `wikis/`; `architecture`, `sop`, `faq`, `decision` and `incident` go to `guides/`; `standards` and `test` go to `rules/`. A root that was not selected is simply absent.
-<!-- /context:section -->
-
-<!-- context:section id="query" -->
-## How the query Skill reads it
-
-The bundled `knowledge-query` Skill makes the Agent navigate before it searches:
-
-1. Classify the request: lookup, explanation, procedure, rule, relationship, detail or coverage.
-2. Open the matching root index and follow links to a likely page.
-3. Read only the needed sections; titles and descriptions select scope but do not support claims.
-4. Answer from visible section content and cite the page and heading.
-5. When the package lacks evidence, report the gap and what was checked.
-
-When indexes do not narrow the scope, it searches: `rg` for an exact name or error string, and for several terms or non-English phrases the bundled BM25 script:
-
-```bash
-node <knowledge-query Skill directory>/scripts/search.mjs --query '<terms>' --limit 8
-```
-
-Hits are leads; the Agent opens the page before answering.
+This page is for people using a package. What a package contains and how it is built is in [Knowledge Packages](../outputs-and-sites/knowledge-packages.md).
 <!-- /context:section -->
 
 <!-- context:section id="share" -->
-## Making it available
+## Giving your Agent a package
 
-A package can be used where it was built, from a global installation, or from any directory your Agent host can read. Point the Agent at the folder, or install `skills/knowledge-query` into the host's skills directory; if the Skill ends up outside the package tree, the search script takes `--root <package directory>`, or `--base <package collection>` to find the package by its inventory name.
+A package can be used where it was built, from a global installation, or from any folder your Agent host can read. There are two simple ways to make it available:
 
-Before publishing a package, replace or edit the generic query Skill template with your project's terminology, common intents and preferred entry pages — or explicitly accept the default during package-template review.
+- **Point the Agent at the folder** for the question at hand.
+- **Install the package's query Skill** into your host's Skills directory, so the Agent can reach the package in later tasks too.
+
+```text
+Use the knowledge package in ./dist/billing-kb to answer questions in this
+project. Install its query Skill for this host.
+```
+
+After that, just ask your question — see [Asking Questions](asking-questions.md). If the query Skill ends up outside the package folder, the Agent can still find the package; you do not need to move files around.
+
+### Before you share a package
+
+If you build a package for others, tailor its query Skill first: replace or edit the generic template with your project's terminology, common questions and preferred entry pages, or explicitly accept the default when the package templates are reviewed. See [Custom Output Templates](../outputs-and-sites/custom-output-templates.md).
+<!-- /context:section -->
+
+<!-- context:section id="query" -->
+## What your Agent does with it
+
+The bundled query Skill makes the Agent navigate before it searches. It works out what kind of question you asked — a lookup, an explanation, a procedure, a rule, a relationship, a detail or a coverage question — opens the matching index and follows links to the likely page. It reads only the sections it needs and cites the page and heading it answered from; titles and descriptions help it choose where to look but never support a claim on their own.
+
+When the indexes do not narrow things down, it searches the package for exact names, error strings or several terms at once. Search results are only leads: the Agent opens the page before answering. When the package lacks evidence, it says so and tells you what it checked.
 <!-- /context:section -->
 
 <!-- context:section id="sources" -->
 ## Going back to the sources
 
-Package pages carry exported source attributions. When the package is not enough, `/c4a:context-inspect-search` can trace those attributions to the original documents and code at their recorded versions. See [Asking Questions](asking-questions.md) and [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
+Package pages keep their source citations. When the package is not enough, `/c4a:context-inspect-search` can follow those citations to the original documents and code at their recorded versions. See [Asking Questions](asking-questions.md) and [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
 <!-- /context:section -->

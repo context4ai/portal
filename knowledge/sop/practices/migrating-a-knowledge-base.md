@@ -1,14 +1,17 @@
 ---
 title: Migrating an Existing Knowledge Base
 description: How to move an existing LLM Wiki, Skills collection or similar
-  knowledge base into Context without losing what it already does well.
+  knowledge base into Context without losing what it already does well, usually
+  through a staged plan.
 type: Guide
-timestamp: 2026-10-15T03:52:07.709Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Migrating an Existing Knowledge Base
 
 <!-- context:section id="goal" -->
-If you already have a knowledge base — an LLM Wiki, a set of Skills, a documentation folder — you do not have to start from nothing. Create a Context knowledge workspace, describe the existing base to the Agent, and let it plan the migration up to the work-start report, where you review the approach and decide the batches.
+If you already have a knowledge base — an LLM Wiki, a set of Skills, a documentation folder — you do not have to start from nothing. Create a knowledge workspace, describe the existing base to the Agent, and let it plan the migration up to the [work-start report](../planning-and-production/start-reports.md), where you review the approach and decide the batches.
+
+A large existing base usually crosses the threshold for a staged plan: the Agent first proposes a PLAN that splits the migration into stages, and each stage then gets its own work-start report. See [Planning Large Projects in Stages](../planning-and-production/planning-large-projects.md) for how stages are sized and reviewed, and [Cold-Starting a Knowledge Base](cold-start.md) for getting the first sources in.
 <!-- /context:section -->
 
 <!-- context:section id="prompt" -->
@@ -32,15 +35,13 @@ The last item matters most: real questions tell the Agent what the knowledge bas
 <!-- /context:section -->
 
 <!-- context:section id="sources" -->
-
 ## Bringing the existing material in
 
 Existing material can be connected in different ways, depending on whether it should become a source of new articles or stay where it is:
 
 - **Document directories** — register a folder of existing documents as a source so its contents are captured and cited. See [Document Directories](../registering-sources/document-directories.md).
-- **Same-repository docs and Skills** — documents and authored Skills already kept in the same repository are registered as repository content; the originals stay where they are and keep evolving with the project, and Context references them instead of migrating them. See [Referencing Same-Repository Docs and Skills](../registering-sources/same-repository-docs.md).
-- **External entrances** — content elsewhere that pages should link to, declared in `imports.yaml` without downloading or capturing it. See [External Entrances](../registering-sources/external-entrances.md).
-
+- **Same-repository docs and Skills** — documents and authored Skills already kept in the same repository are registered as repository content; the originals stay where they are and keep evolving with the project, and Context references them instead of migrating them. See [Linking Existing Docs and Skills](../registering-sources/same-repository-docs.md).
+- **External entrances** — content elsewhere that pages should link to, declared without downloading or capturing it. See [External Entrances](../registering-sources/external-entrances.md).
 <!-- /context:section -->
 
 <!-- context:section id="validate" -->

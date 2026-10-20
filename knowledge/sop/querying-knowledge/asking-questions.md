@@ -1,15 +1,15 @@
 ---
 title: Asking Questions
-description: Ask questions against a Context knowledge workspace or package, and
-  get answers that read knowledge first, trace sources for gaps and cite where
-  each claim comes from.
+description: Ask your Agent questions against a knowledge workspace or an
+  installed package, phrase them so answers are precise, and get answers that
+  cite where each claim comes from.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Asking Questions
 
 <!-- context:section id="goal" -->
-`/c4a:context-inspect-search` answers questions from approved knowledge and traces answers back to their sources. It reads the knowledge first, because that is where conclusions are already worked out; only when the knowledge leaves a gap that could change the answer does it read the original documents or code. Every answer cites what was actually read.
+`/c4a:context-inspect-search` (Cursor: `/c4a-context-inspect-search`) answers questions from approved knowledge and traces answers back to their sources. It reads the knowledge first, because that is where conclusions are already worked out; only when the knowledge leaves a gap that could change the answer does it read the original documents or code. Every answer cites what was actually read.
 
 ```mermaid
 flowchart LR
@@ -29,29 +29,42 @@ flowchart LR
 provider confirms it? Cite the code.
 ```
 
-A knowledge workspace is optional: the Skill can answer from installed or supplied knowledge packages alone. Querying is read-only — it never changes source registrations, snapshots, tasks, approvals or your checkouts, and it never builds just to answer.
+Asking never changes anything: it does not touch your sources, approved pages, tasks or checkouts, and it never builds just to answer.
+<!-- /context:section -->
+
+<!-- context:section id="modes" -->
+## Asking in a workspace or from a package
+
+You can ask in two places:
+
+- **In a knowledge workspace** — the folder where the knowledge is produced. The Agent reads the approved pages there and, when needed, the sources they were written from.
+- **From an installed package** — no workspace is needed. The Agent reads the package you installed or were given, and can still follow its source citations back to the original documents and code. See [Using a Package in Your Agent](using-packages-in-agents.md).
+
+Which one is read first, and whether code is read through a remote read-only service or local checkouts, can be set by the host or the Bot; see [Building a Knowledge Service](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot). These settings change the order and the access path, not what counts as evidence. To read code without local checkouts, see [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
+<!-- /context:section -->
+
+<!-- context:section id="good-questions" -->
+## Asking good questions
+
+- **Be specific.** Name the behavior, error or decision you care about rather than a whole area.
+- **Name the module or task.** "In the refunds module…" or "I am adding a retry to…" narrows the search and the answer.
+- **Ask for citations** when you will act on the answer — "cite the code" or "link the page".
+- **Follow up on gaps.** If the answer says the knowledge does not cover something, ask the Agent to check the sources, or to suggest an update.
+
+```text
+/c4a:context-inspect-search In billing-service's invoicing module, what
+happens when a tax lookup times out during invoice creation? Cite the code
+and the relevant knowledge pages.
+```
 <!-- /context:section -->
 
 <!-- context:section id="search" -->
 ## How it searches
 
-- It searches approved `knowledge/` with business terms, symbols and synonyms, chooses articles from match excerpts rather than filenames, and reads the relevant sections with their conditions.
-- Zero hits lead to relaxed or equivalent terms; noisy results lead to a narrower path. A miss alone does not establish that something is absent.
-- When the knowledge leaves a gap that could change the conclusion, it traces the recorded sources directly, at the commit or snapshot the knowledge cites — never the default branch in its place. One failed source affects only the claims that depend on it.
-- If the knowledge already answers the question, it does not restore code or check every associated source.
-<!-- /context:section -->
-
-<!-- context:section id="modes" -->
-## Retrieval order and access
-
-The host or Bot configuration can set two independent policies:
-
-| Setting | Values | Effect |
-| --- | --- | --- |
-| `CONTEXT_QUERY_SOURCE_MODE` | `repo-first` (default), `package-first`, `dual` | Read the knowledge workspace's approved knowledge first, a package first, or both at once and reconcile differences |
-| `CONTEXT_QUERY_ACCESS_MODE` | `auto` (default), `remote`, `local` | Whether knowledge and code are read through a remote read-only code service or local checkouts |
-
-They change the order and access path, not what counts as evidence. With `remote`, see [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
+- It searches the approved pages with business terms, symbols and synonyms, chooses articles from what matched rather than from file names, and reads the relevant sections with their conditions.
+- No results lead to broader or equivalent terms; too many lead to a narrower search. A miss alone does not mean something is absent.
+- When the knowledge leaves a gap that could change the conclusion, it reads the recorded sources directly, at the version the knowledge cites — not whatever is newest on the default branch. One unreadable source affects only the claims that depend on it.
+- If the knowledge already answers the question, it does not fetch code or check every related source.
 <!-- /context:section -->
 
 <!-- context:section id="answer" -->
@@ -59,11 +72,11 @@ They change the order and access path, not what counts as evidence. With `remote
 
 The answer comes first, with the conditions that change it right beside it. Complex questions also get the mechanism behind the result, with a short excerpt when it helps you verify. Implementation, declared contracts, tests, runtime observations and inferences are kept distinct.
 
-Citations link to what was read: source files at the inspected commit, knowledge site articles and original documents. When no reliable link exists, you get checkable paths, symbols and short excerpts instead. Site links come from the package's `context-site-map.json`; a link is not a claim that the site has deployed that version.
+Citations link to what was read: source files at the inspected version, knowledge site articles and original documents. When no reliable link exists, you get checkable paths, symbols and short excerpts instead. A site link does not mean the site has already deployed that version.
 <!-- /context:section -->
 
 <!-- context:section id="gaps" -->
 ## When the knowledge is missing
 
-The Skill scopes any gap to what it inspected — an unanswered question in one article is not absence across the knowledge base. With supporting evidence it may suggest an update: the affected page or gap, the proposed change and the source scope. Nothing starts until you accept; then it hands over to the production entry in the selected knowledge workspace. See [Capturing from Conversations](../updates-and-versions/capturing-from-conversations.md).
+A gap is scoped to what was inspected — an unanswered question in one article is not absence across the knowledge base. With supporting evidence, the Agent may suggest an update: the affected page or gap, the proposed change and the sources involved. Nothing starts until you accept. See [Capturing from Conversations](../updates-and-versions/capturing-from-conversations.md).
 <!-- /context:section -->

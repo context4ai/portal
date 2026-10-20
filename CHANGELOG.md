@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.13.5 — 2026-10-20
+
+### Guides restructured around the reader's journey
+
+- Guides now follow the order you work in: Planning and Producing, Adding Sources, Review and Revision, Outputs and Sites, Using Knowledge, Keeping Knowledge Current, Knowledge Service, Custom Indexers, Practices and Evaluation, then Source Graph and Agent Graph as the last two subsections.
+- Working with Agents opens the Guides in a friendlier tone and introduces each following section under Learn more through these Guides; pages are written as requests to your Agent instead of CLI and configuration detail.
+- Merged overlapping pages: session summaries into Notes and Conversation Summaries, large projects into Planning Large Projects in Stages, restoring into Versions, Changelog and Restoring, committing into Starting a New Task and Saving Your Work, document indexers into Writing Indexer Guidance, deployment recommendations into Self-Hosting, and prompt recipes into Commands and Skills.
+- Clarified that the Agent commits to Git when a round ends, that the four Indexer kinds each hold several Skills, and that the benchmark results describe Context with Source Graph.
+- Updated the zh-CN translations and sidebar titles for the revised Guides, and link labels on other pages now use the new page titles.
+- Fixed bold text in Chinese pages that showed literal asterisks next to Chinese punctuation.
+
+Trigger: navigation: Guides reorganized by reader task, with merged and retitled pages.; translation: zh-CN site pages re-translated for the revised Guides.
+User: qiansc (git)
+
 ## 0.13.4 — 2026-10-19
 
 ### Responsive homepage and portable preview workflow

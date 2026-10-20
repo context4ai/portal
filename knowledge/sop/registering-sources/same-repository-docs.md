@@ -1,15 +1,15 @@
 ---
-title: Referencing Same-Repository Docs and Skills
-description: Let Context reference the documentation and authored Skills a
-  project already maintains in the same repository, instead of producing them
+title: Linking Existing Docs and Skills
+description: Let Context link to and cite the documentation and authored Skills
+  a project already maintains in the same repository, instead of producing them
   again as knowledge.
 type: Guide
-timestamp: 2026-10-15T03:52:07.709Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
-# Referencing Same-Repository Docs and Skills
+# Linking Existing Docs and Skills
 
 <!-- context:section id="goal" -->
-Many projects already keep documentation and Agent Skills next to their code, for example under `docs/` and `.agents/skills/`, and update them with every change. When the Context knowledge workspace lives in the same Git repository, there is no need to produce that material again as knowledge. Register it as **repository content** instead: the originals stay where they are and keep evolving with the project, and Context references them directly — knowledge links to them and can cite them as evidence — without copying their bodies.
+Many projects already keep documentation and Agent Skills next to their code, for example under `docs/` and `.agents/skills/`, and update them with every change. When the knowledge workspace lives in the same Git repository, there is no need to produce that material again as knowledge. Register it as **repository content** instead: the originals stay where they are and keep evolving with the project, and Context references them directly — knowledge links to them and can cite them as evidence — without copying their text.
 
 ```mermaid
 flowchart LR
@@ -23,7 +23,7 @@ flowchart LR
 ## When to use something else
 
 - **Another repository or an externally installed Skill** is not repository content. Declare it as an [External Entrance](external-entrances.md).
-- **Rewriting selected documents for a particular audience** is ordinary production: register those documents as a document source and let the workflow produce and review the pages. Repository content never mirrors the whole registry into knowledge.
+- **Rewriting selected documents for a particular audience** is ordinary production: register those documents as a [document source](document-directories.md) and let the Agent write and you review the pages. Repository content is never mirrored wholesale into knowledge.
 <!-- /context:section -->
 
 <!-- context:section id="register" -->
@@ -35,26 +35,26 @@ Ask in your Agent:
 /c4a:context-repo-content Register docs/ and .agents/skills as repository content.
 ```
 
-The `context-repo-content` Skill looks only at the project's tracked README, `docs/` and Skill directories. It proposes the useful directories rather than every Markdown file, skips installed third-party Skills, and records the choice in `repo-content.yaml` at the knowledge workspace root. A file added later inside a registered directory needs no new entry. Registration does not start production, update knowledge, build, publish or commit. The same Skill can also create or edit those project documents in place.
+In Cursor, use `/c4a-context-repo-content`. The `context-repo-content` Skill looks only at the project's tracked README, `docs/` and Skill directories. It proposes the useful directories rather than every Markdown file, skips installed third-party Skills, and records your choice in the knowledge workspace. A file added later inside a registered directory needs no new registration. Registering does not start production, update knowledge, build, publish or commit. The same Skill can also create or edit those project documents in place.
 <!-- /context:section -->
 
 <!-- context:section id="cite" -->
 ## How knowledge uses it
 
-- **Links.** A page links to an original with `[Guide](context:repo/docs/guide.md)`. The build turns it into a link to the file in the code repository when one is available, otherwise a plain location.
-- **Evidence.** A page can cite an original like any other source. The reference records `repo-content:docs@<commit>` with the real path, line range and digest; uncommitted text is recorded as `<commit>+worktree`.
+- **Links.** A page can link to an original. The build turns the link into a link to the file in the code repository when one is available, otherwise a plain location.
+- **Evidence.** A page can cite an original like any other source. The citation records the commit, path and line range it read; text that was not yet committed is marked as such.
 - **Production.** Document Indexers read registered content as bounded supporting evidence; they do not turn it into a parallel set of pages.
 <!-- /context:section -->
 
 <!-- context:section id="page" -->
 ## What the package and site contain
 
-The package does not contain the registered documents or Skill scripts. It can carry an entrance page, `wikis/repo-content.md` (one page per group when groups are used), with:
+The package does not contain the registered documents or Skill scripts. It can carry an entrance page (one per group when groups are used) with:
 
 - the group's README, its relative links rewritten to the repository's web address;
 - a table of the registered Skills, with their names, descriptions and links to the originals.
 
-A new knowledge workspace that already has a registry enables this page; the package declaration in `src/index.ts` carries `repoContentPage: true`. The website shows it only when the declaration says `repoContentPage: { site: true }`. Review the README before exposing it.
+A new knowledge workspace that already has registered repository content includes this page in the package. Ask the Agent if you also want it shown on the website, and review the README before exposing it.
 
 Agents working in the same repository read the originals directly. People and Agents who install the package elsewhere see the entrance page and its links, and need access to the repository to read the full text.
 <!-- /context:section -->
@@ -66,29 +66,16 @@ The originals keep evolving with the project, and editing them never starts a kn
 <!-- /context:section -->
 
 <!-- context:section id="registry" -->
-## The registration file
+## Where the registration lives
 
-The Skill writes `repo-content.yaml` for you; it looks like this:
-
-```yaml
-protocol: context.repo-content/v1
-entries:
-  docs:
-    kind: docs
-    path: docs
-  tools:
-    kind: skills
-    path: .agents/skills
-```
-
-Paths are relative to the Git root, not the knowledge workspace. Kinds are `docs`, `document`, `skills` and `skill`. Optional `group` adds one module level, `mount` overrides the default mount name, and `exclude` globs skip files inside an entry (they are not access control). Overlapping entries, targets outside the repository, nested repositories and cycles are rejected. The `repo-content/` directory holds relative symlinks to the originals; it is a view, not a second place to edit.
+The Skill keeps the registration in `repo-content.yaml` at the knowledge workspace root, with paths relative to the Git root, and you can ask it to group entries or skip files inside one. Next to it, `repo-content/` is a view of the originals, not a second place to edit; edit the originals. Where these files sit among the other workspace files is shown in [The Context Knowledge Workspace](../../product/getting-started/knowledge-workspace.md); what the Skill does and does not do is listed in the [Skills](../../product/reference/context/skills.md) reference.
 <!-- /context:section -->
 
 <!-- context:section id="fix" -->
 ## When something is wrong
 
-- An invalid `repo-content.yaml` is reported by `status`, and the build stops before replacing existing outputs. Correct the file rather than repairing the symlinks again.
-- Repairing the symlinks is suggested only when they are missing or point to the wrong place.
+- If the registration is invalid, the Agent reports it when it checks the workspace, and the build stops before replacing existing outputs. Ask the Agent to correct the registration rather than repair the view again.
+- Repairing the view is suggested only when it is missing or points to the wrong place.
 
 Registering repository content does not authorize installing, running or publishing anything.
 <!-- /context:section -->

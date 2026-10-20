@@ -29,6 +29,8 @@ Each version's changelog details must total at most 1500 visible characters, inc
 
 Before adding or revising knowledge, read the current map, overview and relevant category articles to understand and reuse their intent. Follow the current Route's knowledge-updates guidance for placement, names and order. A new source or product does not automatically warrant a top-level category. Present top-level name, purpose or structure changes with a before/after tree and reuse rationale in the work-start report or current plan, and obtain approval of the concrete proposal before applying it. Reuse explicit prior approval; ordinary placements add no review gate. Keep lasting category intent concise in this file or the existing organization guide.
 
+Guides follow the reader's path and are written as task guides (what you ask, what you see, what you decide); CLI options, payloads and internal fields belong in Reference, mechanisms in How It Works. Subsections, in order: Planning and Producing (opens with Working with Agents, the Guides entry page), Adding Sources, Review and Revision, Outputs and Sites, Using Knowledge, Keeping Knowledge Current, Knowledge Service, Custom Indexers, Practices and Evaluation, then Source Graph and Agent Graph last, each holding all of its own user and operator pages. Give each topic one home and link to it instead of repeating it.
+
 ## Diagram style (user editable)
 
 - The site renders every Mermaid diagram in the homepage vocabulary (`src/site/diagrams.css`): paper nodes with hairline borders, thin lines, dashed group boundaries and small muted labels. Change the look there, not in individual diagrams.

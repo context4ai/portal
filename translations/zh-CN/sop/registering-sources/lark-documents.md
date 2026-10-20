@@ -1,52 +1,63 @@
 ---
 title: 飞书文档
-description: 登记飞书文档和 Wiki 页面，选择读取身份，并了解嵌入的图片、表格、画板和附件如何被采集。
+description: 把飞书文档和 Wiki 页面添加为来源，选择读取身份，了解嵌入资源如何被采集，并为较大的任务选择图片处理方式。
 translation:
   locale: zh-CN
   artifact_ref: 7d229a92-58ec-41c9-8506-0eb4226471f5
-  source_digest: 2450c0687dfea7992c2c643967045fe923fd91ff27d9cee2ac1ca824f1d54823
-  translated_at: 2026-10-14T11:06:04.950Z
+  source_digest: a8f2f660ea5b7ded9713a2206d395b3a8f6ea558477e9b162ed0ad502513fd8f
+  translated_at: 2026-10-19T19:47:45.248Z
 ---
 
 # 飞书文档
 
 <!-- context:section id="goal" -->
-飞书来源是一份远程文档，Context 会把它连同其中嵌入的证据一起采集为本地快照：图片、附件、电子表格、多维表格（Base）、画板和同步块。页面随后引用该快照。Agent 从不重建资源的原始字节，也不会用摘要代替它们；资源由采集流程机械地处理。
+飞书来源是一份远程文档，Context 会把它连同其中嵌入的证据一起采集为本地快照：图片、附件、电子表格、多维表格（Base）、画板和同步块。页面随后引用该快照。Agent 从不重建资源，也不会用摘要代替它们；资源由采集流程按原样处理。
 
 ```mermaid
 flowchart LR
-  url["文档或 Wiki URL"] --> reg["登记<br/>date/module"]
-  reg --> cap["采集正文和资源<br/>使用同一读取身份"]
-  cap --> snap["快照<br/>sources/lark/date/"]
-  snap --> pages["已批准页面<br/>knowledge/assets/"]
-  pages --> pkg["知识包<br/>others/assets/"]
+  url["文档或 Wiki URL"] --> reg["登记"]
+  reg --> cap["采集正文<br/>和资源"]
+  cap --> snap["快照"]
+  snap --> pages["已批准页面<br/>和知识包"]
 ```
 <!-- /context:section -->
 
 <!-- context:section id="register" -->
-## 登记文档
+## 添加文档
 
-直接传入文档或 Wiki URL；采集时会连同正文一起获取标题，无需单独查询：
+把文档或 Wiki URL 交给 Agent 即可；标题会连同正文一起获取，无需你另行查询：
 
-```bash
-context source add lark 20261012 --module handbook \
-  --url https://example.larkoffice.com/wiki/example-token --configure
+```text
+把这个 Wiki 页面作为我们的运维手册导入：
+https://example.larkoffice.com/wiki/example-token
 ```
 
-`--doc-token` 和 `--wiki-token` 可以用身份 token 代替 URL，`--title` 用于记录你已知的标题。所有被要求的文档都登记在同一个日期下。对于设置相同的多份文档，Agent 会基于来源登记表声明一次采集，而不是为每份文档重复一个阶段；文档相互独立并不意味着文章也要相互独立。
+在一次请求中提到的多份文档会一起添加，而且文档相互独立并不意味着文章也要相互独立。对于整个 Wiki 子树，Agent 可以先列出目录树及其页面而不读取正文，以便你选择要添加哪些页面。
 
-对于整个 Wiki 子树，Agent 可以先运行 `context source discover lark <url>`，保存目录树和页面标识而不读取正文，以便你选择要登记哪些页面。
+如果调研阶段已经抓取过某份文档，Agent 可以复用那份副本而不必再次读取；复用会保留原始采集时间，因此不会让内容变得更新。详情参见 [CLI 命令](../../product/reference/context/cli-commands.md)参考。
+<!-- /context:section -->
+
+<!-- context:section id="large-wiki-trees" -->
+## 超大的 Wiki 树
+
+不要指望一次性生产完一棵大型 Wiki 树：来源文档超过 30 份时，Agent 会分阶段规划工作；范围非常大时，它会先与你确认或缩小范围，详见[分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
+<!-- /context:section -->
+
+<!-- context:section id="authorization" -->
+## 读取授权
+
+采集会读取文档，因此需要你在当前对话中授权。让 Agent 采集、导入或读取指定的文档即构成授权；仅仅提到某份文档，或只要求登记它，都不构成授权，这种情况下 Agent 会在采集前先询问你。
 <!-- /context:section -->
 
 <!-- context:section id="identity" -->
 ## 读取身份
 
-采集使用**同一个**身份读取正文和所有资源。`CONTEXT_LARK_IDENTITY=user|bot` 用于选择身份，默认为 `user`。请在每个运行 Context 命令的 shell 中导出它；写在 Bot 提示词里的设置并不是环境变量。
+每份文档连同其所有资源都以**同一个**身份读取：默认是你本人，也可以是某个 Bot。这一选择由运行 Context 的环境中的 `CONTEXT_LARK_IDENTITY` 设置（`user` 或 `bot`）决定；写在 Bot 提示词里的一行文字不会改变它。
 
-- **User** 只以当前用户身份读取。
-- **Bot** 在读取正文因凭证、权限范围或访问权限失败时，可以回退一次到当前用户。回退会重新读取整篇正文，因此绝不会把两个身份读到的页面拼在一起。
+- **以你的身份**读取时，Context 只以你的身份读取。
+- **以 Bot 身份**读取时，如果 Bot 无法读取正文，Context 可以回退一次，改以你的身份读取。回退会让整篇文档重新开始读取，因此绝不会把两个身份读到的内容拼成一个页面。
 
-正文一旦读取完成，所有资源都使用该身份。资源读取失败从不会去索要其他身份的凭证，网络、限流和格式错误也不会切换身份。
+正文一旦读取完成，所有资源都使用同一身份。图片或电子表格读取失败从不会去索要其他人的凭证，网络、限流或格式错误也不会切换身份。
 <!-- /context:section -->
 
 <!-- context:section id="resources" -->
@@ -54,50 +65,26 @@ context source add lark 20261012 --module handbook \
 
 | 资源 | 采集结果 |
 | --- | --- |
-| 图片 | 原图；若下载被拒绝，则使用同一身份获取一张预览图，并标记为预览 |
-| 附件 | 原始文件，从 Markdown 中链接 |
+| 图片 | 原图；若下载被拒绝，则获取一张预览图，并标记为预览 |
+| 附件 | 原始文件，从文档中链接 |
 | 电子表格 | 一张 Markdown 表格加一份 CSV 快照 |
-| 多维表格（Base） | 选定的数据表或视图，输出为 Markdown 表格加一份 JSON 快照 |
+| 多维表格（Base） | 选定的数据表或视图，输出为 Markdown 表格加一份数据快照 |
 | 画板、图表 | 一张可读的预览图加原始结构化导出 |
-| 同步块 | 源块的正文加一份 Markdown 证据快照 |
+| 同步块 | 源块的正文 |
 | 书签、子文档、群聊、嵌入内容 | 一个稳定的导航引用 |
-| 视频 | 一个引用；仅在设置 `resources.videos: "bundle"` 时下载 |
+| 视频 | 一个引用；仅在你要求打包视频时下载 |
 
-无法获取必需的资源时，采集会停止。有两种情况会被记录并带警告继续：API 确认已被删除的画板或图表，以及某个嵌入资源被明确拒绝访问。两者都会留下可见的“资源不可用”提示，且都不会被报告为已下载。
+无法获取必需的资源时，采集会停止。有两种情况会被记录并带警告继续：飞书确认已被删除的画板或图表，以及某个嵌入资源被明确拒绝访问。两者都会留下可见的“资源不可用”提示，且都不会被报告为已下载。
+
+采集到的资源是证据的一部分，会随知识工作区一起保存在 Git 中，因此当文档或截图有访问控制时，请将知识工作区设为私有。
 <!-- /context:section -->
 
 <!-- context:section id="images" -->
 ## 大型任务的图片选择
 
-一个任务的图片处理方式只决定一次，而不是逐个文档决定。任务指令 `DOCUMENT_IMAGE_CAPTURE` 接受 `ON`（包含图片）、`OFF`（仅引用）或一个文档数量阈值，默认为 `10`：超过该阈值时，正文只采集图片引用。当一个任务在没有策略的情况下将获取 30 张以上不同的图片时，开工报告会请你在以下选项中选择：智能转换并纳入（推荐）、包含全部图片，或仅保留占位符。
+一个任务的图片处理方式只决定一次，而不是逐个文档决定。你可以让 Agent 包含图片、只保留图片引用，或根据任务涉及的文档数量自动切换。默认的切换点是 10 份文档：不超过 10 份时包含图片；超过时，文档只采集图片引用。
 
-如果要在项目中固定这一选择：
+图片数量则单独考量。当一个任务将引入 30 张以上不同的图片、而你尚未做出选择时，[开工报告](../planning-and-production/start-reports.md)会请你在以下选项中选择：智能转换并纳入（推荐）、包含全部图片，或仅保留占位符。
 
-```ts
-captureLark({ source: handbook, resources: { images: "reference-only" } });
-captureLark({ source: handbook, resources: { gifs: "reference-only" } });
-```
-<!-- /context:section -->
-
-<!-- context:section id="storage" -->
-## 文件存放位置
-
-```text
-sources/lark/<date>/
-├── <module>.md               # 采集的正文
-├── manifest.json             # 含哈希值的精简清单
-└── assets/<module>/
-    ├── source.xml            # 结构化原文
-    ├── capture-report.json   # 内容保真和资源处理情况
-    └── materialized/**       # 下载的文件和导出内容
-knowledge/assets/<kind>/<sha256>.<ext>   # 仅保留已审核页面使用的资源
-```
-
-来源资产是证据快照的一部分，因此请把它们保留在 Git 中；二进制文件较多的仓库可以把 `materialized/` 存放在 Git LFS 中。当文档或截图有访问控制时，请将 Context 知识工作区设为私有。
-<!-- /context:section -->
-
-<!-- context:section id="prefetched" -->
-## 复用已有的抓取结果
-
-如果调研阶段已经抓取过某份文档，`context source fetch lark <url> --output <dir>` 可以在任何知识工作区存在之前保存一份可移植的快照。登记对应的来源后，使用带 `snapshot_dir` 的 `context source import` 即可导入，无需再次读取文档。导入会检查完整性并保留原始采集时间；它不会让快照变得更新。
+如果希望同一选择适用于某个知识工作区中的每个任务，请让 Agent 为项目设置它，例如“手册只保留图片和 GIF 的引用”。
 <!-- /context:section -->

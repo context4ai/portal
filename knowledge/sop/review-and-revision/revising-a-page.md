@@ -1,14 +1,14 @@
 ---
 title: Revising a Page
-description: Correct one page — a candidate still in Review or an already
-  approved page — while keeping its identity, URL and source citations.
+description: Correct one page, a draft still in review or an already approved
+  page, while keeping its identity, URL and source citations.
 type: Guide
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Revising a Page
 
 <!-- context:section id="goal" -->
-Revision changes a page without producing it again. It starts from the current text, changes only what your instruction and the sources support, and sends the result back through Review. The page keeps its identity and URL, which makes revision the right tool for wording, structure and factual fixes.
+Revision changes a page without producing it again. It starts from the current text, changes only what your instruction and the sources support, and sends the result back to review. The page keeps its identity and URL, which makes revision the right tool for wording, structure and factual fixes.
 <!-- /context:section -->
 
 <!-- context:section id="which" -->
@@ -16,10 +16,10 @@ Revision changes a page without producing it again. It starts from the current t
 
 | The page is | How to ask | What happens |
 | --- | --- | --- |
-| A candidate in the current Review | Write a note in the report, or say it in the conversation | The Agent repairs it within the same batch and shows an updated report |
-| Already approved | *"Revise `<page>`: `<problem>`, keep the source citations"* | The Agent runs `context revise <page> --instruction "<text>"`; the new version enters Review |
+| A draft in the current review | Write a note in the report, or say it in the conversation | The Agent repairs it within the same batch and shows an updated report |
+| Already approved | *"Revise `<page>`: `<problem>`. Keep the source citations."* | The Agent revises the page and the new version goes to review |
 
-For an approved page outside the active batch, the revision is queued and runs after the batch by default; `--timing priority` asks for earlier delivery but never skips Review. Several approved pages can be revised together with `context task maintain`.
+If an approved page is not part of the batch currently in review, its revision waits until that batch is finished. You can ask for it sooner; it still goes through review. To revise several approved pages together, name them all in one request.
 <!-- /context:section -->
 
 <!-- context:section id="how" -->
@@ -27,30 +27,29 @@ For an approved page outside the active batch, the revision is queued and runs a
 ## What the Agent does
 
 - Reads the whole page first and keeps explanations that are still correct, including your earlier contributions.
-- For a wording-only change, uses the approved text alone; it does not recapture or re-parse the source.
-- For a changed fact, reads the relevant registered material. A new fact that only exists in your instruction is first saved as a source, such as a [note](../registering-sources/notes.md).
-- Edits one section or the whole page. Section edits leave other sections and their citations untouched; a citation change replaces that section's references, which Context re-fingerprints.
-- Keeps a section's validated citations when the edit omits `references`; listing references re-confirms them against the revision's sources. A citation can be located by a Markdown heading or an exact quote instead of line numbers, and is stored as a line range.
-- When the correction needs evidence from a source outside the revision's scope, registers that source, associates it with the requirement in `src/indexers.yaml` and runs `context task adjust`. The added source stays citable by the remaining pages queued in the same revision.
+- For a wording-only change, works from the approved text alone; it does not read the source again.
+- For a changed fact, reads the relevant registered material. A new fact that exists only in your instruction is first saved as a [note](../registering-sources/notes.md), so the page can cite it.
+- Edits one section or the whole page. Sections it does not touch keep their text and their source citations.
+- When the correction needs a source outside the revision's scope, registers it first; it then stays available to the other pages in the same revision.
 
-Before submitting, the Agent can preview the assembled page and the previous text without accepting the edit.
+Before submitting, the Agent can show you the revised page next to the previous text.
 
 <!-- /context:section -->
 
 <!-- context:section id="move" -->
 ## Moving or renaming a page
 
-`context revise <page> --move-to <new-path>` revises and moves in one step. The page keeps its article identity and section IDs, its relative links are rebased to the new location, and approval updates incoming Markdown links together — no second copy and no manual deletion. To change only the title or menu position, adjust the knowledge map instead; see [Reorganizing at Scale](reorganizing-at-scale.md).
+Ask for the move and the revision in one request, for example *"Move `<page>` under `<new section>` and tighten the introduction."* The page keeps its identity, its own links are adjusted to the new location, and links from other pages are updated when you approve. There is no second copy to delete. To change only the title or menu position, adjust the knowledge map instead; see [Reorganizing at Scale](reorganizing-at-scale.md).
 <!-- /context:section -->
 
 <!-- context:section id="generated" -->
 ## Generated reference pages
 
-Pages with generated API tables are regenerated, not hand-edited: `--regenerate` rebuilds their program blocks from the current source even when the version has not changed. If the same wrong value survives regeneration, the Agent reports the page, field and source comparison instead of repeating the repair.
+Pages with generated API tables are regenerated, not hand-edited. Ask the Agent to regenerate the page; it rebuilds those tables from the current source even when the version has not changed. If the same wrong value survives regeneration, the Agent reports the page, field and source comparison instead of repeating the repair. The commands behind this are in [CLI Commands](../../product/reference/context/cli-commands.md).
 <!-- /context:section -->
 
 <!-- context:section id="source-wrong" -->
 ## When the source is wrong
 
-If the page faithfully reflects a source that is itself wrong, correct the source — recapture it, or correct the note or session summary — and then update the page. If the source is right and the page misleads, revise only the page.
+If the page faithfully reflects a source that is itself wrong, correct the source first (capture it again, or correct the note or conversation summary) and then update the page. If the source is right and the page misleads, revise only the page.
 <!-- /context:section -->

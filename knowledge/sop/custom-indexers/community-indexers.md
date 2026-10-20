@@ -1,29 +1,29 @@
 ---
-title: Community Indexers
-description: The four Indexer Skills and the Indexer creator that ship with the
-  community edition of Context, what each one reads and produces, how they are
-  installed and selected, and where to find their source.
+title: Built-in Indexers
+description: What the Indexers that ship with Context cover — four kinds (code,
+  document, note, session) with several Skills per kind — what pages each one
+  gives you, what it will not do, and when to add a note or document instead.
 type: Guide
-timestamp: 2026-10-13T16:59:52.768Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
-# Community Indexers
+# Built-in Indexers
 
 <!-- context:section id="goal" -->
-An **Indexer** is a Skill that tells the Agent how to investigate one kind of source and how to write source-grounded articles from it. It helps the Agent understand authorized material; it does not own workflow routing, source authorization, Review or the permanent identity of an article. Several Indexers can contribute to the same module or article.
+An **Indexer** is a Skill that tells the Agent how to investigate one kind of source and how to write source-grounded articles from it. There are four kinds of Indexer — **code, document, note and session** — and each kind can have several Skills. Context ships one Skill per kind, and a creator Skill writes new Indexers when you need one.
 
-The community edition ships four Indexer Skills — for code, documents, notes and session summaries — and one creator Skill that writes new Indexers. All of them are maintained in `plugins/context/skills/` of the Context repository, and `context plugin install` makes them available to your Agent host.
+This subsection covers Indexers from the reader's side: start here to see what the built-in ones already cover. Go on to [Choosing, Replacing and Disabling Indexers](providers-and-customization.md), [Creating an Indexer](creating-an-indexer.md) or [Writing Indexer Guidance](code-indexers.md) only when they do not fit your material.
 
 ```mermaid
 flowchart LR
-  repo["Repository modules"] --> code["context-code-indexer"]
-  docs["Captured documents"] --> md["context-markdown-indexer"]
-  notes["Saved notes"] --> note["context-note-indexer"]
-  sess["Saved session summaries"] --> ses["context-sessions-indexer"]
+  repo["Repository modules"] --> code["Code Indexer"]
+  docs["Captured documents"] --> md["Document Indexer"]
+  notes["Saved notes"] --> note["Note Indexer"]
+  sess["Saved conversation summaries"] --> ses["Session Indexer"]
   code --> art["Source-grounded articles"]
   md --> art
   note --> art
   ses --> art
-  family["A source family that needs<br/>specialist guidance"] --> create["context-indexer-create"]
+  family["Material that needs<br/>specialist guidance"] --> create["Indexer creator"]
   create --> own["Your own Indexer Skill"]
 ```
 <!-- /context:section -->
@@ -31,113 +31,83 @@ flowchart LR
 <!-- context:section id="at-a-glance" -->
 ## At a glance
 
-| Category | Skill |
-| --- | --- |
-| Code | `context-code-indexer` |
-| Documents | `context-markdown-indexer` |
-| Notes | `context-note-indexer` |
-| Session summaries | `context-sessions-indexer` |
-| Creator | `context-indexer-create` |
+| Kind | Skill | Reads |
+| --- | --- | --- |
+| Code | `context-code-indexer` | Repository modules |
+| Document | `context-markdown-indexer` | Captured documents and same-repository docs |
+| Note | `context-note-indexer` | Saved notes, excerpts and observations |
+| Session | `context-sessions-indexer` | Saved conversation summaries |
+| Creator | `context-indexer-create` | Your request for a new Indexer |
 
-The first four are Indexer Provider Skills that the Context workflow uses during planning and writing. The creator is an authoring assistant: it writes a new Indexer Skill for code, documents, notes or session summaries when you ask for one.
+The Indexers work during planning and writing. The creator is an authoring assistant: it writes a new Indexer Skill for code, documents, notes or session summaries when you ask for one.
 <!-- /context:section -->
 
 <!-- context:section id="code" -->
 ## Code: `context-code-indexer`
 
-- **Reads:** the authorized module of a registered repository, starting from the directory and file navigation the CLI supplies.
-- **Investigation produces:** the relevant technology, the visible capability families, and proposed reader topics and writing batches. It may inspect representative source, but it does not parse the whole repository, enumerate every symbol or build a relationship graph during planning. Partial counts are named as partial.
-- **Writing reads:** the actual implementation and contracts needed for each reader question. Drafts go to the Agent's temporary directory and are submitted through the current CLI action; the Skill never writes formal knowledge or modifies the source repository.
-- **Bundled resources:** `references/indexer.md` with investigation and writing guidance, an article catalog for each module profile, diagram and source-visual guidance, and a template for each profile. The profiles cover 16 kinds of module, from monorepo containers, web applications, component and SDK libraries and CLI tools to API services, event consumers, storage repositories, adapters, contract sources and generated sources.
-- **Tests:** anonymized fixture sets under `tests/fixtures/`.
-
-Source: `plugins/context/skills/context-code-indexer/`.
+- **What you get:** articles about an authorized module of a registered repository — its technology, the capability families it exposes, its contracts and integration points — grouped into reader topics that you confirm in the work-start report. Article outlines suit 16 kinds of module, from monorepo containers, web applications, component and SDK libraries and CLI tools to API services, event consumers, storage repositories, adapters, contract sources and generated sources.
+- **How it reads:** during planning it looks at the module's structure and representative source; while writing it reads the actual implementation and contracts each article needs. Partial counts are named as partial.
+- **What it will not do:** parse the whole repository, list every symbol or build a relationship graph during planning; write knowledge directly or modify your repository.
+- **Add a note or document instead when** the knowledge is business intent or rationale that the code does not show. Code establishes implemented behavior; notes and documents explain why.
 <!-- /context:section -->
 
 <!-- context:section id="documents" -->
 ## Documents: `context-markdown-indexer`
 
-- **Reads:** captured documents. Same-repository docs and authored Skills registered as repo-content stay originals; the Skill uses them only as bounded supporting evidence unless you explicitly ask for knowledge production from them.
-- **Investigation produces:** topics and writing batches decided from the CLI's document titles, bounded opening excerpts and complete H2/H3 outlines, with selective full reading where needed. The outline is navigation, not proof of a claim and not an instruction to write one article per heading.
-- **Writing reads:** the relevant full source, keeping its useful guidance, examples and limits, with citations to the actual regions used.
-- **Bundled resources:** planning guidance (`references/semantic-planning.md`), writing guidance (`references/indexer.md`), reader outcomes (`references/classification.md`) and article boundaries (`references/structure-and-artifacts.md`), plus article catalogs and templates that are not read by default. Its 13 document profiles range from domain references, product requirements and technical guides to runbooks, FAQs, decision records, incident reviews, test validation, release and migration guides, and documentation sites.
-- **Tests:** anonymized fixture sets under `tests/fixtures/`, such as document-routing cases.
-
-Source: `plugins/context/skills/context-markdown-indexer/`.
+- **What you get:** articles organized around reader questions rather than source files, keeping the useful guidance, examples and limits of the original, with citations to the passages used. Article outlines suit 13 kinds of document, from domain references, product requirements and technical guides to runbooks, FAQs, decision records, incident reviews, test validation, release and migration guides, and documentation sites.
+- **How it reads:** planning starts from document titles, opening excerpts and heading outlines, with full reading where the grouping is unclear; writing reads the relevant full source. One heading does not mean one article.
+- **What it will not do:** produce knowledge from same-repository docs and Skills you only linked, unless you ask — those stay originals and serve as supporting evidence. See [Linking Existing Docs and Skills](../registering-sources/same-repository-docs.md).
+- **Add a note instead when** the knowledge lives in people's heads or chat rather than in a document; see [Notes and Conversation Summaries](../registering-sources/notes.md).
 <!-- /context:section -->
 
 <!-- context:section id="notes" -->
 ## Notes: `context-note-indexer`
 
-- **Reads:** saved notes, excerpts and observations, by direct reading. These sources normally need no parser or separate inventory pass.
-- **Investigation produces:** a useful skeleton rather than an exhaustive fact ledger, and article targets proposed against existing topics with the help of `references/classification.md`.
-- **Writing reads:** the selected material, guided by `references/writing.md`; when a note revises or combines existing topics, `references/updates-and-composition.md` and `references/extension-placement.md` apply.
-- **Bundled resources:** nine reader profiles of its own (domain reference, product requirements, technical guide, user and developer guide, runbook, FAQ, decision record, incident review, test validation) and a `note/`-prefixed extension profile for each code and document profile, such as `note/api-service` or `note/runbook`. Templates and article catalogs are loaded only when needed.
-- **Boundaries:** it does not scan host history, fetch an unapproved URL, alter evidence to fit a claim or write formal knowledge.
-- **Tests:** anonymized profile fixtures under `tests/fixtures/`.
-
-Source: `plugins/context/skills/context-note-indexer/`.
+- **What you get:** a note either strengthens an existing page or, when it answers an independent reader question, becomes its own article. It has nine reader profiles of its own (domain reference, product requirements, technical guide, user and developer guide, runbook, FAQ, decision record, incident review, test validation) and can also write in the style of each code and document profile, for example a note about an API service or a runbook.
+- **How it reads:** saved notes, excerpts and observations, read directly.
+- **What it will not do:** scan host history, fetch a URL you have not approved or alter evidence to fit a claim.
+- **Add a document or session summary instead when** the material is a maintained document (add it as a document source) or a conversation whose decisions you want kept (save a summary).
 <!-- /context:section -->
 
 <!-- context:section id="sessions" -->
 ## Session summaries: `context-sessions-indexer`
 
-- **Reads:** a bounded summary of a conversation, prepared by the host or an external supplier. The Indexer does not scan chat history, load a full transcript or synthesize a conversation from a diff. The summary need not concern code or have a commit.
-- **Investigation produces:** a skeleton and article targets from direct reading, in the same way as the Note Indexer.
-- **Writing extracts:** the problem, the decisions actually reached, the reasons needed to understand them, remaining questions and applicability — keeping "proposed", "agreed", "implemented" and "verified" distinct. An optional `changes` association (a full `commit` SHA or an `mr` URL) records what was discussed; it does not prove that a change merged, deployed or passed tests.
-- **Bundled resources:** the same kinds of references, templates and article catalogs as the Note Indexer, loaded only when needed.
-
-Source: `plugins/context/skills/context-sessions-indexer/`.
+- **What you get:** from a saved conversation summary, the problem, the decisions actually reached, the reasons needed to understand them, the open questions and where they apply — with "proposed", "agreed", "implemented" and "verified" kept distinct. A summary need not concern code. A linked commit or merge request records what was discussed; it does not prove that a change merged, deployed or passed tests.
+- **How it reads:** a bounded summary prepared by the host or another tool, read directly.
+- **What it will not do:** scan chat history, load a full transcript or reconstruct a conversation from a diff.
+- **Add a note instead when** you only want to keep an excerpt or an observation rather than a conversation's decisions.
 <!-- /context:section -->
 
 <!-- context:section id="creator" -->
 ## The creator: `context-indexer-create`
 
-`context-indexer-create` writes a reusable Indexer Skill in the directory you choose. It activates only when you explicitly ask to create a new Context Indexer Skill for code, documents, notes or session summaries — not for indexing existing sources, ordinary coding, knowledge queries or choosing an installed Skill. It is not a slash command, so ask for it in plain language.
+`context-indexer-create` writes a reusable Indexer Skill in the directory you choose. Ask for it in plain language — it is not a slash command — and say explicitly that you want a new Context Indexer Skill for code, documents, notes or session summaries.
 
-It writes Skills only: it does not initialize a knowledge workspace or start production. It delivers a `SKILL.md` with only the references, templates or scripts that are useful, and no Provider registration manifest, version or hash verification flow. At the end it reports the files it created, the inputs it supports and its remaining limitations. Installing the new Skill makes it available, not selected.
-
-See [Creating an Indexer](creating-an-indexer.md) for the full walkthrough.
-
-Source: `plugins/context/skills/context-indexer-create/`.
+It writes Skills only: it does not set up a knowledge workspace or start production. At the end it reports the files it created, the inputs it supports and its remaining limitations. See [Creating an Indexer](creating-an-indexer.md) for the full walkthrough.
 <!-- /context:section -->
 
 <!-- context:section id="installation" -->
 ## How they are installed
 
-`context plugin install` installs the Context Agent integration. A global installation creates the host-namespaced Context entry and also projects the four Indexer Skills as **unnamespaced** Skills for Claude, Codex and Cursor: into the shared `~/.agents/skills` directory for Codex and Cursor, and into `~/.claude/skills` for Claude. Their names therefore stay `context-code-indexer`, `context-markdown-indexer`, `context-note-indexer` and `context-sessions-indexer`, without a plugin prefix.
-
-The creator is different: it ships inside the host-specific plugin roots, next to the production, project-planning and query entries. Restart or refresh the Agent host after installing.
-
-Installing an Indexer makes it discoverable. It does not enable it for every Context knowledge workspace.
+Installing the Context plugin (see [Installation](../../product/getting-started/installation.md)) makes all the built-in Indexers available to Claude Code, Codex and Cursor. The four Indexers are installed without a plugin prefix, so they keep the same names in every host. Restart or refresh the Agent host after installing.
 <!-- /context:section -->
 
 <!-- context:section id="selection" -->
-## How the Agent selects them
+## How the Agent chooses them
 
-You do not call an Indexer directly. Indexer Skills are activated only through the Context workflow, so invoke Context explicitly or continue an active Context conversation; ordinary coding and design discussions do not start it.
-
-When work starts, the Agent declares the relevant Skills that are available in the host. It then selects the ones that fit the actual materials and reader task, and records that choice in the current planning schema. There is no separate Provider selection, primary-owner or resolution stage to pass. The Agent:
-
-- respects Skills you have disabled in the host;
-- respects an explicit business replacement, such as your own Indexer standing in for a built-in one;
-- reads only the selected guidance, without scanning plugin caches or building another Skill registry.
-
-Skill names are guidance, not version pins or evidence of completed reading. See [Providers and Customization](providers-and-customization.md) for replacing or disabling an Indexer.
+You do not call an Indexer directly; the Agent chooses the ones that fit your material when Context work starts. Ordinary coding and design conversations do not start it, so invoke Context explicitly or continue an active Context conversation. How the choice works, and how to replace or disable an Indexer, is described in [Choosing, Replacing and Disabling Indexers](providers-and-customization.md).
 <!-- /context:section -->
 
 <!-- context:section id="combining" -->
-
 ## Several Indexers on one module
 
-Several Skills may examine different aspects of the same module. The Agent combines their findings without making any one of them the permanent owner. Code establishes implemented behavior, while authorized notes or documents can explain business intent and rationale. Contributions from several selected Skills go into the same article rather than producing copies.
+Several Skills may examine different aspects of the same module, and their findings go into the same article rather than producing copies. Code establishes implemented behavior, while authorized notes or documents can explain business intent and rationale.
 
-A note that only supports an existing page is written into that page, using its evidence and read scope. A note that answers an independent reader question can become its own article through the selected Note Indexer, whether that is the default one or a business replacement. A compatible extension layer is selected explicitly when specialized interpretation is needed; another Skill is not enabled merely because a note exists.
+A note that only supports an existing page is written into that page. A note that answers an independent reader question can become its own article.
 
 Next:
 
-- [Providers and Customization](providers-and-customization.md) covers combining, replacing and disabling Indexers.
-- [Creating an Indexer](creating-an-indexer.md), [Code Indexers](code-indexers.md) and [Document Indexers](document-indexers.md) cover writing your own.
+- [Choosing, Replacing and Disabling Indexers](providers-and-customization.md) covers steering the choice in a workspace.
+- [Creating an Indexer](creating-an-indexer.md) and [Writing Indexer Guidance](code-indexers.md) cover writing your own.
 - [The Indexer System](../../architecture/knowledge/indexer-system.md) explains how Indexers fit into the production lifecycle.
-
 <!-- /context:section -->

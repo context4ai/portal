@@ -38,6 +38,13 @@ for (const [, dir] of mounts) {
   }
 }
 
+// Canvas scene links are created at runtime and are absent from the HTML.
+const { SCENARIOS } = await import(join(root, "homepage/scenarios.js")) as { SCENARIOS: { link: string }[] };
+for (const scene of SCENARIOS) {
+  checked++;
+  if (!resolve(scene.link)) broken.push(`homepage/scenarios.js → ${scene.link}`);
+}
+
 if (broken.length) {
   console.error(`broken links (${broken.length}):\n${[...new Set(broken)].join("\n")}`);
   process.exit(1);

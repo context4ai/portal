@@ -1,16 +1,17 @@
 ---
-title: Evaluation Scoring and Timing Standard
-description: The exact rules for grading, counting and timing a knowledge base
-  evaluation — two primary metrics, material errors, four grades, fairness and
-  counterexamples, grader calibration, denominators, end-to-end timing,
-  percentiles and tool calls — and the industry methods they draw on.
+title: Scoring and Timing Standard
+description: The single set of rules for grading, calibrating, counting and
+  timing a knowledge base evaluation — two primary metrics, material errors,
+  four grades, fairness and counterexamples, grader calibration, denominators,
+  end-to-end timing, percentiles, tool calls and run evidence — and the industry
+  methods they draw on.
 type: Guide
-timestamp: 2026-10-13T08:52:43.396Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
-# Evaluation Scoring and Timing Standard
+# Scoring and Timing Standard
 
 <!-- context:section id="overview" -->
-This page is the rulebook referred to by [Evaluating Your Knowledge Base](./evaluating-your-knowledge-base.md). Use it as written, or adapt it and say what you changed. It covers how one answer is graded, how grades become rates, and how time and tool calls are measured. [Knowledge Retrieval Benchmark](../../architecture/benchmark/knowledge-retrieval.md) applies it.
+This page is the rulebook for [Evaluating Your Knowledge Base](./evaluating-your-knowledge-base.md), and the one place where grading, calibration and timing rules are defined. Use it as written, or adapt it and say what you changed. It covers how one answer is graded, how graders are checked, how grades become rates, and how time, tool calls and run evidence are recorded. [Knowledge Retrieval Benchmark](../../architecture/benchmark/knowledge-retrieval.md) applies it.
 <!-- /context:section -->
 
 <!-- context:section id="industry" -->
@@ -141,9 +142,10 @@ Lesson: when existing knowledge misses the parent-level condition, go back to th
 <!-- /context:section -->
 
 <!-- context:section id="tools" -->
-## Tool calls and channel overhead
+## Tool calls, run evidence and channel overhead
 
 - Count tool calls by unique call ID and state the coverage — events the platform exposes; internal calls of unexposed sub-Agents are not counted. One shell call may run several commands. Tool calls describe the execution path; they are not model calls or tokens. The span from first to last tool event includes reasoning, waiting and concurrency, so do not call it pure tool time.
+- For every attempt, keep the start and end timestamps with time zone, task or session IDs and links, the complete final answer, the raw tool events, the status, timing precision and any anomaly.
 - Keep original receipts for platform failures, timeouts, cancellations, quota refusals and retries. Link an extra run to the attempt it repeats; never replace a result with the best one. When a question needs the user to supply more information, define one multi-turn protocol for all setups and label ad hoc follow-ups and resumes.
 - **Channel overhead:** an Agent configured for a chat channel — for example one that assembles reply cards — may still detect the channel, read card instructions and resolve links when called directly. For pure question answering, switch to a reply policy suited to direct calls, or record and exclude that overhead.
 <!-- /context:section -->

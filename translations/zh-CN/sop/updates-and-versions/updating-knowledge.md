@@ -1,26 +1,25 @@
 ---
 title: 更新知识
-description: 将已有页面更新到新的提交或文档版本——选定范围，让 Agent 定位受影响的页面，审核变更并推进基线。
+description: 将已有页面更新到新的提交或文档版本——指定范围，让 Agent 找到受影响的页面，审核变更，并了解更新何时完成。
 translation:
   locale: zh-CN
   artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
-  source_digest: bd0a93284209fa56a1c2105ac5a688b6e973d7833b2b08ef4e6167f2a8afbdb0
-  translated_at: 2026-10-15T06:25:34.171Z
+  source_digest: 9566545daa4e0a77daa1c1e4677b7274646b3034db3b5a68c05663d730996a43
+  translated_at: 2026-10-19T19:47:45.248Z
 ---
 
 # 更新知识
 
 <!-- context:section id="goal" -->
-每个已批准页面都会记录其写作时依据的来源版本。当仓库有了新提交或文档被编辑后，**更新**会将新版本与该基线对比，只修订受影响的页面，然后推进基线。不受影响的页面保持不变。
+每个已批准页面都会记录其写作时依据的来源版本。当仓库有了新提交或文档被编辑后，**更新**会将新版本与页面写作时依据的版本对比，只修订受影响的页面，然后把新版本记录为已处理。不受影响的页面保持不变。
 
 ```mermaid
 flowchart LR
-  ask["你指定范围<br/>和目标版本"] --> acq["Agent 获取<br/>固定的新版本"]
-  acq --> upd["context update<br/>保守的页面匹配"]
-  upd --> decide["Agent 阅读变更<br/>保留 / 修订 / 新增"]
-  decide --> rev["变更的页面<br/>知识审核"]
-  rev --> build["关闭并构建"]
-  build --> base["基线推进"]
+  ask["你指定范围<br/>和目标版本"] --> acq["Agent 获取<br/>新版本"]
+  acq --> match["Agent 找到引用了<br/>变更材料的页面"]
+  match --> decide["保留 / 修订 / 新增"]
+  decide --> rev["你审核<br/>变更的页面"]
+  rev --> build["应用已批准的页面，<br/>重新构建产物"]
 ```
 <!-- /context:section -->
 
@@ -34,44 +33,41 @@ billing-service 已合入 release-2.4，请帮我找到受影响的知识并更�
 这次只处理 invoicing 和 refunds 两个模块。
 ```
 
-如果只是单个页面的文本有误，更适合用[修订](../review-and-revision/revising-a-page.md)。如果 Context 知识工作区中还有其他未完成的工作，Agent 也会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。
+如果只是单个页面的文本有误，更适合用[修订](../review-and-revision/revising-a-page.md)。如果知识工作区中还有其他未完成的工作，Agent 会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。
 <!-- /context:section -->
 
 <!-- context:section id="acquire" -->
 ## 如何选定新版本
 
-Context 不会轮询平台，也不会自动发现远端变化；Agent 只会针对你指定的范围，使用它自己的 Git 和文档工具获取一次。
+Context 不会监视平台上的变化；Agent 只会针对你指定的范围，使用它自己的 Git 和文档工具获取一次。
 
-- 对于分支或合并请求，Agent 会确认目标分支、合并状态，以及该分支上的实际提交。未合并的提议不属于主线，而 squash 或 rebase 可能产生与特性分支不同的提交。
+- 对于分支或合并请求，Agent 会确认目标分支、变更是否已合并，以及该分支上的实际提交。未合并的提议不属于主线，而 squash 或 rebase 可能产生与特性分支不同的提交。
 - 中间涉及已登记模块的提交都会纳入；revert 也是真实的变更。
-- 如果新提交下的模块目录树没有变化，可以得出“知识无需变更”的结论。
-- 如果在 force push 或历史清理之后旧基线已不可用，Agent 会说明这一点，并改为将当前材料与已批准的知识进行对比。
+- 如果新提交没有改变已登记的模块，可以得出“知识无需变更”的结论。
+- 如果在 force push 或历史清理之后旧版本已不可用，Agent 会说明这一点，并改为将当前材料与已批准的知识进行对比。
 - 对于文档，读取失败、删除和移动会分别报告；这些都不能作为下线页面的理由。
 <!-- /context:section -->
 
 <!-- context:section id="submit" -->
-## 更新请求
+## 哪些页面会变化
 
-```yaml
-scopes:
-  - requirement_ref: reader-guide
-    source_ref: repo:20261012/billing-service
-changes: The selected change adds one public option; inspect its explanation and examples.
-```
+Agent 首先找出每一个引用了变更材料的页面。这是有意放宽的范围，而不是必须修改的页面清单：Agent 会阅读变更和每个页面，保留仍然正确的内容，修订发生变化的部分，并为真正的新主题提议新页面。新页面在写作之前会先交给你确认。
 
-Agent 通过 `context update --input <file>` 提交该请求。省略模块引用时，会选中整个已确认的来源。返回的候选列表是对引用了变更材料的页面所做的保守匹配，而不是必须修改的页面清单：Agent 会阅读变更和当前页面，保留仍然正确的内容，修订发生变化的部分，并为真正的新主题提议新页面，这些新页面会先经过结构审核。
+如果你没有指定模块，整个已登记的来源都在范围内。
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
-## 审核与基线
+## 审核与完成
 
-变更的页面会出现在审核报告中，变更的区块与之前的文本并排展示。只有当每个选中的修订都已批准、关闭并构建——或明确得出无需变更的结论之后，已处理的基线才会推进。获取新版本时或第一个页面获批后，基线都不会移动，因此中断的更新可以恢复执行，而不会丢失剩余工作的进度。
+变更的页面会出现在审核报告中，变更的区块与之前的文本并排展示。按[阅读审核报告](../review-and-revision/reading-review-reports.md)中的方式批准、评论或要求修改。
 
-更新收尾时，保留页面中仅在新版本里移动了位置的引用会被重新定位，`context verify` 不再报告它们。被引用文本已变化或无法确认的保留页面会列在完成结果的 `reference_warnings` 中，其引用保留原位置。更新队列完成后，用[修订](../review-and-revision/revising-a-page.md)修正其中需要处理的页面。
+当每个选中的修订都已批准、已批准的页面已应用且产物已重新构建——或 Agent 得出无需变更的结论时，更新才算完成。只有到这时，新版本才会被记录为已处理。获取新版本时或第一个页面获批后都不会记录，因此中断的更新可以恢复执行，而不会丢失剩余工作的进度。
+
+在保持不变的页面中，仅在新版本里移动了位置的引用会被自动更新，验证不再报告它们。如果被引用的文本确实发生了变化或已无法确认，Agent 会在更新完成时列出这些页面；它们的引用仍指向之前的位置。对列出的页面中需要处理的，用[修订](../review-and-revision/revising-a-page.md)逐一修正。
 <!-- /context:section -->
 
 <!-- context:section id="only-needed" -->
 ## 只需要更新所用的来源
 
-更新时无需检出不相关的仓库。笔记、仅涉及文档的变更、措辞修正或导航变更完全不需要代码。当所需代码缺失时，Agent 只会在固定的提交上恢复那一个仓库；参见[代码仓库](../registering-sources/code-repositories.md#checkouts-on-another-machine)。
+更新时无需检出不相关的仓库。笔记、仅涉及文档的变更、措辞修正或导航变更完全不需要代码。当所需代码缺失时，Agent 只会在记录的提交上恢复那一个仓库；参见[代码仓库](../registering-sources/code-repositories.md#checkouts-on-another-machine)。
 <!-- /context:section -->

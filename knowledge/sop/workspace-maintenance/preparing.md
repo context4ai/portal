@@ -1,67 +1,95 @@
 ---
-title: Preparing a Workspace
-description: How to end an old task and get a Context knowledge workspace ready
-  for the next request, what is discarded and what is always preserved.
+title: Starting a New Task and Saving Your Work
+description: When to ask for a fresh start in a knowledge workspace, what is
+  discarded and what is kept, and how the Agent commits your work to Git when a
+  round ends.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
-# Preparing a Workspace
+# Starting a New Task and Saving Your Work
 
 <!-- context:section id="goal" -->
-Preparing a Context knowledge workspace leaves it with **usable registered sources and no unfinished task**, while keeping approved knowledge and configuration. Ask for it explicitly — for example "prepare this workspace for the next task". A clear request authorizes the task-state cleanup it describes; the Agent asks only about an unresolved target or a loss you have not agreed to. The switch that governs this is `context.gate.workspace_reset_restore`.
+A knowledge workspace keeps two kinds of state: the lasting results — approved pages, sources and configuration — and the progress of the task you are working on. This page covers both ends of a task: clearing out an old, unfinished task so you can start fresh, and saving finished work to Git.
 
-```mermaid
-flowchart LR
-  scope["Establish the scope"] --> finish_old["End the old task<br/>task prepare preview, then apply"]
-  finish_old --> sources["Restore usable sources"]
-  sources --> ready["Verify and stop"]
+Ask for a fresh start when an earlier task was abandoned or interrupted and you want to begin something new without it:
+
+```text
+Prepare this workspace for the next task.
 ```
+
+A clear request like this is enough; the Agent tells you what will be discarded and asks only when the target is unclear or something would be lost that you have not agreed to.
 <!-- /context:section -->
 
 <!-- context:section id="capture" -->
-## When you only want to capture documents
-
-Capturing named documents and pausing is not preparation and does not start article production. The Agent registers the sources and stops after reporting what was captured; existing tasks, drafts, approved content and registrations are untouched, and no `task resume` is needed. Production resumes only when you ask for knowledge.
+If you only want to add documents without starting any knowledge work, you do not need a fresh start: the Agent registers them, reports what was captured and stops, leaving existing tasks, drafts and approved pages untouched. See [Choosing How to Add Material](../registering-sources/source-batches.md).
 <!-- /context:section -->
 
 <!-- context:section id="scope" -->
-## 1. Establish the scope
+## What the Agent checks first
 
-The Agent locates the workspace with `context entry`, then looks at current work, running processes, Git changes and source registrations, and tells you which unfinished drafts and queued maintenance will be discarded. If a writer is still running, it waits for the result first. A broken `status` is investigated, not taken as proof that the workspace is empty.
+The Agent looks at the current work, anything still running, uncommitted changes and the registered sources, and tells you which unfinished drafts and queued updates will be discarded. If a writer is still running, it waits for the result first. A workspace whose status cannot be read is investigated, not assumed to be empty.
 
-Registered sources are not an active task. Preparation does not repair invalid snapshots or change which sources are registered, and leaving a source out of one task never deletes its registration or evidence.
+Registered sources are not part of a task. A fresh start does not change which sources are registered, and leaving a source out of one task never deletes it or its evidence.
 <!-- /context:section -->
 
 <!-- context:section id="end" -->
-## 2. End the old task
+## What is discarded and what is kept
 
-```bash
-context task prepare --format json
-```
-
-The command first **previews** exactly which Context-owned task files — production, Review and maintenance state — would be removed. Once you have agreed to discard that scope, the Agent runs the returned apply command with its plan digest. If interrupted, it reruns the preview and uses the resume command it returns.
-
-| Removed | Always kept |
+| Discarded | Always kept |
 | --- | --- |
-| Unfinished production stages, drafts, Review state and queued maintenance | Approved pages, source records and snapshots, project configuration, repository checkouts, other `.tmp` files and existing outputs |
+| Unfinished production steps, drafts, review state and queued updates | Approved pages, source records and snapshots, project configuration, repository checkouts and existing outputs |
 
-Other caches are optional cleanup. Keep reports, unique material, unknown files and modified checkouts unless you agree to lose them; never delete locks, transaction records or active tool directories. Keep repository checkouts used by registered sources — removing them forces a costly clone on the next update — and keep source-region baselines, which let updates tell moved text from changed text.
+The Agent first shows you exactly what would be removed and goes ahead once you agree. Reports, unique material, unknown files and modified checkouts are kept unless you agree to lose them. Repository checkouts are kept too, because removing them means a slow clone on the next update, and so are the saved source baselines that let later updates tell moved text from changed text.
 
-Prepare **after** a successful delivery rather than straight after close: recording the version, building and retries may still need the current task. Delivery cleanup already removes completed drafts and Review state.
+Ask for a fresh start after a round has finished, not in the middle of one: recording the version, building and retries still need the current task. A successful round already cleans up its own drafts and review state.
 <!-- /context:section -->
 
 <!-- context:section id="sources" -->
-## 3. Restore usable sources
+## Making sure sources are usable
 
-| Source | How it is restored |
+| Source | What the Agent does |
 | --- | --- |
-| Repositories | `context source recovery-plan --format json` lists what is missing; a matching local checkout is reused, or `context source restore --input <file> --format json` clones it when authorized. Modules sharing a remote and commit are cloned once, at the registered commit — never a newer one. A dirty checkout you supplied is never reset. |
-| Lark documents | The stored body and required attachments are checked against the source records and repaired with the document tools. If the current remote differs from the old snapshot, that is a source update to decide, not a recovery. |
-| Notes, session summaries, local files | Formal source content is kept and its paths checked. Lost originals are never reconstructed from generated knowledge. |
+| Repositories | Reuses a matching local checkout, or clones a missing one at its registered commit when you allow it — never a newer one. Modules that share a repository and commit are cloned once. A checkout you changed yourself is never reset. |
+| Lark documents | Checks the stored text and attachments and repairs them. If the live document differs from the saved snapshot, that is an [update](../updates-and-versions/updating-knowledge.md) for you to decide, not a repair. |
+| Notes, conversation summaries, local files | Keeps the saved content and checks it is in place. Lost originals are never reconstructed from generated knowledge. |
 <!-- /context:section -->
 
 <!-- context:section id="finish" -->
-## 4. Verify and stop
+## When the workspace is ready
 
-The workspace is ready when the preview shows no task files, no writer is running, the configuration loads, and the selected sources resolve to their registered versions and paths. The Agent reports any blockers with their next action and then stops — it does not start writing or recapture everything. To go back to an older version instead, see [Restoring a Version](./restoring.md).
+The workspace is ready when no task is left, nothing is running, the configuration loads and the selected sources are at their registered versions. The Agent reports anything that blocks this, with the next step, and then stops — it does not start writing or re-capture everything. To go back to an older version instead, see [Versions, Changelog and Restoring](../updates-and-versions/versions-and-changelog.md).
+<!-- /context:section -->
+
+<!-- context:section id="commit-when" -->
+## Saving your work to Git
+
+When a round ends — after you have confirmed the results — the Agent commits the knowledge workspace to Git. In a project [planned in stages](../planning-and-production/planning-large-projects.md), the approved plan settles how work is committed across stages.
+
+To commit at another time, just ask:
+
+```text
+Commit the knowledge workspace now.
+```
+
+If there is no Git repository yet, the Agent agrees with you where it should be before creating one; if nothing changed, it tells you no commit is needed.
+<!-- /context:section -->
+
+<!-- context:section id="select" -->
+### Which files are included
+
+The commit holds the lasting state of the knowledge: configuration, source records and snapshots, approved pages, translations and the changelog. Build output, temporary task progress and repository checkouts are left out — outputs can be rebuilt and checkouts restored from the source records. The full list is in [The Context Knowledge Workspace](../../product/getting-started/knowledge-workspace.md).
+
+When the workspace sits inside a larger repository, only the workspace's files are committed; other changes you have made, staged or not, are left as they are.
+<!-- /context:section -->
+
+<!-- context:section id="commit" -->
+### The commit message and problems
+
+The Agent summarizes the actual change in a message that follows your repository's conventions. If Git identity, hooks, signing, conflicts or permissions get in the way, it tells you what is wrong rather than working around it.
+<!-- /context:section -->
+
+<!-- context:section id="verify" -->
+### Checking the commit
+
+The Agent finishes with the commit ID and a short description of what changed, after checking that the commit contains the intended files and nothing unrelated was touched. If a hook changed the result, it says so. It does not push, publish or create a remote repository unless you ask for that too.
 <!-- /context:section -->

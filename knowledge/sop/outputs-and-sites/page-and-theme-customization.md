@@ -1,20 +1,25 @@
 ---
-title: Page and Theme Customization
-description: How to replace homepage sections, add a logo or chat widget,
-  publish custom pages and change site colors without touching generated output.
+title: Customizing Pages and Themes
+description: For site authors — how to replace homepage sections, add a logo or
+  chat widget, publish custom pages, change site colors, and how light and dark
+  mode behave.
 type: Guide
-timestamp: 2026-10-15T06:56:50.800Z
+timestamp: 2026-10-19T18:50:25.454Z
 ---
-# Page and Theme Customization
+# Customizing Pages and Themes
 
 <!-- context:section id="goal" -->
-A Context site works without any frontend code, but you can tailor it: replace parts of the homepage, add a logo, float a chat widget on every page, publish website-only pages and change the color palette. All of this lives in your Context knowledge workspace — presentation code under `src/site/`, colors in `src/site/theme.json` — and is applied by the normal `context build`. Approved knowledge and generated output are never edited by hand.
+A Context site works without any frontend code, but site authors can tailor it: replace parts of the homepage, add a logo, float a chat widget on every page, publish website-only pages and change the color palette. All of this lives in your knowledge workspace — presentation code under `src/site/`, colors in `src/site/theme.json` — and is applied by the normal build. Approved knowledge and generated output are never edited by hand.
+
+You can write these files yourself or ask the Agent, for example:
+
+> Add our logo to the top bar and a support page linked from the sidebar.
 
 ```mermaid
 flowchart LR
-  ext["src/site/<br/>components, pages, CSS"] --> build["context build"]
+  ext["src/site/<br/>components, pages, CSS"] --> build["Build"]
   theme["src/site/theme.json"] --> build
-  cfg["kbPackage site.extensions"] --> build
+  cfg["Site extensions<br/>in the package declaration"] --> build
   build --> site["Website"]
 ```
 <!-- /context:section -->
@@ -36,11 +41,10 @@ site: {
 }
 ```
 
-Paths are relative to `root`. The folder may contain Vue components, CSS, Markdown and imported assets; use relative imports within it and declare external dependencies in the knowledge workspace's package manifest. Hidden files, `node_modules` and `dist` are not copied, and symbolic links are rejected. Never put credentials or private configuration in frontend files.
+Paths are relative to `root`. The folder may contain Vue components, CSS, Markdown and imported assets; use relative imports within it and declare external dependencies in the knowledge workspace's package manifest. Hidden files, `node_modules` and `dist` are not copied, and symbolic links are rejected. Never put credentials or private configuration in frontend files. All site options are in [Project API](../../product/reference/context/project-api.md).
 <!-- /context:section -->
 
 <!-- context:section id="slots" -->
-
 ## Homepage and page slots
 
 | Slot | Default | Customization |
@@ -52,10 +56,9 @@ Paths are relative to `root`. The folder may contain Vue components, CSS, Markdo
 | `floating` | Empty | Client-only component fixed bottom right on all pages |
 | `brand` | Site title text | Component at the start of the top bar, such as a logo |
 
-Omit a slot to keep its default, or set it to `false` to hide it. A component replaces only its slot — never the global navigation, language switch or article provenance. Components can use VitePress `useData()` and `useRoute()` and import scoped CSS. Pages prerender in the light theme; for readers whose saved choice is dark mode, slot components mount again after load so markup bound to `isDark` matches. The remounted slots finish loading before they replace the prerendered markup, so the old and new content swap in the same frame and a custom slot such as a homepage banner does not collapse.
+Omit a slot to keep its default, or set it to `false` to hide it. A component replaces only its slot — never the global navigation, language switch or page provenance. Components can use VitePress `useData()` and `useRoute()` and import scoped CSS.
 
-To show the right language from the first paint, render each language and mark it with `data-context-locales="<tag>"`; the site stylesheet hides the others. `useData().lang` gives the reader's language after mount.
-
+To show the right language from the first paint, render each language and mark it with `data-context-locales="<tag>"`; the site stylesheet hides the others. `useData().lang` gives the reader's language after mount. See [Multilingual Sites](multilingual-sites.md).
 <!-- /context:section -->
 
 <!-- context:section id="floating" -->
@@ -67,7 +70,7 @@ The `floating` component owns its button, panel and open/close behavior. Keep th
 <!-- context:section id="pages" -->
 ## Custom pages
 
-Each `pages` key becomes `/custom/<key>.html` under the site base. A page is trusted Markdown and may import Vue components:
+Each `pages` key becomes `/custom/<key>.html` under the site's address prefix. A page is trusted Markdown and may import Vue components:
 
 ```md
 # Support
@@ -79,12 +82,11 @@ import SupportPanel from '../components/SupportPanel.vue'
 <SupportPanel />
 ```
 
-Place it in navigation with an ordinary knowledge-map entry whose target is `artifact_ref: "site:support"`, setting `parent`, `title` and `order` as for any entry. Pages without an entry are still reachable directly, and several entries can point to one page. Custom pages are website-only: they are not approved articles and do not enter the knowledge package or LLM Docs. Change formal articles through revision, not with a custom page.
+Place it in navigation with an ordinary knowledge-map entry whose target is `artifact_ref: "site:support"`, setting `parent`, `title` and `order` as for any entry. Pages without an entry are still reachable directly, and several entries can point to one page. Custom pages are website-only: they are not approved pages and do not enter the knowledge package or LLM Docs. Change formal pages through [revision](../review-and-revision/revising-a-page.md), not with a custom page.
 <!-- /context:section -->
 
 <!-- context:section id="theme" -->
-
-## Colors
+## Colors and light/dark mode
 
 The first website build creates `src/site/theme.json` with the default light and dark palettes if it is missing; builds never overwrite your values, and deleting the file restores the defaults. Each `light` and `dark` object accepts `brand`, `accent`, `background`, `surface`, `text`, `mutedText` and `border` as hexadecimal colors; missing keys inherit defaults.
 
@@ -96,12 +98,13 @@ kbPackage({ site: { theme: {
 } } })
 ```
 
-Precedence is built-in defaults, then `theme.json`, then `site.theme`. Websites open in light mode regardless of the system color scheme; the reader's light/dark choice is remembered under the origin-wide `context-theme` key, so sites on one origin share it. Offline Review reports and Mermaid diagrams use the same colors. Custom components should read `--context-brand`, `--context-accent`, `--context-background`, `--context-surface`, `--context-text`, `--context-muted-text` and `--context-border` instead of hard-coding colors.
+Precedence is built-in defaults, then `theme.json`, then the package's own theme. Offline [review reports](../review-and-revision/reading-review-reports.md) and Mermaid diagrams use the same colors. Custom components should read `--context-brand`, `--context-accent`, `--context-background`, `--context-surface`, `--context-text`, `--context-muted-text` and `--context-border` instead of hard-coding colors.
 
+Sites open in light mode regardless of the reader's system color scheme. A reader's light or dark choice is remembered for the whole origin, so all Context sites on one origin share it, and it is applied from the first paint, so pages don't flash the other scheme while loading.
 <!-- /context:section -->
 
 <!-- context:section id="check" -->
 ## Building and checking
 
-Customization needs no capture, Indexer work or new review: edit and run the usual build. Extension files and dependency manifests take part in build fingerprints, and a failed build keeps the previous output. Before publishing, preview the homepage, custom pages and floating panel on desktop and mobile, with a non-root `base`, in dark mode and with keyboard navigation. Publish only the website folder. For the base site options, see [Documentation Sites](documentation-sites.md).
+Customization needs no new sources, Indexer work or review: edit and rebuild. A failed build keeps the previous output. Before publishing, preview the homepage, custom pages and floating panel on desktop and mobile, under a non-root address prefix, in dark mode and with keyboard navigation. Deploy only the website folder. For the base site options and deployment, see [Documentation Sites](documentation-sites.md).
 <!-- /context:section -->

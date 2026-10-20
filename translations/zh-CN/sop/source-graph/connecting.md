@@ -1,17 +1,18 @@
 ---
 title: 接入
-description: 将浏览器、MCP 客户端、脚本或命令行客户端接入 Source
+description: 把你的 Agent 接入 Source Graph，让 Context
+  无需克隆就能读取被引用的代码；再接入浏览器、脚本或命令行客户端，选择合适的凭据，并遵循先搜索、再读取的循环。
 translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  source_digest: 9931ec2825c796e6377e3c6545cb22be62d5857c6a12143c1ffdb492eaf2dc33
-  translated_at: 2026-10-14T02:43:48.316Z
+  source_digest: 8c7d8c72d216a8714e5363576e92a95d0deec2f555cb1d7249f5f15e838dc47b
+  translated_at: 2026-10-19T19:47:45.248Z
 ---
 
 # 接入
 
 <!-- context:section id="goal" -->
-接入后，你的 Agent、脚本或终端无需先克隆仓库，就能在固定提交上搜索和阅读代码。为什么这很重要、什么时候需要它，以及如何试用在线演示，见 [Source Graph 是什么](introduction.md)。
+接入后，你的 Agent、脚本或终端无需先克隆仓库，就能在固定提交上搜索和阅读代码。大多数 Context 用户只需要做一件事：按下一节所述通过 MCP 接入自己的 Agent，让 Agent 能远程读取回答背后的代码。为什么这很重要、什么时候需要它，以及如何试用在线演示，见 [Source Graph 是什么](introduction.md)。
 
 每个 Source Graph 实例都在其源站的 `/sourcegraph/` 路径下提供四个入口。按调用方选择合适的入口即可；它们执行相同的操作，遵循相同的规则，只是一次调用读取多段代码仅 MCP 支持。
 
@@ -25,22 +26,14 @@ translation:
 网站的 **Connect** 页面始终会展示当前实例可直接复制的配置，包括正确的地址以及是否需要令牌。当它与手写示例不一致时，以该页面为准。
 <!-- /context:section -->
 
-<!-- context:section id="credentials" -->
-## 选择凭据
-
-| 凭据 | 获取方式 | 允许的操作 |
-| --- | --- | --- |
-| 无（匿名） | — | 当站点允许公开读取时，只读访问标记为公开的仓库；按客户端限流 |
-| 个人 API Key（`sgk_…`） | 登录后打开用户设置，创建 API 令牌 | 通过 HTTP 或 MCP 执行与你的账号相同的读取操作。管理员创建的 Key 还可以通过 MCP 请求建索引 |
-| 服务令牌 | 实例的 `SOURCEGRAPH_API_TOKEN` 设置，至少 32 个字符 | 所有 HTTP 和 MCP 操作，包括登记和建索引，适用于你自己掌控的自动化流程 |
-
-以 `Authorization: Bearer <value>` 的形式发送 Key 和令牌。无效凭据会被拒绝并返回 `AUTHENTICATION_REQUIRED`，绝不会回退为匿名访问。请将凭据保存在客户端的密钥存储或环境变量中，不要放进共享的配置文件。各模式的详细说明见[登录与准入](authentication-and-access-control.md)。
-<!-- /context:section -->
-
 <!-- context:section id="mcp" -->
-## 接入 MCP 客户端
+## 为 Context 接入你的 Agent
 
-将任何支持 Streamable HTTP 的客户端指向 `/mcp` 端点。公开演示实例的配置如下：
+1. 如果实例需要凭据，请登录并创建个人 API Key（见[选择凭据](#choose-a-credential)）。公开演示实例不需要凭据。
+2. 打开站点的 **Connect** 页面，复制适用于你的 Agent 宿主的配置；页面会展示 Claude Code、Codex 和 Cursor 对应的命令或配置文件。
+3. 保持服务器名称为 `context-sourcegraph`。Context 的查询 Skill 读取被引用的代码时，查找的就是这个名称，详见[远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md)。
+
+对于其他支持 Streamable HTTP 的客户端，将其指向 `/mcp` 端点。公开演示实例的配置如下：
 
 ```json
 {
@@ -53,9 +46,25 @@ translation:
 }
 ```
 
-如果实例需要凭据，添加 `"headers": { "Authorization": "Bearer <token>" }`。Connect 页面还会展示 Claude Code、Codex 和 Cursor 对应的命令或配置文件。将服务器命名为 `context-sourcegraph`，Context 的查询 Skill 就能找到它，详见[远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md)。
+如果实例需要凭据，添加 `"headers": { "Authorization": "Bearer <token>" }`。可选的 `plugins` 查询参数控制整个连接使用的仓库插件：`auto`（默认选择）、`off`，或最多 16 个以逗号分隔的插件名称。匿名连接和个人 Key 只能获得只读工具；`prepare` 只对服务令牌以及被允许执行准备的管理员 Key 可见。当前的输入 schema 请通过 MCP 工具发现获取，[HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)参考文档中列出了这些工具。
+<!-- /context:section -->
 
-可选的 `plugins` 查询参数控制整个连接使用的仓库插件：`auto`（默认选择）、`off`，或最多 16 个以逗号分隔的插件名称。匿名连接和个人 Key 只能获得只读工具；`prepare` 只对服务令牌以及被允许执行准备的管理员 Key 可见。当前的输入 schema 请通过 MCP 工具发现获取，[HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)参考文档中列出了这些工具。
+<!-- context:section id="missing-repository" -->
+## 缺少某个仓库？
+
+如果搜索或读取找不到你需要的仓库，多半是它还没有在该实例上登记。登记需要管理员操作；私有仓库还需要其代码来源的令牌，服务才能拉取它。请联系实例管理员；如果是你自己的实例，可以按[登记仓库](registering-repositories.md)中的说明自行登记。
+<!-- /context:section -->
+
+<!-- context:section id="credentials" -->
+## 选择凭据
+
+| 凭据 | 获取方式 | 允许的操作 |
+| --- | --- | --- |
+| 无（匿名） | — | 当站点允许公开读取时，只读访问标记为公开的仓库；按客户端限流 |
+| 个人 API Key（`sgk_…`） | 登录后打开用户设置，创建 API 令牌 | 通过 HTTP 或 MCP 执行与你的账号相同的读取操作。管理员创建的 Key 还可以通过 MCP 请求建索引 |
+| 服务令牌 | 实例的 `SOURCEGRAPH_API_TOKEN` 设置，至少 32 个字符 | 所有 HTTP 和 MCP 操作，包括登记和建索引，适用于你自己掌控的自动化流程 |
+
+以 `Authorization: Bearer <value>` 的形式发送 Key 和令牌。无效凭据会被拒绝并返回 `AUTHENTICATION_REQUIRED`，绝不会回退为匿名访问。请将凭据保存在客户端的密钥存储或环境变量中，不要放进共享的配置文件。各模式的详细说明见[登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->
 
 <!-- context:section id="http" -->
@@ -103,5 +112,5 @@ Agent 用一个简短的循环就能充分利用 Source Graph：
 3. 在该提交上**读取**关键范围：已知文件时直接读取，需要多处时用 `read_many` 一次读取。
 4. 如果文件还有后续内容，从返回的下一行**继续**读取；将 `Partial`、`Truncated` 和覆盖范围标记视为限制，而不是内容不存在的证明。
 
-无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。`409 INDEX_NOT_READY` 表示该提交尚未建好索引，处理方法见[运维](operations.md)。
+无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。如果请求失败——例如某个提交尚未建好索引时返回 `409 INDEX_NOT_READY`——请在[运维](operations.md#common-errors)中查找该错误码的含义和处理方法。
 <!-- /context:section -->

@@ -39,7 +39,7 @@ entries:
     title: Large Projects
     order: 7
     target:
-      artifact_ref: 25f7897c-1fd2-4b59-b426-437fc25cb973
+      artifact_ref: a68b141a-1f2f-449b-97e2-7942fecaf71d
   - key: getting-started/quick-start
     parent: getting-started
     title: Quick Start
@@ -65,411 +65,363 @@ entries:
   - key: guides-agentgraph
     parent: guides
     title: Agent Graph
-    order: 12
+    order: 110
   - key: guides-agentgraph/authoring-graphs
     parent: guides-agentgraph
     title: Authoring Graphs
-    order: 3
+    order: 30
     target:
       artifact_ref: 80852a65-4353-42fc-b0e9-f935d3b0c3ee
   - key: guides-agentgraph/getting-started
     parent: guides-agentgraph
-    title: Quick Start
-    order: 2
+    title: Getting Started with Agent Graph
+    order: 20
     target:
       artifact_ref: 3eab390f-44a1-49e0-a4d5-317b4705b6b9
   - key: guides-agentgraph/introduction
     parent: guides-agentgraph
     title: What Is Agent Graph
-    order: 1
+    order: 10
     target:
       artifact_ref: 3a6ac1dd-079a-47fc-b57b-e69032d0f793
   - key: guides-agentgraph/testing-and-publishing
     parent: guides-agentgraph
     title: Testing and Publishing
-    order: 4
+    order: 40
     target:
       artifact_ref: cde7ef93-fa8b-4b5d-95e8-40164f98bb61
-  - key: guides-evaluation
-    parent: guides
-    title: Evaluation
-    order: 14
-  - key: guides-evaluation/evaluating-your-knowledge-base
-    parent: guides-evaluation
-    title: Evaluating Your Knowledge Base
-    order: 1
-    target:
-      artifact_ref: 14905f09-233b-41a2-b725-c1c1137d8ebb
-  - key: guides-evaluation/evaluation-standard
-    parent: guides-evaluation
-    title: Scoring and Timing Standard
-    order: 2
-    target:
-      artifact_ref: 4cefdc74-779a-435a-8d47-0a9794f8144c
-  - key: guides-evaluation/knowledge-retrieval
-    parent: guides-evaluation
-    title: Knowledge Retrieval Benchmark
-    order: 3
-    target:
-      artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
   - key: guides-indexers
     parent: guides
     title: Custom Indexers
-    order: 9
+    order: 80
   - key: guides-indexers/code-indexers
     parent: guides-indexers
-    title: Code Indexers
-    order: 4
+    title: Writing Indexer Guidance
+    order: 40
     target:
       artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
   - key: guides-indexers/community-indexers
     parent: guides-indexers
-    title: Community Indexers
-    order: 1
+    title: Built-in Indexers
+    order: 10
     target:
       artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
   - key: guides-indexers/creating-an-indexer
     parent: guides-indexers
     title: Creating an Indexer
-    order: 3
+    order: 30
     target:
       artifact_ref: 85a7b33c-5b89-45f1-a88b-bd64aaa70ecb
-  - key: guides-indexers/document-indexers
-    parent: guides-indexers
-    title: Document Indexers
-    order: 5
-    target:
-      artifact_ref: a3f38c25-85de-4b6f-9a99-dc86485cf82c
   - key: guides-indexers/providers-and-customization
     parent: guides-indexers
-    title: Providers and Customization
-    order: 2
+    title: Choosing, Replacing and Disabling Indexers
+    order: 20
     target:
       artifact_ref: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
-  - key: guides-maintenance
-    parent: guides
-    title: Workspace Maintenance
-    order: 7
-  - key: guides-maintenance/committing
-    parent: guides-maintenance
-    title: Committing
-    order: 3
-    target:
-      artifact_ref: dd7b0c11-4cb7-49fc-aa33-b2cdaadeacaa
-  - key: guides-maintenance/preparing
-    parent: guides-maintenance
-    title: Preparing
-    order: 1
-    target:
-      artifact_ref: 307b902e-f337-4e9d-a849-acdc0127be22
-  - key: guides-maintenance/restoring
-    parent: guides-maintenance
-    title: Restoring
-    order: 2
-    target:
-      artifact_ref: 95637888-eeb2-4ea2-816a-490f0ab1ba73
   - key: guides-outputs
     parent: guides
     title: Outputs and Sites
-    order: 4
+    order: 40
   - key: guides-outputs/custom-output-templates
     parent: guides-outputs
     title: Custom Output Templates
-    order: 6
+    order: 60
     target:
       artifact_ref: 145efe1c-4969-48ef-8514-1e016773a775
   - key: guides-outputs/documentation-sites
     parent: guides-outputs
     title: Documentation Sites
-    order: 2
+    order: 20
     target:
       artifact_ref: e4aba8fd-3086-4983-a371-5bded4db7520
   - key: guides-outputs/knowledge-packages
     parent: guides-outputs
     title: Knowledge Packages
-    order: 1
+    order: 10
     target:
       artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
   - key: guides-outputs/llm-docs
     parent: guides-outputs
     title: LLM Docs
-    order: 4
+    order: 30
     target:
       artifact_ref: 1e9f9f30-d8b1-45e7-8092-ad23ddb784ee
   - key: guides-outputs/multilingual-sites
     parent: guides-outputs
     title: Multilingual Sites
-    order: 5
+    order: 50
     target:
       artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
   - key: guides-outputs/page-and-theme-customization
     parent: guides-outputs
-    title: Page and Theme Customization
-    order: 3
+    title: Customizing Pages and Themes
+    order: 40
     target:
       artifact_ref: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
   - key: guides-practices
     parent: guides
-    title: Practices
-    order: 13
+    title: Practices and Evaluation
+    order: 90
   - key: guides-practices/best-practices
     parent: guides-practices
     title: Best Practices
-    order: 1
+    order: 10
     target:
       artifact_ref: 6130b9e4-4934-45ce-980b-2909ab4f206e
   - key: guides-practices/choosing-models
     parent: guides-practices
     title: Choosing Models
-    order: 3
+    order: 30
     target:
       artifact_ref: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
-  - key: guides-practices/cold-start
+  - key: guides-practices/evaluating-your-knowledge-base
     parent: guides-practices
-    title: Cold-Starting a Knowledge Base
-    order: 2
+    title: Evaluating Your Knowledge Base
+    order: 40
     target:
-      artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
-  - key: guides-practices/migrating-a-knowledge-base
+      artifact_ref: 14905f09-233b-41a2-b725-c1c1137d8ebb
+  - key: guides-practices/evaluation-standard
     parent: guides-practices
-    title: Migrating an Existing Knowledge Base
-    order: 5
+    title: Scoring and Timing Standard
+    order: 50
     target:
-      artifact_ref: f38982c1-617a-487a-b0bd-13a6a28d01cd
-  - key: guides-practices/prompt-recipes
+      artifact_ref: 4cefdc74-779a-435a-8d47-0a9794f8144c
+  - key: guides-practices/knowledge-retrieval
     parent: guides-practices
-    title: Prompt Recipes
-    order: 4
+    title: Knowledge Retrieval Benchmark
+    order: 60
     target:
-      artifact_ref: 5c111951-9200-413d-98d2-5ac1bc2bb128
+      artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
+  - key: guides-practices/operational-knowledge
+    parent: guides-practices
+    title: Operations Runbooks as Knowledge
+    order: 20
+    target:
+      artifact_ref: da3d3b26-40b2-4183-b9d7-73cff0b8980f
   - key: guides-production
     parent: guides
-    title: Planning and Production
-    order: 2
+    title: Planning and Producing
+    order: 10
+  - key: guides-production/cold-start
+    parent: guides-production
+    title: Cold-Starting a Knowledge Base
+    order: 40
+    target:
+      artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
   - key: guides-production/managed-mode-and-review-policy
     parent: guides-production
-    title: Managed Mode and Review Policy
-    order: 3
+    title: Fully Managed Mode
+    order: 60
     target:
       artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
+  - key: guides-production/migrating-a-knowledge-base
+    parent: guides-production
+    title: Migrating an Existing Knowledge Base
+    order: 50
+    target:
+      artifact_ref: f38982c1-617a-487a-b0bd-13a6a28d01cd
   - key: guides-production/planning-large-projects
     parent: guides-production
-    title: Planning a Large Project
-    order: 4
+    title: Planning Large Projects in Stages
+    order: 30
     target:
       artifact_ref: a68b141a-1f2f-449b-97e2-7942fecaf71d
   - key: guides-production/start-reports
     parent: guides-production
-    title: Start Reports
-    order: 1
+    title: Confirming the Work-Start Report
+    order: 20
     target:
       artifact_ref: 80ddc71e-bea5-45b3-9a6c-b042566601ad
   - key: guides-production/working-with-agents
     parent: guides-production
     title: Working with Agents
-    order: 2
+    order: 10
     target:
       artifact_ref: ef41f849-6248-47da-afec-638ab2542c22
   - key: guides-querying
     parent: guides
-    title: Querying Knowledge
-    order: 5
+    title: Using Knowledge
+    order: 50
   - key: guides-querying/asking-questions
     parent: guides-querying
     title: Asking Questions
-    order: 1
+    order: 10
     target:
       artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
-  - key: guides-querying/reading-code-evidence-remotely
-    parent: guides-querying
-    title: Reading Code Evidence Remotely
-    order: 3
-    target:
-      artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
   - key: guides-querying/using-packages-in-agents
     parent: guides-querying
-    title: Using Packages in Agents
-    order: 2
+    title: Using a Package in Your Agent
+    order: 20
     target:
       artifact_ref: e9c6dca7-c6c3-40f5-8439-726ad9262b15
   - key: guides-review
     parent: guides
     title: Review and Revision
-    order: 3
+    order: 30
   - key: guides-review/reading-review-reports
     parent: guides-review
     title: Reading Review Reports
-    order: 1
+    order: 10
     target:
       artifact_ref: 5b6c8717-a113-4829-8d95-76bcc731fcad
   - key: guides-review/reorganizing-at-scale
     parent: guides-review
     title: Reorganizing at Scale
-    order: 3
+    order: 30
     target:
       artifact_ref: 271298e1-6876-41ac-861c-902752b63828
   - key: guides-review/revising-a-page
     parent: guides-review
     title: Revising a Page
-    order: 2
+    order: 20
     target:
       artifact_ref: 7e11e6c2-7029-4e7f-a717-47566aa4153f
   - key: guides-service
     parent: guides
-    title: Knowledge Service Agent
-    order: 8
+    title: Knowledge Service
+    order: 70
   - key: guides-service/building-a-knowledge-service
     parent: guides-service
     title: Building a Knowledge Service
-    order: 1
+    order: 10
     target:
       artifact_ref: 0a27d0c5-3057-4806-a0a5-2e8de53b5321
-  - key: guides-service/operational-knowledge
-    parent: guides-service
-    title: Operational Knowledge
-    order: 3
-    target:
-      artifact_ref: da3d3b26-40b2-4183-b9d7-73cff0b8980f
   - key: guides-service/using-the-bot-in-team-chat
     parent: guides-service
     title: Using the Bot in Team Chat
-    order: 2
+    order: 20
     target:
       artifact_ref: cadb9370-2f17-4d24-8482-f4e4696d0812
   - key: guides-sourcegraph
     parent: guides
     title: Source Graph
-    order: 10
-  - key: guides-sourcegraph-ops
-    parent: guides
-    title: Operating Source Graph
-    order: 11
-  - key: guides-sourcegraph-ops/authentication-and-access-control
-    parent: guides-sourcegraph-ops
+    order: 100
+  - key: guides-sourcegraph/authentication-and-access-control
+    parent: guides-sourcegraph
     title: Authentication and Access Control
-    order: 3
+    order: 60
     target:
       artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
-  - key: guides-sourcegraph-ops/deployment-recommendations
-    parent: guides-sourcegraph-ops
-    title: Deployment Recommendations
-    order: 2
-    target:
-      artifact_ref: 4c404898-5e2f-47f4-9740-e5719162af5c
-  - key: guides-sourcegraph-ops/operations
-    parent: guides-sourcegraph-ops
-    title: Operations
-    order: 4
-    target:
-      artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
-  - key: guides-sourcegraph-ops/self-hosting
-    parent: guides-sourcegraph-ops
-    title: Self-Hosting
-    order: 1
-    target:
-      artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
   - key: guides-sourcegraph/connecting
     parent: guides-sourcegraph
     title: Connecting
-    order: 2
+    order: 20
     target:
       artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
   - key: guides-sourcegraph/introduction
     parent: guides-sourcegraph
     title: What Is Source Graph
-    order: 1
+    order: 10
     target:
       artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
+  - key: guides-sourcegraph/operations
+    parent: guides-sourcegraph
+    title: Operations
+    order: 70
+    target:
+      artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
+  - key: guides-sourcegraph/reading-code-evidence-remotely
+    parent: guides-sourcegraph
+    title: Reading Code Evidence Remotely
+    order: 30
+    target:
+      artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
   - key: guides-sourcegraph/registering-repositories
     parent: guides-sourcegraph
     title: Registering Repositories
-    order: 3
+    order: 40
     target:
       artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
+  - key: guides-sourcegraph/self-hosting
+    parent: guides-sourcegraph
+    title: Self-Hosting
+    order: 50
+    target:
+      artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
   - key: guides-sources
     parent: guides
-    title: Registering Sources
-    order: 1
+    title: Adding Sources
+    order: 20
   - key: guides-sources/code-repositories
     parent: guides-sources
     title: Code Repositories
-    order: 1
+    order: 20
     target:
       artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
   - key: guides-sources/document-directories
     parent: guides-sources
     title: Document Directories
-    order: 2
+    order: 30
     target:
       artifact_ref: 8a990784-16a3-4b84-957e-f5058ac73c3f
   - key: guides-sources/external-entrances
     parent: guides-sources
     title: External Entrances
-    order: 7
+    order: 70
     target:
       artifact_ref: 9e5aef24-16bb-4f72-9488-298444ea7de7
   - key: guides-sources/lark-documents
     parent: guides-sources
     title: Lark Documents
-    order: 3
+    order: 40
     target:
       artifact_ref: 7d229a92-58ec-41c9-8506-0eb4226471f5
   - key: guides-sources/notes
     parent: guides-sources
-    title: Notes
-    order: 4
+    title: Notes and Conversation Summaries
+    order: 50
     target:
       artifact_ref: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
   - key: guides-sources/same-repository-docs
     parent: guides-sources
-    title: Referencing Same-Repository Docs and Skills
-    order: 8
+    title: Linking Existing Docs and Skills
+    order: 60
     target:
       artifact_ref: b807271a-bf7a-483f-b571-b9b0c5dc0dd6
-  - key: guides-sources/session-summaries
-    parent: guides-sources
-    title: Session Summaries
-    order: 5
-    target:
-      artifact_ref: 38889376-c545-487e-99b1-c4f2c1d2dcec
   - key: guides-sources/source-batches
     parent: guides-sources
-    title: Source Batches
-    order: 6
+    title: Choosing How to Add Material
+    order: 10
     target:
       artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
   - key: guides-updates
     parent: guides
-    title: Updates and Versions
-    order: 6
+    title: Keeping Knowledge Current
+    order: 60
   - key: guides-updates/capturing-from-conversations
     parent: guides-updates
     title: Capturing from Conversations
-    order: 2
+    order: 20
     target:
       artifact_ref: d885e8ca-37d8-4ab1-83da-83458e7d9e07
+  - key: guides-updates/preparing
+    parent: guides-updates
+    title: Starting a New Task and Saving Your Work
+    order: 60
+    target:
+      artifact_ref: 307b902e-f337-4e9d-a849-acdc0127be22
   - key: guides-updates/scheduled-updates
     parent: guides-updates
     title: Scheduled Updates
-    order: 3
+    order: 30
     target:
       artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
   - key: guides-updates/updating-knowledge
     parent: guides-updates
     title: Updating Knowledge
-    order: 1
+    order: 10
     target:
       artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
   - key: guides-updates/versions-and-changelog
     parent: guides-updates
-    title: Versions and Changelog
-    order: 5
+    title: Versions, Changelog and Restoring
+    order: 50
     target:
       artifact_ref: bc31d513-0dd9-4f53-b6e2-953feada799a
   - key: guides-updates/writing-back-upstream
     parent: guides-updates
     title: Writing Back Upstream
-    order: 4
+    order: 40
     target:
       artifact_ref: c69e4047-18f9-463a-8c47-569bc306287b
   - key: hiw-agentgraph
@@ -706,4 +658,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:836f72d7c19e573b8183d752a7bbfc13f40fa08277a2472b53622dfcb4474d0a
+revision: sha256:a41e5e0319836f558ff6655f2709da7bbdf3834de498115a4ee03502bd336bb8

@@ -36,7 +36,6 @@ const PAGES = {
   "sop/source-graph/registering-repositories": "pages/aa50227a56841f0d42fe08e9dfa4cd53.html",
   "sop/source-graph/self-hosting": "pages/87e9a0f083fa7c393fae3f5bbb123a11.html",
   "sop/updates-and-versions/versions-and-changelog": "pages/4b322e03dfda3960ee4e5753b1f66a0f.html",
-  "sop/workspace-maintenance/restoring": "pages/421dc73b66ac3e2d02bc64baa27bfd14.html",
 };
 const CLI = "packages/context-cli";
 const RES = `${CLI}/context-workflow/resources`;
@@ -89,7 +88,7 @@ export const SCENARIOS = [
     [code("src/project/approvedPageMove.ts", 7), code("src/project/approvedStructureEdges.ts", 134)]),
   scene("context", "这个版本和上个版本比改了什么？", "What changed since the last version?", "版本与 Changelog", "Versions and changelog", "sop/updates-and-versions/versions-and-changelog",
     [code("src/commands/versionCommands.ts", 10), doc("manuals/guides/knowledge-updates.md")]),
-  scene("context", "新同事怎么接手同一个知识库？", "How does a new teammate pick up the workspace?", "工作区恢复", "Workspace restore", "sop/workspace-maintenance/restoring",
+  scene("context", "怎么恢复到之前的知识版本？", "How do I restore an earlier knowledge version?", "版本恢复", "Version restore", "sop/updates-and-versions/versions-and-changelog",
     [doc("manuals/guides/workspace-restore.md"), doc("manuals/guides/workspace-prepare.md")]),
 
   scene("source", "远程搜索为什么能做到毫秒级？", "How is remote search this fast?", "Source Graph · 索引与检索", "Source Graph · indexing and search", "architecture/source-graph/pinned-search-and-reads",

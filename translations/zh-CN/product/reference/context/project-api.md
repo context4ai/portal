@@ -5,8 +5,8 @@ description: src/index.ts 可以用 @c4a/context SDK 声明哪些内容——来
 translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
-  source_digest: db176cde535b551a1cef77c0fd7372ed681cbed5c8c99a9dc1b64326b4d061f9
-  translated_at: 2026-10-15T06:57:53.750Z
+  source_digest: afe0b102d65a00879f530d742699fcc25f84c78c1c535fa31b91b649aed9241b
+  translated_at: 2026-10-19T20:00:34.513Z
 ---
 
 # Project API

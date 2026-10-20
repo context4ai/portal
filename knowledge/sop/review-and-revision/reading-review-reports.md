@@ -1,14 +1,15 @@
 ---
 title: Reading Review Reports
 description: Find your way around the review report, judge structure, content
-  and scope, and answer with approval, revision notes or both.
+  and scope, answer with approval, revision notes or both, and know what happens
+  once pages are approved.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Reading Review Reports
 
 <!-- context:section id="goal" -->
-Nothing the Agent writes becomes knowledge until it passes **Knowledge Review**. The Agent opens one HTML report for the whole current batch of candidate pages and waits for your answer. This report decides both the scope and the quality of what gets published, so it is worth reading with three questions in mind.
+Nothing the Agent writes becomes knowledge until you approve it in review. The Agent opens one HTML report for the whole current batch of drafted pages and waits for your answer. This report decides both the scope and the quality of what gets published, so it is worth reading with three questions in mind.
 <!-- /context:section -->
 
 <!-- context:section id="layout" -->
@@ -16,9 +17,9 @@ Nothing the Agent writes becomes knowledge until it passes **Knowledge Review**.
 
 | Part | What it shows |
 | --- | --- |
-| Change overview | The batch at a glance, with the existing navigation and the expected file tree of the Context knowledge workspace |
-| Navigation | Where each page will sit; pages without a placement are flagged so the Agent can bind them before asking you |
-| Pages | Each candidate's title, path, summary and full rendered content, including diagrams and source citations. New pages are marked *New*; changed pages show the changed blocks next to the previous text |
+| Change overview | The batch at a glance, with the existing navigation and the expected file tree of the knowledge workspace |
+| Navigation | Where each page will sit; pages without a placement are flagged so the Agent can place them before asking you |
+| Pages | Each draft's title, path, summary and full rendered content, including diagrams and source citations. New pages are marked *New*; changed pages show the changed blocks next to the previous text |
 | Revision notes | A note box per page; typing in it marks the page for revision |
 
 Opening a page marks it READ in your browser. Read counts and notes are local conveniences, not approval. The revision counter lists every page with notes, and **Copy** exports them as plain text with article IDs and titles for pasting into the conversation.
@@ -27,9 +28,9 @@ Opening a page marks it READ in your browser. Read counts and notes are local co
 <!-- context:section id="three-checks" -->
 ## Three things to judge
 
-1. **Structure** — Are the topics, directories and pages divided the way readers will look for them?
-2. **Content** — Do the pages carry the intended purpose, depth and style? Can a reader actually complete the promised task with them?
-3. **Scope** — Is related material missing that should be included, or is something here that should be dropped?
+1. **Structure**: Are the topics, directories and pages divided the way readers will look for them?
+2. **Content**: Do the pages carry the intended purpose, depth and style? Can a reader actually complete the promised task with them?
+3. **Scope**: Is related material missing that should be included, or is something here that should be dropped?
 
 Citations and placements alone do not prove a page is useful. Spot-check a few pages against their sources, especially defaults, conditions and steps.
 <!-- /context:section -->
@@ -40,7 +41,7 @@ Citations and placements alone do not prove a page is useful. Spot-check a few p
 ```mermaid
 flowchart LR
   rep["Review report"] --> a{"Your reply"}
-  a -->|approve| ok["Approved into knowledge/"]
+  a -->|approve| ok["Approved"]
   a -->|notes only| fix["Agent repairs"]
   fix --> rep2["Updated report"]
   rep2 --> a
@@ -60,14 +61,20 @@ Reply in the conversation; no review code or magic phrase is needed.
 Silence, an ignored card or read progress is never approval. Rejecting a page leaves it out of this batch; it does not retire an already approved article.
 <!-- /context:section -->
 
+<!-- context:section id="required" -->
+## Planned articles must come back
+
+Rejecting a page that was part of the agreed plan does not cancel it. The current stage cannot finish while a planned article stays rejected; the Agent turns your feedback into a revision and brings the page back to review. To drop an article on purpose, ask the Agent to change the plan instead.
+<!-- /context:section -->
+
 <!-- context:section id="partial" -->
 ## Taking part of a batch now
 
-You can approve the pages that are ready while others go back for repair. Approval alone does not build; to see the approved pages published before the rest are finished, ask for an early delivery. The Agent runs close and build for them, as long as they do not link to pages still pending, and then returns to the remaining review.
+You can approve the pages that are ready while others go back for repair. Approval alone does not rebuild the outputs; to see the approved pages published before the rest are finished, ask for them to be published early. The Agent applies the approved pages and rebuilds the outputs for them, as long as they do not link to pages still pending, and then returns to the remaining review.
 <!-- /context:section -->
 
 <!-- context:section id="after" -->
 ## After approval
 
-Approval writes the pages to `knowledge/`. Close then rebuilds `knowledge/structure.yaml` and verifies the approved knowledge without rewriting its prose, and build produces the package and site. Nothing is published before approval.
+Approval writes the pages into the knowledge workspace. The approved pages are then applied and checked, without rewriting their prose, and the outputs (package and site) are rebuilt. Nothing is published before approval.
 <!-- /context:section -->

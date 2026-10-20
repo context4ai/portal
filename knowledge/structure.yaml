@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:56db8589d65adcb24df62f3ef9ab30b45acd89bd372d3cd5c1bae88fa458f76f
+input_hash: sha256:f215cb82c1bfdf7a73fbdb31d6bee671d45775b096ab8725573fe4c8bbec2bbd
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -2068,6 +2068,20 @@ articles:
               start_line: 17
               end_line: 42
             content_digest: sha256:28a58a2f942fdaf6e97b3caef4018b7ab56e35cfabf04303e95dcee6262ef547
+      - id: more-requests
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/README.md
+              start_line: 33
+              end_line: 40
+            content_digest: sha256:1b96bd896c2f54a8f5c83bea3a6094a800c70264b52f6bd59843819e441fe0b7
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 426
+              end_line: 430
+            content_digest: sha256:8c01ab7b4cb0dc9f858d8e6a7b7a562d7a442f3bbd929870e425a03d6b6279a1
       - id: automatic
         references:
           - source_ref: repo:20261012/context
@@ -2463,73 +2477,6 @@ articles:
               start_line: 182
               end_line: 187
             content_digest: sha256:65c067fee93484af57b152de52495f26c5aa0f8ea1e0b2c7176d5394a9c86e3b
-  - article_id: 25f7897c-1fd2-4b59-b426-437fc25cb973
-    path: product/getting-started/large-projects.md
-    collection: product
-    visibility: public
-    sections:
-      - id: threshold
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 15
-              end_line: 20
-            content_digest: sha256:df3842d45b1bf9d3d81218fde7f02933b02bb1f876282549f4e8a2825706a4f5
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 29
-              end_line: 31
-            content_digest: sha256:0fad6a0f2d1d0d3013c48c49ab121c8980138148a57d1cb0c3560424316955ff
-      - id: plan
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 36
-              end_line: 60
-            content_digest: sha256:3b52dfefbd56317488bc400f341fd17f9a321f81930f25e5c37499dd1e63719c
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 123
-              end_line: 128
-            content_digest: sha256:45673e41fc684db7eb8d884a68f768b8a64c0ad71a4e3dde9fcfda6f02017dc4
-      - id: limits
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 106
-              end_line: 118
-            content_digest: sha256:b9416c4e6bc5973b1944159b233b412c989640c49f6e01687e288f53200ca128
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 44
-              end_line: 48
-            content_digest: sha256:30cb7bfd92bcf6b666b70b456b9254ec7bcf899c5708c172b55a7d96279b3f2b
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 13
-              end_line: 13
-            content_digest: sha256:f50ad1eb63ee187ab3fb70f661b857bbc378b6a6e6ffa26c178f2bcd91e677af
-      - id: steer
-        references:
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 14
-              end_line: 14
-            content_digest: sha256:93b79400a652453f8a70b695f35c47fc87c7d0f067ae20c1e00bff940e8ec9dd
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 123
-              end_line: 125
-            content_digest: sha256:69339747eccf7e720ef217429b072039b04f81c29ad56591d829c945cb41f9b6
   - article_id: a5f433c5-3840-4ddf-8306-59b6a59e4dac
     path: product/getting-started/quick-start.md
     collection: product
@@ -5178,6 +5125,92 @@ articles:
               start_line: 68
               end_line: 79
             content_digest: sha256:2e2e83214fb55378979478ba3109a24dfc275a2d85916348967fd02a281a16ce
+      - id: documents
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
+              start_line: 1
+              end_line: 6
+            content_digest: sha256:b84092a159d78be5e02297efcb859d8b9a663667e1eebf036c04dbd004b5e891
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/SKILL.md
+              start_line: 17
+              end_line: 28
+            content_digest: sha256:5c4676442cfd95e288a85b40fe4ba61d9eaba78938da9686b2472beb5174c31b
+      - id: sources
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
+              start_line: 8
+              end_line: 16
+            content_digest: sha256:83c77407f1473a41703001513910c56917a166c8c47cc89ba1fb8325bcf28c70
+      - id: planning
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
+              start_line: 3
+              end_line: 22
+            content_digest: sha256:5d3b901a8ef06b0e0e4f4bce44be0b07f82fde4115b342f291f8532d8127064a
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
+              start_line: 41
+              end_line: 45
+            content_digest: sha256:c0c35551e841c6d16364011cac495fb5853ba12ce072900174ffa4e845e5c318
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
+              start_line: 18
+              end_line: 31
+            content_digest: sha256:4bec0a75f2a822cf1f9f4c1d4c32a57e11cd4fb0b2319df0ea9a9dab823541c8
+      - id: doc-writing
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
+              start_line: 33
+              end_line: 50
+            content_digest: sha256:4695de8713e9b77689d4905a84a7f9d038149129a00b4a1c31f1a0ca914e6ce1
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
+              start_line: 47
+              end_line: 49
+            content_digest: sha256:0141495cd824e139677d7eec5fdfa8e70b80435edfdca38d8ac27597380dddfd
+      - id: visuals
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-markdown-indexer/references/visual-source-processing.md
+              start_line: 9
+              end_line: 11
+            content_digest: sha256:41b203a22fa5db44dfd2ade1bcc32fe6f70a66e2f97cab6d43d8806155ff4fe6
+      - id: doc-example
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/indexer-skill-creation.md
+              start_line: 8
+              end_line: 18
+            content_digest: sha256:798524d83c4a4c64583b3f7785eb59ff9d06057b4b1088acd4d15a9d05bca074
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
+              start_line: 35
+              end_line: 36
+            content_digest: sha256:82ea79e3fb18db59e4e8c4c25d5ee80629bc9842fa4562dc47cdfe2282ce1fa6
+      - id: doc-tests
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
+              start_line: 52
+              end_line: 59
+            content_digest: sha256:a62bea801b8c4d3e0a22f5db57bc32fb9aba896b418314f2901bcb986bb3b684
   - article_id: 10bbdcee-144f-4852-92a4-21cee25050c4
     path: sop/custom-indexers/community-indexers.md
     collection: sop
@@ -5478,6 +5511,8 @@ articles:
               start_line: 84
               end_line: 100
             content_digest: sha256:cfe207c95b17ca69366750e6d8489d37d7a99d41324f6e6cc29497918c8cee6f
+      - id: try
+        references: []
       - id: install
         references:
           - source_ref: repo:20261012/context
@@ -5498,97 +5533,6 @@ articles:
               start_line: 605
               end_line: 612
             content_digest: sha256:f842371f89658ae5154b4ef41ef1d06b0610a125b476624b1ec387a2c520f751
-  - article_id: a3f38c25-85de-4b6f-9a99-dc86485cf82c
-    path: sop/custom-indexers/document-indexers.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
-              start_line: 1
-              end_line: 6
-            content_digest: sha256:b84092a159d78be5e02297efcb859d8b9a663667e1eebf036c04dbd004b5e891
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-markdown-indexer/SKILL.md
-              start_line: 17
-              end_line: 28
-            content_digest: sha256:5c4676442cfd95e288a85b40fe4ba61d9eaba78938da9686b2472beb5174c31b
-      - id: sources
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
-              start_line: 8
-              end_line: 16
-            content_digest: sha256:83c77407f1473a41703001513910c56917a166c8c47cc89ba1fb8325bcf28c70
-      - id: planning
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
-              start_line: 3
-              end_line: 22
-            content_digest: sha256:5d3b901a8ef06b0e0e4f4bce44be0b07f82fde4115b342f291f8532d8127064a
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
-              start_line: 41
-              end_line: 45
-            content_digest: sha256:c0c35551e841c6d16364011cac495fb5853ba12ce072900174ffa4e845e5c318
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
-              start_line: 18
-              end_line: 31
-            content_digest: sha256:4bec0a75f2a822cf1f9f4c1d4c32a57e11cd4fb0b2319df0ea9a9dab823541c8
-      - id: writing
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
-              start_line: 33
-              end_line: 50
-            content_digest: sha256:4695de8713e9b77689d4905a84a7f9d038149129a00b4a1c31f1a0ca914e6ce1
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-markdown-indexer/references/semantic-planning.md
-              start_line: 47
-              end_line: 49
-            content_digest: sha256:0141495cd824e139677d7eec5fdfa8e70b80435edfdca38d8ac27597380dddfd
-      - id: visuals
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-markdown-indexer/references/visual-source-processing.md
-              start_line: 9
-              end_line: 11
-            content_digest: sha256:41b203a22fa5db44dfd2ade1bcc32fe6f70a66e2f97cab6d43d8806155ff4fe6
-      - id: example
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/indexer-skill-creation.md
-              start_line: 8
-              end_line: 18
-            content_digest: sha256:798524d83c4a4c64583b3f7785eb59ff9d06057b4b1088acd4d15a9d05bca074
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
-              start_line: 35
-              end_line: 36
-            content_digest: sha256:82ea79e3fb18db59e4e8c4c25d5ee80629bc9842fa4562dc47cdfe2282ce1fa6
-      - id: tests
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/markdown-indexer-skill-authoring.md
-              start_line: 52
-              end_line: 59
-            content_digest: sha256:a62bea801b8c4d3e0a22f5db57bc32fb9aba896b418314f2901bcb986bb3b684
   - article_id: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
     path: sop/custom-indexers/providers-and-customization.md
     collection: sop
@@ -5628,6 +5572,8 @@ articles:
               start_line: 3
               end_line: 12
             content_digest: sha256:92c167b559859ef061e48028a1fbafee6cb5ece1e59b05652c4115206cd74492
+      - id: install-vs-select
+        references: []
       - id: combine
         references:
           - source_ref: repo:20261012/context
@@ -5648,6 +5594,8 @@ articles:
               start_line: 144
               end_line: 150
             content_digest: sha256:b7003523dcb239535417f3c78c55b098e524d48b51f0f16aee301647b8b4aca0
+      - id: replace
+        references: []
       - id: steer
         references:
           - source_ref: repo:20261012/context
@@ -5688,40 +5636,6 @@ articles:
               start_line: 20
               end_line: 23
             content_digest: sha256:de260c4720946877ec2252c3b129e49da2b0b06a40ae613457973104129b3531
-      - id: records
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/indexer-provider-and-customization.md
-              start_line: 23
-              end_line: 49
-            content_digest: sha256:6ac5a6d3372c97734410e2ae064adedb1094cbface7946220fb4fade15075588
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/indexer-provider-and-customization.md
-              start_line: 90
-              end_line: 101
-            content_digest: sha256:b4905c1b04821ebfecfd7626a49439dc8d0fab0c72dd6e4d89c545c1f2702be1
-      - id: manifest
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/reference/indexer-provider-protocol.md
-              start_line: 1
-              end_line: 10
-            content_digest: sha256:79accb86d4050cfe80bf6e21dc518fa49ee7bd485941a05af27dd8e54846810c
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-indexer-create/SKILL.md
-              start_line: 28
-              end_line: 32
-            content_digest: sha256:420673e43558a9a7e6bca9b595d6915b964fe114e37bda2b0a1b9c629cd1d13b
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-code-indexer/context-indexer.yaml
-              start_line: 1
-              end_line: 25
-            content_digest: sha256:6ba7e82f4565e7481cfddeb41c0b0f8f780ad317879e5c917e17df5adf9475ee
   - article_id: 0a27d0c5-3057-4806-a0a5-2e8de53b5321
     path: sop/knowledge-service-agent/building-a-knowledge-service.md
     collection: sop
@@ -5755,6 +5669,8 @@ articles:
               start_line: 1
               end_line: 8
             content_digest: sha256:3b056939a5bdced9329bea776fe260b90309e56fcdaef59cb14fada2d531c299
+      - id: setup
+        references: []
       - id: flows
         references:
           - source_ref: note:20261012/knowledge-service-agent.md
@@ -5853,6 +5769,8 @@ articles:
               start_line: 5
               end_line: 5
             content_digest: sha256:859b21c764ad552df9557477ca4e179c96547664c45629c8a1d41c2a3db0ac84
+      - id: asking
+        references: []
       - id: messages
         references:
           - source_ref: note:20261012/knowledge-service-agent.md
@@ -5912,6 +5830,14 @@ articles:
               start_line: 294
               end_line: 300
             content_digest: sha256:b299859243f3529a7e706b8270e4a3e1493d6c20e66be6f4dc4b211f619600b6
+      - id: review
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 346
+              end_line: 351
+            content_digest: sha256:8fe07bb749d3ab809cddbf1194204ec15e5bbf08f56385783297eca5b66e9dca
       - id: layout
         references:
           - source_ref: repo:20261012/context
@@ -5926,14 +5852,6 @@ articles:
               start_line: 159
               end_line: 164
             content_digest: sha256:4cc9a10b2e3d06f5faa4aea3c291a1a8ac1928ec871eea87a2118fa96924e7f0
-      - id: review
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/package-outputs.md
-              start_line: 346
-              end_line: 351
-            content_digest: sha256:8fe07bb749d3ab809cddbf1194204ec15e5bbf08f56385783297eca5b66e9dca
       - id: entry
         references:
           - source_ref: repo:20261012/context
@@ -6061,6 +5979,8 @@ articles:
               start_line: 37
               end_line: 40
             content_digest: sha256:e8b4f8856b34ac4e67d97c960e45465cbb95a4d63c9b4673e9d31915e3ecda1e
+      - id: home-cards
+        references: []
       - id: build
         references:
           - source_ref: repo:20261012/context
@@ -6120,6 +6040,20 @@ articles:
               start_line: 45
               end_line: 48
             content_digest: sha256:561fa1cd90897d6a37b01db1f8bbc895796aa23b2f4e716288435b6627af606a
+      - id: choose
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 472
+              end_line: 484
+            content_digest: sha256:63806737917c212e6bfe066b29b30fa87dc277a14a896f7716a6ae36b46e15c5
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/package-outputs.md
+              start_line: 393
+              end_line: 402
+            content_digest: sha256:f462a7d5919dbf38ade188ea4a72f8698f0e319d76da2c031eba10f84ee7d10e
       - id: contents
         references:
           - source_ref: repo:20261012/context
@@ -6148,34 +6082,6 @@ articles:
               start_line: 252
               end_line: 269
             content_digest: sha256:4e00b266bc507d04988bda1c67b27a3f030af86135edf80d957a4c930244bc39
-      - id: declare
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/reference/package-templates.md
-              start_line: 15
-              end_line: 57
-            content_digest: sha256:4d96dd3c9c591dffd0dd369ff2604bea070a28e6134d897114886dc03147c09d
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/package-outputs.md
-              start_line: 405
-              end_line: 411
-            content_digest: sha256:c44e29bc4c9e80c61f119dedf069b0ac6af495a2152f2cc5ea3f36d4f9b087c3
-      - id: choose
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/package-outputs.md
-              start_line: 472
-              end_line: 484
-            content_digest: sha256:63806737917c212e6bfe066b29b30fa87dc277a14a896f7716a6ae36b46e15c5
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/package-outputs.md
-              start_line: 393
-              end_line: 402
-            content_digest: sha256:f462a7d5919dbf38ade188ea4a72f8698f0e319d76da2c031eba10f84ee7d10e
       - id: build
         references:
           - source_ref: repo:20261012/context
@@ -6210,6 +6116,8 @@ articles:
               start_line: 285
               end_line: 290
             content_digest: sha256:f47939b55ce6543f6bee59c79f276ad15476ae1ad8e9614ec4fd9b126f46d0a3
+      - id: install
+        references: []
   - article_id: 1e9f9f30-d8b1-45e7-8092-ad23ddb784ee
     path: sop/outputs-and-sites/llm-docs.md
     collection: sop
@@ -6298,6 +6206,20 @@ articles:
               start_line: 35
               end_line: 35
             content_digest: sha256:9aeffb6a9ad225521286c3487341ad31891dfb0f8cc253acbe5d220246f4f099
+      - id: workflow
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/site-translation.md
+              start_line: 28
+              end_line: 66
+            content_digest: sha256:3e10f2aef06a989bd07c6d60edf9559fa9edcf4983d0ff2fbf76b3b30afb9567
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/site-translation.md
+              start_line: 77
+              end_line: 97
+            content_digest: sha256:3d72a843e86aa49e58acf89a468869d79613d85873ed262c4ceac559eb36be87
       - id: storage
         references:
           - source_ref: repo:20261012/context
@@ -6326,20 +6248,6 @@ articles:
               start_line: 173
               end_line: 173
             content_digest: sha256:e7f4f290dd742e25c2c6ae0f1cf7fcf329381a2d9c4dc149ec3273b72fe098b0
-      - id: workflow
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/site-translation.md
-              start_line: 28
-              end_line: 66
-            content_digest: sha256:3e10f2aef06a989bd07c6d60edf9559fa9edcf4983d0ff2fbf76b3b30afb9567
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/site-translation.md
-              start_line: 77
-              end_line: 97
-            content_digest: sha256:3d72a843e86aa49e58acf89a468869d79613d85873ed262c4ceac559eb36be87
       - id: reading
         references:
           - source_ref: repo:20261012/context
@@ -6452,14 +6360,6 @@ articles:
               start_line: 25
               end_line: 30
             content_digest: sha256:8c00da0e393c6cda703ba9f410531c7eca367f644bcf5ac475741c029b702e77
-      - id: switches
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context/SKILL.md
-              start_line: 509
-              end_line: 536
-            content_digest: sha256:03cdbe17a451f9478c8876931b54ab4de1284a051100102a046af7e17473ad9f
       - id: managed
         references:
           - source_ref: repo:20261012/context
@@ -6508,14 +6408,6 @@ articles:
               start_line: 70
               end_line: 101
             content_digest: sha256:ca5904945e591b27928e7c603e9d368fc3776da23b52faae4d5c183ba141d44a
-      - id: required
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-cli/src/project/indexerRequiredArticleReview.ts
-              start_line: 15
-              end_line: 43
-            content_digest: sha256:d8d41bae9c6326bee4580537fb500ddd0867f3bfa6b0ff201d7dff66963f72d9
       - id: where-it-stops
         references:
           - source_ref: repo:20261012/context
@@ -6536,6 +6428,14 @@ articles:
               start_line: 178
               end_line: 179
             content_digest: sha256:2599850320f29d175a333d231afed522ea2b3664280d079df3e710601954e07b
+      - id: switches
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context/SKILL.md
+              start_line: 509
+              end_line: 536
+            content_digest: sha256:03cdbe17a451f9478c8876931b54ab4de1284a051100102a046af7e17473ad9f
   - article_id: a68b141a-1f2f-449b-97e2-7942fecaf71d
     path: sop/planning-and-production/planning-large-projects.md
     collection: sop
@@ -6561,20 +6461,14 @@ articles:
             locator:
               path: plugins/context/skills/context-plan/SKILL.md
               start_line: 15
-              end_line: 26
-            content_digest: sha256:3f265b6f15b6514be685a5c0f65e62b59423bf0ce8ebc7d2b849868b10d8d958
+              end_line: 20
+            content_digest: sha256:df3842d45b1bf9d3d81218fde7f02933b02bb1f876282549f4e8a2825706a4f5
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-plan/SKILL.md
-              start_line: 28
-              end_line: 34
-            content_digest: sha256:6ff069c2134eaa813b6c9d873a26f67b319bf1830bd841bbbf88dbf83076b891
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/README.md
-              start_line: 28
-              end_line: 35
-            content_digest: sha256:c775dd456dc10e0988d5e065171a4fbd7a1d121438af587cc178814e3dfddb30
+              start_line: 29
+              end_line: 31
+            content_digest: sha256:0fad6a0f2d1d0d3013c48c49ab121c8980138148a57d1cb0c3560424316955ff
       - id: research
         references:
           - source_ref: repo:20261012/context
@@ -6629,6 +6523,18 @@ articles:
               start_line: 90
               end_line: 95
             content_digest: sha256:87b8e8156b25d9f3dfa0a7989fa5d40af970ae8bf04690c17d4738a1bfd8f229
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/SKILL.md
+              start_line: 106
+              end_line: 118
+            content_digest: sha256:b9416c4e6bc5973b1944159b233b412c989640c49f6e01687e288f53200ca128
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/SKILL.md
+              start_line: 44
+              end_line: 48
+            content_digest: sha256:30cb7bfd92bcf6b666b70b456b9254ec7bcf899c5708c172b55a7d96279b3f2b
       - id: review
         references:
           - source_ref: repo:20261012/context
@@ -6649,6 +6555,14 @@ articles:
               start_line: 61
               end_line: 63
             content_digest: sha256:045fd43b721242343c98dea629a38d28f33433023427343c56441fa847686c5a
+      - id: steer
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-plan/SKILL.md
+              start_line: 123
+              end_line: 125
+            content_digest: sha256:69339747eccf7e720ef217429b072039b04f81c29ad56591d829c945cb41f9b6
       - id: stages
         references:
           - source_ref: repo:20261012/context
@@ -6859,14 +6773,6 @@ articles:
               start_line: 142
               end_line: 155
             content_digest: sha256:f32bd16e7318137d849b70d662dd8292b18c517e56bd9e40c80e0ae99731f860
-      - id: multi
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-cli/context-workflow/resources/procedures/parallel-agent-batch.md
-              start_line: 7
-              end_line: 19
-            content_digest: sha256:b4012660e1990dfee06524477095ae1fd81b968686aa053aad35fb349629e67f
       - id: git
         references:
           - source_ref: repo:20261012/context
@@ -6875,6 +6781,8 @@ articles:
               start_line: 178
               end_line: 179
             content_digest: sha256:2599850320f29d175a333d231afed522ea2b3664280d079df3e710601954e07b
+      - id: guides-map
+        references: []
   - article_id: 6130b9e4-4934-45ce-980b-2909ab4f206e
     path: sop/practices/best-practices.md
     collection: sop
@@ -6920,14 +6828,6 @@ articles:
               start_line: 24
               end_line: 26
             content_digest: sha256:c09830b0b4af764c54512f40be73ee21aeaba5f9a9c777b013762bee87808da0
-      - id: upstream
-        references:
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 28
-              end_line: 37
-            content_digest: sha256:f77f17280e7fe6445e2b08864278f69e7d507c977c9949dda4cb74e150eeb1f5
       - id: batches
         references:
           - source_ref: note:20261012/usage-practices.md
@@ -6942,6 +6842,14 @@ articles:
               start_line: 33
               end_line: 46
             content_digest: sha256:9e9e3e7a959f1300890da589256984905be9acfe3024112a21ffe5a7e4a90a69
+      - id: upstream
+        references:
+          - source_ref: note:20261012/usage-practices.md
+            locator:
+              path: usage-practices.md
+              start_line: 28
+              end_line: 37
+            content_digest: sha256:f77f17280e7fe6445e2b08864278f69e7d507c977c9949dda4cb74e150eeb1f5
   - article_id: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
     path: sop/practices/choosing-models.md
     collection: sop
@@ -7371,61 +7279,6 @@ articles:
               start_line: 73
               end_line: 75
             content_digest: sha256:3b7ff2bda69b7b81ffd37be1f7a3a97a09e00098352bd5fc70f2689230abe34e
-  - article_id: 5c111951-9200-413d-98d2-5ac1bc2bb128
-    path: sop/practices/prompt-recipes.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
-        references:
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 5
-              end_line: 7
-            content_digest: sha256:2b6c649aa18266e2044b4f523d608c11a957c70986acdce695ae1026c593db50
-      - id: produce
-        references:
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 62
-              end_line: 70
-            content_digest: sha256:29a11570999fad3642bee693313f6166154b751ea6c37b9d4499142e366258f7
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/README.md
-              start_line: 33
-              end_line: 40
-            content_digest: sha256:1b96bd896c2f54a8f5c83bea3a6094a800c70264b52f6bd59843819e441fe0b7
-      - id: maintain
-        references:
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 62
-              end_line: 72
-            content_digest: sha256:058f8597251790abcacee4ba3de905ff3c3a3a9528adad2f3db75f40e2a43fde
-          - source_ref: note:20261012/usage-practices.md
-            locator:
-              path: usage-practices.md
-              start_line: 47
-              end_line: 60
-            content_digest: sha256:3fa72fb034535ff689379fdc47fe0a1a73380ec79a1ee33a5b6c6324b0687268
-      - id: deliver
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/package-outputs.md
-              start_line: 426
-              end_line: 430
-            content_digest: sha256:8c01ab7b4cb0dc9f858d8e6a7b7a562d7a442f3bbd929870e425a03d6b6279a1
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 1
-              end_line: 30
-            content_digest: sha256:8122ad4824e47c0d65a4d05db3fed0fa1e36e71db4a68f7f07fb6a6ccc6faab9
   - article_id: cb25b77b-565d-4c73-bebb-004762a36038
     path: sop/querying-knowledge/asking-questions.md
     collection: sop
@@ -7459,6 +7312,16 @@ articles:
               start_line: 139
               end_line: 142
             content_digest: sha256:cd8476c8433b4a111dad7eb984533d8134e5749508dc5ae30d4bb9d5c72ea436
+      - id: modes
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-inspect-search/SKILL.md
+              start_line: 33
+              end_line: 57
+            content_digest: sha256:58712baec2e1db38ca03e5158602fff5918bef229f53a637e24b14218e0acf51
+      - id: good-questions
+        references: []
       - id: search
         references:
           - source_ref: repo:20261012/context
@@ -7479,14 +7342,6 @@ articles:
               start_line: 254
               end_line: 263
             content_digest: sha256:606f46cf477f51d7ea3d7e386474d39cd5f82371112fd5e2d9423dc21507f121
-      - id: modes
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 33
-              end_line: 57
-            content_digest: sha256:58712baec2e1db38ca03e5158602fff5918bef229f53a637e24b14218e0acf51
       - id: answer
         references:
           - source_ref: repo:20261012/context
@@ -7621,40 +7476,6 @@ articles:
               start_line: 9
               end_line: 15
             content_digest: sha256:ce0cc7130a491744b560abb91e114d4e53a1110ceb80a89bcb770887000265b7
-      - id: layout
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/reference/package-templates.md
-              start_line: 124
-              end_line: 147
-            content_digest: sha256:1d56934e7bd4d650497f745d7d9877fce835eb6386bda02714d558d077b0c17a
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/templates/package-templates/kb/AGENTS.md
-              start_line: 17
-              end_line: 26
-            content_digest: sha256:27d7579322c67b9f7560e320997c22a8cd0eb6d1172b307bb3cde6de1a54fffb
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/templates/package-templates/kb/skills/knowledge-query/SKILL.md
-              start_line: 39
-              end_line: 47
-            content_digest: sha256:fcd7a8b7c3cf03f01c41c12b82e7464bdf38ee1fcc6ab83425f9038f619bf83f
-      - id: query
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/templates/package-templates/kb/skills/knowledge-query/SKILL.md
-              start_line: 12
-              end_line: 24
-            content_digest: sha256:0100e5a3b35aa845e1498e17d2cea23f09a9be9ca2436b7f9b1a8f21db4941f4
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/templates/package-templates/kb/skills/knowledge-query/SKILL.md
-              start_line: 85
-              end_line: 107
-            content_digest: sha256:ceb50bfdefe662a0145e191c4399a8c9dae7b086864df89264f8beec84294f5b
       - id: share
         references:
           - source_ref: repo:20261012/context
@@ -7675,6 +7496,20 @@ articles:
               start_line: 141
               end_line: 149
             content_digest: sha256:90830089c208bfe81c41a2b43dd8560511452eb664af8656404ec86c40be1c15
+      - id: query
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/templates/package-templates/kb/skills/knowledge-query/SKILL.md
+              start_line: 12
+              end_line: 24
+            content_digest: sha256:0100e5a3b35aa845e1498e17d2cea23f09a9be9ca2436b7f9b1a8f21db4941f4
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/templates/package-templates/kb/skills/knowledge-query/SKILL.md
+              start_line: 85
+              end_line: 107
+            content_digest: sha256:ceb50bfdefe662a0145e191c4399a8c9dae7b086864df89264f8beec84294f5b
       - id: sources
         references:
           - source_ref: repo:20261012/context
@@ -7924,20 +7759,6 @@ articles:
               start_line: 39
               end_line: 48
             content_digest: sha256:dab8d8baf7a341ee9bca4415b014095aeebf2d0b39ff621711883173d21f7ffb
-      - id: raw-material
-        references:
-          - source_ref: note:20261014/cold-start-practice.md
-            locator:
-              path: cold-start-practice.md
-              start_line: 39
-              end_line: 39
-            content_digest: sha256:dd4415d9b93973eb99d5bdba38aeb5ab6535fd5498fd0561c9a68e57537341b1
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context/references/imports.md
-              start_line: 64
-              end_line: 70
-            content_digest: sha256:bd29f6675f86e43c9173b828f46fdad3dc469bbfa9c35612c1d75a42a48f2fe3
   - article_id: 7d229a92-58ec-41c9-8506-0eb4226471f5
     path: sop/registering-sources/lark-documents.md
     collection: sop
@@ -7977,6 +7798,10 @@ articles:
               start_line: 49
               end_line: 64
             content_digest: sha256:44eb7b6ff26337b5e08145915e2b7ecbd0ce0cd9c9181cbd161104545d25e0ae
+      - id: large-wiki-trees
+        references: []
+      - id: authorization
+        references: []
       - id: identity
         references:
           - source_ref: repo:20261012/context
@@ -8019,28 +7844,6 @@ articles:
               start_line: 225
               end_line: 237
             content_digest: sha256:b849fc54081c7763a09d22a92cbfbbb806eae2f88c777d92948535c23dc95542
-      - id: storage
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/lark-resources.md
-              start_line: 120
-              end_line: 144
-            content_digest: sha256:c01f39d878877d1fb9c0f5a3165cb9a2bc2c71c545926c21a6c5139bf70eed61
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/lark-resources.md
-              start_line: 159
-              end_line: 163
-            content_digest: sha256:ffc4507ce5068e01a6a011e32d2ec8a78c880b7c454676ad5f2d6c1441c5cb04
-      - id: prefetched
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/lark-resources.md
-              start_line: 11
-              end_line: 50
-            content_digest: sha256:26cb48527515957d499f44e62339a03be09f8cf59651fad3024574805b31304b
   - article_id: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
     path: sop/registering-sources/notes.md
     collection: sop
@@ -8074,6 +7877,22 @@ articles:
               start_line: 29
               end_line: 30
             content_digest: sha256:c1e2354da5d39d8c96fd5659abee901309c80dc24aab29602cc191b0a49291cc
+      - id: summary-what
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 3
+              end_line: 8
+            content_digest: sha256:2fef40a2f57e020f589f7122fa183f8cb8152a3dd644fb0562044c58f88e5572
+      - id: summary-keep
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 10
+              end_line: 15
+            content_digest: sha256:c6976ada9c831ad368d0f0475c4172f3fa846fa429e564327d5c01334a280bef
       - id: save
         references:
           - source_ref: repo:20261012/context
@@ -8088,6 +7907,34 @@ articles:
               start_line: 49
               end_line: 59
             content_digest: sha256:0b7d906186afdc0fc5831d9a0f6e42ebbb77fa125070c5e8fdc95b6c296a41ab
+      - id: summary-save
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 17
+              end_line: 20
+            content_digest: sha256:18246c34236d0438eaff0ba4caa675d75fac955d8f49f79b28361593b6b7d3d8
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 22
+              end_line: 31
+            content_digest: sha256:33840f5337e3e920ad647bc07441a3a643be9449fa929f8e42c238295172227a
+      - id: use
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 38
+              end_line: 44
+            content_digest: sha256:d9ad1b659ee7557580a1b2d6faae19452bb37dc416e3fe2e51cbc7dfc67c7310
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 48
+              end_line: 49
+            content_digest: sha256:70b269770e234b36891c97bbcfa8e2ba3542145433a2a2aede89113684b14a2c
       - id: writing
         references:
           - source_ref: repo:20261012/context
@@ -8110,6 +7957,20 @@ articles:
               start_line: 340
               end_line: 341
             content_digest: sha256:e7e27b71b18c037c38524664c47998941d8e2b43c46d8d3a91343a20af12b73b
+      - id: summary-correct
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 32
+              end_line: 36
+            content_digest: sha256:e6d331f4839b21f2fae2de47cdbe97453dfa801a7ceb80f8995cd379cc587c55
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/sessions.md
+              start_line: 46
+              end_line: 50
+            content_digest: sha256:abc8f537720dfc6e12c352cda47e7f1b2789aea2fb98d00fd7cefa28623c1fc9
   - article_id: b807271a-bf7a-483f-b571-b9b0c5dc0dd6
     path: sop/registering-sources/same-repository-docs.md
     collection: sop
@@ -8245,69 +8106,6 @@ articles:
               start_line: 69
               end_line: 71
             content_digest: sha256:597346afb4ee0487c29af53ee3f49d0da049174ec5bd26c53f9ece504efe305f
-  - article_id: 38889376-c545-487e-99b1-c4f2c1d2dcec
-    path: sop/registering-sources/session-summaries.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 3
-              end_line: 8
-            content_digest: sha256:2fef40a2f57e020f589f7122fa183f8cb8152a3dd644fb0562044c58f88e5572
-      - id: prepare
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 10
-              end_line: 15
-            content_digest: sha256:c6976ada9c831ad368d0f0475c4172f3fa846fa429e564327d5c01334a280bef
-      - id: save
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 17
-              end_line: 20
-            content_digest: sha256:18246c34236d0438eaff0ba4caa675d75fac955d8f49f79b28361593b6b7d3d8
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 22
-              end_line: 31
-            content_digest: sha256:33840f5337e3e920ad647bc07441a3a643be9449fa929f8e42c238295172227a
-      - id: use
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 38
-              end_line: 44
-            content_digest: sha256:d9ad1b659ee7557580a1b2d6faae19452bb37dc416e3fe2e51cbc7dfc67c7310
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 48
-              end_line: 49
-            content_digest: sha256:70b269770e234b36891c97bbcfa8e2ba3542145433a2a2aede89113684b14a2c
-      - id: correct
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 32
-              end_line: 36
-            content_digest: sha256:e6d331f4839b21f2fae2de47cdbe97453dfa801a7ceb80f8995cd379cc587c55
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/sessions.md
-              start_line: 46
-              end_line: 50
-            content_digest: sha256:abc8f537720dfc6e12c352cda47e7f1b2789aea2fb98d00fd7cefa28623c1fc9
   - article_id: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
     path: sop/registering-sources/source-batches.md
     collection: sop
@@ -8327,14 +8125,8 @@ articles:
               start_line: 1
               end_line: 4
             content_digest: sha256:a8c47fbfc42bc6d1a2aa20ba6d6811f21a383600e3da123889a5324f7a381187
-      - id: payload
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-cli/src/project/sourceCommands.ts
-              start_line: 292
-              end_line: 320
-            content_digest: sha256:77c51c42d8e45f12193e9cde583c5a7e69811189c4fad3b72e1ae41eb7be0a28
+      - id: material-kinds
+        references: []
       - id: checkpoint
         references:
           - source_ref: repo:20261012/context
@@ -8418,6 +8210,14 @@ articles:
               start_line: 92
               end_line: 94
             content_digest: sha256:9f32c2e076e251470d222d73e37523bff59ec52f487e63a6b8047e38ec228460
+      - id: required
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/src/project/indexerRequiredArticleReview.ts
+              start_line: 15
+              end_line: 43
+            content_digest: sha256:d8d41bae9c6326bee4580537fb500ddd0867f3bfa6b0ff201d7dff66963f72d9
       - id: partial
         references:
           - source_ref: repo:20261012/context
@@ -8762,26 +8562,6 @@ articles:
               start_line: 1
               end_line: 21
             content_digest: sha256:c441fd8f5b7c1b636628bf2c26927d1e87fa819d917b075118239a6ba0e4ec82
-      - id: credentials
-        references:
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: internal/httpserver/runtime.go
-              start_line: 185
-              end_line: 245
-            content_digest: sha256:0dd83e05042e6863d36dc0f4b73dbca5cb21719b85fe74fa7adf89d0edd3e172
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: internal/sso/api_keys.go
-              start_line: 63
-              end_line: 98
-            content_digest: sha256:ad5479d076bffa69c92b991bf2ca1a1472781a66250e26115a3f1ce4187897ea
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: internal/sso/api_key_auth.go
-              start_line: 20
-              end_line: 75
-            content_digest: sha256:93fd5d3e132bd17a61ff96d487c5ed0ea5ce399741eb54a1bfa30806c180fcf1
       - id: mcp
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8802,6 +8582,28 @@ articles:
               start_line: 14
               end_line: 82
             content_digest: sha256:10f415856cd004d9c16c126f9fd790fceef6ddc6930ab0ca34a0de9a79f49484
+      - id: missing-repository
+        references: []
+      - id: credentials
+        references:
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/httpserver/runtime.go
+              start_line: 185
+              end_line: 245
+            content_digest: sha256:0dd83e05042e6863d36dc0f4b73dbca5cb21719b85fe74fa7adf89d0edd3e172
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/sso/api_keys.go
+              start_line: 63
+              end_line: 98
+            content_digest: sha256:ad5479d076bffa69c92b991bf2ca1a1472781a66250e26115a3f1ce4187897ea
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/sso/api_key_auth.go
+              start_line: 20
+              end_line: 75
+            content_digest: sha256:93fd5d3e132bd17a61ff96d487c5ed0ea5ce399741eb54a1bfa30806c180fcf1
       - id: http
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8844,87 +8646,6 @@ articles:
               start_line: 160
               end_line: 168
             content_digest: sha256:4d68b03e36d09a8270e6912c477ae8198133e6c628ad273eddf48340124332c6
-  - article_id: 4c404898-5e2f-47f4-9740-e5719162af5c
-    path: sop/source-graph/deployment-recommendations.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
-        references:
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 3
-              end_line: 8
-            content_digest: sha256:60eeb4b5e5e7140850a722c16899c8dba284c696e78a5393234ea5530afc57a5
-      - id: choose
-        references:
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 5
-              end_line: 17
-            content_digest: sha256:cfa23ff20a9d08b55b0e2bff7454a0e759cd97d6684cb9e7e067228a778d8ae1
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 37
-              end_line: 37
-            content_digest: sha256:a88c65214b4fa533053ab1110be9044d63c24c7e41b1f94f93ea38939af812b6
-      - id: single
-        references:
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 7
-              end_line: 17
-            content_digest: sha256:bc396105e39fe8ade88b0ccec4556478c072a3809ed4702d9bca709c924ba773
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 21
-              end_line: 37
-            content_digest: sha256:32cc8708bcaf3f1e975e4f52b8025e36278c684dfc61dd6dcd072b1e67c83809
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: DEVELOPMENT.md
-              start_line: 37
-              end_line: 37
-            content_digest: sha256:edf34403c29da629877255cdb982ea7a36f5c9a319cdba1ba4d828879b111ec9
-      - id: sharded
-        references:
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 8
-              end_line: 21
-            content_digest: sha256:af0bdfb38bfe1d74f6fc9501236d6a78b7f220f520b89c084577587ca779313c
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 37
-              end_line: 37
-            content_digest: sha256:a88c65214b4fa533053ab1110be9044d63c24c7e41b1f94f93ea38939af812b6
-      - id: demo
-        references:
-          - source_ref: note:20261013/demo-deployment.md
-            locator:
-              path: demo-deployment.md
-              start_line: 5
-              end_line: 24
-            content_digest: sha256:07fe1a5f53c8fbc72833f2eecf015ceed4bf6e6814c676466eeafda6af1aebc3
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: fly.toml
-              start_line: 1
-              end_line: 39
-            content_digest: sha256:c54802ab01e1a76c6a4f97dd48b1a0a6149243384acfde2d06f570dd174a99fd
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/deployment.md
-              start_line: 19
-              end_line: 31
-            content_digest: sha256:67e5305f252e584a1db596aadfaace824ca80ddb0f8bb3d003e57e00d8faee8d
   - article_id: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
     path: sop/source-graph/introduction.md
     collection: sop
@@ -9333,6 +9054,58 @@ articles:
               start_line: 193
               end_line: 205
             content_digest: sha256:8f0f6502ac2b2dbba989b38f54a83f61262278729b1dc9dbf4a44cb2d30ca823
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 3
+              end_line: 8
+            content_digest: sha256:60eeb4b5e5e7140850a722c16899c8dba284c696e78a5393234ea5530afc57a5
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 5
+              end_line: 17
+            content_digest: sha256:cfa23ff20a9d08b55b0e2bff7454a0e759cd97d6684cb9e7e067228a778d8ae1
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 37
+              end_line: 37
+            content_digest: sha256:a88c65214b4fa533053ab1110be9044d63c24c7e41b1f94f93ea38939af812b6
+      - id: single
+        references:
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 7
+              end_line: 17
+            content_digest: sha256:bc396105e39fe8ade88b0ccec4556478c072a3809ed4702d9bca709c924ba773
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 21
+              end_line: 37
+            content_digest: sha256:32cc8708bcaf3f1e975e4f52b8025e36278c684dfc61dd6dcd072b1e67c83809
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: DEVELOPMENT.md
+              start_line: 37
+              end_line: 37
+            content_digest: sha256:edf34403c29da629877255cdb982ea7a36f5c9a319cdba1ba4d828879b111ec9
+      - id: sharded
+        references:
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 8
+              end_line: 21
+            content_digest: sha256:af0bdfb38bfe1d74f6fc9501236d6a78b7f220f520b89c084577587ca779313c
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/deployment.md
+              start_line: 37
+              end_line: 37
+            content_digest: sha256:a88c65214b4fa533053ab1110be9044d63c24c7e41b1f94f93ea38939af812b6
       - id: database
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9388,6 +9161,14 @@ articles:
               start_line: 3
               end_line: 8
             content_digest: sha256:2fef40a2f57e020f589f7122fa183f8cb8152a3dd644fb0562044c58f88e5572
+      - id: when
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-inspect-search/SKILL.md
+              start_line: 462
+              end_line: 471
+            content_digest: sha256:41e34733db3cf8043065d6c31078f6b2b56a490fce09903497a58fee23bd4680
       - id: what
         references:
           - source_ref: note:20261012/knowledge-service-agent.md
@@ -9428,14 +9209,6 @@ articles:
               start_line: 492
               end_line: 497
             content_digest: sha256:5d4461c79778e0e4ca24cc81066bb5ca4cf9ba9bac58675a03a5044b5cfc8d85
-      - id: when
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 462
-              end_line: 471
-            content_digest: sha256:41e34733db3cf8043065d6c31078f6b2b56a490fce09903497a58fee23bd4680
       - id: boundaries
         references:
           - source_ref: repo:20261012/context
@@ -9659,6 +9432,34 @@ articles:
               start_line: 6
               end_line: 54
             content_digest: sha256:fe218029d1fd129fa4484ec09e1dafe82eb8b14cfaf8198d7838fc7bfd9fef33
+      - id: target
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/workspace-restore.md
+              start_line: 10
+              end_line: 26
+            content_digest: sha256:b1b6792e312d5d5f4895e17dbdcac556ef177a49a705acedf3e816fece24f627
+      - id: restore-result
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/workspace-restore.md
+              start_line: 28
+              end_line: 46
+            content_digest: sha256:84a38d06547e876d3ebf32bbab95c4f684bcaa4ae239f491efbd5e74cc274f5f
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/workspace-restore.md
+              start_line: 48
+              end_line: 54
+            content_digest: sha256:20c4fd06bbee5da91b5dd3164e1767961af078db779f0d15b3f653619c7907f8
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context/docs/guides/workspace-restore.md
+              start_line: 56
+              end_line: 63
+            content_digest: sha256:0c1b6f4b2c129169ef369f16e451eb1ce84197922809a09dc7be378aef3d40b0
   - article_id: c69e4047-18f9-463a-8c47-569bc306287b
     path: sop/updates-and-versions/writing-back-upstream.md
     collection: sop
@@ -9696,55 +9497,6 @@ articles:
               start_line: 501
               end_line: 521
             content_digest: sha256:dc4edb96c3aaa046f5e1e80fbe01a9f74443b1936260d0eeb7b6e8bcdf0ef0e6
-  - article_id: dd7b0c11-4cb7-49fc-aa33-b2cdaadeacaa
-    path: sop/workspace-maintenance/committing.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/workspace-commit.md
-              start_line: 1
-              end_line: 7
-            content_digest: sha256:4f91e5cc5c338c0bf274cebaea3dd5fa5efd24e01b525c9069237bdb7d6bd4f4
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context/SKILL.md
-              start_line: 500
-              end_line: 505
-            content_digest: sha256:00254db75b4b4368e705b70ceb1e9efe8a7dc0b5137e43eb4221f359e01fb92c
-      - id: select
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/workspace-commit.md
-              start_line: 9
-              end_line: 23
-            content_digest: sha256:0175df7408844b2bd4c577af1c0f1e58fcf95741ee03914d45fe90fcd5ea95d7
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-cli/src/project/workspace.ts
-              start_line: 454
-              end_line: 465
-            content_digest: sha256:19f7c3abe5e4459a8aff7cc2cee6939ad1a9955dd956ad895156c629c473d227
-      - id: commit
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/workspace-commit.md
-              start_line: 25
-              end_line: 37
-            content_digest: sha256:c2b0ba782ee7a54e1029a6c1c73104138f83594427b4aed4c9beb45ccf458fb6
-      - id: verify
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/workspace-commit.md
-              start_line: 39
-              end_line: 45
-            content_digest: sha256:b11b3a18aae3fa88945447c325a646939c7dc223a2aab1a505b0aec86aafee4a
   - article_id: 307b902e-f337-4e9d-a849-acdc0127be22
     path: sop/workspace-maintenance/preparing.md
     collection: sop
@@ -9804,49 +9556,38 @@ articles:
               start_line: 105
               end_line: 113
             content_digest: sha256:9df53f065f59a64db54ed55bddc4aa266900fcc4fab3dfb6709ef8d698fce5bd
-  - article_id: 95637888-eeb2-4ea2-816a-490f0ab1ba73
-    path: sop/workspace-maintenance/restoring.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
+      - id: commit-when
+        references: []
+      - id: select
         references:
           - source_ref: repo:20261012/context
             locator:
-              path: packages/context/docs/guides/workspace-restore.md
-              start_line: 1
-              end_line: 8
-            content_digest: sha256:d4e49e05a6360d2008cbbef16bbe5197cc59141b1131c9e0dbba2464a93515e0
-      - id: target
+              path: packages/context/docs/guides/workspace-commit.md
+              start_line: 9
+              end_line: 23
+            content_digest: sha256:0175df7408844b2bd4c577af1c0f1e58fcf95741ee03914d45fe90fcd5ea95d7
+          - source_ref: repo:20261012/context
+            locator:
+              path: packages/context-cli/src/project/workspace.ts
+              start_line: 454
+              end_line: 465
+            content_digest: sha256:19f7c3abe5e4459a8aff7cc2cee6939ad1a9955dd956ad895156c629c473d227
+      - id: commit
         references:
           - source_ref: repo:20261012/context
             locator:
-              path: packages/context/docs/guides/workspace-restore.md
-              start_line: 10
-              end_line: 26
-            content_digest: sha256:b1b6792e312d5d5f4895e17dbdcac556ef177a49a705acedf3e816fece24f627
-      - id: restore
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/workspace-restore.md
-              start_line: 28
-              end_line: 46
-            content_digest: sha256:84a38d06547e876d3ebf32bbab95c4f684bcaa4ae239f491efbd5e74cc274f5f
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context/docs/guides/workspace-restore.md
-              start_line: 48
-              end_line: 54
-            content_digest: sha256:20c4fd06bbee5da91b5dd3164e1767961af078db779f0d15b3f653619c7907f8
+              path: packages/context/docs/guides/workspace-commit.md
+              start_line: 25
+              end_line: 37
+            content_digest: sha256:c2b0ba782ee7a54e1029a6c1c73104138f83594427b4aed4c9beb45ccf458fb6
       - id: verify
         references:
           - source_ref: repo:20261012/context
             locator:
-              path: packages/context/docs/guides/workspace-restore.md
-              start_line: 56
-              end_line: 63
-            content_digest: sha256:0c1b6f4b2c129169ef369f16e451eb1ce84197922809a09dc7be378aef3d40b0
+              path: packages/context/docs/guides/workspace-commit.md
+              start_line: 39
+              end_line: 45
+            content_digest: sha256:b11b3a18aae3fa88945447c325a646939c7dc223a2aab1a505b0aec86aafee4a
 processed_scopes:
   - requirement_ref: agent-graph-adopters
     source_ref: note:20261012/portal-production.md

@@ -1,50 +1,39 @@
 ---
 title: Best Practices
-description: Habits that make Context knowledge production go well — from the
-  first conversation and early previews to review, reorganizing and keeping
-  upstream documents honest.
+description: A short checklist of habits that make Context knowledge production
+  go well, each linked to the guide that explains it, plus how to keep upstream
+  documents honest when they lag behind code.
 type: Guide
-timestamp: 2026-10-14T10:24:19.082Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Best Practices
 
 <!-- context:section id="goal" -->
-These practices come from teams using Context to build knowledge for large engineering organizations. Most of them are about one thing: **correct course early**, while it is cheap.
+These habits come from teams using Context to build knowledge for large engineering organizations. Most of them are about one thing: **correct course early**, while it is cheap. Each line links to the guide that explains it.
+
+## Checklist
 <!-- /context:section -->
 
 <!-- context:section id="start" -->
-## Talk first, then start
-
-After initializing the Context knowledge workspace, have a free conversation before any production. Explain what the knowledge should cover, where it comes from — document links, repository addresses, the modules you care about — and what form you expect. The Agent researches and asks back until it can write a **work-start report**: the confirmed configuration and scope, the planned content, and the expected package or site layout. See [Start Reports](../planning-and-production/start-reports.md).
-
-Production then takes time — on average about one minute per task. The Agent keeps reporting progress and the total number of tasks, and you can ask for a local preview at any point. After publication, check the package and other outputs; the Agent commits the workspace to Git to close the production.
-
-When the first knowledge base starts from many documents of mixed quality — a large wiki, years of designs and reports, several repositories — use that conversation to explore the code first, screen the documents against it and settle the site structure before anything is written. [Cold-Starting a Knowledge Base](cold-start.md) shows how, with two example conversations.
-
+- **Talk first, then start.** Describe what the knowledge should cover, where it comes from — document links, repository addresses, the modules you care about — and what form you expect. Let the Agent ask back until it writes a work-start report for you to confirm. See [Confirming the Work-Start Report](../planning-and-production/start-reports.md).
+- **Screen many mixed-quality sources before registering them.** When the first knowledge base starts from a large wiki, years of designs or several repositories, let the Agent explore the code, check the documents against it and settle the site structure first. See [Cold-Starting a Knowledge Base](cold-start.md).
+- **Check the outputs when a round ends.** Look at the package and the site; the Agent commits the workspace to Git when the round ends. See [Starting a New Task and Saving Your Work](../workspace-maintenance/preparing.md).
 <!-- /context:section -->
 
 <!-- context:section id="preview" -->
-## Preview early, correct with examples
-
-On a large task, open the work-start report and the changed pages as soon as they are available. If something is off, ask for a revision and be specific: show the wording you want, give a counterexample, describe the style. The earlier you correct, the better the final quality.
+- **Preview early, correct with examples.** On a large task, open the changed pages as soon as they are available. If something is off, show the wording you want, a counterexample or the style. See [Revising a Page](../review-and-revision/revising-a-page.md).
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
-## Three questions for every review
-
-The review report decides the scope and quality of what gets approved. Read it with three questions:
-
-1. Does the **structure** — topics, directories, documents — match what you expected?
-2. Does the **content** — the intent of each article, its style — match what you expected?
-3. Is anything relevant still **missing from the scope**, or included that should be left out?
-
-See [Reading Review Reports](../review-and-revision/reading-review-reports.md).
+- **Ask three questions of every review report.** Does the structure match what you expected? Does the content? Is anything missing from the scope, or included that should be left out? See [Reading Review Reports](../review-and-revision/reading-review-reports.md).
 <!-- /context:section -->
 
 <!-- context:section id="reorganize" -->
-## Reorganize once the knowledge grows
+- **Reorganize once the knowledge grows.** First-version titles and directories are rarely ideal. Ask the Agent to propose a clearer directory and article structure from the approved knowledge; revising costs far less than producing again. See [Reorganizing at Scale](../review-and-revision/reorganizing-at-scale.md).
+<!-- /context:section -->
 
-First-version titles tend to be abstract, and directory names and structure are rarely ideal. Once the knowledge has grown, ask the Agent to research the approved knowledge again and propose a more readable, intuitive directory and article structure — it does this better now than it could during planning. Revise, then observe for another round. Revising costs far less than producing again and suits fine-tuning of both structure and content. See [Reorganizing at Scale](../review-and-revision/reorganizing-at-scale.md).
+<!-- context:section id="batches" -->
+- **Split very large work into stages.** Plan first, then produce, publish and commit one batch at a time. See [Planning Large Projects in Stages](../planning-and-production/planning-large-projects.md).
 <!-- /context:section -->
 
 <!-- context:section id="upstream" -->
@@ -60,10 +49,4 @@ revise it, or give a concise suggested fix for the user to decide.
 ```
 
 Upstream documents then stay current and the knowledge does not drift away from them. See [Writing Back Upstream](../updates-and-versions/writing-back-upstream.md).
-<!-- /context:section -->
-
-<!-- context:section id="batches" -->
-## Split very large work into batches
-
-A very large task goes through planning first, with at most about 30 to 50 documents per batch. Each batch is produced, published, recorded in the plan file (`PLAN-*.md`) and committed before the next one starts. See [Planning a Large Project](../planning-and-production/planning-large-projects.md).
 <!-- /context:section -->
