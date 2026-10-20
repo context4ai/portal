@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: b055036b-c535-4e9c-8366-e9e231559aef
   source_digest: 55e472aa45db588ab37117565bbfc5e46ff9bafdaa46a6a0033ece886f2f4b9d
-  translated_at: 2026-10-12T18:13:07.981Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 运行与恢复
@@ -100,7 +100,7 @@ agent-graph run resume .runtime/checkpoints/before-handoff.json --state .runtime
 agent-graph route main <route-id> --revision <revision> --format json
 ```
 
-如果在此期间任何相关内容发生了变化，解析会以 `route-revision-stale` 失败；已不再可用的 Route 会以 `route-stale` 失败。此时 Agent 应重新评估，而不是执行一份基于旧状态计算出的计划。宿主会把同样的思路延伸到自己的写命令上——Context 把每个会修改状态的命令绑定到选中它的工作流修订号，参见[在 Context 中的应用](agent-graph-in-context.md)。
+如果在此期间任何相关内容发生了变化，解析会以 `route-revision-stale` 失败；已不再可用的 Route 会以 `route-stale` 失败。此时 Agent 应重新评估，而不是执行一份基于旧状态计算出的计划。宿主会把同样的思路延伸到自己的写命令上——Context 把每个会修改状态的命令绑定到选中它的工作流修订号，参见 [在 Context 中的应用](agent-graph-in-context.md)。
 <!-- /context:section -->
 
 <!-- context:section id="authority" -->

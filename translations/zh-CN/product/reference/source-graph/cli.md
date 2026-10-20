@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 524c7555-fd52-4e08-82d0-93f68236b71d
   source_digest: 524ee877324cad8efc0d480111adb5ac8188dc122abe4e7960ab8e4361768a2d
-  translated_at: 2026-10-14T08:53:43.639Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # CLI
@@ -110,7 +110,7 @@ SOURCEGRAPH_API_TOKEN=... sourcegraph-cli prepare -repo acme/app -revision <full
 <!-- context:section id="helper" -->
 ## Git 凭据助手
 
-`git-credential-sourcegraph` 供服务自身使用，而不是给人使用的。每次执行 Git 拉取时，服务会从仓库所属的代码源中挑选一个令牌——先用创建者自己的令牌，再用全局令牌，然后是代码源的环境令牌，GitHub 最后还会尝试匿名访问，详见[登记仓库](../../../sop/source-graph/registering-repositories.md#tokens-for-private-repositories)。随后它带着三个环境变量运行 Git：
+`git-credential-sourcegraph` 供服务自身使用，而不是给人使用的。每次执行 Git 拉取时，服务会从仓库所属的代码源中挑选一个令牌——先用创建者自己的令牌，再用全局令牌，然后是代码源的环境令牌，GitHub 最后还会尝试匿名访问，详见 [登记仓库](../../../sop/source-graph/registering-repositories.md#tokens-for-private-repositories)。随后它带着三个环境变量运行 Git：
 
 | 变量 | 取值 |
 | --- | --- |

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 9e5aef24-16bb-4f72-9488-298444ea7de7
   source_digest: 06b929d92de436a5ca87eaac09460f84c008872e2b9e140f4b4bcd1e0240a12d
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 外部入口
@@ -16,7 +16,7 @@ translation:
 | 你需要 | 使用 |
 | --- | --- |
 | 读者可以点击跳转的链接 | 外部入口 |
-| 必须可追溯、需要跟踪变化的结论 | 已登记并已采集的来源，参见[选择添加材料的方式](source-batches.md) |
+| 必须可追溯、需要跟踪变化的结论 | 已登记并已采集的来源，参见 [选择添加材料的方式](source-batches.md) |
 | 同一仓库中的文档或 Skill | [链接已有的文档与 Skill](same-repository-docs.md) |
 <!-- /context:section -->
 
@@ -52,5 +52,5 @@ See the [Engineering guide](context:import/engineering-guide).
 
 入口从不被引用，也不会给页面的参考来源增加任何内容。当你要求 Agent 检查入口时，它会使用自身获得授权的工具，把当前版本与声明的版本进行比较；无法访问的目标会报告为“版本未知”，而不会报告为发生了变化。Context 本身从不联系这些服务。
 
-首次组建知识库、手工收集原文时，入口、来源和手工收集的材料如何配合，参见[知识库冷启](../practices/cold-start.md)。
+首次组建知识库、手工收集原文时，入口、来源和手工收集的材料如何配合，参见 [知识库冷启动](../practices/cold-start.md)。
 <!-- /context:section -->

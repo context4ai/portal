@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 6272ae5a-8966-42cd-a06d-5986828764fd
   source_digest: a95e9eb11571231816e2386f547e476283396f3dcbb6f1f95de5e6224c0b300d
-  translated_at: 2026-10-13T05:38:06.765Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # Indexer 体系
@@ -52,7 +52,7 @@ flowchart LR
 <!-- context:section id="create" -->
 ## 创建自己的 Indexer
 
-当某种技术或某类文档需要专门指引时，`/c4a:context-indexer-create` 会在你选择的目录中编写一个新的可复用 Indexer 技能。新 Indexer 从有用的骨架起步——来源结构、可识别特征、名称、已确定的数量和入口位置——并可以为其技术添加一个范围有限的辅助工具。它交付一个 `SKILL.md`，外加确实有帮助的参考资料、模板或脚本，并用真实的匿名资料进行验证。它不会登记 Provider 清单，也不会启动知识生产；安装后即可供 Agent 选择。分步指南见[创建 Indexer](../../sop/custom-indexers/creating-an-indexer.md)；组合、替换和禁用 Indexer 的方法见 [Provider 与定制](../../sop/custom-indexers/providers-and-customization.md)。
+当某种技术或某类文档需要专门指引时，`/c4a:context-indexer-create` 会在你选择的目录中编写一个新的可复用 Indexer 技能。新 Indexer 从有用的骨架起步——来源结构、可识别特征、名称、已确定的数量和入口位置——并可以为其技术添加一个范围有限的辅助工具。它交付一个 `SKILL.md`，外加确实有帮助的参考资料、模板或脚本，并用真实的匿名资料进行验证。它不会登记 Provider 清单，也不会启动知识生产；安装后即可供 Agent 选择。分步指南见 [创建 Indexer](../../sop/custom-indexers/creating-an-indexer.md)；组合、替换和禁用 Indexer 的方法见 [Provider 与定制](../../sop/custom-indexers/providers-and-customization.md)。
 
-如果缺少所需的结构性事实，写作指引无法凭空创造——那需要解析器。参见[代码抽取](code-extraction.md)。
+如果缺少所需的结构性事实，写作指引无法凭空创造——那需要解析器。参见 [代码抽取](code-extraction.md)。
 <!-- /context:section -->

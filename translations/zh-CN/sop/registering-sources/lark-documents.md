@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 7d229a92-58ec-41c9-8506-0eb4226471f5
   source_digest: a8f2f660ea5b7ded9713a2206d395b3a8f6ea558477e9b162ed0ad502513fd8f
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 飞书文档
@@ -40,7 +40,7 @@ https://example.larkoffice.com/wiki/example-token
 <!-- context:section id="large-wiki-trees" -->
 ## 超大的 Wiki 树
 
-不要指望一次性生产完一棵大型 Wiki 树：来源文档超过 30 份时，Agent 会分阶段规划工作；范围非常大时，它会先与你确认或缩小范围，详见[分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
+不要指望一次性生产完一棵大型 Wiki 树：来源文档超过 30 份时，Agent 会分阶段规划工作；范围非常大时，它会先与你确认或缩小范围，详见 [分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
 <!-- /context:section -->
 
 <!-- context:section id="authorization" -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 85a7b33c-5b89-45f1-a88b-bd64aaa70ecb
   source_digest: 8ceb7979ed0cb63fad33940ad044dc2b32316c3702b823015a0eba3b0adc213d
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 创建 Indexer
@@ -33,11 +33,11 @@ flowchart TD
 
 | 你的需求 | 做法 |
 | --- | --- |
-| 某个知识工作区的措辞、读者或页面格式不合适 | 调整大纲或页面模板；参见[页面与主题定制](../outputs-and-sites/page-and-theme-customization.md)。不需要新 Indexer。 |
+| 某个知识工作区的措辞、读者或页面格式不合适 | 调整大纲或页面模板；参见 [页面与主题定制](../outputs-and-sites/page-and-theme-customization.md)。不需要新 Indexer。 |
 | 内置 Indexer 仍然适用，但某个框架或业务层需要额外指引 | 创建一个专项 Indexer，与内置 Indexer 一起处理同一个模块。 |
 | 内置 Indexer 读取和撰写这类材料的方式不适合你，而且这些规则会在多个项目中复用 | 创建一个独立的 Indexer，并请 Context 在这类材料上用它代替内置 Indexer。 |
 
-多个 Indexer 如何协同工作，以及如何在知识工作区中切换，参见[选择、替换与停用 Indexer](providers-and-customization.md)。
+多个 Indexer 如何协同工作，以及如何在知识工作区中切换，参见 [选择、替换与停用 Indexer](providers-and-customization.md)。
 
 不要只因为某个主题不熟悉就创建 Indexer。如果调整撰写方式——换一种大纲、分组或标题——就能解决问题，那就调整大纲。
 <!-- /context:section -->
@@ -78,7 +78,7 @@ flowchart TD
 <!-- context:section id="anatomy" -->
 ## 好的 Indexer 包含什么
 
-好的 Indexer 会说明哪些来源信号可以识别它所针对的材料、如何低成本地检查这些信号；只在确有增益时提供有限的辅助工具；建议读者主题但不固定页数；并指导有来源依据的撰写。这些要求对每类材料意味着什么，以及相应示例，见[编写 Indexer 指引](code-indexers.md)中的代码类 Indexer 和文档类 Indexer 两节。
+好的 Indexer 会说明哪些来源信号可以识别它所针对的材料、如何低成本地检查这些信号；只在确有增益时提供有限的辅助工具；建议读者主题但不固定页数；并指导有来源依据的撰写。这些要求对每类材料意味着什么，以及相应示例，见 [编写 Indexer 指引](code-indexers.md)中的代码类 Indexer 和文档类 Indexer 两节。
 <!-- /context:section -->
 
 <!-- context:section id="validation" -->
@@ -101,7 +101,7 @@ flowchart TD
 
 创建器的检查通过后，在分享 Skill 之前，先在一个单独的测试知识工作区中跑一次真实的 Context 流程。只有这一层证据能表明该 Skill 在现有工作流中可用，包括确认开工报告和提交页面。需要你明确提出——创建器自身不会启动任何生产。
 
-把 Skill 安装到宿主能看到的位置（位置参见[选择、替换与停用 Indexer](providers-and-customization.md)），在测试知识工作区中启动 `/c4a:context`，再对照你提供给创建器的样例检查生成的页面。
+把 Skill 安装到宿主能看到的位置（位置参见 [选择、替换与停用 Indexer](providers-and-customization.md)），在测试知识工作区中启动 `/c4a:context`，再对照你提供给创建器的样例检查生成的页面。
 <!-- /context:section -->
 
 <!-- context:section id="install" -->

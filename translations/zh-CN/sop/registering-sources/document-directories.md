@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 8a990784-16a3-4b84-957e-f5058ac73c3f
   source_digest: 97be1faa48317c59f83f6b4cdd63222ca15a38bc62f13be45537db75f2253d33
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 文档目录
@@ -59,5 +59,5 @@ flowchart LR
 <!-- context:section id="later" -->
 ## 文档发生变化时
 
-页面会继续引用其写作时依据的快照。文件夹内容变化后，请发起更新：Agent 会采集新版本，并询问哪些页面需要修改。参见[更新知识](../updates-and-versions/updating-knowledge.md)。
+页面会继续引用其写作时依据的快照。文件夹内容变化后，请发起更新：Agent 会采集新版本，并询问哪些页面需要修改。参见 [更新知识](../updates-and-versions/updating-knowledge.md)。
 <!-- /context:section -->

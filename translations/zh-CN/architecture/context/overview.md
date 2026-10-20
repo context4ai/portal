@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 1dad94c2-83ac-486f-b792-df0c56d391f5
   source_digest: f50d379432e7766491969a498266d6c4e84f67b1a5fc2b073103aeb4f84c3fac
-  translated_at: 2026-10-12T16:45:10.508Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 总体架构
@@ -51,7 +51,7 @@ Context 没有服务器、守护进程、数据库、托管 API 或 Web 前端�
 <!-- context:section id="division" -->
 ## 分工
 
-Agent 负责语义工作：阅读证据、提出结构和内容、解释决策。CLI 负责确定性工作，从不调用 LLM。用户掌握目标、来源权限、结构选择和审核决定。正是这种分离让长流程可以重复执行——参见[为什么是工作流](why-a-workflow.md)。
+Agent 负责语义工作：阅读证据、提出结构和内容、解释决策。CLI 负责确定性工作，从不调用 LLM。用户掌握目标、来源权限、结构选择和审核决定。正是这种分离让长流程可以重复执行——参见 [为什么是工作流](why-a-workflow.md)。
 <!-- /context:section -->
 
 <!-- context:section id="flow" -->
@@ -62,5 +62,5 @@ Agent 负责语义工作：阅读证据、提出结构和内容、解释决策�
 3. Agent 阅读、决策，并执行选定的一个动作。
 4. 知识工作区发生变化，CLI 再次求值。
 
-细节见[工作流运行](workflow-execution.md)；来源经历的各个阶段见[知识生命周期](knowledge-lifecycle.md)；包的边界见[模块划分](module-layout.md)。
+细节见 [工作流运行](workflow-execution.md)；来源经历的各个阶段见 [知识生命周期](knowledge-lifecycle.md)；包的边界见 [模块划分](module-layout.md)。
 <!-- /context:section -->

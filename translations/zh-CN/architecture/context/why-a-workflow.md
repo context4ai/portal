@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 0fd00adc-8f91-4c1d-8e50-ec78c403288e
   source_digest: db9a152a6c4feb733d76022ec0dcf2c3933ab8be9a055607bcb81cf6763739d4
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 为什么是工作流
@@ -33,7 +33,7 @@ CLI 从不调用 LLM，也从不悄悄克隆、拉取、安装或构建来源仓
 <!-- context:section id="contract" -->
 ## 是工作流，而不是长提示词
 
-整个生命周期很长：来源要划定范围并采集，文章要依据证据撰写，人工 Gate 可能让运行暂停，已批准的知识还要经过 close（归档）、校验和构建。把这些全部塞进一个提示词既脆弱又昂贵。因此工作流是一份约定：每一步，CLI 只返回当前合法的动作、为此要读的资源和要运行的命令。中断与恢复都从 Context 知识工作区的实际状态收敛，而不依赖对话记忆。详见[工作流运行](workflow-execution.md)。
+整个生命周期很长：来源要划定范围并采集，文章要依据证据撰写，人工 Gate 可能让运行暂停，已批准的知识还要经过 close（归档）、校验和构建。把这些全部塞进一个提示词既脆弱又昂贵。因此工作流是一份约定：每一步，CLI 只返回当前合法的动作、为此要读的资源和要运行的命令。中断与恢复都从 Context 知识工作区的实际状态收敛，而不依赖对话记忆。详见 [工作流运行](workflow-execution.md)。
 <!-- /context:section -->
 
 <!-- context:section id="service" -->

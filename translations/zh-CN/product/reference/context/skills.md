@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: 5adb572a-fc06-4bb9-a0aa-944b7c1dc1bb
   source_digest: 5314d5b0cbca96d8f65be47c3932d76f27eebaf19a42a6ada8642544ad2d6190
-  translated_at: 2026-10-15T03:57:38.476Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 技能清单
 
 <!-- context:section id="goal" -->
-Context Agent 插件包含九个 Skill。其中四个是由你调用的**入口**，一个是用自然语言启动的**创作助手**，另外四个是由工作流选用的 **Indexer**。它们都把知识工作区状态和生命周期决策交给 `context` CLI。面向初次使用者的简要介绍见[命令与技能](../../getting-started/commands-and-skills.md)。
+Context Agent 插件包含九个 Skill。其中四个是由你调用的**入口**，一个是用自然语言启动的**创作助手**，另外四个是由工作流选用的 **Indexer**。它们都把知识工作区状态和生命周期决策交给 `context` CLI。面向初次使用者的简要介绍见 [命令与技能](../../getting-started/commands-and-skills.md)。
 <!-- /context:section -->
 
 <!-- context:section id="entries" -->
@@ -32,7 +32,7 @@ Context Agent 插件包含九个 Skill。其中四个是由你调用的**入口*
 
 | Skill | 何时激活 | 作用 |
 | --- | --- | --- |
-| `context-indexer-create` | 你明确要求为代码、文档、笔记或会话摘要创建新的 Indexer Skill | 把一个可复用的 Skill 写入你选择的目录；不会初始化知识工作区，也不会启动生产。它没有菜单命令——用自然语言提出即可。参见[创建 Indexer](../../../sop/custom-indexers/creating-an-indexer.md)。 |
+| `context-indexer-create` | 你明确要求为代码、文档、笔记或会话摘要创建新的 Indexer Skill | 把一个可复用的 Skill 写入你选择的目录；不会初始化知识工作区，也不会启动生产。它没有菜单命令——用自然语言提出即可。参见 [创建 Indexer](../../../sop/custom-indexers/creating-an-indexer.md)。 |
 <!-- /context:section -->
 
 <!-- context:section id="indexers" -->
@@ -45,7 +45,7 @@ Context Agent 插件包含九个 Skill。其中四个是由你调用的**入口*
 | `context-note-indexer` | 已保存的笔记、摘录和观察记录 | 当前已授权的任务选用它时——不用于导入来源或扫描对话历史 |
 | `context-sessions-indexer` | 已保存的对话摘要 | 当前已授权的任务选用它时——限制与笔记相同 |
 
-安装某个 Indexer 只是让它可被发现，并不会在每个知识工作区中启用：Agent 根据当前的来源和需求选择 Indexer，CLI 提供任务目录并检查每一处来源引用。Indexer 安装时不带插件命名空间，因此在每个宿主中名称都相同。参见[社区 Indexer](../../../sop/custom-indexers/community-indexers.md)。
+安装某个 Indexer 只是让它可被发现，并不会在每个知识工作区中启用：Agent 根据当前的来源和需求选择 Indexer，CLI 提供任务目录并检查每一处来源引用。Indexer 安装时不带插件命名空间，因此在每个宿主中名称都相同。参见 [社区 Indexer](../../../sop/custom-indexers/community-indexers.md)。
 <!-- /context:section -->
 
 <!-- context:section id="hosts" -->
