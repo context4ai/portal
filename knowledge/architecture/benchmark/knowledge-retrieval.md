@@ -2,10 +2,10 @@
 title: Knowledge Retrieval Benchmark
 description: How well Agents answer real developer questions with an LLM Wiki,
   with Context, and with Context plus Source Graph — quality, time, tool calls,
-  cost, a three-model comparison, where errors and overhead came from, and the
-  limits of the comparison.
+  cost, a same-model Source Graph run, a three-model comparison, where errors
+  and overhead came from, and the limits of the comparison.
 type: Guide
-timestamp: 2026-10-13T08:58:32.131Z
+timestamp: 2026-10-19T18:55:52.431Z
 ---
 # Knowledge Retrieval Benchmark
 
@@ -13,6 +13,8 @@ timestamp: 2026-10-13T08:58:32.131Z
 ## Results at a glance
 
 On 24 real developer questions from a large production full-stack monorepo, Agents answering from Context knowledge fully solved more questions, faster and with far fewer tool calls than Agents using an LLM Wiki. Adding Source Graph for remote code reading cut time and tool calls further.
+
+The headline figures belong to **Context with Source Graph**: compared with the LLM Wiki, it answered in less than half the time (93.2 s against 223.2 s on average) at about a ninth of the estimated cost (about \$0.27 against \$2.45 per question; see "Estimated cost" below). Part of that gain comes from the model change noted below the table.
 
 | Metric | LLM Wiki | Context | Context + Source Graph |
 | --- | ---: | ---: | ---: |
@@ -33,17 +35,21 @@ xychart-beta
 
 LLM Wiki and Context used the same model and are directly comparable. The third configuration also changed the model; the same-model comparison below isolates Source Graph's effect.
 
-The method follows [Evaluating Your Knowledge Base](../../sop/practices/evaluating-your-knowledge-base.md); the grading and timing rules are in [Evaluation Scoring and Timing Standard](../../sop/practices/evaluation-standard.md).
+The method follows [Evaluating Your Knowledge Base](../../sop/practices/evaluating-your-knowledge-base.md); the grading and timing rules are in [Scoring and Timing Standard](../../sop/practices/evaluation-standard.md).
 <!-- /context:section -->
 
 <!-- context:section id="setup" -->
 ## What was compared
+
+Three configurations are compared in the main tables:
 
 | Configuration | Knowledge and retrieval |
 | --- | --- |
 | LLM Wiki | A one-off generated LLM Wiki; the Agent searches and reads files locally |
 | Context | A Context knowledge package; the Agent retrieves locally |
 | Context + Source Graph | A Context knowledge package; code is read remotely at a pinned version through Source Graph |
+
+Two further runs used the same Context knowledge with local retrieval and a different model: Claude Opus 5.5, which separates the effect of Source Graph from the model change (see "Source Graph with the same model" below), and Grok 4.7. With the first Context run, they make up the three-model comparison further down. That is five runs in all.
 
 The benchmark measures **answering** with deployed knowledge. Knowledge production — quality, time, review effort and cost of producing and updating knowledge — has not been benchmarked yet.
 <!-- /context:section -->
@@ -71,7 +77,7 @@ The 24 questions came from real developer questions and were frozen before any r
 <!-- context:section id="common" -->
 ## On the 17 questions all three solved
 
-To remove differences in question difficulty, the 17 questions that every configuration fully solved were compared separately:
+To remove differences in question difficulty, the 17 questions that every configuration in the main tables fully solved were compared separately:
 
 | Metric | LLM Wiki | Context | Context + Source Graph |
 | --- | ---: | ---: | ---: |
@@ -122,7 +128,7 @@ With the same Context knowledge package on a managed Agent platform, the same 24
 - **Search scope misjudged.** In a sparse checkout the caller's directory was not checked out, yet a local search was taken as proof that nothing in the whole repository referred to the target. Having read source code is not the same as having searched all of it; confirm the checkout scope before any repository-wide negative conclusion.
 - **A condition generalized.** The knowledge stated a region for direct calls and kept field-based calls for dynamic forms; the answer extended the first to every request, and a field for another region in the source was the counterexample. The grade fell because of the wrong claim, not because the process was not shown.
 - **Targeted source checks worked.** On the question where the first run missed a parent-page branch condition, both later models traced the parent's component choice and the history data switch and corrected the conclusion.
-- **Channel preparation.** Called directly, the configuration under test still ran the steps meant for a chat channel's reply cards: 54 visible related calls across the first run's 24 questions, and for another model — which resolved links and checked channel context on every question — 149 deduplicated calls, 15.4% of its tool calls. They do not mean a card was sent, and their time was not separated. Trimming delivery preparation at the entry point would remove steps unrelated to answering.
+- **Channel preparation.** Called directly, the configuration under test still ran the steps meant for a chat channel's reply cards: 54 visible related calls across the first run's 24 questions, and for another model — which resolved links and checked channel context on every question — 149 deduplicated calls, 15.4% of its tool calls. They do not mean a card was sent, and their time was not separated. Trimming reply-card preparation at the entry point would remove steps unrelated to answering.
 - **Waiting for startup.** From submission to first observing "running" took about 32 s on the managed platform, including polling granularity.
 <!-- /context:section -->
 
@@ -146,17 +152,16 @@ Whether such a target is reachable has to be re-measured on the same questions a
 
 - Verify the checkout scope before concluding that nothing in a repository uses something.
 - Keep branch conditions when knowledge is merged or summarized.
-- Skip reply-card preparation in direct sessions that have no delivery target.
+- Skip reply-card preparation in direct sessions that have no reply channel.
 <!-- /context:section -->
 
 <!-- context:section id="cost" -->
 ## Estimated cost
 
-Per question, tokens fell from about 567,000 to about 63,000. At standard API prices (input \$4 and output \$20 per million tokens, no cache discount) that is about \$2.45 → \$0.27, a reduction of 88.9%. The first and model-switched runs were estimated by replaying requests; the LLM Wiki and latest runs were extrapolated from tool-call counts.
+Per question, tokens fell from about 567,000 with the LLM Wiki to about 63,000 with Context with Source Graph. At standard API prices (input \$4 and output \$20 per million tokens, no cache discount) that is about \$2.45 → \$0.27, a reduction of 88.9% — about a ninth of the cost. The first and model-switched runs were estimated by replaying requests; the LLM Wiki and latest runs were extrapolated from tool-call counts.
 <!-- /context:section -->
 
 <!-- context:section id="limits" -->
-
 ## Limits of this comparison
 
 - Each question was run once, so stability cannot be inferred.
@@ -166,5 +171,4 @@ Per question, tokens fell from about 567,000 to about 63,000. At standard API pr
 - In the three-model comparison, the two later runs allowed up to four concurrent questions per model; the first allowed at most two and was partly serial. Dates, Skills, runtime and some read versions also differed, so not every difference belongs to the model.
 
 Size reduction is a different measure: knowledge is about 1/115 of its sources by volume, which says nothing about quality on its own. See [Knowledge for Agents](../knowledge/knowledge-for-agents.md).
-
 <!-- /context:section -->

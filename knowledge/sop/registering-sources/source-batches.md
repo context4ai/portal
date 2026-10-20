@@ -1,66 +1,52 @@
 ---
-title: Source Batches
-description: Register many repositories, folders and Lark documents in one
-  serial batch, with checkpoints that let a long registration resume safely.
+title: Choosing How to Add Material
+description: Which way to add each kind of material — code, document folders,
+  Lark documents, notes, conversation summaries, same-repository docs and
+  Skills, or external entrances — and how to add many sources in one request.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
-# Source Batches
+# Choosing How to Add Material
 
 <!-- context:section id="goal" -->
-When a task involves many sources — a dozen services, a folder of handbooks, a Wiki section — register them as one batch rather than one command at a time. A batch is one serial registry write under one date, so sources do not race each other, and with checkpoints a long registration survives interruption.
+Before the Agent can write anything, it needs to know which material it may read and cite. This subsection covers how to add each kind. Adding a source records what is in scope; it does not decide what to write — that comes later, in the [work-start report](../planning-and-production/start-reports.md).
 
-Registering many sources is not the same as producing a large knowledge base. For work spanning more than 30 documents or substantive investigation of two or more repositories, the Agent first plans the project in stages; see [Large Projects](../../product/getting-started/large-projects.md).
+Adding many sources is not the same as producing a large knowledge base. When the work spans more than 30 documents or needs real investigation of two or more repositories, the Agent plans it in stages first; see [Planning Large Projects in Stages](../planning-and-production/planning-large-projects.md).
 <!-- /context:section -->
 
-<!-- context:section id="payload" -->
-## The payload
+<!-- context:section id="material-kinds" -->
+## Which way fits your material
 
-```yaml
-sources:
-  - type: repo
-    module: billing-service
-    local: ../billing-service
-  - type: file
-    local: ../docs/user-guide.md
-  - type: lark
-    url: https://example.larkoffice.com/wiki/example-token
-```
+| Your material | How it is added | Guide |
+| --- | --- | --- |
+| A code repository, or packages of a monorepo | Pinned to the commit the Agent reads | [Code Repositories](code-repositories.md) |
+| Local Markdown files or a documentation folder | Captured as a snapshot that pages cite | [Document Directories](document-directories.md) |
+| Lark documents and Wiki pages | Captured with their images, sheets, attachments and other embedded resources | [Lark Documents](lark-documents.md) |
+| Text you already hold: an excerpt, a decision, an observation | Saved as a note | [Notes and Conversation Summaries](notes.md) |
+| Conclusions from an Agent conversation | Saved as a conversation summary | [Notes and Conversation Summaries](notes.md) |
+| Docs and Skills kept in the same repository as the knowledge workspace | Linked and cited in place, not copied | [Linking Existing Docs and Skills](same-repository-docs.md) |
+| Sites, Skills, repositories or packages readers should be able to reach | Declared as an entrance to link to, not read as evidence | [External Entrances](external-entrances.md) |
 
-```bash
-context source add batch 20261012 --input .tmp/sources.yaml --configure --format json
-```
-
-- `repo.module` is required; `file` and `lark` modules are derived from the path or URL when omitted, and duplicates in the batch are rejected.
-- `repo.local` is resolved from the Context project root. A valid checkout supplies its remote and commit, so `remote`/`ref` are needed only when they cannot be read.
-- `--configure` also declares the sources and default capture phases in a simple `src/index.ts`. Without it, the batch only registers.
+If you are unsure, describe the material and what readers need from it; the Agent proposes the right kind and asks when the choice would change the scope.
 <!-- /context:section -->
 
 <!-- context:section id="checkpoint" -->
-## Long batches: checkpoints and resume
+## Many sources in one request
 
-```mermaid
-flowchart LR
-  start["add batch<br/>--checkpoint --progress"] --> run["Register in chunks"]
-  run -->|interrupted| status["batch-status job-id"]
-  status --> resume["add batch --resume job-id"]
-  resume -->|revalidate every item| run
-  run --> receipt["Final receipt<br/>registered / total"]
+You do not have to add sources one at a time. Name them all in one request:
+
+```text
+Add ../billing-service as code, ../docs/user-guide.md as product documentation,
+and this Wiki page: https://example.larkoffice.com/wiki/example-token
 ```
 
-```bash
-context source add batch 20261012 --input .tmp/sources.yaml --checkpoint --progress --format json
-context source batch-status <job-id> --format json
-context source add batch --resume <job-id> --progress --format json
-```
-
-The saved input stays under `.tmp/context-runtime/source-batches/`, so resuming does not need the original file. Resume replays and revalidates every item against the current registry; the saved cursor is only a hint. Do not combine `--resume` with a date or a new input. Progress goes to stderr as bounded JSON; stdout keeps the final receipt.
+The Agent registers them together in one batch, so they do not interfere with each other. A long registration keeps its progress as it goes: if it is interrupted, ask the Agent to continue, and it resumes from where it stopped, checking each source again against what is already registered rather than trusting what was recorded before the interruption. The commands behind this are in [CLI Commands](../../product/reference/context/cli-commands.md).
 <!-- /context:section -->
 
 <!-- context:section id="failure" -->
-## Partial failure and locks
+## If something fails
 
-A batch keeps what succeeded: entries before a failed item stay registered, and the error names the completed entries and the failed position. Lark entries are validated in memory and committed in bounded atomic chunks.
+A failure keeps what already succeeded: sources before the failing one stay registered, and the Agent tells you which ones are done and which one failed, so you can fix that one and continue.
 
-Only one writer runs in a Context knowledge workspace at a time. Wait for an active command rather than starting another or deleting its lock. If a forced stop leaves a stale lock, run `context task recover --format json` before resuming.
+Only one registration can run in a knowledge workspace at a time. If the Agent is still busy with one, wait for it to finish instead of starting another. If a forced stop leaves the workspace blocked, ask the Agent to recover it before resuming.
 <!-- /context:section -->

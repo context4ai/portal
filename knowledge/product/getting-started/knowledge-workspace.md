@@ -3,7 +3,7 @@ title: The Context Knowledge Workspace
 description: What a Context knowledge workspace is, what every directory and
   file in it holds, who writes each part, and what goes into Git.
 type: Wiki
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-19T19:58:33.381Z
 ---
 # The Context Knowledge Workspace
 
@@ -85,7 +85,7 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 
 - **`src/knowledge-map.yaml`** is the persistent knowledge map. It organizes website navigation and LLM Docs without changing page identities, and stays after each delivery. See [Reorganizing at Scale](../../sop/review-and-revision/reorganizing-at-scale.md).
 - **`translations/<locale>/`** holds one translated file per approved page plus a `knowledge-map.yaml` of translated navigation titles. Translations are formal content: they count toward versions and are packaged with the site.
-- **`changelog.yaml` and `CHANGELOG.md`** are updated together with `package.json.version` each time a delivery records a version. See [Versions and Changelog](../../sop/updates-and-versions/versions-and-changelog.md).
+- **`changelog.yaml` and `CHANGELOG.md`** are updated together with `package.json.version` each time a delivery records a version. See [Versions, Changelog and Restoring](../../sop/updates-and-versions/versions-and-changelog.md).
 <!-- /context:section -->
 
 <!-- context:section id="linked" -->
@@ -93,7 +93,7 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 ## Files for linked content
 
 - **`imports.yaml`** at the root declares external entrances — content elsewhere that pages may link to — without downloading or capturing it. See [External Entrances](../../sop/registering-sources/external-entrances.md).
-- **`repo-content.yaml`** registers documentation and authored Skills that live in the same repository; **`repo-content/`** is a symlink view of them, and the originals stay where they are. See [Referencing Same-Repository Docs and Skills](../../sop/registering-sources/same-repository-docs.md).
+- **`repo-content.yaml`** registers documentation and authored Skills that live in the same repository; **`repo-content/`** is a symlink view of them, and the originals stay where they are. See [Linking Existing Docs and Skills](../../sop/registering-sources/same-repository-docs.md).
 - **`context-evidence.sourcegraph.wasm`** is an optional plugin for reading code evidence remotely. `context evidence install` maintains it; queries never install it on their own. See [Reading Code Evidence Remotely](../../sop/querying-knowledge/reading-code-evidence-remotely.md).
 
 <!-- /context:section -->
@@ -108,7 +108,7 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 | `.tmp/install/` | Temporary files used while installing dependencies |
 | `.tmp/context-plans/<date-slug>/` | Research for a planned project: `repos/`, `documents/`, `research/`, `stage-inputs/` |
 
-`.tmp/context-runtime/` is not the only record of progress. After a successful delivery the CLI removes completed task state, and approved knowledge with `structure.yaml` keeps what later updates need. Its absence never means accepted work may be replayed. A planned project also keeps `PLAN-YYYYMMDD-slug.md` at the Git root, committed so work can resume; see [Planning a Large Project](../../sop/planning-and-production/planning-large-projects.md).
+`.tmp/context-runtime/` is not the only record of progress. After a successful delivery the CLI removes completed task state, and approved knowledge with `structure.yaml` keeps what later updates need. Its absence never means accepted work may be replayed. A planned project also keeps `PLAN-YYYYMMDD-slug.md` at the Git root, committed so work can resume; see [Planning Large Projects in Stages](../../sop/planning-and-production/planning-large-projects.md).
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->

@@ -1,131 +1,93 @@
 ---
 title: Documentation Sites
-description: How to add a documentation website to a knowledge package, what the
-  generated site offers, how navigation is organized, and how to preview and
-  deploy it.
+description: How to add a documentation website to a knowledge package, what
+  readers get, how navigation and homepage cards are set up, and how to preview
+  and deploy the site.
 type: Guide
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Documentation Sites
 
 <!-- context:section id="goal" -->
-A Context documentation site is a static website built from the same approved knowledge as your knowledge package. Turn it on with a `site` option on the package; every `context build` then writes the package and a sibling `dist/<base>-site/` folder you can preview locally and upload to any static host.
+A Context documentation site is a static website built from the same approved knowledge as your knowledge package. Once it is turned on, every build writes the package and a sibling website folder. You preview the website locally and upload it to any static host.
 
 ```mermaid
 flowchart LR
-  map["src/knowledge-map.yaml"] --> build["context build"]
+  map["Knowledge map"] --> build["Build"]
   approved["Approved knowledge"] --> build
-  ext["src/site/ (optional)"] --> build
-  build --> site["dist/base-site/"]
+  ext["Site customizations<br/>(optional)"] --> build
+  build --> site["Website folder"]
   site --> preview["Local preview"]
   site --> host["Your static host"]
 ```
 <!-- /context:section -->
 
 <!-- context:section id="enable" -->
-## Turning it on
+## What to ask for
 
-```ts
-kbPackage({
-  name: "project-kb",
-  template: "src/package-templates/kb",
-  site: {
-    title: "Project knowledge",
-    lang: "en-US",
-    base: "/",
-    home: {
-      slogan: "Find the context behind the work",
-      resources: [{
-        title: "Project workspace",
-        description: "Open the repository that maintains this knowledge.",
-        href: "https://example.com/project",
-        featured: true,
-      }],
-    },
-  },
-});
-```
-
-| Option | Meaning |
+| You ask for | The Agent does |
 | --- | --- |
-| `title`, `description` | Site title (defaults to the package name) and description |
-| `lang` | Primary language, default `en-US` |
-| `base` | URL prefix, default `/`; use `/docs/` when hosted under that path. It does not change output folders |
-| `home` | Landing-page title, slogan, description and resource cards; each card needs a safe `href`, a copyable `command`, or both; `featured` also places it among the hero actions |
+| Package and website | Builds both from one package declaration |
+| Package only | Turns the website off and rebuilds; the old website folder is deleted |
+| Add a website later | Turns the website on, places any pages that are not yet in navigation, and rebuilds |
+| Website only for sharing | Builds the package too, and shares only the website folder |
 
-The output folder drops one trailing `-kb` from the package name: `project-kb` builds `dist/project-kb/` and `dist/project-site/`. Resource cards come from confirmed settings, repository remotes or real deployment results; unknown destinations are omitted, never filled with placeholders.
+A typical request:
+
+> Add a documentation site titled "Project knowledge" in English, hosted under `/docs/`, with a link to our repository on the homepage.
+
+The Agent sets the site title, language, address prefix and homepage for you. The address prefix only changes the site's URLs, not its output folder. The website folder is named after the package, minus one trailing `-kb`: `project-kb` builds `dist/project-kb/` and `dist/project-site/`. Every option the Agent can set is listed under Site options in [Project API](../../product/reference/context/project-api.md).
 <!-- /context:section -->
 
 <!-- context:section id="features" -->
-
 ## What the site offers
 
-- **Homepage** — every first-level knowledge-map section as a card with a bounded preview of its pages, plus LLM Docs and Changelog.
-- **Navigation** — top-bar sections; the left sidebar shows only the current section's descendants. Each section's landing page shows its first-level groups as cards, two per row and one on narrow screens. Pages outside every section — More menu targets, LLM Docs and the Changelog — show no sidebar and highlight no section.
-- **Search** — local search, opened with the search button or Cmd/Ctrl+K; no search service.
-- **Theme** — light and dark. Sites open in light mode regardless of the system color scheme; the reader's choice is remembered under the origin-wide `context-theme` key, so sites on one origin share it, and it is applied from the first paint, so pages do not flash the other scheme while loading.
-- **Missing pages** — an unknown address shows a centred 404 page in the reader's language with a link back to the site home.
-- **Diagrams** — Mermaid rendered in the browser with fit, 100%, zoom, full-screen and source controls. Invalid diagrams keep their source with a notice instead of blocking publication.
-- **Provenance** — each article ends with its sources: repository entries link to the recorded revision, document entries to their registered URL. Inline code in article prose that names a cited repository file, one of its directories or the unique name of such a directory (for example a Skill name) links to that path at the recorded revision; uncited or ambiguous names stay plain code.
+- **Homepage** — every top-level section of the knowledge map as a card with a short preview of its pages, plus resource cards.
+- **Navigation** — sections in the top bar; the left sidebar shows only the current section's pages. Each section's landing page shows its groups as cards.
+- **Search** — local search, opened with the search button or Cmd/Ctrl+K; no search service needed.
+- **Theme** — light and dark; see [Customizing Pages and Themes](page-and-theme-customization.md).
+- **Missing pages** — an unknown address shows a 404 page in the reader's language with a link back home.
+- **Diagrams** — Mermaid rendered in the browser with fit, 100%, zoom, full-screen and source controls. An invalid diagram shows its source with a notice instead of blocking publication.
+- **Provenance** — each page ends with its sources: repository entries link to the recorded revision, document entries to their registered URL. Inline code that names a cited repository file or directory links to that path at the recorded revision.
+- **LLM Docs and Changelog** — the site can link the plain-text [LLM Docs](llm-docs.md) produced by the same build, and the knowledge base's changelog.
 
 Code samples and raw HTML are displayed as content, never executed.
-
 <!-- /context:section -->
 
 <!-- context:section id="navigation" -->
-
 ## Navigation comes from the knowledge map
 
-`src/knowledge-map.yaml` decides the sidebar: each entry binds to an article by its identity, so labels and parent groups never change an article's URL, and one article can appear in several places while keeping one URL. Every selected article needs a valid place before packaging; missing bindings block the build and the CLI returns the list to place. Category entries may stay empty while articles are still planned.
+The knowledge map decides the sidebar. Each entry points to a page by its identity, so renaming a label or moving a page to another group never changes its URL, and one page can appear in several places while keeping one URL. Every selected page needs a place in the map before the build; if some are missing, the Agent places them or asks you where they belong. Groups can stay empty while their pages are still planned.
 
-| Setting | Adds |
-| --- | --- |
-| `site.nav` | Links after the reading sections in the top bar, or before them with `position: "start"` — for example a documentation home link; a nav link to the current page is highlighted |
-| `site.more` | Items in the More menu, before LLM Docs and Changelog; an item may target an approved article kept outside the map, such as release notes |
-| `socialLinks` | Icon links in the top bar (`https` only) |
-| `titleLink` | Where the site title leads; a root-relative link such as `/` addresses the origin, not `base` |
+You can also ask the Agent for extra links in the top bar (for example a link back to a documentation home), items in the More menu (for example release notes kept outside the map), icon links, or a different target for the site title. Links that start with `/` point to the same domain, so a site under `/docs/` can link to a sibling application. The exact settings are in [Project API](../../product/reference/context/project-api.md).
+<!-- /context:section -->
 
-Links starting with `/` are origin paths, which lets a site under `/docs/` link to a sibling application on the same domain. `locales` on a nav or More item translates its label.
+<!-- context:section id="home-cards" -->
+## Homepage resource cards
 
+Resource cards point readers to places beyond the site, such as the repository that maintains this knowledge. A card opens a link, offers a command to copy, or both, and a featured card also appears among the actions at the top of the homepage.
+
+The values come from real sources, never from guesses: settings you have confirmed, the workspace's repository remotes, or real deployment results. Unknown destinations are left out, with no invented links and no empty placeholder cards. Changing the cards means a rebuild; the hosted site changes the next time you deploy.
 <!-- /context:section -->
 
 <!-- context:section id="build" -->
+## Previewing
 
-## Building and previewing
+Ask the Agent to preview the site:
 
-The site is generated in a staging folder before anything is replaced, so a failed website build keeps the previous package and site. Removing `site` deletes the old site on the next successful build. `dist/<base>-site/context-site-map.json` records each article's approved path, package path and site path, plus the menu and any unresolved targets.
+> Build the site and open a local preview.
 
-Builds do not compare cited source regions, so a publishing build does not need the registered source checkouts; `context verify` still reports changed, moved or missing regions, so run it before publishing.
+The Agent serves the website folder through a local HTTP server. The website is generated in a staging folder first, so a failed build keeps the previous package and site. The Agent's completion report lists the package, the website and LLM text separately — each as generated, failed or not selected — with navigation coverage and the preview URL it checked.
 
-Preview it through a local HTTP server:
-
-```sh
-python3 -m http.server 8000 --bind 127.0.0.1 --directory dist/project-site
-```
-
-The Agent's completion report lists the package folder, website folder and LLM text separately, each as generated, failed or not selected, with navigation coverage and the verified preview URL.
-
+A build does not re-read your source repositories, so you can build and deploy without them checked out. Before deploying, the Agent still checks whether cited sources have changed, moved or gone missing, and tells you if any pages need an update.
 <!-- /context:section -->
 
 <!-- context:section id="deploy" -->
 ## Deploying
 
-Deploy the **contents of `dist/<base>-site/`** with your chosen static hosting tool. Context's build includes no hosting SDK, login or deployment step; after every successful website build the Agent tells you which folder to deploy and, if you have authorized a target, uses a compatible deployment Skill. Only the website folder is published — never sources, private workspace state or the whole package — and success is reported only after the hosted URL is checked.
+Deploy the **contents of the website folder** with your chosen static hosting tool. Context's build includes no hosting service, login or deployment step. After every successful website build the Agent tells you which folder to deploy and, if you have authorized a target, uses a compatible deployment Skill. Only the website folder is published — never sources, private workspace state or the whole package — and success is reported only after the hosted URL is checked.
 
-Once deployed, record the public root so query Skills can link to pages:
+Once the site is live, ask the Agent to record its public address in the package, so query Skills can link answers to site pages. The address is an access hint, not proof of publication, and rebuilds keep it.
 
-```bash
-context package site-url project-kb https://example.com/docs/
-```
-
-The address is an access hint, not proof of publication; rebuilds keep it.
-
-| You ask for | The Agent does |
-| --- | --- |
-| Package and website | One `kbPackage` with `site` |
-| Package only | Removes `site` and rebuilds; the old site is deleted |
-| Add a website later | Adds `site`, places any unplaced articles, rebuilds |
-| Website only for sharing | Builds the package too, shares only the website folder |
-
-To change pages, slots and colors, see [Page and Theme Customization](page-and-theme-customization.md); for other languages, [Multilingual Sites](multilingual-sites.md).
+To change pages, slots and colors, see [Customizing Pages and Themes](page-and-theme-customization.md); for other languages, [Multilingual Sites](multilingual-sites.md).
 <!-- /context:section -->

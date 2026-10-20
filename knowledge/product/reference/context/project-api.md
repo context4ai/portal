@@ -4,7 +4,7 @@ description: What src/index.ts can declare with the @c4a/context SDK — sources
   capture phases, custom phases, packages and site options — and how it relates
   to src/indexers.yaml.
 type: Wiki
-timestamp: 2026-10-15T06:56:50.800Z
+timestamp: 2026-10-19T19:58:33.381Z
 ---
 # Project API
 
@@ -143,7 +143,7 @@ Packages read approved `knowledge/` only; `dist/` is generated. Details are in [
 | `theme` | `light` and `dark` colors: `brand`, `accent`, `background`, `surface`, `text`, `mutedText`, `border` as hex values |
 | `extensions` | Trusted presentation code: `root` (default `src/site`), `slots` (`brand`, `banner`, `knowledge`, `resources`, `footer`, `floating`; `false` hides one) and custom Markdown `pages` |
 
-Links accept https or `mailto:` URLs, root-relative paths or page anchors. Custom pages are placed in the knowledge map with `target.artifact_ref: "site:<page-key>"`. See [Documentation Sites](../../../sop/outputs-and-sites/documentation-sites.md) and [Page and Theme Customization](../../../sop/outputs-and-sites/page-and-theme-customization.md).
+Links accept https or `mailto:` URLs, root-relative paths or page anchors. Custom pages are placed in the knowledge map with `target.artifact_ref: "site:<page-key>"`. See [Documentation Sites](../../../sop/outputs-and-sites/documentation-sites.md) and [Customizing Pages and Themes](../../../sop/outputs-and-sites/page-and-theme-customization.md).
 
 <!-- /context:section -->
 

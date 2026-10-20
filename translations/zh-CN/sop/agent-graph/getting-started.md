@@ -1,28 +1,28 @@
 ---
-title: 快速上手
-description: 用固定版本的 CLI，在大约十分钟内创建、校验、测试、评估、路由、运行并构建一个入门 Agent Graph Provider。
+title: Agent Graph 快速上手
+description: 用最新版 CLI，在大约十分钟内创建、校验、测试、评估、路由、运行并构建一个入门 Agent Graph Provider。
 translation:
   locale: zh-CN
   artifact_ref: 3eab390f-44a1-49e0-a4d5-317b4705b6b9
-  source_digest: 558d5356ec20919ab30c6abd0534482e1c2cbd8b805707c33e9df65e9f8617aa
-  translated_at: 2026-10-14T00:36:55.065Z
+  source_digest: 4bd1d5343437b0e21c808904228a219b21d40e2f014a29656d860718d0b0559c
+  translated_at: 2026-10-19T19:47:45.248Z
 ---
 
-# 快速上手
+# Agent Graph 快速上手
 
 <!-- context:section id="choose" -->
-大约十分钟后，你会得到一个可运行的入门 Provider：它能通过校验和 Graph 测试，能为 Agent 的下一步返回 Route，会记录一次 Run，并能构建成可随你自己的包一起发布的可迁移 bundle。
+大约十分钟后，你会得到一个可运行的入门 Provider：它能通过校验和 Graph 测试，能为 Agent 的下一步返回 Route，会记录一次 Run，并能构建成可随你自己的包一起发布的可迁移产物包。
 
 本教程适合新建 Skill 或工作流。执行这些命令只会创建一个 Provider 开发项目，本身不会接入任何 Skill，也不会改变 Agent 的工作方式。如果你要改进现有 Skill，或在产品中嵌入 Agent Graph，请先在 [Agent Graph 是什么](introduction.md) 中选择对应路径。
 
-你需要 Node.js 20 或更高版本。每条命令都用 `npx @c4a/agent-graph@0.3.0` 固定 CLI 版本，以保证结果可复现。
+你需要 Node.js 20 或更高版本。每条命令都通过 `npx @c4a/agent-graph@latest` 运行最新版 CLI，因此无需事先安装任何东西。
 <!-- /context:section -->
 
 <!-- context:section id="init" -->
 ## 1. 创建 Provider
 
 ```bash
-npx @c4a/agent-graph@0.3.0 init ./example-provider --id example-provider
+npx @c4a/agent-graph@latest init ./example-provider --id example-provider
 cd example-provider
 ```
 
@@ -45,8 +45,8 @@ cd example-provider
 ## 2. 校验与测试
 
 ```bash
-npx @c4a/agent-graph@0.3.0 validate --format json
-npx @c4a/agent-graph@0.3.0 test tests --format json
+npx @c4a/agent-graph@latest validate --format json
+npx @c4a/agent-graph@latest test tests --format json
 ```
 
 校验会检查 JSON Schema、相对路径是否留在 Provider 内、ID 与引用、入口、显式的 Terminal、边的端点、Subgraph 调用、递归、动态资源物化器以及重复的身份标识。它从不执行 Action。对于入门项目，它报告 `"state":"valid"`，包含 1 个 Graph、2 个节点和 1 条边；测试运行报告 `"state":"passed","total":1,"failed":0`。
@@ -56,7 +56,7 @@ npx @c4a/agent-graph@0.3.0 test tests --format json
 ## 3. 找到当前 Route
 
 ```bash
-npx @c4a/agent-graph@0.3.0 evaluate main --format json
+npx @c4a/agent-graph@latest evaluate main --format json
 ```
 
 Evaluation 包含一个稳定的 `statusCode`、一个 `revision` 摘要、一个 `primaryRoute`、精简的备选项和诊断。对于入门项目，主 Route 是 `work` 节点，带有 `reasonCode: route.main.work`、`availability: immediate` 以及目录提示 “The requested work is ready to perform.”。不会内联任何 Skill 或流程正文。
@@ -64,7 +64,7 @@ Evaluation 包含一个稳定的 `statusCode`、一个 `revision` 摘要、一�
 使用同一次 Evaluation 中的两个值来解析该 Route：
 
 ```bash
-npx @c4a/agent-graph@0.3.0 route main <route-id> --revision <revision> --format json
+npx @c4a/agent-graph@latest route main <route-id> --revision <revision> --format json
 ```
 
 Route 返回选中的节点及其调用路径、Action、一个空的 `commandPlan`（Agent Action 不运行命令）、必需的资源——Skill 和 `resources/procedure.md`，每项都以绝对文件路径给出，带有内容摘要和 `readState: read-required`——以及 `afterAction: {evaluate: true, recordNode: "main/work"}`。如果期间某个 Provider 文件或输入发生了变化，CLI 会拒绝这个过期的修订号（revision），而不是返回一个不匹配的计划。
@@ -72,7 +72,7 @@ Route 返回选中的节点及其调用路径、Action、一个空的 `commandPl
 由于 Skill 已经绑定了 Provider、Graph 和 Entry，仅凭 Skill 也能完成同样的 Evaluation：
 
 ```bash
-npx @c4a/agent-graph@0.3.0 --skill ./skills/getting-started/SKILL.md evaluate --format json
+npx @c4a/agent-graph@latest --skill ./skills/getting-started/SKILL.md evaluate --format json
 ```
 <!-- /context:section -->
 
@@ -80,10 +80,10 @@ npx @c4a/agent-graph@0.3.0 --skill ./skills/getting-started/SKILL.md evaluate --
 ## 4. 用 Run 跟踪长任务
 
 ```bash
-npx @c4a/agent-graph@0.3.0 run start main --state ./runtime/run.json --workspace "$PWD"
+npx @c4a/agent-graph@latest run start main --state ./runtime/run.json --workspace "$PWD"
 # ... the Agent reads the required resources and does the work ...
-npx @c4a/agent-graph@0.3.0 run record main/work completed --state ./runtime/run.json
-npx @c4a/agent-graph@0.3.0 run status --manifest ./provider.yaml --state ./runtime/run.json --format json
+npx @c4a/agent-graph@latest run record main/work completed --state ./runtime/run.json
+npx @c4a/agent-graph@latest run status --manifest ./provider.yaml --state ./runtime/run.json --format json
 ```
 
 记录时使用 `afterAction.recordNode` 给出的确切键。`run record` 会提醒你，记录的 Outcome 并不能证明 Facts；`run status` 会再次评估：对于入门项目，它现在返回 `statusCode: complete` 和 `outcome: completed`。在真实的 Graph 中，历史上的 `completed` 不能覆盖缺失的 Fact 检查；下一次 Evaluation 可能会转向校验或恢复。见 [运行与恢复](../../architecture/agent-graph/runs-and-recovery.md)。
@@ -93,8 +93,8 @@ npx @c4a/agent-graph@0.3.0 run status --manifest ./provider.yaml --state ./runti
 ## 5. 构建可迁移的产物包
 
 ```bash
-npx @c4a/agent-graph@0.3.0 build ./dist/provider --format json
-npx @c4a/agent-graph@0.3.0 --manifest ./dist/provider/manifest.json validate
+npx @c4a/agent-graph@latest build ./dist/provider --format json
+npx @c4a/agent-graph@latest --manifest ./dist/provider/manifest.json validate
 ```
 
 产物包只包含可达的 Provider 文件、一个规范化的 `provider.yaml`，以及一个 `manifest.json`，其中记录每个文件的摘要、Graph 依赖索引和整体摘要。测试不会被打包，也不会写入源机器上的任何绝对路径，因此产物包可以随你自己的包一起分发。

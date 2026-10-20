@@ -1,19 +1,19 @@
 ---
 title: Document Directories
-description: Register local Markdown files or a documentation folder as a
-  source, limit it with include globs, and capture a reproducible snapshot.
+description: Add local Markdown files or a documentation folder as a source,
+  limit it to the parts readers need, and capture a reproducible snapshot that
+  pages cite.
 type: Guide
-timestamp: 2026-10-12T16:07:52.846Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Document Directories
 
 <!-- context:section id="goal" -->
-Use a file source when the material is local Markdown: one file, several files, or a documentation folder. Unlike a code repository, a document source is **captured**: Context takes a reproducible snapshot under `sources/file/`, and pages cite that snapshot rather than the live folder.
+Use a document source when the material is local Markdown: one file, several files or a documentation folder. Unlike a code repository, a document source is **captured**: Context takes a reproducible snapshot, and pages cite that snapshot rather than the live folder.
 
 ```mermaid
 flowchart LR
-  reg["Register<br/>date/module + include"] --> decl["Declare captureFile<br/>in src/index.ts"]
-  decl --> cap["Capture<br/>snapshot under sources/"]
+  reg["Register<br/>folder and chapters"] --> cap["Capture<br/>a snapshot"]
   cap --> write["Plan and write<br/>cite the snapshot"]
 ```
 <!-- /context:section -->
@@ -28,57 +28,31 @@ Ingest ../docs/user-guide as product documentation. Only the getting-started
 and billing chapters.
 ```
 
-Run instructions, handbooks, plans or batch lists you hand the Agent are treated as task guidance, not as sources, unless you explicitly ask to ingest them. If the documents to capture are unclear, the Agent asks once instead of capturing the instructions themselves.
+Run instructions, handbooks, plans or lists of tasks you hand the Agent are treated as guidance for the task, not as sources, unless you explicitly ask to ingest them. If it is unclear which documents to capture, the Agent asks once instead of capturing your instructions.
 <!-- /context:section -->
 
 <!-- context:section id="register" -->
-## Register and declare capture
+## What the Agent confirms
 
-```bash
-context source add file 20261012 --module user-guide --local ../docs/user-guide \
-  --include "getting-started/**" --include "billing/**" --configure
-```
+Registering reads no content yet. The Agent records the folder or files you named and, when you limit the scope, only the chapters or patterns you asked for — in the example above, `getting-started` and `billing`. It then sets the source up for capture and tells you what was registered.
 
-| Option | Meaning |
-| --- | --- |
-| `--local` | Required. A local Markdown directory or file, used as the refresh location. |
-| `--module` | Document module name; derived from `--local` when omitted. |
-| `--include` | Markdown include glob relative to `--local`; repeat it for several patterns. |
-| `--include-list` | A file of include globs, one per line; blank lines and `#` comments are ignored. |
-| `--configure` | Also declares the source and a default capture phase in a simple `src/index.ts`. It does not capture. |
-
-Registration reads no content. With `--configure`, the project gains a declaration like:
-
-```ts
-const docs = source("20261012/user-guide", { type: "file" });
-
-export default defineProject({
-  sources: [docs],
-  phases: [captureFile({ source: docs })],
-});
-```
-
-If `src/index.ts` already has custom entries, the configuration result is `manual` and the Agent makes a focused edit instead of retrying.
+If the knowledge workspace already has custom source settings, the Agent makes a focused change to include the new folder and tells you what it changed. For the full set of registration options, see the [CLI Commands](../../product/reference/context/cli-commands.md) reference.
 <!-- /context:section -->
 
 <!-- context:section id="capture" -->
 ## Capture
 
-Capture is an external read, so it needs your permission in the current conversation. Asking to capture, ingest or read the named documents grants it; merely mentioning them or asking to register does not. The Agent then runs the capture command returned by the workflow, reports the outcome and continues until every document in the batch is done.
+Capture reads the documents, so it needs your permission in the current conversation. Asking to capture, ingest or read the named documents grants it; merely mentioning them or asking only to register them does not, so in that case expect a question first. The Agent then captures the documents, reports the outcome and continues until every document in the request is done.
 
-Capture creates the snapshot; it does not classify, summarize or approve anything. The CLI owns normalization, hashes and manifests, and the Agent never edits a captured snapshot by hand.
+Capture creates the snapshot; it does not classify, summarize or approve anything. Context keeps the snapshot intact, and the Agent never edits it by hand.
 <!-- /context:section -->
 
 <!-- context:section id="sites" -->
-## Documentation sites (MDX)
+## Documentation sites
 
-Default capture handles `.md`. If the folder turns out to be a documentation site — `.mdx` pages, `_meta.json`, sidebars or a docs config — the Agent stops and confirms before changing the configuration. For MDX sites that use `_meta.json`, the capture phase gains the MDX processor:
+Capture reads plain Markdown by default. If the folder turns out to be a documentation site — MDX pages, sidebars or a site configuration — the Agent tells you and asks before changing how it reads the folder. Route metadata and static component text are kept as evidence.
 
-```ts
-captureFile({ source: docs, processor: mdxJsonDocs() });
-```
-
-The processor keeps route metadata and static component text as evidence. If a page is only a shell that mounts runtime-rendered content, the Agent tells you and asks for the rendered site or its data source instead of inventing the body.
+If a page is only a shell that loads its content at runtime, the Agent says so and asks for the rendered site or its data source instead of inventing the body.
 <!-- /context:section -->
 
 <!-- context:section id="later" -->

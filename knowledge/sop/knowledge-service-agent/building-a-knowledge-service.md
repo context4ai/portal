@@ -1,9 +1,10 @@
 ---
 title: Building a Knowledge Service
 description: How to run Context as a resident knowledge service Agent for a team
-  — entrances, runtime layers, the three flows, and how to choose a runtime.
+  on any Agent runtime — what it is, how the pieces fit, the three flows,
+  choosing a runtime and configuring the Bot.
 type: Guide
-timestamp: 2026-10-12T17:02:32.263Z
+timestamp: 2026-10-19T18:48:05.928Z
 ---
 # Building a Knowledge Service
 
@@ -12,11 +13,11 @@ A **knowledge service Agent** is a resident Agent that uses the Context Skills t
 
 The same Skills work anywhere — in a hosted Agent runtime or in a local coding Agent such as Claude Code, Codex or Cursor. A resident service pays off for knowledge a team shares: production involves a lot of searching and confirmation, and questions need an answer at any time. Knowledge for a small module can simply live with its repository under `docs/`.
 
-> **Status.** The community edition does not ship a Bot implementation. The runtime and service interface below describe the design planned for this site's own Bot. The Skills, the flows and the interaction lessons have been proven in practice.
+You bring the runtime, the entrances and the service layer; Context brings the Skills and the workflow behind them. This page walks through how the pieces fit, what the service does, how to pick a runtime and what to put in the Bot prompt. Day-to-day use by a team is in [Using the Bot in Team Chat](./using-the-bot-in-team-chat.md).
 <!-- /context:section -->
 
 <!-- context:section id="layers" -->
-## Layers
+## How the pieces fit
 
 ```mermaid
 flowchart TB
@@ -27,35 +28,47 @@ flowchart TB
   base --> out["Knowledge repository,<br/>package, website"]
 ```
 
-| Layer | Made of | Responsible for |
-| --- | --- | --- |
-| Entrances | Website chat, team chat Bot, scheduled tasks, API calls | Questions, production or update requests, routine patrols |
-| Service layer | Session API | Authentication, rate limiting, one runtime per session, relaying the event stream, rendering results as web messages or chat cards, collecting ratings |
-| Agent | Hosted Agent runtime | One isolated sandbox per session; system prompt plus the Bot prompt; picks Skills by intent |
-| Skills | Context Skills plugin | Production: `context`, `context-plan` and the four Indexers. Retrieval: `context-inspect-search`. Same-repository docs: `context-repo-content` |
-| Foundations | `context` CLI with Agent Graph, Source Graph MCP, Git | Advancing and resuming the workflow, reading code remotely by commit, committing the Context knowledge workspace |
-| Outputs | Knowledge repository (Git), knowledge package, documentation site | Published together after a build |
+- **Entrances** are where requests come from: website chat, a team chat Bot, scheduled tasks and API calls. They carry questions, production or update requests, and routine patrols.
+- **The service layer** is a session API you run. It handles authentication and rate limiting, starts one runtime per session, relays the event stream, renders results as web messages or chat cards, and collects ratings.
+- **The Agent runtime** gives each session its own isolated sandbox, runs the system prompt plus your Bot prompt, and picks Skills by what the person asked for.
+- **The Context Skills plugin** does the knowledge work: production, questions with sources, and same-repository docs. The Skills and the entries they map to are listed in [Skills](../../product/reference/context/skills.md).
+- **The foundations** underneath are the `context` CLI with Agent Graph, the Source Graph MCP and Git. They advance and resume the workflow, read code remotely by commit and commit the knowledge workspace.
+- **The outputs** — the knowledge repository in Git, the knowledge package and the documentation site — are published together after a build.
+<!-- /context:section -->
+
+<!-- context:section id="setup" -->
+## Setting up the service
+
+1. **Pick a runtime** that gives every session an isolated sandbox; see [Choosing a runtime](#choosing-a-runtime) below.
+2. **Install Context in the runtime image**: the `context` CLI and the Context plugin, as in [Installation](../../product/getting-started/installation.md). Preinstall the knowledge packages and the knowledge workspace too, so sessions do not install and clone each time — cold start is the main reason a first answer is slow.
+3. **Connect remote retrieval** so the Agent can read code by commit instead of cloning repositories in the sandbox; see [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md).
+4. **Write the Bot prompt** with your review policy and retrieval order; see [Configuring the Bot](#configuring-the-bot) below.
+5. **Connect the entrances** through your service layer, and decide who may do what: public visitors ask questions, maintainers produce, update and publish. See the boundaries in [Using the Bot in Team Chat](./using-the-bot-in-team-chat.md).
+
+Then try it the way your team will: ask a question you know the answer to, and ask for a small update and follow it through to the review report.
 <!-- /context:section -->
 
 <!-- context:section id="flows" -->
-## Three flows
+## What the service does
 
-| Flow | Steps |
-| --- | --- |
-| Production | Prepare the environment (restore the workspace and source versions, `context`) → plan (the Bot prompt recognizes intent, `context-plan`) → capture (code pinned to a commit, documents snapshotted) → write (Indexer Skills, each section with source references) → review (references checked automatically, people review the diff report) → build and publish → archive (version and changelog) |
-| Retrieval | Prepare (mount the plugin and packages) → recognize a question → find knowledge (`context-inspect-search`: indexes first, then page bodies and evidence) → if knowledge is not enough, read originals by commit through Source Graph → answer conclusion-first with sources |
-| Update | Triggered by a request in chat, by a gap found while answering and confirmed by the user, or by a scheduled patrol → assess impact (compare old and new source versions, find affected articles) → revise only the affected parts and their references → people review the diff report → publish → report changed articles and the new version |
+The service runs three flows, all through the same Skills.
+
+- **Production.** The Agent prepares the environment by restoring the workspace and the source versions, recognizes a production request and plans it, captures sources (code pinned to a commit, documents snapshotted), writes each section with source references, checks the references automatically and gives people a diff report to review. It then builds, publishes, and archives a version with a changelog entry.
+- **Questions.** With the plugin and packages mounted, the Agent recognizes a question and searches the knowledge — indexes first, then page bodies and evidence. If the knowledge is not enough, it reads the originals by commit through Source Graph. The answer comes conclusion-first, with sources. See [Asking Questions](../querying-knowledge/asking-questions.md).
+- **Updates.** An update starts from a request in chat, from a gap found while answering that the user confirms, or from a scheduled patrol. The Agent compares the old and new source versions to find the affected articles, revises only those parts and their references, and gives people a diff report. After publishing, it reports the changed articles and the new version. See [Updating Knowledge](../updates-and-versions/updating-knowledge.md).
+
+Your decisions are the same as when you work locally: confirm the plan, review the diff report and agree to publish — unless the Bot's review policy delegates some of them.
 <!-- /context:section -->
 
 <!-- context:section id="runtime" -->
 ## Choosing a runtime
 
-Any hosted Agent runtime with an isolated sandbox per session works; choose on:
+Any hosted Agent runtime with an isolated sandbox per session works. Compare runtimes on:
 
-- **Sandbox start time** — cold start dominates the first answer.
-- **Session length limit** — production sessions run long.
-- **File system persistence** — whether the Context knowledge workspace and installed tools survive between sessions.
-- **Egress control** — which sources and services the sandbox may reach.
+- **Sandbox start time.** Cold start dominates the first answer.
+- **Session length limit.** Production sessions run long.
+- **File system persistence.** Whether the knowledge workspace and installed tools survive between sessions.
+- **Egress control.** Which sources and services the sandbox may reach.
 
 Keep the service layer on a generic session interface — create a session, send a message, read the event stream, end the session — so that switching runtimes does not change the Skills.
 <!-- /context:section -->
@@ -65,9 +78,9 @@ Keep the service layer on a generic session interface — create a session, send
 
 The Bot prompt is the Bot's trusted instance configuration. Use it to:
 
-- **Set review policy.** A Bot setting can override any `context.gate.*` switch for every task it runs; precedence is Bot, then fully managed, then ordinary defaults, and an authorized task-scoped override of the two review switches still wins for that task. See [Managed Mode and Review Policy](../planning-and-production/managed-mode-and-review-policy.md).
-- **Set retrieval order.** `CONTEXT_QUERY_SOURCE_MODE` (`repo-first`, `package-first`, `dual`) and `CONTEXT_QUERY_ACCESS_MODE` (`auto`, `remote`, `local`) come from the host or Bot configuration. See [Asking Questions](../querying-knowledge/asking-questions.md).
-- **Describe patrols.** Scheduled tasks need their own prompts; see [Scheduled Updates](../updates-and-versions/scheduled-updates.md).
+- **Set review policy.** A Bot setting applies to every task the Bot runs and takes precedence over fully managed and ordinary defaults; for example, a Bot can always send the review report to people while publishing within its configured target without asking. See [Fully Managed Mode](../planning-and-production/managed-mode-and-review-policy.md).
+- **Set retrieval order and access.** Choose whether questions read the workspace's approved knowledge first, a package first, or both, and whether code is read remotely or locally. See [Asking Questions](../querying-knowledge/asking-questions.md).
+- **Describe patrols.** Scheduled tasks need their own prompts that state their scope, what to do when nothing changed, and which situations need a person. See [Scheduled Updates](../updates-and-versions/scheduled-updates.md).
 
-How people interact with the Bot day to day is in [Using the Bot in Team Chat](./using-the-bot-in-team-chat.md).
+What can go wrong: a policy that does not match how your reviewers work. If the workflow asks for a human decision that the policy said to skip, the Agent stops and reports the mismatch instead of approving on its own.
 <!-- /context:section -->

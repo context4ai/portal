@@ -40,56 +40,29 @@ entries:
     title: 编写 Graph
     source_digest: c6cc5da713acb7e8cc4f8982bcdb6dee974a429d5b66ea370cc02a1db97b1175
   guides-agentgraph/getting-started:
-    title: 快速上手
-    source_digest: a9691e144560208a4c85276afbfc280ee471d5101a3e1957da00fbb0cfd0932e
+    title: Agent Graph 快速上手
+    source_digest: f2172ed854dc15b114b8c96e4c9ad10902e403d73cb0c76d576304f6c14c2b2e
   guides-agentgraph/introduction:
     title: Agent Graph 是什么
     source_digest: 1684da59d68f12ea408b33abf54f2ae19b346b6de1a4d758068e346148239c60
   guides-agentgraph/testing-and-publishing:
     title: 测试与发布
     source_digest: 64408adaef84d79e2b1f8f8012c7a8e347e6fd6eeca4360f20221b32a29e6c24
-  guides-evaluation:
-    title: 测评
-    source_digest: b2b147b9f1dc3767c28c25a5693f768bb39b41bfad3bed7aefe26721ffc46fa9
-  guides-evaluation/evaluating-your-knowledge-base:
-    title: 评测知识库效果
-    source_digest: 527eb4e55d0b5f99a5c317535708226cca59315ed883cf72464271ccf8e7e03e
-  guides-evaluation/evaluation-standard:
-    title: 评分与计时标准
-    source_digest: 9b89b6b7af639eedb398e126cf86a8b51b5f8fa51f8f7cb53b654b056516706a
-  guides-evaluation/knowledge-retrieval:
-    title: 知识检索测评
-    source_digest: db14efeb4167f6ea87dac983493b7a7a64c80983e10df8f66a54044c4cd6457f
   guides-indexers:
     title: 定制 Indexer
     source_digest: 8a53e6f517b67ee38d018e07edcb72fb981e39628681a906ab6856e8ed2aa911
   guides-indexers/code-indexers:
-    title: 代码类 Indexer
-    source_digest: f65db3b2e43f7cc966a3961d0274a9853a27294ae81cd5aa81579dd15b7b0731
+    title: 编写 Indexer 指引
+    source_digest: 3bc9cb23757f68818d07c4d160e2e01c8952e69c73cc9105985ee1e76a5eae8d
   guides-indexers/community-indexers:
-    title: 社区 Indexer 一览
-    source_digest: 2aa1071886e932b6c6ec36b11ef6d811574dc91f871e1d5539cc9e3f4b0a6a5b
+    title: 内置 Indexer
+    source_digest: 718da7500fe0548beac45ccca7de67418fdcef01f4421a945c9403aa6768b18e
   guides-indexers/creating-an-indexer:
     title: 创建 Indexer
     source_digest: 52e6923a3d58204d8d983acd9851c5d507876af107c89c1d11387a5dbd857c1a
-  guides-indexers/document-indexers:
-    title: 文档类 Indexer
-    source_digest: 5f8925038ef8d9342798a81c141b3079fde5fb4f08812a7f22dd7160f079c648
   guides-indexers/providers-and-customization:
-    title: Provider 与定制
-    source_digest: 9bb7143b8d49ae69fc1857e29e01e8bbba8f5a6b73abb123cd0dc5a16da40eb1
-  guides-maintenance:
-    title: 工作区维护
-    source_digest: 1be2ad65c91b80ff4e38b61ed30411b0b48ad79ffce7a019c6d59afd82fe7224
-  guides-maintenance/committing:
-    title: 提交
-    source_digest: 738f7061b6650f7e7718c408a934a23006af4edd3671e2d306f68da5e96e7f31
-  guides-maintenance/preparing:
-    title: 准备
-    source_digest: d92738f0cc86075c8ca7f48c9071d58a92426a5b7ad530aee8314bdb10f8c03a
-  guides-maintenance/restoring:
-    title: 恢复
-    source_digest: 90c332204c1013ccf9e37467230e9a7fc17b90fc80d7bc43e4f5a5425eca66e9
+    title: 选择、替换与停用 Indexer
+    source_digest: 555377b3a38577bff527217ec3c81d66531c126662037ec2bd3de59d598015e3
   guides-outputs:
     title: 输出与站点
     source_digest: 8b6f025926adba1ee47007a3fca0d7d9d75f521bcb55dbecd8166b243ca5895a
@@ -110,52 +83,58 @@ entries:
     source_digest: 046da654edeb37265e841385773a7dc8efd38446cf57896f305fc471480de7e0
   guides-outputs/page-and-theme-customization:
     title: 页面与主题定制
-    source_digest: 74a5d3f5d08d4cdd0b1a0877d6e0648d9fdb3e166a6b034cd67180498df85616
+    source_digest: 4225d283634d2d39958dabdfcff8734b89495481f716e15f990956e399c11c75
   guides-practices:
-    title: 实践
-    source_digest: 9747a1eed4760cb6ee13a6d1b128d9a9dc2c90fe6e4fb6c4dd1927ec828069d5
+    title: 实践与测评
+    source_digest: eb49120b37915ed6d68ab2493c19be0b46e181e223a05d8e91b1d54c761ea126
   guides-practices/best-practices:
     title: 最佳实践
     source_digest: e6c55f371fd36367890e2dd5f92a5bdc7b1cdac1d0bc29e3e1120a31ce0718ce
   guides-practices/choosing-models:
     title: 模型选择
     source_digest: 54ee3e2013052e3f06ef44b059276985d8e9e98476c039231e1db176067be51c
-  guides-practices/cold-start:
-    title: 知识库冷启
-    source_digest: 51017c5b6a67531d108d0316277e1e48bf2dd22d36527fde95a96c5953e20851
-  guides-practices/migrating-a-knowledge-base:
-    title: 迁移已有知识库
-    source_digest: c99c2a098892957c1d0964f516027ff7e3fd3bb0f874d8fda0dac34e00ddb65f
-  guides-practices/prompt-recipes:
-    title: 常用提示词
-    source_digest: 596377f9dfdf2dbdc01e1277478af34984f678c5b5fc5a922ecda14822570d06
+  guides-practices/evaluating-your-knowledge-base:
+    title: 评测知识库效果
+    source_digest: 527eb4e55d0b5f99a5c317535708226cca59315ed883cf72464271ccf8e7e03e
+  guides-practices/evaluation-standard:
+    title: 测评评分与计时标准
+    source_digest: 9b89b6b7af639eedb398e126cf86a8b51b5f8fa51f8f7cb53b654b056516706a
+  guides-practices/knowledge-retrieval:
+    title: 知识检索测评
+    source_digest: db14efeb4167f6ea87dac983493b7a7a64c80983e10df8f66a54044c4cd6457f
+  guides-practices/operational-knowledge:
+    title: 把运维手册写成知识
+    source_digest: 4f5d12170a54c725344aed5838cccf57f306d229d9bf3fc12f8a7fe011b86724
   guides-production:
     title: 规划与生产
-    source_digest: d2f87b08c7cd98230a2d53a661d8997c038d628a90385407104dc1ef16d40f00
+    source_digest: 50d5cde41bff94d834d45b312347e17070e77f54e8dce2d72ad30dd754ec3779
+  guides-production/cold-start:
+    title: 知识库冷启
+    source_digest: 51017c5b6a67531d108d0316277e1e48bf2dd22d36527fde95a96c5953e20851
   guides-production/managed-mode-and-review-policy:
-    title: 托管模式与审核策略
-    source_digest: f82bd550947a240fe9ede06de2cf9b39dcbe0c5d5984744cbd0a166fa5181e3a
+    title: 全托管模式
+    source_digest: 5e97fccb849a3f7953c9f4ffc5c7e11ea0f92e44102de1ba4710504016e3425f
+  guides-production/migrating-a-knowledge-base:
+    title: 迁移已有知识库
+    source_digest: c99c2a098892957c1d0964f516027ff7e3fd3bb0f874d8fda0dac34e00ddb65f
   guides-production/planning-large-projects:
-    title: 规划大型项目
-    source_digest: 063fcacf275293ae8b3bfa6dceaf6934552da481554da982900221cee3504405
+    title: 分阶段规划大型项目
+    source_digest: 88a2470db6c812d8c4320bf7f20a6de221e27e6d3324f0cddcd214a36b6ef66c
   guides-production/start-reports:
-    title: 开工报告
-    source_digest: 440b1c7ebb5af67c7316f2db22000b00f78e671cee447e04f1a680e8a762e683
+    title: 确认开工报告
+    source_digest: 1fe6b93ed739f5e4f204dbbc818f99ca67f378357194b31a16000b55feb0d60a
   guides-production/working-with-agents:
     title: 与 Agent 协作
     source_digest: 4d799856dc715756cef4401f20a70bfccaba50675318124510a0cbc05bedb9e4
   guides-querying:
-    title: 检索与使用
-    source_digest: d64060bbbec44ea288d6a4dd6236118fd533c3dc79c45afca66dd4a420a8e063
+    title: 使用知识
+    source_digest: 6836cac1a711eee488a016543374c364ab12b238832498fe7debabb3e7bcd669
   guides-querying/asking-questions:
     title: 查询知识
     source_digest: c986f0d7e37d4c8e65593f003ae3fd7c4a86caa18bbcbd7705757187bf13eea1
-  guides-querying/reading-code-evidence-remotely:
-    title: 远程读取代码证据
-    source_digest: a48d580af06407c12aa6aa93104d647a42c6ad02bba632929beae13b0d375ce2
   guides-querying/using-packages-in-agents:
     title: 在 Agent 中使用知识包
-    source_digest: e49d5784da35bb3fd457da592b25f0af4e016277f2059656e06cfb008db4c67a
+    source_digest: aba5b76a4c761a287fbbed1ff4d17e82450458c22b44202c85bca7ef07e2c2aa
   guides-review:
     title: 审核与修订
     source_digest: 67065e2a17c15e76a771246e04955c14ee07276c53260d172337a907d6e6118a
@@ -169,47 +148,41 @@ entries:
     title: 修订单页
     source_digest: e6bdc38d5934c8e91881c44d66c8e1d835b177309e4c3f5c191a370b92ab568b
   guides-service:
-    title: 知识服务 Agent
-    source_digest: 40ec9f63c6c448dd1e507dcc9cb1093ac385aa79238229ed13f450b8fac175db
+    title: 知识服务
+    source_digest: 73540b110245a0aebb786c019ea9eccdfc46e3b6f5f3a7dbfcd5872218b4d40c
   guides-service/building-a-knowledge-service:
     title: 搭建知识服务
     source_digest: 5c18c2eccc563a1633c0714166b7574acc57b45c8a56c26c31c720bb21b3ef94
-  guides-service/operational-knowledge:
-    title: 运维知识
-    source_digest: 56b747d0af6e9aa15893011d985a87b49c65a7fbda917e3ebdadd26012164268
   guides-service/using-the-bot-in-team-chat:
     title: 在团队聊天中使用
     source_digest: 187f1189f8917077fea435bd1bab5018957d221e7a6b663976eee0f75cb1ff22
   guides-sourcegraph:
     title: Source Graph
     source_digest: feeef398bc8e969bbba120bc05eb2a3d7117dc0799bb65000b74b44c2f21ef5e
-  guides-sourcegraph-ops:
-    title: 维护 Source Graph 实例
-    source_digest: bf8fa70dbcab4a8caabee3d28479d76ce66aa6b5f5fe957ba925add9a69ddd8d
-  guides-sourcegraph-ops/authentication-and-access-control:
+  guides-sourcegraph/authentication-and-access-control:
     title: 登录与准入
     source_digest: 296e39a4b1e88aecd0d81a0ea12181dcb0fdb9a8ee927d9ff076fa2ad3b7dfb3
-  guides-sourcegraph-ops/deployment-recommendations:
-    title: 部署建议
-    source_digest: c06893cf04e08d2a81e68da76092dc8473d48010b6020b70f6dd292a7edb6d80
-  guides-sourcegraph-ops/operations:
-    title: 运维
-    source_digest: 56ddadacd19b505f10ee802d4112285bbe52fb5f7f8559f4a9153425c7dbf932
-  guides-sourcegraph-ops/self-hosting:
-    title: 自部署与数据库选择
-    source_digest: 2fbbd45b1721a93e8a92a2490b10dcc51210609e1c9d9dba384efcbbbf10c1c8
   guides-sourcegraph/connecting:
     title: 接入
     source_digest: 7f4759bc08873652183f93c10d6cfc04cb4f6a92ec10204b6649680b3da6c803
   guides-sourcegraph/introduction:
     title: Source Graph 是什么
     source_digest: 7a42fbbe87c1eddf1f1594056150cf506eda55e23a13825cde3eef41fc37bea4
+  guides-sourcegraph/operations:
+    title: 运维
+    source_digest: 56ddadacd19b505f10ee802d4112285bbe52fb5f7f8559f4a9153425c7dbf932
+  guides-sourcegraph/reading-code-evidence-remotely:
+    title: 远程读取代码证据
+    source_digest: a48d580af06407c12aa6aa93104d647a42c6ad02bba632929beae13b0d375ce2
   guides-sourcegraph/registering-repositories:
     title: 登记仓库
     source_digest: 1a6f76c9d1104165a88c8cf8e325f3a67cc8d352fab135755e550650b77eb4ed
+  guides-sourcegraph/self-hosting:
+    title: 自托管
+    source_digest: 2fbbd45b1721a93e8a92a2490b10dcc51210609e1c9d9dba384efcbbbf10c1c8
   guides-sources:
-    title: 登记来源
-    source_digest: e39f079c6def4369e97362cec8c5b0eafffba58138f58641491cba02904caa4f
+    title: 添加来源
+    source_digest: f177d2e699b46bf45f2af50e574c69c4f452730513d4c9c99a71988607359bec
   guides-sources/code-repositories:
     title: 代码仓库
     source_digest: a0f0687c966dd8bc222d23ed18fb6b2d00e710be810a47d28743b14d29804289
@@ -223,23 +196,23 @@ entries:
     title: 飞书文档
     source_digest: 3d1e78c88f0464e524b6342f282e38513323ab02a571b5e555a2128e015696f7
   guides-sources/notes:
-    title: 笔记
-    source_digest: ac80d051721d90bdc2f40a6a48b39d10448d0cff34bdeb331ee0de0b7c3ba883
+    title: 笔记与会话摘要
+    source_digest: ecf4bc833e32b109e89ca5b83ed4140c432ea9a7ed1c791212baa5ef65961f3f
   guides-sources/same-repository-docs:
-    title: 引用同仓库的文档与 Skill
-    source_digest: 1cb20b0062e6e777df3d961b30679eaed24fc44ccedb92269c80cab21b20a610
-  guides-sources/session-summaries:
-    title: 会话摘要
-    source_digest: 5488172f852a04bf509bc25aa5cdc92315737b97505c2fce910de18162480db7
+    title: 链接已有的文档与 Skill
+    source_digest: e92da9540753c101ba9484321301187473d9c016322611afab707f2b3db4f0e0
   guides-sources/source-batches:
-    title: 批量来源
-    source_digest: 09dd32e83e5847608a29c03312629e35d5b33ec86592ffc4403ff9c4d6b43f6c
+    title: 选择添加材料的方式
+    source_digest: df9159d607fe8be25b11929ddefd63bfc0badd12d1c70ecfca4df30de3097bc5
   guides-updates:
-    title: 更新与版本
-    source_digest: 2cf06a8b0fc60fef03b1b15acbcddb0e41b45e74d56d435a6e3ec85cf3b653b8
+    title: 保持知识最新
+    source_digest: 25b9da86f571c8f0d050b238864ad6566dae74fd88cba2b71b31df68855317c7
   guides-updates/capturing-from-conversations:
     title: 边聊边沉淀
     source_digest: ed199d6f2ae16d78de4795ec4393034b235225d214742217c17fa9d6d4621759
+  guides-updates/preparing:
+    title: 开始新任务与保存工作
+    source_digest: 37f2619dbb25482786f6b8d715a21ec7c43a6c4319c69357ef4d8545e63edbd6
   guides-updates/scheduled-updates:
     title: 定时巡检
     source_digest: e94c676257c3aafe40ed9ac9a2e49fda156a77f963f16fe27765e372ee1c48f6
@@ -247,8 +220,8 @@ entries:
     title: 更新已有知识
     source_digest: da3acc35708703416f1aa4bd1787a2ead1b024924bacb31bde834f07b1a539e5
   guides-updates/versions-and-changelog:
-    title: 版本与 Changelog
-    source_digest: cf0dcdc2970d9a8ddda7ea4aa3312cc8d9eca9d43c344fc89764ca5240d317eb
+    title: 版本、Changelog 与恢复
+    source_digest: e78a1cff8f3627163c16176aa15fd6ba5281f8735a640bf91f85c5240ba9a775
   guides-updates/writing-back-upstream:
     title: 回写上游文档
     source_digest: 0ce0ef5b076d710d58975cf1f0637636ad082146728adc6e143df026a730aa3a

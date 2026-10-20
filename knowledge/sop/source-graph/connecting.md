@@ -1,15 +1,15 @@
 ---
 title: Connecting
-description: Connect a browser, an MCP client, a script or the command-line
-  client to Source Graph to search and read code at a pinned commit without
-  cloning, choose the right credential, and follow the search-then-read loop.
+description: Connect your Agent to Source Graph so Context can read cited code
+  without cloning, then connect a browser, script or the command-line client,
+  choose the right credential and follow the search-then-read loop.
 type: Guide
-timestamp: 2026-10-14T02:43:34.309Z
+timestamp: 2026-10-19T18:55:52.431Z
 ---
 # Connecting
 
 <!-- context:section id="goal" -->
-Connecting gives your Agent, script or terminal code search and reading at a pinned commit, without cloning the repository first. [What Is Source Graph](introduction.md) explains why that matters, when you need it and how to try the live demo.
+Connecting gives your Agent, script or terminal code search and reading at a pinned commit, without cloning the repository first. Most Context users need only one thing: connect their Agent over MCP, as described in the next section, so the Agent can read the code behind an answer remotely. [What Is Source Graph](introduction.md) explains why that matters, when you need it and how to try the live demo.
 
 Every Source Graph instance serves four entry points under the `/sourcegraph/` path of its origin. Pick the one that fits the caller; all of them run the same operations with the same rules, except that only MCP reads several ranges in one call.
 
@@ -23,22 +23,14 @@ Every Source Graph instance serves four entry points under the `/sourcegraph/` p
 The website's **Connect** page always shows ready-to-copy configuration for the instance you are on, including the right address and whether a token is needed. Prefer it over hand-written examples when they differ.
 <!-- /context:section -->
 
-<!-- context:section id="credentials" -->
-## Choose a credential
-
-| Credential | How to get it | What it allows |
-| --- | --- | --- |
-| None (anonymous) | — | Read-only access to repositories marked public, when the site allows public reading; rate-limited per client |
-| Personal API key (`sgk_…`) | Sign in, open your user settings and create an API token | The same reads as your account, over HTTP or MCP. Administrators can create keys that may also request indexing over MCP |
-| Service token | The `SOURCEGRAPH_API_TOKEN` setting of the instance, at least 32 characters | Every HTTP and MCP operation, including registration and indexing — for automation you control |
-
-Send keys and tokens as `Authorization: Bearer <value>`. An invalid credential is rejected with `AUTHENTICATION_REQUIRED`; it never falls back to anonymous access. Keep credentials in your client's secret store or environment, never in shared configuration files. [Authentication and Access Control](authentication-and-access-control.md) explains each mode in detail.
-<!-- /context:section -->
-
 <!-- context:section id="mcp" -->
-## Connect an MCP client
+## Connect your Agent for Context
 
-Point any client that supports Streamable HTTP at the `/mcp` endpoint. For the public demo:
+1. If the instance needs a credential, sign in and create a personal API key (see [Choose a credential](#choose-a-credential)). The public demo needs none.
+2. Open the site's **Connect** page and copy the configuration for your Agent host; it shows the equivalent command or file for Claude Code, Codex and Cursor.
+3. Keep the server name `context-sourcegraph`. That is the name Context's query Skill looks for when it reads cited code, as described in [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md).
+
+For any other client that supports Streamable HTTP, point it at the `/mcp` endpoint. For the public demo:
 
 ```json
 {
@@ -51,9 +43,25 @@ Point any client that supports Streamable HTTP at the `/mcp` endpoint. For the p
 }
 ```
 
-For an instance that needs a credential, add `"headers": { "Authorization": "Bearer <token>" }`. The Connect page also shows the equivalent command or file for Claude Code, Codex and Cursor. Naming the server `context-sourcegraph` lets Context's query Skill find it, as described in [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md).
+For an instance that needs a credential, add `"headers": { "Authorization": "Bearer <token>" }`. The optional `plugins` query parameter controls repository plugins for the whole connection: `auto` (default selection), `off`, or up to 16 comma-separated plugin names. Anonymous connections and personal keys get the read-only tools; `prepare` appears only for the service token and for administrator keys allowed to prepare. Use MCP tool discovery for the current input schemas — the [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md) reference lists them.
+<!-- /context:section -->
 
-The optional `plugins` query parameter controls repository plugins for the whole connection: `auto` (default selection), `off`, or up to 16 comma-separated plugin names. Anonymous connections and personal keys get the read-only tools; `prepare` appears only for the service token and for administrator keys allowed to prepare. Use MCP tool discovery for the current input schemas — the [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md) reference lists them.
+<!-- context:section id="missing-repository" -->
+## Missing a repository?
+
+If search or reading cannot find a repository you need, it is probably not registered on that instance yet. Registration needs an administrator, and a private repository also needs a token for its code source so the service can fetch it. Ask the instance's administrator, or, on your own instance, register it yourself as described in [Registering Repositories](registering-repositories.md).
+<!-- /context:section -->
+
+<!-- context:section id="credentials" -->
+## Choose a credential
+
+| Credential | How to get it | What it allows |
+| --- | --- | --- |
+| None (anonymous) | — | Read-only access to repositories marked public, when the site allows public reading; rate-limited per client |
+| Personal API key (`sgk_…`) | Sign in, open your user settings and create an API token | The same reads as your account, over HTTP or MCP. Administrators can create keys that may also request indexing over MCP |
+| Service token | The `SOURCEGRAPH_API_TOKEN` setting of the instance, at least 32 characters | Every HTTP and MCP operation, including registration and indexing — for automation you control |
+
+Send keys and tokens as `Authorization: Bearer <value>`. An invalid credential is rejected with `AUTHENTICATION_REQUIRED`; it never falls back to anonymous access. Keep credentials in your client's secret store or environment, never in shared configuration files. [Authentication and Access Control](authentication-and-access-control.md) explains each mode in detail.
 <!-- /context:section -->
 
 <!-- context:section id="http" -->
@@ -101,5 +109,5 @@ Agents get the most from Source Graph with a short loop:
 3. **Read** the decisive ranges at that commit — directly when the file is known, several at once with `read_many`.
 4. **Continue** from the returned next line if the file goes on, and treat `Partial`, `Truncated` and coverage flags as limits, not as proof that something is absent.
 
-There is no need to list repositories or resolve the revision before every query; do that only when the repository is unknown or a request fails. A `409 INDEX_NOT_READY` means that commit has not been indexed yet — see [Operations](operations.md) for what to do.
+List repositories or resolve the revision only when the repository is unknown or a request fails, not before every query. If a request fails — for example `409 INDEX_NOT_READY` when a commit has not been indexed yet — look up the code in [Operations](operations.md#common-errors) for what it means and what to do.
 <!-- /context:section -->

@@ -129,9 +129,9 @@ translation:
 <!-- context:section id="agent-graph" -->
 ## Agent Graph
 
-**0.3.1（2026-10-13）**把脚手架、模板和示例中的 `compatibility.agentGraph` 范围提高到 `^0.3.0`，补充了 0.3.0 Resource 协议的迁移说明，并让仓库中的各指南链接到本站。
+<strong>0.3.1（2026-10-13）</strong>把脚手架、模板和示例中的 `compatibility.agentGraph` 范围提高到 `^0.3.0`，补充了 0.3.0 Resource 协议的迁移说明，并让仓库中的各指南链接到本站。
 
-**0.3.0（2026-08-31）**对 Provider 作者是一个不兼容版本。原来的 Resource v1/v2 划分被三个相互独立的 v1 协议取代——文件、Graph-action 和 Host-action 三类资源及其位置——原有的 `agent-graph.resource.v1`、`.v2`、`agent-graph.resource-location.v1` 和 `.v2` 标识被移除。Host Action 的输入、输出和恢复接口不变，但每种物化授权现在都在序列化的 Route 和 SDK 类型中明确写出。按[版本迁移](../reference/agent-graph/migration.md)重命名现有 Provider 中的协议。
+<strong>0.3.0（2026-08-31）</strong>对 Provider 作者是一个不兼容版本。原来的 Resource v1/v2 划分被三个相互独立的 v1 协议取代——文件、Graph-action 和 Host-action 三类资源及其位置——原有的 `agent-graph.resource.v1`、`.v2`、`agent-graph.resource-location.v1` 和 `.v2` 标识被移除。Host Action 的输入、输出和恢复接口不变，但每种物化授权现在都在序列化的 Route 和 SDK 类型中明确写出。按[版本迁移](../reference/agent-graph/migration.md)重命名现有 Provider 中的协议。
 
 0.2 系列构建了 0.3.0 所重命名的契约：
 
