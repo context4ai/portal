@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:042d58a4e8fdea0f25607e4ad848c008737486b1028654557d3f5b9f217e14df
+input_hash: sha256:fc71285f68538fe9fce7a404b1e9fd45af3144f0189092d66a9e9af25e27ec34
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
