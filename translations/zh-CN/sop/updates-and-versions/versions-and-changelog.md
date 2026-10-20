@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: bc31d513-0dd9-4f53-b6e2-953feada799a
   source_digest: 814cb1408beadfd536617d88c9e7fc291a9474d8c9e92a984be8003307cc6dab
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 版本、Changelog 与恢复
@@ -31,7 +31,7 @@ translation:
 
 在一轮工作接近结束时——页面审核通过之后、最终构建之前——Agent 会查看实际发生的变化，包括文章正文、资源、结构、导航和模板，然后撰写 Changelog 条目：标题、主要变化以及引发它们的原因，例如新增模块、笔记、更新或修复。相关的变化会被合并，让每个条目保持简短。条目中绝不包含凭据、原始对话文本、本地路径或私有账号 ID；作者取自你的 Git 身份，而不是猜测。
 
-版本号和 Changelog 会一起更新。记录版本本身不会发布或部署任何内容。背后用到的命令列在 [CLI 命令](../../product/reference/context/cli-commands.md)中。
+版本号和 Changelog 会一起更新。记录版本本身不会发布或部署任何内容。背后用到的命令列在 [CLI 命令](../../product/reference/context/cli-commands.md) 中。
 <!-- /context:section -->
 
 <!-- context:section id="retries" -->

@@ -6,13 +6,13 @@ translation:
   locale: zh-CN
   artifact_ref: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
   source_digest: 6754862e006f4c5c6ff4c3fbef70a46648548d15d5cf019f643c3948b4487744
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 选择、替换与停用 Indexer
 
 <!-- context:section id="goal" -->
-当内置 Indexer 不太合适时阅读本页：你希望某些材料使用团队的专用 Indexer、替换某个内置 Indexer，或者彻底停用某个 Indexer。先从 [内置 Indexer](community-indexers.md)了解自带的 Indexer 已经覆盖了什么；工作流内部如何使用 Indexer，见 [Indexer 体系](../../architecture/knowledge/indexer-system.md)。
+当内置 Indexer 不太合适时阅读本页：你希望某些材料使用团队的专用 Indexer、替换某个内置 Indexer，或者彻底停用某个 Indexer。先从 [内置 Indexer](community-indexers.md) 了解自带的 Indexer 已经覆盖了什么；工作流内部如何使用 Indexer，见 [Indexer 体系](../../architecture/knowledge/indexer-system.md)。
 
 ```mermaid
 flowchart TD
@@ -77,7 +77,7 @@ Agent 始终会：
 
 | 你想要 | 这样做 |
 | --- | --- |
-| 添加专用 Indexer | 按照 [创建 Indexer](creating-an-indexer.md)创建，安装到宿主可见的位置，然后在请求中说明哪些材料应使用它。 |
+| 添加专用 Indexer | 按照 [创建 Indexer](creating-an-indexer.md) 创建，安装到宿主可见的位置，然后在请求中说明哪些材料应使用它。 |
 | 对某些材料优先使用团队的 Indexer 而非内置 Indexer | 在知识工作区中明确说明替换，做法见上文“替换内置 Indexer”。 |
 | 阻止某个 Indexer 被使用 | 在 Agent 宿主中停用该 Skill。 |
 | 为单个任务调整指引 | 在任务中说明。该选择只适用于这一任务，不会改变 Skill 本身。 |

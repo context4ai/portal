@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
   source_digest: a07a8a9726f2cd95dcaecdd8fa3a7a4034d85bf7ec049fae9087005cee239e73
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 多语言站点
@@ -53,7 +53,7 @@ site: {
 - **后续各轮**——只更新自上次翻译以来发生变化的内容，并以现有译文为起点。每轮的已批准页面和译文都已提交时效果最好，Agent 会在一轮结束时完成提交。
 - **跳过一轮**——告诉 Agent“本轮跳过翻译”。待翻译的页面暂时以主语言发布，下一轮会再次询问。
 
-翻译会保持页面结构、代码块、命令、路径和链接目标不变；只翻译说明文字、标题和图表标签。只要有任何一个翻译页面未通过这些检查，该批次的内容就都不会保存。底层命令列在 [CLI 命令](../../product/reference/context/cli-commands.md)中。
+翻译会保持页面结构、代码块、命令、路径和链接目标不变；只翻译说明文字、标题和图表标签。只要有任何一个翻译页面未通过这些检查，该批次的内容就都不会保存。底层命令列在 [CLI 命令](../../product/reference/context/cli-commands.md) 中。
 <!-- /context:section -->
 
 <!-- context:section id="storage" -->

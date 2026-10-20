@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
   source_digest: fc98fdd0e6e9fe020adba0d453da2b348cefcf72c31976acfa36ada90b78cbe0
-  translated_at: 2026-10-15T06:25:34.171Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 发布说明
@@ -13,7 +13,7 @@ translation:
 <!-- context:section id="overview" -->
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
-升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；参见[安装](../getting-started/installation.md)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；参见 [安装](../getting-started/installation.md)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
 <!-- /context:section -->
 
 <!-- context:section id="context-0771" -->
@@ -21,7 +21,7 @@ translation:
 
 **安装**
 
-- Claude Code 和 Codex 也可以把 context4ai/context 仓库添加为插件市场来安装 `c4a` 插件；CLI 仍从 npm 安装。安装说明在 Node.js 20 旁列出了 Bun，因为知识工作区使用 `bun install` 安装依赖。参见[安装](../getting-started/installation.md)。
+- Claude Code 和 Codex 也可以把 context4ai/context 仓库添加为插件市场来安装 `c4a` 插件；CLI 仍从 npm 安装。安装说明在 Node.js 20 旁列出了 Bun，因为知识工作区使用 `bun install` 安装依赖。参见 [安装](../getting-started/installation.md)。
 
 **修订与更新**
 
@@ -34,7 +34,7 @@ translation:
 - `translate prepare` 改为增量方式：每篇待翻译文章都会得到一份草稿——过期的现有译文，或缺失时的已批准原文；当 Git 历史中保有其翻译所依据的版本时，还会附带 `source_diff`。编辑过的草稿会被保留，成功提交后草稿会被删除。译文不再保存 `source_parts`。
 - `text`、`txt` 和 `plaintext` 代码块中的说明文字可以翻译。页内和跨页锚点会保持读者的语言，阅读页还会把每个片段 ID 暴露为锚点。
 
-参见[修订页面](../../sop/review-and-revision/revising-a-page.md)、[更新知识](../../sop/updates-and-versions/updating-knowledge.md)和[多语言站点](../../sop/outputs-and-sites/multilingual-sites.md)。
+参见 [修订页面](../../sop/review-and-revision/revising-a-page.md)、[更新知识](../../sop/updates-and-versions/updating-knowledge.md) 和 [多语言站点](../../sop/outputs-and-sites/multilingual-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0767" -->
@@ -48,7 +48,7 @@ translation:
 - 分区落地页把每个一级分组显示为卡片。带 `position: "start"` 的 `site.nav` 链接显示在各分区之前，不属于任何分区的页面不显示侧边栏，首页会高亮指向当前页的导航链接，而不是第一个分区。
 - 主页横幅等自定义插槽在深色模式下不再塌陷，折叠的更新日志卡片会把长标题截断显示在一行内。
 
-参见[文档站点](../../sop/outputs-and-sites/documentation-sites.md)。
+参见 [文档站点](../../sop/outputs-and-sites/documentation-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0762" -->
@@ -85,7 +85,7 @@ translation:
 
 - `site.nav`、`site.more` 和 `site.socialLinks` 用于添加顶部链接、“更多”菜单条目和社交图标。“更多”菜单条目可以指向放在知识地图之外的已批准文章——本页就是这样——以根目录开头的路径还可以链接到同一域名下的兄弟应用。
 
-参见[多语言站点](../../sop/outputs-and-sites/multilingual-sites.md)和[文档站](../../sop/outputs-and-sites/documentation-sites.md)。
+参见 [多语言站点](../../sop/outputs-and-sites/multilingual-sites.md) 和 [文档站](../../sop/outputs-and-sites/documentation-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0750" -->
@@ -93,7 +93,7 @@ translation:
 
 **同仓库内容**
 
-- 登记仓库自身的文档和自编 Skill，不把正文复制进知识，并维护安全的相对符号链接入口；参见[同仓库文档](../../sop/registering-sources/same-repository-docs.md)。
+- 登记仓库自身的文档和自编 Skill，不把正文复制进知识，并维护安全的相对符号链接入口；参见 [同仓库文档](../../sop/registering-sources/same-repository-docs.md)。
 - 证据插件以及本地或远程查询都能识别这类引用，包括符号链接索引覆盖不完整的情况。
 
 **证据与构建**
@@ -112,14 +112,14 @@ translation:
 - **0.7.42**——无需检出仓库即可远程读取已批准的知识和记录的代码证据。CLI 内置一个只读的仓库 Wasm 插件，为读取结果附上章节证据和指向具体提交的源码 URL，通过 `context evidence install` 或在初始化知识工作区时安装。
 - **0.7.43**——插件升级到 ABI 2，为每个读取项附上紧凑的引用而不替换其内容；远程查询指引改为遵循有界的默认读取、仅文件搜索和按文件的匹配上限。
 
-本地和离线检索始终可用。参见[远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
+本地和离线检索始终可用。参见 [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0735" -->
 ## Context 0.7.35 – 0.7.36（2026-09-22）
 
-- **大型项目规划。** `context-plan` Skill 负责调研项目或大范围的来源更新，每次把一个阶段交给生产，并依靠 Git 中的计划恢复进度。建议每个阶段三十篇文档、最多五十篇，每个阶段只新调研一个仓库；大范围发现需要确认范围，超过五百篇文档需要人工介入。参见[规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
-- **委托审核。** 任务可以委托计划审核和文章审核，同时人工审核仍是默认方式，授权边界保持不变；参见[托管模式与审核策略](../../sop/planning-and-production/managed-mode-and-review-policy.md)。
+- **大型项目规划。** `context-plan` Skill 负责调研项目或大范围的来源更新，每次把一个阶段交给生产，并依靠 Git 中的计划恢复进度。建议每个阶段三十篇文档、最多五十篇，每个阶段只新调研一个仓库；大范围发现需要确认范围，超过五百篇文档需要人工介入。参见 [规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
+- **委托审核。** 任务可以委托计划审核和文章审核，同时人工审核仍是默认方式，授权边界保持不变；参见 [托管模式与审核策略](../../sop/planning-and-production/managed-mode-and-review-policy.md)。
 - **文档采集。** 在线文档快照可以脱离知识工作区先抓取、之后再导入；目录发现可以断点续跑，登记以暂存方式进行，支持检查点、状态查询、重放和取消。
 - **审核报告**会列出未放入导航的文章，并给出导航恢复指引。
 
@@ -131,7 +131,7 @@ translation:
 
 <strong>0.3.1（2026-10-13）</strong>把脚手架、模板和示例中的 `compatibility.agentGraph` 范围提高到 `^0.3.0`，补充了 0.3.0 Resource 协议的迁移说明，并让仓库中的各指南链接到本站。
 
-<strong>0.3.0（2026-08-31）</strong>对 Provider 作者是一个不兼容版本。原来的 Resource v1/v2 划分被三个相互独立的 v1 协议取代——文件、Graph-action 和 Host-action 三类资源及其位置——原有的 `agent-graph.resource.v1`、`.v2`、`agent-graph.resource-location.v1` 和 `.v2` 标识被移除。Host Action 的输入、输出和恢复接口不变，但每种物化授权现在都在序列化的 Route 和 SDK 类型中明确写出。按[版本迁移](../reference/agent-graph/migration.md)重命名现有 Provider 中的协议。
+<strong>0.3.0（2026-08-31）</strong>对 Provider 作者是一个不兼容版本。原来的 Resource v1/v2 划分被三个相互独立的 v1 协议取代——文件、Graph-action 和 Host-action 三类资源及其位置——原有的 `agent-graph.resource.v1`、`.v2`、`agent-graph.resource-location.v1` 和 `.v2` 标识被移除。Host Action 的输入、输出和恢复接口不变，但每种物化授权现在都在序列化的 Route 和 SDK 类型中明确写出。按 [版本迁移](../reference/agent-graph/migration.md) 重命名现有 Provider 中的协议。
 
 0.2 系列构建了 0.3.0 所重命名的契约：
 
@@ -144,5 +144,5 @@ translation:
 | 0.2.1 – 0.2.2 | Gate 解决动作和只读的 Gate 检查动作 |
 | 0.2.0 | 基于 Facts 的路由契约和由目录支撑的原因码 |
 
-0.1.0（2026-07-22）发布了最初的规范、SDK、CLI、schema、模板和示例。这些术语的含义见[核心模型](../../architecture/agent-graph/core-model.md)。
+0.1.0（2026-07-22）发布了最初的规范、SDK、CLI、schema、模板和示例。这些术语的含义见 [核心模型](../../architecture/agent-graph/core-model.md)。
 <!-- /context:section -->

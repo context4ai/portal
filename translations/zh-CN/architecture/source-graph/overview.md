@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
   source_digest: 9106f5d4af095d71b5f79327d8b57c4b322c157bfb1a1a76177eb0ff57f4e0ef
-  translated_at: 2026-10-20T05:24:00.427Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 架构概览
@@ -44,7 +44,7 @@ flowchart LR
 | `diff` | 比较两个符合条件的提交 |
 | `prepare` | 请求同步某个提交并为其建索引（仅限已授权的调用方） |
 
-网站位于 `/sourcegraph/` 下，MCP 端点为 `/sourcegraph/mcp`，HTTP API 位于 `/sourcegraph/v1/` 和 `/sourcegraph/api/` 下。命令行客户端 `sourcegraph-cli` 调用的也是这些 HTTP 路由。具体路由、工具输入和限制见 [HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)和 [CLI](../../product/reference/source-graph/cli.md) 参考文档。
+网站位于 `/sourcegraph/` 下，MCP 端点为 `/sourcegraph/mcp`，HTTP API 位于 `/sourcegraph/v1/` 和 `/sourcegraph/api/` 下。命令行客户端 `sourcegraph-cli` 调用的也是这些 HTTP 路由。具体路由、工具输入和限制见 [HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md) 和 [CLI](../../product/reference/source-graph/cli.md) 参考文档。
 <!-- /context:section -->
 
 <!-- context:section id="components" -->
@@ -52,7 +52,7 @@ flowchart LR
 
 一个 Source Graph 实例就是一个 `repo-service` 进程。它以子进程方式启动 Zoekt 搜索服务器（只监听回环接口），在数据卷上为每个已登记仓库保存一份裸 Git 镜像，并运行后台 worker 来同步监控分支、为新的分支最新提交建索引。
 
-应用数据库存储仓库、任务、身份和设置。默认使用 SQLite；对于规模更大或需要分片的部署，也支持 PostgreSQL 和 MongoDB。Git 镜像和索引始终保存在实例的本地磁盘上——搜索速度正来自这种本地性——因此容量规划围绕磁盘而非 CPU 展开。需要扩容时，运行多个实例，各自负责互不重叠的一组仓库；切勿让两个实例处理同一批仓库或同一个数据目录。[自部署与数据库选择](../../sop/source-graph/self-hosting.md)介绍了这两种拓扑。
+应用数据库存储仓库、任务、身份和设置。默认使用 SQLite；对于规模更大或需要分片的部署，也支持 PostgreSQL 和 MongoDB。Git 镜像和索引始终保存在实例的本地磁盘上——搜索速度正来自这种本地性——因此容量规划围绕磁盘而非 CPU 展开。需要扩容时，运行多个实例，各自负责互不重叠的一组仓库；切勿让两个实例处理同一批仓库或同一个数据目录。[自部署与数据库选择](../../sop/source-graph/self-hosting.md) 介绍了这两种拓扑。
 
 仓库还可以附带名为 `<name>.sourcegraph.wasm` 的 WebAssembly 插件，为 `read` 和 `read_many` 的结果追加文本。Context 借此为每个知识章节附上其来源，详见 [与 Context 协同](evidence-for-context.md)。
 <!-- /context:section -->

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.13.6 — 2026-10-20
+
+### Polish zh-CN translations and clarify the Context definition
+
+- Add symmetric spacing around inline links in the zh-CN translations.
+- Clarify that agents read knowledge first when answering questions.
+- Promote DeepSeek 4.1 Flash 1017 as the primary model in model guidance.
+
+Trigger: translation: Polished zh-CN translations for readability and consistency.
+User: qiansc (git)
+
 ## 0.13.5 — 2026-10-20
 
 ### Guides restructured around the reader's journey
