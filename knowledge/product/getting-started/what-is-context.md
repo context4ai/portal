@@ -3,15 +3,15 @@ title: What is Context
 description: Context turns code, documents, notes and conversations into
   reviewed, traceable knowledge for Agents, Bots and people.
 type: Wiki
-timestamp: 2026-10-20T06:25:23.157Z
+timestamp: 2026-10-20T07:26:44.207Z
 ---
 # What is Context
 
 <!-- context:section id="definition" -->
 
-Context is a knowledge workflow for engineering teams and their AI agents. It turns code repositories, documents, notes and conversations into reviewed, versioned knowledge in which every claim leads back to its source, then builds that knowledge into Agent knowledge packages, documentation sites and LLM documents. When answering questions, agents read the knowledge first and follow its evidence chain to the original only when they need exact detail.
+Context is a knowledge workflow for engineering teams and their AI agents. It turns code repositories, documents, notes and conversations into reviewed, versioned knowledge in which every claim leads back to its source, then builds that knowledge into Agent knowledge packages, documentation sites and LLM documents.
 
-You describe what knowledge you need and where the material lives. Your Agent reads the evidence, proposes a structure and explains its decisions. Context makes sure each step is allowed and can be repeated: it records source boundaries, checks evidence coverage, stages reviewable candidates, preserves provenance, verifies the approved result and builds the output you chose.
+You describe what knowledge you need and where the material lives. Then your Agent reads the evidence, proposes a structure and explains its decisions. Context constrains the Agent to follow, step by step, the process and standards described in the skills — recording source boundaries, checking evidence coverage, staging reviewable candidates, preserving provenance, verifying the approved result and finally building the output you chose. When answering questions, agents read this knowledge first and follow its evidence chain to the original only when they need exact detail.
 
 <!-- /context:section -->
 
