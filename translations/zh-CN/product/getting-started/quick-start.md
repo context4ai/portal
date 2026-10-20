@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: a5f433c5-3840-4ddf-8306-59b6a59e4dac
   source_digest: 953fab61ddf7cc671acfebaf7380f064eb641f2e5425660fca88be927be13c32
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T03:42:50.656Z
 ---
 
 # 快速开始
 
 <!-- context:section id="goal" -->
-本教程把一个代码模块和一个本地文档目录整理成经过审核的知识包，并附带可浏览的站点。你用自然语言下达指令，Agent 执行工作流返回的命令，所以下面的示例只展示你要说的话。
+本教程把一个代码模块和一个本地文档目录整理成已批准的知识包，并附带可浏览的站点。你用自然语言下达指令，Agent 执行工作流返回的命令，所以下面的示例只展示你要说的话。
 
 请先完成[安装](installation.md)，包括 Node.js 20 和用于为新知识工作区安装依赖的 Bun，并重启 Agent 会话以加载插件。
 <!-- /context:section -->
@@ -33,7 +33,7 @@ context/
 ├── AGENTS.md       # 给 Agent 的使用说明
 ├── src/            # 来源、阶段和知识包声明
 ├── sources/        # 已登记的来源和采集到的证据
-├── knowledge/      # 已审核的知识（目前为空）
+├── knowledge/      # 已批准的知识（目前为空）
 ├── dist/           # 构建后的知识包（Git 忽略）
 └── .tmp/           # 运行状态和报告（Git 忽略）
 ```
@@ -69,9 +69,9 @@ Agent 会阅读有代表性的材料，就可能改变范围的问题向你确�
 <!-- /context:section -->
 
 <!-- context:section id="produce" -->
-## 4. 让它写作，然后审核
+## 4. 让 Agent 写作，然后你来审核
 
-批准后，Agent 逐页写作，引用精确到来源行，并提交检查覆盖度和过期输入。每个写作任务大约需要一分钟；Agent 会汇报进度和任务总数，你也可以随时要求本地预览。
+批准后，Agent 逐页写作，引用精确到来源行，并核对覆盖度与过期输入。每个写作任务大约需要一分钟；Agent 会汇报进度和任务总数，你也可以随时要求本地预览。
 
 写作完成后，你会收到一份审核报告，列出每个页面的标题、路径、摘要和内容。你可以批准、拒绝部分页面，或要求修订。批准的页面以 Markdown 形式落入 `knowledge/`；被拒绝或要求修订的页面回到写作环节。参见[阅读审核报告](../../sop/review-and-revision/reading-review-reports.md)。
 
