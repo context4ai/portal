@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: 4cefdc74-779a-435a-8d47-0a9794f8144c
   source_digest: 07726e971fad9ab53634e2da9e5c2752e076e53422a295093273ab6329ca0fd8
-  translated_at: 2026-10-20T05:24:00.427Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 测评评分与计时标准
 
 <!-- context:section id="overview" -->
-本页是 [评测知识库效果](./evaluating-your-knowledge-base.md)的规则手册，也是定义判分、校准和计时规则的唯一位置。可以原样采用，也可以调整后注明改了什么。它涵盖单个回答如何判分、如何检查评审、判分如何变成比率，以及耗时、工具调用和运行证据如何记录。[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)就采用了这套标准。
+本页是 [评测知识库效果](./evaluating-your-knowledge-base.md) 的规则手册，也是定义判分、校准和计时规则的唯一位置。可以原样采用，也可以调整后注明改了什么。它涵盖单个回答如何判分、如何检查评审、判分如何变成比率，以及耗时、工具调用和运行证据如何记录。[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md) 就采用了这套标准。
 <!-- /context:section -->
 
 <!-- context:section id="industry" -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
   source_digest: 1b7e4a803ab5fa78027cb57b94f714c9e74d15d9a925afac2f50e58c7eee02a6
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 页面与主题定制
@@ -100,7 +100,7 @@ kbPackage({ site: { theme: {
 } } })
 ```
 
-优先级依次为内置默认值、`theme.json`、知识包自己的主题。离线 [审核报告](../review-and-revision/reading-review-reports.md)和 Mermaid 图表也使用相同的颜色。自定义组件应读取 `--context-brand`、`--context-accent`、`--context-background`、`--context-surface`、`--context-text`、`--context-muted-text` 和 `--context-border`，而不是硬编码颜色。
+优先级依次为内置默认值、`theme.json`、知识包自己的主题。离线 [审核报告](../review-and-revision/reading-review-reports.md) 和 Mermaid 图表也使用相同的颜色。自定义组件应读取 `--context-brand`、`--context-accent`、`--context-background`、`--context-surface`、`--context-text`、`--context-muted-text` 和 `--context-border`，而不是硬编码颜色。
 
 无论读者的系统配色如何，站点都以浅色模式打开。读者的浅色或深色选择会在整个源（origin）范围内记住，因此同一源下的所有 Context 站点共享这一选择；它从首次绘制起就会生效，页面加载时不会闪现另一种配色。
 <!-- /context:section -->

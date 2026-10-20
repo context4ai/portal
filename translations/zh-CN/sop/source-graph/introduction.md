@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
   source_digest: 806f00e1da838dccb988a3f5da9e69aab9beaae6b36e36e41b42f4bc93530832
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # Source Graph 是什么
@@ -14,7 +14,7 @@ translation:
 <!-- context:section id="purpose" -->
 **Context Source Graph 让人、脚本和 AI Agent 无需克隆仓库，就能在确定的 Git 提交上搜索和阅读代码。** 结果来自预先建好的索引，毫秒级返回；每个结果都标明读取所用的提交，同一个问题总能拿到同样的证据。
 
-它开源、可自托管。公开的只读 [在线演示](https://context4ai.org/sourcegraph/)索引了 `context4ai/context` 和 `context4ai/sourcegraph`。本节的指南介绍如何接入实例、如何与 Context 配合使用，以及面向管理员的登记仓库、自托管、安全保护和运维。
+它开源、可自托管。公开的只读 [在线演示](https://context4ai.org/sourcegraph/) 索引了 `context4ai/context` 和 `context4ai/sourcegraph`。本节的指南介绍如何接入实例、如何与 Context 配合使用，以及面向管理员的登记仓库、自托管、安全保护和运维。
 <!-- /context:section -->
 
 <!-- context:section id="problem" -->
@@ -53,7 +53,7 @@ Source Graph 是一个在固定版本上做文本搜索与阅读的服务。每�
 
 1. **试用在线演示。** 打开 [https://context4ai.org/sourcegraph/](https://context4ai.org/sourcegraph/)，直接在浏览器中搜索和阅读代码，无需账号。
 2. **接入你的 Agent。** 打开站点的 **Connect**（接入）页面，复制适用于你的 Agent 宿主的配置。MCP、HTTP、CLI 和凭据的用法见 [接入](connecting.md)。
-3. **为自己的仓库运行实例。** 用 Docker 启动，配置 Google 或 GitHub 登录，第一个完成验证的用户会成为管理员并登记仓库。具体步骤见 [自托管](self-hosting.md)和 [登记仓库](registering-repositories.md)。
+3. **为自己的仓库运行实例。** 用 Docker 启动，配置 Google 或 GitHub 登录，第一个完成验证的用户会成为管理员并登记仓库。具体步骤见 [自托管](self-hosting.md) 和 [登记仓库](registering-repositories.md)。
 <!-- /context:section -->
 
 <!-- context:section id="next" -->
@@ -67,6 +67,6 @@ Source Graph 是一个在固定版本上做文本搜索与阅读的服务。每�
 | 部署并配置自己的实例 | [自托管](self-hosting.md) |
 | 设置登录并决定谁可以读取 | [登录与准入](authentication-and-access-control.md) |
 | 监控健康状态和任务，并修复常见错误 | [运维](operations.md) |
-| 了解服务是如何构建的 | [架构概览](../../architecture/source-graph/overview.md)和 [固定版本的搜索与阅读](../../architecture/source-graph/pinned-search-and-reads.md) |
-| 查阅路由、工具、参数和设置 | [HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)、[CLI](../../product/reference/source-graph/cli.md)、[搜索语法](../../product/reference/source-graph/query-syntax.md)和 [配置](../../product/reference/source-graph/configuration.md) |
+| 了解服务是如何构建的 | [架构概览](../../architecture/source-graph/overview.md) 和 [固定版本的搜索与阅读](../../architecture/source-graph/pinned-search-and-reads.md) |
+| 查阅路由、工具、参数和设置 | [HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)、[CLI](../../product/reference/source-graph/cli.md)、[搜索语法](../../product/reference/source-graph/query-syntax.md) 和 [配置](../../product/reference/source-graph/configuration.md) |
 <!-- /context:section -->

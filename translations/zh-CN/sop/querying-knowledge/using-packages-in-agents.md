@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: e9c6dca7-c6c3-40f5-8439-726ad9262b15
   source_digest: 96b8e462992a3f5c81ea6a3e6c954cb54fa5bce43e121de61b5da359d7dcb693
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 在 Agent 中使用知识包
@@ -47,5 +47,5 @@ translation:
 <!-- context:section id="sources" -->
 ## 回到来源
 
-知识包页面保留了来源引用。当知识包不够用时，`/c4a:context-inspect-search` 可以沿这些引用，追溯到记录版本下的原始文档和代码。请参阅 [提问](asking-questions.md)和 [远程读取代码证据](reading-code-evidence-remotely.md)。
+知识包页面保留了来源引用。当知识包不够用时，`/c4a:context-inspect-search` 可以沿这些引用，追溯到记录版本下的原始文档和代码。请参阅 [提问](asking-questions.md) 和 [远程读取代码证据](reading-code-evidence-remotely.md)。
 <!-- /context:section -->

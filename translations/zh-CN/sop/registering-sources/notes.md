@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: f3b6fd09-85a3-4a4b-9941-23c6eca881f4
   source_digest: 4763752f37eec2501b073b902d04acccbc9fde9852806fc9c496e3dc13a8186b
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 笔记与会话摘要
@@ -17,7 +17,7 @@ translation:
 | --- | --- |
 | 你手头已有的文本：摘录、摘要、观察记录、检查清单 | 笔记 |
 | Agent 对话中确定下来的内容：决策、约束、未决问题 | 会话摘要 |
-| Context 能自行读取的文档 | 改用 [文档目录](document-directories.md)或 [飞书文档](lark-documents.md)来源 |
+| Context 能自行读取的文档 | 改用 [文档目录](document-directories.md) 或 [飞书文档](lark-documents.md) 来源 |
 <!-- /context:section -->
 
 <!-- context:section id="prepare" -->

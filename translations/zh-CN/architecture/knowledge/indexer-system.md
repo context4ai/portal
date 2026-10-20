@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 6272ae5a-8966-42cd-a06d-5986828764fd
   source_digest: a95e9eb11571231816e2386f547e476283396f3dcbb6f1f95de5e6224c0b300d
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # Indexer 体系
@@ -29,7 +29,7 @@ Indexer 是一种 Agent 技能，帮助 Agent 展示来源的骨架，并据此�
 <!-- /context:section -->
 
 <!-- context:section id="built-in-install" -->
-这四个 Indexer 都随插件安装，在所有支持的宿主中都可被发现。安装 Indexer 只是让它可用，并不代表选中它。[社区 Indexer 一览](../../sop/custom-indexers/community-indexers.md)对每个 Indexer 有更详细的介绍。
+这四个 Indexer 都随插件安装，在所有支持的宿主中都可被发现。安装 Indexer 只是让它可用，并不代表选中它。[社区 Indexer 一览](../../sop/custom-indexers/community-indexers.md) 对每个 Indexer 有更详细的介绍。
 <!-- /context:section -->
 
 <!-- context:section id="usage" -->

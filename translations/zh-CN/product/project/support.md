@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: sha256:9d796e7c1ddbca5eadc0e9604bf8890eff78a8b2eb69cd4d3fa0883cabf07155
   source_digest: 94449ef09f2a9af54c08c2ea90179c33adfd499f558f65e2e9d6d52add164864
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 支持
@@ -19,7 +19,7 @@ translation:
 | 可复现的缺陷 | [问题报告](https://github.com/context4ai/context/issues/new/choose) | [问题报告](https://github.com/context4ai/agent-graph/issues/new/choose) |
 | 疑似安全漏洞 | [私下报告](https://github.com/context4ai/context/security/advisories/new) | [私下报告](https://github.com/context4ai/agent-graph/security/advisories/new) |
 
-Agent Graph 的 Discussions 也接受尚不能落地的想法。两个项目都优先指向本站，答案往往已经在这里：安装检查见[安装](../getting-started/installation.md)，查询知识见[提问](../../sop/querying-knowledge/asking-questions.md)，另有[常见问题](../../faq/context-faq.md)。
+Agent Graph 的 Discussions 也接受尚不能落地的想法。两个项目都优先指向本站，答案往往已经在这里：安装检查见 [安装](../getting-started/installation.md)，查询知识见 [提问](../../sop/querying-knowledge/asking-questions.md)，另有 [常见问题](../../faq/context-faq.md)。
 <!-- /context:section -->
 
 <!-- context:section id="diagnose" -->
@@ -28,7 +28,7 @@ Agent Graph 的 Discussions 也接受尚不能落地的想法。两个项目都�
 - **安装。** `context --version` 和 `context plugin status` 用于确认 CLI 和宿主插件。如果入口存在但缺少 `context` 可执行文件，入口会指出需要执行的安装步骤。
 - **工作流状态。** `context status --format json` 显示当前 Route、它的原因码和诊断信息。请从这个 Route 继续，而不是重复之前的命令。
 - **追踪。** `context debug enable` 会在 `.tmp/context-runtime/debug/` 下记录知识工作区本地的追踪，`context debug export` 会生成可供查看的回放；参见 [CLI 命令](../reference/context/cli-commands.md)。
-- **Agent Graph。** `npx @c4a/agent-graph validate --format json` 会加载整个 Provider，无副作用地返回结构化错误；Graph 测试无需宿主即可重放 Route，便于分享最小复现；参见[测试与发布](../../sop/agent-graph/testing-and-publishing.md)。
+- **Agent Graph。** `npx @c4a/agent-graph validate --format json` 会加载整个 Provider，无副作用地返回结构化错误；Graph 测试无需宿主即可重放 Route，便于分享最小复现；参见 [测试与发布](../../sop/agent-graph/testing-and-publishing.md)。
 <!-- /context:section -->
 
 <!-- context:section id="bug-reports" -->

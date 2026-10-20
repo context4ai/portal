@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
   source_digest: 8c7d8c72d216a8714e5363576e92a95d0deec2f555cb1d7249f5f15e838dc47b
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 接入
@@ -46,13 +46,13 @@ translation:
 }
 ```
 
-如果实例需要凭据，添加 `"headers": { "Authorization": "Bearer <token>" }`。可选的 `plugins` 查询参数控制整个连接使用的仓库插件：`auto`（默认选择）、`off`，或最多 16 个以逗号分隔的插件名称。匿名连接和个人 Key 只能获得只读工具；`prepare` 只对服务令牌以及被允许执行准备的管理员 Key 可见。当前的输入 schema 请通过 MCP 工具发现获取，[HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)参考文档中列出了这些工具。
+如果实例需要凭据，添加 `"headers": { "Authorization": "Bearer <token>" }`。可选的 `plugins` 查询参数控制整个连接使用的仓库插件：`auto`（默认选择）、`off`，或最多 16 个以逗号分隔的插件名称。匿名连接和个人 Key 只能获得只读工具；`prepare` 只对服务令牌以及被允许执行准备的管理员 Key 可见。当前的输入 schema 请通过 MCP 工具发现获取，[HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md) 参考文档中列出了这些工具。
 <!-- /context:section -->
 
 <!-- context:section id="missing-repository" -->
 ## 缺少某个仓库？
 
-如果搜索或读取找不到你需要的仓库，多半是它还没有在该实例上登记。登记需要管理员操作；私有仓库还需要其代码来源的令牌，服务才能拉取它。请联系实例管理员；如果是你自己的实例，可以按 [登记仓库](registering-repositories.md)中的说明自行登记。
+如果搜索或读取找不到你需要的仓库，多半是它还没有在该实例上登记。登记需要管理员操作；私有仓库还需要其代码来源的令牌，服务才能拉取它。请联系实例管理员；如果是你自己的实例，可以按 [登记仓库](registering-repositories.md) 中的说明自行登记。
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->
@@ -112,5 +112,5 @@ Agent 用一个简短的循环就能充分利用 Source Graph：
 3. 在该提交上**读取**关键范围：已知文件时直接读取，需要多处时用 `read_many` 一次读取。
 4. 如果文件还有后续内容，从返回的下一行**继续**读取；将 `Partial`、`Truncated` 和覆盖范围标记视为限制，而不是内容不存在的证明。
 
-无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。如果请求失败——例如某个提交尚未建好索引时返回 `409 INDEX_NOT_READY`——请在 [运维](operations.md#common-errors)中查找该错误码的含义和处理方法。
+无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。如果请求失败——例如某个提交尚未建好索引时返回 `409 INDEX_NOT_READY`——请在 [运维](operations.md#common-errors) 中查找该错误码的含义和处理方法。
 <!-- /context:section -->

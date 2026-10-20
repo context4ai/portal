@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
   source_digest: 08bebd03f4e6c8f38a8ea21799db0e7413d10bbcc6fffd0e6501547f07253360
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 配置
@@ -151,7 +151,7 @@ Wasm 证据插件在服务内部运行，受 `SOURCEGRAPH_PLUGINS_*` 变量设�
 <!-- context:section id="fixed" -->
 ## 内置限制
 
-有些限制在代码中写死，无法配置：请求体最大 64 KiB，请求截止时间 30 秒，HTTP 服务器超时分别为请求头 5 秒、读取 120 秒、写入 125 秒，以及 [HTTP 与 MCP 接口](http-and-mcp.md)中描述的搜索、读取、列目录和差异分页大小。搜索引擎作为本地辅助进程运行在 `127.0.0.1:6070` 上，从不对外暴露。
+有些限制在代码中写死，无法配置：请求体最大 64 KiB，请求截止时间 30 秒，HTTP 服务器超时分别为请求头 5 秒、读取 120 秒、写入 125 秒，以及 [HTTP 与 MCP 接口](http-and-mcp.md) 中描述的搜索、读取、列目录和差异分页大小。搜索引擎作为本地辅助进程运行在 `127.0.0.1:6070` 上，从不对外暴露。
 <!-- /context:section -->
 
 <!-- context:section id="data" -->

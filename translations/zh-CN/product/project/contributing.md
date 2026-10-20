@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: sha256:72f512c94144d0b098315550139d8a361e49260daa79bac892cf4c7c0a4561a5
   source_digest: 9dd4ab4d413556768e092a7958c40dc6d0665973419b69fb93a51fa6f594b153
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 参与贡献
@@ -15,9 +15,9 @@ Context 和 Agent Graph 都在 GitHub 上公开开发，仓库分别是 [context
 
 - **报告缺陷**：通过 issue 模板提交一个最小、已脱敏的复现。
 - **改进文档**：本站由 [context4ai/portal](https://github.com/context4ai/portal) 构建；各包的参考文档放在各自项目的仓库中。
-- **分享 Indexer**：教 Context 读取一种新的来源；参见[创建 Indexer](../../sop/custom-indexers/creating-an-indexer.md)和[社区 Indexer 一览](../../sop/custom-indexers/community-indexers.md)。
+- **分享 Indexer**：教 Context 读取一种新的来源；参见 [创建 Indexer](../../sop/custom-indexers/creating-an-indexer.md) 和 [社区 Indexer 一览](../../sop/custom-indexers/community-indexers.md)。
 - **添加语言提取器**：放在 Context 的 `packages/extract-*` 下，遵循 `@c4a/extract` 协议。
-- **提出 Agent Graph 协议变更或示例**：新人可先读[为什么是 Graph Engineering](../../architecture/agent-graph/why-graph-engineering.md)和[编写 Graph](../../sop/agent-graph/authoring-graphs.md)，再运行仓库中的 `getting-started` 示例。
+- **提出 Agent Graph 协议变更或示例**：新人可先读 [为什么是 Graph Engineering](../../architecture/agent-graph/why-graph-engineering.md) 和 [编写 Graph](../../sop/agent-graph/authoring-graphs.md)，再运行仓库中的 `getting-started` 示例。
 
 两个项目的节奏相同：
 
@@ -26,7 +26,7 @@ Context 和 Agent Graph 都在 GitHub 上公开开发，仓库分别是 [context
 3. 用 Bun 开发，保证运行时代码在 Node.js 20 及以上版本可用，并运行项目的验证命令。
 4. 提交聚焦的 pull request，说明问题、你选择的行为、兼容性影响以及如何验证。
 
-不要在公开 Issue 中报告安全漏洞；私下报告的方式见[支持](support.md)。
+不要在公开 Issue 中报告安全漏洞；私下报告的方式见 [支持](support.md)。
 
 | | Context | Agent Graph |
 | --- | --- | --- |
@@ -90,7 +90,7 @@ fix(v0.2.2): reject stale evaluation revisions
 docs(v0.3.0): clarify provider adoption paths
 ```
 
-维护者可能会要求修改，以保持协议的可移植性、行为的确定性或文档的一致。要端到端测试一个 Graph 改动，参见[测试与发布](../../sop/agent-graph/testing-and-publishing.md)。
+维护者可能会要求修改，以保持协议的可移植性、行为的确定性或文档的一致。要端到端测试一个 Graph 改动，参见 [测试与发布](../../sop/agent-graph/testing-and-publishing.md)。
 <!-- /context:section -->
 
 <!-- context:section id="docs" -->

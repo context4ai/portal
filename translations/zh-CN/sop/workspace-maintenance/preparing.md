@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 307b902e-f337-4e9d-a849-acdc0127be22
   source_digest: 675a92531dce2d61c2e21ba26c5d89483ed26c5e2d4c56a0fe10706bb1add01d
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 开始新任务与保存工作
@@ -65,7 +65,7 @@ Agent 会先向你展示确切会被移除的内容，在你同意后才执行�
 <!-- context:section id="commit-when" -->
 ## 把工作保存到 Git
 
-一轮工作结束时（在你确认结果之后），Agent 会把知识工作区提交到 Git。在 [分阶段规划](../planning-and-production/planning-large-projects.md)的项目中，已批准的计划决定了各阶段如何提交工作。
+一轮工作结束时（在你确认结果之后），Agent 会把知识工作区提交到 Git。在 [分阶段规划](../planning-and-production/planning-large-projects.md) 的项目中，已批准的计划决定了各阶段如何提交工作。
 
 要在其他时间提交，直接提出即可：
 

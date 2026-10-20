@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 80ddc71e-bea5-45b3-9a6c-b042566601ad
   source_digest: 56ff6fca1378ce671a929f9c48afa61b4b32703d92a24c2c674a57b175de4279
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 确认开工报告
@@ -26,7 +26,7 @@ flowchart LR
 <!-- context:section id="before" -->
 ## 如何走到这一步
 
-先自由描述：知识要覆盖什么、来自哪里（仓库、模块、文档链接），以及你期望的形式：给 Agent 用的知识包、站点，或两者都要。Agent 会调研有代表性的材料，只就会改变范围或产出的缺口向你提问。它不会走一套固定问卷，[全托管模式](managed-mode-and-review-policy.md)也不意味着可以替你猜答案。
+先自由描述：知识要覆盖什么、来自哪里（仓库、模块、文档链接），以及你期望的形式：给 Agent 用的知识包、站点，或两者都要。Agent 会调研有代表性的材料，只就会改变范围或产出的缺口向你提问。它不会走一套固定问卷，[全托管模式](managed-mode-and-review-policy.md) 也不意味着可以替你猜答案。
 
 ```text
 /c4a:context 为 ../billing-service 和 ../docs/billing 构建知识，读者是值班工程师。

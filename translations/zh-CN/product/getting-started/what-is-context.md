@@ -4,14 +4,14 @@ description: Context 把代码、文档、笔记和会话整理成经过审核�
 translation:
   locale: zh-CN
   artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
-  source_digest: 3b3d76752739bb711c415c22790b959be0891c4fe17b8dcd2979aefdc67ba6a1
-  translated_at: 2026-10-20T03:42:50.656Z
+  source_digest: 0a0c64f4d853953455734e408716ca50a982e38ac7a1498207570b4c3094339c
+  translated_at: 2026-10-20T06:26:06.262Z
 ---
 
 # Context 是什么
 
 <!-- context:section id="definition" -->
-Context 是面向研发团队及其 AI Agent 的知识工作流。它把代码仓库、文档、笔记和会话转化为经过审核、带版本的知识，其中每一条论述都能追溯到来源；再把这些知识构建成 Agent 知识包、文档站和 LLM 文档。Agent 先读知识，只有需要精确细节时才沿证据链回到原文。
+Context 是面向研发团队及其 AI Agent 的知识工作流。它把代码仓库、文档、笔记和会话转化为经过审核、带版本的知识，其中每一条论述都能追溯到来源；再把这些知识构建成 Agent 知识包、文档站和 LLM 文档。在回答问题时，Agent 先读知识，只有需要精确细节时才沿证据链回到原文。
 
 你只需说明需要什么知识、材料在哪里。Agent 负责阅读证据、提出结构并解释自己的决策。Context 则确保每一步都被允许、且可以重复执行：记录来源边界、检查证据覆盖、暂存可审核的候选、保留出处、验证已批准的结果，并构建你选择的产物。
 <!-- /context:section -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 82e8f37d-332c-47d5-bcd5-ab52653b9cd6
   source_digest: 721962afccef6134b152cb3e766c915469a8059b6338f4be6cd587021d6f006c
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 知识生命周期
@@ -63,5 +63,5 @@ flowchart LR
 <!-- context:section id="after" -->
 ## 构建之后
 
-构建完成的是当前已批准的状态，并不会冻结 Context 知识工作区。内容发生变化时，工作流会在构建之前记录一个新的知识工作区版本。之后，`context revise` 修正选定的页面，`context update` 处理选定来源的变更；两者都会再次经过审核和交付，并且只改动受影响的部分。详见 [知识的持续更新](../knowledge/keeping-knowledge-current.md)和 [版本感知的知识](../knowledge/version-aware-knowledge.md)。
+构建完成的是当前已批准的状态，并不会冻结 Context 知识工作区。内容发生变化时，工作流会在构建之前记录一个新的知识工作区版本。之后，`context revise` 修正选定的页面，`context update` 处理选定来源的变更；两者都会再次经过审核和交付，并且只改动受影响的部分。详见 [知识的持续更新](../knowledge/keeping-knowledge-current.md) 和 [版本感知的知识](../knowledge/version-aware-knowledge.md)。
 <!-- /context:section -->
