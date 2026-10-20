@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
   source_digest: 2afaf1e3e8dd89798d6cba08ba3beeaad254f5e08baf932de2924d576b49d8db
-  translated_at: 2026-10-15T06:25:34.171Z
+  translated_at: 2026-10-20T03:42:50.656Z
 ---
 
 # 安装
@@ -41,7 +41,7 @@ flowchart LR
   hosts --> providers["Indexer Provider 技能"]
 ```
 
-全局安装会创建带命名空间的 Context 入口，同时以无命名空间的形式投影四个 Indexer Provider 技能——`context-code-indexer`、`context-markdown-indexer`、`context-note-indexer` 和 `context-sessions-indexer`——让每个宿主都能找到它们。安装 Provider 只是让它可被发现；具体用哪些 Provider，由工作流按任务选择。
+全局安装会创建带命名空间的 Context 入口，同时以无命名空间的形式提供四个 Indexer Provider 技能——`context-code-indexer`、`context-markdown-indexer`、`context-note-indexer` 和 `context-sessions-indexer`——让每个宿主都能找到它们。安装 Provider 只是让它可被发现；具体用哪些 Provider，由工作流按任务选择。
 
 ### 或者从插件市场安装插件
 

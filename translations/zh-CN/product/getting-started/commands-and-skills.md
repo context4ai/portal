@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 7a07aeaf-a286-43a3-90c8-d04d2a8a0011
   source_digest: 54ad9b6d232e2d70bb01d67cdc5a3db54425fa75607c1d9761b4a19de2998d0c
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T03:42:50.656Z
 ---
 
 # 命令与技能
@@ -72,7 +72,7 @@ flowchart LR
 | 你想要 | 可以这样说 | 会发生什么 |
 | --- | --- | --- |
 | 规划大型项目 | *“为 `<repositories and documents>` 规划一个知识项目。”* | Agent 调研并写出 PLAN 供你审阅；参见[分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md) |
-| 从大量质量参差的来源冷启 | *“先探索 `<repositories>`，再对照代码筛查 `<wiki range>` 下的每篇文档。除顶层设计外，跳过自 `<date>` 以来未更新的文档；以 `<document>` 为基准。在任何生产之前，给我一份 PLAN，包含每篇文档的处理决定和三级结构。”* | 只读探索、来源筛查和一份供审阅的 PLAN；参见[知识库冷启](../../sop/practices/cold-start.md) |
+| 从大量质量参差的来源冷启动 | *“先探索 `<repositories>`，再对照代码筛查 `<wiki range>` 下的每篇文档。除顶层设计外，跳过自 `<date>` 以来未更新的文档；以 `<document>` 为基准。在任何生产之前，给我一份 PLAN，包含每篇文档的处理决定和三级结构。”* | 只读探索、来源筛查和一份供审阅的 PLAN；参见[知识库冷启动](../../sop/practices/cold-start.md) |
 | 重组 | *“重新调研已批准的知识，提出更直观的目录和标题结构。我确认后再修订。”* | 先给出结构提案，再进行修订；参见[大规模重组](../../sop/review-and-revision/reorganizing-at-scale.md) |
 | 来源发版后更新 | *“来源已升级到 `<version>`。找出受影响的知识并审核更新。”* | 一份影响评估、针对性修订和一份审核报告 |
 | 评测 | *“用 `<question set>` 评测当前知识库，按四档评分为每个回答打分，并给出 P50/P90。”* | 一次带评分和计时的评测运行；参见[评测知识库效果](../../sop/practices/evaluating-your-knowledge-base.md) |
@@ -81,8 +81,8 @@ flowchart LR
 
 上表用到的术语：
 
-- **PLAN**：Agent 通过 `/c4a:context-plan` 为大型或冷启项目写出的调研报告，在生产前供你审阅。
-- **基准文档**（冷启中）：你为某个领域指定的、当前且权威的文档。在其范围内它优先；当其他材料或代码与它不一致时，会记录处理决定及原因。
+- **PLAN**：Agent 通过 `/c4a:context-plan` 为大型或冷启动项目写出的调研报告，在生产前供你审阅。
+- **基准文档**（冷启动中）：你为某个领域指定的、当前且权威的文档。在其范围内它优先；当其他材料或代码与它不一致时，会记录处理决定及原因。
 - **审核报告**：列出已写或已改页面的可读报告，由你批准或退回；参见[阅读审核报告](../../sop/review-and-revision/reading-review-reports.md)。
 - **四档评分**与 **P50/P90**：回答的评分等级，以及回答耗时的中位数和第 90 百分位数；两者都在[测评评分与计时标准](../../sop/practices/evaluation-standard.md)中定义。
 <!-- /context:section -->
