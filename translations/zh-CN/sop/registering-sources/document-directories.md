@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 8a990784-16a3-4b84-957e-f5058ac73c3f
   source_digest: 97be1faa48317c59f83f6b4cdd63222ca15a38bc62f13be45537db75f2253d33
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 文档目录
@@ -37,7 +37,7 @@ flowchart LR
 
 登记时还不读取任何内容。Agent 会记录你指定的文件夹或文件；如果你限定了范围，则只记录你要求的章节或模式——在上面的例子中是 `getting-started` 和 `billing`。随后它为该来源做好采集准备，并告诉你登记了什么。
 
-如果知识工作区已有自定义的来源设置，Agent 会做针对性修改以加入新文件夹，并告诉你改了什么。完整的登记选项参见 [CLI 命令](../../product/reference/context/cli-commands.md)参考。
+如果知识工作区已有自定义的来源设置，Agent 会做针对性修改以加入新文件夹，并告诉你改了什么。完整的登记选项参见 [CLI 命令](../../product/reference/context/cli-commands.md) 参考。
 <!-- /context:section -->
 
 <!-- context:section id="capture" -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: c83a2ef8-1964-48dc-a3cb-ec5eeadc1acf
   source_digest: c0d2010e0ac87bea63df58ded0fb16bd487eb8c60e6866088b0069393f907da2
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 写给 Agent 的知识
@@ -64,7 +64,7 @@ Indexer 不会从全量符号扫描或完整关系图开始。在计划阶段，
 这个数字有两点限制：
 
 - 只统计了部分已登记的来源，因此实际比例更高；
-- 该比例衡量的是体量，而不是覆盖度或质量。质量另行在 [知识检索测评](../benchmark/knowledge-retrieval.md)中衡量。
+- 该比例衡量的是体量，而不是覆盖度或质量。质量另行在 [知识检索测评](../benchmark/knowledge-retrieval.md) 中衡量。
 
 这些知识并非无损，也不“覆盖全部代码”。它保留回答问题所需的事实，每条都带有指回代码行或文档章节的指针。参见 [证据链与索引优先](evidence-chains.md)。
 <!-- /context:section -->

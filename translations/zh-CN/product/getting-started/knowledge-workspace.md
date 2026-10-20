@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
   source_digest: 7bd3e1955c8db55e30f7c0e57315fb9632f384dccd1f445423304c66042fccdb
-  translated_at: 2026-10-20T03:42:50.656Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # Context 知识工作区
@@ -86,17 +86,17 @@ my-knowledge/
 <!-- context:section id="growing" -->
 ## 随知识增长而出现的文件
 
-- **`src/knowledge-map.yaml`** 是持久的知识地图。它组织网站导航和 LLM Docs，但不改变页面身份，并在每次交付后保留。参见[大规模重组](../../sop/review-and-revision/reorganizing-at-scale.md)。
+- **`src/knowledge-map.yaml`** 是持久的知识地图。它组织网站导航和 LLM Docs，但不改变页面身份，并在每次交付后保留。参见 [大规模重组](../../sop/review-and-revision/reorganizing-at-scale.md)。
 - **`translations/<locale>/`** 为每个已批准页面保存一个翻译文件，另有一个存放导航标题译文的 `knowledge-map.yaml`。翻译属于正式内容：它们计入版本，并随站点一起打包。
-- **`changelog.yaml` 和 `CHANGELOG.md`** 会在每次交付记录版本时，与 `package.json.version` 一起更新。参见[版本、Changelog 与恢复](../../sop/updates-and-versions/versions-and-changelog.md)。
+- **`changelog.yaml` 和 `CHANGELOG.md`** 会在每次交付记录版本时，与 `package.json.version` 一起更新。参见 [版本、Changelog 与恢复](../../sop/updates-and-versions/versions-and-changelog.md)。
 <!-- /context:section -->
 
 <!-- context:section id="linked" -->
 ## 用于关联内容的文件
 
-- 根目录下的 **`imports.yaml`** 声明外部入口——页面可以链接到的其他位置的内容——但不会下载或采集它们。参见[外部入口](../../sop/registering-sources/external-entrances.md)。
-- **`repo-content.yaml`** 登记位于同一仓库中的文档和自编 Skill；**`repo-content/`** 是它们的符号链接视图，原文件保持原位不动。参见[链接已有的文档与 Skill](../../sop/registering-sources/same-repository-docs.md)。
-- **`context-evidence.sourcegraph.wasm`** 是一个用于远程读取代码证据的可选插件。它由 `context evidence install` 维护；查询过程从不会自行安装它。参见[远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
+- 根目录下的 **`imports.yaml`** 声明外部入口——页面可以链接到的其他位置的内容——但不会下载或采集它们。参见 [外部入口](../../sop/registering-sources/external-entrances.md)。
+- **`repo-content.yaml`** 登记位于同一仓库中的文档和自编 Skill；**`repo-content/`** 是它们的符号链接视图，原文件保持原位不动。参见 [链接已有的文档与 Skill](../../sop/registering-sources/same-repository-docs.md)。
+- **`context-evidence.sourcegraph.wasm`** 是一个用于远程读取代码证据的可选插件。它由 `context evidence install` 维护；查询过程从不会自行安装它。参见 [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
 <!-- /context:section -->
 
 <!-- context:section id="runtime" -->
@@ -109,15 +109,15 @@ my-knowledge/
 | `.tmp/install/` | 安装依赖时使用的临时文件 |
 | `.tmp/context-plans/<date-slug>/` | 规划项目的调研材料：`repos/`、`documents/`、`research/`、`stage-inputs/` |
 
-`.tmp/context-runtime/` 并不是进度的唯一记录。交付成功后，CLI 会移除已完成任务的状态，而已批准的知识连同 `structure.yaml` 会保留后续更新所需的信息。它不存在，绝不意味着已完成的工作可以重新执行。规划项目还会在 Git 根目录保留 `PLAN-YYYYMMDD-slug.md`，并提交到 Git，以便工作可以恢复；参见[分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
+`.tmp/context-runtime/` 并不是进度的唯一记录。交付成功后，CLI 会移除已完成任务的状态，而已批准的知识连同 `structure.yaml` 会保留后续更新所需的信息。它不存在，绝不意味着已完成的工作可以重新执行。规划项目还会在 Git 根目录保留 `PLAN-YYYYMMDD-slug.md`，并提交到 Git，以便工作可以恢复；参见 [分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md)。
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->
 ## 保持工作区健康的规则
 
-- **不要手动编辑 CLI 管理的状态。** `sources/`、`knowledge/`、`dist/` 和 `.tmp/context-runtime/` 只能通过 Context 命令修改。要修改页面，请申请[修订](../../sop/review-and-revision/revising-a-page.md)。
+- **不要手动编辑 CLI 管理的状态。** `sources/`、`knowledge/`、`dist/` 和 `.tmp/context-runtime/` 只能通过 Context 命令修改。要修改页面，请申请 [修订](../../sop/review-and-revision/revising-a-page.md)。
 - **每个目录只有一个知识工作区。** 不要创建隐藏的第二个知识工作区，也不要把修订、任务或 `.tmp/` 文件与同样是知识工作区的父目录混在一起。
 - **通过 Route 修复。** 发现异常时，按当前 Route 返回的恢复动作处理，而不是删除运行时文件。
 
-另请参阅：[核心概念](core-concepts.md)说明这些部分之间的关系，[CLI 命令参考](../reference/context/cli-commands.md)列出了写入它们的命令。
+另请参阅：[核心概念](core-concepts.md) 说明这些部分之间的关系，[CLI 命令参考](../reference/context/cli-commands.md) 列出了写入它们的命令。
 <!-- /context:section -->

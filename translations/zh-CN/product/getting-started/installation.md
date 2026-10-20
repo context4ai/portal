@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
   source_digest: 2afaf1e3e8dd89798d6cba08ba3beeaad254f5e08baf932de2924d576b49d8db
-  translated_at: 2026-10-20T03:42:50.656Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 安装
@@ -65,7 +65,7 @@ CLI 仍是必需的：请先用 `npm install -g @c4a/context-cli@latest` 安装�
 | `/c4a:context-inspect-search` | 基于知识包或知识工作区中已批准的知识提问，并附带来源 |
 | `/c4a:context-repo-content` | 登记同一仓库中已维护的文档和 Skill，让 Context 直接引用而不是重新生产 |
 
-`/c4a:context` 是新建和已有知识工作区的生产入口；其他三个入口负责规划、回答或登记内容，并把生产交回给它。你不需要学习生命周期命令，用日常语言描述知识目标即可。普通的编码或设计对话不会自动启动 Context——需要显式调用它，或在进行中的 Context 对话里继续。[命令与技能](commands-and-skills.md)列出了全部入口、各宿主中的写法，以及无需调用即可运行的 Skill。
+`/c4a:context` 是新建和已有知识工作区的生产入口；其他三个入口负责规划、回答或登记内容，并把生产交回给它。你不需要学习生命周期命令，用日常语言描述知识目标即可。普通的编码或设计对话不会自动启动 Context——需要显式调用它，或在进行中的 Context 对话里继续。[命令与技能](commands-and-skills.md) 列出了全部入口、各宿主中的写法，以及无需调用即可运行的 Skill。
 <!-- /context:section -->
 
 <!-- context:section id="local" -->

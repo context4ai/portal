@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
   source_digest: 1adf4a770f32fce3db4731cf3a737c9fe722ca9b826c647e47613cc81e792c5c
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 代码仓库
 
 <!-- context:section id="goal" -->
-已登记的仓库是一个**来源边界**：Agent 在编写知识时可以阅读和引用的代码。登记会把仓库固定到一个 commit，因此每条引用指向的代码都不会在其下发生变动。登记并不决定要写什么；那是之后在 [开工报告](../planning-and-production/start-reports.md)中决定的。
+已登记的仓库是一个**来源边界**：Agent 在编写知识时可以阅读和引用的代码。登记会把仓库固定到一个 commit，因此每条引用指向的代码都不会在其下发生变动。登记并不决定要写什么；那是之后在 [开工报告](../planning-and-production/start-reports.md) 中决定的。
 
 ```mermaid
 flowchart LR
@@ -40,7 +40,7 @@ flowchart LR
 
 Context 会记录仓库、你选择的模块以及它读取的 commit。生成页面中的每条引用都指向该 commit，因此读者可以打开某个陈述所依据的确切代码。代码不需要单独的采集步骤：Agent 直接读取固定 commit 下的检出。一起添加的多个仓库和文档共用同一个登记日期。
 
-其背后的选项列在 [CLI 命令](../../product/reference/context/cli-commands.md)参考中。
+其背后的选项列在 [CLI 命令](../../product/reference/context/cli-commands.md) 参考中。
 <!-- /context:section -->
 
 <!-- context:section id="monorepo" -->
@@ -66,7 +66,7 @@ Git 只保存重新找到代码所需的信息（远程地址、固定的 commit
 2. 指定一个有边界的目录，让它在其中查找匹配的检出；或
 3. 让 Context 把已登记的仓库克隆到知识工作区的临时区域。
 
-克隆始终使用已登记的 commit，因此现有知识保持可复现。在普通模式下，Agent 会在克隆前询问（在 [全托管模式](../planning-and-production/managed-mode-and-review-policy.md)下，它会在你选定的范围内直接恢复仓库，不询问）；它从不搜索未指定的磁盘根目录，也不会用其他分支或相近的仓库代替。
+克隆始终使用已登记的 commit，因此现有知识保持可复现。在普通模式下，Agent 会在克隆前询问（在 [全托管模式](../planning-and-production/managed-mode-and-review-policy.md) 下，它会在你选定的范围内直接恢复仓库，不询问）；它从不搜索未指定的磁盘根目录，也不会用其他分支或相近的仓库代替。
 <!-- /context:section -->
 
 <!-- context:section id="later" -->

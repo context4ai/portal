@@ -5,13 +5,13 @@ translation:
   locale: zh-CN
   artifact_ref: ef41f849-6248-47da-afec-638ab2542c22
   source_digest: c13f92750a9d65d64a8ae51ed78815745e1de7ca5ee92fad10a46b6d36b01744
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 与 Agent 协作
 
 <!-- context:section id="goal" -->
-如果你已经读过 [快速开始](../../product/getting-started/quick-start.md)等入门文档，可以通过这组指南进一步了解 Context。每篇指南都围绕你在构建和使用知识时会遇到的一项任务展开：添加材料、规划并生产页面、审核页面、构建产物、回答问题，以及让知识始终保持最新。
+如果你已经读过 [快速开始](../../product/getting-started/quick-start.md) 等入门文档，可以通过这组指南进一步了解 Context。每篇指南都围绕你在构建和使用知识时会遇到的一项任务展开：添加材料、规划并生产页面、审核页面、构建产物、回答问题，以及让知识始终保持最新。
 
 整个过程中，每一方各司其职：
 
@@ -53,9 +53,9 @@ translation:
 | 是否接受自定义 Indexer 或可执行扩展 | 工作流中的具体步骤 |
 | 是否批准开工报告和写好的页面 | — |
 
-即使在 [全托管模式](managed-mode-and-review-policy.md)下，只要缺少的目的或范围会影响结果，Agent 仍然会先来问你。在为一大片内容建立索引之前，它会和你一起根据实际材料筛掉过时或无关的部分，而不是只看名称就下判断。
+即使在 [全托管模式](managed-mode-and-review-policy.md) 下，只要缺少的目的或范围会影响结果，Agent 仍然会先来问你。在为一大片内容建立索引之前，它会和你一起根据实际材料筛掉过时或无关的部分，而不是只看名称就下判断。
 
-你的判断在两个环节最为关键：开工报告和审核报告。[确认开工报告](start-reports.md)和 [阅读审核报告](../review-and-revision/reading-review-reports.md)分别介绍了这两个环节该关注什么。
+你的判断在两个环节最为关键：开工报告和审核报告。[确认开工报告](start-reports.md) 和 [阅读审核报告](../review-and-revision/reading-review-reports.md) 分别介绍了这两个环节该关注什么。
 <!-- /context:section -->
 
 <!-- context:section id="progress" -->
@@ -63,7 +63,7 @@ translation:
 
 撰写是最耗时的阶段，平均每篇文章大约需要一分钟。这期间 Agent 会对照任务总数汇报进度，你也可以随时让它启动本地预览。它的进度消息都很简短：改了什么、进行到哪一步，以及接下来需要你决定什么。
 
-建议尽早看看 [开工报告](start-reports.md)和最先写好的几篇页面。如果觉得哪里不对，比如语气、缺了反例或者某条风格规则，直接告诉它就好。越早纠正，最终效果越好。
+建议尽早看看 [开工报告](start-reports.md) 和最先写好的几篇页面。如果觉得哪里不对，比如语气、缺了反例或者某条风格规则，直接告诉它就好。越早纠正，最终效果越好。
 <!-- /context:section -->
 
 <!-- context:section id="mid-task" -->
@@ -97,7 +97,7 @@ translation:
 
 这组指南沿着知识库从第一批材料到日常使用的过程展开。你可以从需要的部分读起，每个小节都从下面链接的页面开始。
 
-1. **规划与生产**：交代任务、开工报告、大型项目和全托管模式，从本页和 [确认开工报告](start-reports.md)读起。
+1. **规划与生产**：交代任务、开工报告、大型项目和全托管模式，从本页和 [确认开工报告](start-reports.md) 读起。
 2. **添加来源**：该添加哪类材料、怎么添加，见 [选择添加材料的方式](../registering-sources/source-batches.md)。
 3. **审核与修订**：评判和修正页面，见 [阅读审核报告](../review-and-revision/reading-review-reports.md)。
 4. **输出与站点**：知识包、文档站和 LLM Docs，见 [知识包](../outputs-and-sites/knowledge-packages.md)。

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 85a7b33c-5b89-45f1-a88b-bd64aaa70ecb
   source_digest: 8ceb7979ed0cb63fad33940ad044dc2b32316c3702b823015a0eba3b0adc213d
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 创建 Indexer
@@ -78,7 +78,7 @@ flowchart TD
 <!-- context:section id="anatomy" -->
 ## 好的 Indexer 包含什么
 
-好的 Indexer 会说明哪些来源信号可以识别它所针对的材料、如何低成本地检查这些信号；只在确有增益时提供有限的辅助工具；建议读者主题但不固定页数；并指导有来源依据的撰写。这些要求对每类材料意味着什么，以及相应示例，见 [编写 Indexer 指引](code-indexers.md)中的代码类 Indexer 和文档类 Indexer 两节。
+好的 Indexer 会说明哪些来源信号可以识别它所针对的材料、如何低成本地检查这些信号；只在确有增益时提供有限的辅助工具；建议读者主题但不固定页数；并指导有来源依据的撰写。这些要求对每类材料意味着什么，以及相应示例，见 [编写 Indexer 指引](code-indexers.md) 中的代码类 Indexer 和文档类 Indexer 两节。
 <!-- /context:section -->
 
 <!-- context:section id="validation" -->

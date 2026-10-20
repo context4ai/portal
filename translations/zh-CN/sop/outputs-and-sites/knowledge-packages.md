@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
   source_digest: 16752ba983017afdf8a8b372d2368b17bbe009969e0fc1d37966e9727e194b6c
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 知识包
@@ -13,7 +13,7 @@ translation:
 <!-- context:section id="goal" -->
 **知识包**是 Context 知识工作区面向 Agent 的产出：`dist/` 下的一个文件夹，把已批准的知识变成其他 Agent 可以安装和查询的内容。它包含面向读者的已批准页面、一个懂得如何搜索这些页面的查询 Skill，以及一份把每个文件映射回其已批准来源的清单。同一次构建还可以生成文档站和 LLM Docs。
 
-“产出与站点”这一小节涵盖页面批准之后的所有环节：知识包（本页）、[文档站](documentation-sites.md)、[LLM Docs](llm-docs.md)、[页面与主题定制](page-and-theme-customization.md)、[多语言站点](multilingual-sites.md)和 [定制输出模板](custom-output-templates.md)。
+“产出与站点”这一小节涵盖页面批准之后的所有环节：知识包（本页）、[文档站](documentation-sites.md)、[LLM Docs](llm-docs.md)、[页面与主题定制](page-and-theme-customization.md)、[多语言站点](multilingual-sites.md) 和 [定制输出模板](custom-output-templates.md)。
 
 ```mermaid
 flowchart LR
@@ -28,7 +28,7 @@ flowchart LR
 <!-- context:section id="choose" -->
 ## 选择产出
 
-你在 [开工报告](../planning-and-production/start-reports.md)中通过一个多选列表选择产出，后续步骤沿用你的选择：
+你在 [开工报告](../planning-and-production/start-reports.md) 中通过一个多选列表选择产出，后续步骤沿用你的选择：
 
 - [x] Agent 知识包：新知识工作区的默认选项。
 - [x] 文档网站：默认与知识包一起生成，用于本地预览或之后托管。

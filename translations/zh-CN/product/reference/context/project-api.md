@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
   source_digest: afe0b102d65a00879f530d742699fcc25f84c78c1c535fa31b91b649aed9241b
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # Project API
@@ -145,7 +145,7 @@ llmsPackage({
 | `theme` | `light` 和 `dark` 两套颜色：`brand`、`accent`、`background`、`surface`、`text`、`mutedText`、`border`，均为十六进制值 |
 | `extensions` | 受信任的展示代码：`root`（默认 `src/site`）、`slots`（`brand`、`banner`、`knowledge`、`resources`、`footer`、`floating`；设为 `false` 可隐藏其中之一）以及自定义 Markdown `pages` |
 
-链接可以是 https 或 `mailto:` URL、以根目录开头的相对路径，或页面锚点。自定义页面通过 `target.artifact_ref: "site:<page-key>"` 放入知识地图。参见 [文档站](../../../sop/outputs-and-sites/documentation-sites.md)和 [页面与主题定制](../../../sop/outputs-and-sites/page-and-theme-customization.md)。
+链接可以是 https 或 `mailto:` URL、以根目录开头的相对路径，或页面锚点。自定义页面通过 `target.artifact_ref: "site:<page-key>"` 放入知识地图。参见 [文档站](../../../sop/outputs-and-sites/documentation-sites.md) 和 [页面与主题定制](../../../sop/outputs-and-sites/page-and-theme-customization.md)。
 <!-- /context:section -->
 
 <!-- context:section id="requirements" -->

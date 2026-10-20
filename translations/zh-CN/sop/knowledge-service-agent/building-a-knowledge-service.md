@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 0a27d0c5-3057-4806-a0a5-2e8de53b5321
   source_digest: e7a380414ead7c0b03b73531cd0dec62a731e118bcbeb3a614bf17547625da2a
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 构建知识服务
@@ -34,7 +34,7 @@ flowchart TB
 - **入口**是请求的来源：网站对话、团队聊天 Bot、定时任务和 API 调用。它们承载提问、生产或更新请求，以及例行巡检。
 - **服务层**是由你运行的会话 API。它负责鉴权和限流，为每个会话启动一个运行时，转发事件流，把结果渲染为网页消息或聊天卡片，并收集评价。
 - **Agent 运行时**为每个会话提供独立的隔离沙箱，运行系统提示词加你的 Bot 提示词，并根据用户的请求选择 Skill。
-- **Context Skills 插件**完成知识工作：生产、附来源的问答，以及同仓库文档。各个 Skill 及其对应的入口列在 [技能清单](../../product/reference/context/skills.md)中。
+- **Context Skills 插件**完成知识工作：生产、附来源的问答，以及同仓库文档。各个 Skill 及其对应的入口列在 [技能清单](../../product/reference/context/skills.md) 中。
 - **底层基础**是 `context` CLI 与 Agent Graph、Source Graph MCP 和 Git。它们推进和恢复工作流、按提交远程读取代码，并提交知识工作区。
 - **产出**——Git 中的知识仓库、知识包和文档站——在构建后一并发布。
 <!-- /context:section -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: c1591da5-5eaf-4cf9-86dc-976fc5b2bc40
   source_digest: f841eeff5e6267b747196adf0897fa4fbaeabcc828f5566e2594918325ee3e2e
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 固定版本的搜索与阅读
@@ -57,7 +57,7 @@ sequenceDiagram
 <!-- context:section id="search" -->
 ## 搜索受哪些限制
 
-调用方从不发送引擎语法。一次搜索是一组结构化、类似 `rg` 的字段——按行匹配的正则表达式或字面量、大小写折叠、glob 和目录路径——由服务在解析出的提交上编译为引擎查询。[搜索语法](../../product/reference/source-graph/query-syntax.md)参考文档列出了所有字段。
+调用方从不发送引擎语法。一次搜索是一组结构化、类似 `rg` 的字段——按行匹配的正则表达式或字面量、大小写折叠、glob 和目录路径——由服务在解析出的提交上编译为引擎查询。[搜索语法](../../product/reference/source-graph/query-syntax.md) 参考文档列出了所有字段。
 
 结果是有上限的第一页。第一次尝试最多返回 100 个文件和 1,000 个匹配，并附带两行上下文；如果响应会超出 2 MiB 的预算，服务会改用更小的页重试，最后退化为只列文件，整个过程都在五秒期限内完成。响应元数据会告诉调用方拿到了什么：
 

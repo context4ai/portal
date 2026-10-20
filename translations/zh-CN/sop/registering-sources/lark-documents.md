@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 7d229a92-58ec-41c9-8506-0eb4226471f5
   source_digest: a8f2f660ea5b7ded9713a2206d395b3a8f6ea558477e9b162ed0ad502513fd8f
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 飞书文档
@@ -34,7 +34,7 @@ https://example.larkoffice.com/wiki/example-token
 
 在一次请求中提到的多份文档会一起添加，而且文档相互独立并不意味着文章也要相互独立。对于整个 Wiki 子树，Agent 可以先列出目录树及其页面而不读取正文，以便你选择要添加哪些页面。
 
-如果调研阶段已经抓取过某份文档，Agent 可以复用那份副本而不必再次读取；复用会保留原始采集时间，因此不会让内容变得更新。详情参见 [CLI 命令](../../product/reference/context/cli-commands.md)参考。
+如果调研阶段已经抓取过某份文档，Agent 可以复用那份副本而不必再次读取；复用会保留原始采集时间，因此不会让内容变得更新。详情参见 [CLI 命令](../../product/reference/context/cli-commands.md) 参考。
 <!-- /context:section -->
 
 <!-- context:section id="large-wiki-trees" -->
@@ -84,7 +84,7 @@ https://example.larkoffice.com/wiki/example-token
 
 一个任务的图片处理方式只决定一次，而不是逐个文档决定。你可以让 Agent 包含图片、只保留图片引用，或根据任务涉及的文档数量自动切换。默认的切换点是 10 份文档：不超过 10 份时包含图片；超过时，文档只采集图片引用。
 
-图片数量则单独考量。当一个任务将引入 30 张以上不同的图片、而你尚未做出选择时，[开工报告](../planning-and-production/start-reports.md)会请你在以下选项中选择：智能转换并纳入（推荐）、包含全部图片，或仅保留占位符。
+图片数量则单独考量。当一个任务将引入 30 张以上不同的图片、而你尚未做出选择时，[开工报告](../planning-and-production/start-reports.md) 会请你在以下选项中选择：智能转换并纳入（推荐）、包含全部图片，或仅保留占位符。
 
 如果希望同一选择适用于某个知识工作区中的每个任务，请让 Agent 为项目设置它，例如“手册只保留图片和 GIF 的引用”。
 <!-- /context:section -->

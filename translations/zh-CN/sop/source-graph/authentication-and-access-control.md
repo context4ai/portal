@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
   source_digest: 2f77aa43ca6728a5db92d6526da9db90a22f1daa1ede898c464e21bac1ab5f21
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 登录与准入
@@ -65,7 +65,7 @@ GitHub 登录只用于识别用户，并不授予仓库访问权限。私有仓�
 
 个人 API Key 供以你的身份运行的脚本和 Agent 使用。在用户设置中创建 Key 时需填写名称，可选设置过期时间；每个 Key 都以 `sgk_` 开头，之后也可以在同一页面再次复制。Key 在以下情况会失效：到期、被你删除、你的账号被停用，或注册已关闭且你不是管理员。
 
-个人 Key 在 HTTP 上是只读的。在 MCP 上它只能使用只读工具，除非是管理员创建且带有 **Prepare index** 权限的 Key；这时还可以使用 `prepare` 工具，受 [运维](operations.md#rate-limits)中列出的 prepare 限流约束。该权限会在每次请求时重新校验，因此一旦所有者不再是管理员，权限即失效。
+个人 Key 在 HTTP 上是只读的。在 MCP 上它只能使用只读工具，除非是管理员创建且带有 **Prepare index** 权限的 Key；这时还可以使用 `prepare` 工具，受 [运维](operations.md#rate-limits) 中列出的 prepare 限流约束。该权限会在每次请求时重新校验，因此一旦所有者不再是管理员，权限即失效。
 
 服务令牌通过 `SOURCEGRAPH_API_TOKEN` 设置，长度至少 32 个字符，以恒定时间比较，并授予完全访问权限。请像对待 root 凭据一样对待它，不要放进共享配置中。
 <!-- /context:section -->
