@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
   source_digest: f6c399bf4ef68bfd7e756dc9c04d0b3ca17219bc9059cbae00205a9d121be9fe
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 内置 Indexer
@@ -110,7 +110,7 @@ Indexer 在规划和撰写期间工作。创建器是一个编写助手：当你
 
 接下来：
 
-- [选择、替换与停用 Indexer](providers-and-customization.md)介绍如何在知识工作区中引导选择。
-- [创建 Indexer](creating-an-indexer.md) 和 [编写 Indexer 指引](code-indexers.md)介绍如何编写你自己的 Indexer。
-- [Indexer 体系](../../architecture/knowledge/indexer-system.md)说明 Indexer 如何融入生产生命周期。
+- [选择、替换与停用 Indexer](providers-and-customization.md) 介绍如何在知识工作区中引导选择。
+- [创建 Indexer](creating-an-indexer.md) 和 [编写 Indexer 指引](code-indexers.md) 介绍如何编写你自己的 Indexer。
+- [Indexer 体系](../../architecture/knowledge/indexer-system.md) 说明 Indexer 如何融入生产生命周期。
 <!-- /context:section -->

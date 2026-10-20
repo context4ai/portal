@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
   source_digest: 9cada35e2f9713fd53dd971af2628fd8bc44767a4b28b31241f3094fcb43a5e2
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 自托管
@@ -40,7 +40,7 @@ bun run build
 SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 output/bin/repo-service
 ```
 
-构建完成后，`output/bin` 中包含同样的四个二进制文件。服务会自行启动搜索服务器并管理后台建索引，无需运行其他组件。所有设置都是环境变量，代码源还可以由 `SOURCEGRAPH_CONFIG_FILE` 指定的启动文件覆盖；全部设置列在 [配置](../../product/reference/source-graph/configuration.md)中。凭据只能放在环境变量或平台的密钥存储中，绝不要写进部署 JSON、源代码或镜像。
+构建完成后，`output/bin` 中包含同样的四个二进制文件。服务会自行启动搜索服务器并管理后台建索引，无需运行其他组件。所有设置都是环境变量，代码源还可以由 `SOURCEGRAPH_CONFIG_FILE` 指定的启动文件覆盖；全部设置列在 [配置](../../product/reference/source-graph/configuration.md) 中。凭据只能放在环境变量或平台的密钥存储中，绝不要写进部署 JSON、源代码或镜像。
 <!-- /context:section -->
 
 <!-- context:section id="topology" -->
@@ -116,7 +116,7 @@ fly volumes create sourcegraph_data --region <region> --size 20 --app <app-name>
 fly deploy --remote-only --ha=false
 ```
 
-部署完成后，按 [运维](operations.md#health-and-status)中的说明检查存活和就绪状态。
+部署完成后，按 [运维](operations.md#health-and-status) 中的说明检查存活和就绪状态。
 
 本文档站背后的 Source Graph 就是这样部署的。它只是演示，不是容量建议：位于 `sin` 区域的两个 Fly.io App。
 

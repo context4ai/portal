@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 1e9f9f30-d8b1-45e7-8092-ad23ddb784ee
   source_digest: 98488be0dfd1cbd2e6f41c898aa0b0028a76facad13e7e479943240141c161cb
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # LLM Docs
@@ -38,7 +38,7 @@ flowchart LR
 <!-- context:section id="standalone" -->
 ## 独立的文本包
 
-如果你想要一个便于复制、索引或上传的合并文件，而不需要 Agent Skill 打包，请选择 LLM 文本包。可以在 [开工报告](../planning-and-production/start-reports.md)中或之后提出：
+如果你想要一个便于复制、索引或上传的合并文件，而不需要 Agent Skill 打包，请选择 LLM 文本包。可以在 [开工报告](../planning-and-production/start-reports.md) 中或之后提出：
 
 > 再为这份知识构建一个 LLM 文本包。
 

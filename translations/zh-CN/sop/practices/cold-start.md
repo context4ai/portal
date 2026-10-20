@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
   source_digest: f01d17bdde36783ed41a3d6819ee1d53be6dfd3bc0c428a73cbba69118cea19e
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 知识库冷启动
@@ -68,7 +68,7 @@ flowchart LR
 <!-- context:section id="structure" -->
 ## 写之前先定结构
 
-在写任何文章之前，先商定面向读者的结构：一、二、三级目录，以及每个目录下的文章清单。大项目写在 PLAN 里，小任务写在 [开工报告](../planning-and-production/start-reports.md)里。如果已有站点的结构很好用，可以拿来当样板。
+在写任何文章之前，先商定面向读者的结构：一、二、三级目录，以及每个目录下的文章清单。大项目写在 PLAN 里，小任务写在 [开工报告](../planning-and-production/start-reports.md) 里。如果已有站点的结构很好用，可以拿来当样板。
 
 来源和成品分开。原文、图表和版本信息保留为证据；文章按读者任务组织。文章之间不要重叠：每篇回答自己的问题，通过链接关联其他文章，而不是一份原文对应一篇文章。
 <!-- /context:section -->

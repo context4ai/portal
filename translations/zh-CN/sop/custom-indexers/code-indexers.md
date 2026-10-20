@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 95d27305-6115-4d2f-bb5e-ab4774b4d513
   source_digest: cb17ecfbbba70d82adeff39b6ba498a3e9db769335c18d631f34b70b2f44e528
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # 编写 Indexer 指引
@@ -60,7 +60,7 @@ flowchart LR
 
 脚本是可选的，只服务于一个具体的、重复的任务。好的辅助工具接受明确的已授权路径和有限的选项，保持源文件只读，返回简洁的输出或把文件写到提供的临时区域，并在预算内停止。它报告已检查和未检查的范围，能继续时返回续接点，并为不完整的计数加上标注。
 
-它不得执行仓库代码、读取凭据、遍历无关目录或联系外部服务。不支持的语法和未完成的遍历要与零匹配分开报告。完整解析属于选定文章的撰写阶段；如果某个结构性事实需要真正的解析器，请使用 [代码抽取](../../architecture/knowledge/code-extraction.md)中介绍的内置抽取器。
+它不得执行仓库代码、读取凭据、遍历无关目录或联系外部服务。不支持的语法和未完成的遍历要与零匹配分开报告。完整解析属于选定文章的撰写阶段；如果某个结构性事实需要真正的解析器，请使用 [代码抽取](../../architecture/knowledge/code-extraction.md) 中介绍的内置抽取器。
 <!-- /context:section -->
 
 <!-- context:section id="writing" -->

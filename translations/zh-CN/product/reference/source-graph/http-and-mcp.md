@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
   source_digest: 67c87b13afe434cc042094ab8f6d6f4f1375903cf8dcc2dcc13a2d58e334180d
-  translated_at: 2026-10-20T05:13:06.930Z
+  translated_at: 2026-10-20T06:16:49.422Z
 ---
 
 # HTTP 与 MCP 接口
@@ -154,5 +154,5 @@ translation:
 <!-- context:section id="errors" -->
 ## 错误格式
 
-HTTP 错误返回一个 JSON 体，其中包含 `Error` 消息，以及含有 `Protocol`、`RequestID`、`Status`、`Code` 和 `Retryable` 的 `Meta`。传输层错误码包括 `NOT_FOUND`、`METHOD_NOT_ALLOWED`、`INVALID_QUERY_PARAMETERS`、`INVALID_REQUEST`、`AUTHENTICATION_REQUIRED`、`ACCESS_DENIED`、`RATE_LIMITED`、`PRECONDITION_REQUIRED`、`QUERY_DEADLINE_EXCEEDED` 和 `DEPENDENCY_UNAVAILABLE`。`INDEX_NOT_READY`、`REVISION_NOT_ELIGIBLE`、`INVALID_PATTERN` 或 `READ_BUDGET_EXCEEDED` 等操作错误码有各自的状态码。[运维](../../../sop/source-graph/operations.md)解释了常见错误码及处理方法。
+HTTP 错误返回一个 JSON 体，其中包含 `Error` 消息，以及含有 `Protocol`、`RequestID`、`Status`、`Code` 和 `Retryable` 的 `Meta`。传输层错误码包括 `NOT_FOUND`、`METHOD_NOT_ALLOWED`、`INVALID_QUERY_PARAMETERS`、`INVALID_REQUEST`、`AUTHENTICATION_REQUIRED`、`ACCESS_DENIED`、`RATE_LIMITED`、`PRECONDITION_REQUIRED`、`QUERY_DEADLINE_EXCEEDED` 和 `DEPENDENCY_UNAVAILABLE`。`INDEX_NOT_READY`、`REVISION_NOT_ELIGIBLE`、`INVALID_PATTERN` 或 `READ_BUDGET_EXCEEDED` 等操作错误码有各自的状态码。[运维](../../../sop/source-graph/operations.md) 解释了常见错误码及处理方法。
 <!-- /context:section -->
