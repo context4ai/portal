@@ -1,11 +1,12 @@
 ---
 title: 架构概览
 description: Context Source Graph 如何工作：网站、HTTP、MCP 与 CLI 共享同一套接口约定，自部署实例如何由 Git
+  镜像、本地 Zoekt 索引和 ByteDoc 组装而成，以及谁能做什么
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
   source_digest: 9106f5d4af095d71b5f79327d8b57c4b322c157bfb1a1a76177eb0ff57f4e0ef
-  translated_at: 2026-10-14T02:37:19.175Z
+  translated_at: 2026-10-20T05:24:00.427Z
 ---
 
 # 架构概览
@@ -53,13 +54,13 @@ flowchart LR
 
 应用数据库存储仓库、任务、身份和设置。默认使用 SQLite；对于规模更大或需要分片的部署，也支持 PostgreSQL 和 MongoDB。Git 镜像和索引始终保存在实例的本地磁盘上——搜索速度正来自这种本地性——因此容量规划围绕磁盘而非 CPU 展开。需要扩容时，运行多个实例，各自负责互不重叠的一组仓库；切勿让两个实例处理同一批仓库或同一个数据目录。[自部署与数据库选择](../../sop/source-graph/self-hosting.md)介绍了这两种拓扑。
 
-仓库还可以附带名为 `<name>.sourcegraph.wasm` 的 WebAssembly 插件，为 `read` 和 `read_many` 的结果追加文本。Context 借此为每个知识章节附上其来源，详见[与 Context 协同](evidence-for-context.md)。
+仓库还可以附带名为 `<name>.sourcegraph.wasm` 的 WebAssembly 插件，为 `read` 和 `read_many` 的结果追加文本。Context 借此为每个知识章节附上其来源，详见 [与 Context 协同](evidence-for-context.md)。
 <!-- /context:section -->
 
 <!-- context:section id="access" -->
 ## 权限划分
 
-未配置任何登录提供方时，实例是一个匿名只读站点：访客可以搜索和阅读标记为公开的仓库，并受每分钟限流约束。添加 Google 或 GitHub 登录后即可启用管理功能，第一个通过验证的用户会成为管理员。已登录用户可以为脚本和 Agent 创建个人 API Key，自动化场景则使用服务令牌。登记仓库、为较早的提交建索引以及其他变更操作，需要管理员或服务令牌。完整的权限矩阵见[登录与准入](../../sop/source-graph/authentication-and-access-control.md)。
+未配置任何登录提供方时，实例是一个匿名只读站点：访客可以搜索和阅读标记为公开的仓库，并受每分钟限流约束。添加 Google 或 GitHub 登录后即可启用管理功能，第一个通过验证的用户会成为管理员。已登录用户可以为脚本和 Agent 创建个人 API Key，自动化场景则使用服务令牌。登记仓库、为较早的提交建索引以及其他变更操作，需要管理员或服务令牌。完整的权限矩阵见 [登录与准入](../../sop/source-graph/authentication-and-access-control.md)。
 <!-- /context:section -->
 
 <!-- context:section id="next" -->

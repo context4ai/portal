@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
   source_digest: a07a8a9726f2cd95dcaecdd8fa3a7a4034d85bf7ec049fae9087005cee239e73
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 多语言站点
@@ -79,5 +79,5 @@ site: {
 <!-- context:section id="reading" -->
 ## 读者看到什么
 
-每个页面只发布一次，包含所有语言，由读者的语言决定显示哪一种。没有翻译的导航标题会使用翻译后的页面标题，再没有则使用原文。搜索覆盖所有语言，打开另一种语言的搜索结果时会切换到该语言。指向标题的链接，无论在同一页还是其他页面，都会保持读者的语言并滚动到对应标题，使用浏览器的前进和后退按钮时也是如此。LLM Docs 和 Changelog 保持主语言。关于其他站点选项，请参阅[文档站](documentation-sites.md)；关于支持多语言的自定义组件，请参阅[页面与主题定制](page-and-theme-customization.md)。
+每个页面只发布一次，包含所有语言，由读者的语言决定显示哪一种。没有翻译的导航标题会使用翻译后的页面标题，再没有则使用原文。搜索覆盖所有语言，打开另一种语言的搜索结果时会切换到该语言。指向标题的链接，无论在同一页还是其他页面，都会保持读者的语言并滚动到对应标题，使用浏览器的前进和后退按钮时也是如此。LLM Docs 和 Changelog 保持主语言。关于其他站点选项，请参阅 [文档站](documentation-sites.md)；关于支持多语言的自定义组件，请参阅 [页面与主题定制](page-and-theme-customization.md)。
 <!-- /context:section -->

@@ -109,7 +109,7 @@ entries:
     title: 规划与生产
     source_digest: 50d5cde41bff94d834d45b312347e17070e77f54e8dce2d72ad30dd754ec3779
   guides-production/cold-start:
-    title: 知识库冷启
+    title: 知识库冷启动
     source_digest: 51017c5b6a67531d108d0316277e1e48bf2dd22d36527fde95a96c5953e20851
   guides-production/managed-mode-and-review-policy:
     title: 全托管模式

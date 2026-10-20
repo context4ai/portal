@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 10bbdcee-144f-4852-92a4-21cee25050c4
   source_digest: f6c399bf4ef68bfd7e756dc9c04d0b3ca17219bc9059cbae00205a9d121be9fe
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 内置 Indexer
@@ -14,7 +14,7 @@ translation:
 <!-- context:section id="goal" -->
 **Indexer** 是一种 Skill，告诉 Agent 如何调研某一类来源，以及如何据此撰写基于来源的文章。Indexer 分为四类：**代码、文档、笔记和会话**，每一类都可以有多个 Skill。Context 为每一类自带一个 Skill，另有一个创建器 Skill，在你需要时编写新的 Indexer。
 
-本小节从读者角度介绍 Indexer：先从这里了解内置 Indexer 已经覆盖了什么。只有当它们不适合你的材料时，再继续阅读[选择、替换与停用 Indexer](providers-and-customization.md)、[创建 Indexer](creating-an-indexer.md) 或[编写 Indexer 指引](code-indexers.md)。
+本小节从读者角度介绍 Indexer：先从这里了解内置 Indexer 已经覆盖了什么。只有当它们不适合你的材料时，再继续阅读 [选择、替换与停用 Indexer](providers-and-customization.md)、[创建 Indexer](creating-an-indexer.md) 或 [编写 Indexer 指引](code-indexers.md)。
 
 ```mermaid
 flowchart LR
@@ -59,8 +59,8 @@ Indexer 在规划和撰写期间工作。创建器是一个编写助手：当你
 
 - **你会得到**：围绕读者问题而非来源文件组织的文章，保留原文中有用的指引、示例和限制，并引用所使用的段落。文章大纲适配 13 种文档，从领域参考、产品需求、技术指南，到运维手册、FAQ、决策记录、事故复盘、测试验证、发布与迁移指南以及文档站。
 - **如何读取**：规划从文档标题、开头摘录和标题大纲开始，在分组不清晰时全文阅读；撰写时读取相关的完整来源。一个标题不等于一篇文章。
-- **不会做**：除非你要求，否则不会从你仅做了链接的同仓库文档和 Skill 生产知识；它们保持为原件，作为辅助证据。参见[链接已有的文档与 Skill](../registering-sources/same-repository-docs.md)。
-- **以下情况改为添加笔记**：知识存在于人们的头脑或聊天中，而不在文档里；参见[笔记与会话摘要](../registering-sources/notes.md)。
+- **不会做**：除非你要求，否则不会从你仅做了链接的同仓库文档和 Skill 生产知识；它们保持为原件，作为辅助证据。参见 [链接已有的文档与 Skill](../registering-sources/same-repository-docs.md)。
+- **以下情况改为添加笔记**：知识存在于人们的头脑或聊天中，而不在文档里；参见 [笔记与会话摘要](../registering-sources/notes.md)。
 <!-- /context:section -->
 
 <!-- context:section id="notes" -->
@@ -86,19 +86,19 @@ Indexer 在规划和撰写期间工作。创建器是一个编写助手：当你
 
 `context-indexer-create` 会在你选定的目录中编写一个可复用的 Indexer Skill。请用自然语言提出（它不是斜杠命令），并明确说明你要为代码、文档、笔记或会话摘要创建新的 Context Indexer Skill。
 
-它只编写 Skill：不会初始化知识工作区，也不会启动生产。最后，它会汇报所创建的文件、支持的输入以及尚存的限制。完整步骤参见[创建 Indexer](creating-an-indexer.md)。
+它只编写 Skill：不会初始化知识工作区，也不会启动生产。最后，它会汇报所创建的文件、支持的输入以及尚存的限制。完整步骤参见 [创建 Indexer](creating-an-indexer.md)。
 <!-- /context:section -->
 
 <!-- context:section id="installation" -->
 ## 如何安装
 
-安装 Context 插件（参见[安装](../../product/getting-started/installation.md)）后，所有内置 Indexer 都可在 Claude Code、Codex 和 Cursor 中使用。四个 Indexer 安装时不带插件前缀，因此在每个宿主中名称都相同。安装后请重启或刷新 Agent 宿主。
+安装 Context 插件（参见 [安装](../../product/getting-started/installation.md)）后，所有内置 Indexer 都可在 Claude Code、Codex 和 Cursor 中使用。四个 Indexer 安装时不带插件前缀，因此在每个宿主中名称都相同。安装后请重启或刷新 Agent 宿主。
 <!-- /context:section -->
 
 <!-- context:section id="selection" -->
 ## Agent 如何选用它们
 
-你不会直接调用 Indexer；Context 工作开始时，Agent 会选出适合你材料的那些。普通的编码和设计对话不会启动它，所以请显式调用 Context，或继续一个进行中的 Context 对话。选择的工作方式，以及如何替换或停用 Indexer，参见[选择、替换与停用 Indexer](providers-and-customization.md)。
+你不会直接调用 Indexer；Context 工作开始时，Agent 会选出适合你材料的那些。普通的编码和设计对话不会启动它，所以请显式调用 Context，或继续一个进行中的 Context 对话。选择的工作方式，以及如何替换或停用 Indexer，参见 [选择、替换与停用 Indexer](providers-and-customization.md)。
 <!-- /context:section -->
 
 <!-- context:section id="combining" -->
@@ -111,6 +111,6 @@ Indexer 在规划和撰写期间工作。创建器是一个编写助手：当你
 接下来：
 
 - [选择、替换与停用 Indexer](providers-and-customization.md)介绍如何在知识工作区中引导选择。
-- [创建 Indexer](creating-an-indexer.md) 和[编写 Indexer 指引](code-indexers.md)介绍如何编写你自己的 Indexer。
+- [创建 Indexer](creating-an-indexer.md) 和 [编写 Indexer 指引](code-indexers.md)介绍如何编写你自己的 Indexer。
 - [Indexer 体系](../../architecture/knowledge/indexer-system.md)说明 Indexer 如何融入生产生命周期。
 <!-- /context:section -->

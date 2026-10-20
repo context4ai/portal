@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
   source_digest: 08bebd03f4e6c8f38a8ea21799db0e7413d10bbcc6fffd0e6501547f07253360
-  translated_at: 2026-10-14T08:53:43.639Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 配置
@@ -20,9 +20,9 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | 站点设置 | 数据库，在 **Settings**（设置）页面编辑 | 管理员 | 立即生效，带版本校验 |
 | 仓库策略 | 数据库，按仓库在登记时或之后设置 | 管理员 | 下次同步时 |
 
-代码源由部署默认值、网站上的自定义 Git 设置和可选的启动文件合并而成，见[代码源](#code-sources)。
+代码源由部署默认值、网站上的自定义 Git 设置和可选的启动文件合并而成，见 [代码源](#code-sources)。
 
-机密信息，包括 GitHub 和自定义 Git 令牌、OAuth 客户端密钥、服务令牌、凭据加密密钥以及带密码的数据库 URL，只能放在环境变量或数据库中，绝不能放进部署文件、启动文件或镜像。部署步骤见[自部署与数据库选择](../../../sop/source-graph/self-hosting.md)。
+机密信息，包括 GitHub 和自定义 Git 令牌、OAuth 客户端密钥、服务令牌、凭据加密密钥以及带密码的数据库 URL，只能放在环境变量或数据库中，绝不能放进部署文件、启动文件或镜像。部署步骤见 [自部署与数据库选择](../../../sop/source-graph/self-hosting.md)。
 <!-- /context:section -->
 
 <!-- context:section id="environment" -->
@@ -40,7 +40,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | `SOURCEGRAPH_CREDENTIAL_KEY` | 在数据根目录中生成的 `code-credentials.key` | 32 字节的 Base64；用于加密已存储的代码令牌 |
 | `SOURCEGRAPH_GITHUB_TOKEN` | 未设置 | GitHub 令牌，仅在尚未保存全局 GitHub 令牌时使用；未设置时仍读取旧变量 `SOURCEGRAPH_GIT_TOKEN` |
 | `SOURCEGRAPH_CUSTOM_GIT_TOKEN` | 未设置 | 自定义 Git 令牌，仅在尚未保存全局自定义 Git 令牌时使用 |
-| `SOURCEGRAPH_CONFIG_FILE` | 未设置 | 覆盖代码源的 JSON 启动文件路径，见[代码源](#code-sources) |
+| `SOURCEGRAPH_CONFIG_FILE` | 未设置 | 覆盖代码源的 JSON 启动文件路径，见 [代码源](#code-sources) |
 | `GOOGLE_CLIENT_ID`、`GOOGLE_CLIENT_SECRET` | 未设置 | Google 登录 |
 | `GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` | 未设置 | GitHub 登录 |
 | `SOURCEGRAPH_SEED_DEMO` | 未设置 | 设为 `true` 时，若 `context4ai/context` 和 `context4ai/sourcegraph` 尚未登记，会在启动时登记它们 |
@@ -104,9 +104,9 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | `access` | `public_read` | `true` | 匿名访客能否搜索和阅读公开仓库 |
 | | `allow_registration` | `false` | 首次登录时是否创建账号 |
 | | `registration_notice_zh`、`registration_notice_en` | 内置提示 | 向无法注册的人显示的文本 |
-| `code_source` | `name`、`host`、`username` | 空，即沿用部署中的值 | 自定义 Git 代码源，见[代码源](#code-sources) |
+| `code_source` | `name`、`host`、`username` | 空，即沿用部署中的值 | 自定义 Git 代码源，见 [代码源](#code-sources) |
 
-对 `/api/admin/settings` 的请求必须使用浏览器会话；携带 `Authorization` 请求头的请求会被拒绝。全局代码令牌在同一页面单独保存。**Storage**（存储）页面另外负责迁移 Git 镜像的存放位置；见[运维](../../../sop/source-graph/operations.md)。
+对 `/api/admin/settings` 的请求必须使用浏览器会话；携带 `Authorization` 请求头的请求会被拒绝。全局代码令牌在同一页面单独保存。**Storage**（存储）页面另外负责迁移 Git 镜像的存放位置；见 [运维](../../../sop/source-graph/operations.md)。
 <!-- /context:section -->
 
 <!-- context:section id="policy" -->
@@ -124,7 +124,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | 代码源（`code_provider`） | `github` 或 `git`，登记时确定；先尝试登记人自己为该代码源保存的令牌，再尝试全局令牌 | `github` |
 | 托管地址（`code_host`） | 登记时代码源的托管地址，之后每次拉取都使用它 | — |
 
-关闭公开读取的仓库只对匿名访客隐藏；所有已登录用户仍然可以阅读。分支和保留策略如何决定哪些提交可被搜索，见[登记仓库](../../../sop/source-graph/registering-repositories.md)。
+关闭公开读取的仓库只对匿名访客隐藏；所有已登录用户仍然可以阅读。分支和保留策略如何决定哪些提交可被搜索，见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
 <!-- /context:section -->
 
 <!-- context:section id="plugins" -->
@@ -151,7 +151,7 @@ Wasm 证据插件在服务内部运行，受 `SOURCEGRAPH_PLUGINS_*` 变量设�
 <!-- context:section id="fixed" -->
 ## 内置限制
 
-有些限制在代码中写死，无法配置：请求体最大 64 KiB，请求截止时间 30 秒，HTTP 服务器超时分别为请求头 5 秒、读取 120 秒、写入 125 秒，以及[HTTP 与 MCP 接口](http-and-mcp.md)中描述的搜索、读取、列目录和差异分页大小。搜索引擎作为本地辅助进程运行在 `127.0.0.1:6070` 上，从不对外暴露。
+有些限制在代码中写死，无法配置：请求体最大 64 KiB，请求截止时间 30 秒，HTTP 服务器超时分别为请求头 5 秒、读取 120 秒、写入 125 秒，以及 [HTTP 与 MCP 接口](http-and-mcp.md)中描述的搜索、读取、列目录和差异分页大小。搜索引擎作为本地辅助进程运行在 `127.0.0.1:6070` 上，从不对外暴露。
 <!-- /context:section -->
 
 <!-- context:section id="data" -->

@@ -6,13 +6,13 @@ translation:
   locale: zh-CN
   artifact_ref: 1a348ca1-024e-4348-b2eb-df8a7870c7f6
   source_digest: 6754862e006f4c5c6ff4c3fbef70a46648548d15d5cf019f643c3948b4487744
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 选择、替换与停用 Indexer
 
 <!-- context:section id="goal" -->
-当内置 Indexer 不太合适时阅读本页：你希望某些材料使用团队的专用 Indexer、替换某个内置 Indexer，或者彻底停用某个 Indexer。先从[内置 Indexer](community-indexers.md)了解自带的 Indexer 已经覆盖了什么；工作流内部如何使用 Indexer，见 [Indexer 体系](../../architecture/knowledge/indexer-system.md)。
+当内置 Indexer 不太合适时阅读本页：你希望某些材料使用团队的专用 Indexer、替换某个内置 Indexer，或者彻底停用某个 Indexer。先从 [内置 Indexer](community-indexers.md)了解自带的 Indexer 已经覆盖了什么；工作流内部如何使用 Indexer，见 [Indexer 体系](../../architecture/knowledge/indexer-system.md)。
 
 ```mermaid
 flowchart TD
@@ -34,7 +34,7 @@ Agent 始终会：
 - 排除你在宿主中停用的 Skill；
 - 遵循你明确要求的替换，例如用你自己的 Indexer 代替某个内置 Indexer。
 
-开工报告会列出 Agent 打算使用的 Skill，你可以在写作开始前纠正这一选择；参见[确认开工报告](../planning-and-production/start-reports.md)。
+开工报告会列出 Agent 打算使用的 Skill，你可以在写作开始前纠正这一选择；参见 [确认开工报告](../planning-and-production/start-reports.md)。
 <!-- /context:section -->
 
 <!-- context:section id="install-vs-select" -->
@@ -59,7 +59,7 @@ Agent 始终会：
 
 你可以在知识工作区的一部分范围内替换内置 Indexer，例如对某一批笔记使用团队的值班问答 Indexer，而不是 Note Indexer。
 
-1. 在宿主中安装并启用新的 Skill；参见[创建 Indexer](creating-an-indexer.md)。
+1. 在宿主中安装并启用新的 Skill；参见 [创建 Indexer](creating-an-indexer.md)。
 2. 通过 `/c4a:context` 继续该知识工作区，并明确说明替换：
 
    ```text
@@ -77,12 +77,12 @@ Agent 始终会：
 
 | 你想要 | 这样做 |
 | --- | --- |
-| 添加专用 Indexer | 按照[创建 Indexer](creating-an-indexer.md)创建，安装到宿主可见的位置，然后在请求中说明哪些材料应使用它。 |
+| 添加专用 Indexer | 按照 [创建 Indexer](creating-an-indexer.md)创建，安装到宿主可见的位置，然后在请求中说明哪些材料应使用它。 |
 | 对某些材料优先使用团队的 Indexer 而非内置 Indexer | 在知识工作区中明确说明替换，做法见上文“替换内置 Indexer”。 |
 | 阻止某个 Indexer 被使用 | 在 Agent 宿主中停用该 Skill。 |
 | 为单个任务调整指引 | 在任务中说明。该选择只适用于这一任务，不会改变 Skill 本身。 |
 
-如果 Agent 在代码中看不到某个结构性事实，写作指引无法凭空创造它；这需要解析器。参见[代码抽取](../../architecture/knowledge/code-extraction.md)。
+如果 Agent 在代码中看不到某个结构性事实，写作指引无法凭空创造它；这需要解析器。参见 [代码抽取](../../architecture/knowledge/code-extraction.md)。
 <!-- /context:section -->
 
 <!-- context:section id="where" -->

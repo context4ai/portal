@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
   source_digest: db143e9106c513111472c0d16688b02cc1a9b166bf57fdf44ef2d1630a5ee2a0
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 远程读取代码证据
@@ -19,7 +19,7 @@ translation:
 <!-- context:section id="enable" -->
 ## 启用
 
-1. **把你的 Agent 宿主连接到 Source Graph**，通过 MCP 连接，并把服务命名为 `context-sourcegraph`，以便查询 Skill 能找到它。[接入](../source-graph/connecting.md)介绍了 Connect 页面以及你可能需要的凭据。该实例必须覆盖知识工作区及其来源仓库；如果缺少某个仓库，参见[登记仓库](../source-graph/registering-repositories.md)。
+1. **把你的 Agent 宿主连接到 Source Graph**，通过 MCP 连接，并把服务命名为 `context-sourcegraph`，以便查询 Skill 能找到它。[接入](../source-graph/connecting.md)介绍了 Connect 页面以及你可能需要的凭据。该实例必须覆盖知识工作区及其来源仓库；如果缺少某个仓库，参见 [登记仓库](../source-graph/registering-repositories.md)。
 2. **选择远程读取的严格程度。** 默认情况下，你的 Agent 会复用合适的本地材料，否则优先使用 Source Graph，再考虑本地检出。你也可以让它只通过 Source Graph 读取、即使失败也绝不克隆，或者只在本地读取、完全不使用服务。对话中的明确要求（例如“离线工作”）始终优先。该设置来自你的 Agent 宿主或 Bot 配置；[提问](asking-questions.md)把它和其他查询设置列在一起。
 
 端点和凭据属于 Agent 宿主的配置，绝不放在 Skill 或知识本身中。Context 这一侧无需其他配置：证据插件已编译并随 CLI 一同发布。
@@ -36,7 +36,7 @@ translation:
 <!-- context:section id="limits" -->
 ## 工作原理与可能的问题
 
-来源由可选的 **context-evidence** 插件提供。它是运行在 Source Graph 内部的一个小型只读 WebAssembly 模块，把知识页面的每个章节与其记录的来源关联起来。它不校验来源内容、不搜索代码、也不修改知识；列出的来源只说明某个陈述出自哪里，并不能证明本次回答重新读过该来源。插件的详细说明见[与 Context 协同](../../architecture/source-graph/evidence-for-context.md)。
+来源由可选的 **context-evidence** 插件提供。它是运行在 Source Graph 内部的一个小型只读 WebAssembly 模块，把知识页面的每个章节与其记录的来源关联起来。它不校验来源内容、不搜索代码、也不修改知识；列出的来源只说明某个陈述出自哪里，并不能证明本次回答重新读过该来源。插件的详细说明见 [与 Context 协同](../../architecture/source-graph/evidence-for-context.md)。
 
 当 Source Graph 或插件不可用时，你的 Agent 保留已读到的内容并继续。默认情况下它可能回退到本地读取；如果你要求只远程读取，它会对答案中受影响的部分加以限定说明，而不是克隆仓库。
 <!-- /context:section -->

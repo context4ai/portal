@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 86ec3c09-beb2-468a-b28a-60d7a5c8fcce
   source_digest: 3bbf502cdd7b2d789705d694db2af070a7489b8c2df3b2e6993cf7db85f88f4f
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # CLI 与 SDK
@@ -40,7 +40,7 @@ node ./agent-graph.mjs ...         # single file shipped beside a Provider bundl
 | `import scripts <files...> --into <root> [--graph <id>]` | 根据脚本创建一个顺序执行的 Graph；运行时由扩展名推断，effect 默认为 `write` |
 | `import workflow <yaml-or-json> --into <root> [--graph <id>]` | 将精简的 `steps` / `dependsOn` 工作流转换为边，默认 `join: all`；Gate、Facts 和恢复会作为缺口列在 `IMPORT_REPORT.md` 中 |
 
-如何完善导入后的草稿，见[版本迁移](migration.md)。
+如何完善导入后的草稿，见 [版本迁移](migration.md)。
 <!-- /context:section -->
 
 <!-- context:section id="discovery" -->
@@ -95,7 +95,7 @@ run resume <checkpoint> --state <path>
 run events --state <path>
 ```
 
-`run status` 会重新评估 Graph，因此同样需要 Provider 选项（`--manifest` 或 `--skill`）。`run record` 使用 `route.afterAction.recordNode` 中的精确键，例如 `main/work`。`run facts` 默认合并，使用 `--replace` 时替换。`run start`、`run checkpoint` 和 `run resume` 拒绝覆盖已存在的目标（`run-target-exists`）。见[运行与恢复](../../../architecture/agent-graph/runs-and-recovery.md)。
+`run status` 会重新评估 Graph，因此同样需要 Provider 选项（`--manifest` 或 `--skill`）。`run record` 使用 `route.afterAction.recordNode` 中的精确键，例如 `main/work`。`run facts` 默认合并，使用 `--replace` 时替换。`run start`、`run checkpoint` 和 `run resume` 拒绝覆盖已存在的目标（`run-target-exists`）。见 [运行与恢复](../../../architecture/agent-graph/runs-and-recovery.md)。
 <!-- /context:section -->
 
 <!-- context:section id="resource" -->
@@ -164,5 +164,5 @@ import { evaluateGraph, loadProvider, resolveRoute, resolveSkillBinding } from "
 | 编写 | `initProvider`、`importSkill`、`importScripts`、`importWorkflow` |
 | 质量与发布 | `validateSchema`、`runGraphTests`、`buildProviderBundle`、`inspectProvider` |
 
-评估和 Route 解析没有副作用；只有上面列出的编写、Run、构建和物化函数会写入文件。SDK 返回的路径会针对当前安装位置进行解析，而定义本身保持相对路径。`materializeResource` 接受 `timeoutMs`、`maxOutputBytes` 和 `maxErrorBytes`，受信任的宿主还可以通过 `env` 添加变量（Agent Graph 自身的变量优先）。错误是带有 `code` 和 `diagnostics` 的 `AgentGraphError` 实例。该包还导出了 `./schemas/*` 和 `./templates/*`。完整的宿主循环示例见[技能与 Provider](../../../architecture/agent-graph/skills-and-providers.md)。
+评估和 Route 解析没有副作用；只有上面列出的编写、Run、构建和物化函数会写入文件。SDK 返回的路径会针对当前安装位置进行解析，而定义本身保持相对路径。`materializeResource` 接受 `timeoutMs`、`maxOutputBytes` 和 `maxErrorBytes`，受信任的宿主还可以通过 `env` 添加变量（Agent Graph 自身的变量优先）。错误是带有 `code` 和 `diagnostics` 的 `AgentGraphError` 实例。该包还导出了 `./schemas/*` 和 `./templates/*`。完整的宿主循环示例见 [技能与 Provider](../../../architecture/agent-graph/skills-and-providers.md)。
 <!-- /context:section -->

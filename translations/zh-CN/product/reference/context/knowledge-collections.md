@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: bd4e84ed-7413-4eaf-aad0-2b9c0fde8020
   source_digest: a06e58f29ec4617d472f24288248d6c6d68f7b6a032ed41c89fac31806465bbc
-  translated_at: 2026-10-12T17:06:40.056Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 知识分类
@@ -49,7 +49,7 @@ flowchart LR
 - **`guides/`** 和 **`rules/`** 用于解释、落地或约束这些知识。把文章放在这里并不会与任何内容建立关系；只有 Context 记录的类型化边才会。
 - **`feats/`** 存放功能记录。
 
-除了知识分类，知识包还可以用 `select.okfRoots` 选择根目录；见[包模板](./package-templates.md)。
+除了知识分类，知识包还可以用 `select.okfRoots` 选择根目录；见 [包模板](./package-templates.md)。
 <!-- /context:section -->
 
 <!-- context:section id="choose" -->

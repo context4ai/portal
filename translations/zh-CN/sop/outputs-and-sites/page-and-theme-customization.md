@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 2ff9d5b0-528c-4222-beac-85e3ea3cda8c
   source_digest: 1b7e4a803ab5fa78027cb57b94f714c9e74d15d9a925afac2f50e58c7eee02a6
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 页面与主题定制
@@ -60,7 +60,7 @@ site: {
 
 省略某个插槽即保留其默认内容，设为 `false` 则隐藏它。组件只替换它所在的插槽——绝不会替换全局导航、语言切换或页面来源信息。组件可以使用 VitePress 的 `useData()` 和 `useRoute()`，并导入作用域 CSS。
 
-如果想从首次绘制起就显示正确的语言，请为每种语言分别渲染内容，并用 `data-context-locales="<tag>"` 标记；站点样式表会隐藏其他语言。挂载后，`useData().lang` 会给出读者的语言。参见[多语言站点](multilingual-sites.md)。
+如果想从首次绘制起就显示正确的语言，请为每种语言分别渲染内容，并用 `data-context-locales="<tag>"` 标记；站点样式表会隐藏其他语言。挂载后，`useData().lang` 会给出读者的语言。参见 [多语言站点](multilingual-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="floating" -->
@@ -84,7 +84,7 @@ import SupportPanel from '../components/SupportPanel.vue'
 <SupportPanel />
 ```
 
-要把它放进导航，请添加一个普通的知识地图条目，其目标为 `artifact_ref: "site:support"`，并像其他条目一样设置 `parent`、`title` 和 `order`。没有条目的页面仍然可以直接访问，多个条目也可以指向同一个页面。自定义页面只属于网站：它们不是已批准的页面，也不会进入知识包或 LLM Docs。修改正式页面请通过[修订](../review-and-revision/revising-a-page.md)，而不是用自定义页面。
+要把它放进导航，请添加一个普通的知识地图条目，其目标为 `artifact_ref: "site:support"`，并像其他条目一样设置 `parent`、`title` 和 `order`。没有条目的页面仍然可以直接访问，多个条目也可以指向同一个页面。自定义页面只属于网站：它们不是已批准的页面，也不会进入知识包或 LLM Docs。修改正式页面请通过 [修订](../review-and-revision/revising-a-page.md)，而不是用自定义页面。
 <!-- /context:section -->
 
 <!-- context:section id="theme" -->
@@ -100,7 +100,7 @@ kbPackage({ site: { theme: {
 } } })
 ```
 
-优先级依次为内置默认值、`theme.json`、知识包自己的主题。离线[审核报告](../review-and-revision/reading-review-reports.md)和 Mermaid 图表也使用相同的颜色。自定义组件应读取 `--context-brand`、`--context-accent`、`--context-background`、`--context-surface`、`--context-text`、`--context-muted-text` 和 `--context-border`，而不是硬编码颜色。
+优先级依次为内置默认值、`theme.json`、知识包自己的主题。离线 [审核报告](../review-and-revision/reading-review-reports.md)和 Mermaid 图表也使用相同的颜色。自定义组件应读取 `--context-brand`、`--context-accent`、`--context-background`、`--context-surface`、`--context-text`、`--context-muted-text` 和 `--context-border`，而不是硬编码颜色。
 
 无论读者的系统配色如何，站点都以浅色模式打开。读者的浅色或深色选择会在整个源（origin）范围内记住，因此同一源下的所有 Context 站点共享这一选择；它从首次绘制起就会生效，页面加载时不会闪现另一种配色。
 <!-- /context:section -->
@@ -108,5 +108,5 @@ kbPackage({ site: { theme: {
 <!-- context:section id="check" -->
 ## 构建与检查
 
-定制不需要新的来源、Indexer 工作或审核：修改后重新构建即可。构建失败时会保留之前的产出。发布前，请在桌面端和移动端、在非根路径的地址前缀下、在深色模式下以及使用键盘导航时，预览首页、自定义页面和悬浮面板。只部署网站文件夹。站点的基础选项和部署见[文档站](documentation-sites.md)。
+定制不需要新的来源、Indexer 工作或审核：修改后重新构建即可。构建失败时会保留之前的产出。发布前，请在桌面端和移动端、在非根路径的地址前缀下、在深色模式下以及使用键盘导航时，预览首页、自定义页面和悬浮面板。只部署网站文件夹。站点的基础选项和部署见 [文档站](documentation-sites.md)。
 <!-- /context:section -->

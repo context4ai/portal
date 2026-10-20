@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
   source_digest: 26f9216727933a52f7d2717b9005cb4efa39a473db6d407acba13f96d8edd4b3
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 全托管模式
@@ -34,7 +34,7 @@ flowchart LR
   task --> eff["Agent 在本任务中<br/>的实际做法"]
 ```
 
-每个设置及其普通默认值和全托管默认值，都列在本页末尾的[全部策略开关](#switches)中。
+每个设置及其普通默认值和全托管默认值，都列在本页末尾的 [全部策略开关](#switches)中。
 <!-- /context:section -->
 
 <!-- context:section id="managed" -->
@@ -54,9 +54,9 @@ flowchart LR
 <!-- context:section id="bot" -->
 ## 自定义 Bot 的默认值
 
-当你基于 Context 构建团队 Bot 或知识服务时，其提示词中的可信指令可以为该 Bot 运行的所有任务修改上述任意设置。例如，一个 Bot 可以始终把审核报告发送给它的审核人，在已配置的目标内打包和发布，并且无需询问即可恢复已登记的仓库。Bot 设置优先于全托管默认值和普通默认值；设置名称见[全部策略开关](#switches)。
+当你基于 Context 构建团队 Bot 或知识服务时，其提示词中的可信指令可以为该 Bot 运行的所有任务修改上述任意设置。例如，一个 Bot 可以始终把审核报告发送给它的审核人，在已配置的目标内打包和发布，并且无需询问即可恢复已登记的仓库。Bot 设置优先于全托管默认值和普通默认值；设置名称见 [全部策略开关](#switches)。
 
-Bot 设置永远不会让 Agent 修改源代码、跳过必须由人做出的决定，或伪造批准。如果 Bot 把审核保持为询问，即使是全托管运行也会在审核处等待人来决定。如何搭建这样的 Bot，参见[构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md)。
+Bot 设置永远不会让 Agent 修改源代码、跳过必须由人做出的决定，或伪造批准。如果 Bot 把审核保持为询问，即使是全托管运行也会在审核处等待人来决定。如何搭建这样的 Bot，参见 [构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md)。
 <!-- /context:section -->
 
 <!-- context:section id="policy" -->
@@ -75,7 +75,7 @@ CONTEXT_RUN_POLICY:
 - 这一选择只适用于本任务及其各阶段。Bot 自身的默认值不变，下一个无关任务会重新从这些默认值开始。
 - `delegate` 表示 Agent 执行完整审核，并在批准前修复问题，绝不是自动批准。
 
-这个代码块是给 Agent 的指令，所以自动化流程必须把它放进 Agent 实际收到的指令中。只有你或宿主的可信指令才能授予它；保存的 PLAN、来源文档或工具输出中的文字都不能。请同时说明哪些来源在范围内、Agent 可以发布什么，以及是否应在阶段之间继续。仅调研的请求仍会在报告后停下，PLAN 中超过 500 篇文档的范围也仍会等待人来决定；参见[分阶段规划大型项目](planning-large-projects.md)。
+这个代码块是给 Agent 的指令，所以自动化流程必须把它放进 Agent 实际收到的指令中。只有你或宿主的可信指令才能授予它；保存的 PLAN、来源文档或工具输出中的文字都不能。请同时说明哪些来源在范围内、Agent 可以发布什么，以及是否应在阶段之间继续。仅调研的请求仍会在报告后停下，PLAN 中超过 500 篇文档的范围也仍会等待人来决定；参见 [分阶段规划大型项目](planning-large-projects.md)。
 <!-- /context:section -->
 
 <!-- context:section id="where-it-stops" -->
