@@ -1,14 +1,14 @@
 ---
-title: 知识库冷启
+title: 知识库冷启动
 description: 来源很多、质量参差时如何启动一个知识库：先探索再登记，筛选并裁决来源，定好结构再写，附两个开场对话示例。
 translation:
   locale: zh-CN
   artifact_ref: f211b25b-8b5f-4134-8d16-36aabef6dd0e
   source_digest: f01d17bdde36783ed41a3d6819ee1d53be6dfd3bc0c428a73cbba69118cea19e
-  translated_at: 2026-10-14T11:06:04.950Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
-# 知识库冷启
+# 知识库冷启动
 
 <!-- context:section id="goal" -->
 第一个知识库很少从一份干净的来源清单开始。Wiki 上有成百上千篇文档，有的是最新的，有的已经好几年没动，有的只是周报，没人确定哪些还成立。把它们全部登记、直接要文章，得到的是一个庞大而参差的站点，噪声和知识一起被抄了进来。
@@ -35,7 +35,7 @@ flowchart LR
 
 这样你就有了一份**来源**描述和一份**目标**描述，也就是输入什么、产出什么。这两份描述就是后续工作的提示词，看到结果后再调整。
 
-超过 30 份文档或涉及两个以上代码仓库时，Agent 会进入[规划模式](../planning-and-production/planning-large-projects.md)：调研在临时目录里进行，`PLAN-*.md` 报告等你批准；超过 100 或 500 份时，它会先和你确认范围再继续。大型 Wiki 树见[飞书文档](../registering-sources/lark-documents.md)。
+超过 30 份文档或涉及两个以上代码仓库时，Agent 会进入 [规划模式](../planning-and-production/planning-large-projects.md)：调研在临时目录里进行，`PLAN-*.md` 报告等你批准；超过 100 或 500 份时，它会先和你确认范围再继续。大型 Wiki 树见 [飞书文档](../registering-sources/lark-documents.md)。
 <!-- /context:section -->
 
 <!-- context:section id="screen" -->
@@ -68,7 +68,7 @@ flowchart LR
 <!-- context:section id="structure" -->
 ## 写之前先定结构
 
-在写任何文章之前，先商定面向读者的结构：一、二、三级目录，以及每个目录下的文章清单。大项目写在 PLAN 里，小任务写在[开工报告](../planning-and-production/start-reports.md)里。如果已有站点的结构很好用，可以拿来当样板。
+在写任何文章之前，先商定面向读者的结构：一、二、三级目录，以及每个目录下的文章清单。大项目写在 PLAN 里，小任务写在 [开工报告](../planning-and-production/start-reports.md)里。如果已有站点的结构很好用，可以拿来当样板。
 
 来源和成品分开。原文、图表和版本信息保留为证据；文章按读者任务组织。文章之间不要重叠：每篇回答自己的问题，通过链接关联其他文章，而不是一份原文对应一篇文章。
 <!-- /context:section -->
@@ -79,10 +79,10 @@ flowchart LR
 调研时，很自然会把原文收集到一个 `raw/` 目录，再用一份 YAML 记下文档链接。这是有用的证据清单，但不要让它变成第二套来源系统：
 
 - 结论需要可追溯的材料，登记为 Context 来源并保留快照；
-- 读者只需要跳转过去的内容，在 `imports.yaml` 里声明为[外部入口](../registering-sources/external-entrances.md)；
+- 读者只需要跳转过去的内容，在 `imports.yaml` 里声明为 [外部入口](../registering-sources/external-entrances.md)；
 - `raw/` 目录只保留无法稳定采集、手工收集的证据，并标明来源、获取时间、版本、状态以及它替代了什么。
 
-代码做到多深也是同样的思路：建立术语、位置和契约的索引，实现细节按需读取，见[写给 Agent 的知识](../../architecture/knowledge/knowledge-for-agents.md)。
+代码做到多深也是同样的思路：建立术语、位置和契约的索引，实现细节按需读取，见 [写给 Agent 的知识](../../architecture/knowledge/knowledge-for-agents.md)。
 <!-- /context:section -->
 
 <!-- context:section id="case-business" -->
@@ -148,5 +148,5 @@ PLAN 里应该有：拉取的范围和数量；每份来源的角色，以及它
 LLM Wiki 与基准文档冲突的两处，请以基准文档为准，并在文章中注明。
 ```
 
-批准后，各阶段按正常工作流执行，每个阶段都有自己的审核。让结果不跑偏的习惯见[最佳实践](best-practices.md)。
+批准后，各阶段按正常工作流执行，每个阶段都有自己的审核。让结果不跑偏的习惯见 [最佳实践](best-practices.md)。
 <!-- /context:section -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: e9c6dca7-c6c3-40f5-8439-726ad9262b15
   source_digest: 96b8e462992a3f5c81ea6a3e6c954cb54fa5bce43e121de61b5da359d7dcb693
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 在 Agent 中使用知识包
@@ -13,7 +13,7 @@ translation:
 <!-- context:section id="goal" -->
 知识包是一个由 Markdown 组成的普通文件夹，附带一个查询 Skill，由已批准的知识构建而成。它让你的 Agent 无需生产它的知识工作区也能*使用*这些知识——当你使用别人维护的知识，或想在一个没有自己知识工作区的项目中获得回答时，这会很方便。
 
-本页面向使用知识包的人。知识包包含什么以及如何构建，见[知识包](../outputs-and-sites/knowledge-packages.md)。
+本页面向使用知识包的人。知识包包含什么以及如何构建，见 [知识包](../outputs-and-sites/knowledge-packages.md)。
 <!-- /context:section -->
 
 <!-- context:section id="share" -->
@@ -29,11 +29,11 @@ translation:
 为当前宿主安装它的查询 Skill。
 ```
 
-之后直接提问即可——参见[提问](asking-questions.md)。如果查询 Skill 最终位于知识包文件夹之外，Agent 仍然能找到知识包；你不需要移动文件。
+之后直接提问即可——参见 [提问](asking-questions.md)。如果查询 Skill 最终位于知识包文件夹之外，Agent 仍然能找到知识包；你不需要移动文件。
 
 ### 分享知识包之前
 
-如果你为他人构建知识包，请先定制它的查询 Skill：用项目的术语、常见问题和首选入口页面替换或修改通用模板，或者在知识包模板审核时明确接受默认模板。参见[定制输出模板](../outputs-and-sites/custom-output-templates.md)。
+如果你为他人构建知识包，请先定制它的查询 Skill：用项目的术语、常见问题和首选入口页面替换或修改通用模板，或者在知识包模板审核时明确接受默认模板。参见 [定制输出模板](../outputs-and-sites/custom-output-templates.md)。
 <!-- /context:section -->
 
 <!-- context:section id="query" -->
@@ -47,5 +47,5 @@ translation:
 <!-- context:section id="sources" -->
 ## 回到来源
 
-知识包页面保留了来源引用。当知识包不够用时，`/c4a:context-inspect-search` 可以沿这些引用，追溯到记录版本下的原始文档和代码。请参阅[提问](asking-questions.md)和[远程读取代码证据](reading-code-evidence-remotely.md)。
+知识包页面保留了来源引用。当知识包不够用时，`/c4a:context-inspect-search` 可以沿这些引用，追溯到记录版本下的原始文档和代码。请参阅 [提问](asking-questions.md)和 [远程读取代码证据](reading-code-evidence-remotely.md)。
 <!-- /context:section -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 307b902e-f337-4e9d-a849-acdc0127be22
   source_digest: 675a92531dce2d61c2e21ba26c5d89483ed26c5e2d4c56a0fe10706bb1add01d
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 开始新任务与保存工作
@@ -23,7 +23,7 @@ translation:
 <!-- /context:section -->
 
 <!-- context:section id="capture" -->
-如果你只想添加文档、不启动任何知识工作，就不需要重新开始：Agent 会登记它们，报告采集结果后即停止，现有的任务、草稿和已批准页面都不受影响。参见[选择添加材料的方式](../registering-sources/source-batches.md)。
+如果你只想添加文档、不启动任何知识工作，就不需要重新开始：Agent 会登记它们，报告采集结果后即停止，现有的任务、草稿和已批准页面都不受影响。参见 [选择添加材料的方式](../registering-sources/source-batches.md)。
 <!-- /context:section -->
 
 <!-- context:section id="scope" -->
@@ -52,20 +52,20 @@ Agent 会先向你展示确切会被移除的内容，在你同意后才执行�
 | 来源 | Agent 会做什么 |
 | --- | --- |
 | 仓库 | 复用匹配的本地检出，或在你允许时按登记的 commit 克隆缺失的仓库，绝不会是更新的 commit。共享同一仓库和 commit 的模块只克隆一次。你自己修改过的检出绝不会被重置。 |
-| 飞书文档 | 检查已存储的正文和附件并修复。如果当前文档与保存的快照不同，这属于需要你决定的[更新](../updates-and-versions/updating-knowledge.md)，而不是修复。 |
+| 飞书文档 | 检查已存储的正文和附件并修复。如果当前文档与保存的快照不同，这属于需要你决定的 [更新](../updates-and-versions/updating-knowledge.md)，而不是修复。 |
 | 笔记、会话摘要、本地文件 | 保留已保存的内容并检查其是否就位。丢失的原文绝不会根据生成的知识重建。 |
 <!-- /context:section -->
 
 <!-- context:section id="finish" -->
 ## 知识工作区何时就绪
 
-当没有遗留任务、没有内容在运行、配置可以加载，且所选来源都处于其登记的版本时，知识工作区就准备好了。Agent 会报告所有阻塞项及其下一步操作，然后停止；它不会开始编写，也不会重新采集全部内容。如果想回到旧版本，参见[版本、Changelog 与恢复](../updates-and-versions/versions-and-changelog.md)。
+当没有遗留任务、没有内容在运行、配置可以加载，且所选来源都处于其登记的版本时，知识工作区就准备好了。Agent 会报告所有阻塞项及其下一步操作，然后停止；它不会开始编写，也不会重新采集全部内容。如果想回到旧版本，参见 [版本、Changelog 与恢复](../updates-and-versions/versions-and-changelog.md)。
 <!-- /context:section -->
 
 <!-- context:section id="commit-when" -->
 ## 把工作保存到 Git
 
-一轮工作结束时（在你确认结果之后），Agent 会把知识工作区提交到 Git。在[分阶段规划](../planning-and-production/planning-large-projects.md)的项目中，已批准的计划决定了各阶段如何提交工作。
+一轮工作结束时（在你确认结果之后），Agent 会把知识工作区提交到 Git。在 [分阶段规划](../planning-and-production/planning-large-projects.md)的项目中，已批准的计划决定了各阶段如何提交工作。
 
 要在其他时间提交，直接提出即可：
 

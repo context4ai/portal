@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
   source_digest: a8b1af130be51a06c7bb45685a4241c97b92389047a194018b3f0ae55baba63f
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 知识检索测评
@@ -37,7 +37,7 @@ xychart-beta
 
 LLM Wiki 和 Context 使用同一模型，可以直接比较。第三种配置同时更换了模型；下文的同模型对比单独考察了 Source Graph 的作用。
 
-测评方法遵循[评测知识库效果](../../sop/practices/evaluating-your-knowledge-base.md)；判分和计时规则见[测评评分与计时标准](../../sop/practices/evaluation-standard.md)。
+测评方法遵循 [评测知识库效果](../../sop/practices/evaluating-your-knowledge-base.md)；判分和计时规则见 [测评评分与计时标准](../../sop/practices/evaluation-standard.md)。
 <!-- /context:section -->
 
 <!-- context:section id="setup" -->
@@ -172,5 +172,5 @@ LLM Wiki 和 Context 使用同一模型，可以直接比较。第三种配置�
 - 成本如上所述，只是估算。
 - 在三个模型的对比中，后两轮每个模型最多允许 4 个问题并发；首轮最多 2 个，且部分是串行的。日期、Skill、运行环境以及部分读取的版本也不相同，因此并非所有差异都来自模型本身。
 
-体积缩减是另一种衡量：知识的体积约为其来源的 1/115，但这本身并不能说明质量。参见[写给 Agent 的知识](../knowledge/knowledge-for-agents.md)。
+体积缩减是另一种衡量：知识的体积约为其来源的 1/115，但这本身并不能说明质量。参见 [写给 Agent 的知识](../knowledge/knowledge-for-agents.md)。
 <!-- /context:section -->

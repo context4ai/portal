@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: fd95763c-8fc0-4d24-9a8b-a98d660e21ad
   source_digest: 18f10a01aa410368f0ad24003de3b8690735e376f7fdb0d8f97bda943eecabe9
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 核心模型
@@ -141,7 +141,7 @@ delegated:
 
 没有匹配的授权时，Route 为 `waiting-user`，其普通 `commandPlan` 为空。可选的只读 **检查 Action（inspection Action）** 为决定准备证据，并在 Gate 等待期间保持可用。可选的 **决议 Action（resolution Action）**（effect 为 `write` 或 `external`）负责落实决定，但在用户确认之前，宿主不得运行它。当 `delegatable` 为 true 且当前评估或 Run 带有所指定的授权时，Gate 会以 `resolution: session-authority` 变为可执行；此时 `delegated` 策略可以跳过检查、换用另一个决议 Action，并替换 Gate 的资源。
 
-授权属于当前输入或 Run，从不属于 Provider 定义。它只能解决可委托的 Gate，永远不会满足事实，也不会绕过校验。Context 的全托管模式正是建立在这一机制之上，参见[在 Context 中的应用](agent-graph-in-context.md)。
+授权属于当前输入或 Run，从不属于 Provider 定义。它只能解决可委托的 Gate，永远不会满足事实，也不会绕过校验。Context 的全托管模式正是建立在这一机制之上，参见 [在 Context 中的应用](agent-graph-in-context.md)。
 <!-- /context:section -->
 
 <!-- context:section id="reasons" -->
@@ -149,5 +149,5 @@ delegated:
 
 每个 Route 都带有一个机器稳定的 `reasonCode`。Provider 可以添加 Code Catalog（`agent-graph.code-catalog.v1`）：其中 `route-reason` 条目为每个原因码提供简短摘要和可选的说明文档，`diagnostic` 条目为产品状况命名并给出严重级别。一旦存在 Catalog，所有 Action 和 Gate 的原因码都必须列在其中，从而让原因成为一个封闭且有文档的集合。宿主和 Agent 根据 schema、状态码、原因码和诊断码分支，从不依据人类可读的描述。
 
-每个对象的确切字段见[规范](../../product/reference/agent-graph/specification.md)；Run 如何持久化 Outcome 见[运行与恢复](runs-and-recovery.md)。
+每个对象的确切字段见 [规范](../../product/reference/agent-graph/specification.md)；Run 如何持久化 Outcome 见 [运行与恢复](runs-and-recovery.md)。
 <!-- /context:section -->

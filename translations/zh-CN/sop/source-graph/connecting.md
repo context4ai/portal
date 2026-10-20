@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
   source_digest: 8c7d8c72d216a8714e5363576e92a95d0deec2f555cb1d7249f5f15e838dc47b
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 接入
@@ -29,9 +29,9 @@ translation:
 <!-- context:section id="mcp" -->
 ## 为 Context 接入你的 Agent
 
-1. 如果实例需要凭据，请登录并创建个人 API Key（见[选择凭据](#choose-a-credential)）。公开演示实例不需要凭据。
+1. 如果实例需要凭据，请登录并创建个人 API Key（见 [选择凭据](#choose-a-credential)）。公开演示实例不需要凭据。
 2. 打开站点的 **Connect** 页面，复制适用于你的 Agent 宿主的配置；页面会展示 Claude Code、Codex 和 Cursor 对应的命令或配置文件。
-3. 保持服务器名称为 `context-sourcegraph`。Context 的查询 Skill 读取被引用的代码时，查找的就是这个名称，详见[远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md)。
+3. 保持服务器名称为 `context-sourcegraph`。Context 的查询 Skill 读取被引用的代码时，查找的就是这个名称，详见 [远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md)。
 
 对于其他支持 Streamable HTTP 的客户端，将其指向 `/mcp` 端点。公开演示实例的配置如下：
 
@@ -52,7 +52,7 @@ translation:
 <!-- context:section id="missing-repository" -->
 ## 缺少某个仓库？
 
-如果搜索或读取找不到你需要的仓库，多半是它还没有在该实例上登记。登记需要管理员操作；私有仓库还需要其代码来源的令牌，服务才能拉取它。请联系实例管理员；如果是你自己的实例，可以按[登记仓库](registering-repositories.md)中的说明自行登记。
+如果搜索或读取找不到你需要的仓库，多半是它还没有在该实例上登记。登记需要管理员操作；私有仓库还需要其代码来源的令牌，服务才能拉取它。请联系实例管理员；如果是你自己的实例，可以按 [登记仓库](registering-repositories.md)中的说明自行登记。
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->
@@ -64,7 +64,7 @@ translation:
 | 个人 API Key（`sgk_…`） | 登录后打开用户设置，创建 API 令牌 | 通过 HTTP 或 MCP 执行与你的账号相同的读取操作。管理员创建的 Key 还可以通过 MCP 请求建索引 |
 | 服务令牌 | 实例的 `SOURCEGRAPH_API_TOKEN` 设置，至少 32 个字符 | 所有 HTTP 和 MCP 操作，包括登记和建索引，适用于你自己掌控的自动化流程 |
 
-以 `Authorization: Bearer <value>` 的形式发送 Key 和令牌。无效凭据会被拒绝并返回 `AUTHENTICATION_REQUIRED`，绝不会回退为匿名访问。请将凭据保存在客户端的密钥存储或环境变量中，不要放进共享的配置文件。各模式的详细说明见[登录与准入](authentication-and-access-control.md)。
+以 `Authorization: Bearer <value>` 的形式发送 Key 和令牌。无效凭据会被拒绝并返回 `AUTHENTICATION_REQUIRED`，绝不会回退为匿名访问。请将凭据保存在客户端的密钥存储或环境变量中，不要放进共享的配置文件。各模式的详细说明见 [登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->
 
 <!-- context:section id="http" -->
@@ -112,5 +112,5 @@ Agent 用一个简短的循环就能充分利用 Source Graph：
 3. 在该提交上**读取**关键范围：已知文件时直接读取，需要多处时用 `read_many` 一次读取。
 4. 如果文件还有后续内容，从返回的下一行**继续**读取；将 `Partial`、`Truncated` 和覆盖范围标记视为限制，而不是内容不存在的证明。
 
-无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。如果请求失败——例如某个提交尚未建好索引时返回 `409 INDEX_NOT_READY`——请在[运维](operations.md#common-errors)中查找该错误码的含义和处理方法。
+无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。如果请求失败——例如某个提交尚未建好索引时返回 `409 INDEX_NOT_READY`——请在 [运维](operations.md#common-errors)中查找该错误码的含义和处理方法。
 <!-- /context:section -->

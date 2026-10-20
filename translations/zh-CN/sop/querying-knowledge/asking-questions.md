@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
   source_digest: 0ca962e8311b9a57985a9cf3c224c9c734936ed5c892bc33bb2c091bd43aff26
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 提问
@@ -40,9 +40,9 @@ pending？请引用相关代码。
 你可以在两个地方提问：
 
 - **在知识工作区中**——即生产知识的文件夹。Agent 读取其中已批准的页面，必要时再读取这些页面所依据的来源。
-- **基于已安装的知识包**——不需要知识工作区。Agent 读取你安装或获得的知识包，并且仍然可以沿着其中的来源引用回到原始文档和代码。参见[在 Agent 中使用知识包](using-packages-in-agents.md)。
+- **基于已安装的知识包**——不需要知识工作区。Agent 读取你安装或获得的知识包，并且仍然可以沿着其中的来源引用回到原始文档和代码。参见 [在 Agent 中使用知识包](using-packages-in-agents.md)。
 
-先读哪一个，以及代码是通过远程只读服务读取还是从本地检出读取，可以由宿主或 Bot 设置；参见[构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot)。这些设置改变的是顺序和访问路径，而不是什么算作证据。要在没有本地检出的情况下读取代码，参见[远程读取代码证据](reading-code-evidence-remotely.md)。
+先读哪一个，以及代码是通过远程只读服务读取还是从本地检出读取，可以由宿主或 Bot 设置；参见 [构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot)。这些设置改变的是顺序和访问路径，而不是什么算作证据。要在没有本地检出的情况下读取代码，参见 [远程读取代码证据](reading-code-evidence-remotely.md)。
 <!-- /context:section -->
 
 <!-- context:section id="good-questions" -->
@@ -79,5 +79,5 @@ pending？请引用相关代码。
 <!-- context:section id="gaps" -->
 ## 知识缺失时
 
-缺口限定在所检查的范围内——某篇文章中未回答的问题，并不等于整个知识库都没有。有支持证据时，Agent 可能会建议更新：受影响的页面或缺口、拟议的修改以及涉及的来源。在你接受之前什么都不会开始。参见[从对话中采集](../updates-and-versions/capturing-from-conversations.md)。
+缺口限定在所检查的范围内——某篇文章中未回答的问题，并不等于整个知识库都没有。有支持证据时，Agent 可能会建议更新：受影响的页面或缺口、拟议的修改以及涉及的来源。在你接受之前什么都不会开始。参见 [从对话中采集](../updates-and-versions/capturing-from-conversations.md)。
 <!-- /context:section -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
   source_digest: 3762165f2276909eb36c882f2d0a971c3dd2e6441c20ab28ab0c55cbbf4e344e
-  translated_at: 2026-10-15T06:25:34.171Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # CLI 命令
@@ -13,7 +13,7 @@ translation:
 <!-- context:section id="goal" -->
 `context` CLI 保存 Context 知识工作区的工作流状态。你很少需要亲自输入这些命令：它们由 Agent 执行，而且大多数由当前 **Route** 返回——Route 是 `context status` 或上一条命令交回的唯一下一步，通常还附带需要传入的确切 `--revision`。驱动工作流的命令在使用 `--format json` 时输出 JSON，Agent 读取的正是这份输出。
 
-运行 `context <command> --help` 可查看任一命令的完整选项列表。调用这些命令的 Skill 见 [Skill](./skills.md)；简要介绍见[命令与技能](../../getting-started/commands-and-skills.md)。
+运行 `context <command> --help` 可查看任一命令的完整选项列表。调用这些命令的 Skill 见 [Skill](./skills.md)；简要介绍见 [命令与技能](../../getting-started/commands-and-skills.md)。
 <!-- /context:section -->
 
 <!-- context:section id="setup" -->

@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
   source_digest: 6ce48d5fc51bccb68abedd5a1c52039889c221595c00432d13f8a00a96da9db6
-  translated_at: 2026-10-14T08:53:43.639Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 登记仓库
@@ -55,7 +55,7 @@ translation:
 | GitHub | `github` | `https://github.com` | 公开仓库可以匿名拉取 |
 | 自定义 Git | `git` | 无，需由管理员或启动文件设置 | 必须提供令牌 |
 
-要使用你自己的 Git 服务器，请在 **System settings › Code sources**（系统设置 › 代码源）中自定义 Git 卡片上或启动文件中设置自定义代码源的托管地址，见[配置](../../product/reference/source-graph/configuration.md#code-sources)。没有托管地址的代码源不能用于登记（`409 CODE_SOURCE_NOT_CONFIGURED`）。
+要使用你自己的 Git 服务器，请在 **System settings › Code sources**（系统设置 › 代码源）中自定义 Git 卡片上或启动文件中设置自定义代码源的托管地址，见 [配置](../../product/reference/source-graph/configuration.md#code-sources)。没有托管地址的代码源不能用于登记（`409 CODE_SOURCE_NOT_CONFIGURED`）。
 
 登记时会把代码源当前的托管地址记录到仓库的 `code_host` 上，之后每次拉取都使用这个地址。因此修改代码源配置永远不会挪动已登记的仓库。
 <!-- /context:section -->
@@ -77,7 +77,7 @@ translation:
 
 两个代码源之间从不互用令牌。令牌使用实例的凭据加密密钥加密，状态显示为就绪、即将过期（七天内）、已过期或无效。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 HTTPS 用户名（默认 `oauth2`）。
 
-登记私有仓库并不会对已登录用户隐藏它；`public_read: false` 只会取消匿名访问。要控制谁能成为已登录用户，请使用登录和注册策略，详见[登录与准入](authentication-and-access-control.md)。
+登记私有仓库并不会对已登录用户隐藏它；`public_read: false` 只会取消匿名访问。要控制谁能成为已登录用户，请使用登录和注册策略，详见 [登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->
 
 <!-- context:section id="monorepo" -->
@@ -117,7 +117,7 @@ translation:
 
 要搜索窗口内较旧的提交，需要请求准备该提交：在仓库页面操作，调用 `POST /sourcegraph/api/admin/v1/repo/prepare`，或由有权限的调用方使用 MCP `prepare` 工具。准备是异步的；请求被接受并不代表已就绪。
 
-修改仓库的分支或保留窗口会清除已观测到的最新提交和版本，取消排队中和运行中的任务，并等待一次新的同步。禁用和删除都会保留数据；已删除且已禁用的仓库在一分钟后可以被永久清除。清理与维护见[运维](operations.md)。
+修改仓库的分支或保留窗口会清除已观测到的最新提交和版本，取消排队中和运行中的任务，并等待一次新的同步。禁用和删除都会保留数据；已删除且已禁用的仓库在一分钟后可以被永久清除。清理与维护见 [运维](operations.md)。
 
 以 `SOURCEGRAPH_SEED_DEMO=true` 启动的实例会登记两个公开示例仓库 `context4ai/context` 和 `context4ai/sourcegraph`，跟踪它们的默认分支，保留一个提交，每小时同步一次。
 <!-- /context:section -->

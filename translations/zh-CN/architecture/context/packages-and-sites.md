@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: a0aef936-cc16-4cde-b209-b9c53d6ee254
   source_digest: 21e11807c58f2ccb33467ecc40d18574e1be6ae370dc201c28af7a1fa6b944fa
-  translated_at: 2026-10-14T11:06:04.950Z
+  translated_at: 2026-10-20T05:02:15.111Z
 ---
 
 # 知识包与站点构建
@@ -63,7 +63,7 @@ Context 不负责部署。可以用任意静态 HTTP 服务器预览，再用你
 
 ```text
 llms.txt                   # 知识地图索引
-llms-full.txt              # 汇总后的已审核正文
+llms-full.txt              # 汇总后的已批准正文
 llms/pages/<identity>.txt  # 单篇文章
 ```
 <!-- /context:section -->

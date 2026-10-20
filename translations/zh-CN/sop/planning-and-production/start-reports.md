@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 80ddc71e-bea5-45b3-9a6c-b042566601ad
   source_digest: 56ff6fca1378ce671a929f9c48afa61b4b32703d92a24c2c674a57b175de4279
-  translated_at: 2026-10-19T19:47:45.248Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 确认开工报告
@@ -73,5 +73,5 @@ flowchart LR
 <!-- context:section id="large" -->
 ## 大型项目
 
-如果工作涉及超过 30 份来源文档，或需要对两个及以上仓库做实质性调研，Agent 会先提出一份项目计划，把工作拆成若干阶段。之后每个阶段在已批准的计划内各自产出开工报告。参见[分阶段规划大型项目](planning-large-projects.md)。
+如果工作涉及超过 30 份来源文档，或需要对两个及以上仓库做实质性调研，Agent 会先提出一份项目计划，把工作拆成若干阶段。之后每个阶段在已批准的计划内各自产出开工报告。参见 [分阶段规划大型项目](planning-large-projects.md)。
 <!-- /context:section -->

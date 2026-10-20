@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: e04dd656-57d4-4c93-abd3-568ef2368939
   source_digest: 85f7786de63130780e2685f0074bad4d845124e76f599fbf0b4d77456ce9a59a
-  translated_at: 2026-10-12T16:45:10.508Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 知识的持续更新
@@ -37,7 +37,7 @@ flowchart LR
 <!-- context:section id="baseline" -->
 ## 推进基线
 
-在所有请求的页面都已批准、close 并完成构建之前，CLI 会保留之前的已处理版本。如果临时进度丢失，下一次检查会从该版本重新开始，并保留已经批准的页面。保存的报告或获取回执并不能证明更新已经完成。参见[版本感知的知识](version-aware-knowledge.md)。
+在所有请求的页面都已批准、close 并完成构建之前，CLI 会保留之前的已处理版本。如果临时进度丢失，下一次检查会从该版本重新开始，并保留已经批准的页面。保存的报告或获取回执并不能证明更新已经完成。参见 [版本感知的知识](version-aware-knowledge.md)。
 <!-- /context:section -->
 
 <!-- context:section id="scope" -->

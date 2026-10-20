@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 05c78d9e-3e0d-43a5-b674-d0110604d8cd
   source_digest: f072cd04c0a7ccffb86bc54e4a3f74beef6ff7ea4af14a514517ab128ed562d3
-  translated_at: 2026-10-12T20:29:53.422Z
+  translated_at: 2026-10-20T05:13:06.930Z
 ---
 
 # 模块划分
@@ -52,7 +52,7 @@ flowchart BT
 | `context-evidence-wasm` | 构建供 Source Graph 使用的可选插件 `context-evidence.sourcegraph.wasm` |
 | `@c4a/agent-graph` | 外部的、不依赖模型的工作流契约运行时，仅供内置 Provider 使用 |
 
-解析器包只产出结构化事实，从不写入已批准的知识。参见[代码抽取](../knowledge/code-extraction.md)。
+解析器包只产出结构化事实，从不写入已批准的知识。参见 [代码抽取](../knowledge/code-extraction.md)。
 <!-- /context:section -->
 
 <!-- context:section id="cli-inside" -->
@@ -73,7 +73,7 @@ flowchart BT
 
 - 改动 `@c4a/context` 会影响知识工作区声明和阶段计划。
 - 改动 `@c4a/context-cli` 会影响命令、Agent 工作流、知识工作区文件格式、审核行为和知识包输出。
-- 改动 `@c4a/extract` 以及各提取器和目录包（`extract-ts`、`extract-go`、`extract-rush`、`-mdx`、`-proto`、`-thrift`、`-contract`、`-sql`、`-style`）只影响对应语言和格式的代码事实；参见[代码提取](../knowledge/code-extraction.md)。
+- 改动 `@c4a/extract` 以及各提取器和目录包（`extract-ts`、`extract-go`、`extract-rush`、`-mdx`、`-proto`、`-thrift`、`-contract`、`-sql`、`-style`）只影响对应语言和格式的代码事实；参见 [代码提取](../knowledge/code-extraction.md)。
 - 改动 `context-evidence-wasm` 只影响 Source Graph 如何为远程代码读取补充证据；本地检索和知识生产不受影响。
 - Agent Graph 是固定版本的外部依赖；Provider 和宿主绑定由 Context 自己维护。
 <!-- /context:section -->
