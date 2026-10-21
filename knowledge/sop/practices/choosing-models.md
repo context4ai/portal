@@ -4,7 +4,7 @@ description: Which kind of model to use for each part of Context production and
   querying, and what an October 2026 benchmark comparison showed about how much
   model choice affects answer time.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-21T09:50:34.010Z
 ---
 # Choosing Models
 
@@ -13,22 +13,37 @@ Context works with whichever model your Agent runs, but the choice changes speed
 <!-- /context:section -->
 
 <!-- context:section id="roles" -->
-## Four roles
 
-| Role | Example (October 2026) | Use it for |
+## Three roles
+
+| Role | Examples (October 2026) | Use it for |
 | --- | --- | --- |
-| **Primary** | Claude Opus 5.5 | First creation, everyday production and querying. The fastest of the three models in the benchmark comparison below, and in practice it consumes less. |
+| **Primary** | DeepSeek 4.1 Flash 1017 (first choice), Claude Opus 5.5, **Muse Wonder** | DeepSeek is the existing team choice for automation, Q&A, attribution and Chinese documents. Opus for organizing the logic of a first build, everyday production and querying. Muse is an alternative candidate for knowledge retrieval and code Q&A, supported by the scoped comparison below; that run did not evaluate knowledge production. |
 | **Balanced** | GPT 5.6 SOL, Grok 4.6 | Moderate speed and cost; text, code and medium-intensity code exploration. |
-| **Low-cost and fast** | DeepSeek 4.1 Flash | Processing documents meant for people and summarizing code. |
 | **High-end** | GPT 6.0 Astra | Planning the first build of a very large knowledge base and deep attribution in code. Expensive. |
 
 For large work you do not need to orchestrate several Agents yourself. Whether writing runs in parallel is the Agent's choice, depending on what your host supports.
+
 <!-- /context:section -->
 
 <!-- context:section id="evidence" -->
-## How much it matters when answering
 
-In a benchmark comparison recorded in October 2026, three models answered the same 24 questions with the same Context knowledge and the same retrieval method. Claude Opus 5.5 and Grok 4.7 both fully resolved 23 of 24, but Claude Opus 5.5 averaged 139.3 seconds and Grok 4.7 304.0 seconds, about 2.2 times as long. GPT 5.6 SOL fully resolved 21 of 24 with a mean of 157.1 seconds. At equal quality, model choice can more than double answer time.
+## What the latest Q&A comparison shows
 
-This is a single run on one question set, so treat it as an indication rather than a ranking. The method and its limits are in [Knowledge Retrieval Benchmark](../../architecture/benchmark/knowledge-retrieval.md); to measure your own setup, see [Evaluating Your Knowledge Base](./evaluating-your-knowledge-base.md).
+**In this 24-question developer knowledge-Q&A comparison, Muse Wonder + Source Graph and Claude Opus 5.5 + Source Graph performed at a similar overall level: Muse fully solved one more question, while Opus responded slightly faster.**
+
+| Metric | Muse Wonder + Source Graph | Claude Opus 5.5 + Source Graph |
+| --- | ---: | ---: |
+| Fully solved | **100% (24/24)** | 95.8% (23/24) |
+| Mean answer time | 106.9 s | **93.2 s** |
+| P90 time | 135.0 s | **123.0 s** |
+| Mean tool calls | 11.7 | 7.8 |
+| Estimated cost per question | $0.210 | $0.272 |
+
+Muse averaged about **14 seconds (15%) longer** per answer, while fully meeting the original requests in this run. It is a candidate for this kind of knowledge retrieval and code Q&A. Its measured usage averaged **388,000 tokens per question**; the cost figures are estimates for reference.
+
+The conclusion is limited to these 24 questions. Runtime and configuration differ, so this does not establish general model equivalence, stability across workloads or an actual cost advantage. Evaluate candidates on your own questions, checking answer quality, mean and P90 time, and tool calls together.
+
+The earlier local-retrieval comparison remains in [Knowledge Retrieval Benchmark](../../architecture/benchmark/knowledge-retrieval.md); it uses a different retrieval setup and should not be mixed with this table. To measure your own setup, see [Evaluating Your Knowledge Base](./evaluating-your-knowledge-base.md).
+
 <!-- /context:section -->

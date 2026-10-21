@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.13.7 — 2026-10-21
+
+### Update model selection and retrieval comparisons
+
+- Add Muse Wonder as a primary candidate for knowledge retrieval and code Q&A, with a scoped 24-question comparison against Opus.
+- Align English and Chinese model guidance while preserving existing team preferences and anonymized evaluation boundaries.
+
+Trigger: note: Updated aggregate evaluation results and model-selection guidance.
+User: qiansc (git)
+
 ## 0.13.6 — 2026-10-20
 
 ### Polish zh-CN translations and clarify the Context definition
