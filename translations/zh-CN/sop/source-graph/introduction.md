@@ -5,8 +5,8 @@ description: Context Source Graph 是什么、为 AI Agent 读代码解决什么
 translation:
   locale: zh-CN
   artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
-  source_digest: 806f00e1da838dccb988a3f5da9e69aab9beaae6b36e36e41b42f4bc93530832
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 937e2b16d509f123a445c8057cfeb599f16b61360f26f461d05b76c339436a2a
+  translated_at: 2026-10-21T12:22:47.975Z
 ---
 
 # Source Graph 是什么
@@ -14,7 +14,7 @@ translation:
 <!-- context:section id="purpose" -->
 **Context Source Graph 让人、脚本和 AI Agent 无需克隆仓库，就能在确定的 Git 提交上搜索和阅读代码。** 结果来自预先建好的索引，毫秒级返回；每个结果都标明读取所用的提交，同一个问题总能拿到同样的证据。
 
-它开源、可自托管。公开的只读 [在线演示](https://context4ai.org/sourcegraph/) 索引了 `context4ai/context` 和 `context4ai/sourcegraph`。本节的指南介绍如何接入实例、如何与 Context 配合使用，以及面向管理员的登记仓库、自托管、安全保护和运维。
+它开源、可自托管。公开的只读 [在线演示](https://context4ai.org/sourcegraph/) 同时提供本文档站自己的 Context 知识工作区 `context4ai/portal`，以及 `context4ai/context`、`context4ai/sourcegraph` 和 `context4ai/agent-graph` 的源码，所以你马上就能试用代码搜索，也能试试“先读知识”的问答。本节的指南介绍如何接入实例、如何与 Context 配合使用，以及面向管理员的登记仓库、自托管、安全保护和运维。
 <!-- /context:section -->
 
 <!-- context:section id="problem" -->
@@ -38,6 +38,8 @@ Source Graph 把这部分工作挪到提问之前：它在后台为每个已登�
 ## Context 用户需要它吗？
 
 不需要：Source Graph 对 Context 是**可选的**。当你的 Agent 根据 Context 知识作答时，它可以对照原始代码确认答案，方式有两种：在本地读取，即对所引用的提交做浅层的部分克隆；或者在接入了 Source Graph 时，在该提交上远程读取，无需等待克隆。接入后，Agent 每读取一个知识页面，还能同时拿到每个章节的写作来源。如何开启以及能得到什么，见 [远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md)。
+
+反过来，Source Graph 也可以脱离 Context 使用。只要实例上既有团队的知识仓库，也有它的代码，任何 MCP 客户端只凭一段检索提示词就能基于两者作答；参见 [在 Agent 中通过 MCP 查询](../querying-knowledge/querying-via-mcp.md)。
 <!-- /context:section -->
 
 <!-- context:section id="when" -->
@@ -52,7 +54,7 @@ Source Graph 是一个在固定版本上做文本搜索与阅读的服务。每�
 ## 三步开始
 
 1. **试用在线演示。** 打开 [https://context4ai.org/sourcegraph/](https://context4ai.org/sourcegraph/)，直接在浏览器中搜索和阅读代码，无需账号。
-2. **接入你的 Agent。** 打开站点的 **Connect**（接入）页面，复制适用于你的 Agent 宿主的配置。MCP、HTTP、CLI 和凭据的用法见 [接入](connecting.md)。
+2. **接入你的 Agent。** 打开站点的 **Connect**（接入）页面，复制适用于你的 Agent 宿主的配置。MCP、HTTP、CLI 和凭据的用法见 [接入](connecting.md)。想马上向本站的知识提问，按 [在 Agent 中通过 MCP 查询](../querying-knowledge/querying-via-mcp.md) 操作即可。
 3. **为自己的仓库运行实例。** 用 Docker 启动，配置 Google 或 GitHub 登录，第一个完成验证的用户会成为管理员并登记仓库。具体步骤见 [自托管](self-hosting.md) 和 [登记仓库](registering-repositories.md)。
 <!-- /context:section -->
 
@@ -63,6 +65,7 @@ Source Graph 是一个在固定版本上做文本搜索与阅读的服务。每�
 | --- | --- |
 | 接入你的 Agent、脚本或 CLI | [接入](connecting.md) |
 | 让 Context 无需克隆即可读取所引用的代码 | [远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md) |
+| 在任意 MCP 客户端中基于团队的知识和代码作答 | [在 Agent 中通过 MCP 查询](../querying-knowledge/querying-via-mcp.md) |
 | 添加仓库和 Monorepo 路径组 | [登记仓库](registering-repositories.md) |
 | 部署并配置自己的实例 | [自托管](self-hosting.md) |
 | 设置登录并决定谁可以读取 | [登录与准入](authentication-and-access-control.md) |

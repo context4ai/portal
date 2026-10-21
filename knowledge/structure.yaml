@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:6c7f298ff65e297c7172a4b883daceeccc204575fbee5d74f16f58f02578a261
+input_hash: sha256:e210a7c71fb8078a7cb25e18fa9756e691114d709f3cbd00687fe4a386afdccb
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -618,129 +618,103 @@ articles:
           - source_ref: note:20261012/benchmark-summary.md
             locator:
               path: benchmark-summary.md
-              start_line: 16
-              end_line: 16
-            content_digest: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-      - id: setup
-        references:
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 5
-              end_line: 15
-            content_digest: sha256:b896e775251fbf67f99fabfe9cbf0283c4cc6faed6c53369ad4e80844bf2c227
-      - id: questions
-        references:
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 19
-              end_line: 30
-            content_digest: sha256:50af967c09474d29677b86a7158c857201b2a9222d5fbbc293b2c057f1013345
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 32
-              end_line: 38
-            content_digest: sha256:1c3b291fd349347bf6bf037efea02817fe522cb912c6356d8ec0eaded55a0662
-      - id: common
-        references:
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 51
-              end_line: 57
-            content_digest: sha256:6cc1ed33557828087a172b65bf1dbe0b489474767c7929b60d3a6086da068f04
-      - id: same-model
-        references:
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 59
-              end_line: 67
-            content_digest: sha256:ccaf124db344d5aa99ae7e41780c8b88380ab6b900baa73f484f462a9fffad89
-      - id: models
-        references:
-          - source_ref: note:20261013/evaluation-method.md
-            locator:
-              path: evaluation-method.md
-              start_line: 147
-              end_line: 162
-            content_digest: sha256:78e7588aeb7cb61c244ed9f04610a3bafd48af656bab4ad147531f86df1adcbb
-      - id: muse-source-graph
-        references:
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 84
-              end_line: 100
-            content_digest: sha256:acd2ac4dc50cb5fda2ea8993daf8d3d697ee89a8620db9d6daea01ec19dfacd0
-      - id: observations
-        references:
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 69
-              end_line: 74
-            content_digest: sha256:f8ddbc9ba219b69f7ce4466d5be0856f3174452f4bc404b4bf01bd586f339299
-      - id: attribution
-        references:
-          - source_ref: note:20261013/evaluation-method.md
-            locator:
-              path: evaluation-method.md
-              start_line: 164
-              end_line: 170
-            content_digest: sha256:160d718629c61905548c4c272414eeb9089a1188f31c707b9dca5478cd6c4817
-      - id: startup-estimate
-        references:
-          - source_ref: note:20261013/evaluation-method.md
-            locator:
-              path: evaluation-method.md
-              start_line: 170
-              end_line: 170
-            content_digest: sha256:7c3e3b8d33d918045b17ab606ec1f038e22d80597d9531e28fb023f21f8f3c62
-          - source_ref: note:20261013/evaluation-method.md
-            locator:
-              path: evaluation-method.md
-              start_line: 125
-              end_line: 125
-            content_digest: sha256:f160f231925ccf6e0d8dec1fd0bc2f7d335dd3d9c6916af136cb0b5d95af0250
-      - id: priorities
-        references:
-          - source_ref: note:20261013/evaluation-method.md
-            locator:
-              path: evaluation-method.md
-              start_line: 172
-              end_line: 172
-            content_digest: sha256:64f902e34761da20df02e6c1f6865e08c5a373562f61e3924458e537343e7137
-      - id: cost
-        references:
+              start_line: 106
+              end_line: 117
+            content_digest: sha256:837b01b29d96fb94004a4ad66dbd5cca799aaafc0783e82519a171e8dd3704c8
           - source_ref: note:20261012/benchmark-summary.md
             locator:
               path: benchmark-summary.md
               start_line: 81
               end_line: 81
             content_digest: sha256:b20eb3e906498a233b9841de97ca7584b042229825a007e3f95546361f40559b
+      - id: setup
+        references:
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 5
+              end_line: 7
+            content_digest: sha256:c59c823c8380dd513343d92e36bc989d0aeabb50179e289d52b17e52ad04496a
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 19
+              end_line: 38
+            content_digest: sha256:93a9e2d7fca41221ca8af4358d1721a391138b2a55e71cbc6ed09fa7fed3afd2
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 104
+              end_line: 120
+            content_digest: sha256:07890bd9a6a737fc60d4c70c6e434dbaceb99fd9fecfa82a7790a8f4c161b6e2
+      - id: retrieval
+        references:
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 51
+              end_line: 63
+            content_digest: sha256:a70e99829d6c30cfae4f97edbed460461d535bba69fc587d771ffc25d481761c
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 69
+              end_line: 74
+            content_digest: sha256:f8ddbc9ba219b69f7ce4466d5be0856f3174452f4bc404b4bf01bd586f339299
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 106
+              end_line: 114
+            content_digest: sha256:52ec53092c0a8b4f7ea398785ff643cba506b2c7577af0307b04e032ebd5ebe7
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 136
+              end_line: 143
+            content_digest: sha256:fbf556f0b65b44292121dc956ae708b347e1b2df26d8cffbd9f20472dea12760
+      - id: models
+        references:
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 106
+              end_line: 134
+            content_digest: sha256:f6d75b80670485cff07b6993e4506c316bc660d58860b765847cce749708cd5b
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 147
+              end_line: 162
+            content_digest: sha256:78e7588aeb7cb61c244ed9f04610a3bafd48af656bab4ad147531f86df1adcbb
+      - id: attribution
+        references:
+          - source_ref: note:20261013/evaluation-method.md
+            locator:
+              path: evaluation-method.md
+              start_line: 164
+              end_line: 172
+            content_digest: sha256:295bdb469fbb19d52ebe140f7e918145df5cad8ac964e0247427813cf7a5a65e
       - id: limits
         references:
           - source_ref: note:20261012/benchmark-summary.md
             locator:
               path: benchmark-summary.md
               start_line: 76
-              end_line: 80
-            content_digest: sha256:55333c6130b608b7b27164f0f7ac6f42d3aba2bcf0642a6e0ff8f798cc6fc793
+              end_line: 81
+            content_digest: sha256:67cdb793d4feb1521d351a54c4df8b79e0d708df2b75cadb6f0c99ce8f80c5d6
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 119
+              end_line: 122
+            content_digest: sha256:a157bde12ed49381f7c63b67dbc598f054cbb67cae81f5ce32c46ee1110a2d7b
           - source_ref: note:20261012/compression.md
             locator:
               path: compression.md
               start_line: 21
-              end_line: 27
-            content_digest: sha256:92dc2443abd1412da35b72703e1c5f65529393b2ad1a037399cdd4ee929bf2ef
-          - source_ref: note:20261013/evaluation-method.md
-            locator:
-              path: evaluation-method.md
-              start_line: 171
-              end_line: 171
-            content_digest: sha256:f94ba1ab3bcb8bb01da47b82e6a16e364c3ef8430e32dd4af23e4831f98fc296
+              end_line: 28
+            content_digest: sha256:e83f3eb726a7732d719c6f7bdc2e44db00b812aff9c3fdfb5ccbcdcc8930dcc9
   - article_id: 82e8f37d-332c-47d5-bcd5-ab52653b9cd6
     path: architecture/context/knowledge-lifecycle.md
     collection: architecture
@@ -6871,6 +6845,12 @@ articles:
               start_line: 39
               end_line: 45
             content_digest: sha256:92c71622eea80e547a10acd588f4b1daf588feb4fe3aae333fe3c960c8ca501b
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 145
+              end_line: 148
+            content_digest: sha256:a8b5ba0ae0d239ea5176d6523f4f26a0ebc17b356aa2d756f964172954817fbf
       - id: roles
         references:
           - source_ref: note:20261012/usage-practices.md
@@ -6885,14 +6865,46 @@ articles:
               start_line: 84
               end_line: 100
             content_digest: sha256:acd2ac4dc50cb5fda2ea8993daf8d3d697ee89a8620db9d6daea01ec19dfacd0
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 106
+              end_line: 117
+            content_digest: sha256:837b01b29d96fb94004a4ad66dbd5cca799aaafc0783e82519a171e8dd3704c8
       - id: evidence
         references:
           - source_ref: note:20261012/benchmark-summary.md
             locator:
               path: benchmark-summary.md
-              start_line: 84
+              start_line: 106
+              end_line: 122
+            content_digest: sha256:ccf74021aa8d139a8d3857ab719fb7a725e50e97984534edff031c06245d6677
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 124
+              end_line: 134
+            content_digest: sha256:6ddc5206eb1663b6680e8970b357ca75265c8a97bf6f4e0193ce46fcfe643915
+      - id: try
+        references:
+          - source_ref: note:20261012/usage-practices.md
+            locator:
+              path: usage-practices.md
+              start_line: 73
+              end_line: 75
+            content_digest: sha256:3b7ff2bda69b7b81ffd37be1f7a3a97a09e00098352bd5fc70f2689230abe34e
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 98
               end_line: 100
-            content_digest: sha256:acd2ac4dc50cb5fda2ea8993daf8d3d697ee89a8620db9d6daea01ec19dfacd0
+            content_digest: sha256:399c4d6422b0efcc27429e2f6c14eece873f319dcba5512b38a2292d8fe27112
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 147
+              end_line: 147
+            content_digest: sha256:43a60ab172d9d09af168ecf5c147dbcfd63c9404829fdd0cf33046b9dd0b51db
   - article_id: f211b25b-8b5f-4134-8d16-36aabef6dd0e
     path: sop/practices/cold-start.md
     collection: sop
@@ -7306,6 +7318,12 @@ articles:
               start_line: 143
               end_line: 156
             content_digest: sha256:4318fee744a07cf14368bfae5080c3e8f97108b692ed32eddab7a54f94b6cdf3
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:57eca29155dfebc5bb5156ea159d1e73b434844825cef1d1ef01300295d7739a
       - id: ask
         references:
           - source_ref: repo:20261012/context
@@ -7328,6 +7346,12 @@ articles:
               start_line: 33
               end_line: 57
             content_digest: sha256:58712baec2e1db38ca03e5158602fff5918bef229f53a637e24b14218e0acf51
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:57eca29155dfebc5bb5156ea159d1e73b434844825cef1d1ef01300295d7739a
       - id: good-questions
         references: []
       - id: search
@@ -7378,6 +7402,103 @@ articles:
               start_line: 462
               end_line: 471
             content_digest: sha256:41e34733db3cf8043065d6c31078f6b2b56a490fce09903497a58fee23bd4680
+  - article_id: 55ac465e-f3c9-4d32-849d-ac08e30ddfa9
+    path: sop/querying-knowledge/querying-via-mcp.md
+    collection: sop
+    visibility: public
+    sections:
+      - id: goal
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:57eca29155dfebc5bb5156ea159d1e73b434844825cef1d1ef01300295d7739a
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 30
+              end_line: 37
+            content_digest: sha256:62a5d4a521785e3540fafa0411ac6bd4c06b1c90869d9d178efa04e325653db4
+      - id: configure
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 11
+              end_line: 25
+            content_digest: sha256:812d32d254720edd9f88ffca2be00c28e358263dcae4d9475321099a80025da8
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/httpserver/runtime.go
+              start_line: 183
+              end_line: 183
+            content_digest: sha256:2dd2f1ec76d99f2b9bdaedfb2a9880abf02e27a1a3bf149457fb176804f59d69
+      - id: check
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 26
+              end_line: 26
+            content_digest: sha256:7618132dd03edfe4d2449fa8f7e10366d6c109c26f61b609c960e7518c1ced9f
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 30
+              end_line: 35
+            content_digest: sha256:8e301dd5bdd7f136cd3c60ea7f5cfe9e278695c5250f84232c3bcfec309bd8f9
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/mcpserver/server.go
+              start_line: 30
+              end_line: 34
+            content_digest: sha256:45fabf03647e08d65e6363df5e1a6fa7fba3be29309a1e9ef6393a3322dce0a0
+      - id: prompt
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 39
+              end_line: 74
+            content_digest: sha256:2aa4f80c7b762c7f914badfcabf727a61e60d5bf6ccf3bde6c890db236967526
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 27
+              end_line: 28
+            content_digest: sha256:283a50711bbfc4737deb61b81ae05e278ee1f729d2ad8845065cb6ad3dfd7653
+      - id: keep
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 76
+              end_line: 78
+            content_digest: sha256:2af5c7e41e60f0aca3aea53f4b3648fa300c5c91842122c10fd2eb802d86adfa
+      - id: try
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 27
+              end_line: 28
+            content_digest: sha256:283a50711bbfc4737deb61b81ae05e278ee1f729d2ad8845065cb6ad3dfd7653
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 37
+              end_line: 37
+            content_digest: sha256:19246e2e63cf02502007ac75cbf41a7307b9dc17185d0bc4964aacdc9c134673
+      - id: prerequisite
+        references:
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 80
+              end_line: 82
+            content_digest: sha256:3f3f55b895a73b057a2c25bec764f400232a89f316e07fc80407d1a915561181
   - article_id: 01b7ffc6-89eb-4581-980e-264943d58736
     path: sop/querying-knowledge/reading-code-evidence-remotely.md
     collection: sop
@@ -8673,6 +8794,12 @@ articles:
               start_line: 40
               end_line: 42
             content_digest: sha256:28ceb0ef086ce3f018cc0c6f1cded04a4db03410a33cb102e3d376ef3dcdaa46
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 30
+              end_line: 37
+            content_digest: sha256:62a5d4a521785e3540fafa0411ac6bd4c06b1c90869d9d178efa04e325653db4
       - id: problem
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8721,6 +8848,12 @@ articles:
               start_line: 1
               end_line: 12
             content_digest: sha256:a8392271bf4fc6bdae259ec85937f0bc77e4bc77cb29a0e0b169add375c184ec
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:57eca29155dfebc5bb5156ea159d1e73b434844825cef1d1ef01300295d7739a
       - id: when
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8749,6 +8882,12 @@ articles:
               start_line: 1
               end_line: 3
             content_digest: sha256:e42375db8f6d99d933f72200a61092ed83bb143dd963c23792e0992ac5421118
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:57eca29155dfebc5bb5156ea159d1e73b434844825cef1d1ef01300295d7739a
       - id: next
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8757,6 +8896,12 @@ articles:
               start_line: 95
               end_line: 113
             content_digest: sha256:1a072519ef64e755aaa9172fb07051242dbf8af0703204719357afcd7f7787de
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 5
+              end_line: 9
+            content_digest: sha256:57eca29155dfebc5bb5156ea159d1e73b434844825cef1d1ef01300295d7739a
   - article_id: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
     path: sop/source-graph/operations.md
     collection: sop
@@ -9142,6 +9287,18 @@ articles:
               start_line: 19
               end_line: 31
             content_digest: sha256:67e5305f252e584a1db596aadfaace824ca80ddb0f8bb3d003e57e00d8faee8d
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 30
+              end_line: 37
+            content_digest: sha256:62a5d4a521785e3540fafa0411ac6bd4c06b1c90869d9d178efa04e325653db4
+          - source_ref: note:20261021/mcp-query.md
+            locator:
+              path: mcp-query.md
+              start_line: 13
+              end_line: 24
+            content_digest: sha256:a0f55ec34716cb6aeb63f9630c30e4de89a64bd0665a73a6377c2d70e4eae5fe
       - id: backup
         references:
           - source_ref: repo:20261012/sourcegraph

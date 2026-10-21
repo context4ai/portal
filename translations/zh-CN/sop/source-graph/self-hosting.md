@@ -5,8 +5,8 @@ description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，
 translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
-  source_digest: 9cada35e2f9713fd53dd971af2628fd8bc44767a4b28b31241f3094fcb43a5e2
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 4ba1ec7697f757e440863f49aa5635eda40ba0e9e0d878b8e93137c352ae61b7
+  translated_at: 2026-10-21T12:22:47.975Z
 ---
 
 # 自托管
@@ -125,12 +125,19 @@ fly deploy --remote-only --ha=false
 | Portal | nginx 提供首页、Context 文档站和 `llms.txt`，并反向代理 `/sourcegraph/` | 一个共享 CPU，256 MB，关闭自动停止 |
 | Source Graph | 由仓库的 `fly.toml` 部署的单个实例 | 一个共享 CPU，1 GB，关闭自动停止，卷 `sourcegraph_data` 挂载在 `/data`，SQLite，开启演示数据 |
 
-Portal 通过 Fly 私有网络把整个 `/sourcegraph/` 前缀转发给 Source Graph App，因此实例可以在站点自身的域名下访问，无需再经过一次公网跳转。同一个实例因此有两个公开入口：
+Portal 通过 Fly 私有网络把整个 `/sourcegraph/` 前缀转发给 Source Graph App，因此实例可以在站点自身的域名 [https://context4ai.org/sourcegraph/](https://context4ai.org/sourcegraph/) 下访问，无需再经过一次公网跳转。它也可以通过两个 App 各自的 Fly 地址访问：
 
 - [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/)，经由 Portal
 - [https://context4ai-sourcegraph.fly.dev/sourcegraph/](https://context4ai-sourcegraph.fly.dev/sourcegraph/)，直接访问 Source Graph App
 
-两个入口下的 MCP 端点都是 `/sourcegraph/mcp`。演示实例以匿名只读方式提供 `context4ai/context` 和 `context4ai/sourcegraph`，每 60 分钟同步一次 `main` 分支。Agent Graph 没有在其中登记，因此知识服务改为在本地读取它。演示仓库自身的流水线会在 `main` 构建成功后部署到 Fly。
+每个入口下的 MCP 端点都是 `/sourcegraph/mcp`。演示实例以匿名只读方式提供四个仓库，每个都跟随各自的 `main` 分支：
+
+| 仓库 | 来源 |
+| --- | --- |
+| `context4ai/context`、`context4ai/sourcegraph` | 由演示数据自动登记 |
+| `context4ai/portal`、`context4ai/agent-graph` | 由维护者登记 |
+
+`context4ai/portal` 正是本文档站的知识工作区，所以演示实例把知识和它引用的代码放在了一起：Agent 可以远程读取两者，即使只用普通的 MCP 客户端也可以，做法见 [在 Agent 中通过 MCP 查询](../querying-knowledge/querying-via-mcp.md)。演示仓库自身的流水线会在 `main` 构建成功后部署到 Fly。
 
 如果把 Source Graph 放在其他站点之后，请代理整个前缀，并保留查询字符串、Cookie 和授权信息，保持配置的外部源地址不变，且不要缓存登录、API 或 MCP 响应。
 <!-- /context:section -->
