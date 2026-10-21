@@ -2,10 +2,10 @@
 title: Knowledge Retrieval Benchmark
 description: How well Agents answer real developer questions with an LLM Wiki,
   with Context, and with Context plus Source Graph — quality, time, tool calls,
-  cost, a same-model Source Graph run, a three-model comparison, where errors
-  and overhead came from, and the limits of the comparison.
+  cost, a same-model Source Graph run, model comparisons, where errors and
+  overhead came from, and the limits of the comparison.
 type: Guide
-timestamp: 2026-10-19T18:55:52.431Z
+timestamp: 2026-10-21T09:49:19.878Z
 ---
 # Knowledge Retrieval Benchmark
 
@@ -49,7 +49,7 @@ Three configurations are compared in the main tables:
 | Context | A Context knowledge package; the Agent retrieves locally |
 | Context + Source Graph | A Context knowledge package; code is read remotely at a pinned version through Source Graph |
 
-Two further runs used the same Context knowledge with local retrieval and a different model: Claude Opus 5.5, which separates the effect of Source Graph from the model change (see "Source Graph with the same model" below), and Grok 4.7. With the first Context run, they make up the three-model comparison further down. That is five runs in all.
+Two further runs used the same Context knowledge with local retrieval and a different model: Claude Opus 5.5, which separates the effect of Source Graph from the model change (see "Source Graph with the same model" below), and Grok 4.7. With the first Context run, they make up the three-model comparison further down. Those are the five earlier runs. The later Muse Wonder comparison below adds a model candidate with Source Graph; it does not replace the earlier local-retrieval results.
 
 The benchmark measures **answering** with deployed knowledge. Knowledge production — quality, time, review effort and cost of producing and updating knowledge — has not been benchmarked yet.
 <!-- /context:section -->
@@ -57,7 +57,7 @@ The benchmark measures **answering** with deployed knowledge. Knowledge producti
 <!-- context:section id="questions" -->
 ## Questions and scoring
 
-The 24 questions came from real developer questions and were frozen before any run. Each configuration answered each question once.
+The 24 questions came from real developer questions and were frozen before any run. Each of the earlier configurations answered each question once; the later Muse comparison is reported separately below.
 
 | Question type | Count |
 | --- | ---: |
@@ -113,6 +113,24 @@ With the same Context knowledge package on a managed Agent platform, the same 24
 - **The same conclusion can come by very different paths.** On one question both models were correct: one took 493.7 s and 75 calls, the other 176.4 s and 18.
 <!-- /context:section -->
 
+<!-- context:section id="muse-source-graph" -->
+## Muse Wonder and Opus with Source Graph
+
+**In this 24-question developer knowledge-Q&A comparison, Muse Wonder + Source Graph and Claude Opus 5.5 + Source Graph performed at a similar overall level: Muse fully solved one more question, while Opus responded slightly faster.**
+
+| Metric | Muse Wonder + Source Graph | Claude Opus 5.5 + Source Graph |
+| --- | ---: | ---: |
+| Fully solved | **100% (24/24)** | 95.8% (23/24) |
+| Mean answer time | 106.9 s | **93.2 s** |
+| P90 time | 135.0 s | **123.0 s** |
+| Mean tool calls | 11.7 | 7.8 |
+| Estimated cost per question | $0.210 | $0.272 |
+
+Muse averaged about **14 seconds (15%) longer** per answer, while fully meeting the original requests in this run. It is a candidate for this kind of knowledge retrieval and code Q&A. Its measured usage averaged **388,000 tokens per question**; the cost figures are estimates for reference.
+
+The conclusion is limited to these 24 questions. Runtime and configuration differ, so this does not establish general model equivalence, stability across workloads or an actual cost advantage. Evaluate candidates on your own questions, checking answer quality, mean and P90 time, and tool calls together.
+<!-- /context:section -->
+
 <!-- context:section id="observations" -->
 ## What the traces showed
 
@@ -164,7 +182,7 @@ Per question, tokens fell from about 567,000 with the LLM Wiki to about 63,000 w
 <!-- context:section id="limits" -->
 ## Limits of this comparison
 
-- Each question was run once, so stability cannot be inferred.
+- Each question in the earlier runs was run once. Neither those runs nor the later 24-question Muse comparison establish stability across workloads.
 - These are whole configurations: LLM Wiki and Context ran in different Agent environments with different system prompts; Context + Source Graph also changed the model and Context version, the run date, concurrency and timeout limits, and is a regression on already-seen questions with a single grader.
 - End-to-end time includes environment start-up and polling granularity, not quota queuing.
 - Cost is an estimate, as described above.
