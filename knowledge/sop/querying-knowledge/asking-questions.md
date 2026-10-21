@@ -4,7 +4,7 @@ description: Ask your Agent questions against a knowledge workspace or an
   installed package, phrase them so answers are precise, and get answers that
   cite where each claim comes from.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-21T12:18:51.603Z
 ---
 # Asking Questions
 
@@ -19,6 +19,8 @@ flowchart LR
   s --> a
   a -.->|knowledge missing or stale| u["Suggest an update<br/>starts only if you accept"]
 ```
+
+This page shows how to ask, which of three ways to reach the knowledge suits you, how to phrase questions and what to expect in an answer.
 <!-- /context:section -->
 
 <!-- context:section id="ask" -->
@@ -33,14 +35,17 @@ Asking never changes anything: it does not touch your sources, approved pages, t
 <!-- /context:section -->
 
 <!-- context:section id="modes" -->
-## Asking in a workspace or from a package
+## Three ways to reach the knowledge
 
-You can ask in two places:
+| Where you ask | What your Agent needs | Best when |
+| --- | --- | --- |
+| **In a knowledge workspace** | Context installed, and the workspace folder | You produce or maintain the knowledge |
+| **From a package** | Context installed, and the package you were given | You use knowledge someone else maintains; see [Using a Package in Your Agent](using-packages-in-agents.md) |
+| **Through the Source Graph MCP** | Only an MCP connection and a retrieval prompt | You want answers from a team's knowledge and code with nothing to install; see [Querying Through MCP in Your Agent](querying-via-mcp.md) |
 
-- **In a knowledge workspace** — the folder where the knowledge is produced. The Agent reads the approved pages there and, when needed, the sources they were written from.
-- **From an installed package** — no workspace is needed. The Agent reads the package you installed or were given, and can still follow its source citations back to the original documents and code. See [Using a Package in Your Agent](using-packages-in-agents.md).
+In the first two, the query Skill does the work described on this page: in a workspace it reads the approved pages and, when needed, the sources they were written from; from a package it reads the package and can still follow its citations back to the original documents and code. Through the MCP, your own prompt sets the same priorities — knowledge first, code when needed, sources always — but without the Skill's navigation or update suggestions.
 
-Which one is read first, and whether code is read through a remote read-only service or local checkouts, can be set by the host or the Bot; see [Building a Knowledge Service](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot). These settings change the order and the access path, not what counts as evidence. To read code without local checkouts, see [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
+When the query Skill is installed, the host or the Bot can set which material is read first and whether code is read through a remote read-only service or local checkouts; see [Building a Knowledge Service](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot). These settings change the order and the access path, not what counts as evidence. To read cited code without local checkouts, see [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
 <!-- /context:section -->
 
 <!-- context:section id="good-questions" -->

@@ -4,8 +4,8 @@ description: 针对知识工作区或已安装的知识包向 Agent 提问，学
 translation:
   locale: zh-CN
   artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
-  source_digest: 0ca962e8311b9a57985a9cf3c224c9c734936ed5c892bc33bb2c091bd43aff26
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: cafc59421d829ffa8b2d166c196e1c1cfa87def826710d6f517e410e5ba97972
+  translated_at: 2026-10-21T12:22:47.975Z
 ---
 
 # 提问
@@ -21,6 +21,8 @@ flowchart LR
   s --> a
   a -.->|知识缺失或过时| u["建议更新<br/>仅在你接受后开始"]
 ```
+
+本页介绍如何提问、三种接触知识的方式分别适合什么情况、怎样把问题问清楚，以及回答会是什么样子。
 <!-- /context:section -->
 
 <!-- context:section id="ask" -->
@@ -35,14 +37,17 @@ pending？请引用相关代码。
 <!-- /context:section -->
 
 <!-- context:section id="modes" -->
-## 在知识工作区中提问，或基于知识包提问
+## 三种接触知识的方式
 
-你可以在两个地方提问：
+| 在哪里提问 | Agent 需要什么 | 适合的情况 |
+| --- | --- | --- |
+| **在知识工作区中** | 安装 Context，并有知识工作区目录 | 你负责生产或维护这份知识 |
+| **基于知识包** | 安装 Context，并有别人提供的知识包 | 你使用别人维护的知识；参见 [在 Agent 中使用知识包](using-packages-in-agents.md) |
+| **通过 Source Graph MCP** | 只需一个 MCP 连接和一段检索提示词 | 你想基于某个团队的知识和代码得到回答，又不想安装任何东西；参见 [在 Agent 中通过 MCP 查询](querying-via-mcp.md) |
 
-- **在知识工作区中**——即生产知识的文件夹。Agent 读取其中已批准的页面，必要时再读取这些页面所依据的来源。
-- **基于已安装的知识包**——不需要知识工作区。Agent 读取你安装或获得的知识包，并且仍然可以沿着其中的来源引用回到原始文档和代码。参见 [在 Agent 中使用知识包](using-packages-in-agents.md)。
+前两种方式由查询 Skill 完成本页介绍的工作：在知识工作区中，它读取已批准的页面，必要时再读这些页面依据的来源；基于知识包时，它读取知识包，仍然可以沿着其中的引用回到原始文档和代码。通过 MCP 时，由你自己的提示词设定同样的优先级——先读知识、需要时再查代码、始终给出出处——但没有查询 Skill 的导航和更新建议。
 
-先读哪一个，以及代码是通过远程只读服务读取还是从本地检出读取，可以由宿主或 Bot 设置；参见 [构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot)。这些设置改变的是顺序和访问路径，而不是什么算作证据。要在没有本地检出的情况下读取代码，参见 [远程读取代码证据](reading-code-evidence-remotely.md)。
+安装了查询 Skill 时，宿主或 Bot 可以设置先读哪些材料，以及代码是通过远程只读服务读取还是从本地检出读取；参见 [构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot)。这些设置改变的是顺序和访问路径，而不是什么算作证据。要在没有本地检出的情况下读取所引用的代码，参见 [远程读取代码证据](reading-code-evidence-remotely.md)。
 <!-- /context:section -->
 
 <!-- context:section id="good-questions" -->
