@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:fc71285f68538fe9fce7a404b1e9fd45af3144f0189092d66a9e9af25e27ec34
+input_hash: sha256:6c7f298ff65e297c7172a4b883daceeccc204575fbee5d74f16f58f02578a261
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -667,6 +667,14 @@ articles:
               start_line: 147
               end_line: 162
             content_digest: sha256:78e7588aeb7cb61c244ed9f04610a3bafd48af656bab4ad147531f86df1adcbb
+      - id: muse-source-graph
+        references:
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 84
+              end_line: 100
+            content_digest: sha256:acd2ac4dc50cb5fda2ea8993daf8d3d697ee89a8620db9d6daea01ec19dfacd0
       - id: observations
         references:
           - source_ref: note:20261012/benchmark-summary.md
@@ -6871,20 +6879,20 @@ articles:
               start_line: 39
               end_line: 44
             content_digest: sha256:f878be80e4f8d23b722f7552b5ea376280dd33baf13c2c8c3b10feb8ebd384ad
+          - source_ref: note:20261012/benchmark-summary.md
+            locator:
+              path: benchmark-summary.md
+              start_line: 84
+              end_line: 100
+            content_digest: sha256:acd2ac4dc50cb5fda2ea8993daf8d3d697ee89a8620db9d6daea01ec19dfacd0
       - id: evidence
         references:
           - source_ref: note:20261012/benchmark-summary.md
             locator:
               path: benchmark-summary.md
-              start_line: 65
-              end_line: 67
-            content_digest: sha256:e44db93315e74dafcb0a23082038f391f5cbf8a26a20837db683f502a951c1fc
-          - source_ref: note:20261012/benchmark-summary.md
-            locator:
-              path: benchmark-summary.md
-              start_line: 76
-              end_line: 79
-            content_digest: sha256:8ee3b4048138fb9bcabf27bd2bfefb47e2945e70262a46eaf1a84965a84ac0d5
+              start_line: 84
+              end_line: 100
+            content_digest: sha256:acd2ac4dc50cb5fda2ea8993daf8d3d697ee89a8620db9d6daea01ec19dfacd0
   - article_id: f211b25b-8b5f-4134-8d16-36aabef6dd0e
     path: sop/practices/cold-start.md
     collection: sop
