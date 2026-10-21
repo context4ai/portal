@@ -4,7 +4,7 @@ description: Run your own Source Graph instance with Docker or from source,
   choose between one instance and sharded instances, pick a database, deploy on
   Fly.io and back up what cannot be rebuilt.
 type: Guide
-timestamp: 2026-10-19T18:55:52.431Z
+timestamp: 2026-10-21T12:18:51.603Z
 ---
 # Self-Hosting
 
@@ -122,12 +122,19 @@ The Source Graph behind this documentation site is deployed this way. It is a de
 | Portal | nginx serving the home page, the Context documentation site and `llms.txt`, and reverse-proxying `/sourcegraph/` | One shared CPU, 256 MB, auto-stop off |
 | Source Graph | One instance deployed from the repository's `fly.toml` | One shared CPU, 1 GB, auto-stop off, volume `sourcegraph_data` at `/data`, SQLite, demo seeding on |
 
-The Portal forwards the whole `/sourcegraph/` prefix to the Source Graph App over the Fly private network, so the instance is reachable under the site's own domain without a second public hop. The same instance therefore has two public entrances:
+The Portal forwards the whole `/sourcegraph/` prefix to the Source Graph App over the Fly private network, so the instance is reachable under the site's own domain, [https://context4ai.org/sourcegraph/](https://context4ai.org/sourcegraph/), without a second public hop. It is also reachable through each App's own Fly address:
 
 - [https://context4ai-portal.fly.dev/sourcegraph/](https://context4ai-portal.fly.dev/sourcegraph/), through the Portal
 - [https://context4ai-sourcegraph.fly.dev/sourcegraph/](https://context4ai-sourcegraph.fly.dev/sourcegraph/), on the Source Graph App itself
 
-The MCP endpoint is `/sourcegraph/mcp` under either entrance. The demo serves `context4ai/context` and `context4ai/sourcegraph` anonymously and read-only, synchronizing the `main` branch every 60 minutes. Agent Graph is not registered there, so the knowledge service reads it locally instead. The demo repository's own pipeline deploys to Fly after a successful build of `main`.
+The MCP endpoint is `/sourcegraph/mcp` under every entrance. The demo serves four repositories anonymously and read-only, each following its `main` branch:
+
+| Repository | How it got there |
+| --- | --- |
+| `context4ai/context`, `context4ai/sourcegraph` | Registered by demo seeding |
+| `context4ai/portal`, `context4ai/agent-graph` | Registered by the maintainers |
+
+Because `context4ai/portal` is this site's knowledge workspace, the demo serves the knowledge and the code it cites side by side: Agents can read both remotely, including through a plain MCP client as described in [Querying Through MCP in Your Agent](../querying-knowledge/querying-via-mcp.md). The demo repository's own pipeline deploys to Fly after a successful build of `main`.
 
 If you put Source Graph behind another site, proxy the whole prefix while preserving query strings, cookies and authorization, keep the configured external origin fixed, and do not cache sign-in, API or MCP responses.
 <!-- /context:section -->

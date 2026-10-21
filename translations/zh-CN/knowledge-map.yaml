@@ -132,6 +132,9 @@ entries:
   guides-querying/asking-questions:
     title: 查询知识
     source_digest: c986f0d7e37d4c8e65593f003ae3fd7c4a86caa18bbcbd7705757187bf13eea1
+  guides-querying/querying-via-mcp:
+    title: 在 Agent 中通过 MCP 查询
+    source_digest: e5173455403bd581f8a9414e477827e1f3affa26a54eb49d29ba2f41b857619f
   guides-querying/using-packages-in-agents:
     title: 在 Agent 中使用知识包
     source_digest: aba5b76a4c761a287fbbed1ff4d17e82450458c22b44202c85bca7ef07e2c2aa

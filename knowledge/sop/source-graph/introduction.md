@@ -4,14 +4,14 @@ description: What Context Source Graph is, the problem it solves for AI Agents
   reading code, why it is optional for Context users, when it is worth
   connecting and how to start with the live demo or your own instance.
 type: Guide
-timestamp: 2026-10-19T18:55:52.431Z
+timestamp: 2026-10-21T12:18:51.603Z
 ---
 # What Is Source Graph
 
 <!-- context:section id="purpose" -->
 **Context Source Graph lets people, scripts and AI Agents search and read code at an exact Git commit without cloning the repository.** Answers come back in milliseconds from a prepared index, and every result names the commit it was read from, so the same question gets the same evidence.
 
-It is open source and self-hosted. A public, read-only [live demo](https://context4ai.org/sourcegraph/) indexes `context4ai/context` and `context4ai/sourcegraph`. The guides in this section cover connecting to an instance, using it with Context, and — for administrators — registering repositories, self-hosting, securing and operating it.
+It is open source and self-hosted. A public, read-only [live demo](https://context4ai.org/sourcegraph/) serves this site's own Context knowledge workspace, `context4ai/portal`, together with the source code of `context4ai/context`, `context4ai/sourcegraph` and `context4ai/agent-graph`, so you can try both code search and knowledge-first questions right away. The guides in this section cover connecting to an instance, using it with Context, and — for administrators — registering repositories, self-hosting, securing and operating it.
 <!-- /context:section -->
 
 <!-- context:section id="problem" -->
@@ -32,9 +32,9 @@ Source Graph moves that work ahead of the question: it keeps each registered rep
 <!-- /context:section -->
 
 <!-- context:section id="context" -->
-## Do Context users need it?
-
 No — Source Graph is **optional** for Context. When your Agent answers from Context knowledge, it can confirm the answer against the original code either by reading it locally, from a shallow partial clone of the cited commit, or, when Source Graph is connected, by reading it remotely at that commit without clone time. Connecting it can also return, with each knowledge page the Agent reads, the sources each section was written from. [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md) explains how to turn that on and what you get.
+
+Source Graph also works without Context. When an instance holds a team's knowledge repository as well as its code, any MCP client can answer from both with nothing but a retrieval prompt; see [Querying Through MCP in Your Agent](../querying-knowledge/querying-via-mcp.md).
 <!-- /context:section -->
 
 <!-- context:section id="when" -->
@@ -49,7 +49,7 @@ Source Graph is a text search and reading service at fixed revisions. Each insta
 ## Start in three steps
 
 1. **Try the live demo.** Open [https://context4ai.org/sourcegraph/](https://context4ai.org/sourcegraph/) and search or read code in the browser; no account is needed.
-2. **Connect your Agent.** Open the site's **Connect** page and copy the configuration for your Agent host. [Connecting](connecting.md) covers MCP, HTTP, the CLI and credentials.
+2. **Connect your Agent.** Open the site's **Connect** page and copy the configuration for your Agent host. [Connecting](connecting.md) covers MCP, HTTP, the CLI and credentials. To ask questions of this site's knowledge straight away, follow [Querying Through MCP in Your Agent](../querying-knowledge/querying-via-mcp.md).
 3. **Run your own instance for your repositories.** Start it with Docker, add Google or GitHub sign-in, and the first verified user becomes the administrator who registers repositories. [Self-Hosting](self-hosting.md) and [Registering Repositories](registering-repositories.md) walk through both.
 <!-- /context:section -->
 
@@ -60,6 +60,7 @@ Source Graph is a text search and reading service at fixed revisions. Each insta
 | --- | --- |
 | Connect your Agent, a script or the CLI | [Connecting](connecting.md) |
 | Let Context read cited code without cloning | [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md) |
+| Answer from a team's knowledge and code in any MCP client | [Querying Through MCP in Your Agent](../querying-knowledge/querying-via-mcp.md) |
 | Add repositories and monorepo path groups | [Registering Repositories](registering-repositories.md) |
 | Deploy and configure your own instance | [Self-Hosting](self-hosting.md) |
 | Set up sign-in and decide who can read | [Authentication and Access Control](authentication-and-access-control.md) |
