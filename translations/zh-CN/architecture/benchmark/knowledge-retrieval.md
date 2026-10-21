@@ -5,8 +5,8 @@ description: 分别使用 LLM Wiki、Context 以及 Context 加 Source Graph 时
 translation:
   locale: zh-CN
   artifact_ref: 723a14a4-848e-4ff3-9734-4c14552f8703
-  source_digest: a8b1af130be51a06c7bb45685a4241c97b92389047a194018b3f0ae55baba63f
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 35f40e22ebe7a9c43e0d7c31b27b73504c2f4eb5de258b781ade4fc6ba624ff3
+  translated_at: 2026-10-21T09:51:24.230Z
 ---
 
 # 知识检索测评
@@ -51,7 +51,7 @@ LLM Wiki 和 Context 使用同一模型，可以直接比较。第三种配置�
 | Context | Context 知识包；Agent 在本地检索 |
 | Context + Source Graph | Context 知识包；通过 Source Graph 按固定版本远程读取代码 |
 
-另有两次运行使用同样的 Context 知识和本地检索，但换了模型：一次是 Claude Opus 5.5，用于把 Source Graph 的作用与模型更换区分开（见下文“同一模型下的 Source Graph”）；另一次是 Grok 4.7。它们与第一次 Context 运行一起构成下文的三模型对比。总共五次运行。
+另有两次运行使用同样的 Context 知识和本地检索，但换了模型：一次是 Claude Opus 5.5，用于把 Source Graph 的作用与模型更换区分开（见下文“同一模型下的 Source Graph”）；另一次是 Grok 4.7。它们与第一次 Context 运行一起构成下文的模型对比。以上是较早的五次运行。下文后续补充的 Muse Wonder 对照增加了一个搭配 Source Graph 的模型候选，不替换原有的本地检索结果。
 
 本测评衡量的是使用已部署知识**作答**的效果。知识生产，即生产和更新知识的质量、耗时、审核工作量与成本，尚未测评。
 <!-- /context:section -->
@@ -59,7 +59,7 @@ LLM Wiki 和 Context 使用同一模型，可以直接比较。第三种配置�
 <!-- context:section id="questions" -->
 ## 问题与评分
 
-这 24 个问题来自真实的开发者提问，并在任何一次运行之前就已固定。每种配置对每个问题各回答一次。
+这 24 个问题来自真实的开发者提问，并在任何一次运行之前就已固定。较早的每种配置对每个问题各回答一次；后续的 Muse 对照在下文单独说明。
 
 | 问题类型 | 数量 |
 | --- | ---: |
@@ -115,6 +115,24 @@ LLM Wiki 和 Context 使用同一模型，可以直接比较。第三种配置�
 - **同一个结论可以经由差别很大的路径得到**。某个问题上两个模型都答对了：一个用了 493.7 s 和 75 次调用，另一个用了 176.4 s 和 18 次。
 <!-- /context:section -->
 
+<!-- context:section id="muse-source-graph" -->
+## Muse Wonder 与 Opus 搭配 Source Graph
+
+**在本轮 24 道开发者知识问答中，Muse Wonder + Source Graph 与 Claude Opus 5.5 + Source Graph 整体表现接近：Muse 多完全解决一题，Opus 响应稍快。**
+
+| 指标 | Muse Wonder + Source Graph | Claude Opus 5.5 + Source Graph |
+| --- | ---: | ---: |
+| 完全解决率 | **100%（24/24）** | 95.8%（23/24） |
+| 平均答复耗时 | 106.9 秒 | **93.2 秒** |
+| P90 耗时 | 135.0 秒 | **123.0 秒** |
+| 平均工具调用 | 11.7 次 | 7.8 次 |
+| 单题预估费用 | $0.210 | $0.272 |
+
+Muse 平均每题慢约 **14 秒（15%）**，但本轮全部完成了原问要求，可以作为这类知识检索与代码问答场景的候选模型。Muse 实测平均 **38.8 万 Token/题**；费用是估算参考。
+
+结论仅限于这组 24 题。运行环境与配置存在差异，不能据此证明模型普遍等效、跨场景表现稳定或实际成本更低。请用自己的问题集比较候选模型，同时检查答案质量、平均与 P90 耗时以及工具调用。
+<!-- /context:section -->
+
 <!-- context:section id="observations" -->
 ## 从轨迹中看到的
 
@@ -166,7 +184,7 @@ LLM Wiki 和 Context 使用同一模型，可以直接比较。第三种配置�
 <!-- context:section id="limits" -->
 ## 这项对比的局限
 
-- 每个问题只运行了一次，无法据此判断稳定性。
+- 较早的运行中，每个问题只运行一次。无论这些运行还是后续 24 题的 Muse 对照，都不能证明跨场景的稳定性。
 - 对比的是整套配置：LLM Wiki 和 Context 运行在不同的 Agent 环境中，系统提示词也不同；Context + Source Graph 还更换了模型和 Context 版本、运行日期、并发和超时限制，而且是在已见过的问题上做的回归，只有一个评分者。
 - 端到端耗时包含环境启动和轮询粒度带来的时间，不包含配额排队。
 - 成本如上所述，只是估算。

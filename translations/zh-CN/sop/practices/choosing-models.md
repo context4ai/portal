@@ -4,8 +4,8 @@ description: Context 生产和查询的各个环节分别适合用哪类模型�
 translation:
   locale: zh-CN
   artifact_ref: 2a85ff63-f20d-46ed-ad05-5d5f8cb6cd7a
-  source_digest: dd0e46d63eacab7d7e31f533001b3fc023db48f74ab399f1dd805401b6761aa6
-  translated_at: 2026-10-20T05:44:31.457Z
+  source_digest: 8e5e931c63aedd65fc93a9c171b7f56c476372dd91eb9cac15af02c7b1be2daa
+  translated_at: 2026-10-21T09:51:24.230Z
 ---
 
 # 模型选择
@@ -19,7 +19,7 @@ Context 可以搭配你的 Agent 所运行的任意模型，但模型选择会�
 
 | 角色 | 示例（2026 年 10 月） | 适用场景 |
 | --- | --- | --- |
-| **主力** | DeepSeek 4.1 Flash 1017（首选）、Claude Opus 5.5 | DeepSeek 4.1 Flash 1017 适合自动化、问答、归因和中文文档处理，是目前最快的模型，适合创建和持续使用；Claude Opus 5.5 适合首次创建时的整体逻辑梳理和感知。 |
+| **主力** | DeepSeek 4.1 Flash 1017（首选）、Claude Opus 5.5、**Muse Wonder** | DeepSeek 是团队现有的自动化、问答、归因和中文文档处理选择；Opus 适合首次创建时的逻辑梳理、日常生产与查询。Muse 是知识检索与代码问答的备选，依据是下方限定范围的对照；该轮没有评测知识生产能力。 |
 | **均衡** | GPT 5.6 SOL, Grok 4.6 | 速度和成本适中；适合文本、代码以及中等强度的代码探索。 |
 | **高端** | GPT 6.0 Astra | 规划超大知识库的首次构建，以及在代码中做深度归因。价格昂贵。 |
 
@@ -27,9 +27,23 @@ Context 可以搭配你的 Agent 所运行的任意模型，但模型选择会�
 <!-- /context:section -->
 
 <!-- context:section id="evidence" -->
-## 对回答的影响有多大
 
-在 2026 年 10 月记录的一次测评对比中，三个模型使用相同的 Context 知识和相同的检索方式回答了同样的 24 道题。Claude Opus 5.5 和 Grok 4.7 都完全解决了 24 道题中的 23 道，但 Claude Opus 5.5 平均耗时 139.3 秒，Grok 4.7 平均 304.0 秒，约为前者的 2.2 倍。GPT 5.6 SOL 完全解决了 24 道中的 21 道，平均耗时 157.1 秒。在质量相同的情况下，模型选择可能让回答耗时翻倍以上。
+## 最新问答对照说明了什么
 
-这只是在一套题集上的单次运行，请把它当作参考，而不是排名。方法及其局限见 [知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)；如果要测量你自己的配置，参见 [评测知识库效果](./evaluating-your-knowledge-base.md)。
+**在本轮 24 道开发者知识问答中，Muse Wonder + Source Graph 与 Claude Opus 5.5 + Source Graph 整体表现接近：Muse 多完全解决一题，Opus 响应稍快。**
+
+| 指标 | Muse Wonder + Source Graph | Claude Opus 5.5 + Source Graph |
+| --- | ---: | ---: |
+| 完全解决率 | **100%（24/24）** | 95.8%（23/24） |
+| 平均答复耗时 | 106.9 秒 | **93.2 秒** |
+| P90 耗时 | 135.0 秒 | **123.0 秒** |
+| 平均工具调用 | 11.7 次 | 7.8 次 |
+| 单题预估费用 | $0.210 | $0.272 |
+
+Muse 平均每题慢约 **14 秒（15%）**，但本轮全部完成了原问要求，可以作为这类知识检索与代码问答场景的候选模型。Muse 实测平均 **38.8 万 Token/题**；费用是估算参考。
+
+结论仅限于这组 24 题。运行环境与配置存在差异，不能据此证明模型普遍等效、跨场景表现稳定或实际成本更低。请用自己的问题集比较候选模型，同时检查答案质量、平均与 P90 耗时以及工具调用。
+
+较早的本地检索对照保留在[知识检索测评](../../architecture/benchmark/knowledge-retrieval.md)中；它采用不同的检索配置，不应与本表混用。要测量自己的配置，参见[评测知识库效果](./evaluating-your-knowledge-base.md)。
+
 <!-- /context:section -->
