@@ -248,6 +248,12 @@ entries:
     order: 10
     target:
       artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
+  - key: guides-querying/querying-via-mcp
+    parent: guides-querying
+    title: Querying Through MCP in Your Agent
+    order: 30
+    target:
+      artifact_ref: 55ac465e-f3c9-4d32-849d-ac08e30ddfa9
   - key: guides-querying/using-packages-in-agents
     parent: guides-querying
     title: Using a Package in Your Agent
@@ -658,4 +664,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:a41e5e0319836f558ff6655f2709da7bbdf3834de498115a4ee03502bd336bb8
+revision: sha256:a318b193447cb36a153b105a47559a82e2315b2690989f9ba7c93eebc5fa7c8d

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.8 — 2026-10-21
+
+### Benchmark rewritten as one report; query knowledge through MCP
+
+- Knowledge Retrieval Benchmark is rewritten around three findings: knowledge replaces blind exploration, Source Graph replaces local preparation, and on the same knowledge models differ far more in speed and cost than in quality. All seven model runs, including DeepSeek V4.1 Flash 1017 and a self-hosted Qwen 3.8 Flash Next, sit in one table.
+- Choosing Models is rewritten to match: the roles, a short summary of the benchmark and how to check a model on your own questions.
+- New guide Querying Through MCP in Your Agent: connect any MCP client to Source Graph and give it a retrieval prompt to answer from a team's knowledge and code with nothing installed, with the public demo as a working example.
+- Asking Questions now compares the three ways to reach knowledge; What Is Source Graph and Self-Hosting describe the demo's four repositories, including this site's knowledge workspace.
+- zh-CN versions of all changed pages are written in natural Chinese.
+
+Trigger: note: New benchmark runs and a verified guide to MCP querying on the public demo were recorded as notes.; translation: zh-CN pages rewritten for the changed pages.
+User: qiansc (git)
+
 ## 0.13.7 — 2026-10-21
 
 ### Update model selection and retrieval comparisons

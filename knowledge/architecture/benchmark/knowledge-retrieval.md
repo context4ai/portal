@@ -1,29 +1,34 @@
 ---
 title: Knowledge Retrieval Benchmark
-description: How well Agents answer real developer questions with an LLM Wiki,
-  with Context, and with Context plus Source Graph — quality, time, tool calls,
-  cost, a same-model Source Graph run, model comparisons, where errors and
-  overhead came from, and the limits of the comparison.
+description: What 24 real developer questions showed about answering with an LLM
+  Wiki, with Context and with Context plus Source Graph, how models compare on
+  the same Context knowledge, what caused the remaining errors, and what the
+  results do not show.
 type: Guide
-timestamp: 2026-10-21T09:49:19.878Z
+timestamp: 2026-10-21T11:17:07.932Z
 ---
 # Knowledge Retrieval Benchmark
 
 <!-- context:section id="summary" -->
 ## Results at a glance
 
-On 24 real developer questions from a large production full-stack monorepo, Agents answering from Context knowledge fully solved more questions, faster and with far fewer tool calls than Agents using an LLM Wiki. Adding Source Graph for remote code reading cut time and tool calls further.
+Can an Agent answer real developer questions better when it reads curated knowledge instead of searching raw material? To find out, we took 24 real questions about a large production full-stack monorepo and had Agents answer them in different setups, grading every answer against criteria written in advance.
 
-The headline figures belong to **Context with Source Graph**: compared with the LLM Wiki, it answered in less than half the time (93.2 s against 223.2 s on average) at about a ninth of the estimated cost (about \$0.27 against \$2.45 per question; see "Estimated cost" below). Part of that gain comes from the model change noted below the table.
+The answer has three parts, and the rest of this page shows the evidence for each:
 
-| Metric | LLM Wiki | Context | Context + Source Graph |
+1. **Knowledge replaces blind exploration.** With the same model, an Agent reading Context knowledge fully solved 21 questions against 19 with an LLM Wiki, using about a third of the tool calls.
+2. **Source Graph replaces local preparation.** Reading code remotely at a pinned version cut answer time by a third, at the same quality.
+3. **On the same knowledge, models differ in speed and cost far more than in quality.** Seven runs with different models fully solved 21 to 24 questions; their mean time ranged from about one to five minutes.
+
+Together, Context with Source Graph answered in less than half the time of the LLM Wiki, at about a ninth of the estimated cost:
+
+| | LLM Wiki | Context | Context + Source Graph |
 | --- | ---: | ---: | ---: |
 | Answering model | GPT 5.6 SOL | GPT 5.6 SOL | Claude Opus 5.5 |
-| Fully solved | 19 (79.2%) | 21 (87.5%) | 23 (95.8%) |
-| Partly solved / substantively wrong | 2 / 3 | 2 / 1 | 0 / 1 |
-| Mean end-to-end time | 223.2 s | 157.1 s | 93.2 s |
-| P50 / P90 | 137.2 / 464.7 s | 136.8 / 256.2 s | 89.0 / 123.0 s |
+| Fully solved | 19 of 24 | 21 of 24 | 23 of 24 |
+| Mean time | 223.2 s | 157.1 s | 93.2 s |
 | Mean tool calls | 77.5 | 24.5 | 7.8 |
+| Estimated cost per question | about \$2.45 | \$0.77 | \$0.27 |
 
 ```mermaid
 xychart-beta
@@ -33,31 +38,13 @@ xychart-beta
   bar [77.5, 24.5, 7.8]
 ```
 
-LLM Wiki and Context used the same model and are directly comparable. The third configuration also changed the model; the same-model comparison below isolates Source Graph's effect.
-
-The method follows [Evaluating Your Knowledge Base](../../sop/practices/evaluating-your-knowledge-base.md); the grading and timing rules are in [Scoring and Timing Standard](../../sop/practices/evaluation-standard.md).
+The last column also uses a faster model. The next sections separate what the knowledge, Source Graph and the model each contribute.
 <!-- /context:section -->
 
 <!-- context:section id="setup" -->
-## What was compared
+## How the benchmark was run
 
-Three configurations are compared in the main tables:
-
-| Configuration | Knowledge and retrieval |
-| --- | --- |
-| LLM Wiki | A one-off generated LLM Wiki; the Agent searches and reads files locally |
-| Context | A Context knowledge package; the Agent retrieves locally |
-| Context + Source Graph | A Context knowledge package; code is read remotely at a pinned version through Source Graph |
-
-Two further runs used the same Context knowledge with local retrieval and a different model: Claude Opus 5.5, which separates the effect of Source Graph from the model change (see "Source Graph with the same model" below), and Grok 4.7. With the first Context run, they make up the three-model comparison further down. Those are the five earlier runs. The later Muse Wonder comparison below adds a model candidate with Source Graph; it does not replace the earlier local-retrieval results.
-
-The benchmark measures **answering** with deployed knowledge. Knowledge production — quality, time, review effort and cost of producing and updating knowledge — has not been benchmarked yet.
-<!-- /context:section -->
-
-<!-- context:section id="questions" -->
-## Questions and scoring
-
-The 24 questions came from real developer questions and were frozen before any run. Each of the earlier configurations answered each question once; the later Muse comparison is reported separately below.
+The 24 questions came from real developer questions and were frozen before the first run:
 
 | Question type | Count |
 | --- | ---: |
@@ -68,125 +55,92 @@ The 24 questions came from real developer questions and were frozen before any r
 | Versions and call relationships | 3 |
 | Debugging and environments | 2 |
 
-- Each question had criteria written in advance; answers were graded fully solved, partly solved, substantively wrong or unanswered.
-- Grading was done by a model (GPT-6 Astra Ultra) blind to the configuration, without human calibration.
-- Time is the end-to-end time until the caller saw the complete answer: mean, P50 and P90 (nearest-rank).
-- Tool calls count only calls visible to the Agent.
+Every run answered every question once, in a fresh session that received only the original question. A model grader (GPT-6 Astra Ultra), blind to the setup, graded each answer as fully solved, partly solved, substantively wrong or unanswered against the criteria; there was no human calibration. Time is end to end, until the caller saw the complete answer, reported as the mean, the median (P50) and P90. Tool calls count only the calls the Agent could see. Because questions differ in difficulty, every comparison is also checked on the questions that all of its runs fully solved.
+
+No run has a complete bill per question, so cost is estimated. For GPT 5.6 SOL, Grok 4.7 and Claude Opus 5.5 with local reading, each model request was rebuilt from the trace and priced at the provider's standard API price without cache discounts; the LLM Wiki run and Claude Opus 5.5 with Source Graph were scaled from those runs by tool-call count. Muse Wonder and DeepSeek were priced from the tokens they actually used, Muse Wonder at a budget rate and DeepSeek at the average rate of a real bill. The self-hosted Qwen run had no API spend.
+
+The benchmark measures **answering** with deployed knowledge. Producing and updating knowledge has not been benchmarked yet. To run a similar evaluation on your own questions, see [Evaluating Your Knowledge Base](../../sop/practices/evaluating-your-knowledge-base.md) and the [Scoring and Timing Standard](../../sop/practices/evaluation-standard.md).
 <!-- /context:section -->
 
-<!-- context:section id="common" -->
-## On the 17 questions all three solved
+<!-- context:section id="retrieval" -->
+## What knowledge and Source Graph each contribute
 
-To remove differences in question difficulty, the 17 questions that every configuration in the main tables fully solved were compared separately:
+Read the table from left to right: each step changes one main thing, and only the third step changes the model.
 
-| Metric | LLM Wiki | Context | Context + Source Graph |
-| --- | ---: | ---: | ---: |
-| Mean end-to-end time | 232.6 s | 160.7 s | 93.5 s |
-| P90 | 534.5 s | 258.8 s | 123.2 s |
-| Mean tool calls | 78.3 | 24.9 | 8.0 |
-<!-- /context:section -->
+| | LLM Wiki | Context | Context, new model | Context + Source Graph |
+| --- | ---: | ---: | ---: | ---: |
+| What changed | Starting point | LLM Wiki → Context | GPT 5.6 SOL → Claude Opus 5.5 | Local reading → Source Graph |
+| Fully solved | 19 | 21 | 23 | 23 |
+| Partly solved / substantively wrong | 2 / 3 | 2 / 1 | 0 / 1 | 0 / 1 |
+| Mean / P50 / P90 time | 223.2 / 137.2 / 464.7 s | 157.1 / 136.8 / 256.2 s | 139.3 / 141.4 / 188.7 s | 93.2 / 89.0 / 123.0 s |
+| Mean tool calls | 77.5 | 24.5 | 11.6 | 7.8 |
 
-<!-- context:section id="same-model" -->
-## Source Graph with the same model
+**From LLM Wiki to Context.** With the LLM Wiki, the Agent ran shell commands, searches and file reads about 1,800 times across the 24 questions; with Context it needed about 590, because the knowledge told it where to look. When the target address did not appear in the host repository at all, the knowledge gave the page → remote SDK → interface chain directly. For questions about differences between versions, it recorded which commits were being compared. On the 17 questions that the LLM Wiki, Context and Context + Source Graph all fully solved, mean time was 232.6 s, 160.7 s and 93.5 s, so the gap is not just a matter of which questions were easier.
 
-With Claude Opus 5.5 in both runs, Context with local retrieval fully solved 23 of 24 questions with a mean of 139.3 s, P90 188.7 s and 11.6 tool calls. Adding Source Graph kept 23 of 24 and reduced mean time by 33.1%: 256 local calls for repository preparation, shell, search and file reads were replaced by 164 remote retrievals. Eight remote calls failed parameter validation and the Agent recovered from all of them.
+**From local reading to Source Graph.** With Claude Opus 5.5 in both runs, Source Graph kept 23 questions fully solved and cut mean time by 33.1%. The 256 local calls for preparing repositories, running shell commands, searching and reading files gave way to 164 remote reads. Eight remote calls failed parameter validation, and the Agent recovered from all of them.
 
-Under the same knowledge and retrieval, another model (Grok 4.7) also fully solved 23 of 24 but took a mean of 304.0 s, about 2.2 times as long. At equal quality, model choice has a large effect on time.
+The model change in between also mattered: Claude Opus 5.5 solved two more questions than GPT 5.6 SOL on the same knowledge and used half the tool calls. The next section looks at models on their own.
 <!-- /context:section -->
 
 <!-- context:section id="models" -->
-## Three models on the same knowledge setup
+## How models compare on the same knowledge
 
-With the same Context knowledge package on a managed Agent platform, the same 24 questions, one run each and the same blind model grader:
+Seven runs answered the 24 questions from the same Context knowledge. They differ in model, in how code was read and in where the Agent ran, so the table groups them by retrieval and runtime. New runs are added here as rows.
 
-| Metric | GPT 5.6 SOL (first run) | Grok 4.7 | Claude Opus 5.5 |
+| Run | Date | Fully solved | Partly / wrong | Mean / P50 / P90 time | Tool calls | Cost per question |
+| --- | --- | ---: | ---: | --- | ---: | ---: |
+| **Local reading, managed Agent platform** | | | | | | |
+| GPT 5.6 SOL | 2026-09-22 | 21 | 2 / 1 | 157.1 / 136.8 / 256.2 s | 24.5 | \$0.77 |
+| Grok 4.7 | 2026-09-24 | 23 | 0 / 1 | 304.0 / 314.2 / 465.9 s | 40.3 | \$0.99 |
+| Claude Opus 5.5 | 2026-09-24 | 23 | 0 / 1 | 139.3 / 141.4 / 188.7 s | 11.6 | \$0.40 |
+| **Source Graph, managed Agent platform** | | | | | | |
+| Claude Opus 5.5 | 2026-10-03 | 23 | 0 / 1 | 93.2 / 89.0 / 123.0 s | 7.8 | \$0.27 |
+| Muse Wonder | 2026-10-21 | 24 | 0 / 0 | 106.9 / 99.6 / 135.0 s | 11.7 | \$0.21 |
+| **Source Graph, local command-line Agent** | | | | | | |
+| DeepSeek V4.1 Flash 1017 | 2026-10-17 | 23 | 1 / 0 | 64.9 / 53.9 / 128.7 s | 20.0 | \$0.026 |
+| Qwen 3.8 Flash Next, self-hosted (IQ3_S) | 2026-10-17 | 22 | 0 / 2 | 71.6 / 69.2 / 106.0 s | 24.7 | no API spend |
+
+Times on the managed platform include 20–40 s of waiting for the session to start, which the local command-line runs did not have. On the 18 questions that all seven fully solved, the picture stays the same:
+
+| Run | Mean time | P90 | Tool calls |
 | --- | ---: | ---: | ---: |
-| Fully solved | 21 (87.5%) | 23 (95.8%) | 23 (95.8%) |
-| Partly solved / substantively wrong | 2 / 1 | 0 / 1 | 0 / 1 |
-| Mean / P50 / P90 end-to-end | 157.1 / 136.8 / 256.2 s | 304.0 / 314.2 / 465.9 s | 139.3 / 141.4 / 188.7 s |
-| Mean visible tool calls | 24.5 | 40.3 | 11.6 |
-| Mean observed startup | 31.8 s | 34.4 s | 40.0 s |
+| GPT 5.6 SOL, local reading | 164.4 s | 258.8 s | 25.9 |
+| Grok 4.7, local reading | 312.4 s | 493.7 s | 41.4 |
+| Claude Opus 5.5, local reading | 144.1 s | 205.9 s | 12.1 |
+| Claude Opus 5.5 + Source Graph | 90.0 s | 117.8 s | 7.8 |
+| Muse Wonder + Source Graph | 101.9 s | 122.4 s | 10.8 |
+| DeepSeek V4.1 Flash 1017 + Source Graph | 68.4 s | 130.9 s | 22.7 |
+| Qwen 3.8 Flash Next + Source Graph | 69.0 s | 106.0 s | 24.7 |
 
-- On the **20 questions all three fully solved**, mean end-to-end time was 162.8 s, 312.7 s and 142.3 s, with 25.4, 41.3 and 12.2 tool calls.
-- Against the first run, Claude Opus 5.5 was faster on 18 of 24 questions, with P90 26.3% lower and 52.6% fewer tool calls. Grok 4.7 was slower on all 24 and made 64.0% more tool calls; the longer investigations did not raise the full-resolution rate.
-- **Equal counts are not equal answers.** Each newer model fixed some of the first run's gaps and introduced a different error of its own.
-- **The same conclusion can come by very different paths.** On one question both models were correct: one took 493.7 s and 75 calls, the other 176.4 s and 18.
-<!-- /context:section -->
+Four conclusions follow:
 
-<!-- context:section id="muse-source-graph" -->
-## Muse Wonder and Opus with Source Graph
+- **Once the knowledge is good, quality converges.** Every run fully solved 21 to 24 questions, and Muse Wonder solved all 24. Grok 4.7 matched Claude Opus 5.5 at 23 but took about 2.2 times as long; its longer investigations did not solve more.
+- **Low-cost and self-hosted models are viable for answering.** DeepSeek V4.1 Flash 1017 solved 23 questions at about a tenth of the cost of Claude Opus 5.5 with Source Graph. A quantized, self-hosted Qwen solved 22 with no API spend; hardware and running costs were not counted, and the same base model would cost about \$0.10 per question at a public hosted price.
+- **More reasoning effort did not help.** Raising the same DeepSeek model from high to max effort solved one question fewer, took 20.8% longer and cost 66.7% more.
+- **Equal counts are not equal answers.** Grok 4.7, Claude Opus 5.5 and DeepSeek each solved 23 questions but missed different ones, and the same correct answer can take very different paths: on one question, one model needed 493.7 s and 75 tool calls, another 176.4 s and 18.
 
-**In this 24-question developer knowledge-Q&A comparison, Muse Wonder + Source Graph and Claude Opus 5.5 + Source Graph performed at a similar overall level: Muse fully solved one more question, while Opus responded slightly faster.**
-
-| Metric | Muse Wonder + Source Graph | Claude Opus 5.5 + Source Graph |
-| --- | ---: | ---: |
-| Fully solved | **100% (24/24)** | 95.8% (23/24) |
-| Mean answer time | 106.9 s | **93.2 s** |
-| P90 time | 135.0 s | **123.0 s** |
-| Mean tool calls | 11.7 | 7.8 |
-| Estimated cost per question | $0.210 | $0.272 |
-
-Muse averaged about **14 seconds (15%) longer** per answer, while fully meeting the original requests in this run. It is a candidate for this kind of knowledge retrieval and code Q&A. Its measured usage averaged **388,000 tokens per question**; the cost figures are estimates for reference.
-
-The conclusion is limited to these 24 questions. Runtime and configuration differ, so this does not establish general model equivalence, stability across workloads or an actual cost advantage. Evaluate candidates on your own questions, checking answer quality, mean and P90 time, and tool calls together.
-<!-- /context:section -->
-
-<!-- context:section id="observations" -->
-## What the traces showed
-
-- When the host repository did not contain the target address, the knowledge gave the page → remote SDK → interface chain directly, so the Agent did not search blindly across repositories.
-- Questions about differences between versions first need "compared with which version"; the knowledge recorded the pinned commits and comparison range of its sources.
-- The few errors came from knowledge that missed a component's branch condition and over-generalized. Such gaps should become revision tasks.
-- Tool calls fell from 77.5 to 24.5 and then to 7.8: knowledge reduced blind exploration, and remote retrieval replaced local repository preparation and file reads.
+Which model to use for which work is covered in [Choosing Models](../../sop/practices/choosing-models.md).
 <!-- /context:section -->
 
 <!-- context:section id="attribution" -->
-## Where the errors and overhead came from
+## What went wrong, and what to improve
 
-- **Search scope misjudged.** In a sparse checkout the caller's directory was not checked out, yet a local search was taken as proof that nothing in the whole repository referred to the target. Having read source code is not the same as having searched all of it; confirm the checkout scope before any repository-wide negative conclusion.
-- **A condition generalized.** The knowledge stated a region for direct calls and kept field-based calls for dynamic forms; the answer extended the first to every request, and a field for another region in the source was the counterexample. The grade fell because of the wrong claim, not because the process was not shown.
-- **Targeted source checks worked.** On the question where the first run missed a parent-page branch condition, both later models traced the parent's component choice and the history data switch and corrected the conclusion.
-- **Channel preparation.** Called directly, the configuration under test still ran the steps meant for a chat channel's reply cards: 54 visible related calls across the first run's 24 questions, and for another model — which resolved links and checked channel context on every question — 149 deduplicated calls, 15.4% of its tool calls. They do not mean a card was sent, and their time was not separated. Trimming reply-card preparation at the entry point would remove steps unrelated to answering.
-- **Waiting for startup.** From submission to first observing "running" took about 32 s on the managed platform, including polling granularity.
-<!-- /context:section -->
+The few wrong answers had identifiable causes, and each points to a fix:
 
-<!-- context:section id="startup-estimate" -->
-## Conditional estimate: faster startup
+- **A search scope was misjudged.** In a sparse checkout, the caller's directory was not checked out, yet a local search was taken as proof that nothing in the repository used the target. Before concluding that something is unused, confirm what was checked out.
+- **A condition was over-generalized.** The knowledge stated a region for direct calls and a field-based rule for dynamic forms; the answer applied the first rule to every request. When knowledge is merged or summarized, it must keep its branch conditions.
+- **Targeted checks closed gaps.** Where the first run missed a parent page's branch condition, later runs traced the parent's component choice and corrected the conclusion.
 
-This is a **conditional estimate**, not a measurement. Replace each first-run question's measured startup with an assumed target and keep every other stage unchanged:
-
-estimated E2E = measured E2E − measured startup + assumed startup target
-
-| Assumed startup | Mean | P50 | P90 |
-| ---: | ---: | ---: | ---: |
-| 5 s | 130.4 s | 105.5 s | 229.9 s |
-| 10 s | 135.4 s | 110.5 s | 234.9 s |
-
-Whether such a target is reachable has to be re-measured on the same questions and configuration.
-<!-- /context:section -->
-
-<!-- context:section id="priorities" -->
-## What to improve next
-
-- Verify the checkout scope before concluding that nothing in a repository uses something.
-- Keep branch conditions when knowledge is merged or summarized.
-- Skip reply-card preparation in direct sessions that have no reply channel.
-<!-- /context:section -->
-
-<!-- context:section id="cost" -->
-## Estimated cost
-
-Per question, tokens fell from about 567,000 with the LLM Wiki to about 63,000 with Context with Source Graph. At standard API prices (input \$4 and output \$20 per million tokens, no cache discount) that is about \$2.45 → \$0.27, a reduction of 88.9% — about a ninth of the cost. The first and model-switched runs were estimated by replaying requests; the LLM Wiki and latest runs were extrapolated from tool-call counts.
+Some time also went to work unrelated to the answer. Called directly, the Agent still prepared reply cards for a chat channel: 54 related calls in one run and 149 — 15.4% of all its tool calls — in another. Skipping this in sessions without a reply channel would save time, as would shortening the 20–40 s it took a managed session to start.
 <!-- /context:section -->
 
 <!-- context:section id="limits" -->
-## Limits of this comparison
+## What these results do not show
 
-- Each question in the earlier runs was run once. Neither those runs nor the later 24-question Muse comparison establish stability across workloads.
-- These are whole configurations: LLM Wiki and Context ran in different Agent environments with different system prompts; Context + Source Graph also changed the model and Context version, the run date, concurrency and timeout limits, and is a regression on already-seen questions with a single grader.
-- End-to-end time includes environment start-up and polling granularity, not quota queuing.
-- Cost is an estimate, as described above.
-- In the three-model comparison, the two later runs allowed up to four concurrent questions per model; the first allowed at most two and was partly serial. Dates, Skills, runtime and some read versions also differed, so not every difference belongs to the model.
+- **Stability.** Each question was answered once per run, and later runs used questions that were already known.
+- **The effect of the model alone.** Each run is a whole setup: besides the model, runs differ in date, Context version, Agent environment, system prompt, concurrency and timeout. The local command-line runs were timed on the answer selected for each question, without failed attempts; one DeepSeek answer comes from a designated retest, and the Qwen run mixed 64K and 128K context windows.
+- **Calibrated grading.** A single model grader graded every answer, without human calibration.
+- **Actual spend.** Cost figures are estimates. At the same price (input \$4 and output \$20 per million tokens), tokens per question fell from about 567,000 with the LLM Wiki to about 63,000 with Context and Source Graph, a reduction of 88.9%.
 
-Size reduction is a different measure: knowledge is about 1/115 of its sources by volume, which says nothing about quality on its own. See [Knowledge for Agents](../knowledge/knowledge-for-agents.md).
+Knowledge size is a separate measure: the knowledge is about 1/115 of its sources by volume, which says nothing about quality on its own. See [Knowledge for Agents](../knowledge/knowledge-for-agents.md).
 <!-- /context:section -->

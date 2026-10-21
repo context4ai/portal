@@ -36,6 +36,7 @@ requirements:
         - source_ref: note:20261013/evaluation-method.md
         - source_ref: note:20261014/cold-start-practice.md
         - source_ref: note:20261015/getting-started-guidance.md
+        - source_ref: note:20261021/mcp-query.md
     exclusions:
       - scope:
           targets:
@@ -72,6 +73,7 @@ requirements:
     evidence_source_scope:
       targets:
         - source_ref: note:20261013/demo-deployment.md
+        - source_ref: note:20261021/mcp-query.md
     exclusions:
       - scope:
           targets:
