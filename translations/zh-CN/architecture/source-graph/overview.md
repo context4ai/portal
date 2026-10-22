@@ -5,8 +5,8 @@ description: Context Source Graph 如何工作：网站、HTTP、MCP 与 CLI 共
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
-  source_digest: 9106f5d4af095d71b5f79327d8b57c4b322c157bfb1a1a76177eb0ff57f4e0ef
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 64a8be4289b4d89812d373401047c40571b664d4f7531643618903260d21cbfe
+  translated_at: 2026-10-22T19:13:59.216Z
 ---
 
 # 架构概览
@@ -39,7 +39,7 @@ flowchart LR
 | `resolve` | 把分支或符合条件的完整 SHA 转换为后续要使用的固定提交 |
 | `search` | 在某个提交上搜索文件内容，形式与 `rg` 类似 |
 | `read` | 读取某个提交上一个文件的指定行范围 |
-| `read_many` | 在一次 MCP 调用中读取同一提交上最多十个已知范围 |
+| `read_many` | 在一次 MCP 调用中读取同一仓库、同一提交上最多十个已知范围 |
 | `list` | 列出某个提交上的一个目录 |
 | `diff` | 比较两个符合条件的提交 |
 | `prepare` | 请求同步某个提交并为其建索引（仅限已授权的调用方） |

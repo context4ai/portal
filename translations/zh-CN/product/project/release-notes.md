@@ -4,8 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: fc98fdd0e6e9fe020adba0d453da2b348cefcf72c31976acfa36ada90b78cbe0
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: fd88728df9847b87fae830c6af7e551dcf8f5184e8a2683bd67ce4a02232b24a
+  translated_at: 2026-10-22T19:03:13.981Z
 ---
 
 # 发布说明
@@ -14,6 +14,26 @@ translation:
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
 升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；参见 [安装](../getting-started/installation.md)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+<!-- /context:section -->
+
+<!-- context:section id="context-0780" -->
+## Context 0.7.72 至 0.7.80（2026-10-15 至 2026-10-21）
+
+**更新与修订**
+
+- 结算来源更新或修订队列后，`knowledge/structure.yaml` 不再处于过期状态。此前，重新定位的引用或推进的仓库内容引用会保留旧的输入哈希，因此 `verify` 会一直报告 "Structure is stale; run Close"，直到再次运行 Close。
+- 在没有本地来源区域缓存的机器上（例如全新克隆）也能重新定位引用：对于仓库来源，Context 会从上一次结算的提交读取被引用的区域，并且只有在它仍与记录的摘要一致时才使用；否则保留该引用并像以前一样报告。
+- 当仓库检出与固定的 ref 不一致时，指定了 `processed_version` 的来源更新会返回错误，并且不再遗留工作区写锁。
+- `repo-content:` 引用发生变化或无法确认的保留页面，现在会列在更新的 `reference_warnings` 中。它们的引用仍会重新签名到当前仓库文本，因此要从这份回执中找到它们。
+
+**安装与站点**
+
+- `context plugin install` 和 `context plugin status` 会在运行它们的 shell 继承的 `PATH` 上查找 `claude` 和 `codex` 命令，并安全地为可执行文件名加引号（0.7.73）。
+- 包输出指南现在说明，网站默认以浅色模式打开，直到读者切换，而不是跟随操作系统。
+
+**性能**
+
+- 在同一命令及其进程内的工作流步骤中，Markdown 链接解析会通过一个独立的有界缓存复用。文件新鲜度和工作流权限检查不变，也没有后台服务或跨进程缓存（0.7.80）。
 <!-- /context:section -->
 
 <!-- context:section id="context-0771" -->

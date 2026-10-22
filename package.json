@@ -20,12 +20,12 @@
     "sources:restore": "bun scripts/restore-sources.ts"
   },
   "dependencies": {
-    "@c4a/context": "0.7.73"
+    "@c4a/context": "0.7.80"
   },
   "devDependencies": {
-    "@c4a/context-cli": "0.7.73",
+    "@c4a/context-cli": "0.7.80",
     "@types/bun": "^1.3.0",
     "typescript": "^5.5.4"
   },
-  "version": "0.13.8"
+  "version": "0.13.9"
 }

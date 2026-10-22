@@ -4,7 +4,7 @@ description: Connect your Agent to Source Graph so Context can read cited code
   without cloning, then connect a browser, script or the command-line client,
   choose the right credential and follow the search-then-read loop.
 type: Guide
-timestamp: 2026-10-19T18:55:52.431Z
+timestamp: 2026-10-22T19:13:11.965Z
 ---
 # Connecting
 
@@ -100,14 +100,16 @@ It prints the raw JSON response and exits with `3` when a request is accepted bu
 <!-- /context:section -->
 
 <!-- context:section id="loop" -->
+
 ## The search-then-read loop
 
 Agents get the most from Source Graph with a short loop:
 
 1. **Search** the repository. Omit the revision to use its default branch head, or pass a monitored branch or a full commit you already know.
 2. **Pin the commit** returned in the result's metadata.
-3. **Read** the decisive ranges at that commit — directly when the file is known, several at once with `read_many`.
+3. **Read** the decisive ranges at that commit — directly when the file is known, several at once with `read_many`. Keep the repository, full commit SHA and path together for each range, use paths returned by search or list, and group a `read_many` call by repository and commit; `end_line` is an absolute line number, not a count.
 4. **Continue** from the returned next line if the file goes on, and treat `Partial`, `Truncated` and coverage flags as limits, not as proof that something is absent.
 
 List repositories or resolve the revision only when the repository is unknown or a request fails, not before every query. If a request fails — for example `409 INDEX_NOT_READY` when a commit has not been indexed yet — look up the code in [Operations](operations.md#common-errors) for what it means and what to do.
+
 <!-- /context:section -->
