@@ -3,7 +3,7 @@ title: Installation
 description: Install the Context CLI and Agent plugin for Claude Code, Codex or
   Cursor, and check that your Agent can see the entries.
 type: Wiki
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-22T19:01:38.376Z
 ---
 # Installation
 
@@ -91,6 +91,7 @@ Every mode supports `--dry-run`. A refresh replaces only unmodified managed file
 <!-- /context:section -->
 
 <!-- context:section id="verify" -->
+
 ## Check the installation
 
 ```bash
@@ -98,7 +99,8 @@ context --version
 context plugin status
 ```
 
-`context plugin status` inspects the global hosts. Then open your Agent and invoke `/c4a:context`. If the entry is present but the `context` executable is missing, the entry reports the exact installation step and stops rather than partially initializing a knowledge workspace.
+`context plugin status` inspects the global hosts. Both it and `context plugin install` look for the `claude` and `codex` commands on the same `PATH` as the shell you run them from, so if Claude Code or Codex is reported missing, check that its command resolves in that shell. Cursor needs no command on `PATH`; its plugin files are written directly. Then open your Agent and invoke `/c4a:context`. If the entry is present but the `context` executable is missing, the entry reports the exact installation step and stops rather than partially initializing a knowledge workspace.
 
 Next: [Quick Start](quick-start.md).
+
 <!-- /context:section -->

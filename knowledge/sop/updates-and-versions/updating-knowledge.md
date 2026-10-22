@@ -4,7 +4,7 @@ description: Bring existing pages up to a new commit or document version — nam
   the scope, let the Agent find the affected pages, review the changes and know
   when the update is finished.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-22T19:00:07.419Z
 ---
 # Updating Knowledge
 
@@ -55,13 +55,15 @@ If you name no modules, the whole registered source is in scope.
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
+
 ## Review and finishing
 
 Changed pages appear in the review report with their changed blocks next to the previous text. Approve, comment or ask for changes as in [Reading Review Reports](../review-and-revision/reading-review-reports.md).
 
 The update is finished when every selected revision is approved, the approved pages are applied and the outputs rebuilt — or when the Agent concludes that nothing needs to change. Only then is the new version recorded as processed. It is not recorded when the new version is fetched or after the first approved page, so an interrupted update can resume without losing track of what remains.
 
-On pages that were kept as they are, citations whose text merely moved in the new version are updated automatically, so verification no longer reports them. If cited text actually changed or can no longer be confirmed, the Agent lists those pages when the update finishes; their citations still point to the previous locations. Correct each listed page that needs it with a [revision](../review-and-revision/revising-a-page.md).
+On pages that were kept as they are, citations whose text merely moved in the new version are updated automatically, so verification no longer reports them. This also works in a fresh clone or on another machine: the cited text is read from the previously processed commit and is used only if it still matches. If cited text actually changed or can no longer be confirmed, the Agent lists those pages when the update finishes; their citations still point to the previous locations. Pages citing the project's own docs or Skills (same-repository content) are listed too when that text changed, even though their citations are updated to the current text — verification will not flag them later, so check them from the list. Correct each listed page that needs it with a [revision](../review-and-revision/revising-a-page.md). Finishing the update also leaves the knowledge structure current, so verification does not ask you to run Close again.
+
 <!-- /context:section -->
 
 <!-- context:section id="only-needed" -->

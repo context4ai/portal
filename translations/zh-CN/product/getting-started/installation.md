@@ -4,8 +4,8 @@ description: 为 Claude Code、Codex 或 Cursor 安装 Context CLI 和 Agent 插
 translation:
   locale: zh-CN
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
-  source_digest: 2afaf1e3e8dd89798d6cba08ba3beeaad254f5e08baf932de2924d576b49d8db
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: d5ff9546979e904d9f95abf686787fe266f3a4f3151e9e9b6591bbc2f2a156d5
+  translated_at: 2026-10-22T19:03:13.981Z
 ---
 
 # 安装
@@ -95,7 +95,7 @@ context --version
 context plugin status
 ```
 
-`context plugin status` 检查全局宿主。然后打开 Agent，调用 `/c4a:context`。如果入口存在但缺少 `context` 可执行文件，入口会给出确切的安装步骤并停止，而不会只初始化一半知识工作区。
+`context plugin status` 检查全局宿主。它和 `context plugin install` 都会在你运行它们的那个 shell 的 `PATH` 上查找 `claude` 和 `codex` 命令；如果提示缺少 Claude Code 或 Codex，请检查对应命令能否在该 shell 中解析。Cursor 不需要 `PATH` 上的命令，它的插件文件会被直接写入。然后打开 Agent，调用 `/c4a:context`。如果入口存在但缺少 `context` 可执行文件，入口会给出确切的安装步骤并停止，而不会只初始化一半知识工作区。
 
 下一步：[快速开始](quick-start.md)。
 <!-- /context:section -->

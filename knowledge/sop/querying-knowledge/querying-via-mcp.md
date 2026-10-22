@@ -4,7 +4,7 @@ description: Connect your own Agent to the Source Graph MCP and give it a
   retrieval prompt, so it answers from a team's knowledge and code without
   installing Context, a knowledge package or any repository.
 type: Guide
-timestamp: 2026-10-21T12:18:51.603Z
+timestamp: 2026-10-22T19:13:11.965Z
 ---
 # Querying Through MCP in Your Agent
 
@@ -41,6 +41,7 @@ The public demo is anonymous and read-only, so no token is needed. For your own 
 <!-- /context:section -->
 
 <!-- context:section id="check" -->
+
 ## 2. Check the connection
 
 Restart the Agent so it picks up the server, then ask:
@@ -58,7 +59,8 @@ On the public demo you should see four repositories:
 | `context4ai/sourcegraph` | Source Graph source code |
 | `context4ai/agent-graph` | Agent Graph source code |
 
-The service offers the tools `repositories`, `resolve`, `search`, `read`, `read_many`, `list`, `diff` and `availability`. You do not call them yourself; the prompt below tells the Agent how to use them.
+The service offers the tools `repositories`, `resolve`, `search`, `read`, `read_many`, `list`, `diff` and `availability`. You do not call them yourself; the prompt below tells the Agent how to use them. The server also tells the Agent to keep the repository, the full commit SHA and the file path together for every piece of code it cites, and never to rebuild a SHA or reuse it in another repository, so the citations it returns stay traceable.
+
 <!-- /context:section -->
 
 <!-- context:section id="prompt" -->

@@ -4,7 +4,7 @@ description: How to add a documentation website to a knowledge package, what
   readers get, how navigation and homepage cards are set up, and how to preview
   and deploy the site.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-22T19:13:11.965Z
 ---
 # Documentation Sites
 
@@ -40,18 +40,20 @@ The Agent sets the site title, language, address prefix and homepage for you. Th
 <!-- /context:section -->
 
 <!-- context:section id="features" -->
+
 ## What the site offers
 
 - **Homepage** — every top-level section of the knowledge map as a card with a short preview of its pages, plus resource cards.
 - **Navigation** — sections in the top bar; the left sidebar shows only the current section's pages. Each section's landing page shows its groups as cards.
 - **Search** — local search, opened with the search button or Cmd/Ctrl+K; no search service needed.
-- **Theme** — light and dark; see [Customizing Pages and Themes](page-and-theme-customization.md).
+- **Theme** — light and dark. The site opens in light mode until the reader switches, and remembers that choice; see [Customizing Pages and Themes](page-and-theme-customization.md).
 - **Missing pages** — an unknown address shows a 404 page in the reader's language with a link back home.
 - **Diagrams** — Mermaid rendered in the browser with fit, 100%, zoom, full-screen and source controls. An invalid diagram shows its source with a notice instead of blocking publication.
 - **Provenance** — each page ends with its sources: repository entries link to the recorded revision, document entries to their registered URL. Inline code that names a cited repository file or directory links to that path at the recorded revision.
 - **LLM Docs and Changelog** — the site can link the plain-text [LLM Docs](llm-docs.md) produced by the same build, and the knowledge base's changelog.
 
 Code samples and raw HTML are displayed as content, never executed.
+
 <!-- /context:section -->
 
 <!-- context:section id="navigation" -->

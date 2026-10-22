@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-22T19:01:38.376Z
 ---
 # Release Notes
 
@@ -11,6 +11,28 @@ timestamp: 2026-10-15T06:21:46.519Z
 These notes summarize recent product releases by what readers and Agents notice. The complete history is in the [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) and the [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md). The site's own **Changelog** entry in the More menu is different: it lists the versions of this documentation, not product releases.
 
 To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session; see [Installation](../getting-started/installation.md). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+<!-- /context:section -->
+
+<!-- context:section id="context-0780" -->
+
+## Context 0.7.72 to 0.7.80 (2026-10-15 to 2026-10-21)
+
+**Updates and revisions**
+
+- Settling a source update or a revision queue no longer leaves `knowledge/structure.yaml` stale. Previously, relocated citations or advanced repository content references kept the old input hash, so `verify` reported "Structure is stale; run Close" until Close ran again.
+- Citations can be relocated on a machine without the local source region cache, such as a fresh clone: for repository sources Context reads the cited region from the previously settled commit and uses it only when it still matches the recorded digest. Otherwise the citation is kept and reported as before.
+- A source update that names `processed_version` while the repository checkout differs from its pinned ref returns the error and no longer leaves the workspace write lock behind.
+- Kept pages whose `repo-content:` citations changed or cannot be confirmed are now listed in the update's `reference_warnings`. Their citations are still re-signed to the current repository text, so the receipt is the place to find them.
+
+**Installation and sites**
+
+- `context plugin install` and `context plugin status` look up the `claude` and `codex` commands on the inherited `PATH` of the shell that runs them, and quote executable names safely (0.7.73).
+- The package output guide now states that websites open in light mode until the reader switches, rather than following the operating system.
+
+**Performance**
+
+- Within one command and its in-process workflow steps, Markdown link parsing is reused through a separate, bounded cache. File freshness and workflow authority checks are unchanged, and there is no background service or cross-process cache (0.7.80).
+
 <!-- /context:section -->
 
 <!-- context:section id="context-0771" -->
