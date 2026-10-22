@@ -3,7 +3,7 @@ title: HTTP and MCP
 description: Every Source Graph HTTP route and MCP tool — paths, inputs,
   credentials, limits, output and error format.
 type: Wiki
-timestamp: 2026-10-14T02:19:13.383Z
+timestamp: 2026-10-22T19:00:07.419Z
 ---
 # HTTP and MCP
 
@@ -103,6 +103,7 @@ The optional connection parameter `?plugins=` sets the default plugin selection 
 <!-- /context:section -->
 
 <!-- context:section id="tools" -->
+
 ## MCP tools
 
 | Tool | Required | Optional (default) |
@@ -118,6 +119,11 @@ The optional connection parameter `?plugins=` sets the default plugin selection 
 | `prepare` | `repo`, `idempotency_key` (8–128 bytes) | `revision`, `group` |
 
 `plugins` is a list such as `[{"name":"context-evidence"}]`; `[]` disables enhancements for that call, and a connection opened with `plugins=off` always disables them. `prepare` accepts an omitted revision (default branch), a monitored branch or a full SHA inside the retention window; it is asynchronous, so poll `availability` afterwards.
+
+Treat the repository, the original full SHA and the path as one source identity: do not reconstruct a SHA or reuse it in another repository. Group `read_many` requests by repository and revision, use paths returned by `search` or `list`, and give `end_line` as an inclusive absolute line number, not a line count.
+
+`availability` over HTTP also returns `job_failures`, a bounded history of failed task summaries whose retention is described in [Operations](../../../sop/source-graph/operations.md). Over MCP, `availability` with a specific `job_id` returns `job_failure` and `job_lookup.state=archived_failure` when the live task has been pruned but its failure summary remains. This is historical evidence, not current readiness or a task that can be resumed, and a missing history does not mean the task succeeded.
+
 <!-- /context:section -->
 
 <!-- context:section id="output" -->

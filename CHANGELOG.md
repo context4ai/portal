@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.9 — 2026-10-22
+
+### Update to Context 0.7.80 and the latest Source Graph
+
+- Release Notes add Context 0.7.72 to 0.7.80; the site now builds with Context 0.7.80.
+- Updating Knowledge and Keeping Knowledge Current explain how settling an update relocates citations on a fresh clone, reports changed same-repository citations and keeps the structure current.
+- Installation explains that plugin install and status look up the claude and codex commands on the PATH of the current shell; Module Layout notes that readers install only @c4a/context-cli; Documentation Sites notes that sites open in light mode.
+- Source Graph pages describe the 7-day task failure history, archived job lookups, query-log batch counters, what REVISION\_NOT\_ELIGIBLE means, and the rule to keep repository, full SHA and path together when reading code.
+- Citations on affected pages now point at the updated sources, and Chinese translations follow these changes.
+
+Trigger: module: Context source advanced to the 0.7.80 release and Source Graph to its latest mainline.; translation: Chinese pages updated for the revised articles.
+User: qiansc (git)
+
 ## 0.13.8 — 2026-10-21
 
 ### Benchmark rewritten as one report; query knowledge through MCP

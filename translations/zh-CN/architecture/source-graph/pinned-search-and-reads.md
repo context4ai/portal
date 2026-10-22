@@ -4,8 +4,8 @@ description: Source Graph 如何把每个请求解析到一个提交、保留一
 translation:
   locale: zh-CN
   artifact_ref: c1591da5-5eaf-4cf9-86dc-976fc5b2bc40
-  source_digest: f841eeff5e6267b747196adf0897fa4fbaeabcc828f5566e2594918325ee3e2e
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 7e049f5228ab1ec3ccb3c848ebc707bf7f9d0c7bc882b984a00332178f25b8c1
+  translated_at: 2026-10-22T19:13:59.216Z
 ---
 
 # 固定版本的搜索与阅读
@@ -43,7 +43,7 @@ sequenceDiagram
 | 短 SHA、标签、`HEAD` 或其他引用 | 拒绝（`SHORT_SHA_UNSUPPORTED`、`INVALID_REVISION`） |
 | 未被监控的分支 | 拒绝（`BRANCH_NOT_MONITORED`） |
 
-窗口之外的提交会返回 `REVISION_NOT_ELIGIBLE`，而不是用相近的提交代替。Source Graph 从不悄悄把请求的基线替换成另一个提交，因此调用方只要固定使用返回的提交，之后每次调用拿到的都是同一个快照。
+`REVISION_NOT_ELIGIBLE` 表示该提交不在 Source Graph 当前为这个仓库观察到的版本中。提交缺失可能是因为它已移出保留窗口，也可能是因为它属于未被监控的分支、仓库还没有同步到它，或者这个 SHA 属于另一个仓库；在认定它已过期之前，先把仓库和完整 SHA 一起核对。Source Graph 从不悄悄把请求的基线替换成另一个提交，因此调用方只要固定使用返回的提交，之后每次调用拿到的都是同一个快照。
 <!-- /context:section -->
 
 <!-- context:section id="versions" -->
@@ -70,9 +70,9 @@ sequenceDiagram
 <!-- context:section id="read" -->
 ## 读取受哪些限制
 
-`read` 返回某个提交上一个文件的闭区间行范围，每次调用最多 500 行、256 KiB；通过 MCP 调用且未指定范围时，从第 1 行开始，最多覆盖 500 行。响应会说明返回了哪些行以及从哪里继续，并明确标出截断、二进制内容、不支持的编码和 Git LFS 指针，而不是靠猜测处理。
+`read` 返回某个提交上一个文件的闭区间行范围，每次调用最多 500 行、256 KiB；`end_line` 是最后一行的绝对行号，而不是行数。通过 MCP 调用且未指定范围时，从第 1 行开始，最多覆盖 500 行。响应会说明返回了哪些行以及从哪里继续，并明确标出截断、二进制内容、不支持的编码和 Git LFS 指针，而不是靠猜测处理。
 
-在全量仓库登记下，读取直接访问 Git，无需等待建索引。在 Monorepo 登记下，该路径组必须已在该提交上准备好（否则返回 `CONTENT_NOT_READY`）。`read_many` 在一次 MCP 调用中读取同一提交上一到十个已知范围，共享 1,000 行、256 KiB 和 30 秒的预算；每一项分别报告自己的内容和错误。
+在全量仓库登记下，读取直接访问 Git，无需等待建索引。在 Monorepo 登记下，该路径组必须已在该提交上准备好（否则返回 `CONTENT_NOT_READY`）。`read_many` 在一次 MCP 调用中读取同一仓库、同一完整提交 SHA 上一到十个已知范围，共享 1,000 行、256 KiB 和 30 秒的预算；每一项分别报告自己的内容和错误。
 <!-- /context:section -->
 
 <!-- context:section id="speed" -->

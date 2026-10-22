@@ -5,8 +5,8 @@ description: 把你自己的 Agent 接入 Source Graph MCP，再给它一段检�
 translation:
   locale: zh-CN
   artifact_ref: 55ac465e-f3c9-4d32-849d-ac08e30ddfa9
-  source_digest: cf14cf63b7e97d8abe7acfaa5a072fc8c73e5eac29d87503dec005a267ea57bd
-  translated_at: 2026-10-21T12:22:47.975Z
+  source_digest: fc4147cc099209b43d35539aecfe9825e05cc7967dd2a903307c3bc4541a7faf
+  translated_at: 2026-10-22T19:13:59.216Z
 ---
 
 # 在 Agent 中通过 MCP 查询
@@ -61,7 +61,7 @@ List the repositories available in context-sourcegraph.
 | `context4ai/sourcegraph` | Source Graph 源码 |
 | `context4ai/agent-graph` | Agent Graph 源码 |
 
-服务提供 `repositories`、`resolve`、`search`、`read`、`read_many`、`list`、`diff` 和 `availability` 这些工具。你不需要自己调用，下面的提示词会告诉 Agent 怎么用。
+服务提供 `repositories`、`resolve`、`search`、`read`、`read_many`、`list`、`diff` 和 `availability` 这些工具。你不需要自己调用，下面的提示词会告诉 Agent 怎么用。服务还会要求 Agent 为引用的每段代码同时保留仓库、完整提交 SHA 和文件路径，绝不自行重建 SHA 或在其他仓库中复用，从而保证它返回的出处可以追溯。
 <!-- /context:section -->
 
 <!-- context:section id="prompt" -->

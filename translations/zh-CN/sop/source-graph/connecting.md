@@ -5,8 +5,8 @@ description: 把你的 Agent 接入 Source Graph，让 Context
 translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  source_digest: 8c7d8c72d216a8714e5363576e92a95d0deec2f555cb1d7249f5f15e838dc47b
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 6ed7ec03c699c13d749d4118bea37fa254321a74d180a14ffd25a9bc8c8e94ed
+  translated_at: 2026-10-22T19:13:59.216Z
 ---
 
 # 接入
@@ -109,7 +109,7 @@ Agent 用一个简短的循环就能充分利用 Source Graph：
 
 1. **搜索**仓库。省略 revision 时使用默认分支的最新提交，也可以传入监控分支或已知的完整提交。
 2. **固定提交**：记下结果元数据中返回的提交。
-3. 在该提交上**读取**关键范围：已知文件时直接读取，需要多处时用 `read_many` 一次读取。
+3. 在该提交上**读取**关键范围：已知文件时直接读取，需要多处时用 `read_many` 一次读取。每个范围都要同时保留仓库、完整提交 SHA 和路径，使用 search 或 list 返回的路径，并按仓库和提交对 `read_many` 调用分组；`end_line` 是绝对行号，而不是行数。
 4. 如果文件还有后续内容，从返回的下一行**继续**读取；将 `Partial`、`Truncated` 和覆盖范围标记视为限制，而不是内容不存在的证明。
 
 无需在每次查询前都列出仓库或解析 revision；只有在仓库未知或请求失败时才这样做。如果请求失败——例如某个提交尚未建好索引时返回 `409 INDEX_NOT_READY`——请在 [运维](operations.md#common-errors) 中查找该错误码的含义和处理方法。

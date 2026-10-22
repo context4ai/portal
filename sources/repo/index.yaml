@@ -5,12 +5,12 @@ sources:
         local: .tmp/context-plans/20261012-portal-kb/repos/context
         git:
           remote: https://github.com/context4ai/context.git
-          ref: c3a1eab3883b96fc0ba520150ebb11ec8c3efa9a
+          ref: 6ffa9030facd5eb718c642d55937b04ad4e7939d
       - name: sourcegraph
         local: .tmp/context-plans/20261012-portal-kb/repos/sourcegraph
         git:
           remote: https://github.com/context4ai/sourcegraph.git
-          ref: 5c35194142ed4f7a974b28dee77da72d5bffbf21
+          ref: e77e406844e598f3fbd70aba110db7c83a6fc629
       - name: agent-graph
         local: .tmp/context-plans/20261012-portal-kb/repos/agent-graph
         git:

@@ -4,8 +4,8 @@ description: Source Graph 全部 HTTP 路由与 MCP 工具：路径、输入、�
 translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
-  source_digest: 67c87b13afe434cc042094ab8f6d6f4f1375903cf8dcc2dcc13a2d58e334180d
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 5841cc4c4b643498957f172dd0d72fc3dca0a21c834362778fa803a52c69dba9
+  translated_at: 2026-10-22T19:03:13.981Z
 ---
 
 # HTTP 与 MCP 接口
@@ -119,6 +119,10 @@ translation:
 | `prepare` | `repo`、`idempotency_key`（8–128 字节） | `revision`、`group` |
 
 `plugins` 是一个列表，例如 `[{"name":"context-evidence"}]`；传 `[]` 会在本次调用中关闭增强，而以 `plugins=off` 打开的连接始终关闭增强。`prepare` 接受省略版本（默认分支）、监控分支，或保留窗口内的完整 SHA；它是异步的，之后请轮询 `availability`。
+
+把仓库、原始完整 SHA 和路径作为一个整体的来源标识：不要自行重建 SHA，也不要在另一个仓库中复用它。按仓库和版本对 `read_many` 请求分组，使用 `search` 或 `list` 返回的路径，并把 `end_line` 作为包含在内的绝对行号，而不是行数。
+
+通过 HTTP 调用 `availability` 时还会返回 `job_failures`，即失败任务摘要的有限历史，其保留规则见 [运维](../../../sop/source-graph/operations.md)。通过 MCP 用指定的 `job_id` 调用 `availability` 时，如果实时任务已被清理但失败摘要仍在，会返回 `job_failure` 和 `job_lookup.state=archived_failure`。这只是历史证据，不代表当前已就绪，也不是可以继续执行的任务；没有历史记录也不意味着任务成功。
 <!-- /context:section -->
 
 <!-- context:section id="output" -->

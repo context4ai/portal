@@ -4,7 +4,7 @@ description: "How Context Source Graph works: one contract across the website,
   HTTP, MCP and CLI, how a self-hosted instance is put together from Git
   mirrors, a Zoekt index and its application database, and who can do what."
 type: Guide
-timestamp: 2026-10-14T02:36:42.665Z
+timestamp: 2026-10-22T19:13:11.965Z
 ---
 # Architecture Overview
 
@@ -25,6 +25,7 @@ The source code is at [github.com/context4ai/sourcegraph](https://github.com/con
 <!-- /context:section -->
 
 <!-- context:section id="surfaces" -->
+
 ## One contract, four surfaces
 
 All four entry points share these operations; `read_many` is available through MCP only:
@@ -36,12 +37,13 @@ All four entry points share these operations; `read_many` is available through M
 | `resolve` | Turn a branch, or an eligible full SHA, into the fixed commit to use next |
 | `search` | Search file contents at one commit, shaped like `rg` |
 | `read` | Read a line range of one file at one commit |
-| `read_many` | Read up to ten known ranges at one commit in a single MCP call |
+| `read_many` | Read up to ten known ranges from one repository at one commit in a single MCP call |
 | `list` | List one directory at one commit |
 | `diff` | Compare two eligible commits |
 | `prepare` | Ask for a commit to be synchronized and indexed (authorized callers only) |
 
 The website lives under `/sourcegraph/`, the MCP endpoint at `/sourcegraph/mcp`, and the HTTP API under `/sourcegraph/v1/` and `/sourcegraph/api/`. The command-line client `sourcegraph-cli` calls the same HTTP routes. Exact routes, tool inputs and limits are in the [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md) and [CLI](../../product/reference/source-graph/cli.md) references.
+
 <!-- /context:section -->
 
 <!-- context:section id="components" -->

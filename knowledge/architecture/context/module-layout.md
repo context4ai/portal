@@ -3,7 +3,7 @@ title: Module Layout
 description: The packages that make up Context, what each one is responsible
   for, and how they depend on each other.
 type: Guide
-timestamp: 2026-10-12T20:24:32.970Z
+timestamp: 2026-10-22T19:13:11.965Z
 ---
 # Module Layout
 
@@ -50,7 +50,7 @@ Arrows point from a package to what it depends on; catalog parsers are `extract-
 | `context-evidence-wasm` | Builds the optional `context-evidence.sourcegraph.wasm` plugin for Source Graph |
 | `@c4a/agent-graph` | External, model-free workflow-contract runtime used only by the bundled Provider |
 
-Parser packages materialize structural facts; they never write approved knowledge. See [Code Extraction](../knowledge/code-extraction.md).
+Readers install only `@c4a/context-cli`: it provides the `context` command and the Agent plugin and bundles the core and extractor packages, while the knowledge workspaces it creates depend on `@c4a/context`. Parser packages materialize structural facts; they never write approved knowledge. See [Code Extraction](../knowledge/code-extraction.md).
 
 <!-- /context:section -->
 

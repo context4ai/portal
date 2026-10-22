@@ -4,8 +4,8 @@ description: Context 由哪些包组成、各自负责什么，以及它们之�
 translation:
   locale: zh-CN
   artifact_ref: 05c78d9e-3e0d-43a5-b674-d0110604d8cd
-  source_digest: f072cd04c0a7ccffb86bc54e4a3f74beef6ff7ea4af14a514517ab128ed562d3
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: d8a919b7b6f03a2798da6f20874d177847024f8422fb94a11a90ea0d9a8c22f7
+  translated_at: 2026-10-22T19:13:59.216Z
 ---
 
 # 模块划分
@@ -52,7 +52,7 @@ flowchart BT
 | `context-evidence-wasm` | 构建供 Source Graph 使用的可选插件 `context-evidence.sourcegraph.wasm` |
 | `@c4a/agent-graph` | 外部的、不依赖模型的工作流契约运行时，仅供内置 Provider 使用 |
 
-解析器包只产出结构化事实，从不写入已批准的知识。参见 [代码抽取](../knowledge/code-extraction.md)。
+读者只需安装 `@c4a/context-cli`：它提供 `context` 命令和 Agent 插件，并打包了 core 和各提取器包，而它创建的知识工作区依赖 `@c4a/context`。解析器包只产出结构化事实，从不写入已批准的知识。参见 [代码抽取](../knowledge/code-extraction.md)。
 <!-- /context:section -->
 
 <!-- context:section id="cli-inside" -->
