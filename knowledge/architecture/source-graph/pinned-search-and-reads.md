@@ -4,7 +4,7 @@ description: How Source Graph resolves every request to one commit, keeps a
   window of indexed versions, bounds each search and read, and why that beats
   scanning a checkout.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-10-22T19:13:11.965Z
 ---
 # Pinned Search and Reads
 
@@ -29,6 +29,7 @@ sequenceDiagram
 <!-- /context:section -->
 
 <!-- context:section id="resolve" -->
+
 ## How a revision resolves
 
 Every operation accepts an optional revision and resolves it with the same rules:
@@ -41,7 +42,8 @@ Every operation accepts an optional revision and resolves it with the same rules
 | A short SHA, a tag, `HEAD` or another ref | Rejected (`SHORT_SHA_UNSUPPORTED`, `INVALID_REVISION`) |
 | An unmonitored branch | Rejected (`BRANCH_NOT_MONITORED`) |
 
-A commit outside the window returns `REVISION_NOT_ELIGIBLE` rather than a nearby substitute. Source Graph never silently replaces a requested baseline with another commit, so a caller that pins the returned commit gets the same snapshot on every later call.
+`REVISION_NOT_ELIGIBLE` means the commit is not among the versions Source Graph currently observes for that repository. A commit can be missing because it aged out of the retention window, but also because it belongs to a branch that is not monitored, the repository has not synchronized it yet, or the SHA belongs to a different repository; check the repository and full SHA together before assuming it expired. Source Graph never silently replaces a requested baseline with another commit, so a caller that pins the returned commit gets the same snapshot on every later call.
+
 <!-- /context:section -->
 
 <!-- context:section id="versions" -->
@@ -66,11 +68,13 @@ Results are a bounded first page. The first attempt returns up to 100 files and 
 <!-- /context:section -->
 
 <!-- context:section id="read" -->
+
 ## What bounds a read
 
-A `read` returns an inclusive line range of one file at one commit, at most 500 lines and 256 KiB per call; when no range is given over MCP it starts at line 1 and covers up to 500 lines. The response says which lines were returned and where to continue, and flags truncation, binary content, unsupported encodings and Git LFS pointers instead of guessing.
+A `read` returns an inclusive line range of one file at one commit, at most 500 lines and 256 KiB per call; `end_line` is the absolute number of the last line, not a line count. When no range is given over MCP it starts at line 1 and covers up to 500 lines. The response says which lines were returned and where to continue, and flags truncation, binary content, unsupported encodings and Git LFS pointers instead of guessing.
 
-In a full-repository registration, reads go straight to Git and do not wait for indexing. In a monorepo registration, the path group must already be prepared at that commit (`CONTENT_NOT_READY` otherwise). `read_many` reads one to ten known ranges at one commit in a single MCP call, sharing a budget of 1,000 lines, 256 KiB and 30 seconds; each item reports its own content and error.
+In a full-repository registration, reads go straight to Git and do not wait for indexing. In a monorepo registration, the path group must already be prepared at that commit (`CONTENT_NOT_READY` otherwise). `read_many` reads one to ten known ranges from one repository at one full commit SHA in a single MCP call, sharing a budget of 1,000 lines, 256 KiB and 30 seconds; each item reports its own content and error.
+
 <!-- /context:section -->
 
 <!-- context:section id="speed" -->

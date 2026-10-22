@@ -4,7 +4,7 @@ description: How Context finds the knowledge affected by a source change,
   re-checks it, and moves the baseline forward only after the update is
   delivered.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-22T19:00:07.419Z
 ---
 # Keeping Knowledge Current
 
@@ -33,9 +33,20 @@ Existing references cannot discover every new topic, so the Agent also inspects 
 <!-- /context:section -->
 
 <!-- context:section id="baseline" -->
+
 ## Moving the baseline
 
-The CLI keeps the previous processed version until every requested page has been approved, closed and built. If temporary progress is lost, the next inspection starts again from that version and keeps pages already approved. A saved report or acquisition receipt does not prove the update was completed. See [Version-Aware Knowledge](version-aware-knowledge.md).
+The CLI keeps the previous processed version until every requested page has been approved, closed and built. If temporary progress is lost, the next inspection starts again from that version and keeps pages already approved. A saved report or acquisition receipt does not prove the update was completed.
+
+When the update settles, pages that were kept as they are are brought up to date with the new version:
+
+- Citations whose text only moved are relocated. This also works on a fresh clone or another machine without the local region cache: for repository sources the cited region is read from the previously settled commit and used only when it still matches the recorded digest.
+- Citations whose text changed or cannot be confirmed keep their previous locations, and the completion result lists them in `reference_warnings`.
+- Same-repository (`repo-content:`) citations are re-signed to the current repository text, so `verify` will not report them later; when their text changed they are listed in `reference_warnings` as well, which makes the receipt the place to check those pages.
+- The structure's input hash is recomputed with the rewritten references, so `verify` is not left reporting a stale structure after settlement.
+
+A warning is a receipt for the accepted decision, not a request to resubmit it: after the update finishes, revise each listed page that needs a correction. See [Version-Aware Knowledge](version-aware-knowledge.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="scope" -->

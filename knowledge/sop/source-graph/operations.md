@@ -4,7 +4,7 @@ description: Run a Source Graph instance day to day — health checks, backgroun
   jobs, data retention, rate limits, disk and storage, repository maintenance,
   and what common errors mean.
 type: Guide
-timestamp: 2026-10-14T02:19:13.383Z
+timestamp: 2026-10-22T19:00:07.419Z
 ---
 # Operations
 
@@ -13,6 +13,7 @@ A Source Graph instance mostly runs itself: background workers synchronize repos
 <!-- /context:section -->
 
 <!-- context:section id="health" -->
+
 ## Health and status
 
 | Check | Use |
@@ -22,10 +23,12 @@ A Source Graph instance mostly runs itself: background workers synchronize repos
 | `GET /sourcegraph/access-policy` | Whether public reading and sign-in are enabled |
 | **Operations** page | Service status, request counts, mean and maximum time and error rate for search, read and `read_many`, active jobs, and per-instance heartbeats |
 
-The **Query errors** page in settings keeps the most recent 1,000 failed queries with their request details; administrators can inspect or clear it.
+The **Query errors** page in settings keeps the most recent 1,000 failed queries with their request details; administrators can inspect or clear it. One entry represents one request. A `read_many` request also records batch counters — total items, succeeded, failed and returned content items — so a partly failed batch shows how much was still read: an empty file counts as a success, and an item that returned part of a file together with an error counts as failed with content. Older entries without counters are shown as unknown.
+
 <!-- /context:section -->
 
 <!-- context:section id="jobs" -->
+
 ## Background jobs
 
 Every repository has its own job list, shown on the repository page's jobs tab.
@@ -37,10 +40,12 @@ Every repository has its own job list, shown on the repository page's jobs tab.
 - **Budgets:** a sync or index job may run for 45 minutes; a prepare job up to 16 times that, one path group after another.
 - **Capacity:** up to 8 active jobs per repository (or one per path group when a monorepo has more than 8 groups), and at most 256 recorded jobs. A full queue returns `QUEUE_FULL`.
 
-You can cancel a queued or running job from the jobs tab. Finished jobs are pruned automatically (see below); **Clear completed tasks** in settings removes finished records across all repositories immediately, keeping queued and running work, repositories and indexes.
+You can cancel a queued or running job from the jobs tab. Failed jobs also leave a short failure summary — task ID, kind, path group, commit, error code, attempts, completion time and duration, without raw error output or credentials — that outlives the job record (see below). It is history for diagnosis, not a sign of current readiness, and it does not use queue capacity or affect scheduling. Each completed job is also written to the service log as a structured `repository_task_completed` event with its repository, task, state and error code; unchanged automatic syncs that succeed are left out. Finished jobs are pruned automatically (see below); **Clear completed tasks** in settings removes finished records across all repositories immediately, keeping queued and running work, repositories and indexes; clearing failure history removes failure summaries with the same cutoff.
+
 <!-- /context:section -->
 
 <!-- context:section id="retention" -->
+
 ## What is kept, and for how long
 
 | Data | Retention |
@@ -49,12 +54,14 @@ You can cancel a queued or running job from the jobs tab. Finished jobs are prun
 | Search indexes | One per indexed commit; indexes no longer referenced by any retained commit are removed in the background |
 | Git mirrors | Kept until the repository is permanently deleted; changing the retention policy does not shrink them |
 | Finished jobs | 24 hours, or longer while a request receipt still refers to them. Automatic jobs keep at most 32 recent entries, and automatic syncs that found no changes are dropped right away |
+| Job failure summaries | 7 days, at most 128 per repository; the oldest are dropped first |
 | Request receipts (idempotency) | 24 hours, at most 256 per repository |
 | Query error log | The most recent 1,000 entries |
 | Usage observations behind the statistics | 30 days |
 | Browser sessions | 90 days |
 
 Identities, settings and stored credentials are never expired automatically; back them up as described in [Self-Hosting](self-hosting.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="limits" -->
@@ -91,13 +98,14 @@ Stop running jobs before maintenance; otherwise it returns `REPOSITORY_BUSY`. A 
 <!-- /context:section -->
 
 <!-- context:section id="errors" -->
+
 ## Common errors
 
 | Code | Status | What it means | What to do |
 | --- | --- | --- | --- |
 | `INDEX_NOT_READY` | 409 | The commit is eligible but not indexed | Wait for the head index, or prepare that commit |
 | `CONTENT_NOT_READY`, `SCOPE_NOT_READY` | 409 | A monorepo path group is not prepared or synchronized at that commit | Prepare the commit for that group |
-| `REVISION_NOT_ELIGIBLE` | 404 | The commit or branch head is outside the retention window | Use a retained commit, or widen the policy |
+| `REVISION_NOT_ELIGIBLE` | 404 | The commit is not among the repository's currently observed versions | Check the repository and full SHA together, then monitored branches, synchronization and the retention window; never substitute another commit |
 | `BRANCH_NOT_MONITORED` | 404 | The branch is not in the policy | Add it to the repository's branches |
 | `SHORT_SHA_UNSUPPORTED`, `INVALID_REVISION` | 400 | Abbreviated SHA, tag, `HEAD` or another ref | Pass a full 40-character SHA or a monitored branch |
 | `DEFAULT_BRANCH_NOT_OBSERVED` | 409 | No sync has recorded the default branch yet | Wait for or request a sync |
@@ -109,4 +117,5 @@ Stop running jobs before maintenance; otherwise it returns `REPOSITORY_BUSY`. A 
 | `QUEUE_FULL` | 503 | Too many active or recorded jobs | Let jobs finish, cancel some, or clear finished jobs |
 | `ENGINE_RESPONSE_TOO_LARGE` | 502 | Even the smallest result page exceeded its budget | Narrow the pattern, globs or paths |
 | `RATE_LIMITED` | 429 | A rate limit was reached | Retry after one minute, or use a credential |
+
 <!-- /context:section -->
