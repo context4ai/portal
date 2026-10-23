@@ -4,8 +4,8 @@ description: context CLI 的全部命令与子命令，按用途分组，并说�
 translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
-  source_digest: 3762165f2276909eb36c882f2d0a971c3dd2e6441c20ab28ab0c55cbbf4e344e
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 8b67e6a039ec668eefafb31af2ea4b85fcd2e67bf073ebc33d3e04ca58a608bb
+  translated_at: 2026-10-23T04:48:26.659Z
 ---
 
 # CLI 命令
@@ -107,7 +107,8 @@ translation:
 | 命令 | 作用 |
 | --- | --- |
 | `context source add repo\|file\|lark [date]` | 在某个 `YYYYMMDD` 批次下登记仓库、本地文件或飞书文档模块 |
-| `context source add batch [date]` | 在同一批次下登记多个模块 |
+| `context source add repo [date] --module <name>` | 登记或更新一个仓库模块。`--local <path>` 从检出目录读取远程地址和当前提交，可以指向 monorepo 中的包目录；`--remote <url>` 和 `--ref <sha>` 无需检出即可固定版本；`--subpath <dir>` 与 `--remote`/`--ref` 或指向仓库根目录的 `--local` 一起使用，指定相对仓库根目录的包目录（若与 `--local` 指向的包目录不同则会被拒绝） |
+| `context source add batch [date]` | 通过 YAML/JSON `--input` 在同一批次下登记多个模块。仓库条目接受 `type`、`module`、`local`、`remote`、`ref` 和 `subpath`；不支持的字段会被拒绝，并列出该类条目接受的字段 |
 | `context source import` | 单个或批量导入托管的 Markdown（笔记、会话摘要）或预先抓取的飞书内容 |
 | `context source discover` / `fetch` | 发现来源清单，或抓取可移植的快照，不登记任何内容 |
 | `context source batch-status <job-id>` | 读取已保存的登记检查点 |

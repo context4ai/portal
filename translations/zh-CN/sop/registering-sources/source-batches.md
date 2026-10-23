@@ -4,8 +4,8 @@ description: 每种材料（代码、文档目录、飞书文档、笔记、会�
 translation:
   locale: zh-CN
   artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
-  source_digest: e364bae889d2e4797b840015ad044adec76d6cfc2035a3095a19b51a968da340
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 348c27499de1ee323ea0b5dc14b74e886bdd8aab797f2b0f5ac54881dcc964ac
+  translated_at: 2026-10-23T04:48:26.659Z
 ---
 
 # 选择添加材料的方式
@@ -42,13 +42,15 @@ translation:
 再加上这个 Wiki 页面：https://example.larkoffice.com/wiki/example-token
 ```
 
-Agent 会在一个批次中一起登记它们，因此它们不会相互干扰。耗时较长的登记会随时保存进度：如果中断了，请 Agent 继续，它会从停下的地方恢复，并对照已登记的内容重新检查每个来源，而不是信任中断前的记录。其背后的命令见 [CLI 命令](../../product/reference/context/cli-commands.md)。
+Agent 会在一个批次中一起登记它们，因此它们不会相互干扰。耗时较长的登记会随时保存进度：如果中断了，请 Agent 继续，它会从停下的地方恢复，并对照已登记的内容重新检查每个来源，而不是信任中断前的记录。同一个 monorepo 中的多个包可以在同一次请求中给出；每个包都会成为独立的来源，按它在仓库中的目录登记（参见 [代码仓库](code-repositories.md#how-a-package-is-registered)）。其背后的命令见 [CLI 命令](../../product/reference/context/cli-commands.md)。
 <!-- /context:section -->
 
 <!-- context:section id="failure" -->
 ## 出现失败时
 
 失败会保留已经成功的部分：失败项之前的来源保持已登记状态，Agent 会告诉你哪些已完成、哪一个失败了，以便你修复那一个后继续。
+
+在登记任何来源之前，会先检查整个请求。如果某个条目带有该类来源不接受的字段，则不会登记任何来源，错误信息会列出该类来源接受的字段，以便 Agent 修正条目后重新提交请求。
 
 一个知识工作区同一时间只能运行一次登记。如果 Agent 仍在忙于某次登记，请等待它完成，不要另起一次。如果强制停止导致知识工作区被阻塞，请先让 Agent 恢复它，再继续执行。
 <!-- /context:section -->

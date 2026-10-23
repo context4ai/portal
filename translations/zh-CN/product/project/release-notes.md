@@ -4,8 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: fd88728df9847b87fae830c6af7e551dcf8f5184e8a2683bd67ce4a02232b24a
-  translated_at: 2026-10-22T19:03:13.981Z
+  source_digest: 2dde3df0082f8a7b678e2ceb279b8ff32e2530fc7f7838eecc5da99e1985b0f3
+  translated_at: 2026-10-23T04:48:26.659Z
 ---
 
 # 发布说明
@@ -14,6 +14,21 @@ translation:
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
 升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；参见 [安装](../getting-started/installation.md)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+<!-- /context:section -->
+
+<!-- context:section id="context-0782" -->
+## Context 0.7.81 和 0.7.82（2026-10-22 至 2026-10-23）
+
+**登记 monorepo 中的包**
+
+- 仓库来源可以用相对仓库根目录的 `subpath` 指定其模块目录：既可以作为 `context source add batch` 中仓库条目的 `subpath` 字段，也可以使用 `context source add repo --subpath <dir>`。因此，一个包可以只凭仓库的 `remote` 和固定的 `ref` 登记，无需任何检出；也可以用检出根目录加包目录来登记（0.7.81）。
+- 把 `local` 指向检出中的某个目录时，仍由它自行决定范围；若 `subpath` 指定了不同的目录，会被拒绝，而不是悄悄覆盖。绝对路径和用 `..` 离开仓库的路径会被拒绝，`.` 表示仓库根目录。
+- 批量登记中如果某个条目带有 Context 不接受的字段，错误信息现在会列出该类条目接受的字段，Agent 一次即可修正。来源采集指引直接说明了登记字段，不再要求 Agent 自行查找命令结构。
+
+**网站导航**
+
+- 网站侧边栏和分区落地页在每一层都遵循知识地图的顺序。文章和目录可以交错排列，例如先放概览和快速上手，再放「指南」目录和「参考」目录；早期版本总是把目录移到同级文章之前（0.7.82）。
+- 在分区落地页上，每个目录是一张卡片，连续的独立文章在它们于知识地图中的位置合并为一张卡片。知识地图本来就把目录排在前面的站点，升级后看起来不变。
 <!-- /context:section -->
 
 <!-- context:section id="context-0780" -->
