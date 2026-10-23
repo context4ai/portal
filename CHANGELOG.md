@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.10 — 2026-10-23
+
+### Update to Context 0.7.82
+
+- Release Notes add Context 0.7.81 and 0.7.82; the site now builds with Context 0.7.82.
+- Code Repositories explains how a monorepo package is registered by its directory: from a package checkout, a checkout root plus a repository-relative subpath, or a remote and pinned commit alone.
+- Choosing How to Add Material and CLI Commands cover subpath in batch registration, the --subpath option and errors that list accepted batch fields.
+- Documentation Sites explains that sidebars and section landing pages follow the knowledge map order, so articles and directories can be interleaved.
+- Citations on affected pages point at the updated sources, and Chinese translations follow these changes.
+
+Trigger: module: Context source advanced to the 0.7.82 release.; translation: Chinese pages updated for the revised articles.
+User: qiansc (git)
+
 ## 0.13.9 — 2026-10-22
 
 ### Update to Context 0.7.80 and the latest Source Graph

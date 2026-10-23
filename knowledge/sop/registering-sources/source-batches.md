@@ -4,7 +4,7 @@ description: Which way to add each kind of material — code, document folders,
   Lark documents, notes, conversation summaries, same-repository docs and
   Skills, or external entrances — and how to add many sources in one request.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-23T04:46:46.644Z
 ---
 # Choosing How to Add Material
 
@@ -40,13 +40,15 @@ Add ../billing-service as code, ../docs/user-guide.md as product documentation,
 and this Wiki page: https://example.larkoffice.com/wiki/example-token
 ```
 
-The Agent registers them together in one batch, so they do not interfere with each other. A long registration keeps its progress as it goes: if it is interrupted, ask the Agent to continue, and it resumes from where it stopped, checking each source again against what is already registered rather than trusting what was recorded before the interruption. The commands behind this are in [CLI Commands](../../product/reference/context/cli-commands.md).
+The Agent registers them together in one batch, so they do not interfere with each other. A long registration keeps its progress as it goes: if it is interrupted, ask the Agent to continue, and it resumes from where it stopped, checking each source again against what is already registered rather than trusting what was recorded before the interruption. Packages of the same monorepo can be named in the same request; each becomes its own source, registered by its directory inside the repository (see [Code Repositories](code-repositories.md#how-a-package-is-registered)). The commands behind this are in [CLI Commands](../../product/reference/context/cli-commands.md).
 <!-- /context:section -->
 
 <!-- context:section id="failure" -->
 ## If something fails
 
 A failure keeps what already succeeded: sources before the failing one stay registered, and the Agent tells you which ones are done and which one failed, so you can fix that one and continue.
+
+The whole request is checked before anything is registered. If an entry carries a field that its kind of source does not accept, nothing is registered and the error names the fields that kind does accept, so the Agent can correct the entry and submit the request again.
 
 Only one registration can run in a knowledge workspace at a time. If the Agent is still busy with one, wait for it to finish instead of starting another. If a forced stop leaves the workspace blocked, ask the Agent to recover it before resuming.
 <!-- /context:section -->

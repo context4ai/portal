@@ -4,8 +4,8 @@ description: 将一个仓库或 monorepo 中选定的包添加为固定到某个
 translation:
   locale: zh-CN
   artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
-  source_digest: 1adf4a770f32fce3db4731cf3a737c9fe722ca9b826c647e47613cc81e792c5c
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: c3c2470d0d1ac45dd4554acb46ff5bb0a74e39568e111d65c6424c627b45fc72
+  translated_at: 2026-10-23T04:48:26.659Z
 ---
 
 # 代码仓库
@@ -46,9 +46,21 @@ Context 会记录仓库、你选择的模块以及它读取的 commit。生成�
 <!-- context:section id="monorepo" -->
 ## Monorepo：选择包，而不是整棵树
 
-Context 从不自行依据当前目录、包名或 Git 远程来扩大边界。当 monorepo 中有多个包时，Agent 会展示它们的路径，并询问哪些应成为来源，然后分别登记每个选中的包。
+Context 从不自行依据当前目录、包名或 Git 远程来扩大边界。当 monorepo 中有多个包时，Agent 会展示它们的路径，并询问哪些应成为来源，然后按下文所述分别登记每个选中的包。
 
 请明确选择包；之后再过滤文件无法选中某个包。在索引过时或无关的区域之前先讨论一下（不必要的代码会耗费阅读时间和 token），但不要仅仅因为某个目录名字看起来陈旧就舍弃它。
+<!-- /context:section -->
+
+<!-- context:section id="package-scope" -->
+## 如何登记一个包
+
+每个选中的包都按它在仓库中的目录登记，因此 Agent 只读取该目录，每条引用也都指向其中的内容。Agent 用以下三种方式之一记录这个目录：
+
+- 指向本地检出中的包目录，由 Context 据此推断仓库、当前提交和目录；
+- 指向检出的根目录，并给出相对该根目录的包目录；或
+- 只给出仓库的远程地址和要固定的提交，以及包目录，这样在任何人检出之前就可以登记这个包。
+
+该目录始终相对于仓库根目录，`.` 表示整个仓库。Context 会拒绝位于仓库之外的目录。当本地路径已经指向某个包内部时，由这个路径决定范围：如果再指定另一个不同的目录，会被直接拒绝，而不是悄悄选择其中一个。同一仓库的多个包可以共用一个检出。每种方式对应的选项见 [CLI 命令](../../product/reference/context/cli-commands.md) 参考。
 <!-- /context:section -->
 
 <!-- context:section id="parsers" -->
