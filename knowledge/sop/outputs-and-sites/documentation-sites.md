@@ -4,7 +4,7 @@ description: How to add a documentation website to a knowledge package, what
   readers get, how navigation and homepage cards are set up, and how to preview
   and deploy the site.
 type: Guide
-timestamp: 2026-10-22T19:13:11.965Z
+timestamp: 2026-10-23T04:46:46.644Z
 ---
 # Documentation Sites
 
@@ -60,6 +60,8 @@ Code samples and raw HTML are displayed as content, never executed.
 ## Navigation comes from the knowledge map
 
 The knowledge map decides the sidebar. Each entry points to a page by its identity, so renaming a label or moving a page to another group never changes its URL, and one page can appear in several places while keeping one URL. Every selected page needs a place in the map before the build; if some are missing, the Agent places them or asks you where they belong. Groups can stay empty while their pages are still planned.
+
+The sidebar keeps the order you give the map at every level. Articles and directories can sit side by side in that order: a section can open with an overview and a quick start, followed by a Guides directory and a Reference directory. Each section's landing page follows the same order, showing every directory as a card and gathering consecutive articles that sit outside a directory into one shared card at their place in the sequence. To change the order, ask the Agent to reorder the entries; see [Reorganizing at Scale](../review-and-revision/reorganizing-at-scale.md). Context versions before 0.7.82 always listed directories ahead of their sibling articles, whatever order the map gave.
 
 You can also ask the Agent for extra links in the top bar (for example a link back to a documentation home), items in the More menu (for example release notes kept outside the map), icon links, or a different target for the site title. Links that start with `/` point to the same domain, so a site under `/docs/` can link to a sibling application. The exact settings are in [Project API](../../product/reference/context/project-api.md).
 <!-- /context:section -->

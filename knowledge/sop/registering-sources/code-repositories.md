@@ -4,7 +4,7 @@ description: Add a repository, or selected packages of a monorepo, as a source
   pinned to one commit, and know what happens on another machine and when the
   code moves on.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-23T04:46:46.644Z
 ---
 # Code Repositories
 
@@ -44,9 +44,21 @@ The options behind this are listed in the [CLI Commands](../../product/reference
 <!-- context:section id="monorepo" -->
 ## Monorepos: pick packages, not the whole tree
 
-Context never widens a boundary on its own from the current directory, package names or Git remotes. When a monorepo has several packages, the Agent shows their paths and asks which ones should become sources, then registers each chosen package separately.
+Context never widens a boundary on its own from the current directory, package names or Git remotes. When a monorepo has several packages, the Agent shows their paths and asks which ones should become sources, then registers each chosen package separately, as described below.
 
 Choose the packages explicitly; filtering files later cannot select a package. Discuss obsolete or unrelated areas before indexing them — unnecessary code costs reading time and tokens — but do not drop a directory merely because its name looks old.
+<!-- /context:section -->
+
+<!-- context:section id="package-scope" -->
+## How a package is registered
+
+Each chosen package is registered by its directory inside the repository, so the Agent reads only that directory and every citation points into it. The Agent records that directory in one of three ways:
+
+- it points at the package directory of a local checkout, and Context works out the repository, the current commit and the directory from there;
+- it points at the checkout's root and names the package directory relative to that root; or
+- it gives only the repository's remote and the commit to pin, together with the package directory, so a package can be registered before anyone has a checkout of it.
+
+The directory is always relative to the repository root, and `.` means the whole repository. Context refuses a directory that lies outside the repository. When a local path already points inside a package, that path decides the scope: naming a different directory as well is rejected rather than silently choosing one of them. Several packages of one repository can share one checkout. The options behind each form are in the [CLI Commands](../../product/reference/context/cli-commands.md) reference.
 <!-- /context:section -->
 
 <!-- context:section id="parsers" -->
