@@ -3,7 +3,7 @@ title: CLI Commands
 description: Every command and subcommand of the context CLI, grouped by
   purpose, with what each does and its key options.
 type: Wiki
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-23T04:46:46.644Z
 ---
 # CLI Commands
 
@@ -106,7 +106,8 @@ Run `context <command> --help` for the full option list of any command. For the 
 | Command | What it does |
 | --- | --- |
 | `context source add repo\|file\|lark [date]` | Registers a repository, local file or Lark document module under a `YYYYMMDD` batch |
-| `context source add batch [date]` | Registers several modules under one batch |
+| `context source add repo [date] --module <name>` | Registers or updates a repository module. `--local <path>` reads the remote and current commit from a checkout and may point at a monorepo package directory; `--remote <url>` and `--ref <sha>` pin it without a checkout; `--subpath <dir>` names a repository-relative package directory together with `--remote`/`--ref` or a `--local` repository root (a different directory than a `--local` package path is rejected) |
+| `context source add batch [date]` | Registers several modules under one batch from a YAML/JSON `--input`. Repo items accept `type`, `module`, `local`, `remote`, `ref` and `subpath`; an unsupported field is rejected with the list of fields that item type accepts |
 | `context source import` | Imports managed Markdown (notes, session summaries) or prefetched Lark content, singly or in a batch |
 | `context source discover` / `fetch` | Discovers a source inventory, or fetches a portable snapshot, without registering anything |
 | `context source batch-status <job-id>` | Reads a saved registration checkpoint |

@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-10-22T19:01:38.376Z
+timestamp: 2026-10-23T04:46:46.644Z
 ---
 # Release Notes
 
@@ -11,6 +11,21 @@ timestamp: 2026-10-22T19:01:38.376Z
 These notes summarize recent product releases by what readers and Agents notice. The complete history is in the [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) and the [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md). The site's own **Changelog** entry in the More menu is different: it lists the versions of this documentation, not product releases.
 
 To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session; see [Installation](../getting-started/installation.md). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+<!-- /context:section -->
+
+<!-- context:section id="context-0782" -->
+## Context 0.7.81 and 0.7.82 (2026-10-22 to 2026-10-23)
+
+**Registering monorepo packages**
+
+- A repository source can name its module directory as a repository-relative `subpath`: as the `subpath` field of a repo item in `context source add batch`, or as `context source add repo --subpath <dir>`. A package can therefore be registered from the repository's `remote` and pinned `ref` alone, before any checkout exists, or from a checkout root plus the package directory (0.7.81).
+- Pointing `local` at a directory inside the checkout still sets the scope by itself; a `subpath` that names a different directory is rejected instead of silently overriding it. Absolute paths and paths that leave the repository with `..` are refused, and `.` selects the repository root.
+- A batch item with a field Context does not accept now names the fields that item type does accept, so the Agent can correct the entry in one attempt. The source-capture guidance names the registration fields directly instead of asking the Agent to look them up.
+
+**Website navigation**
+
+- Website sidebars and section landing pages follow the knowledge map order at every level. Articles and directories can be interleaved, for example an overview and a quick start before a Guides directory and a Reference directory; earlier versions always moved directories ahead of their sibling articles (0.7.82).
+- On a section landing page each directory is a card, and consecutive loose articles share one card at their position in the map. A site whose map already lists directories first looks the same after upgrading.
 <!-- /context:section -->
 
 <!-- context:section id="context-0780" -->
