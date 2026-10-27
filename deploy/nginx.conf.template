@@ -14,6 +14,16 @@ map $uri $cache_control {
     default                    "no-cache";
 }
 
+# www is an alias: send it to the canonical host so cookies and sign-in callbacks
+# (which always return to https://context4ai.org) stay on one host.
+server {
+    listen 8080;
+    listen [::]:8080;
+    server_name www.context4ai.org;
+    server_tokens off;
+    return 301 https://context4ai.org$request_uri;
+}
+
 server {
     listen 8080 default_server;
     listen [::]:8080 default_server;
