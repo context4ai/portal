@@ -4,8 +4,8 @@ description: 什么样的 Context 任务算大型任务、Agent 如何调研并�
 translation:
   locale: zh-CN
   artifact_ref: a68b141a-1f2f-449b-97e2-7942fecaf71d
-  source_digest: 995fca6a8a2250cf646f78955fe66426b73a1f05b2c77dfcf3bcaa866cb82a9e
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 623dcc8359eccd3ce5cc11a300230d6d7cca2ee6f1c2543024ab7f8b15bfe10f
+  translated_at: 2026-10-28T02:13:02.240Z
 ---
 
 # 分阶段规划大型项目
@@ -48,6 +48,9 @@ Agent 在不进入 Git 的临时空间中工作。它从目录列表、版本和
 在提出任何文章之前，它会先阅读知识工作区当前的组织方式和相关的已批准页面，并按主题做出决定：**原样复用**、**修订或扩展**、**合并**、**新增**，或针对尚未解决的冲突或访问缺口**进一步调研**。调研绝不会修改已批准的知识。
 
 大范围更新来源时，每个仓库都会在知识所依据的版本与新版本之间比较，只看已批准文章实际引用的文件。文件有变化只是需要调查的理由，并不证明文章必须重写。
+
+
+开工之前，规划会问一次是否已有填好的来源清单，并拿到它的链接：填好的清单写明每个来源、负责人，以及知识是否应当依赖它，可以缩短盘点。`context` 技能自带模板，位于 `references/source-checklist.md`。它从来不是必需的——没有清单时，规划按对话里的材料继续。
 <!-- /context:section -->
 
 <!-- context:section id="report" -->
