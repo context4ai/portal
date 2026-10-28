@@ -5,8 +5,8 @@ description: 把你的 Agent 接入 Source Graph，让 Context
 translation:
   locale: zh-CN
   artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
-  source_digest: 6ed7ec03c699c13d749d4118bea37fa254321a74d180a14ffd25a9bc8c8e94ed
-  translated_at: 2026-10-22T19:13:59.216Z
+  source_digest: 127f6bff7802763ed0552e7282aa9ff02c6eaca5ce931e2981bc63437f8f0fd8
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 接入
@@ -62,7 +62,7 @@ translation:
 | --- | --- | --- |
 | 无（匿名） | — | 当站点允许公开读取时，只读访问标记为公开的仓库；按客户端限流 |
 | 个人 API Key（`sgk_…`） | 登录后打开用户设置，创建 API 令牌 | 通过 HTTP 或 MCP 执行与你的账号相同的读取操作。管理员创建的 Key 还可以通过 MCP 请求建索引 |
-| 服务令牌 | 实例的 `SOURCEGRAPH_API_TOKEN` 设置，至少 32 个字符 | 所有 HTTP 和 MCP 操作，包括登记和建索引，适用于你自己掌控的自动化流程 |
+| 服务令牌 | 实例的服务凭据，至少 32 个字符。`SOURCEGRAPH_API_TOKEN` 在首次启动时提供初始值（未设置时自动生成）；之后使用保存在数据库中的值 | 所有 HTTP 和 MCP 操作，包括登记和建索引，适用于你自己掌控的自动化流程 |
 
 以 `Authorization: Bearer <value>` 的形式发送 Key 和令牌。无效凭据会被拒绝并返回 `AUTHENTICATION_REQUIRED`，绝不会回退为匿名访问。请将凭据保存在客户端的密钥存储或环境变量中，不要放进共享的配置文件。各模式的详细说明见 [登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->

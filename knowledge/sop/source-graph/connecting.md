@@ -4,7 +4,7 @@ description: Connect your Agent to Source Graph so Context can read cited code
   without cloning, then connect a browser, script or the command-line client,
   choose the right credential and follow the search-then-read loop.
 type: Guide
-timestamp: 2026-10-22T19:13:11.965Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Connecting
 
@@ -53,15 +53,17 @@ If search or reading cannot find a repository you need, it is probably not regis
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->
+
 ## Choose a credential
 
 | Credential | How to get it | What it allows |
 | --- | --- | --- |
 | None (anonymous) | — | Read-only access to repositories marked public, when the site allows public reading; rate-limited per client |
 | Personal API key (`sgk_…`) | Sign in, open your user settings and create an API token | The same reads as your account, over HTTP or MCP. Administrators can create keys that may also request indexing over MCP |
-| Service token | The `SOURCEGRAPH_API_TOKEN` setting of the instance, at least 32 characters | Every HTTP and MCP operation, including registration and indexing — for automation you control |
+| Service token | The instance's service credential, at least 32 characters. `SOURCEGRAPH_API_TOKEN` seeds it on first start (it is generated when unset); afterwards the value saved in the database is used | Every HTTP and MCP operation, including registration and indexing — for automation you control |
 
 Send keys and tokens as `Authorization: Bearer <value>`. An invalid credential is rejected with `AUTHENTICATION_REQUIRED`; it never falls back to anonymous access. Keep credentials in your client's secret store or environment, never in shared configuration files. [Authentication and Access Control](authentication-and-access-control.md) explains each mode in detail.
+
 <!-- /context:section -->
 
 <!-- context:section id="http" -->

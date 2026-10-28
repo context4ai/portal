@@ -3,7 +3,7 @@ title: Workflow Execution
 description: How Context chooses the next step from knowledge workspace facts,
   pauses at Gates, rejects stale commands and resumes after an interruption.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Workflow Execution
 
@@ -24,6 +24,7 @@ A Route carries the selected step, a reason code, the resources the Agent must r
 <!-- /context:section -->
 
 <!-- context:section id="graphs" -->
+
 ## Two graphs
 
 The Provider in `packages/context-cli/context-workflow/` contains two static graphs:
@@ -33,7 +34,8 @@ The Provider in `packages/context-cli/context-workflow/` contains two static gra
 | `workspace` | The top-level lifecycle: repair, source boundary, capture, Indexer lifecycle, review, close, package output, translation, version recording, build and completion, plus rollback |
 | `indexer` | Requirements, planning, the work-start report, stage writing, gap handling, source updates and approved-page revisions |
 
-The top-level order is fixed by the graph's edges: source boundary → capture → `run-indexer-lifecycle` → review → close → package output → version → build. Nodes describe stable task categories such as "a capture target remains"; source names, dates and modules are runtime facts and never become graph nodes. That is why one graph serves every knowledge workspace.
+The top-level order is fixed by the graph's edges: source boundary → capture → `run-indexer-lifecycle` → review → close → package output → version → build. Between capture and the Indexer lifecycle, `process-source-update` runs `context update --pending` whenever `sources.update_pending` is true, that is, when a registered repository has moved past the commit its approved knowledge was processed at. Nodes describe stable task categories such as "a capture target remains"; source names, dates and modules are runtime facts and never become graph nodes. That is why one graph serves every knowledge workspace.
+
 <!-- /context:section -->
 
 <!-- context:section id="gates" -->

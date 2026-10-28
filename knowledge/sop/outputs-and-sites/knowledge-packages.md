@@ -4,7 +4,7 @@ description: What a Context knowledge package contains, how to choose your
   outputs, what to tell the Agent, and what the build checks before you hand a
   package out.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-28T03:53:56.231Z
 ---
 # Knowledge Packages
 
@@ -42,15 +42,17 @@ The Agent updates the workspace's package declaration for you; you never need to
 <!-- /context:section -->
 
 <!-- context:section id="contents" -->
+
 ## What is inside
 
 ```text
 dist/<package-name>/
 ├── AGENTS.md
 ├── skills/
-│   └── knowledge-query/
+│   └── context-knowledge-query/
 │       ├── SKILL.md
 │       └── scripts/search.mjs
+├── others/context/search-guide.md   # package-specific search hints
 ├── wikis/
 │   ├── index.md          # package entry page
 │   ├── codeindex/ ...
@@ -66,19 +68,22 @@ dist/<package-name>/
 The package name already names the folder, so roots inside are flat: `wikis/`, `guides/`, `rules/`, `feats/`. Each page lands under the root for its collection — `sop` pages under `guides/sop/`, `codeindex` pages under `wikis/codeindex/` — as listed in [Knowledge Collections](../../product/reference/context/knowledge-collections.md). `wikis/` is the structured entity-and-relationship layer; `guides/` and `rules/` explain, operationalize or constrain it.
 
 Pages in the package are written for consumers: they keep their reader-facing front matter, drop internal markers, and end with a readable Sources section generated from the page's citations — repository links with file and line ranges, document links with their captured attribution. Exact section-level evidence stays in the knowledge workspace.
+
 <!-- /context:section -->
 
 <!-- context:section id="query" -->
+
 ## How Agents read it
 
-The bundled `knowledge-query` Skill is a complete, generic query entry. It works structure first:
+The bundled `context-knowledge-query` Skill is a complete, generic query entry, identical in every Context package, so one installed copy serves every package the Agent can find: the surrounding package, a `--root` or `--base` folder, directories in `CONTEXT_KNOWLEDGE_PACKAGES`, or packages recorded by the host's package manager. It lists the available packages, reads each candidate package's `others/context/search-guide.md` first, and then works structure first:
 
 1. Start from the generated directory indexes in each root.
 2. Use the relationships recorded in the inventory for connections between pages.
 3. Read the most likely pages and cite their visible headings and passages.
 4. Report a gap when the package does not cover the fact asked for.
 
-When the indexes do not narrow the scope, or a page is too large to read directly, a bundled search script ranks Markdown chunks by relevance. Search results are leads; page bodies and recorded relationships establish what the package says. An Agent reading only the package must not claim to have read the original sources.
+When the indexes do not narrow the scope, or a page is too large to read directly, a bundled search script ranks Markdown chunks by relevance. Search results are leads; page bodies and recorded relationships establish what the package says. When a page's text does not settle a question, the Skill follows the page's Sources entries: repository links at their recorded commit through the host's authorized tools, document links at the current document. Entries without links stay out of reach, and an Agent must not claim to have read a source it did not open.
+
 <!-- /context:section -->
 
 <!-- context:section id="build" -->

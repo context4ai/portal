@@ -3,11 +3,12 @@ title: Knowledge Lifecycle
 description: The stages a source passes through to become reviewed, built and
   versioned knowledge, and what each stage protects.
 type: Guide
-timestamp: 2026-10-12T16:39:19.026Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Knowledge Lifecycle
 
 <!-- context:section id="stages" -->
+
 ## From source to package
 
 ```mermaid
@@ -28,6 +29,9 @@ flowchart LR
 | Review | You see the whole current batch of Candidates and approve, reject or ask for revisions | Approval is applied atomically; rejected material keeps a minimal fingerprint so it is not proposed again |
 | Close | `knowledge/structure.yaml` is rebuilt from approved pages and their edges | The knowledge map matches the approved pages, without rewriting prose |
 | Verify and build | Source references, frontmatter, structure and assets are checked, then packages and sites are produced | Distributed files map back to approved knowledge through a build inventory |
+
+When a registered repository later moves past the commit its approved knowledge was processed at, the workspace Route runs `context update --pending` before anything else waits for you. It asks only about pages whose cited text changed and keeps the previous processed version until that update is decided.
+
 <!-- /context:section -->
 
 <!-- context:section id="indexer" -->

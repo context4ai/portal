@@ -4,8 +4,8 @@ description: Source Graph 全部 HTTP 路由与 MCP 工具：路径、输入、�
 translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
-  source_digest: 5841cc4c4b643498957f172dd0d72fc3dca0a21c834362778fa803a52c69dba9
-  translated_at: 2026-10-22T19:03:13.981Z
+  source_digest: 39739999e6a04ba3f3df7082d5dfe5434d120f92d96f8b62911e12a5018fea74
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # HTTP 与 MCP 接口
@@ -50,7 +50,7 @@ translation:
 <!-- context:section id="admin" -->
 ## 管理路由
 
-这些路由需要服务令牌或管理员的浏览器会话。个人 API Key 是只读的，在这里会得到 `403 ACCESS_DENIED`。少数读取路由（`GET /api/admin/v1/repos`、`GET /api/admin/v1/repo` 和 `GET /api/admin/v1/statistics`）也对匿名读取开放。
+这些路由需要服务令牌或管理员的浏览器会话。仓库的管理者也可以对该仓库使用所有带 `?repo=` 的路由，其他人会得到 `403 REPOSITORY_MANAGEMENT_DENIED`。站点允许已登录用户登记仓库时，任何已登录用户都可以登记仓库并成为其管理者；否则登记会返回 `403 REGISTRATION_DISABLED`。用户、站点设置、全局代码源令牌和其他站点级路由仍仅限管理员。个人 API Key 是只读的，在这里会得到 `403 ACCESS_DENIED`。少数读取路由（`GET /api/admin/v1/repos`、`GET /api/admin/v1/repo` 和 `GET /api/admin/v1/statistics`）也对匿名读取开放。
 
 | 方法 | 路径 | 请求体或请求头 | 用途 |
 | --- | --- | --- | --- |
@@ -68,8 +68,10 @@ translation:
 | POST | `/api/admin/v1/repo/delete/preview`、`/api/admin/v1/repo/delete` | `{"preview"}`，后者还需 `If-Match` | 永久删除仓库数据 |
 | POST | `/api/admin/v1/repo/jobs/cancel` | `{"job_id"}` | 取消任务 |
 | POST | `/api/admin/v1/repo/purge` | `If-Match` 版本 | 清除已停用且已删除的仓库 |
+| POST | `/api/admin/v1/repo/managers` | `{"add":"<用户 ID>"}` 或 `{"remove":"<用户 ID>"}`；`If-Match` 版本 | 添加或移除管理者（最多 50 位）；用户不存在或已停用时返回 `404 USER_NOT_FOUND` |
+| GET | `/auth/users/search?q=` | — | 已登录用户按姓名或邮箱查找最多 20 位启用中的用户，用于选择管理者 |
 
-登记字段见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
+登记和 `PATCH` 还接受 `git_timeout_minutes`（0 表示继承站点默认值；15、30、45 或 60 表示覆盖）。仓库详情新增 `can_manage`，对已登录调用方还会返回 `creator` 和 `managers`；`GET /access-policy` 新增 `user_repositories`。登记字段见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
 <!-- /context:section -->
 
 <!-- context:section id="other" -->
@@ -158,5 +160,5 @@ translation:
 <!-- context:section id="errors" -->
 ## 错误格式
 
-HTTP 错误返回一个 JSON 体，其中包含 `Error` 消息，以及含有 `Protocol`、`RequestID`、`Status`、`Code` 和 `Retryable` 的 `Meta`。传输层错误码包括 `NOT_FOUND`、`METHOD_NOT_ALLOWED`、`INVALID_QUERY_PARAMETERS`、`INVALID_REQUEST`、`AUTHENTICATION_REQUIRED`、`ACCESS_DENIED`、`RATE_LIMITED`、`PRECONDITION_REQUIRED`、`QUERY_DEADLINE_EXCEEDED` 和 `DEPENDENCY_UNAVAILABLE`。`INDEX_NOT_READY`、`REVISION_NOT_ELIGIBLE`、`INVALID_PATTERN` 或 `READ_BUDGET_EXCEEDED` 等操作错误码有各自的状态码。[运维](../../../sop/source-graph/operations.md) 解释了常见错误码及处理方法。
+HTTP 错误返回一个 JSON 体，其中包含 `Error` 消息，以及含有 `Protocol`、`RequestID`、`Status`、`Code` 和 `Retryable` 的 `Meta`。传输层错误码包括 `NOT_FOUND`、`METHOD_NOT_ALLOWED`、`INVALID_QUERY_PARAMETERS`、`INVALID_REQUEST`、`AUTHENTICATION_REQUIRED`、`ACCESS_DENIED`、`RATE_LIMITED`、`PRECONDITION_REQUIRED`、`QUERY_DEADLINE_EXCEEDED` 和 `DEPENDENCY_UNAVAILABLE`。`INDEX_NOT_READY`、`REVISION_NOT_ELIGIBLE`、`INVALID_PATTERN` 或 `READ_BUDGET_EXCEEDED` 等操作错误码有各自的状态码；管理类错误码 `REPOSITORY_MANAGEMENT_DENIED`、`REGISTRATION_DISABLED`、`USER_NOT_FOUND`，以及 `GIT_REPOSITORY_UNAVAILABLE` 等 Git 拉取错误码也是如此，其中 `GIT_REPOSITORY_UNAVAILABLE` 同时涵盖仓库不存在和凭据看不到该仓库两种情况。[运维](../../../sop/source-graph/operations.md) 解释了常见错误码及处理方法。
 <!-- /context:section -->

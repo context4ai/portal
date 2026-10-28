@@ -4,12 +4,13 @@ description: Register a GitHub or custom Git repository with its branches,
   retention window, visibility and sync interval, supply tokens for private
   repositories, and split a monorepo into path groups.
 type: Guide
-timestamp: 2026-10-14T08:53:29.911Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Registering Repositories
 
 <!-- context:section id="goal" -->
-A repository becomes searchable once it is registered: Source Graph then mirrors its monitored branches, keeps a window of eligible commits and indexes each branch head. Registration needs an administrator — signed in on the website — or the instance's service token.
+
+A repository becomes searchable once it is registered: Source Graph then mirrors its monitored branches, keeps a window of eligible commits and indexes each branch head. Registration needs an administrator — signed in on the website — or the instance's service token. When an administrator turns on **Let signed-in users register repositories**, any signed-in user can register one too and becomes its manager; see [Repository managers](#repository-managers).
 
 On the website, open **Repositories** and choose **Register a repository**. Over HTTP, send the same fields to `POST /sourcegraph/api/admin/v1/repos`, optionally with an `Idempotency-Key` header so retries do not register twice:
 
@@ -25,9 +26,15 @@ On the website, open **Repositories** and choose **Register a repository**. Over
 ```
 
 The request returns `202 Accepted` and queues the first sync; the repository page's jobs tab shows progress.
+
+## Repository managers
+
+Administrators manage every repository. A repository registered by a signed-in user lists that user as its only manager; repositories registered before managers existed treat their creator as manager until the list is first edited. Managers can change the repository's settings, preview, prepare and add indexes, clean up, cancel jobs, delete and purge it, and add or remove managers, including themselves, up to 50. Add a manager on the repository page by searching for a signed-in user by name or email.
+
 <!-- /context:section -->
 
 <!-- context:section id="fields" -->
+
 ## Registration fields
 
 | Field | Meaning |
@@ -41,6 +48,7 @@ The request returns `202 Accepted` and queues the first sync; the repository pag
 | `policy.default_branch` | Also follow the remote's default branch, discovered on each sync |
 | `policy.days` or `policy.count` | The retention window — exactly one of days (1–365) or first-parent commits per branch (1–4096). Omit both to use the site's repository defaults (initially 30 days) |
 | `sync_interval_minutes` | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440; default 5 |
+| `git_timeout_minutes` | Git fetch and hydration timeout: 0 or omitted inherits the site default (initially 15 minutes); 15, 30, 45 or 60 override it |
 
 A policy monitors one to eight branches in total, counting the default branch. Tags are never fetched, so they cannot be searched or read.
 
@@ -56,9 +64,11 @@ Every instance offers exactly two code sources, always listed in this order:
 To use your own Git server, set the custom source's host on its card under **System settings › Code sources** or in the startup file; see [Configuration](../../product/reference/source-graph/configuration.md#code-sources). A source without a host cannot be used for registration (`409 CODE_SOURCE_NOT_CONFIGURED`).
 
 Registration records the source's current host on the repository as `code_host`, and every later fetch uses that host. Changing a code source's configuration therefore never moves a repository that is already registered.
+
 <!-- /context:section -->
 
 <!-- context:section id="private" -->
+
 ## Tokens for private repositories
 
 Public GitHub repositories need no token. For private ones, store a token for the repository's code source in one of two places:
@@ -73,9 +83,12 @@ For each fetch the service follows the repository's `code_provider`:
 3. the environment token — `SOURCEGRAPH_GITHUB_TOKEN` for GitHub (the earlier `SOURCEGRAPH_GIT_TOKEN` is still read while it is unset), `SOURCEGRAPH_CUSTOM_GIT_TOKEN` for the custom source — used only while no global token of that source has been saved;
 4. for GitHub only, anonymous access. GitHub rejects a revoked token even for a public repository, so anonymous access is tried last rather than skipped.
 
-The two sources never use each other's tokens. Tokens are encrypted with the instance's credential key and shown as ready, expiring (within seven days), expired or invalid. The bundled Git credential helper hands the chosen token only to the host of the repository being fetched, with the source's HTTPS username (`oauth2` by default).
+The two sources never use each other's tokens. Because a user-registered repository is fetched with the site-wide token when its creator has none, letting signed-in users register repositories lets them register anything that token can read. A failed fetch names its cause — `GIT_REPOSITORY_UNAVAILABLE` for a missing repository or one the token cannot see, `GIT_ACCESS_DENIED`, `GIT_AUTH_FAILED`, `GIT_CREDENTIAL_UNAVAILABLE` or `GIT_FETCH_FAILED` — and the repository page links to the creator's code-source token settings.
+
+Tokens are encrypted with the instance's credential key, kept in the database, and shown as ready, expiring (within seven days), expired, invalid or unreadable. An unreadable token cannot be repaired by editing its metadata: enter a replacement or clear it. The bundled Git credential helper hands the chosen token only to the host of the repository being fetched, with the source's HTTPS username (`oauth2` by default).
 
 Registering a private repository does not hide it from signed-in users; `public_read: false` only removes it from anonymous access. Use sign-in and registration policy to control who is a signed-in user, as described in [Authentication and Access Control](authentication-and-access-control.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="monorepo" -->

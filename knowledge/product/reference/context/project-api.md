@@ -4,7 +4,7 @@ description: What src/index.ts can declare with the @c4a/context SDK — sources
   capture phases, custom phases, packages and site options — and how it relates
   to src/indexers.yaml.
 type: Wiki
-timestamp: 2026-10-19T19:58:33.381Z
+timestamp: 2026-10-28T03:53:56.231Z
 ---
 # Project API
 
@@ -139,7 +139,8 @@ Packages read approved `knowledge/` only; `dist/` is generated. Details are in [
 | `nav` | Top links: `text`, `link`, optional per-locale `locales` text and `position` — `"start"` places a link before the knowledge sections, the default `"end"` after them |
 | `more` | Items placed in the More menu before the built-in LLM Docs and Changelog entries: `text` with exactly one of `link` or `target.artifact_ref` (an approved article shown only there) |
 | `socialLinks` | `icon` (`github`, `discord`, `x`, `youtube`, `slack`, `linkedin`, `mastodon`, `npm`), an https `link`, optional `ariaLabel` |
-| `localePreferenceKey` | Shared storage key so sites on one origin keep the same reader language |
+| `localePreferenceKey` | Storage key for the reader's language choice; default `context-locale`, which sites on one origin share unless one sets its own |
+| `sourceMap` | `false` replaces the per-article source map with a plain source list; on by default |
 | `theme` | `light` and `dark` colors: `brand`, `accent`, `background`, `surface`, `text`, `mutedText`, `border` as hex values |
 | `extensions` | Trusted presentation code: `root` (default `src/site`), `slots` (`brand`, `banner`, `knowledge`, `resources`, `footer`, `floating`; `false` hides one) and custom Markdown `pages` |
 

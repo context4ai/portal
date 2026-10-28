@@ -5,8 +5,8 @@ description: src/index.ts 可以用 @c4a/context SDK 声明哪些内容——来
 translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
-  source_digest: afe0b102d65a00879f530d742699fcc25f84c78c1c535fa31b91b649aed9241b
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 0dd4aa1364f4fadae5dde8dc61ddef4774e903380ae50de75593f3b776ca30e7
+  translated_at: 2026-10-28T03:56:06.139Z
 ---
 
 # Project API
@@ -141,7 +141,8 @@ llmsPackage({
 | `nav` | 顶部链接：`text`、`link`，可选按语言提供的 `locales` 文本和 `position`——`"start"` 把链接放在知识分区之前，默认 `"end"` 放在之后 |
 | `more` | 放在“更多”菜单中内置的 LLM Docs 和 Changelog 之前的条目：`text`，并且 `link` 与 `target.artifact_ref`（仅在此处显示的已批准文章）二者只能选一 |
 | `socialLinks` | `icon`（`github`、`discord`、`x`、`youtube`、`slack`、`linkedin`、`mastodon`、`npm`）、一个 https `link`，可选 `ariaLabel` |
-| `localePreferenceKey` | 共享的存储键，让同一源下的多个站点保持相同的读者语言 |
+| `localePreferenceKey` | 保存读者语言选择的存储键；默认为 `context-locale`，同一源下的站点共享它，除非某个站点设置了自己的键 |
+| `sourceMap` | 设为 `false` 时，用普通的来源列表替换每篇文章的来源图；默认开启 |
 | `theme` | `light` 和 `dark` 两套颜色：`brand`、`accent`、`background`、`surface`、`text`、`mutedText`、`border`，均为十六进制值 |
 | `extensions` | 受信任的展示代码：`root`（默认 `src/site`）、`slots`（`brand`、`banner`、`knowledge`、`resources`、`footer`、`floating`；设为 `false` 可隐藏其中之一）以及自定义 Markdown `pages` |
 

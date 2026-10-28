@@ -4,11 +4,12 @@ description: Bring existing pages up to a new commit or document version — nam
   the scope, let the Agent find the affected pages, review the changes and know
   when the update is finished.
 type: Guide
-timestamp: 2026-10-22T19:00:07.419Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Updating Knowledge
 
 <!-- context:section id="goal" -->
+
 Every approved page records which source version it was written from. When a repository moves on or a document is edited, an **update** compares the new version with the one the pages were written from, revises only the affected pages and then records the new version as processed. Unaffected pages are left alone.
 
 ```mermaid
@@ -19,6 +20,9 @@ flowchart LR
   decide --> rev["You review<br/>the changed pages"]
   rev --> build["Approved pages applied,<br/>outputs rebuilt"]
 ```
+
+If you have already moved a repository's pin with `context source add repo --ref <sha>`, the Agent processes it with `context update --pending`, which needs no other input. Only pages whose cited text changed are asked about one by one; every other page that cites the repository can still be revised in the same decision when an addition affects it, and the new commit is recorded once that decision and its revisions are done.
+
 <!-- /context:section -->
 
 <!-- context:section id="ask" -->

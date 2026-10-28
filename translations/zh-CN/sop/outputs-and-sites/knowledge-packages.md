@@ -4,8 +4,8 @@ description: Context 知识包包含哪些内容，如何选择产出，要告�
 translation:
   locale: zh-CN
   artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
-  source_digest: 16752ba983017afdf8a8b372d2368b17bbe009969e0fc1d37966e9727e194b6c
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 04607e9c14abf56348090caf22932efc5d090d24ac8621bf0b505120737cac01
+  translated_at: 2026-10-28T03:56:06.139Z
 ---
 
 # 知识包
@@ -50,9 +50,10 @@ Agent 会替你更新知识工作区的知识包声明，你无需手写。如�
 dist/<package-name>/
 ├── AGENTS.md
 ├── skills/
-│   └── knowledge-query/
+│   └── context-knowledge-query/
 │       ├── SKILL.md
 │       └── scripts/search.mjs
+├── others/context/search-guide.md   # 知识包专属的检索提示
 ├── wikis/
 │   ├── index.md          # 知识包入口页
 │   ├── codeindex/ ...
@@ -73,14 +74,14 @@ dist/<package-name>/
 <!-- context:section id="query" -->
 ## Agent 如何读取知识包
 
-随包提供的 `knowledge-query` Skill 是一个完整、通用的查询入口。它以结构优先的方式工作：
+随包提供的 `context-knowledge-query` Skill 是一个完整、通用的查询入口，在每个 Context 知识包中都相同，因此安装一份即可服务 Agent 能找到的所有知识包：所在的知识包、通过 `--root` 或 `--base` 指定的文件夹、`CONTEXT_KNOWLEDGE_PACKAGES` 中列出的目录，或宿主包管理器记录的知识包。它会先列出可用的知识包，读取每个候选知识包的 `others/context/search-guide.md`，然后以结构优先的方式工作：
 
 1. 从每个根目录中生成的目录索引开始。
 2. 借助清单中记录的关系了解页面之间的关联。
 3. 阅读最可能相关的页面，并引用其中可见的标题和段落。
 4. 当知识包没有覆盖所问的事实时，报告这一缺口。
 
-当索引无法缩小范围，或某个页面太大而无法直接阅读时，随包提供的搜索脚本会按相关度对 Markdown 片段排序。搜索结果只是线索；知识包说了什么，要以页面正文和记录的关系为准。只读取知识包的 Agent 不得声称自己读过原始来源。
+当索引无法缩小范围，或某个页面太大而无法直接阅读时，随包提供的搜索脚本会按相关度对 Markdown 片段排序。搜索结果只是线索；知识包说了什么，要以页面正文和记录的关系为准。当页面正文不足以回答问题时，Skill 会沿该页面的 Sources 条目继续查找：仓库链接通过宿主授权的工具按记录的提交读取，文档链接打开当前文档。没有链接的条目无法从知识包访问，Agent 不得声称读过自己没有打开的来源。
 <!-- /context:section -->
 
 <!-- context:section id="build" -->

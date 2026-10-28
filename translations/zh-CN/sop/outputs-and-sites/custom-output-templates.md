@@ -4,8 +4,8 @@ description: 如何在首次构建前接受或调整知识包模板（入口页�
 translation:
   locale: zh-CN
   artifact_ref: 145efe1c-4969-48ef-8514-1e016773a775
-  source_digest: 3466d517ffa89c138ea3b281cf44bc6a737b8ee8c4662d08aab388e5d42e32ba
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 90c941138093519239060128bc32545aa4e409017956a9294e393dcd73f72113
+  translated_at: 2026-10-28T03:56:06.139Z
 ---
 
 # 定制输出模板
@@ -40,8 +40,11 @@ src/package-templates/
 │   ├── AGENTS.md
 │   ├── wikis/
 │   │   └── index.md
+│   ├── others/
+│   │   └── context/
+│   │       └── search-guide.md
 │   └── skills/
-│       └── knowledge-query/
+│       └── context-knowledge-query/
 │           ├── SKILL.md
 │           └── scripts/
 │               └── search.mjs
@@ -49,7 +52,7 @@ src/package-templates/
     └── llms.txt
 ```
 
-知识包模板至少必须包含一个 `SKILL.md` 和 `wikis/index.md`；只有 `AGENTS.md` 的模板会被拒绝。每个渲染出的 Skill 都位于 `skills/<skill-name>/SKILL.md`，且 frontmatter 中的 `name` 与之匹配。如果想给查询 Skill 加上项目前缀，请重命名它的模板文件夹，例如 `skills/android-query/`，因为 Context 绝不会根据知识包名称推导 Skill 名称。只有当你需要知识查找之外的行为时，才添加其他 Skill。
+知识包模板至少必须包含一个 `SKILL.md` 和 `wikis/index.md`；只有 `AGENTS.md` 的模板会被拒绝。每个渲染出的 Skill 都位于 `skills/<skill-name>/SKILL.md`，且 frontmatter 中的 `name` 与之匹配；Context 绝不会根据知识包名称推导 Skill 名称。只有当你需要知识查找之外的行为时，才添加其他 Skill。
 <!-- /context:section -->
 
 <!-- context:section id="entry" -->
@@ -83,7 +86,11 @@ src/package-templates/
 <!-- context:section id="skill" -->
 ## 查询 Skill
 
-默认的 `knowledge-query` Skill 已经内置了结构优先的查询规范和搜索兜底。当你需要项目术语、入口或任务工作流时，修改它的模板。编写说明请放在模板注释或单独的指引中，不要放在成品 Skill 里一个写给作者的末尾章节中。
+默认的 `context-knowledge-query` Skill 内置了结构优先的查询规范和搜索兜底，并且在每个 Context 知识包中都相同，因此安装一份即可服务所有知识包。它由 Context 管理：如果模板中的副本较旧或被修改过，`context build` 会替换它，所以在其中做的修改不会保留。
+
+请改为在 `others/context/search-guide.md` 中为你的知识包调整检索：项目术语和同义词、常见问题，以及每类任务的首选入口页面。Skill 在检索前会先读取这份指南。如果某个知识包需要自己的查询 Skill，请把它放在不同的目录下并使用不同的 `name`，这样它会与共享 Skill 并列安装。
+
+使用早期 `skills/knowledge-query/` 模板创建的工作区会在下一次构建时迁移：Context 会用同一语言的 `context-knowledge-query` 替换它，在缺少检索指南时添加一份，并报告这次替换。请把旧 Skill 中针对该知识包的措辞移到检索指南中。
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->

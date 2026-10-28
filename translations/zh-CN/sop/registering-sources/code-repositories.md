@@ -4,8 +4,8 @@ description: 将一个仓库或 monorepo 中选定的包添加为固定到某个
 translation:
   locale: zh-CN
   artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
-  source_digest: c3c2470d0d1ac45dd4554acb46ff5bb0a74e39568e111d65c6424c627b45fc72
-  translated_at: 2026-10-23T04:48:26.659Z
+  source_digest: 284f59cbc3d89eb98cda5a5277a984d5f5e14636a2f37b2055e77368edf5e025
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 代码仓库
@@ -84,5 +84,5 @@ Git 只保存重新找到代码所需的信息（远程地址、固定的 commit
 <!-- context:section id="later" -->
 ## 代码继续演进时
 
-登记会一直保持其 commit，直到你另作决定。要把知识更新到更新的 commit，请提出更新：Agent 会准备新版本，将其与现有页面引用的内容进行比较，并询问哪些页面需要修改。只有在所选修订被批准、产出重新构建之后，知识才会前移到新的 commit。参见 [更新知识](../updates-and-versions/updating-knowledge.md)。
+登记会一直保持其 commit，直到你另作决定。用 `context source add repo <日期> --module <名称> --ref <sha>` 移动它只会修改登记：如果现有知识是在旧 commit 上处理的，该命令的 `next` 提示和工作区路由都会指向 `context update --pending`，由它处理新的 commit。要把知识更新到更新的 commit，请提出更新：Agent 会准备新版本，将其与现有页面引用的内容进行比较，并询问哪些页面需要修改。只有在所选修订被批准、产出重新构建之后，知识才会前移到新的 commit。参见 [更新知识](../updates-and-versions/updating-knowledge.md)。
 <!-- /context:section -->
