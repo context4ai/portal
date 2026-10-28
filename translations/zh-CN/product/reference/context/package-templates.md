@@ -4,8 +4,8 @@ description: kbPackage 与 llmsPackage 声明的字段、包结构、目录索�
 translation:
   locale: zh-CN
   artifact_ref: ff6d102c-14a5-4f8b-a8fd-8464060dde1d
-  source_digest: 3a15d1c5ce2234aa152feaf73ed1f19a40f0aff26dac482a67f58afdaacee681
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 29be92886e2f1c028bdf9243084dad648eecdad9b4958814cbbf6c1e7932d1d3
+  translated_at: 2026-10-28T03:56:06.139Z
 ---
 
 # 包模板
@@ -70,7 +70,7 @@ llmsPackage({
 包根目录是扁平的，内部不会重复包名：
 
 ```text
-skills/knowledge-query/SKILL.md
+skills/context-knowledge-query/SKILL.md
 wikis/index.md
 guides/...
 rules/...
@@ -79,7 +79,12 @@ feats/...
 
 知识包模板至少要包含一个 `SKILL.md` 和 `wikis/index.md`。每个 Skill 位于 `skills/<skill-name>/SKILL.md`，其 frontmatter 中的 `name` 必须与之一致；Skill 名称由作者维护，不会从包名推导。模板中可以使用 `{{wikisRoot}}`、`{{guidesRoot}}`、`{{rulesRoot}}`、`{{featsRoot}}` 和 `{{skillName}}`。安装后的示例位于 `node_modules/@c4a/context/templates/package-templates/{kb,llms}/`。
 
-默认模板自带 `skills/knowledge-query/SKILL.md`（可复用的查询 Skill）、它的 `scripts/search.mjs`（无依赖的 BM25 兜底检索）以及 `wikis/index.md`。
+默认模板自带：
+
+- `skills/context-knowledge-query/SKILL.md`：所有 Context 知识包共享的查询 Skill。它声明 `metadata.shared: "true"` 和 `metadata.version`（Context 版本），不使用任何包特有的值；若模板中的副本与同语言的内置 Skill 不同，`context build` 会替换它。
+- `skills/context-knowledge-query/scripts/search.mjs`：无依赖的 BM25 兜底检索。`--list` 显示它找到的知识包；不加 `--package` 时在所有知识包中排序。
+- `others/context/search-guide.md`：该知识包自己的检索提示，包括术语、同义词、常见问题和首选入口页面。要为某个知识包调整检索，请编辑这个文件，而不是共享的 Skill。
+- `wikis/index.md`：可编辑的入口页面。
 <!-- /context:section -->
 
 <!-- context:section id="indexes" -->

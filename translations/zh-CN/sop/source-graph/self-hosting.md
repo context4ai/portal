@@ -5,8 +5,8 @@ description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，
 translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
-  source_digest: 4ba1ec7697f757e440863f49aa5635eda40ba0e9e0d878b8e93137c352ae61b7
-  translated_at: 2026-10-21T12:22:47.975Z
+  source_digest: 0cf6f8c8a81d9880f6bfb936e20d0813627bc64f33c64c2bccd4d49174080ea7
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 自托管
@@ -40,7 +40,7 @@ bun run build
 SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 output/bin/repo-service
 ```
 
-构建完成后，`output/bin` 中包含同样的四个二进制文件。服务会自行启动搜索服务器并管理后台建索引，无需运行其他组件。所有设置都是环境变量，代码源还可以由 `SOURCEGRAPH_CONFIG_FILE` 指定的启动文件覆盖；全部设置列在 [配置](../../product/reference/source-graph/configuration.md) 中。凭据只能放在环境变量或平台的密钥存储中，绝不要写进部署 JSON、源代码或镜像。
+构建完成后，`output/bin` 中包含同样的四个二进制文件。服务会自行启动搜索服务器并管理后台建索引，无需运行其他组件。所有设置都是环境变量，代码源还可以由 `SOURCEGRAPH_CONFIG_FILE` 指定的启动文件覆盖；全部设置列在 [配置](../../product/reference/source-graph/configuration.md) 中。凭据只能放在环境变量或平台的密钥存储中，绝不要写进部署 JSON、源代码或镜像；Source Graph 首次启动时会把它们导入数据库，详见 [应用密钥](#application-secrets)。
 <!-- /context:section -->
 
 <!-- context:section id="topology" -->
@@ -53,7 +53,7 @@ SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 
 | 仓库 | 连同 Git 镜像和索引能放进一个持久化卷 | 一个卷放不下，或者你希望分摊建索引的负载 |
 | 数据库 | SQLite（默认）即可 | 所有实例共享的 PostgreSQL 或 MongoDB；SQLite 无法共享 |
 | 路由 | 无需路由；所有请求都发往这一个实例 | 由接入层把每个请求路由到拥有对应仓库的实例 |
-| 运维 | 一台机器、一个卷、一份备份 | 每个实例一个卷、稳定的仓库映射，以及共享的凭据密钥 |
+| 运维 | 一台机器、一个卷、一份备份 | 每个实例一个卷、稳定的仓库映射，以及一个同时保存凭据的共享数据库 |
 
 除非你已经确定仓库放不下，否则先从单实例开始。之后改为分片，意味着增加共享数据库和接入层；迁到新实例的仓库会在那里重新拉取并建索引。
 
@@ -87,7 +87,7 @@ flowchart TB
 ## 运行分片实例
 
 - **所有实例共享一个 PostgreSQL 或 MongoDB 数据库**，并为每个实例分配独立的数据卷。
-- **在每个实例上设置相同的 `SOURCEGRAPH_CREDENTIAL_KEY`**。否则每个实例会在自己的卷上生成各自的密钥，无法解密其他实例存储的凭据。
+- **把凭据保存在共享数据库中。** 应用密钥及其加密密钥都存放在那里，因此每个实例读取的是同一份。升级现有实例时，请在替换实例初始化数据库之前导入原有的凭据密钥；绝不要换成新密钥。
 - **每个仓库只能有一个归属实例**。用一致性哈希或显式的仓库到实例映射表分配仓库，并保持该映射稳定。
 - **按请求中指定的仓库路由**：HTTP 中的 `repo` 查询参数，以及 MCP 工具调用中的 `repo` 参数，格式为 `owner/repository`。不针对单个仓库的请求（例如列出仓库）可以发往任意实例。
 - **通过增加分片来扩容，绝不增加副本**。在 Fly.io 上，这意味着每个分片一个 App，放在你的路由层之后，而不是在一个 App 中运行多台 Machine，因为同一个 App 的 Machine 会共享仓库。
@@ -102,7 +102,15 @@ flowchart TB
 | PostgreSQL | `postgres` | 分片实例的共享状态，或已有的托管数据库。使用可串行化事务 |
 | MongoDB | `mongodb` | 在 MongoDB 上保存共享状态。登录准入需要事务，因此请使用副本集或托管集群 |
 
-通过 `DATABASE_URL` 传入连接信息：SQLite 文件路径、PostgreSQL DSN 或 MongoDB URI。更换数据库不会迁移数据，因此请从空的目标库开始，或执行经过单独评审的导出与导入。外部数据库无法替代实例的持久化卷，卷上仍保存着 Git、索引和凭据密钥。
+通过 `DATABASE_URL` 传入连接信息：SQLite 文件路径、PostgreSQL DSN 或 MongoDB URI。更换数据库不会迁移数据，因此请从空的目标库开始，或执行经过单独评审的导出与导入。外部数据库无法替代实例的持久化卷，卷上仍保存着 Git 镜像和索引。
+
+### 应用密钥
+
+数据库还保存实例的应用密钥，与其密钥一起用 AES-256-GCM 加密：代码源令牌、服务 API 凭据，以及 Google/GitHub 登录配置。这样主机上就不再需要单独的密钥文件；但它不能防止整个数据库泄露，因此请限制数据库访问并保护其备份。
+
+- **升级现有实例：** 首次启动时，如果设置了 `SOURCEGRAPH_CREDENTIAL_KEY` 就导入它，否则导入数据根目录中已有的 `code-credentials.key`，已存储的令牌因此仍可读取。首次发布期间请保留环境中的密钥和旧密钥文件，以便旧镜像仍能在原有卷上运行。绝不要在未先导入原密钥的情况下，让替换主机连接旧数据库。
+- **全新数据库**会生成自己的密钥，且不创建密钥文件。
+- **此后**以数据库为准：环境变量只会补齐缺失的记录，修改环境变量不会轮换已有密钥。轮换密钥需要对相应数据库记录进行维护变更，并验证新的凭据；不要通过删除加密密钥来轮换令牌。
 <!-- /context:section -->
 
 <!-- context:section id="fly" -->
@@ -145,10 +153,10 @@ Portal 通过 Fly 私有网络把整个 `/sourcegraph/` 前缀转发给 Source G
 <!-- context:section id="backup" -->
 ## 备份与恢复
 
-Source Graph 没有内置的备份任务。请将以下四项备份到机器之外，并限制访问权限：数据库、凭据加密密钥、运行时存储配置和仓库元数据。索引和裸 Git 镜像可以从远程仓库重建；身份、设置、凭据及其密钥则无法重建。
+Source Graph 没有内置的备份任务。请将以下三项备份到机器之外，并限制访问权限：完整的数据库（包括其中的密钥和凭据记录）、运行时存储配置和仓库元数据。索引和裸 Git 镜像可以从远程仓库重建；身份、设置、凭据及其密钥则无法重建。旧的 `code-credentials.key` 只需为恢复升级前的备份而保留。
 
-- **SQLite**：使用在线备份 API，绝不要单独复制正在运行的 `sourcegraph.db`。例如：`sqlite3 /data/sourcegraph.db '.backup /data/sourcegraph-backup.db'`，然后将结果连同密钥和配置文件复制到别处。也可以先停止服务，再将数据库连同其预写日志一起复制。
+- **SQLite**：使用在线备份 API，绝不要单独复制正在运行的 `sourcegraph.db`。例如：`sqlite3 /data/sourcegraph.db '.backup /data/sourcegraph-backup.db'`，然后将结果连同运行时配置文件复制到别处。也可以先停止服务，再将数据库连同其预写日志一起复制。
 - **PostgreSQL**：`pg_dump`。**MongoDB**：使用副本集或托管集群的备份方案。
 
-恢复时，先停止实例，将数据库与其匹配的密钥和配置一起恢复，启动一个实例，然后检查管理员访问、仓库元数据和索引恢复情况。回滚镜像和恢复数据库是两项独立的操作；请保留一个已知可用的镜像，并在升级前做好备份。
+恢复时，先停止实例，恢复完整的数据库和运行时配置（升级前的备份还需恢复与之匹配的旧密钥），启动一个实例，然后检查管理员访问、仓库元数据和索引恢复情况。回滚镜像和恢复数据库是两项独立的操作；请保留一个已知可用的镜像，并在升级前做好备份。
 <!-- /context:section -->

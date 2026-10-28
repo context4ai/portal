@@ -3,7 +3,7 @@ title: Package Templates
 description: The kbPackage and llmsPackage declarations, their fields, package
   layout, directory indexes, build behavior and selection rules.
 type: Wiki
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-28T03:53:56.231Z
 ---
 # Package Templates
 
@@ -62,12 +62,13 @@ The resolved commit and raw URL count toward package freshness. Context does not
 <!-- /context:section -->
 
 <!-- context:section id="layout" -->
+
 ## Layout
 
 Package roots are flat; the package name is not repeated inside:
 
 ```text
-skills/knowledge-query/SKILL.md
+skills/context-knowledge-query/SKILL.md
 wikis/index.md
 guides/...
 rules/...
@@ -76,7 +77,13 @@ feats/...
 
 A knowledge package template must contain at least one `SKILL.md` and `wikis/index.md`. Each Skill lives at `skills/<skill-name>/SKILL.md` with a matching frontmatter `name`; Skill names are author-maintained and never derived from the package name. Use `{{wikisRoot}}`, `{{guidesRoot}}`, `{{rulesRoot}}`, `{{featsRoot}}` and `{{skillName}}` in templates. Installed examples are in `node_modules/@c4a/context/templates/package-templates/{kb,llms}/`.
 
-The default template ships `skills/knowledge-query/SKILL.md` (a reusable query Skill), its `scripts/search.mjs` (a dependency-free BM25 fallback), and `wikis/index.md`.
+The default template ships:
+
+- `skills/context-knowledge-query/SKILL.md`, the query Skill shared by every Context package. It declares `metadata.shared: "true"` and `metadata.version` (the Context version), uses no package-specific values, and `context build` replaces a template copy that differs from the shipped Skill in its language.
+- `skills/context-knowledge-query/scripts/search.mjs`, a dependency-free BM25 fallback. `--list` shows the packages it found; without `--package` it ranks across all of them.
+- `others/context/search-guide.md`, the package's own search hints: terms, synonyms, common questions and preferred entry pages. Edit this file, not the shared Skill, to tune search for one package.
+- `wikis/index.md`, the editable entry page.
+
 <!-- /context:section -->
 
 <!-- context:section id="indexes" -->

@@ -4,8 +4,8 @@ description: 已批准的知识如何构建为 Agent 知识包、文档站点和
 translation:
   locale: zh-CN
   artifact_ref: a0aef936-cc16-4cde-b209-b9c53d6ee254
-  source_digest: 21e11807c58f2ccb33467ecc40d18574e1be6ae370dc201c28af7a1fa6b944fa
-  translated_at: 2026-10-20T05:02:15.111Z
+  source_digest: 70a8fa12e2f19ac5295ad9f22fa8c3b261409bbe845cd76d6bc8aa9218aa16ce
+  translated_at: 2026-10-28T03:56:06.139Z
 ---
 
 # 知识包与站点构建
@@ -39,7 +39,7 @@ flowchart LR
 | `rules/` | `standards`、`test` |
 | `feats/` | `feats` |
 
-默认的 `knowledge-query` 技能是面向 Agent 的入口：它从目录索引开始，沿清单中的关系记录查找，阅读候选页面并引用其标题；当知识包没有覆盖某个事实时，会报告缺口。如果索引无法缩小范围，它会用自带的 `scripts/search.mjs` 在本地对 Markdown 分块排序。面向使用者的页面不包含 `sources` 和章节元数据；精确的出处保留在知识工作区中，可通过清单找到。
+默认的 `context-knowledge-query` 技能是面向 Agent 的入口，并且在每个 Context 知识包中都相同，因此安装一份即可服务项目能访问到的所有知识包。它从目录索引开始，沿清单中的关系记录查找，阅读候选页面并引用其标题；当知识包没有覆盖某个事实时，会报告缺口。各知识包特有的术语、同义词和入口页面放在该包的 `others/context/search-guide.md` 中，技能会先读取它。如果索引无法缩小范围，它会用自带的 `scripts/search.mjs` 在本地对 Markdown 分块排序。面向使用者的页面不包含 `sources` 和章节元数据；精确的出处保留在知识工作区中，可通过清单找到。
 <!-- /context:section -->
 
 <!-- context:section id="site" -->
@@ -49,8 +49,9 @@ flowchart LR
 
 - **导航**来自已接受的 `src/knowledge-map.yaml`。条目绑定到文章身份，因此修改标签和分组不会改变 URL，同一篇文章也可以出现在多个位置。
 - **首页**把第一级知识地图作为完整的站点地图。
+- **主题**默认以浅色模式打开，直到读者切换；该选择会保存在浏览器中。
 - **图表**用 Mermaid 编写，在浏览器中按站点主题渲染，并提供适应窗口、缩放、全屏和查看源码等控件。
-- **来源页脚**位于每篇文章底部，仓库链接到记录的修订版本，文档链接到登记的 URL。
+- **来源图**位于每篇文章末尾：文章的章节居中，它们引用的文档环绕在周围，并按每份文档的出处分组；列表视图以同样的分组列出这些文档及其引用的行。仓库链接到记录的修订版本，文档链接到登记的 URL。设置 `site.sourceMap: false` 则改为显示普通的来源列表。
 - **多语言**可通过 `site.locales` 添加；未翻译的页面显示原文并附带提示。
 
 Context 不负责部署。可以用任意静态 HTTP 服务器预览，再用你自己的托管服务部署 `dist/<base>-site/` 中的内容。

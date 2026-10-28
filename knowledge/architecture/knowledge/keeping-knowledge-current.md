@@ -4,7 +4,7 @@ description: How Context finds the knowledge affected by a source change,
   re-checks it, and moves the baseline forward only after the update is
   delivered.
 type: Guide
-timestamp: 2026-10-22T19:00:07.419Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Keeping Knowledge Current
 
@@ -25,11 +25,15 @@ Building completes the currently approved state; it does not freeze the Context 
 <!-- /context:section -->
 
 <!-- context:section id="decide" -->
+
 ## Deciding what to change
 
 The listed pages are candidates to inspect, not an instruction to rewrite all of them. For each page the Agent reads its current approved Markdown and the change, then submits one decision: no change, or a concrete correction. Unrelated content and readers' earlier improvements are preserved.
 
+After a repository is re-pinned, `context update --pending` narrows that list. Only pages whose cited text changed or could no longer be read become candidates, with the affected sections listed in `changed_references`. Every other page that cites the source appears in `scope_pages`: it needs no decision, but the Agent includes it with an instruction when an addition or a shared change affects it, such as an overview that should mention a new export. The new commit is recorded only after this one scope decision, and citations that merely moved are relocated then.
+
 Existing references cannot discover every new topic, so the Agent also inspects additions and shared dependencies and lists necessary **new pages**, each with a path, title, registered sources and instruction. New pages go through the same writing and review as revisions. A renamed subject is revised in place rather than given a new identity; a retirement explains what disappeared and which readers are affected instead of silently deleting pages.
+
 <!-- /context:section -->
 
 <!-- context:section id="baseline" -->

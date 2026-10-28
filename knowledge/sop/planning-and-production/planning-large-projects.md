@@ -4,7 +4,7 @@ description: When a Context task counts as large, how the Agent researches it
   and splits it into stages, what to check in the PLAN report, how big a stage
   may be, and how to steer, resume and finish.
 type: Guide
-timestamp: 2026-10-19T18:50:25.454Z
+timestamp: 2026-10-28T02:12:23.964Z
 ---
 # Planning Large Projects in Stages
 
@@ -47,6 +47,8 @@ The Agent works in scratch space that stays out of Git. It starts from directory
 Before proposing any article, it reads how the knowledge workspace is organized today and the relevant approved pages, and decides per topic: **reuse unchanged**, **revise or extend**, **consolidate**, **add**, or **investigate** an unresolved conflict or access gap. Research never changes approved knowledge.
 
 For a broad source update, each repository is compared between the version the knowledge was built from and the new one, looking only at the files the approved articles actually cite. A changed file is a reason to investigate, not proof that an article must be rewritten.
+
+Before the round starts, planning asks once whether a prepared source checklist exists and takes its link: a filled checklist names each source, its owner and whether the knowledge should depend on it, which shortens the inventory. The `context` Skill carries a template under `references/source-checklist.md`. It is never required — without one, planning continues from the conversation.
 <!-- /context:section -->
 
 <!-- context:section id="report" -->

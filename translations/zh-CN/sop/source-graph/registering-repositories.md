@@ -4,14 +4,14 @@ description: 登记 GitHub 或自定义 Git 仓库并设置分支、保留窗口
 translation:
   locale: zh-CN
   artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
-  source_digest: 6ce48d5fc51bccb68abedd5a1c52039889c221595c00432d13f8a00a96da9db6
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: ba66b4157c1de6366a9e999bf6b18e08d0e7dbedd40d57bccb73623ca07ce130
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 登记仓库
 
 <!-- context:section id="goal" -->
-仓库登记后即可被搜索：Source Graph 会镜像其监控分支，保留一个窗口内的可用提交，并为每个分支最新提交建索引。登记需要管理员（在网站上登录）或实例的服务令牌。
+仓库登记后即可被搜索：Source Graph 会镜像其监控分支，保留一个窗口内的可用提交，并为每个分支最新提交建索引。登记需要管理员（在网站上登录）或实例的服务令牌。管理员开启 **Let signed-in users register repositories**（允许已登录用户登记仓库）后，任何已登录用户也可以登记仓库并成为其管理者，见 [仓库管理者](#repository-managers)。
 
 在网站上打开 **Repositories**（仓库），选择 **Register a repository**。通过 HTTP 时，将相同的字段发送到 `POST /sourcegraph/api/admin/v1/repos`，可以附带 `Idempotency-Key` 请求头，避免重试时重复登记：
 
@@ -27,6 +27,10 @@ translation:
 ```
 
 请求返回 `202 Accepted`，并将首次同步加入队列；仓库页面的任务标签页会显示进度。
+
+## 仓库管理者
+
+管理员管理所有仓库。已登录用户登记的仓库会把该用户列为唯一的管理者；在管理者功能出现之前登记的仓库，在首次编辑名单之前把创建者视为管理者。管理者可以修改仓库设置，预览、准备和添加索引，清理，取消任务，删除和清除仓库，以及添加或移除管理者（包括自己），最多 50 位。在仓库页面按姓名或邮箱搜索已登录用户即可添加管理者。
 <!-- /context:section -->
 
 <!-- context:section id="fields" -->
@@ -43,6 +47,7 @@ translation:
 | `policy.default_branch` | 同时跟踪远程的默认分支，每次同步时重新发现 |
 | `policy.days` 或 `policy.count` | 保留窗口：天数（1–365）或每个分支的第一父提交数（1–4096），二者只能填一个。两者都省略时使用站点的仓库默认值（初始为 30 天） |
 | `sync_interval_minutes` | 1、3、5、10、30、60、180、360、720 或 1440；默认 5 |
+| `git_timeout_minutes` | Git 拉取与对象补全超时：0 或省略表示继承站点默认值（初始为 15 分钟）；15、30、45 或 60 表示覆盖 |
 
 一个策略总共监控一到八个分支，默认分支也计算在内。标签从不拉取，因此无法搜索或读取。
 
@@ -75,7 +80,9 @@ translation:
 3. 环境令牌——GitHub 用 `SOURCEGRAPH_GITHUB_TOKEN`（未设置时仍读取旧变量 `SOURCEGRAPH_GIT_TOKEN`），自定义代码源用 `SOURCEGRAPH_CUSTOM_GIT_TOKEN`——仅在该代码源尚未保存全局令牌时使用；
 4. 仅限 GitHub：匿名访问。即使是公开仓库，GitHub 也会拒绝已吊销的令牌，所以匿名访问放在最后尝试，而不是直接跳过。
 
-两个代码源之间从不互用令牌。令牌使用实例的凭据加密密钥加密，状态显示为就绪、即将过期（七天内）、已过期或无效。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 HTTPS 用户名（默认 `oauth2`）。
+两个代码源之间从不互用令牌。由于用户登记的仓库在其创建者没有令牌时会使用站点级令牌拉取，允许已登录用户登记仓库意味着他们可以登记该令牌能读取的任何仓库。拉取失败时会说明原因——`GIT_REPOSITORY_UNAVAILABLE`（仓库不存在或令牌看不到它）、`GIT_ACCESS_DENIED`、`GIT_AUTH_FAILED`、`GIT_CREDENTIAL_UNAVAILABLE` 或 `GIT_FETCH_FAILED`——仓库页面会链接到创建者的代码源令牌设置。
+
+令牌使用实例的凭据加密密钥加密并保存在数据库中，状态显示为就绪、即将过期（七天内）、已过期、无效或无法读取。无法读取的令牌不能通过编辑其元数据修复：请输入新的令牌或清除它。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 HTTPS 用户名（默认 `oauth2`）。
 
 登记私有仓库并不会对已登录用户隐藏它；`public_read: false` 只会取消匿名访问。要控制谁能成为已登录用户，请使用登录和注册策略，详见 [登录与准入](authentication-and-access-control.md)。
 <!-- /context:section -->

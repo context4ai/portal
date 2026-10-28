@@ -4,7 +4,7 @@ description: Add a repository, or selected packages of a monorepo, as a source
   pinned to one commit, and know what happens on another machine and when the
   code moves on.
 type: Guide
-timestamp: 2026-10-23T04:46:46.644Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Code Repositories
 
@@ -80,7 +80,9 @@ A clone always uses the registered commit, so existing knowledge stays reproduci
 <!-- /context:section -->
 
 <!-- context:section id="later" -->
+
 ## When the code moves on
 
-Registration keeps its commit until you decide otherwise. To bring knowledge up to a newer commit, ask for an update: the Agent prepares the new version, compares it with what existing pages cite, and asks which pages need changes. The knowledge moves to the new commit only after the selected revisions are approved and the outputs rebuilt. See [Updating Knowledge](../updates-and-versions/updating-knowledge.md).
+Registration keeps its commit until you decide otherwise. Moving it with `context source add repo <date> --module <name> --ref <sha>` changes only the registration: when existing knowledge was processed at the old commit, the command's `next` hint and the workspace Route both point to `context update --pending`, which processes the new commit. To bring knowledge up to a newer commit, ask for an update: the Agent prepares the new version, compares it with what existing pages cite, and asks which pages need changes. The knowledge moves to the new commit only after the selected revisions are approved and the outputs rebuilt. See [Updating Knowledge](../updates-and-versions/updating-knowledge.md).
+
 <!-- /context:section -->

@@ -3,7 +3,7 @@ title: CLI Commands
 description: Every command and subcommand of the context CLI, grouped by
   purpose, with what each does and its key options.
 type: Wiki
-timestamp: 2026-10-23T04:46:46.644Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # CLI Commands
 
@@ -41,6 +41,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 <!-- /context:section -->
 
 <!-- context:section id="tasks" -->
+
 ## Tasks and maintenance
 
 | Command | What it does |
@@ -56,8 +57,9 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context task recover` | Inspects or previews scoped recovery outside the normal Route |
 | `context task rollback` | Previews exact user-selected reversions and discarded drafts; never resets the repository |
 | `context task finish-rollback` | Finishes a rollback after close and all builds succeed |
-| `context update` | Checks acquired source changes against approved knowledge in confirmed scopes (`--input`) |
+| `context update` | Checks acquired source changes against approved knowledge in confirmed scopes (`--input`), or, with `--pending` and no input file, processes registered repositories whose commit moved past the processed version; pass exactly one of the two |
 | `context revise <target>` | Repairs one draft or approved page through the Indexer lifecycle (`--instruction`, `--regenerate`, `--timing after-batch\|priority`, `--move-to`) |
+
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
