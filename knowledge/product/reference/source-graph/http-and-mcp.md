@@ -3,7 +3,7 @@ title: HTTP and MCP
 description: Every Source Graph HTTP route and MCP tool — paths, inputs,
   credentials, limits, output and error format.
 type: Wiki
-timestamp: 2026-10-22T19:00:07.419Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # HTTP and MCP
 
@@ -47,9 +47,10 @@ These are available anonymously when public reading is enabled, and to every cre
 <!-- /context:section -->
 
 <!-- context:section id="admin" -->
+
 ## Management routes
 
-These need the service token or an administrator's browser session. Personal API keys are read-only and get `403 ACCESS_DENIED` here. A few read routes — `GET /api/admin/v1/repos`, `GET /api/admin/v1/repo` and `GET /api/admin/v1/statistics` — are also open to anonymous reading.
+These need the service token or an administrator's browser session. A repository's managers can also use every `?repo=` route on that repository, and others get `403 REPOSITORY_MANAGEMENT_DENIED`. When the site lets signed-in users register repositories, any signed-in user can register one and becomes its manager; otherwise registration returns `403 REGISTRATION_DISABLED`. Users, site settings, global code-source tokens and other site-wide routes stay administrator-only. Personal API keys are read-only and get `403 ACCESS_DENIED` here. A few read routes — `GET /api/admin/v1/repos`, `GET /api/admin/v1/repo` and `GET /api/admin/v1/statistics` — are also open to anonymous reading.
 
 | Method | Path | Body or headers | Purpose |
 | --- | --- | --- | --- |
@@ -67,8 +68,11 @@ These need the service token or an administrator's browser session. Personal API
 | POST | `/api/admin/v1/repo/delete/preview`, `/api/admin/v1/repo/delete` | `{"preview"}` and `If-Match` for the second | Permanently delete repository data |
 | POST | `/api/admin/v1/repo/jobs/cancel` | `{"job_id"}` | Cancel a job |
 | POST | `/api/admin/v1/repo/purge` | `If-Match` revision | Purge a disabled, deleted repository |
+| POST | `/api/admin/v1/repo/managers` | `{"add":"<user id>"}` or `{"remove":"<user id>"}`; `If-Match` revision | Add or remove a manager (at most 50); an unknown or disabled user returns `404 USER_NOT_FOUND` |
+| GET | `/auth/users/search?q=` | — | Signed-in users find up to 20 enabled users by name or email to choose a manager |
 
-Registration fields are listed in [Registering Repositories](../../../sop/source-graph/registering-repositories.md).
+Registration and `PATCH` also accept `git_timeout_minutes` (0 inherits the site default; 15, 30, 45 or 60 override it). Repository details add `can_manage`, and for signed-in callers `creator` and `managers`; `GET /access-policy` adds `user_repositories`. Registration fields are listed in [Registering Repositories](../../../sop/source-graph/registering-repositories.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="other" -->
@@ -157,7 +161,9 @@ Plugin output is appended after the item it belongs to; plugin diagnostics come 
 <!-- /context:section -->
 
 <!-- context:section id="errors" -->
+
 ## Error format
 
-HTTP errors return a JSON body with an `Error` message and `Meta` containing `Protocol`, `RequestID`, `Status`, `Code` and `Retryable`. Transport-level codes include `NOT_FOUND`, `METHOD_NOT_ALLOWED`, `INVALID_QUERY_PARAMETERS`, `INVALID_REQUEST`, `AUTHENTICATION_REQUIRED`, `ACCESS_DENIED`, `RATE_LIMITED`, `PRECONDITION_REQUIRED`, `QUERY_DEADLINE_EXCEEDED` and `DEPENDENCY_UNAVAILABLE`. Operation codes such as `INDEX_NOT_READY`, `REVISION_NOT_ELIGIBLE`, `INVALID_PATTERN` or `READ_BUDGET_EXCEEDED` carry their own status. [Operations](../../../sop/source-graph/operations.md) explains the common ones and what to do about them.
+HTTP errors return a JSON body with an `Error` message and `Meta` containing `Protocol`, `RequestID`, `Status`, `Code` and `Retryable`. Transport-level codes include `NOT_FOUND`, `METHOD_NOT_ALLOWED`, `INVALID_QUERY_PARAMETERS`, `INVALID_REQUEST`, `AUTHENTICATION_REQUIRED`, `ACCESS_DENIED`, `RATE_LIMITED`, `PRECONDITION_REQUIRED`, `QUERY_DEADLINE_EXCEEDED` and `DEPENDENCY_UNAVAILABLE`. Operation codes such as `INDEX_NOT_READY`, `REVISION_NOT_ELIGIBLE`, `INVALID_PATTERN` or `READ_BUDGET_EXCEEDED` carry their own status, as do the management codes `REPOSITORY_MANAGEMENT_DENIED`, `REGISTRATION_DISABLED` and `USER_NOT_FOUND`, and the Git fetch codes such as `GIT_REPOSITORY_UNAVAILABLE`, which covers both a missing repository and one the credential cannot see. [Operations](../../../sop/source-graph/operations.md) explains the common ones and what to do about them.
+
 <!-- /context:section -->

@@ -5,8 +5,8 @@ description: 面向自托管 Source Graph 的管理员——配置 Google 或 Gi
 translation:
   locale: zh-CN
   artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
-  source_digest: 2f77aa43ca6728a5db92d6526da9db90a22f1daa1ede898c464e21bac1ab5f21
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: a5394016b5ac046386cef6cdaf10f8e7c3556a95e30bf0b46b7a005e962c6f04
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 登录与准入
@@ -16,9 +16,10 @@ translation:
 
 - **匿名访客**：开启公开阅读时，请求不带 `Authorization` 头。可在匿名限流范围内，对标记为公开的仓库执行只读操作。
 - **已登录用户**：通过 Google 或 GitHub 登录后的浏览器会话。可读取所有已登记的仓库，创建个人 API Key，并保存个人 GitHub 或自定义 Git 令牌。
-- **管理员**：拥有管理员角色的已登录用户。另可登记和维护仓库，管理站点设置、用户和全局凭据。
+- **管理员**：拥有管理员角色的已登录用户。另可登记和维护所有仓库，管理站点设置、用户和全局凭据。
+- **仓库管理者**：被列为某个仓库管理者的已登录用户。可以维护该仓库，详见 [谁可以登录](#who-may-sign-in)。
 - **个人 API Key**（`sgk_…`）：供以其所有者身份运行的脚本和 Agent 使用；详见 [会话与 API Key](#sessions-and-api-keys)。
-- **服务令牌**：实例的 `SOURCEGRAPH_API_TOKEN`，供你掌控的自动化使用。可执行所有 HTTP 和 MCP 操作。
+- **服务令牌**：实例的服务凭据，首次启动时由 `SOURCEGRAPH_API_TOKEN` 提供初始值，之后保存在数据库中，供你掌控的自动化使用。可执行所有 HTTP 和 MCP 操作。
 
 其他任何 `Authorization` 值都会被拒绝并返回 `401 AUTHENTICATION_REQUIRED`；无效凭据绝不会悄悄降级为匿名访问。调用方如何获取和发送各类凭据，见“接入”中的 [选择凭据](connecting.md#choose-a-credential)。
 <!-- /context:section -->
@@ -34,8 +35,10 @@ Source Graph 支持通过 Google（OpenID Connect）或 GitHub（OAuth）登录�
 | GitHub | `GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` | `<origin>/sourcegraph/auth/github/callback` | `read:user` |
 
 1. **登记回调地址。** `<origin>` 是 `SOURCEGRAPH_ORIGIN` 的值，即不含路径的公开源地址。在 Google 中创建类型为 **Web application** 的 OAuth 客户端，并将回调地址添加为已授权的重定向 URI；在 GitHub 中创建 **OAuth App**，并将其用作授权回调 URL。
-2. **保存密钥**到你所用平台的密钥存储中，然后重启服务。
+2. **保存密钥**到你所用平台的密钥存储中，然后重启服务。某个提供方的两个值都存在时，Source Graph 会在首次启动时把它们导入加密的数据库存储；此后即使没有这些环境变量也会使用已保存的配置，且数据库记录优先于环境变量。
 3. **登录。** 第一个登录的人会成为管理员，详见下文。
+
+登录必须从配置的站点地址开始，因为提供方总是回到这个地址，登录 Cookie 也只属于一个主机。从其他地址（例如平台自带的主机名）发起的登录，会先被送到站点地址上的登录页；位于服务前面的代理通过 `X-Forwarded-Host` 转发原始主机。
 
 当公开源地址变化时（例如服务迁移到另一个域名之后），请同时更新 `SOURCEGRAPH_ORIGIN` 和两个提供方的回调地址。
 
@@ -56,6 +59,8 @@ GitHub 登录只用于识别用户，并不授予仓库访问权限。私有仓�
 站点设置 **Allow other users to sign in or register**（允许其他用户登录或注册）默认关闭。关闭期间只有管理员可以登录。其他人会被拒绝，并看到一个 `403` 页面：页面以两种语言显示可配置的提示，附有项目链接，并在五秒后返回上一页。关闭该设置还会切断现有非管理员用户的会话，他们的个人 API Key 也会被拒绝并返回 `REGISTRATION_CLOSED`。
 
 匿名阅读与该设置相互独立：只要站点的访问设置中开启了公开阅读，访客仍可读取标记为公开的仓库。以 `public_read: false` 登记的仓库只对匿名访客隐藏；所有被准入的已登录用户都能读取它。匿名流量受限流约束，具体限额见“运维”中的 [限流](operations.md#rate-limits)。
+
+另一项设置 **Let signed-in users register repositories**（允许已登录用户登记仓库）同样默认关闭；在它出现之前保存的设置读取为关闭。开启后，任何已登录用户都可以登记仓库并成为其管理者。管理者和管理员可以修改该仓库的设置、建索引和清理、取消其任务、删除它，以及添加或移除管理者（最多 50 位）；其他人会得到 `403 REPOSITORY_MANAGEMENT_DENIED`。用户、站点设置和全局代码源令牌仍仅限管理员。用户登记的仓库先使用该用户自己的代码源令牌拉取，再使用站点级令牌，因此开启这项设置意味着已登录用户可以登记站点级令牌能读取的任何仓库。
 <!-- /context:section -->
 
 <!-- context:section id="sessions" -->
@@ -81,5 +86,7 @@ GitHub 登录只用于识别用户，并不授予仓库访问权限。私有仓�
 | `ACCESS_DENIED` | 403 | 凭据有效但无权访问此处，例如用个人 Key 访问管理路由 |
 | `ADMIN_REQUIRED` | 403 | 非管理员尝试创建带 prepare 权限的 Key |
 | `REGISTRATION_CLOSED` | 403 | 登录仅限管理员 |
+| `REGISTRATION_DISABLED` | 403 | 未开启用户登记仓库时，非管理员尝试登记仓库 |
+| `REPOSITORY_MANAGEMENT_DENIED` | 403 | 调用方既不是该仓库的管理者，也不是管理员 |
 | `PREPARATION_NOT_ALLOWED` | 403 | 匿名调用方永远不能请求建索引 |
 <!-- /context:section -->

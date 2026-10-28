@@ -4,8 +4,8 @@ description: 来源成为已批准、构建并带版本的知识所经历的各�
 translation:
   locale: zh-CN
   artifact_ref: 82e8f37d-332c-47d5-bcd5-ab52653b9cd6
-  source_digest: 721962afccef6134b152cb3e766c915469a8059b6338f4be6cd587021d6f006c
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 4c51257570160b10603cdd91da42b4d51ec95363984ff82fa24853c42eb5890b
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 知识生命周期
@@ -31,6 +31,8 @@ flowchart LR
 | 审核 | 你看到当前整批候选，并选择批准、拒绝或要求修订 | 批准以原子方式应用；被拒绝的内容保留最小指纹，不会被再次提出 |
 | close（归档） | 根据已批准的页面及其关联重建 `knowledge/structure.yaml` | 知识地图与已批准页面一致，且不改写正文 |
 | 校验与构建 | 检查来源引用、frontmatter、结构和资源，然后产出知识包和站点 | 分发的文件通过构建清单对应回已批准的知识 |
+
+之后当某个已登记的仓库前移到超过已批准知识处理时所用的 commit 时，工作区路由会在其他事项等待你之前先运行 `context update --pending`。它只询问引用文字发生变化的页面，并在这次更新完成决定之前保留原先的已处理版本。
 <!-- /context:section -->
 
 <!-- context:section id="indexer" -->

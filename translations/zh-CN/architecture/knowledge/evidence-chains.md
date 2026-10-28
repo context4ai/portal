@@ -4,8 +4,8 @@ description: Context 知识的每个章节如何始终关联到确切的来源�
 translation:
   locale: zh-CN
   artifact_ref: dd332587-8faa-4ebe-88ca-247cfb146ba5
-  source_digest: 6304922c3a5cc019ebe1c539c942bcadad98f39cdb5d23e0caef658dbdddc3fa
-  translated_at: 2026-10-15T06:25:34.171Z
+  source_digest: 0e24b6fcfdf67fca03c78731d78e463e4b3a0a3e1e172af60afb183d2dc9d81e
+  translated_at: 2026-10-28T03:56:06.139Z
 ---
 
 # 证据链与索引优先
@@ -41,7 +41,7 @@ flowchart LR
 <!-- context:section id="index-first" -->
 ## 先查索引，再看原文
 
-基于知识包回答问题的 Agent，从目录索引和构建清单中的边记录出发，阅读候选页面，并引用其中的标题和段落。当知识包未覆盖所需事实时，Agent 会报告缺口，而不是猜测。面向使用者的知识包会省略章节元数据以保持精简；维护者可以通过清单把任意页面映射回 Context 知识工作区，查看其完整证据。
+基于知识包回答问题的 Agent，从目录索引和构建清单中的边记录出发，阅读候选页面，并引用其中的标题和段落。当知识包未覆盖所需事实时，Agent 会报告缺口，而不是猜测。共享的 `context-knowledge-query` Skill 可以检索项目能访问到的所有 Context 知识包；当页面正文不足以回答问题时，它会沿该页面的 Sources 条目继续查找：仓库按记录的提交读取，文档打开其当前 URL。面向使用者的知识包会省略章节元数据以保持精简；维护者可以通过清单把任意页面映射回 Context 知识工作区，查看其完整证据。
 
 借助 Source Graph，这条链无需克隆即可到达代码：可选的证据插件把章节标记、`knowledge/structure.yaml` 和来源登记关联起来，因此 Agent 在固定版本上阅读代码时，也能拿到引用这段代码的知识章节。该插件是只读的；它不校验来源内容，也不修改知识。
 <!-- /context:section -->
@@ -49,5 +49,5 @@ flowchart LR
 <!-- context:section id="site" -->
 ## 对读者可见
 
-在文档站点上，每篇文章末尾都有一个根据其记录的引用生成的来源页脚：仓库条目链接到记录的版本和模块，文档条目链接到其登记的 URL。链接从不从正文推断。
+在文档站点上，每篇文章末尾都有一张根据其记录的引用生成的来源图：文章的章节与它们引用的文档相连，并按每份文档的出处分组；列表视图列出同样的文档及其引用的行。仓库条目链接到记录的版本，文档条目链接到其登记的 URL；设置 `site.sourceMap: false` 则显示普通的来源列表。文章中准确写出某个被引用的仓库文件或目录的行内代码，也会链接到该路径在记录版本下的位置。链接从不从正文推断。
 <!-- /context:section -->

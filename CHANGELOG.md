@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.13.11 — 2026-10-28
+
+### Update to Context 0.7.90 and the latest Source Graph
+
+- Package pages describe the shared context-knowledge-query Skill with per-package search guides; site pages explain per-article source maps and the site.sourceMap option.
+- Updating Knowledge, Code Repositories, Keeping Knowledge Current, CLI Commands and the workflow pages explain context update --pending after a repository is re-pinned: only changed citations are candidates, and other pages of the source can be revised in the same decision.
+- Source Graph pages cover repository managers and the setting that lets signed-in users register repositories, application secrets stored in the database with the upgrade, backup and data-directory changes, Git timeouts, sign-in on the site address and GIT\_REPOSITORY\_UNAVAILABLE.
+- Planning Large Projects asks once whether a prepared source checklist exists.
+- The site and package are built with Context 0.7.90.
+- Citations on affected pages point at the updated sources, and Chinese translations follow these changes.
+
+Trigger: module: Context source advanced to 0.7.90 and Source Graph to its latest mainline, processed with context update --pending.; translation: Chinese pages updated for the revised articles.
+User: qiansc (git)
+
 ## 0.13.10 — 2026-10-26
 
 ### Update to Context 0.7.82, built with Context 0.7.87

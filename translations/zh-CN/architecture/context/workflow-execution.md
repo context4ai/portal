@@ -4,8 +4,8 @@ description: Context 如何根据知识工作区事实选择下一步、在 Gate
 translation:
   locale: zh-CN
   artifact_ref: 3ff2f5ee-2061-4671-b55c-ee136f92f693
-  source_digest: d8903c7465bf7fd2b6871d8ca6a0aabac7f1787fb429b2030dfb14884eef441f
-  translated_at: 2026-10-12T16:45:10.508Z
+  source_digest: 33f0842ece43812da8d214bc960bfa9900c0a9750f3a5cca140ab7be09bc4361
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 工作流运行
@@ -36,7 +36,7 @@ Route 包含选中的步骤、原因码、Agent 动手前必须阅读的资源�
 | `workspace` | 顶层生命周期：修复、来源边界、采集、Indexer 生命周期、审核、close、知识包输出、翻译、版本记录、构建和完成，以及回滚 |
 | `indexer` | 需求、计划、开工报告、分阶段写作、缺口处理、来源更新和已批准页面的修订 |
 
-顶层顺序由图的边固定：来源边界 → 采集 → `run-indexer-lifecycle` → 审核 → close → 知识包输出 → 版本 → 构建。节点描述的是稳定的任务类别，例如“还有采集目标未完成”；来源名称、日期和模块都是运行时事实，永远不会成为图节点。所以一张图就能服务所有知识工作区。
+顶层顺序由图的边固定：来源边界 → 采集 → `run-indexer-lifecycle` → 审核 → close → 知识包输出 → 版本 → 构建。在采集和 Indexer 生命周期之间，只要 `sources.update_pending` 为 true，即某个已登记仓库已前移到超过其已批准知识处理时的 commit，`process-source-update` 就会运行 `context update --pending`。节点描述的是稳定的任务类别，例如“还有采集目标未完成”；来源名称、日期和模块都是运行时事实，永远不会成为图节点。所以一张图就能服务所有知识工作区。
 <!-- /context:section -->
 
 <!-- context:section id="gates" -->

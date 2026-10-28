@@ -4,7 +4,7 @@ description: How every section of Context knowledge stays tied to exact source
   regions, and how Agents use that chain to go from an answer back to the
   original.
 type: Guide
-timestamp: 2026-10-15T06:21:46.519Z
+timestamp: 2026-10-28T03:53:56.231Z
 ---
 # Evidence Chains and Index First
 
@@ -41,15 +41,19 @@ Approved articles are divided into sections. Each written fragment cites regions
 <!-- /context:section -->
 
 <!-- context:section id="index-first" -->
+
 ## Index first, then the original
 
-Agents answering from a knowledge package start from directory indexes and the edge records in the build inventory, read the candidate pages, and cite their headings and passages. When the package does not cover a requested fact, they report the gap instead of guessing. Consumer packages omit section metadata to stay small; a maintainer can map any page back to the Context knowledge workspace through the inventory to see its full evidence.
+Agents answering from a knowledge package start from directory indexes and the edge records in the build inventory, read the candidate pages, and cite their headings and passages. When the package does not cover a requested fact, they report the gap instead of guessing. The shared `context-knowledge-query` Skill can search every Context package available to the project, and when a page's text does not settle a question it follows that page's Sources entries: repositories at their recorded commit, documents at their current URL. Consumer packages omit section metadata to stay small; a maintainer can map any page back to the Context knowledge workspace through the inventory to see its full evidence.
 
 With Source Graph, the chain reaches the code without a clone: the optional evidence plugin joins section markers, `knowledge/structure.yaml` and source registrations, so an Agent reading code at a pinned revision also receives the knowledge sections that cite it. The plugin is read-only; it does not verify source contents or modify knowledge.
+
 <!-- /context:section -->
 
 <!-- context:section id="site" -->
+
 ## Visible to readers
 
-On a documentation site, each article ends with a source footer built from its recorded references: repository entries link to the recorded revision and module, and document entries link to their registered URL. Links are never inferred from prose.
+On a documentation site, each article ends with a source map built from its recorded references: the article's sections are linked to the documents they cite, grouped by where each document comes from, and a list view shows the same documents with their cited lines. Repository entries link to the recorded revision and document entries to their registered URL; `site.sourceMap: false` shows a plain source list instead. Inline code in the article that spells a cited repository file or directory exactly also links to it at the recorded revision. Links are never inferred from prose.
+
 <!-- /context:section -->

@@ -4,7 +4,7 @@ description: Run your own Source Graph instance with Docker or from source,
   choose between one instance and sharded instances, pick a database, deploy on
   Fly.io and back up what cannot be rebuilt.
 type: Guide
-timestamp: 2026-10-21T12:18:51.603Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Self-Hosting
 
@@ -26,6 +26,7 @@ The image contains four binaries: the service `repo-service`, the command-line c
 <!-- /context:section -->
 
 <!-- context:section id="source" -->
+
 ## Build from source
 
 Building locally needs Go, Bun and Git, at the versions the repository's build files require:
@@ -37,10 +38,12 @@ bun run build
 SOURCEGRAPH_DATA_ROOT="$PWD/.tmp/data" SOURCEGRAPH_ORIGIN=http://localhost:8080 output/bin/repo-service
 ```
 
-`output/bin` then holds the same four binaries. The service starts the search server itself and manages background indexing; there is nothing else to run. Every setting is an environment variable, and code sources can also be overridden by the startup file that `SOURCEGRAPH_CONFIG_FILE` names; all are listed in [Configuration](../../product/reference/source-graph/configuration.md). Put credentials only in environment variables or your platform's secret store, never in the deployment JSON, source code or images.
+`output/bin` then holds the same four binaries. The service starts the search server itself and manages background indexing; there is nothing else to run. Every setting is an environment variable, and code sources can also be overridden by the startup file that `SOURCEGRAPH_CONFIG_FILE` names; all are listed in [Configuration](../../product/reference/source-graph/configuration.md). Put credentials only in environment variables or your platform's secret store, never in the deployment JSON, source code or images; on first start Source Graph imports them into its database, as described in [Application secrets](#application-secrets).
+
 <!-- /context:section -->
 
 <!-- context:section id="topology" -->
+
 ## Choose a shape
 
 Each instance owns its Git mirrors, search indexes and data directory on local disk, and a database holds the shared application state. Choosing a shape is therefore about disk and repository ownership, not about adding replicas.
@@ -50,7 +53,7 @@ Each instance owns its Git mirrors, search indexes and data directory on local d
 | Repositories | Fit on one persistent volume, with Git mirrors plus indexes | More than one volume can hold, or you want to spread indexing load |
 | Database | SQLite (default) is enough | PostgreSQL or MongoDB shared by every instance; SQLite cannot be shared |
 | Routing | None; every request goes to the one instance | An access layer routes each request to the instance that owns its repository |
-| Operations | One machine, one volume, one backup | One volume per instance, a stable repository mapping and a shared credential key |
+| Operations | One machine, one volume, one backup | One volume per instance, a stable repository mapping and one shared database that also holds the credentials |
 
 Start with one instance unless you already know the repositories will not fit. Moving to sharding later means adding a shared database and an access layer; repositories moved to a new instance are fetched and indexed again there.
 
@@ -68,6 +71,7 @@ flowchart TB
     b --> db
   end
 ```
+
 <!-- /context:section -->
 
 <!-- context:section id="single" -->
@@ -81,16 +85,19 @@ flowchart TB
 <!-- /context:section -->
 
 <!-- context:section id="sharded" -->
+
 ## Running sharded instances
 
 - **Share one PostgreSQL or MongoDB database** across all instances, and give each instance its own data volume.
-- **Set the same `SOURCEGRAPH_CREDENTIAL_KEY` on every instance.** Otherwise each instance generates its own key on its volume and cannot decrypt credentials stored by the others.
+- **Keep credentials in the shared database.** Application secrets and their encryption key are stored there, so every instance reads the same ones. When upgrading existing instances, import the original credential key before a replacement instance initializes the database; never replace it with a new key.
 - **Give each repository exactly one owner.** Assign repositories to instances with consistent hashing or an explicit repository-to-instance table, and keep that mapping stable.
 - **Route by the repository named in the request:** the `repo` query parameter over HTTP and the `repo` argument of an MCP tool call, in `owner/repository` form. Requests not tied to one repository, such as listing repositories, may go to any instance.
 - **Scale by adding shards, never replicas.** On Fly.io this means one App per shard behind your routing layer, not several Machines in one App, because Machines of one App would share repositories.
+
 <!-- /context:section -->
 
 <!-- context:section id="database" -->
+
 ## Choose a database
 
 | Database | `SOURCEGRAPH_DATABASE` | Use when |
@@ -99,7 +106,16 @@ flowchart TB
 | PostgreSQL | `postgres` | Shared state for sharded instances, or an existing managed database. Uses serializable transactions |
 | MongoDB | `mongodb` | Shared state on MongoDB. Sign-in admission needs transactions, so use a replica set or a managed cluster |
 
-Pass the connection in `DATABASE_URL`: a SQLite file path, a PostgreSQL DSN or a MongoDB URI. Changing the database does not migrate data, so start with an empty destination or run a separately reviewed export and import. An external database never replaces the instance's persistent volume, which still holds Git, indexes and the credential key.
+Pass the connection in `DATABASE_URL`: a SQLite file path, a PostgreSQL DSN or a MongoDB URI. Changing the database does not migrate data, so start with an empty destination or run a separately reviewed export and import. An external database never replaces the instance's persistent volume, which still holds Git mirrors and indexes.
+
+### Application secrets
+
+The database also stores the instance's application secrets, encrypted with AES-256-GCM together with their key: code-source tokens, the service API credential and the Google/GitHub sign-in configuration. This removes the separate key file on the host; it does not protect against disclosure of the whole database, so restrict database access and protect its backups.
+
+- **Upgrading an existing instance:** the first start imports `SOURCEGRAPH_CREDENTIAL_KEY` if it is set, otherwise the existing `code-credentials.key` in the data root, so stored tokens stay readable. Keep the environment secrets and the old key file during the first rollout so the previous image still works on its volume. Never start a replacement host against an old database without importing its original key first.
+- **Fresh databases** generate their own key and create no key file.
+- **Afterwards** the database is authoritative: environment values only fill missing records, and changing one does not rotate an existing secret. Rotating a secret is a maintenance change to the database record, followed by checking the new credential; do not delete the encryption key to rotate a token.
+
 <!-- /context:section -->
 
 <!-- context:section id="fly" -->
@@ -140,12 +156,14 @@ If you put Source Graph behind another site, proxy the whole prefix while preser
 <!-- /context:section -->
 
 <!-- context:section id="backup" -->
+
 ## Back up and restore
 
-Source Graph has no built-in backup job. Back up four things outside the machine, with restricted access: the database, the credential encryption key, the runtime storage configuration and the repository metadata. Indexes and bare Git mirrors can be rebuilt from the remotes; identities, settings, credentials and their key cannot.
+Source Graph has no built-in backup job. Back up three things outside the machine, with restricted access: the entire database, including its secrets and credential records, the runtime storage configuration and the repository metadata. Indexes and bare Git mirrors can be rebuilt from the remotes; identities, settings, credentials and their key cannot. Keep a legacy `code-credentials.key` only for restoring backups taken before the upgrade.
 
-- **SQLite:** use the online backup API; never copy a live `sourcegraph.db` on its own. For example: `sqlite3 /data/sourcegraph.db '.backup /data/sourcegraph-backup.db'`, then copy the result and the key and configuration files away. Alternatively stop the service and copy the database with its write-ahead log.
+- **SQLite:** use the online backup API; never copy a live `sourcegraph.db` on its own. For example: `sqlite3 /data/sourcegraph.db '.backup /data/sourcegraph-backup.db'`, then copy the result and the runtime configuration files away. Alternatively stop the service and copy the database with its write-ahead log.
 - **PostgreSQL:** `pg_dump`. **MongoDB:** your replica-set or managed-cluster backup.
 
-To restore, stop the instance, restore the database together with its matching key and configuration, start one instance, and check administrator access, repository metadata and index recovery. Rolling back the image and restoring the database are separate operations; keep a known-good image and take a backup before upgrades.
+To restore, stop the instance, restore the complete database and the runtime configuration (for a pre-upgrade backup, also its matching legacy key), start one instance, and check administrator access, repository metadata and index recovery. Rolling back the image and restoring the database are separate operations; keep a known-good image and take a backup before upgrades.
+
 <!-- /context:section -->

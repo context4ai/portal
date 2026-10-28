@@ -4,7 +4,7 @@ description: Run a Source Graph instance day to day — health checks, backgroun
   jobs, data retention, rate limits, disk and storage, repository maintenance,
   and what common errors mean.
 type: Guide
-timestamp: 2026-10-22T19:00:07.419Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Operations
 
@@ -111,11 +111,14 @@ Stop running jobs before maintenance; otherwise it returns `REPOSITORY_BUSY`. A 
 | `DEFAULT_BRANCH_NOT_OBSERVED` | 409 | No sync has recorded the default branch yet | Wait for or request a sync |
 | `PATH_NOT_REGISTERED` | 400 | The path is outside the monorepo's path groups | Search registered paths, or add a group |
 | `GIT_AUTH_FAILED`, `GIT_ACCESS_DENIED` | 401, 403 | The Git host rejected the token | Update the personal or global token for the repository's code source (GitHub or custom Git) |
+| `GIT_REPOSITORY_UNAVAILABLE` | 404 | The repository does not exist, or the token used cannot see it; code hosts answer both the same way | Check the repository name, then the token's access to it. A user-registered repository is fetched with its creator's token first, then the global one |
 | `PARTIAL_CLONE_UNSUPPORTED` | 422 | The Git server cannot filter blobs for monorepo mode | Register in full mode, or use a server that supports partial clone |
 | `HISTORY_SCAN_LIMIT` | 422 | A days-based window covers too much history | Use a commit count or a shorter window |
 | `INSUFFICIENT_STORAGE` | 503 | Free disk is below the configured floor | Free or add disk, or run cleanup |
 | `QUEUE_FULL` | 503 | Too many active or recorded jobs | Let jobs finish, cancel some, or clear finished jobs |
 | `ENGINE_RESPONSE_TOO_LARGE` | 502 | Even the smallest result page exceeded its budget | Narrow the pattern, globs or paths |
 | `RATE_LIMITED` | 429 | A rate limit was reached | Retry after one minute, or use a credential |
+
+Git fetches and object hydration stop after the repository's Git timeout: 15 minutes by default, set globally in system settings to 15, 30, 45 or 60 minutes and overridable per repository. A new task takes the value current when it starts; changing it does not interrupt running work or remove indexes, and it does not limit total indexing time.
 
 <!-- /context:section -->
