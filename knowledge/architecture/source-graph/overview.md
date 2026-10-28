@@ -4,7 +4,7 @@ description: "How Context Source Graph works: one contract across the website,
   HTTP, MCP and CLI, how a self-hosted instance is put together from Git
   mirrors, a Zoekt index and its application database, and who can do what."
 type: Guide
-timestamp: 2026-10-22T19:13:11.965Z
+timestamp: 2026-10-28T09:46:19.242Z
 ---
 # Architecture Overview
 
@@ -47,19 +47,23 @@ The website lives under `/sourcegraph/`, the MCP endpoint at `/sourcegraph/mcp`,
 <!-- /context:section -->
 
 <!-- context:section id="components" -->
+
 ## How an instance is put together
 
 A Source Graph instance is a single `repo-service` process. It starts the Zoekt search server as a child process listening only on the loopback interface, keeps a bare Git mirror for each registered repository on its data volume, and runs background workers that synchronize monitored branches and index new branch heads.
 
-The application database stores repositories, jobs, identities and settings. SQLite is the default; PostgreSQL and MongoDB are supported for larger or sharded deployments. Git mirrors and indexes always stay on the instance's local disk — search speed comes from that locality — so capacity is planned around disk rather than CPU. To grow, run several instances that each own a disjoint set of repositories; never run two instances over the same repositories or data directory. [Self-Hosting](../../sop/source-graph/self-hosting.md) covers both topologies.
+The application database stores repositories, jobs, identities and settings, and also the instance's application secrets: code-source tokens with their encryption key, the service API credential and the Google/GitHub sign-in configuration, all encrypted. The data volume therefore holds only Git mirrors and indexes, and a replacement host needs the database rather than an old key file. SQLite is the default; PostgreSQL and MongoDB are supported for larger or sharded deployments. Git mirrors and indexes always stay on the instance's local disk — search speed comes from that locality — so capacity is planned around disk rather than CPU. To grow, run several instances that each own a disjoint set of repositories; never run two instances over the same repositories or data directory. [Self-Hosting](../../sop/source-graph/self-hosting.md) covers both topologies.
 
 Repositories can also ship WebAssembly plugins named `<name>.sourcegraph.wasm` that add text to `read` and `read_many` results. Context uses this to attach each knowledge section's sources, described in [Evidence for Context](evidence-for-context.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="access" -->
+
 ## Who can do what
 
-Without any sign-in provider configured, an instance is an anonymous, read-only site: visitors can search and read repositories marked public, subject to per-minute rate limits. Adding Google or GitHub sign-in enables administration, and the first verified user becomes the administrator. Signed-in users can create personal API keys for scripts and Agents, and a service token covers automation. Registering repositories, indexing older commits and other changes require an administrator or the service token. [Authentication and Access Control](../../sop/source-graph/authentication-and-access-control.md) lists the full matrix.
+Without any sign-in provider configured, an instance is an anonymous, read-only site: visitors can search and read repositories marked public, subject to per-minute rate limits. Adding Google or GitHub sign-in enables administration, and the first verified user becomes the administrator. Signed-in users can create personal API keys for scripts and Agents, and a service token covers automation. Registering repositories, indexing older commits and other changes require an administrator or the service token, unless the site lets signed-in users register repositories: each such user then manages the repositories they register and can add other managers. [Authentication and Access Control](../../sop/source-graph/authentication-and-access-control.md) lists the full matrix.
+
 <!-- /context:section -->
 
 <!-- context:section id="next" -->

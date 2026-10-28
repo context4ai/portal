@@ -4,7 +4,7 @@ description: How to accept or tailor the package template before the first build
   — the entry page, the query Skill and directory navigation — and the rules
   every build enforces on templates.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-10-28T03:53:56.231Z
 ---
 # Custom Output Templates
 
@@ -30,6 +30,7 @@ A newly generated template must be accepted as is or edited before the first bui
 <!-- /context:section -->
 
 <!-- context:section id="layout" -->
+
 ## What the template contains
 
 ```text
@@ -38,8 +39,11 @@ src/package-templates/
 │   ├── AGENTS.md
 │   ├── wikis/
 │   │   └── index.md
+│   ├── others/
+│   │   └── context/
+│   │       └── search-guide.md
 │   └── skills/
-│       └── knowledge-query/
+│       └── context-knowledge-query/
 │           ├── SKILL.md
 │           └── scripts/
 │               └── search.mjs
@@ -47,7 +51,8 @@ src/package-templates/
     └── llms.txt
 ```
 
-A knowledge package template must contain at least one `SKILL.md` and `wikis/index.md`; a template with only `AGENTS.md` is rejected. Each rendered Skill lives at `skills/<skill-name>/SKILL.md` with a matching `name` in its front matter. To give the query Skill a project prefix, rename its template folder — for example `skills/android-query/` — since Context never derives Skill names from the package name. Add another Skill only when you want behavior beyond knowledge lookup.
+A knowledge package template must contain at least one `SKILL.md` and `wikis/index.md`; a template with only `AGENTS.md` is rejected. Each rendered Skill lives at `skills/<skill-name>/SKILL.md` with a matching `name` in its front matter; Context never derives Skill names from the package name. Add another Skill only when you want behavior beyond knowledge lookup.
+
 <!-- /context:section -->
 
 <!-- context:section id="entry" -->
@@ -79,9 +84,15 @@ The complete list, with loops, conditionals and helpers, is in [Template Variabl
 <!-- /context:section -->
 
 <!-- context:section id="skill" -->
+
 ## The query Skill
 
-The default `knowledge-query` Skill already carries the structure-first query discipline and a search fallback. Edit its template when you need project terminology, entry points or task workflows. Put authoring notes in template comments or separate guidance — not in a final section addressed to authors inside the finished Skill.
+The default `context-knowledge-query` Skill carries the structure-first query discipline and a search fallback, and it is the same in every Context package so one installed copy can serve them all. Context manages it: `context build` replaces a template copy that is older or edited, so changes made inside it do not survive.
+
+Tune search for your package in `others/context/search-guide.md` instead: project terminology and synonyms, common questions and the preferred entry page for each kind of task. The Skill reads this guide before it searches. A package that needs its own query Skill adds it under a different directory and `name`, so it installs beside the shared one.
+
+Workspaces created with the earlier `skills/knowledge-query/` template are migrated on the next build: Context replaces it with `context-knowledge-query` in the same language, adds the search guide when it is missing and reports the replacement. Move any package-specific wording the old Skill carried into the search guide.
+
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->

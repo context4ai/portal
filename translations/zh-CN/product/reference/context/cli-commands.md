@@ -4,8 +4,8 @@ description: context CLI 的全部命令与子命令，按用途分组，并说�
 translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
-  source_digest: 8b67e6a039ec668eefafb31af2ea4b85fcd2e67bf073ebc33d3e04ca58a608bb
-  translated_at: 2026-10-23T04:48:26.659Z
+  source_digest: 16ae5b9e16ef705548c6770b68262fd1e31aa1cf5601bb20516e26b6590d330f
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # CLI 命令
@@ -59,7 +59,7 @@ translation:
 | `context task recover` | 在正常 Route 之外检查或预览限定范围的恢复 |
 | `context task rollback` | 预览用户选定的确切回退和将被丢弃的草稿；绝不会重置仓库 |
 | `context task finish-rollback` | 在 close 和所有构建成功后完成回滚 |
-| `context update` | 在已确认的范围内，将已获取的来源变更与已批准的知识进行比对（`--input`） |
+| `context update` | 在已确认的范围内，将已获取的来源变更与已批准的知识进行比对（`--input`）；或使用 `--pending`（无需输入文件），处理登记的 commit 已超过已处理版本的代码仓库。两者必须且只能指定一个 |
 | `context revise <target>` | 通过 Indexer 生命周期修复一份草稿或一个已批准页面（`--instruction`、`--regenerate`、`--timing after-batch\|priority`、`--move-to`） |
 <!-- /context:section -->
 

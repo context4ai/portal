@@ -4,8 +4,8 @@ description: 日常运行 Source Graph 实例——健康检查、后台任务�
 translation:
   locale: zh-CN
   artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
-  source_digest: 9862fef64d88bb1dc1d5631b54faf9e9ea773b7ae252f440b16c74c5c900349d
-  translated_at: 2026-10-22T19:03:13.981Z
+  source_digest: edbebaa8b55d42d247ae9d0bf5c751b4a59c7ddec7687222ec6eafd397415822
+  translated_at: 2026-10-28T09:51:17.272Z
 ---
 
 # 运维
@@ -106,10 +106,13 @@ Source Graph 实例基本可以自行运转：后台 worker 会同步仓库、�
 | `DEFAULT_BRANCH_NOT_OBSERVED` | 409 | 尚无同步记录到默认分支 | 等待同步或主动请求同步 |
 | `PATH_NOT_REGISTERED` | 400 | 路径不在 Monorepo 的路径组内 | 搜索已登记的路径，或添加路径组 |
 | `GIT_AUTH_FAILED`、`GIT_ACCESS_DENIED` | 401、403 | Git 托管平台拒绝了令牌 | 更新仓库所属代码源（GitHub 或自定义 Git）的个人或全局令牌 |
+| `GIT_REPOSITORY_UNAVAILABLE` | 404 | 仓库不存在，或所用令牌看不到它；代码托管平台对两者的回应相同 | 先核对仓库名，再检查令牌对它的访问权限。用户登记的仓库先使用其创建者的令牌拉取，再使用全局令牌 |
 | `PARTIAL_CLONE_UNSUPPORTED` | 422 | Git 服务器无法为 Monorepo 模式过滤 blob | 以全量模式登记，或使用支持部分克隆的服务器 |
 | `HISTORY_SCAN_LIMIT` | 422 | 按天数计算的窗口覆盖的历史过多 | 改用提交数，或缩短窗口 |
 | `INSUFFICIENT_STORAGE` | 503 | 可用磁盘低于配置的下限 | 释放或扩充磁盘，或执行清理 |
 | `QUEUE_FULL` | 503 | 活跃或已记录的任务过多 | 等待任务完成、取消部分任务，或清除已结束的任务 |
 | `ENGINE_RESPONSE_TOO_LARGE` | 502 | 即使最小的结果页也超出了预算 | 缩小模式、glob 或路径范围 |
 | `RATE_LIMITED` | 429 | 触发了限流 | 一分钟后重试，或使用凭据 |
+
+Git 拉取和对象补全会在达到仓库的 Git 超时时停止：默认 15 分钟，可在系统设置中全局设为 15、30、45 或 60 分钟，并可按仓库覆盖。新任务使用开始时的当前值；修改它不会中断正在运行的工作，也不会删除索引，并且它不限制建索引的总时长。
 <!-- /context:section -->

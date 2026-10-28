@@ -4,7 +4,7 @@ description: How to add a documentation website to a knowledge package, what
   readers get, how navigation and homepage cards are set up, and how to preview
   and deploy the site.
 type: Guide
-timestamp: 2026-10-23T04:46:46.644Z
+timestamp: 2026-10-28T02:12:23.964Z
 ---
 # Documentation Sites
 
@@ -40,7 +40,6 @@ The Agent sets the site title, language, address prefix and homepage for you. Th
 <!-- /context:section -->
 
 <!-- context:section id="features" -->
-
 ## What the site offers
 
 - **Homepage** — every top-level section of the knowledge map as a card with a short preview of its pages, plus resource cards.
@@ -50,10 +49,10 @@ The Agent sets the site title, language, address prefix and homepage for you. Th
 - **Missing pages** — an unknown address shows a 404 page in the reader's language with a link back home.
 - **Diagrams** — Mermaid rendered in the browser with fit, 100%, zoom, full-screen and source controls. An invalid diagram shows its source with a notice instead of blocking publication.
 - **Provenance** — each page ends with its sources: repository entries link to the recorded revision, document entries to their registered URL. Inline code that names a cited repository file or directory links to that path at the recorded revision.
+- **Source map** — on by default, each page ends with a map instead of a plain list: the page's sections in the middle, the documents they cite around them, grouped by where each one comes from. Hovering highlights what a section or document links to, clicking a document opens the cited lines, and a List view shows the same documents with their line ranges; narrow screens show only the list. Below it, other pages citing the same documents are linked. The map is computed during the build from the recorded references, so no extra step is needed; `site.sourceMap: false` returns the plain list.
 - **LLM Docs and Changelog** — the site can link the plain-text [LLM Docs](llm-docs.md) produced by the same build, and the knowledge base's changelog.
 
 Code samples and raw HTML are displayed as content, never executed.
-
 <!-- /context:section -->
 
 <!-- context:section id="navigation" -->
