@@ -5,8 +5,8 @@ description: 如何在任意 Agent 运行时上把 Context 作为常驻的知识
 translation:
   locale: zh-CN
   artifact_ref: 0a27d0c5-3057-4806-a0a5-2e8de53b5321
-  source_digest: e7a380414ead7c0b03b73531cd0dec62a731e118bcbeb3a614bf17547625da2a
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 67586211ba40fb322a6178f5e7744cf1c65b28fb05d2c5c71334fc104acc0b70
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # 构建知识服务
@@ -44,7 +44,7 @@ flowchart TB
 
 1. **选择运行时**，它要为每个会话提供隔离沙箱；见下文 [选择运行时](#choosing-a-runtime)。
 2. **在运行时镜像中安装 Context**：`context` CLI 和 Context 插件，参见 [安装](../../product/getting-started/installation.md)。同时预装知识包和知识工作区，避免每个会话都重新安装和克隆——冷启动是首次回答慢的主要原因。
-3. **接入远程检索**，让 Agent 按提交读取代码，而不是在沙箱里克隆仓库；参见 [远程读取代码证据](../querying-knowledge/reading-code-evidence-remotely.md)。
+3. **接入远程检索**，让 Agent 按提交读取代码，而不是在沙箱里克隆仓库；参见 [选择 Context 读取代码的方式](../source-graph/connecting.md#choose-how-context-reads-code)。
 4. **编写 Bot 提示词**，写明审核策略和检索顺序；见下文 [配置 Bot](#configuring-the-bot)。
 5. **通过服务层接入各个入口**，并决定谁可以做什么：公开访客提问，维护者负责生产、更新和发布。边界说明见 [在团队聊天中使用 Bot](./using-the-bot-in-team-chat.md)。
 

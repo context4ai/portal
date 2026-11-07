@@ -4,14 +4,14 @@ description: Source Graph 全部 HTTP 路由与 MCP 工具：路径、输入、�
 translation:
   locale: zh-CN
   artifact_ref: 7d36464b-bcce-4ff6-b9e0-9904140bd929
-  source_digest: 39739999e6a04ba3f3df7082d5dfe5434d120f92d96f8b62911e12a5018fea74
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: 8ae0f2d62a36703247e7c754da39024bdf436f78a02e4f1d6e9bd41950cc15c3
+  translated_at: 2026-11-07T13:29:32.690Z
 ---
 
 # HTTP 与 MCP 接口
 
 <!-- context:section id="goal" -->
-所有路由都位于实例源地址的 `/sourcegraph` 前缀下。查询路由在 `/sourcegraph/v1/` 下（搜索为 `/sourcegraph/api/search`），管理路由在 `/sourcegraph/api/admin/` 下，MCP 端点为 `/sourcegraph/mcp`。两类接口调用的是同一个服务，因此版本、限制和错误码完全一致。如何选择凭据，见 [接入](../../../sop/source-graph/connecting.md)。
+所有路由都位于实例源地址的 `/sourcegraph` 前缀下。查询路由在 `/sourcegraph/v1/` 下（搜索为 `/sourcegraph/api/search`），管理路由在 `/sourcegraph/api/admin/` 下，MCP 端点为 `/sourcegraph/mcp`。两类接口调用的是同一个服务，因此版本、限制和错误码完全一致。如何选择凭据，见 [连接 Agent、脚本和命令行使用 Source Graph](../../../sop/source-graph/connecting.md)。
 
 > **可选服务。** Context 并不依赖 Source Graph 或它的 MCP 服务。两者都没有安装或配置时，Context 的查询技能仍会通过浅层、稀疏的部分克隆加 grep 在本地读取代码证据；默认的 `auto` 模式只在有可用的已授权实例时才优先使用 Source Graph。
 <!-- /context:section -->
@@ -29,12 +29,12 @@ translation:
 <!-- context:section id="query" -->
 ## 查询路由
 
-开启公开读取时，匿名访客可以使用这些路由；所有凭据也都可以使用。
+开启公开读取时，匿名访客可以使用这些路由；所有凭据也都可以使用，范围限于调用方能看到的仓库：匿名调用方只能看到公开仓库，私有仓库只对其创建者、管理者、在网站上登录的管理员和服务令牌可见。调用方看不到的私有仓库会返回 `404 REPOSITORY_NOT_FOUND`，与未登记的名称完全相同。
 
 | 方法 | 路径 | 请求体 | 返回 |
 | --- | --- | --- | --- |
 | GET | `/v1/capabilities` | — | 协议与支持的操作 |
-| GET | `/v1/repos` | —（用 `after` 翻到下一页） | 已登记的仓库，每页 100 个 |
+| GET | `/v1/repos` | —（用 `after` 翻到下一页） | 调用方可见的仓库，每页 100 个；已登录调用方还会得到每个仓库的 `managers` |
 | GET | `/v1/repo/availability` | — | 单个仓库：保留的版本、分支最新提交、路径组和任务，以及它的 `code_provider` 和登记时固定的 `code_host`，附带 `ETag` |
 | GET | `/v1/repo/commits` | — | 与 availability 相同 |
 | GET | `/v1/repo/plugins` | —（可选 `revision`） | 该提交中发现的仓库插件，不会运行它们 |
@@ -50,28 +50,30 @@ translation:
 <!-- context:section id="admin" -->
 ## 管理路由
 
-这些路由需要服务令牌或管理员的浏览器会话。仓库的管理者也可以对该仓库使用所有带 `?repo=` 的路由，其他人会得到 `403 REPOSITORY_MANAGEMENT_DENIED`。站点允许已登录用户登记仓库时，任何已登录用户都可以登记仓库并成为其管理者；否则登记会返回 `403 REGISTRATION_DISABLED`。用户、站点设置、全局代码源令牌和其他站点级路由仍仅限管理员。个人 API Key 是只读的，在这里会得到 `403 ACCESS_DENIED`。少数读取路由（`GET /api/admin/v1/repos`、`GET /api/admin/v1/repo` 和 `GET /api/admin/v1/statistics`）也对匿名读取开放。
+这些路由需要服务令牌或管理员的浏览器会话。仓库的管理者也可以对该仓库使用所有带 `?repo=` 的路由，其他人会得到 `403 REPOSITORY_MANAGEMENT_DENIED`。站点允许已登录用户登记仓库时，任何已登录用户都可以登记仓库并成为其管理者；否则登记会返回 `403 REGISTRATION_DISABLED`。用户、站点设置、全局代码源令牌和其他站点级路由仍仅限管理员。个人 API Key 在这里只能调用 `POST /api/admin/v1/repo/prepare`，范围是其所有者管理的仓库；若所有者是管理员，则为该 Key 能看到的任何仓库。其他所有管理路由都返回 `403 ACCESS_DENIED`。少数读取路由（`GET /api/admin/v1/repos`、`GET /api/admin/v1/repo` 和 `GET /api/admin/v1/statistics`）也对匿名读取开放，但仅限调用方能看到的内容；统计信息会略去调用方看不到的仓库名称。
 
 | 方法 | 路径 | 请求体或请求头 | 用途 |
 | --- | --- | --- | --- |
-| GET | `/api/admin/v1/statistics` | — | 请求与任务统计 |
+| GET | `/api/admin/v1/statistics` | — | 请求与任务统计，以及最近一轮索引回收 |
 | GET | `/api/admin/v1/instances` | — | 实例心跳 |
 | GET | `/api/admin/v1/repos` | — | 仓库目录 |
-| POST | `/api/admin/v1/repos` | 登记字段；可选 `Idempotency-Key` | 登记仓库（`202`） |
+| POST | `/api/admin/v1/repos` | 登记字段；可选 `Idempotency-Key` | 登记仓库（`202`）；名称已被登记时返回 `409 REPOSITORY_EXISTS`，并在 `creator` 中给出登记人 |
 | GET | `/api/admin/v1/repo` | — | 仓库信息，附带 `ETag` |
-| PATCH | `/api/admin/v1/repo` | 更新字段；`If-Match` 版本 | 修改分支、保留窗口、可见性、同步间隔、路径组；启用、停用或删除 |
+| PATCH | `/api/admin/v1/repo` | 更新字段；`If-Match` 版本 | 修改分支、保留窗口、可见性、同步间隔、路径组、固定快照和容量预算；启用、停用或删除 |
 | POST | `/api/admin/v1/repo/preview` | 更新字段 | 预览一次更新 |
 | POST | `/api/admin/v1/repo/prepare` | `{"kind","commit","group"}`；可选 `Idempotency-Key` | 排队执行 `sync` 或 `index` 工作（`202`） |
 | GET | `/api/admin/v1/repo/commit-options` | —（可选 `branch`） | 可供选择的最近已同步提交 |
 | POST | `/api/admin/v1/repo/index/preview`、`/api/admin/v1/repo/index` | `{"branch","commit"}`；后者还需 `preview` 和 `If-Match` | 为某个提交添加索引 |
-| POST | `/api/admin/v1/repo/cleanup/preview`、`/api/admin/v1/repo/cleanup` | `{"preview"}`，后者还需 `If-Match` | 每个分支只保留最新的索引 |
+| POST | `/api/admin/v1/repo/cleanup/preview`、`/api/admin/v1/repo/cleanup` | `{"preview"}`，后者还需 `If-Match` | 删除旧索引，保留分支最新提交和已固定快照的索引 |
 | POST | `/api/admin/v1/repo/delete/preview`、`/api/admin/v1/repo/delete` | `{"preview"}`，后者还需 `If-Match` | 永久删除仓库数据 |
 | POST | `/api/admin/v1/repo/jobs/cancel` | `{"job_id"}` | 取消任务 |
 | POST | `/api/admin/v1/repo/purge` | `If-Match` 版本 | 清除已停用且已删除的仓库 |
 | POST | `/api/admin/v1/repo/managers` | `{"add":"<用户 ID>"}` 或 `{"remove":"<用户 ID>"}`；`If-Match` 版本 | 添加或移除管理者（最多 50 位）；用户不存在或已停用时返回 `404 USER_NOT_FOUND` |
 | GET | `/auth/users/search?q=` | — | 已登录用户按姓名或邮箱查找最多 20 位启用中的用户，用于选择管理者 |
 
-登记和 `PATCH` 还接受 `git_timeout_minutes`（0 表示继承站点默认值；15、30、45 或 60 表示覆盖）。仓库详情新增 `can_manage`，对已登录调用方还会返回 `creator` 和 `managers`；`GET /access-policy` 新增 `user_repositories`。登记字段见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
+登记和 `PATCH` 还接受 `git_timeout_minutes`（0 表示继承站点默认值；15、30、45 或 60 表示覆盖）和 `public_read`（`false` 表示将仓库设为私有）。`PATCH` 还接受 `pinned_commits`，即不受保留策略约束而始终保留的完整 SHA（最多 4096 个），以及 `max_storage_bytes`，即仓库的容量预算，范围 1 GiB 到 10 TiB（默认 100 GiB）。仓库详情新增 `can_manage`，对已登录调用方还会返回 `creator` 和 `managers`；`GET /access-policy` 新增 `user_repositories`。登记字段见 [登记和管理仓库](../../../sop/source-graph/registering-repositories.md)。
+
+手动准备在网站、HTTP 和 MCP 之间按仓库统一限速。与已排队或正在运行的任务完全相同（同一路径组、类型和版本）的请求会直接返回该任务，不增加队列负载。距该仓库上一次被接受的请求不足 30 秒的其他新手动请求，会返回 `429 RATE_LIMITED` 并附带 `Retry-After`；一次为 Monorepo 所有路径组排队的请求只计一次，定时任务不受限速。
 <!-- /context:section -->
 
 <!-- context:section id="other" -->
@@ -94,13 +96,16 @@ translation:
 <!-- context:section id="mcp" -->
 ## MCP 端点
 
-`/sourcegraph/mcp` 使用无状态的 Streamable HTTP，响应为 JSON；服务端标识自己为 `context-sourcegraph`。可用的工具集取决于凭据：
+`/sourcegraph/mcp` 使用无状态的 Streamable HTTP，响应为 JSON；服务端标识自己为 `context-sourcegraph`。每个工具都只作用于该凭据能看到的仓库。可用的工具集取决于凭据：
 
 | 凭据 | 工具 |
 | --- | --- |
-| 匿名（已开启公开读取）、个人 Key | 只读：除 `prepare` 外的全部工具 |
-| 以 prepare 权限创建的管理员个人 Key | 只读工具加上 `prepare`，限流为每个 Key 每分钟 10 次、总计每分钟 60 次 |
+| 匿名（已开启公开读取） | 只读：除 `prepare` 外的全部工具 |
+| 所有者是管理员或至少管理一个仓库的个人 Key | 只读工具加上 `prepare`，范围是所有者管理的仓库；若所有者是管理员，则为该 Key 能看到的任何仓库；限流为每个 Key 每分钟 10 次、总计每分钟 60 次 |
+| 其他个人 Key | 只读：除 `prepare` 外的全部工具 |
 | 服务令牌 | 全部工具 |
+
+Key 的所有者是否管理某个仓库最多缓存一分钟，因此新添加的管理者可能要稍等片刻才能看到 `prepare`。每次 `prepare` 调用仍会按当前的角色和管理者名单进行检查。
 
 可选的连接参数 `?plugins=` 用于设置 `read` 和 `read_many` 的默认插件选择：`auto`、`off`，或最多 16 个以逗号分隔的名称。无效值返回 `400 INVALID_PLUGINS`。
 <!-- /context:section -->
@@ -120,11 +125,11 @@ translation:
 | `diff` | `repo`、`base`、`head`、`first`（1–100） | `paths`、`after` |
 | `prepare` | `repo`、`idempotency_key`（8–128 字节） | `revision`、`group` |
 
-`plugins` 是一个列表，例如 `[{"name":"context-evidence"}]`；传 `[]` 会在本次调用中关闭增强，而以 `plugins=off` 打开的连接始终关闭增强。`prepare` 接受省略版本（默认分支）、监控分支，或保留窗口内的完整 SHA；它是异步的，之后请轮询 `availability`。
+`plugins` 是一个列表，例如 `[{"name":"context-evidence"}]`；传 `[]` 会在本次调用中关闭增强，而以 `plugins=off` 打开的连接始终关闭增强。`prepare` 接受省略版本（默认分支）、监控分支，或 40 位完整 SHA；尚未同步的 SHA 会被作为快照拉取并固定，详见 [登记和管理仓库](../../../sop/source-graph/registering-repositories.md)。它是异步的：重复的相同请求会返回已排队或正在运行的任务，30 秒内的其他新请求会返回 `RATE_LIMITED` 及需要等待的秒数，之后请轮询 `availability`。
 
 把仓库、原始完整 SHA 和路径作为一个整体的来源标识：不要自行重建 SHA，也不要在另一个仓库中复用它。按仓库和版本对 `read_many` 请求分组，使用 `search` 或 `list` 返回的路径，并把 `end_line` 作为包含在内的绝对行号，而不是行数。
 
-通过 HTTP 调用 `availability` 时还会返回 `job_failures`，即失败任务摘要的有限历史，其保留规则见 [运维](../../../sop/source-graph/operations.md)。通过 MCP 用指定的 `job_id` 调用 `availability` 时，如果实时任务已被清理但失败摘要仍在，会返回 `job_failure` 和 `job_lookup.state=archived_failure`。这只是历史证据，不代表当前已就绪，也不是可以继续执行的任务；没有历史记录也不意味着任务成功。
+通过 HTTP 调用 `availability` 时还会返回 `job_failures`，即失败任务摘要的有限历史，其保留规则见 [运维：日常运维与排障](../../../sop/source-graph/operations.md)。通过 MCP 用指定的 `job_id` 调用 `availability` 时，如果实时任务已被清理但失败摘要仍在，会返回 `job_failure` 和 `job_lookup.state=archived_failure`。这只是历史证据，不代表当前已就绪，也不是可以继续执行的任务；没有历史记录也不意味着任务成功。
 <!-- /context:section -->
 
 <!-- context:section id="output" -->
@@ -160,5 +165,5 @@ translation:
 <!-- context:section id="errors" -->
 ## 错误格式
 
-HTTP 错误返回一个 JSON 体，其中包含 `Error` 消息，以及含有 `Protocol`、`RequestID`、`Status`、`Code` 和 `Retryable` 的 `Meta`。传输层错误码包括 `NOT_FOUND`、`METHOD_NOT_ALLOWED`、`INVALID_QUERY_PARAMETERS`、`INVALID_REQUEST`、`AUTHENTICATION_REQUIRED`、`ACCESS_DENIED`、`RATE_LIMITED`、`PRECONDITION_REQUIRED`、`QUERY_DEADLINE_EXCEEDED` 和 `DEPENDENCY_UNAVAILABLE`。`INDEX_NOT_READY`、`REVISION_NOT_ELIGIBLE`、`INVALID_PATTERN` 或 `READ_BUDGET_EXCEEDED` 等操作错误码有各自的状态码；管理类错误码 `REPOSITORY_MANAGEMENT_DENIED`、`REGISTRATION_DISABLED`、`USER_NOT_FOUND`，以及 `GIT_REPOSITORY_UNAVAILABLE` 等 Git 拉取错误码也是如此，其中 `GIT_REPOSITORY_UNAVAILABLE` 同时涵盖仓库不存在和凭据看不到该仓库两种情况。[运维](../../../sop/source-graph/operations.md) 解释了常见错误码及处理方法。
+HTTP 错误返回一个 JSON 体，其中包含 `Error` 消息，以及含有 `Protocol`、`RequestID`、`Status`、`Code` 和 `Retryable` 的 `Meta`；如果拒绝时已知最早可重试的时间（例如受限速的准备请求），还会设置 `Retry-After`。传输层错误码包括 `NOT_FOUND`、`METHOD_NOT_ALLOWED`、`INVALID_QUERY_PARAMETERS`、`INVALID_REQUEST`、`AUTHENTICATION_REQUIRED`、`ACCESS_DENIED`、`RATE_LIMITED`、`PRECONDITION_REQUIRED`、`QUERY_DEADLINE_EXCEEDED` 和 `DEPENDENCY_UNAVAILABLE`。`INDEX_NOT_READY`、`REVISION_NOT_ELIGIBLE`、`INVALID_PATTERN` 或 `READ_BUDGET_EXCEEDED` 等操作错误码有各自的状态码；管理类错误码 `REPOSITORY_MANAGEMENT_DENIED`、`REGISTRATION_DISABLED`、`REPOSITORY_EXISTS`、`USER_NOT_FOUND`，快照与存储错误码 `REPOSITORY_STORAGE_LIMIT`、`SNAPSHOT_LIMIT`、`PIN_LIMIT`、`INVALID_STORAGE_BUDGET`，以及 `GIT_REPOSITORY_UNAVAILABLE` 等 Git 拉取错误码也是如此，其中 `GIT_REPOSITORY_UNAVAILABLE` 同时涵盖仓库不存在和凭据看不到该仓库两种情况。对于未登记的名称和调用方看不到的私有仓库，都会返回 `REPOSITORY_NOT_FOUND`。[运维：日常运维与排障](../../../sop/source-graph/operations.md) 解释了常见错误码及处理方法。
 <!-- /context:section -->

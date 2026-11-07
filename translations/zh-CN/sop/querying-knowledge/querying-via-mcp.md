@@ -5,8 +5,8 @@ description: 把你自己的 Agent 接入 Source Graph MCP，再给它一段检�
 translation:
   locale: zh-CN
   artifact_ref: 55ac465e-f3c9-4d32-849d-ac08e30ddfa9
-  source_digest: fc4147cc099209b43d35539aecfe9825e05cc7967dd2a903307c3bc4541a7faf
-  translated_at: 2026-10-22T19:13:59.216Z
+  source_digest: 7efaaa6c608e0bdabd88880c9b775811cf439b61e05fef4051fb193285a59491
+  translated_at: 2026-11-07T13:29:32.690Z
 ---
 
 # 在 Agent 中通过 MCP 查询
@@ -40,7 +40,7 @@ translation:
 
 放在你的工具存放 MCP 服务器配置的位置，例如 Claude Code 项目中的 `.mcp.json`，或 Cursor 的 `.cursor/mcp.json`。服务在固定路径 `/sourcegraph/mcp` 上使用 Streamable HTTP，支持 URL 型服务器的客户端只需要填地址。服务器名请保留 `context-sourcegraph`：Context 查询 Skill 按这个名字查找服务，以后安装 Context 时同一份配置还能继续用。
 
-公开演示实例匿名只读，不需要令牌。如果你自己的实例需要令牌，就在个人配置的 `headers` 中加上 `"Authorization": "Bearer <your token>"`。不要把令牌提交到仓库，也不要贴进共享的提示词。凭据和其他客户端的接法见 [接入](../source-graph/connecting.md)。
+公开演示实例匿名只读，不需要令牌。如果你自己的实例需要令牌，就在个人配置的 `headers` 中加上 `"Authorization": "Bearer <your token>"`。不要把令牌提交到仓库，也不要贴进共享的提示词。凭据和其他客户端的接法见 [连接 Agent、脚本和命令行使用 Source Graph](../source-graph/connecting.md)。
 <!-- /context:section -->
 
 <!-- context:section id="check" -->
@@ -135,5 +135,5 @@ MCP 配置属于个人，单独保存：每个人在自己的机器上配置一�
 <!-- context:section id="prerequisite" -->
 ## 用于你自己的知识
 
-这条路径只适用于实例上已登记并建好索引的仓库：你的知识仓库，以及回答所依赖的每个源码仓库，都必须出现在第 2 步的列表里。公开演示实例只提供上面四个仓库。要查询你自己的知识库，请运行自己的 Source Graph 实例，并由管理员登记这两类仓库；参见 [自托管](../source-graph/self-hosting.md) 和 [登记仓库](../source-graph/registering-repositories.md)。
+这条路径只适用于实例上已登记并建好索引的仓库：你的知识仓库，以及回答所依赖的每个源码仓库，都必须出现在第 2 步的列表里。列表只显示你的凭据能看到的仓库：私有仓库只对其创建者、管理者和管理员可见，因此请使用能看到它的人的个人 API Key。公开演示实例只提供上面四个仓库。要查询你自己的知识库，请运行自己的 Source Graph 实例，并由管理员登记这两类仓库；参见 [运维：自行部署 Source Graph](../source-graph/self-hosting.md) 和 [登记和管理仓库](../source-graph/registering-repositories.md)。
 <!-- /context:section -->

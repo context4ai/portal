@@ -304,13 +304,13 @@ entries:
     order: 100
   - key: guides-sourcegraph/authentication-and-access-control
     parent: guides-sourcegraph
-    title: Authentication and Access Control
+    title: "Ops: Sign-in and Permissions"
     order: 60
     target:
       artifact_ref: 16b2009e-443b-447e-9823-202cc6090d42
   - key: guides-sourcegraph/connecting
     parent: guides-sourcegraph
-    title: Connecting
+    title: Connect Agents and Tools
     order: 20
     target:
       artifact_ref: 154d582d-953d-40e3-afd5-f214c2c17909
@@ -322,25 +322,19 @@ entries:
       artifact_ref: 21b1ee4b-5485-4486-8e5c-60598d6e8dea
   - key: guides-sourcegraph/operations
     parent: guides-sourcegraph
-    title: Operations
+    title: "Ops: Daily Operations"
     order: 70
     target:
       artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
-  - key: guides-sourcegraph/reading-code-evidence-remotely
-    parent: guides-sourcegraph
-    title: Reading Code Evidence Remotely
-    order: 30
-    target:
-      artifact_ref: 01b7ffc6-89eb-4581-980e-264943d58736
   - key: guides-sourcegraph/registering-repositories
     parent: guides-sourcegraph
-    title: Registering Repositories
+    title: Manage Repositories
     order: 40
     target:
       artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
   - key: guides-sourcegraph/self-hosting
     parent: guides-sourcegraph
-    title: Self-Hosting
+    title: "Ops: Deployment"
     order: 50
     target:
       artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
@@ -664,4 +658,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:a318b193447cb36a153b105a47559a82e2315b2690989f9ba7c93eebc5fa7c8d
+revision: sha256:850d8da9ca0af6580900c52cc33f12e9f8cd2edd3e88b616f5bc5711698c4db4

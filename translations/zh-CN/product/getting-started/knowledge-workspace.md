@@ -4,8 +4,8 @@ description: Context 知识工作区是什么、其中每个目录和文件存�
 translation:
   locale: zh-CN
   artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
-  source_digest: 7bd3e1955c8db55e30f7c0e57315fb9632f384dccd1f445423304c66042fccdb
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 32d2d3586ae7a4302982fcbf3aa65d05087fdd60e76b094152b4e4ce7f8e0a41
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # Context 知识工作区
@@ -96,7 +96,7 @@ my-knowledge/
 
 - 根目录下的 **`imports.yaml`** 声明外部入口——页面可以链接到的其他位置的内容——但不会下载或采集它们。参见 [外部入口](../../sop/registering-sources/external-entrances.md)。
 - **`repo-content.yaml`** 登记位于同一仓库中的文档和自编 Skill；**`repo-content/`** 是它们的符号链接视图，原文件保持原位不动。参见 [链接已有的文档与 Skill](../../sop/registering-sources/same-repository-docs.md)。
-- **`context-evidence.sourcegraph.wasm`** 是一个用于远程读取代码证据的可选插件。它由 `context evidence install` 维护；查询过程从不会自行安装它。参见 [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
+- **`context-evidence.sourcegraph.wasm`** 是一个用于远程读取代码证据的可选插件。它由 `context evidence install` 维护；查询过程从不会自行安装它。参见 [选择 Context 读取代码的方式](../../sop/source-graph/connecting.md#choose-how-context-reads-code)。
 <!-- /context:section -->
 
 <!-- context:section id="runtime" -->
