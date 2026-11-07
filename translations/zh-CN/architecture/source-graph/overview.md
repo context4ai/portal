@@ -1,7 +1,7 @@
 ---
 title: 架构概览
 description: Context Source Graph 如何工作：网站、HTTP、MCP 与 CLI 共享同一套接口约定，自部署实例如何由 Git
-  镜像、本地 Zoekt 索引和 ByteDoc 组装而成，以及谁能做什么
+  镜像、本地 Zoekt 索引和应用数据库组装而成，以及谁能做什么
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
