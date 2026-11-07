@@ -4,7 +4,7 @@ description: Ask your Agent questions against a knowledge workspace or an
   installed package, phrase them so answers are precise, and get answers that
   cite where each claim comes from.
 type: Guide
-timestamp: 2026-10-21T12:18:51.603Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # Asking Questions
 
@@ -45,7 +45,7 @@ Asking never changes anything: it does not touch your sources, approved pages, t
 
 In the first two, the query Skill does the work described on this page: in a workspace it reads the approved pages and, when needed, the sources they were written from; from a package it reads the package and can still follow its citations back to the original documents and code. Through the MCP, your own prompt sets the same priorities — knowledge first, code when needed, sources always — but without the Skill's navigation or update suggestions.
 
-When the query Skill is installed, the host or the Bot can set which material is read first and whether code is read through a remote read-only service or local checkouts; see [Building a Knowledge Service](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot). These settings change the order and the access path, not what counts as evidence. To read cited code without local checkouts, see [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
+When the query Skill is installed, the host or the Bot can set which material is read first and whether code is read through a remote read-only service or local checkouts; see [Building a Knowledge Service](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot). These settings change the order and the access path, not what counts as evidence. To read cited code without local checkouts, see [Choose how Context reads code](../source-graph/connecting.md#choose-how-context-reads-code).
 <!-- /context:section -->
 
 <!-- context:section id="good-questions" -->

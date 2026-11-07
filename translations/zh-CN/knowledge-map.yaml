@@ -163,26 +163,26 @@ entries:
     title: Source Graph
     source_digest: feeef398bc8e969bbba120bc05eb2a3d7117dc0799bb65000b74b44c2f21ef5e
   guides-sourcegraph/authentication-and-access-control:
-    title: 登录与准入
-    source_digest: 296e39a4b1e88aecd0d81a0ea12181dcb0fdb9a8ee927d9ff076fa2ad3b7dfb3
+    title: 运维：登录与权限
+    source_digest: 2208bf2aafbb89df5e52bfc9ce621355c9bdb02885f54bee7b2a695261448df5
   guides-sourcegraph/connecting:
-    title: 接入
-    source_digest: 7f4759bc08873652183f93c10d6cfc04cb4f6a92ec10204b6649680b3da6c803
+    title: 连接 Agent 与工具
+    source_digest: 9d5590e8f492387f42873e35e8722b7f2b3e679c0941e59114106fbbd312bdf7
   guides-sourcegraph/introduction:
     title: Source Graph 是什么
     source_digest: 7a42fbbe87c1eddf1f1594056150cf506eda55e23a13825cde3eef41fc37bea4
   guides-sourcegraph/operations:
-    title: 运维
-    source_digest: 56ddadacd19b505f10ee802d4112285bbe52fb5f7f8559f4a9153425c7dbf932
+    title: 运维：日常运维
+    source_digest: de48850c9c72a3edc7f5d8cea309ea6865c85077a321baacc0bd40c9bd155f39
   guides-sourcegraph/reading-code-evidence-remotely:
     title: 远程读取代码证据
     source_digest: a48d580af06407c12aa6aa93104d647a42c6ad02bba632929beae13b0d375ce2
   guides-sourcegraph/registering-repositories:
-    title: 登记仓库
-    source_digest: 1a6f76c9d1104165a88c8cf8e325f3a67cc8d352fab135755e550650b77eb4ed
+    title: 登记与管理仓库
+    source_digest: aa954f7c7b59d00e0da0096b9795aaf0655cc328b2f3b30ed06c58cf67286691
   guides-sourcegraph/self-hosting:
-    title: 自托管
-    source_digest: 2fbbd45b1721a93e8a92a2490b10dcc51210609e1c9d9dba384efcbbbf10c1c8
+    title: 运维：部署
+    source_digest: 84f5c341aa2c6172243d2f9fdb0ea91a2428976bd779abe73ad44a66fc331d2e
   guides-sources:
     title: 添加来源
     source_digest: f177d2e699b46bf45f2af50e574c69c4f452730513d4c9c99a71988607359bec

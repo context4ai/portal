@@ -5,8 +5,8 @@ description: Context Source Graph 如何工作：网站、HTTP、MCP 与 CLI 共
 translation:
   locale: zh-CN
   artifact_ref: 53a15b0d-0775-4e74-b6dc-4a129e91f658
-  source_digest: 03e2742e393fd7a1b548f4bafe05bab398686b1db168231083d69e4a9825f820
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: 1dd045b7e520a9f1938d6bb8874d9f03b30c618b50b46d0a618414fac43f3007
+  translated_at: 2026-11-07T13:29:32.690Z
 ---
 
 # 架构概览
@@ -50,9 +50,9 @@ flowchart LR
 <!-- context:section id="components" -->
 ## 实例的组成
 
-一个 Source Graph 实例就是一个 `repo-service` 进程。它以子进程方式启动 Zoekt 搜索服务器（只监听回环接口），在数据卷上为每个已登记仓库保存一份裸 Git 镜像，并运行后台 worker 来同步监控分支、为新的分支最新提交建索引。
+一个 Source Graph 实例就是一个 `repo-service` 进程。它以子进程方式启动 Zoekt 搜索服务器（只监听回环接口），在数据卷上为每个已登记仓库保存一份裸 Git 镜像，并运行后台 worker 来同步监控分支最新提交的快照、为新的最新提交建索引，并回收已过期的索引。每个仓库的 Git 对象和索引都有各自的容量预算。
 
-应用数据库存储仓库、任务、身份和设置，也加密存储实例的应用密钥：代码源令牌及其加密密钥、服务 API 凭据，以及 Google/GitHub 登录配置。因此数据卷只保存 Git 镜像和索引，替换主机时需要的是数据库，而不是旧的密钥文件。默认使用 SQLite；对于规模更大或需要分片的部署，也支持 PostgreSQL 和 MongoDB。Git 镜像和索引始终保存在实例的本地磁盘上——搜索速度正来自这种本地性——因此容量规划围绕磁盘而非 CPU 展开。需要扩容时，运行多个实例，各自负责互不重叠的一组仓库；切勿让两个实例处理同一批仓库或同一个数据目录。[自部署与数据库选择](../../sop/source-graph/self-hosting.md) 介绍了这两种拓扑。
+应用数据库存储仓库、任务、身份和设置，也加密存储实例的应用密钥：代码源令牌及其加密密钥、服务 API 凭据，以及 Google/GitHub 登录配置。因此数据卷只保存 Git 镜像和索引，替换主机时需要的是数据库，而不是旧的密钥文件。默认使用 SQLite；对于规模更大或需要分片的部署，也支持 PostgreSQL 和 MongoDB。Git 镜像和索引始终保存在实例的本地磁盘上——搜索速度正来自这种本地性——因此容量规划围绕磁盘而非 CPU 展开。需要扩容时，运行多个实例，各自负责互不重叠的一组仓库；切勿让两个实例处理同一批仓库或同一个数据目录。[运维：自行部署 Source Graph](../../sop/source-graph/self-hosting.md) 介绍了这两种拓扑。
 
 仓库还可以附带名为 `<name>.sourcegraph.wasm` 的 WebAssembly 插件，为 `read` 和 `read_many` 的结果追加文本。Context 借此为每个知识章节附上其来源，详见 [与 Context 协同](evidence-for-context.md)。
 <!-- /context:section -->
@@ -60,7 +60,7 @@ flowchart LR
 <!-- context:section id="access" -->
 ## 权限划分
 
-未配置任何登录提供方时，实例是一个匿名只读站点：访客可以搜索和阅读标记为公开的仓库，并受每分钟限流约束。添加 Google 或 GitHub 登录后即可启用管理功能，第一个通过验证的用户会成为管理员。已登录用户可以为脚本和 Agent 创建个人 API Key，自动化场景则使用服务令牌。登记仓库、为较早的提交建索引以及其他变更操作，需要管理员或服务令牌；除非站点允许已登录用户登记仓库，此时每位这样的用户管理自己登记的仓库，并可以添加其他管理者。完整的权限矩阵见 [登录与准入](../../sop/source-graph/authentication-and-access-control.md)。
+未配置任何登录提供方时，实例是一个匿名只读站点：访客可以搜索和阅读公开仓库，并受每分钟限流约束。添加 Google 或 GitHub 登录后即可启用管理功能，第一个通过验证的用户会成为管理员。每个仓库要么公开，要么私有：私有仓库只对其创建者、其管理者、在网站上登录的管理员和服务令牌可见，对其他所有人而言它就像未登记一样。已登录用户可以为脚本和 Agent 创建个人 API Key，这些 Key 以其所有者的身份读取，自动化场景则使用服务令牌。登记仓库、为较早的提交建索引以及其他变更操作，需要管理员或服务令牌；除非站点允许已登录用户登记仓库，此时每位这样的用户管理自己登记的仓库，并可以添加其他管理者。完整的权限矩阵见 [运维：登录与权限](../../sop/source-graph/authentication-and-access-control.md)。
 <!-- /context:section -->
 
 <!-- context:section id="next" -->
@@ -71,10 +71,10 @@ flowchart LR
 | 了解 Source Graph 为什么存在以及如何开始 | [Source Graph 是什么](../../sop/source-graph/introduction.md) |
 | 了解固定版本搜索和速度对比 | [固定版本的搜索与阅读](pinned-search-and-reads.md) |
 | 了解 Context 知识与 Source Graph 如何结合 | [与 Context 协同](evidence-for-context.md) |
-| 接入浏览器、MCP 客户端、脚本或 CLI | [接入](../../sop/source-graph/connecting.md) |
-| 添加仓库和 Monorepo 路径组 | [登记仓库](../../sop/source-graph/registering-repositories.md) |
-| 部署你自己的实例 | [自部署与数据库选择](../../sop/source-graph/self-hosting.md) |
-| 配置登录和 API Key | [登录与准入](../../sop/source-graph/authentication-and-access-control.md) |
-| 运行、监控和排查问题 | [运维](../../sop/source-graph/operations.md) |
+| 接入浏览器、MCP 客户端、脚本或 CLI | [连接 Agent、脚本和命令行使用 Source Graph](../../sop/source-graph/connecting.md) |
+| 添加仓库和 Monorepo 路径组 | [登记和管理仓库](../../sop/source-graph/registering-repositories.md) |
+| 部署你自己的实例 | [运维：自行部署 Source Graph](../../sop/source-graph/self-hosting.md) |
+| 配置登录和 API Key | [运维：登录与权限](../../sop/source-graph/authentication-and-access-control.md) |
+| 运行、监控和排查问题 | [运维：日常运维与排障](../../sop/source-graph/operations.md) |
 | 查阅路由、工具、参数和设置 | [HTTP 与 MCP 接口](../../product/reference/source-graph/http-and-mcp.md)、[CLI](../../product/reference/source-graph/cli.md)、[搜索语法](../../product/reference/source-graph/query-syntax.md)、[配置](../../product/reference/source-graph/configuration.md) |
 <!-- /context:section -->

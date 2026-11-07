@@ -1,19 +1,19 @@
 ---
-title: 登记仓库
+title: 登记和管理仓库
 description: 登记 GitHub 或自定义 Git 仓库并设置分支、保留窗口、可见性和同步间隔，为私有仓库提供令牌，并将 Monorepo 拆分为路径组。
 translation:
   locale: zh-CN
   artifact_ref: 56556e26-509e-4b66-a927-11c76940f7e9
-  source_digest: ba66b4157c1de6366a9e999bf6b18e08d0e7dbedd40d57bccb73623ca07ce130
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: 724374185c82491da8a31679b4c04e602997a56be9c2206df36ec342349c3972
+  translated_at: 2026-11-07T13:29:32.690Z
 ---
 
-# 登记仓库
+# 登记和管理仓库
 
 <!-- context:section id="goal" -->
-仓库登记后即可被搜索：Source Graph 会镜像其监控分支，保留一个窗口内的可用提交，并为每个分支最新提交建索引。登记需要管理员（在网站上登录）或实例的服务令牌。管理员开启 **Let signed-in users register repositories**（允许已登录用户登记仓库）后，任何已登录用户也可以登记仓库并成为其管理者，见 [仓库管理者](#repository-managers)。
+仓库登记后即可被搜索：Source Graph 会同步其监控分支最新提交的快照，保留其保留策略允许的快照，并为每个分支最新提交建索引。登记需要管理员（在网站上登录）或实例的服务令牌。管理员开启 **Let signed-in users register repositories**（允许已登录用户登记仓库）后，任何已登录用户也可以登记仓库并成为其管理者，见 [仓库管理者](#repository-managers)。
 
-在网站上打开 **Repositories**（仓库），选择 **Register a repository**。通过 HTTP 时，将相同的字段发送到 `POST /sourcegraph/api/admin/v1/repos`，可以附带 `Idempotency-Key` 请求头，避免重试时重复登记：
+在网站上打开 **Repositories**（仓库），选择 **Register a repository**。列表可以按管理者筛选，并按磁盘用量排序。通过 HTTP 时，将相同的字段发送到 `POST /sourcegraph/api/admin/v1/repos`，可以附带 `Idempotency-Key` 请求头，避免重试时重复登记：
 
 ```json
 {
@@ -22,11 +22,11 @@ translation:
   "public_read": true,
   "index_mode": "full",
   "policy": { "default_branch": true, "count": 20 },
-  "sync_interval_minutes": 5
+  "sync_interval_minutes": 180
 }
 ```
 
-请求返回 `202 Accepted`，并将首次同步加入队列；仓库页面的任务标签页会显示进度。
+请求返回 `202 Accepted`，并将首次同步加入队列；仓库页面的任务标签页会显示进度。如果该名称已被登记，请求会返回 `409 REPOSITORY_EXISTS`，网站会显示是谁登记的，你可以请对方把你添加为管理者。
 
 ## 仓库管理者
 
@@ -40,17 +40,19 @@ translation:
 | --- | --- |
 | `name` | 仓库在其代码源上的路径，例如 `owner/repository`（允许 `a/b/c` 这样的嵌套路径，最长 512 个字符）。Git 远程地址为 `<code source host>/<name>.git` |
 | `code_provider` | 代码源：`github`（默认），或表示自定义 Git 托管地址的 `git`。它在登记时确定，同时决定托管地址和要尝试哪些令牌 |
-| `public_read` | 匿名访客能否读取。省略时视为公开 |
+| `public_read` | **Public repository**（公开仓库）。`true`（默认）表示公开；`false` 表示私有，只对其创建者、管理者和管理员可见，详见 [运维：登录与权限](authentication-and-access-control.md#public-and-private-repositories) |
 | `index_mode` | `full`（默认）为整个仓库建索引；`monorepo` 只为路径组建索引 |
 | `path_groups` | `monorepo` 模式下必填，见下文 |
 | `policy.branches` | 要监控的确切分支名 |
 | `policy.default_branch` | 同时跟踪远程的默认分支，每次同步时重新发现 |
-| `policy.days` 或 `policy.count` | 保留窗口：天数（1–365）或每个分支的第一父提交数（1–4096），二者只能填一个。两者都省略时使用站点的仓库默认值（初始为 30 天） |
-| `sync_interval_minutes` | 1、3、5、10、30、60、180、360、720 或 1440；默认 5 |
+| `policy.days` 或 `policy.count` | 普通快照的保留规则：自首次观察到之后的天数（1–365），或要保留的最近观察到的快照数量（1–4096），二者只能填一个。两者都省略时使用站点的仓库默认值（初始为 30 天） |
+| `sync_interval_minutes` | 1、3、5、10、30、60、180、360、720 或 1440；新登记仓库默认 180 |
 | `git_timeout_minutes` | Git 拉取与对象补全超时：0 或省略表示继承站点默认值（初始为 15 分钟）；15、30、45 或 60 表示覆盖 |
 
-一个策略总共监控一到八个分支，默认分支也计算在内。标签从不拉取，因此无法搜索或读取。
+一个策略总共监控一到八个分支，默认分支也计算在内。标签从不拉取，因此无法搜索或读取。登记之后，仓库设置中还包含 **Pinned snapshots**（固定快照，`pinned_commits`）和 **Storage budget**（容量预算，`max_storage_bytes`），详见 [快照与存储](#snapshots-and-storage)。
+<!-- /context:section -->
 
+<!-- context:section id="code-sources" -->
 ## 代码源
 
 每个实例恰好提供两个代码源，始终按以下顺序列出：
@@ -84,7 +86,7 @@ translation:
 
 令牌使用实例的凭据加密密钥加密并保存在数据库中，状态显示为就绪、即将过期（七天内）、已过期、无效或无法读取。无法读取的令牌不能通过编辑其元数据修复：请输入新的令牌或清除它。内置的 Git 凭据助手只会把选中的令牌交给正在拉取的仓库所在的托管地址，并附带代码源的 HTTPS 用户名（默认 `oauth2`）。
 
-登记私有仓库并不会对已登录用户隐藏它；`public_read: false` 只会取消匿名访问。要控制谁能成为已登录用户，请使用登录和注册策略，详见 [登录与准入](authentication-and-access-control.md)。
+代码源令牌只让服务能够拉取代码。谁能在 Source Graph 上读取已登记的仓库，由仓库的 **Public repository**（公开仓库）设置单独决定：取消勾选即可将仓库设为私有，此后只有其创建者、管理者和管理员能看到它。
 <!-- /context:section -->
 
 <!-- context:section id="monorepo" -->
@@ -118,13 +120,21 @@ translation:
 
 登记完成后，仓库会自行运转：
 
-1. 首次同步拉取监控分支，记录每个分支的最新提交，并根据保留窗口生成可用版本。
+1. 每次同步都会拉取监控分支最新提交的深度为一的快照（不含其父提交历史），并记录每个最新提交。之后的同步会复用已有的 Git 对象并加入新观察到的最新提交；两次同步之间推送的提交不会被自动建索引。
 2. 尚未建索引的分支最新提交会被加入索引队列；连续失败三次的最新提交在下次变更之前不再重试。
 3. 扫描器每分钟检查一次，在同步间隔到期时将下一次同步加入队列。
 
-要搜索窗口内较旧的提交，需要请求准备该提交：在仓库页面操作，调用 `POST /sourcegraph/api/admin/v1/repo/prepare`，或由有权限的调用方使用 MCP `prepare` 工具。准备是异步的；请求被接受并不代表已就绪。
+要搜索某个较旧的保留快照，或从未作为分支最新提交被同步过的特定提交，需要请求准备它：在仓库页面通过 **Create index** 操作，调用 `POST /sourcegraph/api/admin/v1/repo/prepare`，或由有权限的调用方使用 MCP `prepare` 工具。尚未同步的 40 位完整 SHA 会直接从代码源拉取，不会加深历史；服务器必须允许拉取该 SHA，请求被拒绝时会直接失败，而不会改用其他提交。准备是异步的；请求被接受并不代表已就绪。手动请求按仓库限速，详见 [运维：日常运维与排障](operations.md#rate-limits)。
 
-修改仓库的分支或保留窗口会清除已观测到的最新提交和版本，取消排队中和运行中的任务，并等待一次新的同步。禁用和删除都会保留数据；已删除且已禁用的仓库在一分钟后可以被永久清除。清理与维护见 [运维](operations.md)。
+修改仓库的分支或保留策略会取消其排队中和运行中的任务；新的保留策略在下一次同步成功时生效，被固定的快照和分支最新提交仍然可用。修改路径组还会清除已观测到的最新提交和版本，并等待一次新的同步。禁用和删除都会保留数据；已删除且已禁用的仓库在一分钟后可以被永久清除。清理与维护见 [运维：日常运维与排障](operations.md)。
 
 以 `SOURCEGRAPH_SEED_DEMO=true` 启动的实例会登记两个公开示例仓库 `context4ai/context` 和 `context4ai/sourcegraph`，跟踪它们的默认分支，保留一个提交，每小时同步一次。
+<!-- /context:section -->
+
+<!-- context:section id="snapshots" -->
+## 快照与存储
+
+准备一个明确的 SHA 会固定该快照。仓库设置中的 **Pinned snapshots**（固定快照）列出不受普通保留规则约束而始终保留的版本，最多 4096 个；移除某个 SHA 会解除它的固定，它可能在下一次同步成功时过期。仅添加固定不会拉取缺失的快照，也不会为其建索引：请先准备该 SHA。普通快照按首次观察到之后的天数，或按配置的最近观察到的快照数量保留；固定的快照、当前的分支最新提交以及正在被活动任务使用的快照始终会被保留，每个路径组最多保留 4096 个快照。网站上的提交选择项最多显示 20 个观察到的快照，而不是完整的 Git 历史。
+
+每个仓库都有一个 **Storage budget**（容量预算），默认 100 GiB，可在 1 GiB 到 10 TiB 之间配置，涵盖其 Git 对象、索引分片和进行中的准备文件。采样得到的用量达到预算时，准备会停止并返回 `REPOSITORY_STORAGE_LIMIT`。它是一种保护性的预算，而不是精确的配额，因此可能出现短暂超出。当它阻止准备时，请提高预算，或解除不再使用的固定并清理旧索引，详见 [运维：日常运维与排障](operations.md)。
 <!-- /context:section -->

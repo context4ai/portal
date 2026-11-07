@@ -1,18 +1,18 @@
 ---
-title: Registering Repositories
+title: Registering and Managing Repositories
 description: Register a GitHub or custom Git repository with its branches,
   retention window, visibility and sync interval, supply tokens for private
   repositories, and split a monorepo into path groups.
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-07T13:27:05.988Z
 ---
-# Registering Repositories
+# Registering and Managing Repositories
 
 <!-- context:section id="goal" -->
 
-A repository becomes searchable once it is registered: Source Graph then mirrors its monitored branches, keeps a window of eligible commits and indexes each branch head. Registration needs an administrator — signed in on the website — or the instance's service token. When an administrator turns on **Let signed-in users register repositories**, any signed-in user can register one too and becomes its manager; see [Repository managers](#repository-managers).
+A repository becomes searchable once it is registered: Source Graph then synchronizes snapshots of its monitored branch heads, keeps the snapshots its retention policy allows and indexes each branch head. Registration needs an administrator — signed in on the website — or the instance's service token. When an administrator turns on **Let signed-in users register repositories**, any signed-in user can register one too and becomes its manager; see [Repository managers](#repository-managers).
 
-On the website, open **Repositories** and choose **Register a repository**. Over HTTP, send the same fields to `POST /sourcegraph/api/admin/v1/repos`, optionally with an `Idempotency-Key` header so retries do not register twice:
+On the website, open **Repositories** and choose **Register a repository**. The list can be filtered by manager and sorted by disk usage. Over HTTP, send the same fields to `POST /sourcegraph/api/admin/v1/repos`, optionally with an `Idempotency-Key` header so retries do not register twice:
 
 ```json
 {
@@ -21,11 +21,11 @@ On the website, open **Repositories** and choose **Register a repository**. Over
   "public_read": true,
   "index_mode": "full",
   "policy": { "default_branch": true, "count": 20 },
-  "sync_interval_minutes": 5
+  "sync_interval_minutes": 180
 }
 ```
 
-The request returns `202 Accepted` and queues the first sync; the repository page's jobs tab shows progress.
+The request returns `202 Accepted` and queues the first sync; the repository page's jobs tab shows progress. If the name is already registered, the request returns `409 REPOSITORY_EXISTS` and the website shows who registered it, so you can ask them to add you as a manager.
 
 ## Repository managers
 
@@ -41,16 +41,20 @@ Administrators manage every repository. A repository registered by a signed-in u
 | --- | --- |
 | `name` | The repository's path on its code source, such as `owner/repository` (nested `a/b/c` paths are allowed, up to 512 characters). The Git remote is `<code source host>/<name>.git` |
 | `code_provider` | The code source: `github` (default) or `git` for the custom Git host. It is fixed at registration and decides both the host and which tokens are tried |
-| `public_read` | Whether anonymous visitors may read it. Omitted means public |
+| `public_read` | **Public repository**. `true` (the default) makes it public; `false` makes it private, visible only to its creator, its managers and administrators, as described in [Ops: Sign-in and Permissions](authentication-and-access-control.md#public-and-private-repositories) |
 | `index_mode` | `full` (default) indexes the whole repository; `monorepo` indexes only path groups |
 | `path_groups` | Required for `monorepo`; see below |
 | `policy.branches` | Exact branch names to monitor |
 | `policy.default_branch` | Also follow the remote's default branch, discovered on each sync |
-| `policy.days` or `policy.count` | The retention window — exactly one of days (1–365) or first-parent commits per branch (1–4096). Omit both to use the site's repository defaults (initially 30 days) |
-| `sync_interval_minutes` | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440; default 5 |
+| `policy.days` or `policy.count` | Retention for ordinary snapshots — exactly one of days since first observation (1–365) or the number of most recently observed snapshots to keep (1–4096). Omit both to use the site's repository defaults (initially 30 days) |
+| `sync_interval_minutes` | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440; default 180 for new registrations |
 | `git_timeout_minutes` | Git fetch and hydration timeout: 0 or omitted inherits the site default (initially 15 minutes); 15, 30, 45 or 60 override it |
 
-A policy monitors one to eight branches in total, counting the default branch. Tags are never fetched, so they cannot be searched or read.
+A policy monitors one to eight branches in total, counting the default branch. Tags are never fetched, so they cannot be searched or read. After registration, repository settings also hold **Pinned snapshots** (`pinned_commits`) and the **Storage budget** (`max_storage_bytes`), described in [Snapshots and storage](#snapshots-and-storage).
+
+<!-- /context:section -->
+
+<!-- context:section id="code-sources" -->
 
 ## Code sources
 
@@ -87,7 +91,7 @@ The two sources never use each other's tokens. Because a user-registered reposit
 
 Tokens are encrypted with the instance's credential key, kept in the database, and shown as ready, expiring (within seven days), expired, invalid or unreadable. An unreadable token cannot be repaired by editing its metadata: enter a replacement or clear it. The bundled Git credential helper hands the chosen token only to the host of the repository being fetched, with the source's HTTPS username (`oauth2` by default).
 
-Registering a private repository does not hide it from signed-in users; `public_read: false` only removes it from anonymous access. Use sign-in and registration policy to control who is a signed-in user, as described in [Authentication and Access Control](authentication-and-access-control.md).
+A code-source token only lets the service fetch the code. Who can read a registered repository on Source Graph is decided separately by its **Public repository** setting: clear it to make the repository private, so that only its creator, its managers and administrators can see it.
 
 <!-- /context:section -->
 
@@ -118,17 +122,30 @@ The rules:
 <!-- /context:section -->
 
 <!-- context:section id="after" -->
+
 ## After registration
 
 Once registered, a repository runs on its own:
 
-1. The first sync fetches the monitored branches, records each head and builds the eligible versions from the retention window.
+1. Each sync fetches depth-one snapshots of the monitored branch heads, without their parent history, and records each head. Later syncs reuse existing Git objects and add newly observed heads; commits pushed between two syncs are not indexed automatically.
 2. Each branch head that is not yet indexed is queued for indexing; a head that fails three times is not retried until the next change.
 3. A scanner checks every minute and queues the next sync when the interval has elapsed.
 
-To search an older commit inside the window, ask for it to be prepared — from the repository page, with `POST /sourcegraph/api/admin/v1/repo/prepare`, or with the MCP `prepare` tool for authorized callers. Preparation is asynchronous; accepted does not mean ready.
+To search a retained older snapshot, or a specific commit that was never a synchronized head, ask for it to be prepared — from the repository page with **Create index**, with `POST /sourcegraph/api/admin/v1/repo/prepare`, or with the MCP `prepare` tool for authorized callers. A full 40-character SHA that has not been synchronized is fetched directly from the code source, without deepening the history; the server must allow fetching that SHA, and a refused request fails rather than using another commit. Preparation is asynchronous; accepted does not mean ready. Manual requests are paced per repository, as described in [Ops: Day-to-Day Operations](operations.md#rate-limits).
 
-Editing a repository's branches or retention window clears its observed heads and versions, cancels queued and running work and waits for a fresh sync. Disabling and deleting keep the data; a deleted, disabled repository can be purged permanently after one minute. [Operations](operations.md) covers cleanup and maintenance.
+Editing a repository's branches or retention cancels its queued and running work; the new retention applies at the next successful sync, and pinned snapshots and branch heads stay available. Changing path groups additionally clears the observed heads and versions and waits for a fresh sync. Disabling and deleting keep the data; a deleted, disabled repository can be purged permanently after one minute. [Ops: Day-to-Day Operations](operations.md) covers cleanup and maintenance.
 
 An instance started with `SOURCEGRAPH_SEED_DEMO=true` registers the two public example repositories, `context4ai/context` and `context4ai/sourcegraph`, following their default branch with one retained commit and an hourly sync.
+
+<!-- /context:section -->
+
+<!-- context:section id="snapshots" -->
+
+## Snapshots and storage
+
+Preparing an explicit SHA pins that snapshot. **Pinned snapshots** in repository settings lists the versions kept regardless of ordinary retention, up to 4096; removing a SHA releases its pin, and it can expire at the next successful sync. Adding a pin alone does not fetch or index an absent snapshot: prepare the SHA first. Ordinary snapshots are kept by days since first observation or by the configured number of most recently observed snapshots; pins, current branch heads and snapshots used by active jobs are always kept, and at most 4096 snapshots are retained per path group. Commit choices on the website show up to 20 observed snapshots, not the full Git history.
+
+Each repository has a **Storage budget**, 100 GiB by default and configurable from 1 GiB to 10 TiB, covering its Git objects, index shards and active preparation files. Preparation stops with `REPOSITORY_STORAGE_LIMIT` when the sampled usage reaches the budget. It is a protective budget, not an exact quota, so short overshoots are possible. When it blocks preparation, raise the budget, or release unused pins and clean old indexes, as described in [Ops: Day-to-Day Operations](operations.md).
+
+
 <!-- /context:section -->

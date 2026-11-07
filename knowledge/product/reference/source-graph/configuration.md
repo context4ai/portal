@@ -4,7 +4,7 @@ description: Every Source Graph setting in one place — environment variables,
   build-time deployment settings, code sources, runtime site settings,
   repository policies, plugin limits and the data directory layout.
 type: Wiki
-timestamp: 2026-10-28T10:00:11.296Z
+timestamp: 2026-11-07T12:54:24.251Z
 ---
 # Configuration
 
@@ -101,9 +101,9 @@ Administrators edit three sections on the **Settings** page or through `/api/adm
 | --- | --- | --- | --- |
 | `repository_defaults` | `git_timeout_minutes` | 15 | Default Git fetch and hydration timeout: 15, 30, 45 or 60 minutes. A repository inherits it unless it sets its own; new tasks take the value current when they start |
 | | `retention_mode` | `days` | Default retention for new registrations: `days` or `count` |
-| | `retention_days` | 30 | Days of history kept, 1–365 |
-| | `retention_count` | 20 | Commits kept per branch, 1–4,096 |
-| `access` | `public_read` | `true` | Whether anonymous visitors can search and read public repositories |
+| | `retention_days` | 30 | Days since first observation that ordinary snapshots are kept, 1–365 |
+| | `retention_count` | 20 | Most recently observed ordinary snapshots kept, 1–4,096 |
+| `access` | `public_read` | `true` | Whether anonymous visitors can search and read public repositories; private repositories are never anonymous |
 | | `allow_registration` | `false` | Whether a first-time sign-in creates an account |
 | | `registration_notice_zh`, `registration_notice_en` | A built-in notice | Text shown to people who cannot register |
 | | `allow_user_repositories` | `false` | Whether signed-in users can register repositories; each registrant becomes the repository's manager |
@@ -122,16 +122,18 @@ Each registration has its own policy, initialized from the repository defaults:
 | Setting | Range | Default |
 | --- | --- | --- |
 | Monitored branches | 1–8 | The default branch |
-| Retention | Days 1–365 **or** commits 1–4,096, not both | Site default |
-| Sync interval (minutes) | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440 | 5 |
+| Retention | Days since first observation 1–365 **or** the 1–4,096 most recently observed snapshots, not both | Site default |
+| Sync interval (minutes) | 1, 3, 5, 10, 30, 60, 180, 360, 720 or 1440 | 180 for new registrations; repositories saved without an interval keep 5 |
 | Index mode | Whole repository, or registered path groups for a monorepo | Whole repository |
 | Git timeout (`git_timeout_minutes`) | 0 to inherit the site default, or 15, 30, 45 or 60 | Inherit |
 | Managers | Up to 50 signed-in users who can manage the repository besides administrators | The registrant |
-| Public read | On or off | On |
+| Public repository (`public_read`) | Public or private | Public |
+| Pinned snapshots (`pinned_commits`) | Full SHAs kept regardless of retention, up to 4,096 | None |
+| Storage budget (`max_storage_bytes`) | 1 GiB to 10 TiB, covering Git objects, index shards and active preparation files | 100 GiB |
 | Code source (`code_provider`) | `github` or `git`, fixed at registration; the registrant's own token for that source is tried first, then the global one | `github` |
 | Code host (`code_host`) | The source's host at registration, kept for every later fetch | — |
 
-A repository with public read off is hidden from anonymous visitors only; every signed-in user can still read it. See [Registering repositories](../../../sop/source-graph/registering-repositories.md) for how branches and retention decide which commits are searchable.
+A private repository is visible only to its creator, its managers, administrators signed in on the website and the service token; see [Authentication and Access Control](../../../sop/source-graph/authentication-and-access-control.md#public-and-private-repositories). Pinned snapshots, current branch heads and snapshots used by active jobs are always kept, at most 4,096 per path group. See [Registering repositories](../../../sop/source-graph/registering-repositories.md) for how branches, retention and pins decide which commits are searchable.
 
 <!-- /context:section -->
 

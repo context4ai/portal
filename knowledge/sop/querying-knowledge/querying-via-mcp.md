@@ -4,7 +4,7 @@ description: Connect your own Agent to the Source Graph MCP and give it a
   retrieval prompt, so it answers from a team's knowledge and code without
   installing Context, a knowledge package or any repository.
 type: Guide
-timestamp: 2026-10-22T19:13:11.965Z
+timestamp: 2026-11-07T13:27:05.988Z
 ---
 # Querying Through MCP in Your Agent
 
@@ -37,7 +37,7 @@ Add this server to your Agent's MCP configuration:
 
 Put it wherever your tool keeps MCP servers, for example the project's `.mcp.json` for Claude Code or `.cursor/mcp.json` for Cursor. The service speaks Streamable HTTP at the fixed path `/sourcegraph/mcp`, so a client that supports URL-based servers needs only the address. Keep the name `context-sourcegraph`: it is the name the Context query Skill looks for, so the same configuration works if you install Context later.
 
-The public demo is anonymous and read-only, so no token is needed. For your own instance, add `"Authorization": "Bearer <your token>"` under `headers` in your personal configuration if it requires one. Never commit a token to a repository or paste it into a shared prompt. [Connecting](../source-graph/connecting.md) covers credentials and other clients.
+The public demo is anonymous and read-only, so no token is needed. For your own instance, add `"Authorization": "Bearer <your token>"` under `headers` in your personal configuration if it requires one. Never commit a token to a repository or paste it into a shared prompt. [Connecting Agents, Scripts and the CLI to Source Graph](../source-graph/connecting.md) covers credentials and other clients.
 <!-- /context:section -->
 
 <!-- context:section id="check" -->
@@ -132,7 +132,9 @@ Ask an ordinary question, for example "How does Context decide when to show me a
 <!-- /context:section -->
 
 <!-- context:section id="prerequisite" -->
+
 ## Using it with your own knowledge
 
-This works only for repositories the instance has registered and indexed: your knowledge repository and every source repository its answers rely on must appear in the list from step 2. The public demo serves only the four repositories above. For your own knowledge base, run your own Source Graph instance and have its administrator register both; see [Self-Hosting](../source-graph/self-hosting.md) and [Registering Repositories](../source-graph/registering-repositories.md).
+This works only for repositories the instance has registered and indexed: your knowledge repository and every source repository its answers rely on must appear in the list from step 2. The list shows only the repositories your credential can see: a private repository appears only for its creator, its managers and administrators, so use a personal API key of someone who can see it. The public demo serves only the four repositories above. For your own knowledge base, run your own Source Graph instance and have its administrator register both; see [Ops: Self-Hosting Source Graph](../source-graph/self-hosting.md) and [Registering and Managing Repositories](../source-graph/registering-repositories.md).
+
 <!-- /context:section -->

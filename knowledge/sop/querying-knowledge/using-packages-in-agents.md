@@ -3,7 +3,7 @@ title: Using a Package in Your Agent
 description: Give your Agent a knowledge package to use, know what it does with
   the package when you ask questions, and follow citations back to the sources.
 type: Guide
-timestamp: 2026-10-28T03:53:56.231Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # Using a Package in Your Agent
 
@@ -49,6 +49,6 @@ When the indexes do not narrow things down, it searches the packages for exact n
 
 ## Going back to the sources
 
-Package pages keep their source citations. When a page's text does not settle a question, the query Skill follows its Sources entries itself: repository links at their recorded commit through the tools your host allows, document links at the current document. For code evidence read remotely, `/c4a:context-inspect-search` can follow those citations to the original documents and code at their recorded versions. See [Asking Questions](asking-questions.md) and [Reading Code Evidence Remotely](reading-code-evidence-remotely.md).
+Package pages keep their source citations. When a page's text does not settle a question, the query Skill follows its Sources entries itself: repository links at their recorded commit through the tools your host allows, document links at the current document. For code evidence read remotely, `/c4a:context-inspect-search` can follow those citations to the original documents and code at their recorded versions. See [Asking Questions](asking-questions.md) and [Choose how Context reads code](../source-graph/connecting.md#choose-how-context-reads-code).
 
 <!-- /context:section -->
