@@ -1,8 +1,8 @@
 entries:
   - version: 0.13.11
-    date: 2026-11-02T01:44:15.779Z
+    date: 2026-11-07T11:55:58.711Z
     title: Update to Context 0.7.90 and the latest Source Graph, built with Context
-      0.7.91
+      0.7.92
     changes:
       - Package pages describe the shared context-knowledge-query Skill with
         per-package search guides; site pages explain per-article source maps
@@ -17,7 +17,7 @@ entries:
         timeouts, sign-in on the site address and GIT_REPOSITORY_UNAVAILABLE.
       - Planning Large Projects asks once whether a prepared source checklist
         exists.
-      - The site and package are built with Context 0.7.91; its review report
+      - The site and package are built with Context 0.7.92; its review report
         has “Previous −” and “Next +” buttons and the - / + keys.
       - Citations on affected pages point at the updated sources, and Chinese
         translations follow these changes.
@@ -29,6 +29,9 @@ entries:
         description: Chinese pages updated for the revised articles.
       - kind: dist
         description: Upgrade to Context 0.7.91 without a new version; this entry is amended.
+      - kind: dist
+        description: Upgrade to Context 0.7.92 without a new version; the content is
+          unchanged.
     actor:
       name: qiansc
       kind: git
