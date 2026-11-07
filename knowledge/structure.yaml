@@ -1,5 +1,5 @@
 schema_version: context.approved-structure.v1
-input_hash: sha256:dfb21951816b96eecb434abdf0afaf0335dd18350dd9e23754e7e177b1bc7a1e
+input_hash: sha256:25659c94dc522dffc5f8ab38eb049bdc120ef88715a02eaa112cf2e185d04008
 articles:
   - article_id: a09e1db9-5ce1-4429-9d40-c4c8a6903c0a
     path: architecture/agent-graph/agent-graph-in-context.md
@@ -1768,8 +1768,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 115
-              end_line: 119
+              start_line: 116
+              end_line: 120
             content_digest: sha256:edc02b8fdccaa00e0cffd127e710d96943fbdbdd2f2bedb84b7f959d2ac00026
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -1796,7 +1796,7 @@ articles:
               path: internal/mcpserver/server.go
               start_line: 28
               end_line: 60
-            content_digest: sha256:b4523d3cd13786b3ec5ba73ba47d5ff1beb6b0979914e9e019df6d6d51571e8f
+            content_digest: sha256:57357ceab0aa727c1a632cdbdd95488bc7dce6cffb54c6ee80bd1594806f0640
       - id: components
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -1810,13 +1810,13 @@ articles:
               path: internal/service/worker.go
               start_line: 25
               end_line: 45
-            content_digest: sha256:33b190010fcc4ff0faafc2b016cd19aae9b89f468acc9b60a1f757f969057286
+            content_digest: sha256:eef647dd4d66fd28f051d4a11848d954ea45854bd5b3312dd3c7f2993212e635
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: docs/deployment.md
-              start_line: 3
-              end_line: 15
-            content_digest: sha256:9c7a79c232fe2c9c34796adf68446f12448de127a9fe3628f6f8e59e000463e9
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: access
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -1824,13 +1824,13 @@ articles:
               path: internal/httpserver/runtime.go
               start_line: 185
               end_line: 245
-            content_digest: sha256:f3009d917621590c7247212e968ce18642d39778e7631fb5d2d5432359c87789
+            content_digest: sha256:d22ec2c2a582482a43acf4f9f277284734f3b6aac91590e898f28fdf18ba8685
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/interfaces.md
               start_line: 53
-              end_line: 58
-            content_digest: sha256:5341ee49be34bc6261f75969dab5669ccf7f35893631911a2cca973e0c96fac0
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/authentication.md
@@ -1842,8 +1842,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 41
-              end_line: 63
+              start_line: 42
+              end_line: 64
             content_digest: sha256:ad7ac7a6035578dc1c41118deeb6fb11165e26269a8cca894e380137b131f594
   - article_id: c1591da5-5eaf-4cf9-86dc-976fc5b2bc40
     path: architecture/source-graph/pinned-search-and-reads.md
@@ -1869,41 +1869,41 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/service.go
-              start_line: 305
-              end_line: 365
+              start_line: 308
+              end_line: 368
             content_digest: sha256:e9e52a504cb5645f56d5db032144261d0e6ab821b17211e8e9c17c1a50119fc2
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/mcpserver/server.go
-              start_line: 44
-              end_line: 44
-            content_digest: sha256:fe3b2c7a4074c45772125ff63fb40080885f94a9f951c3746da18c5af2cb56a9
+              path: docs/interfaces.md
+              start_line: 107
+              end_line: 111
+            content_digest: sha256:5e60ae9f8d9bbb95fb9215c20cdc713d4894a5665707b392038407a2590ec9fe
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: docs/interfaces.md
-              start_line: 101
-              end_line: 105
-            content_digest: sha256:5e60ae9f8d9bbb95fb9215c20cdc713d4894a5665707b392038407a2590ec9fe
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: versions
         references:
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: internal/control/model.go
-              start_line: 22
-              end_line: 40
-            content_digest: sha256:7bd5754e28803b28c645c9b1222e2acea03438dd84bdeebab562bb2f42b79205
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/gitstore/fetch.go
               start_line: 135
               end_line: 153
-            content_digest: sha256:07602fd34b8db203b2966f52207275ea84a123710626c4a1b782369a30e57ed4
+            content_digest: sha256:14b40bd5b4279631292b973723d952a1e969a884130e7c15dda34f12ae7f361d
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/schedule.go
               start_line: 155
               end_line: 230
             content_digest: sha256:7c62fd156c0a792cdb777b66d6938f5f2ea05b44299ff5e936c59e909010be12
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: search
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -1949,14 +1949,14 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 26
-              end_line: 39
+              start_line: 27
+              end_line: 40
             content_digest: sha256:e88d9cfab2dde77dd8c2573bf5c0f865f915c8ab52cd573f0cf6e89c6086f865
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 80
-              end_line: 91
+              start_line: 81
+              end_line: 92
             content_digest: sha256:2cef9d386679fa728970114b916cfffc91e47d55e4f99d91bb92975588f6c30d
   - article_id: c159a1f9-e117-446a-92b5-b8a5a46703f9
     path: faq/context-faq.md
@@ -4234,6 +4234,12 @@ articles:
               start_line: 25
               end_line: 40
             content_digest: sha256:a761e2dd08bbe530731639cbf4d319dad6f63e4bea0b30d6bfb7be9f7a80644f
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: policy
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -4241,19 +4247,19 @@ articles:
               path: internal/control/model.go
               start_line: 110
               end_line: 140
-            content_digest: sha256:279c0aab5e6260ef8312b6da330ff6d7f015b0fe2e51efae205b21130b68dfda
+            content_digest: sha256:7b925a935c0088d44a63d05e21d207cf2fb4aa908d874a4f8f0cb3bc5a8b0e13
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/httpserver/registration.go
-              start_line: 1
-              end_line: 56
-            content_digest: sha256:43db0fba494fadd936b5b2d10f5b0f9b30d443ceca0c52cad448047621c13906
+              path: internal/service/management.go
+              start_line: 10
+              end_line: 40
+            content_digest: sha256:f08dd43dc06a04716b078442498cb95895429a6328cd74792e1d67df4b732c0b
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/interfaces.md
-              start_line: 55
-              end_line: 58
-            content_digest: sha256:4238fec5bf3af924c31a14858208ac738982fb7cec0527e073e80835385ffa0a
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: plugins
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -4326,9 +4332,9 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 250
-              end_line: 259
-            content_digest: sha256:4ec572e39a118017682684c968489b7ef59a59be694fab99dfda7d4b0526db4b
+              start_line: 252
+              end_line: 261
+            content_digest: sha256:b1ec40acf8d45535b3ffa93e7882141049c18196006161f0e5ad32d6138281cb
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/contract/json.go
@@ -4338,9 +4344,9 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 486
-              end_line: 502
-            content_digest: sha256:1f989a43ae9fca1f24b0a9ad9aa9ce31f4ddbafcf425edebbf7ac93272ca7100
+              start_line: 499
+              end_line: 522
+            content_digest: sha256:435746bc46821835bc7badd912f2670f055a738fa5946e8482056d4dcbb9c757
       - id: query
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -4348,19 +4354,19 @@ articles:
               path: internal/httpserver/runtime.go
               start_line: 315
               end_line: 370
-            content_digest: sha256:a6b77d3cce3176de5f8831cc9bcbce8d0909fe4b41f0191ee4bb3ea04cd43afb
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: internal/httpserver/runtime.go
-              start_line: 449
-              end_line: 482
-            content_digest: sha256:785a078f66e9fcb038bdfbbc3540fcda73ec90749e97a4c36c03ed54691691be
+            content_digest: sha256:ad25a5b18307ae7c7ae6de67163844f1d9f80f34b6efa8defa2ae237865ca6fb
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/website_access.go
               start_line: 15
               end_line: 31
             content_digest: sha256:49c0f44287d90935578a07ba969fe4c83d8d42dd96419dfd1fa89caf0e9c94cd
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: admin
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -4368,26 +4374,26 @@ articles:
               path: internal/httpserver/runtime.go
               start_line: 298
               end_line: 445
-            content_digest: sha256:a55a897bcf9d9dafe2e68967df7d44c187f3bdabe9bbfc303a5e6f29b603616f
+            content_digest: sha256:3112024511e8342646a0944fdaf67e628fb1ae28d20929ba7b8001d653611106
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/httpserver/repository_access.go
-              start_line: 15
-              end_line: 84
-            content_digest: sha256:75946b66009138cd647237d639f46e64550e7186d47137a66f57b33c212c3190
+              path: internal/service/management.go
+              start_line: 10
+              end_line: 40
+            content_digest: sha256:f08dd43dc06a04716b078442498cb95895429a6328cd74792e1d67df4b732c0b
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/interfaces.md
               start_line: 53
-              end_line: 66
-            content_digest: sha256:73939b574f9bcf35dbdf8e2451ad76f365adfb13dc09fd4b0bd65278d62c4c57
+              end_line: 101
+            content_digest: sha256:0f759d32545d2b15a8a2cc63cdec5b925ba3290b216eb3ae0806481b9f4bcf4f
       - id: other
         references:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 87
-              end_line: 129
+              start_line: 88
+              end_line: 130
             content_digest: sha256:d73445da4572f8f1a12fa58136bff11d5bb2d52e120ce92f7cccf5df11894063
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -4408,13 +4414,13 @@ articles:
               path: internal/mcpserver/server.go
               start_line: 28
               end_line: 44
-            content_digest: sha256:cf08360cc72deed2ec6816f7cff757e7134c180cc81f5f74db019a252a43be11
+            content_digest: sha256:805a12bc3dbb07fbfdac7b6910ff3450261cb44af42d672cc62eed286f32ca06
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/httpserver/runtime.go
-              start_line: 39
-              end_line: 60
-            content_digest: sha256:41c647547df975a98d9df26e54f5fba229177daf737a8bb93255c3b19c7fc575
+              path: internal/httpserver/preparers.go
+              start_line: 1
+              end_line: 52
+            content_digest: sha256:acdb2e0e968f4f2d9ac6cf81044612fc2387556848eae4d2ac4cda92ba558f21
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/mcpserver/plugin_connection.go
@@ -4434,13 +4440,13 @@ articles:
               path: internal/mcpserver/server.go
               start_line: 45
               end_line: 100
-            content_digest: sha256:c952cfa537f86c344476a53abe18c14daed756f0974a4a8199a0709ea7e1af6f
+            content_digest: sha256:1f3a1dce29ee2332c620a84bd3784c5af5ac1f293102c188afcde26495f17a70
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: docs/interfaces.md
-              start_line: 101
-              end_line: 107
-            content_digest: sha256:6126481bb07c54e0bf19735f8c58c3c0de56d399a399da668a45a88ab9c6b9f7
+              path: internal/service/prepare_revision.go
+              start_line: 100
+              end_line: 150
+            content_digest: sha256:702f9f6006ff89289246f5bc4e3b6237d8fe12c4aa86ed34117ba6848340b27d
       - id: output
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -4497,10 +4503,10 @@ articles:
             content_digest: sha256:64ff8df25b47480981ea837bdb5dec0d493de5f911ad04a755aa8bdcf5d94e82
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/httpserver/repository_access.go
-              start_line: 50
-              end_line: 62
-            content_digest: sha256:b97f84b9cd4ed6e74d7c677a67f160f1d3b07349795fe03ccc2737dd422dd2ad
+              path: internal/service/management.go
+              start_line: 20
+              end_line: 40
+            content_digest: sha256:5029931c116c31cb643cd59d1b071e579c2f285ba9c80ab5321ff209db7909d6
   - article_id: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
     path: product/reference/source-graph/query-syntax.md
     collection: product
@@ -4523,8 +4529,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: web/assets/search-page.js
-              start_line: 10
-              end_line: 22
+              start_line: 11
+              end_line: 23
             content_digest: sha256:0384e4dd33fdbefd4f72dd5079de3f060c6958b31154615a81f85d80fc1c89af
       - id: pattern
         references:
@@ -7490,8 +7496,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 184
-              end_line: 184
+              start_line: 185
+              end_line: 185
             content_digest: sha256:2dd2f1ec76d99f2b9bdaedfb2a9880abf02e27a1a3bf149457fb176804f59d69
       - id: check
         references:
@@ -7557,93 +7563,12 @@ articles:
               start_line: 80
               end_line: 82
             content_digest: sha256:3f3f55b895a73b057a2c25bec764f400232a89f316e07fc80407d1a915561181
-  - article_id: 01b7ffc6-89eb-4581-980e-264943d58736
-    path: sop/querying-knowledge/reading-code-evidence-remotely.md
-    collection: sop
-    visibility: public
-    sections:
-      - id: goal
-        references:
-          - source_ref: repo:20261012/context
+          - source_ref: repo:20261012/sourcegraph
             locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 160
-              end_line: 167
-            content_digest: sha256:833ad0bc9a307328586fc1e790040c72bec5831660bf58f64960833af37f6702
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-evidence-wasm/README.md
-              start_line: 1
-              end_line: 9
-            content_digest: sha256:4bffe0a2dad426fac127716a9c876eb64270f2718d417e20f86a116315ac9bc0
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 348
-              end_line: 352
-            content_digest: sha256:16e12fd590ccdcf7f7e58be91e0f936203c693f813d6150d2c32fa92f2975424
-      - id: enable
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 49
-              end_line: 57
-            content_digest: sha256:3461197141b6ae836dce721da6ef45dda870e07e52404bb1c2d47a4c0fe0ee1c
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 254
-              end_line: 263
-            content_digest: sha256:606f46cf477f51d7ea3d7e386474d39cd5f82371112fd5e2d9423dc21507f121
-      - id: read
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 160
-              end_line: 200
-            content_digest: sha256:2f3242a96193959ef9b02f7638f68b18915c158d18b553bba8bc2c29e0b9921b
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-evidence-wasm/README.md
-              start_line: 58
-              end_line: 80
-            content_digest: sha256:5384dc816ba1101dd63049cca488de48990fd61753edb8dbb282de660af6db82
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 223
-              end_line: 230
-            content_digest: sha256:8fb1c7335215aa018b8de82579b2ade25594b136ef5d03344dbccee7342654aa
-      - id: limits
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-evidence-wasm/README.md
-              start_line: 3
-              end_line: 5
-            content_digest: sha256:ecaa1ebd85156d0acf9c571ae4e5ab8a9e307ebb46ce6640c1fc51e2a53cc292
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-evidence-wasm/README.md
-              start_line: 31
-              end_line: 34
-            content_digest: sha256:15310e21532f59d6178538ac4b6ddef7fd3dc37be369cb51ca0d9056580ea0bd
-          - source_ref: repo:20261012/context
-            locator:
-              path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 210
-              end_line: 213
-            content_digest: sha256:795800f4923b3991c01525d0a65f625b632fa6e227f1cdfa008050bbf8525e40
-      - id: next
-        references:
-          - source_ref: repo:20261012/context
-            locator:
-              path: packages/context-evidence-wasm/README.md
-              start_line: 7
-              end_line: 9
-            content_digest: sha256:8562067756dfb41a88f46a3946df6e2086dad348fa7469c37306a429135ea63d
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
   - article_id: e9c6dca7-c6c3-40f5-8439-726ad9262b15
     path: sop/querying-knowledge/using-packages-in-agents.md
     collection: sop
@@ -8655,19 +8580,19 @@ articles:
               path: internal/httpserver/runtime.go
               start_line: 185
               end_line: 245
-            content_digest: sha256:f3009d917621590c7247212e968ce18642d39778e7631fb5d2d5432359c87789
+            content_digest: sha256:d22ec2c2a582482a43acf4f9f277284734f3b6aac91590e898f28fdf18ba8685
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/visibility.go
-              start_line: 9
-              end_line: 35
-            content_digest: sha256:50fe7e5ff2290fb0931804742cc275b06ffa9dbcea0caf4cc610479d1bfb4b1e
+              start_line: 14
+              end_line: 14
+            content_digest: sha256:a412055e4586a007b3010218debdd98fc71efe540950db2db2b3bcfe96b28c6c
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/interfaces.md
               start_line: 53
-              end_line: 58
-            content_digest: sha256:5341ee49be34bc6261f75969dab5669ccf7f35893631911a2cca973e0c96fac0
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: providers
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8706,16 +8631,22 @@ articles:
             content_digest: sha256:47461b8fde375f5b5f2fe6f12c427c1fc8c9e67766e68945e69d73df669a9e1e
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: docs/authentication.md
-              start_line: 5
-              end_line: 5
-            content_digest: sha256:ccaa592fc5ee57f7e1fbb0219f4bdd7d7c44c1caa786430355919d3bb6502250
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/interfaces.md
-              start_line: 53
-              end_line: 66
-            content_digest: sha256:73939b574f9bcf35dbdf8e2451ad76f365adfb13dc09fd4b0bd65278d62c4c57
+              start_line: 57
+              end_line: 70
+            content_digest: sha256:7e66e06d035ebf5e308ea0c214949e454a37c48301b8e2c8655a03490215221b
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/service/visibility.go
+              start_line: 14
+              end_line: 14
+            content_digest: sha256:a412055e4586a007b3010218debdd98fc71efe540950db2db2b3bcfe96b28c6c
       - id: sessions
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8726,16 +8657,16 @@ articles:
             content_digest: sha256:033679afb750bd3da821df6de6a24baff998e03e4d5182b0edfdb095515c47fe
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/sso/api_keys.go
-              start_line: 63
-              end_line: 98
-            content_digest: sha256:ad5479d076bffa69c92b991bf2ca1a1472781a66250e26115a3f1ce4187897ea
-          - source_ref: repo:20261012/sourcegraph
-            locator:
               path: internal/sso/api_key_auth.go
               start_line: 20
-              end_line: 75
-            content_digest: sha256:93fd5d3e132bd17a61ff96d487c5ed0ea5ce399741eb54a1bfa30806c180fcf1
+              end_line: 69
+            content_digest: sha256:14094d87ee033ae75114500c4801a67d57a1a72973a0363f631704ce5b02ae44
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/interfaces.md
+              start_line: 99
+              end_line: 99
+            content_digest: sha256:3d88c25b07f81785b23f0b0781e13fa598c9b865ceed73bdb51bac31b29b8e47
       - id: errors
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8746,16 +8677,22 @@ articles:
             content_digest: sha256:df6f989e317f45b4876eb0df40ba385d3d5cd01b7d470125d798c100687d81f4
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/httpserver/repository_access.go
-              start_line: 50
-              end_line: 62
-            content_digest: sha256:b97f84b9cd4ed6e74d7c677a67f160f1d3b07349795fe03ccc2737dd422dd2ad
+              path: internal/httpserver/runtime.go
+              start_line: 201
+              end_line: 201
+            content_digest: sha256:5f07740cfde13d499c8dc8c85f3934879465b37a82b4b1a2abe979cd7ef9f624
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/sso/api_keys.go
-              start_line: 86
-              end_line: 92
-            content_digest: sha256:26403588288a06d1b5d1cca86e6169f47899685ef727bffb2b16aea8f2372f6e
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/interfaces.md
+              start_line: 57
+              end_line: 70
+            content_digest: sha256:7e66e06d035ebf5e308ea0c214949e454a37c48301b8e2c8655a03490215221b
   - article_id: 154d582d-953d-40e3-afd5-f214c2c17909
     path: sop/source-graph/connecting.md
     collection: sop
@@ -8772,9 +8709,9 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 290
-              end_line: 490
-            content_digest: sha256:74b6ed96bf0d980e27236ca69c4887c3b3918f806e0c7f2a6e9ca4558c4fb6a2
+              start_line: 292
+              end_line: 503
+            content_digest: sha256:357fd150f8a105282527d157cbc6847aef76e620121a8fbf2bee9813f46a2f80
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: web/assets/clients.js
@@ -8797,12 +8734,32 @@ articles:
             content_digest: sha256:27152d05e9cf052fdf3a92e28bb450542f8932792b4cd208e9e0cd727b5d1dc2
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/mcpserver/server.go
-              start_line: 14
-              end_line: 100
-            content_digest: sha256:19b769dc819c25c98f15ebea28d65d3ed342aff1ee58a309be36b4ffc5a4751c
+              path: internal/httpserver/preparers.go
+              start_line: 1
+              end_line: 52
+            content_digest: sha256:acdb2e0e968f4f2d9ac6cf81044612fc2387556848eae4d2ac4cda92ba558f21
+      - id: evidence
+        references:
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-inspect-search/SKILL.md
+              start_line: 49
+              end_line: 57
+            content_digest: sha256:3461197141b6ae836dce721da6ef45dda870e07e52404bb1c2d47a4c0fe0ee1c
+          - source_ref: repo:20261012/context
+            locator:
+              path: plugins/context/skills/context-inspect-search/SKILL.md
+              start_line: 254
+              end_line: 263
+            content_digest: sha256:606f46cf477f51d7ea3d7e386474d39cd5f82371112fd5e2d9423dc21507f121
       - id: missing-repository
-        references: []
+        references:
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: credentials
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -8810,7 +8767,7 @@ articles:
               path: internal/httpserver/runtime.go
               start_line: 185
               end_line: 245
-            content_digest: sha256:f3009d917621590c7247212e968ce18642d39778e7631fb5d2d5432359c87789
+            content_digest: sha256:d22ec2c2a582482a43acf4f9f277284734f3b6aac91590e898f28fdf18ba8685
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: cmd/repo-service/main.go
@@ -8819,17 +8776,17 @@ articles:
             content_digest: sha256:4bd5108b82a9e3b0a4fba583988b7eb4aea673661ae48becffe729cab6c86eef
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/sso/api_key_auth.go
-              start_line: 20
-              end_line: 75
-            content_digest: sha256:93fd5d3e132bd17a61ff96d487c5ed0ea5ce399741eb54a1bfa30806c180fcf1
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: http
         references:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 250
-              end_line: 257
+              start_line: 251
+              end_line: 258
             content_digest: sha256:bc9043eba224e0a64ee628b5d0386590df1714e282c121bdc64ee7e4c86951b1
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -8881,8 +8838,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 40
-              end_line: 42
+              start_line: 41
+              end_line: 43
             content_digest: sha256:28ceb0ef086ce3f018cc0c6f1cded04a4db03410a33cb102e3d376ef3dcdaa46
           - source_ref: note:20261021/mcp-query.md
             locator:
@@ -8901,8 +8858,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 37
-              end_line: 39
+              start_line: 38
+              end_line: 40
             content_digest: sha256:4e65fd32597d53da2d21ddfc1b822721e054cfec6c4e81759740dacc83a5b961
       - id: what
         references:
@@ -8910,34 +8867,28 @@ articles:
             locator:
               path: README.md
               start_line: 18
-              end_line: 26
-            content_digest: sha256:28f711e1bd2f500aff0606a9fdb70dedda8be9dd9a71575c10f9cb86715b796d
+              end_line: 38
+            content_digest: sha256:c9cfe32d6dbaf9cb394302cca65e9b35a34e10686407d39b02370afc2a59e05a
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: README.md
-              start_line: 27
-              end_line: 36
-            content_digest: sha256:9915609a29cfc9943d5c48e516dadd953623bc0574665922a7ee99d65238f5c7
+              path: docs/interfaces.md
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: context
         references:
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-inspect-search/SKILL.md
               start_line: 49
-              end_line: 55
-            content_digest: sha256:da8ad88e24db85ecf805d0f8623fb9b51c00afa248f9e25455051c206c730fba
+              end_line: 57
+            content_digest: sha256:3461197141b6ae836dce721da6ef45dda870e07e52404bb1c2d47a4c0fe0ee1c
           - source_ref: repo:20261012/context
             locator:
               path: plugins/context/skills/context-inspect-search/SKILL.md
-              start_line: 346
-              end_line: 352
-            content_digest: sha256:ae2f8aa116882f85fe552a4e63b7eb6adbce7349ec1617ef2d4cbffa017b293d
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: docs/ref/repository-plugins.md
-              start_line: 1
-              end_line: 12
-            content_digest: sha256:a8392271bf4fc6bdae259ec85937f0bc77e4bc77cb29a0e0b169add375c184ec
+              start_line: 160
+              end_line: 200
+            content_digest: sha256:2f3242a96193959ef9b02f7638f68b18915c158d18b553bba8bc2c29e0b9921b
           - source_ref: note:20261021/mcp-query.md
             locator:
               path: mcp-query.md
@@ -8949,22 +8900,22 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 80
-              end_line: 91
+              start_line: 81
+              end_line: 92
             content_digest: sha256:2cef9d386679fa728970114b916cfffc91e47d55e4f99d91bb92975588f6c30d
       - id: start
         references:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 40
-              end_line: 63
+              start_line: 41
+              end_line: 64
             content_digest: sha256:e74c023e50866afb63721289ed103c79c029ea8500d7212dfba2387a2c846390
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 65
-              end_line: 78
+              start_line: 66
+              end_line: 79
             content_digest: sha256:0482940f4976ee9ca7828ecabe6feb726ac76ee96627665317de49e280c83430
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -8983,8 +8934,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 95
-              end_line: 113
+              start_line: 96
+              end_line: 114
             content_digest: sha256:1a072519ef64e755aaa9172fb07051242dbf8af0703204719357afcd7f7787de
           - source_ref: note:20261021/mcp-query.md
             locator:
@@ -9009,15 +8960,15 @@ articles:
             locator:
               path: internal/service/worker.go
               start_line: 25
-              end_line: 45
-            content_digest: sha256:33b190010fcc4ff0faafc2b016cd19aae9b89f468acc9b60a1f757f969057286
+              end_line: 46
+            content_digest: sha256:fb7a1534382869e642b4fec224593a07ca82cf2c0f56cdb5888bbdb9f39009ae
       - id: health
         references:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/runtime.go
-              start_line: 135
-              end_line: 165
+              start_line: 136
+              end_line: 166
             content_digest: sha256:5d4280a7a17057bea1c48819d8e74054e61395443dc4a2f2a6f0e9d48078c8a0
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -9067,10 +9018,10 @@ articles:
             content_digest: sha256:9d0aaeb3f93111921b773e369eafc04e193c95372dc287d42e01a38352a8bc16
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/control/telemetry.go
-              start_line: 40
-              end_line: 47
-            content_digest: sha256:a2edbb1891ba04b397370e97035de1a9a571e91c4c07d5fe6a384c898e0be7fe
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: limits
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9078,33 +9029,33 @@ articles:
               path: internal/httpserver/runtime.go
               start_line: 41
               end_line: 60
-            content_digest: sha256:61f3c8ead26c63494315703ac5f1c3a8f47015a4056441d039753ba4384eaae2
-          - source_ref: repo:20261012/sourcegraph
-            locator:
-              path: internal/httpserver/runtime.go
-              start_line: 210
-              end_line: 224
-            content_digest: sha256:b256c592f50bb3fc9f8c788e529de1f3cb3795f5417ba297dccf4672095ae8c8
+            content_digest: sha256:3f29a03e212d516bbc93f1618a64b908582d4e9e4c198a84f6eacb33951fd553
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/httpserver/website_access.go
               start_line: 54
               end_line: 105
             content_digest: sha256:d83b9d16b221854625f147345f605f57e0cbe9a67002316af7f163b5787ec23c
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/interfaces.md
+              start_line: 101
+              end_line: 101
+            content_digest: sha256:537fc2975e3422e11e5c4a6ff3772332091938c1b86863d8559dd9397f988d1f
       - id: disk
         references:
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: internal/gitstore/fetch.go
-              start_line: 193
-              end_line: 205
-            content_digest: sha256:8f0f6502ac2b2dbba989b38f54a83f61262278729b1dc9dbf4a44cb2d30ca823
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: web/assets/storage-page.js
+              path: internal/service/collection.go
               start_line: 1
-              end_line: 32
-            content_digest: sha256:a035fe03dc93837914589485de75faff1c9a2ee83f788d70e7d8b6b49d6e8d2b
+              end_line: 60
+            content_digest: sha256:f792f5a7d28865f586963fcaeb22be6f4118fac7197bd2d1223bf6990fa94ae7
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/storage.go
@@ -9116,22 +9067,28 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/repository_maintenance.go
-              start_line: 49
-              end_line: 166
-            content_digest: sha256:b641876a72c8c5db4935ce10a73ac3d97950f0f7dabf19d0fbfbe57e11348f0b
+              start_line: 25
+              end_line: 120
+            content_digest: sha256:43c1762126656b50c770b9e98d34fe51bb06a9dc6a73c3c814e900175cf920c4
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/cleanup.go
               start_line: 17
               end_line: 35
             content_digest: sha256:456ac8db124449a04b72d9bd1b1d4d5c8fa13f47ac679faa0be1da3f3db7db79
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: errors
         references:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/service.go
-              start_line: 305
-              end_line: 365
+              start_line: 308
+              end_line: 368
             content_digest: sha256:e9e52a504cb5645f56d5db032144261d0e6ab821b17211e8e9c17c1a50119fc2
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -9141,10 +9098,10 @@ articles:
             content_digest: sha256:64ff8df25b47480981ea837bdb5dec0d493de5f911ad04a755aa8bdcf5d94e82
           - source_ref: repo:20261012/sourcegraph
             locator:
-              path: DEVELOPMENT.md
-              start_line: 58
-              end_line: 60
-            content_digest: sha256:9693c7a16e71eec28e9771f08fdc6f8ccf5b8a9897953c3eab71810f7d4f94e5
+              path: internal/service/snapshots.go
+              start_line: 100
+              end_line: 150
+            content_digest: sha256:629a8d3e79c5edb42ffeab705a53c2b3f3d4795119dcf83cac7774cef2ae48fc
   - article_id: 56556e26-509e-4b66-a927-11c76940f7e9
     path: sop/source-graph/registering-repositories.md
     collection: sop
@@ -9156,8 +9113,8 @@ articles:
             locator:
               path: internal/httpserver/runtime.go
               start_line: 319
-              end_line: 338
-            content_digest: sha256:02c9d955796bd4210eaee223e02af81072f54669ed39b42488c6190944f0b673
+              end_line: 345
+            content_digest: sha256:2809f2c173a94e554f1e4f41997cdc5087998108505f0133fcc5148e09a53395
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/managers.go
@@ -9168,8 +9125,8 @@ articles:
             locator:
               path: docs/interfaces.md
               start_line: 53
-              end_line: 62
-            content_digest: sha256:cac0f9c004f06ce4d93cf1d3ffc13cb9cd32af7e3db08f787dcb62504f9ccd0e
+              end_line: 66
+            content_digest: sha256:c6ecafd441adf97ce9e1b65807ea2d29f39e4f5da9d7d48289cce9205524395b
       - id: fields
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9186,10 +9143,24 @@ articles:
             content_digest: sha256:a84237a781704d52b7293c3bde4ee248bb43f15b0b357343d7a1662920b681a3
           - source_ref: repo:20261012/sourcegraph
             locator:
+              path: internal/control/model.go
+              start_line: 61
+              end_line: 61
+            content_digest: sha256:27edc0b850c8924b428f07e51aa24fd5b0c06cf15ede8ea018ff70c6c769c457
+      - id: code-sources
+        references:
+          - source_ref: repo:20261012/sourcegraph
+            locator:
               path: docs/code-sources.md
               start_line: 5
               end_line: 24
             content_digest: sha256:6b19425f5c6c9354e86aed44481c40d637ee3b9bceb555ea62fd645bc5544b09
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/httpserver/registration.go
+              start_line: 1
+              end_line: 56
+            content_digest: sha256:43db0fba494fadd936b5b2d10f5b0f9b30d443ceca0c52cad448047621c13906
       - id: private
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9207,9 +9178,9 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: docs/interfaces.md
-              start_line: 66
-              end_line: 66
-            content_digest: sha256:cc4555884528b0632587e452973463f2dac528e2ab03571e01b73c9f68d2fa66
+              start_line: 53
+              end_line: 55
+            content_digest: sha256:8f9fb8e0ac9bc96eb6ab58d13f2a931d2f8a0c8fde01c451a3f99a02250bd405
       - id: monorepo
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9241,15 +9212,35 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/service/management.go
-              start_line: 114
-              end_line: 149
-            content_digest: sha256:cf9ee89c2377367ee927e15871b1bad34e57353f4be0accde06725de695c3697
+              start_line: 75
+              end_line: 175
+            content_digest: sha256:3571c607425fbf08b2da5dfb7b32ddb9b5117b07c8409ef15fe79cf5746657c2
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: cmd/repo-service/main.go
               start_line: 174
               end_line: 183
             content_digest: sha256:08d9719b0384e94e3b2519cc1a9d14138540257860dc59f1a7fef70c5c9035f9
+      - id: snapshots
+        references:
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/service/management.go
+              start_line: 20
+              end_line: 40
+            content_digest: sha256:5029931c116c31cb643cd59d1b071e579c2f285ba9c80ab5321ff209db7909d6
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: internal/service/snapshots.go
+              start_line: 100
+              end_line: 150
+            content_digest: sha256:629a8d3e79c5edb42ffeab705a53c2b3f3d4795119dcf83cac7774cef2ae48fc
   - article_id: ee8e6608-6a4a-4146-b856-467974297a1d
     path: sop/source-graph/self-hosting.md
     collection: sop
@@ -9260,8 +9251,8 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 65
-              end_line: 78
+              start_line: 66
+              end_line: 79
             content_digest: sha256:0482940f4976ee9ca7828ecabe6feb726ac76ee96627665317de49e280c83430
           - source_ref: repo:20261012/sourcegraph
             locator:
@@ -9277,6 +9268,12 @@ articles:
               start_line: 5
               end_line: 49
             content_digest: sha256:20e1427fafdb1c724e9a651da585c0f64610026b6fcf58eb0f5b24e858628644
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: topology
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9288,15 +9285,15 @@ articles:
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: README.md
-              start_line: 80
-              end_line: 91
-            content_digest: sha256:2cef9d386679fa728970114b916cfffc91e47d55e4f99d91bb92975588f6c30d
+              start_line: 82
+              end_line: 93
+            content_digest: sha256:f9dde5d59af3e01079197f02c373ca1f91269ae5ffd473cecac13a6ae9e63206
           - source_ref: repo:20261012/sourcegraph
             locator:
               path: internal/gitstore/fetch.go
-              start_line: 193
-              end_line: 205
-            content_digest: sha256:8f0f6502ac2b2dbba989b38f54a83f61262278729b1dc9dbf4a44cb2d30ca823
+              start_line: 217
+              end_line: 234
+            content_digest: sha256:b58549c044af5d4724a737a4a606a7a691a302f0abfd3002f05ef5cf75dbb1d2
       - id: single
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9317,6 +9314,12 @@ articles:
               start_line: 37
               end_line: 37
             content_digest: sha256:edf34403c29da629877255cdb982ea7a36f5c9a319cdba1ba4d828879b111ec9
+          - source_ref: repo:20261012/sourcegraph
+            locator:
+              path: docs/snapshots.md
+              start_line: 1
+              end_line: 17
+            content_digest: sha256:4c0618e94867af06e1ed399e08720a00841e38bbe7326f58e29993fa3cd987c1
       - id: sharded
         references:
           - source_ref: repo:20261012/sourcegraph
@@ -9852,4 +9855,4 @@ processed_scopes:
     processed_version: 33073fdeb22415e972e6598be5101b094bf0b91d
   - requirement_ref: source-graph-adopters
     source_ref: repo:20261012/sourcegraph
-    processed_version: 372ff7add4e6dc58be3b1d5941384b46a677e15d
+    processed_version: a6235ce0a14c98bf8ba455cb98c1abeb7463aac6

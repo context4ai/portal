@@ -4,7 +4,7 @@ description: "How Context Source Graph works: one contract across the website,
   HTTP, MCP and CLI, how a self-hosted instance is put together from Git
   mirrors, a Zoekt index and its application database, and who can do what."
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-07T13:27:05.988Z
 ---
 # Architecture Overview
 
@@ -50,9 +50,9 @@ The website lives under `/sourcegraph/`, the MCP endpoint at `/sourcegraph/mcp`,
 
 ## How an instance is put together
 
-A Source Graph instance is a single `repo-service` process. It starts the Zoekt search server as a child process listening only on the loopback interface, keeps a bare Git mirror for each registered repository on its data volume, and runs background workers that synchronize monitored branches and index new branch heads.
+A Source Graph instance is a single `repo-service` process. It starts the Zoekt search server as a child process listening only on the loopback interface, keeps a bare Git mirror for each registered repository on its data volume, and runs background workers that synchronize snapshots of monitored branch heads, index new heads and collect expired indexes. Each repository has a storage budget for its Git objects and indexes.
 
-The application database stores repositories, jobs, identities and settings, and also the instance's application secrets: code-source tokens with their encryption key, the service API credential and the Google/GitHub sign-in configuration, all encrypted. The data volume therefore holds only Git mirrors and indexes, and a replacement host needs the database rather than an old key file. SQLite is the default; PostgreSQL and MongoDB are supported for larger or sharded deployments. Git mirrors and indexes always stay on the instance's local disk — search speed comes from that locality — so capacity is planned around disk rather than CPU. To grow, run several instances that each own a disjoint set of repositories; never run two instances over the same repositories or data directory. [Self-Hosting](../../sop/source-graph/self-hosting.md) covers both topologies.
+The application database stores repositories, jobs, identities and settings, and also the instance's application secrets: code-source tokens with their encryption key, the service API credential and the Google/GitHub sign-in configuration, all encrypted. The data volume therefore holds only Git mirrors and indexes, and a replacement host needs the database rather than an old key file. SQLite is the default; PostgreSQL and MongoDB are supported for larger or sharded deployments. Git mirrors and indexes always stay on the instance's local disk — search speed comes from that locality — so capacity is planned around disk rather than CPU. To grow, run several instances that each own a disjoint set of repositories; never run two instances over the same repositories or data directory. [Ops: Self-Hosting Source Graph](../../sop/source-graph/self-hosting.md) covers both topologies.
 
 Repositories can also ship WebAssembly plugins named `<name>.sourcegraph.wasm` that add text to `read` and `read_many` results. Context uses this to attach each knowledge section's sources, described in [Evidence for Context](evidence-for-context.md).
 
@@ -62,7 +62,7 @@ Repositories can also ship WebAssembly plugins named `<name>.sourcegraph.wasm` t
 
 ## Who can do what
 
-Without any sign-in provider configured, an instance is an anonymous, read-only site: visitors can search and read repositories marked public, subject to per-minute rate limits. Adding Google or GitHub sign-in enables administration, and the first verified user becomes the administrator. Signed-in users can create personal API keys for scripts and Agents, and a service token covers automation. Registering repositories, indexing older commits and other changes require an administrator or the service token, unless the site lets signed-in users register repositories: each such user then manages the repositories they register and can add other managers. [Authentication and Access Control](../../sop/source-graph/authentication-and-access-control.md) lists the full matrix.
+Without any sign-in provider configured, an instance is an anonymous, read-only site: visitors can search and read public repositories, subject to per-minute rate limits. Adding Google or GitHub sign-in enables administration, and the first verified user becomes the administrator. Each repository is public or private: a private repository is visible only to its creator, its managers, administrators signed in on the website and the service token, and to everyone else it looks unregistered. Signed-in users can create personal API keys for scripts and Agents, which read as their owner, and a service token covers automation. Registering repositories, indexing older commits and other changes require an administrator or the service token, unless the site lets signed-in users register repositories: each such user then manages the repositories they register and can add other managers. [Ops: Sign-in and Permissions](../../sop/source-graph/authentication-and-access-control.md) lists the full matrix.
 
 <!-- /context:section -->
 
@@ -74,10 +74,10 @@ Without any sign-in provider configured, an instance is an anonymous, read-only 
 | Learn why Source Graph exists and how to start | [What Is Source Graph](../../sop/source-graph/introduction.md) |
 | Understand pinned search and the speed comparison | [Pinned Search and Reads](pinned-search-and-reads.md) |
 | See how Context knowledge and Source Graph combine | [Evidence for Context](evidence-for-context.md) |
-| Connect a browser, MCP client, script or the CLI | [Connecting](../../sop/source-graph/connecting.md) |
-| Add repositories and monorepo path groups | [Registering Repositories](../../sop/source-graph/registering-repositories.md) |
-| Deploy your own instance | [Self-Hosting](../../sop/source-graph/self-hosting.md) |
-| Configure sign-in and API keys | [Authentication and Access Control](../../sop/source-graph/authentication-and-access-control.md) |
-| Run, monitor and troubleshoot it | [Operations](../../sop/source-graph/operations.md) |
+| Connect a browser, MCP client, script or the CLI | [Connecting Agents, Scripts and the CLI to Source Graph](../../sop/source-graph/connecting.md) |
+| Add repositories and monorepo path groups | [Registering and Managing Repositories](../../sop/source-graph/registering-repositories.md) |
+| Deploy your own instance | [Ops: Self-Hosting Source Graph](../../sop/source-graph/self-hosting.md) |
+| Configure sign-in and API keys | [Ops: Sign-in and Permissions](../../sop/source-graph/authentication-and-access-control.md) |
+| Run, monitor and troubleshoot it | [Ops: Day-to-Day Operations](../../sop/source-graph/operations.md) |
 | Look up routes, tools, flags and settings | [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md), [CLI](../../product/reference/source-graph/cli.md), [Query Syntax](../../product/reference/source-graph/query-syntax.md), [Configuration](../../product/reference/source-graph/configuration.md) |
 <!-- /context:section -->

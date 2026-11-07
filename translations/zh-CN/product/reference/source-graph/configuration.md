@@ -4,8 +4,8 @@ description: 一处汇总 Source Graph 的全部设置：环境变量、构建�
 translation:
   locale: zh-CN
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
-  source_digest: af9a230ebbb5764a425e5d2b51faf93d3b78d210927c99f486432b404758f7bd
-  translated_at: 2026-10-28T10:00:49.620Z
+  source_digest: e16691501ff9fd37c84345247f2dc53bb2f192ae3210253ed783dc20e77be18b
+  translated_at: 2026-11-07T12:59:07.323Z
 ---
 
 # 配置
@@ -100,9 +100,9 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | --- | --- | --- | --- |
 | `repository_defaults` | `git_timeout_minutes` | 15 | 默认的 Git 拉取与对象补全超时：15、30、45 或 60 分钟。仓库默认继承它，也可以单独设置；新任务使用开始时的当前值 |
 | | `retention_mode` | `days` | 新登记仓库的默认保留策略：`days` 或 `count` |
-| | `retention_days` | 30 | 保留的历史天数，1–365 |
-| | `retention_count` | 20 | 每个分支保留的提交数，1–4,096 |
-| `access` | `public_read` | `true` | 匿名访客能否搜索和阅读公开仓库 |
+| | `retention_days` | 30 | 普通快照自首次观察到之后保留的天数，1–365 |
+| | `retention_count` | 20 | 保留最近观察到的普通快照的数量，1–4,096 |
+| `access` | `public_read` | `true` | 匿名访客能否搜索和阅读公开仓库；私有仓库永远不对匿名访客开放 |
 | | `allow_registration` | `false` | 首次登录时是否创建账号 |
 | | `registration_notice_zh`、`registration_notice_en` | 内置提示 | 向无法注册的人显示的文本 |
 | | `allow_user_repositories` | `false` | 是否允许已登录用户登记仓库；登记者成为该仓库的管理者 |
@@ -119,16 +119,18 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | 设置 | 范围 | 默认值 |
 | --- | --- | --- |
 | 监控分支 | 1–8 个 | 默认分支 |
-| 保留策略 | 天数 1–365 **或**提交数 1–4,096，二者不可同时设置 | 站点默认值 |
-| 同步间隔（分钟） | 1、3、5、10、30、60、180、360、720 或 1440 | 5 |
+| 保留策略 | 自首次观察到之后的天数 1–365，**或**最近观察到的 1–4,096 个快照，二者不可同时设置 | 站点默认值 |
+| 同步间隔（分钟） | 1、3、5、10、30、60、180、360、720 或 1440 | 新登记仓库为 180；保存时未设置间隔的仓库保持 5 |
 | 索引模式 | 整个仓库，或 Monorepo 中已登记的路径组 | 整个仓库 |
 | Git 超时（`git_timeout_minutes`） | 0 表示继承站点默认值，或 15、30、45、60 | 继承 |
 | 管理者 | 除管理员外，最多 50 位可以管理该仓库的已登录用户 | 登记者 |
-| 公开读取 | 开或关 | 开 |
+| 公开仓库（`public_read`） | 公开或私有 | 公开 |
+| 固定快照（`pinned_commits`） | 不受保留策略约束而始终保留的完整 SHA，最多 4,096 个 | 无 |
+| 容量预算（`max_storage_bytes`） | 1 GiB 到 10 TiB，涵盖 Git 对象、索引分片和进行中的准备文件 | 100 GiB |
 | 代码源（`code_provider`） | `github` 或 `git`，登记时确定；先尝试登记人自己为该代码源保存的令牌，再尝试全局令牌 | `github` |
 | 托管地址（`code_host`） | 登记时代码源的托管地址，之后每次拉取都使用它 | — |
 
-关闭公开读取的仓库只对匿名访客隐藏；所有已登录用户仍然可以阅读。分支和保留策略如何决定哪些提交可被搜索，见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
+私有仓库只对其创建者、管理者、在网站上登录的管理员和服务令牌可见；见 [登录与准入](../../../sop/source-graph/authentication-and-access-control.md#public-and-private-repositories)。被固定的快照、当前的分支最新提交以及正在被活动任务使用的快照始终会被保留，每个路径组最多 4,096 个。分支、保留策略和固定如何决定哪些提交可被搜索，见 [登记仓库](../../../sop/source-graph/registering-repositories.md)。
 <!-- /context:section -->
 
 <!-- context:section id="plugins" -->

@@ -5,8 +5,8 @@ description: Context 知识与 Source Graph 如何结合成固定版本的证据
 translation:
   locale: zh-CN
   artifact_ref: 92010645-02ae-41e0-93f2-09c204c9f2fb
-  source_digest: 0aebc5e6c4dc92b51b444f54629db3b8cb0ef917d4285146abc703102fd7cb11
-  translated_at: 2026-10-12T17:45:55.217Z
+  source_digest: a82f9b3f6eaa949150b6c43824889f7282b7f3b3f003789f6bd90417f145488e
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # 与 Context 协同
@@ -77,7 +77,7 @@ context evidence install --format json
 <!-- context:section id="next" -->
 ## 相关页面
 
-- [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)——为 Agent 开启此功能。
+- [选择 Context 读取代码的方式](../../sop/source-graph/connecting.md#choose-how-context-reads-code)——为 Agent 开启此功能。
 - [证据链与索引优先](../knowledge/evidence-chains.md)——为什么每个章节都要记录其来源。
 - [固定版本的搜索与阅读](pinned-search-and-reads.md)——Source Graph 如何解析提交并限制读取。
 <!-- /context:section -->

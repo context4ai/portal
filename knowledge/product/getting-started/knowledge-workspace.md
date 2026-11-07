@@ -3,7 +3,7 @@ title: The Context Knowledge Workspace
 description: What a Context knowledge workspace is, what every directory and
   file in it holds, who writes each part, and what goes into Git.
 type: Wiki
-timestamp: 2026-10-19T19:58:33.381Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # The Context Knowledge Workspace
 
@@ -94,7 +94,7 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 
 - **`imports.yaml`** at the root declares external entrances — content elsewhere that pages may link to — without downloading or capturing it. See [External Entrances](../../sop/registering-sources/external-entrances.md).
 - **`repo-content.yaml`** registers documentation and authored Skills that live in the same repository; **`repo-content/`** is a symlink view of them, and the originals stay where they are. See [Linking Existing Docs and Skills](../../sop/registering-sources/same-repository-docs.md).
-- **`context-evidence.sourcegraph.wasm`** is an optional plugin for reading code evidence remotely. `context evidence install` maintains it; queries never install it on their own. See [Reading Code Evidence Remotely](../../sop/querying-knowledge/reading-code-evidence-remotely.md).
+- **`context-evidence.sourcegraph.wasm`** is an optional plugin for reading code evidence remotely. `context evidence install` maintains it; queries never install it on their own. See [Choose how Context reads code](../../sop/source-graph/connecting.md#choose-how-context-reads-code).
 
 <!-- /context:section -->
 

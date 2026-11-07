@@ -1,15 +1,15 @@
 ---
-title: 自托管
+title: 运维：自行部署 Source Graph
 description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，在单实例与分片实例之间做出选择，选定数据库，部署到
   Fly.io，并备份无法重建的内容。
 translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
-  source_digest: 0cf6f8c8a81d9880f6bfb936e20d0813627bc64f33c64c2bccd4d49174080ea7
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: a496c74cfeb7a3759405216549a4d5457f89823cdb146d4e2befa45a0aeb2cfc
+  translated_at: 2026-11-07T13:29:32.690Z
 ---
 
-# 自托管
+# 运维：自行部署 Source Graph
 
 <!-- context:section id="goal" -->
 一个 Source Graph 实例就是一个容器或一个进程，外加一个持久化的数据目录。最快的试用方式是使用从仓库构建的 Docker 镜像：
@@ -23,7 +23,7 @@ docker run --rm -p 8080:8080 -v sourcegraph-data:/data \
   context-sourcegraph
 ```
 
-打开 `http://localhost:8080/sourcegraph/`。设置 `SOURCEGRAPH_SEED_DEMO=true` 后，实例会登记两个公开示例仓库；公开的 GitHub 仓库无需令牌，自定义 Git 托管地址可以在设置中或启动文件里添加，详见 [登记仓库](registering-repositories.md#code-sources)。未配置登录提供方时，站点是匿名且只读的；要管理站点，请添加 Google 或 GitHub 登录，详见 [登录与准入](authentication-and-access-control.md)。
+打开 `http://localhost:8080/sourcegraph/`。设置 `SOURCEGRAPH_SEED_DEMO=true` 后，实例会登记两个公开示例仓库；公开的 GitHub 仓库无需令牌，自定义 Git 托管地址可以在设置中或启动文件里添加，详见 [登记和管理仓库](registering-repositories.md#code-sources)。未配置登录提供方时，站点是匿名且只读的；要管理站点，请添加 Google 或 GitHub 登录，详见 [运维：登录与权限](authentication-and-access-control.md)。
 
 镜像包含四个二进制文件：服务 `repo-service`、命令行客户端 `sourcegraph-cli`、Git 凭据助手和 Zoekt 搜索服务器。它以非特权用户运行，数据根目录为 `/data`，暴露 8080 端口。
 <!-- /context:section -->
@@ -31,7 +31,7 @@ docker run --rm -p 8080:8080 -v sourcegraph-data:/data \
 <!-- context:section id="source" -->
 ## 从源码构建
 
-本地构建需要 Go、Bun 和 Git，版本以仓库构建文件的要求为准：
+本地构建需要 Go、Bun 和 Git，版本以仓库构建文件的要求为准。Monorepo 路径组需要 Git 2.30 或更高版本来按需补全文件；提供的容器已包含兼容的 Git：
 
 ```bash
 bun install --frozen-lockfile
@@ -76,7 +76,7 @@ flowchart TB
 <!-- context:section id="single" -->
 ## 运行单实例
 
-- **按裸 Git 仓库及其索引规划卷容量**。让剩余空间保持在 `SOURCEGRAPH_MIN_FREE_BYTES`（默认 1 GiB）之上，低于这个下限时拉取和建索引会停止。
+- **按裸 Git 仓库及其索引规划卷容量**。让剩余空间保持在 `SOURCEGRAPH_MIN_FREE_BYTES`（默认 1 GiB）之上，低于这个下限时拉取和建索引会停止；此外还要为替换用的 pack 文件和索引构建留出空间。每个仓库还有自己的容量预算，默认 100 GiB，Git 压缩时可能短暂需要超出预算的临时空间。
 - **一个卷只对应一台机器**。两个进程绝不能服务同一批仓库或共享同一个数据目录，因为索引归属是按进程划分的。
 - **保留默认的 SQLite 数据库**，除非你已经在运维 PostgreSQL 或 MongoDB。
 - **先测量再调整规格**。索引所需的内存和磁盘取决于仓库大小，因此先观察真实的建索引情况，再改变容量。
@@ -124,7 +124,7 @@ fly volumes create sourcegraph_data --region <region> --size 20 --app <app-name>
 fly deploy --remote-only --ha=false
 ```
 
-部署完成后，按 [运维](operations.md#health-and-status) 中的说明检查存活和就绪状态。
+部署完成后，按 [运维：日常运维与排障](operations.md#health-and-status) 中的说明检查存活和就绪状态。
 
 本文档站背后的 Source Graph 就是这样部署的。它只是演示，不是容量建议：位于 `sin` 区域的两个 Fly.io App。
 

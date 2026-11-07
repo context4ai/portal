@@ -1,12 +1,12 @@
 ---
-title: Connecting
+title: Connecting Agents, Scripts and the CLI to Source Graph
 description: Connect your Agent to Source Graph so Context can read cited code
   without cloning, then connect a browser, script or the command-line client,
   choose the right credential and follow the search-then-read loop.
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-07T14:10:54.731Z
 ---
-# Connecting
+# Connecting Agents, Scripts and the CLI to Source Graph
 
 <!-- context:section id="goal" -->
 Connecting gives your Agent, script or terminal code search and reading at a pinned commit, without cloning the repository first. Most Context users need only one thing: connect their Agent over MCP, as described in the next section, so the Agent can read the code behind an answer remotely. [What Is Source Graph](introduction.md) explains why that matters, when you need it and how to try the live demo.
@@ -24,11 +24,12 @@ The website's **Connect** page always shows ready-to-copy configuration for the 
 <!-- /context:section -->
 
 <!-- context:section id="mcp" -->
+
 ## Connect your Agent for Context
 
 1. If the instance needs a credential, sign in and create a personal API key (see [Choose a credential](#choose-a-credential)). The public demo needs none.
 2. Open the site's **Connect** page and copy the configuration for your Agent host; it shows the equivalent command or file for Claude Code, Codex and Cursor.
-3. Keep the server name `context-sourcegraph`. That is the name Context's query Skill looks for when it reads cited code, as described in [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md).
+3. Keep the server name `context-sourcegraph`. That is the name Context's query Skill looks for when it reads cited code, as described in [Choose how Context reads code](#choose-how-context-reads-code).
 
 For any other client that supports Streamable HTTP, point it at the `/mcp` endpoint. For the public demo:
 
@@ -43,13 +44,26 @@ For any other client that supports Streamable HTTP, point it at the `/mcp` endpo
 }
 ```
 
-For an instance that needs a credential, add `"headers": { "Authorization": "Bearer <token>" }`. The optional `plugins` query parameter controls repository plugins for the whole connection: `auto` (default selection), `off`, or up to 16 comma-separated plugin names. Anonymous connections and personal keys get the read-only tools; `prepare` appears only for the service token and for administrator keys allowed to prepare. Use MCP tool discovery for the current input schemas — the [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md) reference lists them.
+For an instance that needs a credential, add `"headers": { "Authorization": "Bearer <token>" }`. The optional `plugins` query parameter controls repository plugins for the whole connection: `auto` (default selection), `off`, or up to 16 comma-separated plugin names. Anonymous connections get the read-only tools. A personal key gets `prepare` as well when its owner is an administrator or manages at least one repository, and the service token gets every tool. Use MCP tool discovery for the current input schemas — the [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md) reference lists them.
+
+<!-- /context:section -->
+
+<!-- context:section id="evidence" -->
+
+## Choose how Context reads code
+
+Once the server `context-sourcegraph` is connected, Context uses it to read cited code. By default your Agent reuses suitable local material and otherwise prefers Source Graph before any local checkout. To change that, ask in the conversation to read only through Source Graph or only locally, such as "work offline"; an explicit request always wins. For a Knowledge Bot, set the mode in the Bot's prompt.
+
+The instance must cover the knowledge workspace and every source repository its answers rely on; if one is missing, see [Missing a repository?](#missing-a-repository). What this gives your answers is described in [What Is Source Graph](introduction.md#a-faster-option-for-context).
+
 <!-- /context:section -->
 
 <!-- context:section id="missing-repository" -->
+
 ## Missing a repository?
 
-If search or reading cannot find a repository you need, it is probably not registered on that instance yet. Registration needs an administrator, and a private repository also needs a token for its code source so the service can fetch it. Ask the instance's administrator, or, on your own instance, register it yourself as described in [Registering Repositories](registering-repositories.md).
+If search or reading cannot find a repository you need, either it is not registered on that instance yet, or it is a private repository your credential cannot see; both answer `REPOSITORY_NOT_FOUND`. A private repository is visible only to its creator, its managers and administrators, so ask one of them to add you as a manager. If you try to register a name that already exists, the website tells you who registered it so you know whom to ask. A repository that is not registered yet needs an administrator, or any signed-in user when the site allows user registration, and a private code-hosting repository also needs a token for its code source so the service can fetch it. On your own instance, register it as described in [Registering and Managing Repositories](registering-repositories.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="credentials" -->
@@ -58,11 +72,11 @@ If search or reading cannot find a repository you need, it is probably not regis
 
 | Credential | How to get it | What it allows |
 | --- | --- | --- |
-| None (anonymous) | — | Read-only access to repositories marked public, when the site allows public reading; rate-limited per client |
-| Personal API key (`sgk_…`) | Sign in, open your user settings and create an API token | The same reads as your account, over HTTP or MCP. Administrators can create keys that may also request indexing over MCP |
-| Service token | The instance's service credential, at least 32 characters. `SOURCEGRAPH_API_TOKEN` seeds it on first start (it is generated when unset); afterwards the value saved in the database is used | Every HTTP and MCP operation, including registration and indexing — for automation you control |
+| None (anonymous) | — | Read-only access to public repositories, when the site allows public reading; rate-limited per client |
+| Personal API key (`sgk_…`) | Sign in, open your user settings and create an API token | Reads public repositories and the private repositories you created or manage, over HTTP or MCP; an administrator's key is not widened to every repository. It can also request indexing for repositories you manage, or for any repository it can see when you are an administrator |
+| Service token | The instance's service credential, at least 32 characters. `SOURCEGRAPH_API_TOKEN` seeds it on first start (it is generated when unset); afterwards the value saved in the database is used | Every HTTP and MCP operation on every repository, including registration and indexing — for automation you control |
 
-Send keys and tokens as `Authorization: Bearer <value>`. An invalid credential is rejected with `AUTHENTICATION_REQUIRED`; it never falls back to anonymous access. Keep credentials in your client's secret store or environment, never in shared configuration files. [Authentication and Access Control](authentication-and-access-control.md) explains each mode in detail.
+Send keys and tokens as `Authorization: Bearer <value>`. An invalid credential is rejected with `AUTHENTICATION_REQUIRED`; it never falls back to anonymous access. Keep credentials in your client's secret store or environment, never in shared configuration files. [Ops: Sign-in and Permissions](authentication-and-access-control.md) explains each mode in detail.
 
 <!-- /context:section -->
 
@@ -112,6 +126,6 @@ Agents get the most from Source Graph with a short loop:
 3. **Read** the decisive ranges at that commit — directly when the file is known, several at once with `read_many`. Keep the repository, full commit SHA and path together for each range, use paths returned by search or list, and group a `read_many` call by repository and commit; `end_line` is an absolute line number, not a count.
 4. **Continue** from the returned next line if the file goes on, and treat `Partial`, `Truncated` and coverage flags as limits, not as proof that something is absent.
 
-List repositories or resolve the revision only when the repository is unknown or a request fails, not before every query. If a request fails — for example `409 INDEX_NOT_READY` when a commit has not been indexed yet — look up the code in [Operations](operations.md#common-errors) for what it means and what to do.
+List repositories or resolve the revision only when the repository is unknown or a request fails, not before every query. If a request fails — for example `409 INDEX_NOT_READY` when a commit has not been indexed yet — look up the code in [Ops: Day-to-Day Operations](operations.md#common-errors) for what it means and what to do.
 
 <!-- /context:section -->

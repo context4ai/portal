@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-10-23T04:46:46.644Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # Release Notes
 
@@ -146,7 +146,7 @@ These releases made remote code evidence part of normal querying:
 - **0.7.42** — approved knowledge and recorded code evidence can be read remotely without a checkout. The CLI bundles a read-only repository Wasm plugin that attaches section evidence and commit-specific source URLs, installed with `context evidence install` or at workspace initialization.
 - **0.7.43** — the plugin moves to ABI 2 and attaches compact references to individual read items without replacing their content; remote query guidance follows bounded default reads, file-only search and per-file match limits.
 
-Local and offline retrieval keep working throughout. See [Reading Code Evidence Remotely](../../sop/querying-knowledge/reading-code-evidence-remotely.md).
+Local and offline retrieval keep working throughout. See [Choose how Context reads code](../../sop/source-graph/connecting.md#choose-how-context-reads-code).
 <!-- /context:section -->
 
 <!-- context:section id="context-0735" -->

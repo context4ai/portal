@@ -4,8 +4,8 @@ description: Context 把代码、文档、笔记和会话整理成经过审核�
 translation:
   locale: zh-CN
   artifact_ref: e510e5c1-951c-4073-9607-efcf7caee18e
-  source_digest: 50304ce3c94b27a51cf3f8f8fd8e363c81ddd07d0d0798f7aabd2a58c27dbf42
-  translated_at: 2026-10-20T07:27:38.336Z
+  source_digest: 83af6f8a7c3b259f2827e35737b909d2899b85d3ecab82bb6d89eeada30af064
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # Context 是什么
@@ -70,7 +70,7 @@ Context 不是一次性的摘要工具。来源快照、审核状态、已批准
 
 工作流中的部分环节由两个配套项目承担。入门时两者都不是必需的。
 
-- **Source Graph** 通过网页、MCP、HTTP 和 CLI，在固定提交上搜索和阅读仓库。Context 提供一个可选的证据插件：Agent 通过 Source Graph 阅读代码时，也能同时拿到所读知识章节的来源，无需克隆仓库。参见 [Source Graph 概览](../../architecture/source-graph/overview.md) 和 [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
+- **Source Graph** 通过网页、MCP、HTTP 和 CLI，在固定提交上搜索和阅读仓库。Context 提供一个可选的证据插件：Agent 通过 Source Graph 阅读代码时，也能同时拿到所读知识章节的来源，无需克隆仓库。参见 [Source Graph 概览](../../architecture/source-graph/overview.md) 和 [选择 Context 读取代码的方式](../../sop/source-graph/connecting.md#choose-how-context-reads-code)。
 - **Agent Graph** 是 Context 工作流底层的一层，它根据 Context 在知识工作区中观察到的事实选出每一个下一步，从而让漫长的工作流可以中断恢复、可以测试。参见 [为什么是 Graph Engineering](../../architecture/agent-graph/why-graph-engineering.md) 和 [工作流运行](../../architecture/context/workflow-execution.md)。
 <!-- /context:section -->
 

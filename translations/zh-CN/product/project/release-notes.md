@@ -4,8 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: 2dde3df0082f8a7b678e2ceb279b8ff32e2530fc7f7838eecc5da99e1985b0f3
-  translated_at: 2026-10-23T04:48:26.659Z
+  source_digest: e7867544af0ccd51a9d0a7d30ec3c164e1e86ca011405dc07c90f995674411df
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # 发布说明
@@ -147,7 +147,7 @@ translation:
 - **0.7.42**——无需检出仓库即可远程读取已批准的知识和记录的代码证据。CLI 内置一个只读的仓库 Wasm 插件，为读取结果附上章节证据和指向具体提交的源码 URL，通过 `context evidence install` 或在初始化知识工作区时安装。
 - **0.7.43**——插件升级到 ABI 2，为每个读取项附上紧凑的引用而不替换其内容；远程查询指引改为遵循有界的默认读取、仅文件搜索和按文件的匹配上限。
 
-本地和离线检索始终可用。参见 [远程读取代码证据](../../sop/querying-knowledge/reading-code-evidence-remotely.md)。
+本地和离线检索始终可用。参见 [选择 Context 读取代码的方式](../../sop/source-graph/connecting.md#choose-how-context-reads-code)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0735" -->

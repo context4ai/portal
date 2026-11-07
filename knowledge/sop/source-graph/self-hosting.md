@@ -1,12 +1,12 @@
 ---
-title: Self-Hosting
+title: "Ops: Self-Hosting Source Graph"
 description: Run your own Source Graph instance with Docker or from source,
   choose between one instance and sharded instances, pick a database, deploy on
   Fly.io and back up what cannot be rebuilt.
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-07T13:27:05.988Z
 ---
-# Self-Hosting
+# Ops: Self-Hosting Source Graph
 
 <!-- context:section id="goal" -->
 A Source Graph instance is one container or one process with a persistent data directory. The fastest way to try it is the Docker image built from the repository:
@@ -20,7 +20,7 @@ docker run --rm -p 8080:8080 -v sourcegraph-data:/data \
   context-sourcegraph
 ```
 
-Open `http://localhost:8080/sourcegraph/`. With `SOURCEGRAPH_SEED_DEMO=true` it registers two public example repositories; public GitHub repositories need no token, and a custom Git host can be added under Settings or in a startup file, as described in [Registering Repositories](registering-repositories.md#code-sources). Without sign-in providers the site is anonymous and read-only. Add Google or GitHub sign-in to administer it, as described in [Authentication and Access Control](authentication-and-access-control.md).
+Open `http://localhost:8080/sourcegraph/`. With `SOURCEGRAPH_SEED_DEMO=true` it registers two public example repositories; public GitHub repositories need no token, and a custom Git host can be added under Settings or in a startup file, as described in [Registering and Managing Repositories](registering-repositories.md#code-sources). Without sign-in providers the site is anonymous and read-only. Add Google or GitHub sign-in to administer it, as described in [Ops: Sign-in and Permissions](authentication-and-access-control.md).
 
 The image contains four binaries: the service `repo-service`, the command-line client `sourcegraph-cli`, the Git credential helper and the Zoekt search server. It runs as an unprivileged user with `/data` as its data root and port 8080 exposed.
 <!-- /context:section -->
@@ -29,7 +29,7 @@ The image contains four binaries: the service `repo-service`, the command-line c
 
 ## Build from source
 
-Building locally needs Go, Bun and Git, at the versions the repository's build files require:
+Building locally needs Go, Bun and Git, at the versions the repository's build files require. Monorepo path groups need Git 2.30 or newer for selective file hydration; the supplied container already includes a compatible Git:
 
 ```bash
 bun install --frozen-lockfile
@@ -75,13 +75,15 @@ flowchart TB
 <!-- /context:section -->
 
 <!-- context:section id="single" -->
+
 ## Running one instance
 
-- **Size the volume for bare Git repositories plus their indexes.** Keep free space above `SOURCEGRAPH_MIN_FREE_BYTES`, 1 GiB by default, which is the floor below which fetching and indexing stop.
+- **Size the volume for bare Git repositories plus their indexes.** Keep free space above `SOURCEGRAPH_MIN_FREE_BYTES`, 1 GiB by default, which is the floor below which fetching and indexing stop, plus room for replacement packs and index builds. Each repository also has its own storage budget, 100 GiB by default, and Git compaction can briefly need temporary space beyond it.
 - **Run exactly one machine for the volume.** Two processes must never serve the same repositories or share one data directory, because index ownership is per process.
 - **Keep the default SQLite database** unless you already operate PostgreSQL or MongoDB.
 - **Measure before resizing.** Index memory and disk needs depend on repository size, so observe real indexing before changing capacity.
 - **Expect brief interruptions on redeploy.** Restarting a single instance may interrupt requests and indexing for a moment; persisted tasks recover after the restart.
+
 <!-- /context:section -->
 
 <!-- context:section id="sharded" -->
@@ -129,7 +131,7 @@ fly volumes create sourcegraph_data --region <region> --size 20 --app <app-name>
 fly deploy --remote-only --ha=false
 ```
 
-After a deployment, check liveness and readiness as described in [Operations](operations.md#health-and-status).
+After a deployment, check liveness and readiness as described in [Ops: Day-to-Day Operations](operations.md#health-and-status).
 
 The Source Graph behind this documentation site is deployed this way. It is a demo, not a capacity recommendation: two Fly.io Apps in the `sin` region.
 

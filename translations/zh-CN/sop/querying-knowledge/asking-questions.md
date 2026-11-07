@@ -4,8 +4,8 @@ description: 针对知识工作区或已安装的知识包向 Agent 提问，学
 translation:
   locale: zh-CN
   artifact_ref: cb25b77b-565d-4c73-bebb-004762a36038
-  source_digest: cafc59421d829ffa8b2d166c196e1c1cfa87def826710d6f517e410e5ba97972
-  translated_at: 2026-10-21T12:22:47.975Z
+  source_digest: 9ee0185974c632d269ad8a9dadf192b1a869c1613be6521a907d843f6c547aa6
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # 提问
@@ -47,7 +47,7 @@ pending？请引用相关代码。
 
 前两种方式由查询 Skill 完成本页介绍的工作：在知识工作区中，它读取已批准的页面，必要时再读这些页面依据的来源；基于知识包时，它读取知识包，仍然可以沿着其中的引用回到原始文档和代码。通过 MCP 时，由你自己的提示词设定同样的优先级——先读知识、需要时再查代码、始终给出出处——但没有查询 Skill 的导航和更新建议。
 
-安装了查询 Skill 时，宿主或 Bot 可以设置先读哪些材料，以及代码是通过远程只读服务读取还是从本地检出读取；参见 [构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot)。这些设置改变的是顺序和访问路径，而不是什么算作证据。要在没有本地检出的情况下读取所引用的代码，参见 [远程读取代码证据](reading-code-evidence-remotely.md)。
+安装了查询 Skill 时，宿主或 Bot 可以设置先读哪些材料，以及代码是通过远程只读服务读取还是从本地检出读取；参见 [构建知识服务](../knowledge-service-agent/building-a-knowledge-service.md#configuring-the-bot)。这些设置改变的是顺序和访问路径，而不是什么算作证据。要在没有本地检出的情况下读取所引用的代码，参见 [选择 Context 读取代码的方式](../source-graph/connecting.md#choose-how-context-reads-code)。
 <!-- /context:section -->
 
 <!-- context:section id="good-questions" -->
