@@ -4,7 +4,7 @@ description: How Source Graph resolves every request to one commit, keeps a
   window of indexed versions, bounds each search and read, and why that beats
   scanning a checkout.
 type: Guide
-timestamp: 2026-10-22T19:13:11.965Z
+timestamp: 2026-11-07T12:54:24.251Z
 ---
 # Pinned Search and Reads
 
@@ -38,20 +38,24 @@ Every operation accepts an optional revision and resolves it with the same rules
 | --- | --- |
 | Nothing | The repository's discovered default branch when the policy follows it; otherwise the single configured `main` or `master` branch, at its last synchronized head |
 | A monitored branch name | That branch's last synchronized head |
-| A full 40-character lowercase commit SHA | That commit, if it is inside the retention window |
+| A full 40-character lowercase commit SHA | That commit, if it is one of the repository's retained snapshots; a commit that was never synchronized can be fetched and pinned by preparing its full SHA |
 | A short SHA, a tag, `HEAD` or another ref | Rejected (`SHORT_SHA_UNSUPPORTED`, `INVALID_REVISION`) |
 | An unmonitored branch | Rejected (`BRANCH_NOT_MONITORED`) |
 
-`REVISION_NOT_ELIGIBLE` means the commit is not among the versions Source Graph currently observes for that repository. A commit can be missing because it aged out of the retention window, but also because it belongs to a branch that is not monitored, the repository has not synchronized it yet, or the SHA belongs to a different repository; check the repository and full SHA together before assuming it expired. Source Graph never silently replaces a requested baseline with another commit, so a caller that pins the returned commit gets the same snapshot on every later call.
+`REVISION_NOT_ELIGIBLE` means the commit is not among the versions Source Graph currently observes for that repository. A commit can be missing because its snapshot expired under the retention policy, but also because it was never a synchronized branch head — commits pushed between two syncs are not recorded — because it belongs to a branch that is not monitored, or because the SHA belongs to a different repository; check the repository and full SHA together before assuming it expired. To use a specific commit, prepare its full SHA: Source Graph fetches that snapshot directly and pins it. Source Graph never silently replaces a requested baseline with another commit, so a caller that pins the returned commit gets the same snapshot on every later call.
 
 <!-- /context:section -->
 
 <!-- context:section id="versions" -->
+
 ## Which versions exist
 
-Each repository has a retention policy: one to eight monitored branches (optionally including the remote's default branch) and a window defined either by **days** (1–365) or by **count** (1–4096 first-parent commits per branch). Background synchronization fetches only the monitored branches — never tags — on the repository's sync interval, records each branch head and builds the set of eligible versions from the window. Many versions of one repository can therefore coexist.
+Each repository has a retention policy: one to eight monitored branches (optionally including the remote's default branch) and a rule for ordinary snapshots, either **days** since first observation (1–365) or a **count** of the most recently observed snapshots (1–4096). Background synchronization fetches depth-one snapshots of the monitored branch heads — never tags, and without their parent history — on the repository's sync interval and records each head. Later syncs add newly observed heads, so commits pushed between two syncs are not recorded. Pinned snapshots, current branch heads and snapshots used by active jobs are always kept, at most 4096 per path group; after a successful sync the others expire under the policy and lose eligibility. Many versions of one repository can therefore coexist.
 
-Indexing is separate from eligibility. After a successful sync, the service queues an index job for each branch head that is not yet indexed, and stops retrying a head after three failures. Older commits in the window stay readable from Git but are searchable only after someone with permission asks for them with `prepare`; searching an unindexed commit returns `INDEX_NOT_READY`. Each index is stored as a separate generation, and generations no longer referenced by any retained version are removed in the background, at most one per collection pass.
+A specific commit that was never synchronized can still be used: preparing its full SHA fetches that snapshot directly from the code source, without deepening the history, and pins it so retention keeps it until the pin is released.
+
+Indexing is separate from eligibility. After a successful sync, the service queues an index job for each branch head that is not yet indexed, and stops retrying a head after three failures. Older retained snapshots stay readable from Git but are searchable only after someone with permission asks for them with `prepare`; searching an unindexed commit returns `INDEX_NOT_READY`. Each index is stored as a separate generation, and generations no longer referenced by any retained snapshot are collected in background rounds that work repository by repository.
+
 <!-- /context:section -->
 
 <!-- context:section id="search" -->

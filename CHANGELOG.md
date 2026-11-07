@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.14.0 — 2026-11-07
+
+### Source Graph private repositories, preparation rules, snapshot storage and a clearer guide structure
+
+- Repositories are public or private. A private repository is visible only to its creator, its managers, administrators signed in on the website and the service token; personal API keys read as their owner, including an administrator's. Hidden repositories answer like unregistered names, and registering a taken name returns 409 with its registrant.
+- Index preparation is open to administrators, the service token and repository managers through their session or own key; the per-key prepare permission is gone, and manual requests are paced per repository.
+- New snapshot coverage: shallow branch-head synchronization, preparing and pinning a specific commit, retention by days or count, per-repository storage budgets and index collection, with the related settings and errors.
+- New registrations default to a 180-minute sync interval; the repository list filters by manager and sorts by disk usage.
+- Source Graph guides are organized by reader: What Is Source Graph presents it as an optional speed-up for Context (quality is the same without it), Connecting ("Connecting Agents, Scripts and the CLI to Source Graph") only covers connecting and choosing how Context reads code, administrator guides carry an "Ops:" prefix, and the left navigation uses short labels.
+- The redundant Reading Code Evidence Remotely page is retired; its links point to Connecting › Choose how Context reads code.
+- The updated pages and navigation labels are translated into Chinese.
+
+Trigger: module: Community Source Graph source updated to a6235ce (private repositories, preparation rules and snapshot retention).; translation: Chinese pages updated with the English articles.; navigation: Requested a clearer guide structure that separates user and operator pages.
+User: qiansc (git)
+
 ## 0.13.11 — 2026-11-07
 
 ### Update to Context 0.7.90 and the latest Source Graph, built with Context 0.7.92

@@ -4,7 +4,7 @@ description: How Context knowledge and Source Graph combine into version-pinned
   evidence — the evidence plugin attaches each section's sources, and the query
   Skill reads cited code at its recorded commit without a checkout.
 type: Guide
-timestamp: 2026-10-12T17:40:29.856Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # Evidence for Context
 
@@ -74,7 +74,7 @@ Each piece of evidence keeps four things together: the repository, the returned 
 <!-- context:section id="next" -->
 ## Related pages
 
-- [Reading Code Evidence Remotely](../../sop/querying-knowledge/reading-code-evidence-remotely.md) — turning this on for an Agent.
+- [Choose how Context reads code](../../sop/source-graph/connecting.md#choose-how-context-reads-code) — turning this on for an Agent.
 - [Evidence Chains and Index First](../knowledge/evidence-chains.md) — why every section records its sources.
 - [Pinned Search and Reads](pinned-search-and-reads.md) — how Source Graph resolves commits and bounds reads.
 <!-- /context:section -->

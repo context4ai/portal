@@ -3,7 +3,7 @@ title: What is Context
 description: Context turns code, documents, notes and conversations into
   reviewed, traceable knowledge for Agents, Bots and people.
 type: Wiki
-timestamp: 2026-10-20T07:26:44.207Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # What is Context
 
@@ -69,7 +69,7 @@ On 24 real developer questions from a large production monorepo, Agents using Co
 
 Two companion projects carry parts of the workflow. You do not need either to get started.
 
-- **Source Graph** searches and reads repositories at a pinned commit over the web, MCP, HTTP and a CLI. Context ships an optional evidence plugin so that an Agent reading code through Source Graph also receives the sources of the knowledge sections it reads, without cloning the repository. See the [Source Graph overview](../../architecture/source-graph/overview.md) and [Reading Code Evidence Remotely](../../sop/querying-knowledge/reading-code-evidence-remotely.md).
+- **Source Graph** searches and reads repositories at a pinned commit over the web, MCP, HTTP and a CLI. Context ships an optional evidence plugin so that an Agent reading code through Source Graph also receives the sources of the knowledge sections it reads, without cloning the repository. See the [Source Graph overview](../../architecture/source-graph/overview.md) and [Choose how Context reads code](../../sop/source-graph/connecting.md#choose-how-context-reads-code).
 - **Agent Graph** is the layer under the Context workflow that picks each next step from the facts Context observes in the knowledge workspace, which keeps a long workflow resumable and testable. See [Why Graph Engineering](../../architecture/agent-graph/why-graph-engineering.md) and [Workflow Execution](../../architecture/context/workflow-execution.md).
 <!-- /context:section -->
 

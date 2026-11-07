@@ -4,7 +4,7 @@ description: How to run Context as a resident knowledge service Agent for a team
   on any Agent runtime — what it is, how the pieces fit, the three flows,
   choosing a runtime and configuring the Bot.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-07T13:54:53.020Z
 ---
 # Building a Knowledge Service
 
@@ -41,7 +41,7 @@ flowchart TB
 
 1. **Pick a runtime** that gives every session an isolated sandbox; see [Choosing a runtime](#choosing-a-runtime) below.
 2. **Install Context in the runtime image**: the `context` CLI and the Context plugin, as in [Installation](../../product/getting-started/installation.md). Preinstall the knowledge packages and the knowledge workspace too, so sessions do not install and clone each time — cold start is the main reason a first answer is slow.
-3. **Connect remote retrieval** so the Agent can read code by commit instead of cloning repositories in the sandbox; see [Reading Code Evidence Remotely](../querying-knowledge/reading-code-evidence-remotely.md).
+3. **Connect remote retrieval** so the Agent can read code by commit instead of cloning repositories in the sandbox; see [Choose how Context reads code](../source-graph/connecting.md#choose-how-context-reads-code).
 4. **Write the Bot prompt** with your review policy and retrieval order; see [Configuring the Bot](#configuring-the-bot) below.
 5. **Connect the entrances** through your service layer, and decide who may do what: public visitors ask questions, maintainers produce, update and publish. See the boundaries in [Using the Bot in Team Chat](./using-the-bot-in-team-chat.md).
 

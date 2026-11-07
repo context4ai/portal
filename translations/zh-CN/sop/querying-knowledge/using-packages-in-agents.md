@@ -4,8 +4,8 @@ description: 把知识包交给你的 Agent 使用，了解提问时 Agent 会�
 translation:
   locale: zh-CN
   artifact_ref: e9c6dca7-c6c3-40f5-8439-726ad9262b15
-  source_digest: c86e87480b988e8463bec55ae501efbbccaa99aeba6bcf4f19e0d949e3d675bf
-  translated_at: 2026-10-28T03:56:06.139Z
+  source_digest: 537685d16e936ff33dee97ec258b961d36b2f2d701e75ed1f7aee9054a8f2c38
+  translated_at: 2026-11-07T13:55:43.910Z
 ---
 
 # 在 Agent 中使用知识包
@@ -47,5 +47,5 @@ translation:
 <!-- context:section id="sources" -->
 ## 回到来源
 
-知识包页面保留了来源引用。当页面正文不足以回答问题时，查询 Skill 会自行沿其 Sources 条目查找：仓库链接通过宿主允许的工具按记录的提交读取，文档链接打开当前文档。需要远程读取代码证据时，`/c4a:context-inspect-search` 可以沿这些引用，追溯到记录版本下的原始文档和代码。请参阅 [提问](asking-questions.md) 和 [远程读取代码证据](reading-code-evidence-remotely.md)。
+知识包页面保留了来源引用。当页面正文不足以回答问题时，查询 Skill 会自行沿其 Sources 条目查找：仓库链接通过宿主允许的工具按记录的提交读取，文档链接打开当前文档。需要远程读取代码证据时，`/c4a:context-inspect-search` 可以沿这些引用，追溯到记录版本下的原始文档和代码。请参阅 [提问](asking-questions.md) 和 [选择 Context 读取代码的方式](../source-graph/connecting.md#choose-how-context-reads-code)。
 <!-- /context:section -->
