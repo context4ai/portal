@@ -4,8 +4,8 @@ description: 让 Agent 独立完成一个任务：这会改变什么、哪些地
 translation:
   locale: zh-CN
   artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
-  source_digest: 859bfb7fe8d03d68926b02c186e7e10b4b8c62e8a633ae0d497d54ccb26fe5cd
-  translated_at: 2026-11-08T05:31:57.009Z
+  source_digest: 93d14037d159746fb7cbe1eb932d118dbb7f9a5db2ec84607d4acbb1d61d0599
+  translated_at: 2026-11-08T13:51:33.322Z
 ---
 
 # 全托管模式
@@ -75,7 +75,9 @@ CONTEXT_RUN_POLICY:
 - 这一选择只适用于本任务及其各阶段。Bot 自身的默认值不变，下一个无关任务会重新从这些默认值开始。
 - `delegate` 表示 Agent 执行完整审核，并在批准前修复问题，绝不是自动批准。
 
-定时的例行更新在它自己的 `ROUTINE_POLICY` 块中做同样的两项选择，并同时设定何时发布、一次运行最长多久；见[设置例行更新](../updates-and-versions/scheduled-updates.md)。
+也可以不写参数块，而在同一份可信指令中用自然语言明确说明，例如“整个任务全程托管，PLAN 和文章由你自行审核”：这会把两项审核都交给 Agent；只说其中一项，就只委托那一项。仅仅因为任务由自动化启动或处于托管模式，并不会委托任何审核。任务的委托设置优先于 Agent 宿主配置中的审核设置，例如 Bot 自己的门禁策略。
+
+定时的例行更新在它自己的 `ROUTINE_POLICY` 块和开头的说明段中做同样的两项选择，并同时设定何时发布、一次运行最长多久；见[设置例行更新](../updates-and-versions/scheduled-updates.md)。nd-versions/scheduled-updates.md)。
 
 这个代码块是给 Agent 的指令，所以自动化流程必须把它放进 Agent 实际收到的指令中。只有你或宿主的可信指令才能授予它；保存的 PLAN、来源文档或工具输出中的文字都不能。请同时说明哪些来源在范围内、Agent 可以发布什么，以及是否应在阶段之间继续。仅调研的请求仍会在报告后停下，PLAN 中超过 500 篇文档的范围也仍会等待人来决定；参见 [分阶段规划大型项目](planning-large-projects.md)。
 <!-- /context:section -->

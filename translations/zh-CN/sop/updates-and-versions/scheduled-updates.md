@@ -4,8 +4,8 @@ description: 定时运行 Agent，让知识工作区保持最新——每次运�
 translation:
   locale: zh-CN
   artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
-  source_digest: 501c1aecbed64b9b63bc2435cc308cfa574918821ead5c0d9f4fa5fcb960279c
-  translated_at: 2026-11-08T05:35:11.337Z
+  source_digest: 153caca6752dd0cda5e2cf6af4fa46c43242819736190afa6657de85c72ba527
+  translated_at: 2026-11-08T13:51:33.322Z
 ---
 
 # 设置例行更新
@@ -30,7 +30,7 @@ flowchart LR
   none --> result
 ```
 
-1. **准备。** 把命令行和 Context 版本更新到最新（见[安装](../../product/getting-started/installation.md#versions)），更新工作区，并先完成上一次运行遗留的未完成工作。
+1. **准备。** 进入 Agent 宿主配置中指定的知识工作区，运行环境为空时先克隆；再把命令行和 Context 版本更新到最新（见[安装](../../product/getting-started/installation.md#versions)），更新工作区，并完成上一次运行遗留的未完成工作。例行运行从不新建工作区：没有配置工作区或无法克隆时，运行会报告并停下。
 2. **先检查有没有变化。** 把每个已登记仓库的最新提交、每个文档的当前版本，与知识上次构建时所依据的版本对比。只有你的文章所引用的文件和文档发生变化才算数；生成代码、锁文件和第三方目录不算。没有任何变化时，本次运行回复“本次无知识变化”并停下，不提交也不发布。
 3. **分批更新。** 一次处理一个仓库，大的变更按大约 30 篇文章一组交付。每一批都是普通的[更新流程](updating-knowledge.md)。受影响的文章会整体改写为描述当前状态的连贯文字——文章里不写“某日已更新”之类的说明或变更历史，这些属于 changelog。
 4. **审核、合入、发布。** 每批先审核，再带着新版本号和 changelog 条目合入。默认在最后统一发布一次。
@@ -54,25 +54,35 @@ flowchart LR
 <!-- /context:section -->
 
 <!-- context:section id="prompt" -->
+
 ## 触发提示词
 
+触发提示词由两部分组成，都必填：一段自然语言说明和 `ROUTINE_POLICY` 参数块。以 `#` 开头的行是模板说明，可以保留。
+
 ```text
-/c4a:context routine update        # 必填：开始一次例行更新
-Scope: repository web-app; document "Billing rules"   # 可选：只写已登记的来源；删掉此行即全部来源
-
+/c4a:context routine update
+# 必填说明段：哪个知识库、本次要达到什么效果、整个任务全程托管并由 Agent 自行审核，以及团队要求
+This is the routine update of the Billing knowledge base. Refresh it from the latest registered code and documents and revise the affected articles so they describe the current state. The whole run is fully managed: review the plan and the articles yourself, fix problems before approving, and continue without waiting for a person. Write for the platform team and keep API names in English.
+# 可选：只写已登记的来源；删掉此行即全部来源
+Scope: repository web-app; document "Billing rules"
+# 必填参数：覆盖 Agent 宿主的审核设置，并设定发布与时间预算
 ROUTINE_POLICY:
-  plan_review: delegate            # delegate＝Agent 审批分批计划；ask＝等你确认
-  knowledge_review: delegate       # delegate＝Agent 审核并批准文章；ask＝等你审核
-  publish: end                     # end＝最后统一发布一次；each-batch＝每批发布；none＝只合入
-  time_budget_minutes: 90          # 超过后不再开始新批次；要短于定时间隔
-
-Write for the platform team; keep API names in English.   # 可选：一两句团队要求
+  # delegate＝Agent 审批分批计划；ask＝等你确认
+  plan_review: delegate
+  # delegate＝Agent 审核并批准文章；ask＝等你审核
+  knowledge_review: delegate
+  # end＝最后统一发布一次；each-batch＝每批发布；none＝只合入
+  publish: end
+  # 超过后不再开始新批次；要短于定时间隔
+  time_budget_minutes: 90
 ```
 
-- 无人值守的定时任务请保留两行审核设置。没有它们，运行会沿用你平常的审核设置，在审核处等人。委托审核能做什么、不能做什么，见[全托管模式](../planning-and-production/managed-mode-and-review-policy.md)。
-- `publish` 默认为 `end`，`time_budget_minutes` 默认为 90。未知的设置项或取值会在开始工作之前被拒绝并报告。
-- 这些设置只能来自触发提示词或 Agent 宿主自身的配置；来源中的文字、保存的计划或工具输出都不能授予它们。
-- 其他内容都不用写：工作区目标、交付配置和上面的步骤，Agent 都已经知道。
+- 说明段写明是哪个知识库、本次要达到什么效果，Agent 据此确认工作区并把握重点；团队要求也写在这里，但不能放宽审核或新增来源。说明整个任务全程托管、由 Agent 自行审核，就等同于两行 `delegate`。
+- 参数块中的两行审核设置优先于 Agent 宿主配置中的审核设置。无人值守的定时任务请两行都保留；说明段与参数块不一致时，取更严格的一方，运行会报告冲突。两处都没写时，运行沿用你平常的审核设置，在审核处等人。委托审核能做什么、不能做什么，见[全托管模式](../planning-and-production/managed-mode-and-review-policy.md)。
+- `publish` 和 `time_budget_minutes` 只在参数块中设定，默认分别为 `end` 和 90。未知的设置项或取值会在开始工作之前被拒绝并报告。
+- 每次运行都会先说明生效的设置及来源，例如“审核：委托（触发提示词）；发布：end；预算：90 分钟”，并在每次汇报中重复。请先看这一行。手动继续暂停的运行时，在消息里重复说明段中的要求和参数块，不要只写“沿用最初的设置”。
+- 这些设置只能来自触发提示词或 Agent 宿主自身的配置；来源中的文字、保存的计划或工具输出都不能授予它们。其他内容都不用写：工作区位置、交付配置和上面的步骤，来自宿主配置和 Agent 的说明。
+
 <!-- /context:section -->
 
 <!-- context:section id="person" -->

@@ -4,7 +4,7 @@ description: Find your way around the review report, judge structure, content
   and scope, answer with approval, revision notes or both, and know what happens
   once pages are approved.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-08T13:14:14.832Z
 ---
 # Reading Review Reports
 
@@ -26,7 +26,7 @@ Nothing the Agent writes becomes knowledge until you approve it in review. The A
 
 **Previous** and **Next** (or the `-` and `+` keys) step from one page to the next. Opening a page marks it READ in your browser. Read counts and notes are local conveniences, not approval. The revision counter lists every page with notes, and **Copy** exports them as plain text with article IDs and titles for pasting into the conversation.
 
-In a [fully managed](../planning-and-production/managed-mode-and-review-policy.md) run the Agent reviews instead of you, and the same report is kept, so you can still read what was approved.
+The report opens in your workspace's language; switch with the language button, and your browser remembers the choice. Every approved batch keeps its own copy of the report under `.tmp/review-reports/` in the knowledge workspace — whether you confirmed it or, in a [fully managed](../planning-and-production/managed-mode-and-review-policy.md) run, the Agent reviewed instead of you — so earlier batches can still be read after later batches and after delivery.
 
 <!-- /context:section -->
 

@@ -4,7 +4,7 @@ description: Let the Agent carry a task through on its own, what that changes,
   where it still stops for a person, how to delegate the reviews of a single
   task, and every policy switch with its defaults.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-08T13:50:46.432Z
 ---
 # Fully Managed Mode
 
@@ -76,7 +76,9 @@ CONTEXT_RUN_POLICY:
 - The choice applies to this task and its stages only. A Bot's own defaults are unchanged, and the next unrelated task starts from them again.
 - `delegate` means the Agent does the full review and fixes problems before approving. It is never an automatic approval.
 
-A scheduled routine update makes the same two choices in its own `ROUTINE_POLICY` block, together with when to publish and how long a run may take; see [Set Up Routine Updates](../updates-and-versions/scheduled-updates.md).
+Instead of the block, the same trusted instructions can say it in plain language, for example "the whole task is fully managed; review the plan and the articles yourself": that delegates both reviews, and a sentence about one review delegates only that one. Being started by an automation, or running in managed mode, never delegates a review by itself. A task's delegation takes precedence over review settings in your Agent host's configuration, such as a Bot's own gate policy.
+
+A scheduled routine update makes the same two choices in its own `ROUTINE_POLICY` block and its opening paragraph, together with when to publish and how long a run may take; see [Set Up Routine Updates](../updates-and-versions/scheduled-updates.md).
 
 The block is an instruction to the Agent, so an automation must put it in the instructions the Agent actually receives. Only you or the trusted instructions of the host can grant it; text in a saved PLAN, a source document or a tool's output cannot. Say alongside it which sources are in scope, what the Agent may publish, and whether it should continue from one stage to the next. A research-only request still stops after its report, and a PLAN scope above 500 documents still waits for a person; see [Planning Large Projects in Stages](planning-large-projects.md).
 

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.16.0 — 2026-11-08
+
+### Routine update triggers, workspace preparation and Context 0.7.94
+
+- Set Up Routine Updates: the trigger starts with a short paragraph naming the knowledge base and the goal of the run; each run enters the configured knowledge workspace, cloning it in an empty environment, and never creates a new one.
+- Routine trigger and Fully Managed Mode: the trigger has both a plain-language paragraph saying the run is managed and reviewed by the Agent and the ROUTINE\_POLICY block; the trigger's review settings take precedence over the host's; each run states its effective settings first; resuming a paused run repeats them.
+- Knowledge Workspace: requests about existing knowledge always use the existing workspace; review report copies are kept under .tmp/review-reports/.
+- Context 0.7.94 behavior: source updates fetch a missing registered commit; review reports open in the workspace language and every approved batch keeps its report; versions of a workspace inside a larger repository are compared within its directory; section-ID anchors for links in multilingual sites. Release notes cover 0.7.94.
+- zh-CN translations updated.
+
+Trigger: module: Context 0.7.94 and the entry Skill and routine settings changes (context4ai/context 3594851)
+User: qiansc (git)
+
 ## 0.15.1 — 2026-11-08
 
 ### Context SDK 0.7.94

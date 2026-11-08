@@ -4,7 +4,7 @@ description: How to publish a Context site in several reader languages, how the
   Agent keeps translations up to date each round, and what readers see when a
   translation is outdated or missing.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-08T13:14:14.832Z
 ---
 # Multilingual Sites
 
@@ -43,6 +43,7 @@ A reader's saved choice wins, then the browser's languages, then the site's prim
 <!-- /context:section -->
 
 <!-- context:section id="workflow" -->
+
 ## How translation fits each round
 
 Once a language is added, the Agent translates during each round, after the pages are approved and before the version is recorded:
@@ -51,7 +52,8 @@ Once a language is added, the Agent translates during each round, after the page
 - **Later rounds** — only what changed since the last translation is updated, starting from the existing translation. This works best when each round's approved pages and translations are committed, which the Agent does when a round ends.
 - **Skipping a round** — tell the Agent "skip translation this round". Pending pages are published in the primary language for now, and the next round asks again.
 
-Translations keep the page's structure, code blocks, commands, paths and link targets unchanged; only prose, titles and diagram labels are translated. If any translated page fails these checks, nothing from that batch is saved. The underlying commands are listed in [CLI Commands](../../product/reference/context/cli-commands.md).
+Translations keep the page's structure, code blocks, commands, paths and link targets unchanged; only prose, titles and diagram labels are translated. To link to a section of another page, use its section ID, such as `installation.md#versions`: every language keeps the same section IDs, while a heading anchor comes from each language's own heading and does not exist in the translation. A link to a heading anchor is translated unchanged, and the Agent then corrects the original link to the section ID. If any translated page fails these checks, nothing from that batch is saved. The underlying commands are listed in [CLI Commands](../../product/reference/context/cli-commands.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="storage" -->
