@@ -5,7 +5,7 @@ sources:
         local: .tmp/context-plans/20261012-portal-kb/repos/context
         git:
           remote: https://github.com/context4ai/context.git
-          ref: 33073fdeb22415e972e6598be5101b094bf0b91d
+          ref: 3e71a6d84173b5448b6dfb4ea8f6bc3810c5f5b7
       - name: sourcegraph
         local: .tmp/context-plans/20261012-portal-kb/repos/sourcegraph
         git:

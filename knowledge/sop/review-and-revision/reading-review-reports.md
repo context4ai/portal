@@ -4,7 +4,7 @@ description: Find your way around the review report, judge structure, content
   and scope, answer with approval, revision notes or both, and know what happens
   once pages are approved.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Reading Review Reports
 
@@ -13,16 +13,21 @@ Nothing the Agent writes becomes knowledge until you approve it in review. The A
 <!-- /context:section -->
 
 <!-- context:section id="layout" -->
+
 ## What is in the report
 
 | Part | What it shows |
 | --- | --- |
 | Change overview | The batch at a glance, with the existing navigation and the expected file tree of the knowledge workspace |
-| Navigation | Where each page will sit; pages without a placement are flagged so the Agent can place them before asking you |
+| Navigation | Where each page will sit, and every navigation change the batch makes — including menu entries for pages outside the batch. Pages without a placement are flagged so the Agent can place them before asking you |
+| Planned retirement | When the batch also retires pages: which pages go, how the menu changes, and any draft that still links to them (those drafts are revised before you are asked to approve) |
 | Pages | Each draft's title, path, summary and full rendered content, including diagrams and source citations. New pages are marked *New*; changed pages show the changed blocks next to the previous text |
 | Revision notes | A note box per page; typing in it marks the page for revision |
 
-Opening a page marks it READ in your browser. Read counts and notes are local conveniences, not approval. The revision counter lists every page with notes, and **Copy** exports them as plain text with article IDs and titles for pasting into the conversation.
+**Previous** and **Next** (or the `-` and `+` keys) step from one page to the next. Opening a page marks it READ in your browser. Read counts and notes are local conveniences, not approval. The revision counter lists every page with notes, and **Copy** exports them as plain text with article IDs and titles for pasting into the conversation.
+
+In a [fully managed](../planning-and-production/managed-mode-and-review-policy.md) run the Agent reviews instead of you, and the same report is kept, so you can still read what was approved.
+
 <!-- /context:section -->
 
 <!-- context:section id="three-checks" -->

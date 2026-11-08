@@ -4,7 +4,7 @@ description: How a knowledge workspace gets one version and one changelog entry
   per completed round, where readers see the history, and how to go back to an
   earlier version.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Versions, Changelog and Restoring
 
@@ -70,11 +70,14 @@ Before restoring, the Agent shows you what will change. Files added since then a
 <!-- /context:section -->
 
 <!-- context:section id="restore-result" -->
+
 ### What you get back
 
 - The workspace files as they were at the target, with branch history preserved.
 - The sources that version used — repository versions, document snapshots and attachments. Newer remote content is never used in place of a lost old snapshot, and sources that are still usable are not fetched again.
+- Only one document needs to go back? Name it — *"Restore the handbook to its capture from last Friday"* — and the Agent restores that registered document alone, either to the capture you name or to its latest complete capture in Git history. Its text, images and manifest entry come back together as one snapshot, and other documents are left as they are.
 - Existing outputs are reported as out of date until you ask for a rebuild. Restoring an old configuration does not start a full re-indexing; if the old format is incompatible, the Agent tells you the choice to make instead of rewriting pages silently.
 
 The Agent then checks the restored files against the target and that nothing unrelated changed. If some sources could not be restored, it reports a partial result with what access or version is missing. Restoring itself does not commit or push; ask the Agent to commit the restored state when you are satisfied — see [Starting a New Task and Saving Your Work](../workspace-maintenance/preparing.md).
+
 <!-- /context:section -->

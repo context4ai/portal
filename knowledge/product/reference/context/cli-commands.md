@@ -3,7 +3,7 @@ title: CLI Commands
 description: Every command and subcommand of the context CLI, grouped by
   purpose, with what each does and its key options.
 type: Wiki
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # CLI Commands
 
@@ -28,16 +28,18 @@ Run `context <command> --help` for the full option list of any command. For the 
 <!-- /context:section -->
 
 <!-- context:section id="workflow" -->
+
 ## Workflow
 
 | Command | What it does | Key options |
 | --- | --- | --- |
-| `context status` | Prints the workspace overview and the next Route | `--format table\|json`, `--view summary\|full`, `--managed`, `--authority` |
+| `context status` | Prints the workspace overview and the next Route; `--view full` also expands phases and sources | `--format table\|json`, `--view summary\|full`, `--managed`, `--authority` |
 | `context run [phase]` | Inspects or runs a declared phase; with no phase, advances deterministic Routes | `--list`, `--dry-run`, `--until blocked-or-complete`, `--max-steps`, `--deliver`, `--resume-writing` |
 | `context resource acknowledge-current` | Records that every resource required by the current Route was read | |
 | `context resource materialize <id>` | Writes one revision-bound Context view to a local file | |
-| `context action prepare-current` | Prepares or retries the current production batch directories without resubmitting accepted articles | `--revision`, `--input` |
-| `context action complete-current` | Submits the semantic output — a report decision, drafts, a Gate answer — for the exact current revision | `--revision`, `--input`, `--managed`, `--multi-agent`, `--preview` |
+| `context action prepare-current` | Prepares or retries the current production batch, or every page of a prepared revision batch, without resubmitting accepted work | `--revision`, `--input`, `--managed` |
+| `context action complete-current` | Submits the semantic output — a report decision, drafts, a Gate answer — for the exact current revision; `--preview` checks one revised page, or a whole prepared revision batch, without saving anything | `--revision`, `--input`, `--managed`, `--multi-agent`, `--preview` |
+
 <!-- /context:section -->
 
 <!-- context:section id="tasks" -->
@@ -50,11 +52,12 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context task resume` | Explicitly reopens cleared production from registered requirements and retained knowledge |
 | `context task adjust` | Adjusts current source and module inputs, or the knowledge map, without disturbing unrelated work (`--input`, `--schema`, `--inspect`) |
 | `context task maintain` | Registers a scoped page revision, regeneration or approved-output rebuild |
+| `context task record-fix` | Records a purely mechanical correction (a typo, a broken link) made after a batch's approval and before its delivery, with the reason; it needs no further review |
 | `context task advance-maintenance` | Executes the current maintenance transition |
 | `context task maintenance-status` | Shows maintenance requests and the current cancellation revision |
 | `context task cancel-maintenance <id>` | Cancels a pending maintenance request without discarding an active draft |
 | `context task retire` | Previews or applies retirement of an approved article and cleanup of references to it |
-| `context task recover` | Inspects or previews scoped recovery outside the normal Route |
+| `context task recover` | Inspects or previews scoped recovery outside the normal Route; `--managed` keeps a managed session's mode |
 | `context task rollback` | Previews exact user-selected reversions and discarded drafts; never resets the repository |
 | `context task finish-rollback` | Finishes a rollback after close and all builds succeed |
 | `context update` | Checks acquired source changes against approved knowledge in confirmed scopes (`--input`), or, with `--pending` and no input file, processes registered repositories whose commit moved past the processed version; pass exactly one of the two |
@@ -63,16 +66,18 @@ Run `context <command> --help` for the full option list of any command. For the 
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
+
 ## Review
 
 | Command | What it does | Key options |
 | --- | --- | --- |
-| `context review html [collection]` | Renders a self-contained local review report | `--all`, `--out`, `--open` |
+| `context review html [collection]` | Renders a self-contained local review report; without a graphical session, `--open` prints the path to open instead | `--all`, `--out`, `--open` |
 | `context review list [collection]` | Lists draft candidates in the terminal | |
 | `context review apply <file>` | Applies scoped JSON or JSONL decisions and revision instructions | |
 | `context review approve-all [collection]` | Approves the whole current review scope | `--all`, `--confirmed` (your confirmation), `--managed` |
 | `context review approve <id>` / `reject <id>` | Approves or rejects one draft candidate | |
 | `context review deprecate <article-id>` | Marks an approved page deprecated without deleting it | |
+
 <!-- /context:section -->
 
 <!-- context:section id="delivery" -->
@@ -84,8 +89,8 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context close` | Closes approved knowledge: derives `structure.yaml` and runs final verification | `--format` |
 | `context verify` | Validates the workspace | `--compact`, `--view diagnostics`, `--page-size`, `--page-token` |
 | `context build` | Builds the declared packages and sites | `--verbose` |
-| `context translate status` | Reports translation freshness per locale | |
-| `context translate prepare` | Writes a draft per pending article — its stale translation, or the approved source when missing — with a `source_diff` when Git history holds the version it was translated from, plus a submission file | |
+| `context translate status` | Reports translation freshness per locale, including translations whose page no longer exists | |
+| `context translate prepare` | Writes a draft per pending article — its stale translation, or the approved source when missing — with a `source_diff` against the source it was last translated from, plus a submission file. When only translations of removed pages remain, it removes them and finishes the round | |
 | `context translate submit` | Validates and saves translated articles and navigation titles | `--input` |
 | `context translate skip` | Publishes pending translations in the primary language for now | |
 
@@ -103,6 +108,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 <!-- /context:section -->
 
 <!-- context:section id="sources" -->
+
 ## Sources and Indexers
 
 | Command | What it does |
@@ -119,9 +125,10 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context source inspect [name]` | Shows repository module boundaries without extraction |
 | `context source ensure [name]` | Checks repository checkouts without cloning, checking out or resetting |
 | `context source recovery-plan [name]` | Plans recovery of missing repository checkouts without changing files |
-| `context source restore` | Restores repository checkouts from explicit local or clone decisions |
+| `context source restore` | Restores repository checkouts from explicit local or clone decisions, or one registered document's snapshot from Git history |
 | `context indexer catalog` | Lists bundled Skill names, descriptions and entries |
 | `context indexer report-benchmark` | Builds a forward-test report from an independently loaded oracle |
+
 <!-- /context:section -->
 
 <!-- context:section id="debug" -->

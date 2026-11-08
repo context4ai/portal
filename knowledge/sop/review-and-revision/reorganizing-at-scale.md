@@ -4,7 +4,7 @@ description: After the first round, ask the Agent for a clearer directory and
   title structure, then apply it with map adjustments, page moves, splits,
   merges and retirement.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Reorganizing at Scale
 
@@ -51,11 +51,20 @@ The Agent reads the affected pages and current sources before deciding what to k
 <!-- /context:section -->
 
 <!-- context:section id="retire" -->
+
 ## Retiring pages
 
-Ask the Agent to retire the pages, and say which page replaces each one and why. The Agent first shows you what will be removed. Retirement is confirmed in the conversation, not in the review report, and once you have approved it the Agent applies it without asking again. The page and its navigation entries are removed together, links from other pages are pointed at the replacement, and the Agent can roll the retirement back if you change your mind. Links into a specific paragraph of a split page are repaired first, because Context cannot infer where a paragraph went.
+Ask the Agent to retire the pages, and say which page replaces each one and why. The Agent first shows you what the retirement will do: which pages go, which menu entries will point to the replacement or disappear, which other pages need their links changed and which translations will be removed. Once you have approved it, the Agent applies it without asking again.
+
+How it is applied depends on whether a review is still open:
+
+- **No review open.** The retirement is a step of its own, confirmed in the conversation rather than in a review report. The pages and their navigation entries are removed together, links from other pages point at the replacement, and the Agent can roll the retirement back if you change your mind.
+- **A review is still open.** The retirement joins that batch. Pages whose links must change are added to the batch, the review report shows the planned result, and nothing is deleted until you approve the batch; the retirement is then applied together with the revised pages. The replacement can be a page written in the same batch.
+
+Links into a specific paragraph of a split page are repaired first, because Context cannot infer where a paragraph went. Sources and shared assets are never deleted.
 
 Pages with continuing value, such as documentation for an older version, normally stay. A shorter new text or a changed menu is not a reason to retire.
+
 <!-- /context:section -->
 
 <!-- context:section id="record" -->

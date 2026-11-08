@@ -4,7 +4,7 @@ type: Wiki
 description: Where to ask questions, how to report a bug with the details
   maintainers need, which releases receive fixes, and how to report a
   vulnerability privately for Context and Agent Graph.
-timestamp: 2026-10-12T20:24:32.970Z
+timestamp: 2026-11-08T05:34:46.443Z
 ---
 # Support
 
@@ -23,12 +23,14 @@ Agent Graph Discussions also take ideas that are not yet actionable. Both projec
 <!-- /context:section -->
 
 <!-- context:section id="diagnose" -->
+
 ## Check before reporting
 
-- **Installation.** `context --version` and `context plugin status` confirm the CLI and the host plugins. If an entry is present but the `context` executable is missing, the entry names the installation step to run.
+- **Installation.** `context --version` and `context plugin status` confirm the CLI and the host plugins. If an entry is present but the `context` executable is missing, the Agent installs it once when your host allows Context upgrades, otherwise it names the installation step to run. Version mismatches between the CLI, the installed Skills and your workspace are covered in [Installation](../getting-started/installation.md#versions).
 - **Workflow state.** `context status --format json` shows the current Route, its reason code and diagnostics. Resume from that Route rather than repeating an earlier command.
 - **Traces.** `context debug enable` records workspace-local traces under `.tmp/context-runtime/debug/`, and `context debug export` builds a replay you can inspect; see [CLI Commands](../reference/context/cli-commands.md).
 - **Agent Graph.** `npx @c4a/agent-graph validate --format json` loads the whole Provider and returns a structured error without side effects, and the Graph tests replay Routes without a host, which makes a minimal reproduction easy to share; see [Testing and Publishing](../../sop/agent-graph/testing-and-publishing.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="bug-reports" -->

@@ -4,8 +4,8 @@ description: 为 Claude Code、Codex 或 Cursor 安装 Context CLI 和 Agent 插
 translation:
   locale: zh-CN
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
-  source_digest: d5ff9546979e904d9f95abf686787fe266f3a4f3151e9e9b6591bbc2f2a156d5
-  translated_at: 2026-10-22T19:03:13.981Z
+  source_digest: 2e68939a25e5c51bc4cf85913b2a4aafeda342f7f815be67cc6b4a5e3ceb1576
+  translated_at: 2026-11-08T05:31:57.009Z
 ---
 
 # 安装
@@ -95,7 +95,21 @@ context --version
 context plugin status
 ```
 
-`context plugin status` 检查全局宿主。它和 `context plugin install` 都会在你运行它们的那个 shell 的 `PATH` 上查找 `claude` 和 `codex` 命令；如果提示缺少 Claude Code 或 Codex，请检查对应命令能否在该 shell 中解析。Cursor 不需要 `PATH` 上的命令，它的插件文件会被直接写入。然后打开 Agent，调用 `/c4a:context`。如果入口存在但缺少 `context` 可执行文件，入口会给出确切的安装步骤并停止，而不会只初始化一半知识工作区。
+`context plugin status` 检查全局宿主。它和 `context plugin install` 都会在你运行它们的那个 shell 的 `PATH` 上查找 `claude` 和 `codex` 命令；如果提示缺少 Claude Code 或 Codex，请检查对应命令能否在该 shell 中解析。Cursor 不需要 `PATH` 上的命令，它的插件文件会被直接写入。然后打开 Agent，调用 `/c4a:context`。如果入口存在但缺少 `context` 可执行文件：当你的宿主已经允许 Agent 把 Context 升级到某个最低版本时，Agent 会安装一次，用 `context --version` 确认后继续；否则它会给出上面的安装命令并停止，而不会只初始化一半知识工作区。Context 自身正常返回的 "not found" 信息不会被误判为缺少命令行。
+<!-- /context:section -->
+
+<!-- context:section id="versions" -->
+
+## 保持版本一致
+
+有三处带着 Context 版本：`context` 命令行、安装在 Agent 宿主中的 Context 技能（入口里写明它随哪个 Context 版本发布），以及知识工作区依赖的 `@c4a/context` SDK。在一个工作区开始生产时，Agent 会比较一次这三处，并把它们升到你当前版本线的最新正式版：
+
+- 命令行安装为这个确切版本；
+- 用 `context plugin install` 安装的技能会被刷新；由宿主提供的技能保持原样并报告出来，以便宿主的维护者更新；
+- 工作区 SDK 提升并安装，这一变化随你的下一次交付一起提交，不单独提交。
+
+出现更新的主版本时，Agent 不会自行升级过去。它会给你看当前主版本和新主版本各自的最新版、两者之间的变化、对你的工作区的预计影响以及建议，然后等你选择。任何部分都不会降级；如果读不到发布列表，Agent 会报告一次，并继续使用现有版本。
 
 下一步：[快速开始](quick-start.md)。
+
 <!-- /context:section -->

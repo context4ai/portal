@@ -402,7 +402,7 @@ entries:
       artifact_ref: 307b902e-f337-4e9d-a849-acdc0127be22
   - key: guides-updates/scheduled-updates
     parent: guides-updates
-    title: Scheduled Updates
+    title: Routine Updates
     order: 30
     target:
       artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
@@ -658,4 +658,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:850d8da9ca0af6580900c52cc33f12e9f8cd2edd3e88b616f5bc5711698c4db4
+revision: sha256:13446b6f5082c608859890bea39f90768321260cef3171de6548502d7e5d0019

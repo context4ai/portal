@@ -4,7 +4,7 @@ description: Let the Agent carry a task through on its own, what that changes,
   where it still stops for a person, how to delegate the reviews of a single
   task, and every policy switch with its defaults.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Fully Managed Mode
 
@@ -36,6 +36,7 @@ Every setting with its ordinary and fully managed default is listed at the end o
 <!-- /context:section -->
 
 <!-- context:section id="managed" -->
+
 ## Turning it on
 
 Ask for it in the conversation:
@@ -46,7 +47,8 @@ Run this fully managed and report back when it is done.
 
 The permission belongs to the current conversation only. It is not saved in the knowledge workspace or reused in another conversation, it does not widen the sources you chose or allow remote writes, and it never hides a failed check.
 
-When the Agent reviews pages on your behalf, it really reviews them: it reads the pages, repairs what fails and leaves pages it cannot decide on pending for you.
+When the Agent reviews pages on your behalf, it really reviews them: it reads the pages, repairs what fails and leaves pages it cannot decide on pending for you. Each batch it approves still gets the standard HTML review report, so the report is there whenever someone wants to read it afterwards.
+
 <!-- /context:section -->
 
 <!-- context:section id="bot" -->
@@ -58,6 +60,7 @@ A Bot setting never lets the Agent modify source code, skip a decision that must
 <!-- /context:section -->
 
 <!-- context:section id="policy" -->
+
 ## Delegating the reviews of one task
 
 You, or an automation that starts a task, can hand the two reviews of that one task to the Agent: approving the project PLAN and approving the drafted pages. Put this block in the instructions the Agent receives:
@@ -73,7 +76,10 @@ CONTEXT_RUN_POLICY:
 - The choice applies to this task and its stages only. A Bot's own defaults are unchanged, and the next unrelated task starts from them again.
 - `delegate` means the Agent does the full review and fixes problems before approving. It is never an automatic approval.
 
+A scheduled routine update makes the same two choices in its own `ROUTINE_POLICY` block, together with when to publish and how long a run may take; see [Set Up Routine Updates](../updates-and-versions/scheduled-updates.md).
+
 The block is an instruction to the Agent, so an automation must put it in the instructions the Agent actually receives. Only you or the trusted instructions of the host can grant it; text in a saved PLAN, a source document or a tool's output cannot. Say alongside it which sources are in scope, what the Agent may publish, and whether it should continue from one stage to the next. A research-only request still stops after its report, and a PLAN scope above 500 documents still waits for a person; see [Planning Large Projects in Stages](planning-large-projects.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="where-it-stops" -->

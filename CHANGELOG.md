@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.15.0 — 2026-11-08
+
+### Routine updates, version alignment and clearer review and revision guides
+
+- New guide Set Up Routine Updates: what each scheduled run does, setting it up yourself or through your Agent, and a commented trigger prompt template; the menu label is Routine Updates.
+- Installation explains how the Agent installs a missing CLI and keeps the CLI, the Context Skill and the workspace SDK on the latest release of the current major version.
+- Revising a Page, Reorganizing at Scale and Reading Review Reports cover follow-up changes joining the open review, retirement inside a batch, mechanical fixes after approval, Previous/Next buttons and the list of navigation changes.
+- Updating Knowledge, Keeping Knowledge Current, Fully Managed Mode, Versions and Multilingual Sites follow the current update, review report, document restore and translation cleanup behavior; the CLI reference, the five-file citation limit and the release notes are current.
+- Upgrade Context SDK to 0.7.93.
+
+Trigger: module: Context source advanced to 3e71a6d (0.7.93) with context update --pending.; navigation: Menu label for the routine update guide.; translation: Chinese pages updated with the English articles.; dist: Workspace SDK and CLI aligned to Context 0.7.93.
+User: qiansc (git)
+
 ## 0.14.0 — 2026-11-07
 
 ### Source Graph private repositories, preparation rules, snapshot storage and a clearer guide structure

@@ -4,7 +4,7 @@ description: How Context finds the knowledge affected by a source change,
   re-checks it, and moves the baseline forward only after the update is
   delivered.
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Keeping Knowledge Current
 
@@ -30,7 +30,7 @@ Building completes the currently approved state; it does not freeze the Context 
 
 The listed pages are candidates to inspect, not an instruction to rewrite all of them. For each page the Agent reads its current approved Markdown and the change, then submits one decision: no change, or a concrete correction. Unrelated content and readers' earlier improvements are preserved.
 
-After a repository is re-pinned, `context update --pending` narrows that list. Only pages whose cited text changed or could no longer be read become candidates, with the affected sections listed in `changed_references`. Every other page that cites the source appears in `scope_pages`: it needs no decision, but the Agent includes it with an instruction when an addition or a shared change affects it, such as an overview that should mention a new export. The new commit is recorded only after this one scope decision, and citations that merely moved are relocated then.
+After a repository is re-pinned, `context update --pending` narrows that list to pages whose cited text needs a look: the cited block is no longer found at the new version, it now matches in more than one place, or the snapshot cannot show it. Citations whose text is unchanged or only moved are not asked about; they follow the text when the update settles. A source that cannot be read is reported as a gap, never as a change. Every other page that cites the source appears in `scope_pages`: it needs no decision, but the Agent includes it with an instruction when an addition or a shared change affects it, such as an overview that should mention a new export. When a document change only reformats text, Context can propose where each citation moved, and the Agent may accept it as a formatting-only change instead of revising the pages. The new commit is recorded only after this one scope decision.
 
 Existing references cannot discover every new topic, so the Agent also inspects additions and shared dependencies and lists necessary **new pages**, each with a path, title, registered sources and instruction. New pages go through the same writing and review as revisions. A renamed subject is revised in place rather than given a new identity; a retirement explains what disappeared and which readers are affected instead of silently deleting pages.
 
@@ -60,13 +60,15 @@ For one or two documents or a clearly bounded module, the update stays local: wh
 <!-- /context:section -->
 
 <!-- context:section id="triggers" -->
+
 ## Ways an update starts
 
 | Trigger | How |
 | --- | --- |
 | A source changed | Tell `/c4a:context` the new version; it runs `context update` for the selected scope |
 | A page is wrong or incomplete | `context revise "<page>" --instruction "<correction>"` continues through Review and delivery, with no recapture for wording-only changes |
-| Unattended or scheduled runs | An authorized task can pass `CONTEXT_RUN_POLICY` with `plan_review` and `knowledge_review` set to `ask` or `delegate`; human-only Gates still stop |
+| On a schedule | A routine update checks every registered source, updates what changed in batches and reports the result; see [Set Up Routine Updates](../../sop/updates-and-versions/scheduled-updates.md) |
 
 Gaps found while answering questions are handled the same way: they become revision tasks for the affected pages.
+
 <!-- /context:section -->

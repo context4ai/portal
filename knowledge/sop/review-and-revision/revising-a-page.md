@@ -3,7 +3,7 @@ title: Revising a Page
 description: Correct one page, a draft still in review or an already approved
   page, while keeping its identity, URL and source citations.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Revising a Page
 
@@ -12,14 +12,19 @@ Revision changes a page without producing it again. It starts from the current t
 <!-- /context:section -->
 
 <!-- context:section id="which" -->
-## Two situations
+
+## When your request is handled
 
 | The page is | How to ask | What happens |
 | --- | --- | --- |
-| A draft in the current review | Write a note in the report, or say it in the conversation | The Agent repairs it within the same batch and shows an updated report |
-| Already approved | *"Revise `<page>`: `<problem>`. Keep the source citations."* | The Agent revises the page and the new version goes to review |
+| A draft in the review that is open now | Write a note in the report, or say it in the conversation | The Agent repairs it in the same batch and shows an updated report |
+| Approved, while a review is still open | *"Revise `<page>`: `<problem>`. Keep the source citations."* | The page joins the open review, so you approve it together with the rest. If the page already has a draft in that batch, the revision continues from that draft |
+| Approved, with no review open | The same request | The Agent revises the page and the new version goes to review |
 
-If an approved page is not part of the batch currently in review, its revision waits until that batch is finished. You can ask for it sooner; it still goes through review. To revise several approved pages together, name them all in one request.
+Ask for as many changes as you like before approving: each one joins the same review instead of waiting for another round. To revise several pages, you can also name them all in one request.
+
+Once you approve a batch, new requests wait for the next round. The one exception is a purely mechanical correction the batch itself caused, found before its pages are delivered — a broken link or anchor, a menu label, formatting. The Agent may fix it directly, records what it changed and why, and reports it with the result; it needs no second review. Anything that changes what a page says goes to the next review.
+
 <!-- /context:section -->
 
 <!-- context:section id="how" -->

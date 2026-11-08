@@ -4,7 +4,7 @@ description: How every section of Context knowledge stays tied to exact source
   regions, and how Agents use that chain to go from an answer back to the
   original.
 type: Guide
-timestamp: 2026-10-28T03:53:56.231Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Evidence Chains and Index First
 
@@ -26,7 +26,7 @@ An answer starts from the knowledge map, lands on an article section, and from t
 
 ## Sections carry their own evidence
 
-Approved articles are divided into sections. Each written fragment cites regions of registered sources: at most three distinct source files, several regions of one file allowed, up to eight regions in total. Each reference is a `source_ref` plus a `locator`. An Agent may locate a region by line range, by a Markdown heading (optionally with its `##` marker, which also selects the heading level) or by an exact quote; the CLI resolves the heading or quote against the captured text and stores the line range. When an article is submitted, the CLI checks that each cited source is authorized for that task, reads the current captured text and computes the region's content digest. Unknown or unauthorized paths and source-version drift are errors, not warnings. There is no separate fact table or claim ledger to maintain — the references are the evidence.
+Approved articles are divided into sections. Each written fragment cites regions of registered sources: at most five distinct source files, several regions of one file allowed, up to eight regions in total. Each reference is a `source_ref` plus a `locator`. An Agent may locate a region by line range, by a Markdown heading (optionally with its `##` marker, which also selects the heading level) or by an exact quote; the CLI resolves the heading or quote against the captured text and stores the line range. When an article is submitted, the CLI checks that each cited source is authorized for that task, reads the current captured text and computes the region's content digest. Unknown or unauthorized paths and source-version drift are errors, not warnings. There is no separate fact table or claim ledger to maintain — the references are the evidence.
 
 `source_ref` values are opaque, verified identities. Agents copy them exactly; they are not file-system paths.
 

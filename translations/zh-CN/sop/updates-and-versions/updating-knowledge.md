@@ -4,8 +4,8 @@ description: 将已有页面更新到新的提交或文档版本——指定范�
 translation:
   locale: zh-CN
   artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
-  source_digest: 65ddf7d1678070ea6ab2b35b565915bf147d50c63c2936c51632c1820554a87d
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: 0ce80df4d15fc05981cbc0a7dead30bfdec13c382e6060cdd65630c81f9d8959
+  translated_at: 2026-11-08T05:31:57.009Z
 ---
 
 # 更新知识
@@ -35,7 +35,7 @@ billing-service 已合入 release-2.4，请帮我找到受影响的知识并更�
 这次只处理 invoicing 和 refunds 两个模块。
 ```
 
-如果只是单个页面的文本有误，更适合用 [修订](../review-and-revision/revising-a-page.md)。如果知识工作区中还有其他未完成的工作，Agent 会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。
+如果只是单个页面的文本有误，更适合用 [修订](../review-and-revision/revising-a-page.md)。如果希望按计划定时检查来源，而不是每次都提出请求，请[设置例行更新](scheduled-updates.md)。如果知识工作区中还有其他未完成的工作，Agent 会告诉你，并在开始一次独立的更新之前询问是先完成还是回滚。
 <!-- /context:section -->
 
 <!-- context:section id="acquire" -->
@@ -53,7 +53,7 @@ Context 不会监视平台上的变化；Agent 只会针对你指定的范围，
 <!-- context:section id="submit" -->
 ## 哪些页面会变化
 
-Agent 首先找出每一个引用了变更材料的页面。这是有意放宽的范围，而不是必须修改的页面清单：Agent 会阅读变更和每个页面，保留仍然正确的内容，修订发生变化的部分，并为真正的新主题提议新页面。新页面在写作之前会先交给你确认。
+Agent 首先找出引用文字在新版本中已对不上的页面；文字只是移动了位置的引用会自动跟随，不会被问到。这份列表是起点，而不是必须修改的页面清单：Agent 会阅读变更和每个页面，保留仍然正确的内容，修订发生变化的部分。修订后的页面会整体改写为描述当前状态的连贯文章，而不是堆积“已更新”之类的说明；变更历史属于 [changelog](versions-and-changelog.md)。真正的新主题会成为提议的新页面，在写作之前先交给你确认。
 
 如果你没有指定模块，整个已登记的来源都在范围内。
 <!-- /context:section -->

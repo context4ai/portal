@@ -4,8 +4,8 @@ description: kbPackage 与 llmsPackage 声明的字段、包结构、目录索�
 translation:
   locale: zh-CN
   artifact_ref: ff6d102c-14a5-4f8b-a8fd-8464060dde1d
-  source_digest: 29be92886e2f1c028bdf9243084dad648eecdad9b4958814cbbf6c1e7932d1d3
-  translated_at: 2026-10-28T03:56:06.139Z
+  source_digest: d860994577629457c29d762f277a2f8816c0ae8fd69de39a73f3312ef07b7de9
+  translated_at: 2026-11-08T05:31:57.009Z
 ---
 
 # 包模板
@@ -103,7 +103,7 @@ feats/...
 | 归属 | 内容 |
 | --- | --- |
 | 已批准的 Markdown | `title`、`type`、`description`、ISO UTC 格式的 `timestamp`；可选的 `resource` 和 `tags` |
-| `knowledge/structure.yaml` | 稳定的 `article_id`、`path`、`collection`、`visibility`，以及每个 section 的引用（每个片段最多引用三个来源文件、总计最多八个区域：`source_ref`、`locator { path, start_line, end_line }`、`content_digest`） |
+| `knowledge/structure.yaml` | 稳定的 `article_id`、`path`、`collection`、`visibility`，以及每个 section 的引用（每个片段最多引用五个来源文件、总计最多八个区域：`source_ref`、`locator { path, start_line, end_line }`、`content_digest`） |
 
 Markdown 中的 section 标记只包含 ID：`<!-- context:section id="usage" -->` … `<!-- /context:section -->`。包内页面保留面向读者的元数据，并根据引用生成一个 Sources 小节；仓库链接会带上文件和行号范围。
 <!-- /context:section -->

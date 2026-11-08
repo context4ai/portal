@@ -3,14 +3,46 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-11-07T13:54:53.020Z
+timestamp: 2026-11-08T05:34:46.443Z
 ---
 # Release Notes
 
 <!-- context:section id="overview" -->
+
 These notes summarize recent product releases by what readers and Agents notice. The complete history is in the [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) and the [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md). The site's own **Changelog** entry in the More menu is different: it lists the versions of this documentation, not product releases.
 
-To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session; see [Installation](../getting-started/installation.md). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session, or let the Agent do it when you next start production; see [Installation](../getting-started/installation.md#versions). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+
+<!-- /context:section -->
+
+<!-- context:section id="context-0793" -->
+
+## Context 0.7.83 to 0.7.93 (2026-10-24 to 2026-11-08)
+
+**Keeping knowledge current**
+
+- Routine updates: a scheduled Agent run checks every registered source, updates what changed in batches, publishes once and reports what needs you. See [Set Up Routine Updates](../../sop/updates-and-versions/scheduled-updates.md).
+- Updates ask only about pages whose cited text no longer matches; citations whose text only moved follow it, and a re-pinned repository is processed without restating the change. See [Updating Knowledge](../../sop/updates-and-versions/updating-knowledge.md).
+- A Lark document whose new copy comes back incomplete keeps its last good copy. See [Lark Documents](../../sop/registering-sources/lark-documents.md).
+- A single document can be restored from an earlier capture. See [Versions, Changelog and Restoring](../../sop/updates-and-versions/versions-and-changelog.md).
+
+**Review and revision**
+
+- Further changes asked for before approval join the open review, several revised pages are checked together before they are submitted, and small mechanical fixes after approval need no second review. See [Revising a Page](../../sop/review-and-revision/revising-a-page.md).
+- Pages can be retired inside an open review, which shows the planned result before anything is removed. See [Reorganizing at Scale](../../sop/review-and-revision/reorganizing-at-scale.md).
+- The review report has Previous and Next buttons and lists every navigation change, and fully managed runs keep the report. See [Reading Review Reports](../../sop/review-and-revision/reading-review-reports.md).
+
+**Installation and versions**
+
+- A missing CLI is installed once when your host allows Context upgrades, and the CLI, the Context Skill and your workspace's SDK are kept on the latest release of your version line. See [Installation](../getting-started/installation.md#versions).
+
+**Packages and sites**
+
+- Knowledge packages share one query Skill that searches every installed Context package and follows each page's sources back to the recorded code or document. See [Using Knowledge Packages in Agents](../../sop/querying-knowledge/using-packages-in-agents.md).
+- Website articles end with a map of their sources. See [Documentation Sites](../../sop/outputs-and-sites/documentation-sites.md).
+- Translations of removed pages are cleaned up automatically. See [Multilingual Sites](../../sop/outputs-and-sites/multilingual-sites.md).
+- Status, updates and page submissions are faster on large knowledge workspaces.
+
 <!-- /context:section -->
 
 <!-- context:section id="context-0782" -->

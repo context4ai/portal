@@ -4,7 +4,7 @@ description: What to put in your own code or document Indexer — investigation
   signals, bounded helpers, outline-first planning and topic grouping, writing
   guidance, images and tests — with an example outline for each.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Writing Indexer Guidance
 
@@ -62,11 +62,13 @@ It must not execute repository code, read credentials, traverse unrelated direct
 <!-- /context:section -->
 
 <!-- context:section id="writing" -->
+
 ### Writing guidance
 
 Once the work-start report is confirmed (see [Confirming the Work-Start Report](../planning-and-production/start-reports.md)), the Agent reads the source each article needs. Guide it to explain contracts, state changes, failure behavior and integration points — what the module is responsible for, how to enter it, what it hands off. Parsing can locate declarations; it is not proof of runtime behavior. Preserve expressions without executing project code, keep declared defaults apart from implemented defaults, and state unknowns.
 
-An Indexer may suggest a recurring outline for a feature family such as route groups or components, but not a fixed page count: a component manual may need component-by-component reading, while one page per symbol or a catch-all page for a large module are both wrong. Each section cites real source regions from at most three distinct files, up to eight regions in total; split an explanation when it needs separate evidence.
+An Indexer may suggest a recurring outline for a feature family such as route groups or components, but not a fixed page count: a component manual may need component-by-component reading, while one page per symbol or a catch-all page for a large module are both wrong. Each section cites real source regions from at most five distinct files, up to eight regions in total; split an explanation when it needs separate evidence.
+
 <!-- /context:section -->
 
 <!-- context:section id="example" -->
@@ -143,11 +145,13 @@ Age, archive location and polished language prove neither authority nor irreleva
 <!-- /context:section -->
 
 <!-- context:section id="doc-writing" -->
+
 ### Writing and repairs
 
-Before writing, the Agent reads the actual passages each article needs, and keeps authoritative rules, examples, decisions and proposals distinct — a suggestion in a meeting summary is not implemented behavior. Each section cites real source regions from at most three distinct files, up to eight regions in total; the Agent judges whether the evidence supports the explanation. A local problem is repaired at the affected section, and finished articles can be submitted without waiting for the rest of a batch.
+Before writing, the Agent reads the actual passages each article needs, and keeps authoritative rules, examples, decisions and proposals distinct — a suggestion in a meeting summary is not implemented behavior. Each section cites real source regions from at most five distinct files, up to eight regions in total; the Agent judges whether the evidence supports the explanation. A local problem is repaired at the affected section, and finished articles can be submitted without waiting for the rest of a batch.
 
 Revisions keep stable article and section identities and preserve useful steps, examples, images and limitations. Do not inflate page counts, write one page per heading or turn missing evidence into speculative prose.
+
 <!-- /context:section -->
 
 <!-- context:section id="visuals" -->

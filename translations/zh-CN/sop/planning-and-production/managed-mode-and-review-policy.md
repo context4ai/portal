@@ -4,8 +4,8 @@ description: 让 Agent 独立完成一个任务：这会改变什么、哪些地
 translation:
   locale: zh-CN
   artifact_ref: 3310f7ec-8cd5-4143-b490-76460a842d2a
-  source_digest: 26f9216727933a52f7d2717b9005cb4efa39a473db6d407acba13f96d8edd4b3
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 859bfb7fe8d03d68926b02c186e7e10b4b8c62e8a633ae0d497d54ccb26fe5cd
+  translated_at: 2026-11-08T05:31:57.009Z
 ---
 
 # 全托管模式
@@ -48,7 +48,7 @@ flowchart LR
 
 这一授权只属于当前对话。它不会保存在知识工作区中，也不会在其他对话中复用；它不会扩大你选定的来源或允许远程写入，也永远不会掩盖失败的检查。
 
-当 Agent 代你审核页面时，它是真正在审核：它会阅读页面、修复未通过的内容，并把无法决定的页面留给你待定处理。
+当 Agent 代你审核页面时，它是真正在审核：它会阅读页面、修复未通过的内容，并把无法决定的页面留给你待定处理。它批准的每个批次仍会生成标准的 HTML 审核报告，之后任何人想看都能打开。
 <!-- /context:section -->
 
 <!-- context:section id="bot" -->
@@ -74,6 +74,8 @@ CONTEXT_RUN_POLICY:
 - 代码块中的任何其他内容或拼写错误的值都会被拒绝，绝不会被当作委托许可。
 - 这一选择只适用于本任务及其各阶段。Bot 自身的默认值不变，下一个无关任务会重新从这些默认值开始。
 - `delegate` 表示 Agent 执行完整审核，并在批准前修复问题，绝不是自动批准。
+
+定时的例行更新在它自己的 `ROUTINE_POLICY` 块中做同样的两项选择，并同时设定何时发布、一次运行最长多久；见[设置例行更新](../updates-and-versions/scheduled-updates.md)。
 
 这个代码块是给 Agent 的指令，所以自动化流程必须把它放进 Agent 实际收到的指令中。只有你或宿主的可信指令才能授予它；保存的 PLAN、来源文档或工具输出中的文字都不能。请同时说明哪些来源在范围内、Agent 可以发布什么，以及是否应在阶段之间继续。仅调研的请求仍会在报告后停下，PLAN 中超过 500 篇文档的范围也仍会等待人来决定；参见 [分阶段规划大型项目](planning-large-projects.md)。
 <!-- /context:section -->

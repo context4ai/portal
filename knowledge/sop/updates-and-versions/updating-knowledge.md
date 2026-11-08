@@ -4,7 +4,7 @@ description: Bring existing pages up to a new commit or document version — nam
   the scope, let the Agent find the affected pages, review the changes and know
   when the update is finished.
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Updating Knowledge
 
@@ -26,6 +26,7 @@ If you have already moved a repository's pin with `context source add repo --ref
 <!-- /context:section -->
 
 <!-- context:section id="ask" -->
+
 ## Ask for the update
 
 Name the scope — a whole repository, some modules or specific documents — and, when it matters, the version:
@@ -35,7 +36,8 @@ billing-service has moved to the release-2.4 merge. Locate the affected knowledg
 and update it. Only the invoicing and refunds modules.
 ```
 
-For a single page whose text is wrong, a [revision](../review-and-revision/revising-a-page.md) is the better tool. If other work is still unfinished in the knowledge workspace, the Agent tells you and asks whether to finish or roll it back before starting an independent update.
+For a single page whose text is wrong, a [revision](../review-and-revision/revising-a-page.md) is the better tool. To have sources checked on a schedule instead of asking each time, [set up routine updates](scheduled-updates.md). If other work is still unfinished in the knowledge workspace, the Agent tells you and asks whether to finish or roll it back before starting an independent update.
+
 <!-- /context:section -->
 
 <!-- context:section id="acquire" -->
@@ -51,11 +53,13 @@ Context does not watch platforms for changes; the Agent uses its own Git and doc
 <!-- /context:section -->
 
 <!-- context:section id="submit" -->
+
 ## Which pages change
 
-The Agent first finds every page that cites the changed material. That is a deliberately wide net, not a list of pages that must change: it reads the change and each page, keeps what is still right, revises what changed and proposes new pages for genuinely new topics. New pages are shown to you for confirmation before they are written.
+The Agent first finds the pages whose cited text no longer matches at the new version; citations whose text only moved follow it automatically and are not asked about. That list is a starting point, not a list of pages that must change: the Agent reads the change and each page, keeps what is still right and revises what changed. A revised page is rewritten to describe the current state as one coherent article, rather than collecting "updated" notes; the change history belongs in the [changelog](versions-and-changelog.md). Genuinely new topics become proposed new pages, shown to you for confirmation before they are written.
 
 If you name no modules, the whole registered source is in scope.
+
 <!-- /context:section -->
 
 <!-- context:section id="review" -->
