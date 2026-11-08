@@ -4,8 +4,8 @@ description: context CLI 的全部命令与子命令，按用途分组，并说�
 translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
-  source_digest: 16ae5b9e16ef705548c6770b68262fd1e31aa1cf5601bb20516e26b6590d330f
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: 765e82f8080e67a701d0b69d3a1c07a86a442348457f450fdaf4400771b74609
+  translated_at: 2026-11-08T05:31:57.009Z
 ---
 
 # CLI 命令
@@ -35,12 +35,12 @@ translation:
 
 | 命令 | 作用 | 主要选项 |
 | --- | --- | --- |
-| `context status` | 输出知识工作区概览和下一个 Route | `--format table\|json`、`--view summary\|full`、`--managed`、`--authority` |
+| `context status` | 输出知识工作区概览和下一个 Route；`--view full` 还会展开各阶段和来源 | `--format table\|json`、`--view summary\|full`、`--managed`、`--authority` |
 | `context run [phase]` | 检查或运行某个已声明的 phase；不指定 phase 时，推进确定性的 Route | `--list`、`--dry-run`、`--until blocked-or-complete`、`--max-steps`、`--deliver`、`--resume-writing` |
 | `context resource acknowledge-current` | 记录当前 Route 要求的所有资源均已读取 | |
 | `context resource materialize <id>` | 把一个绑定修订的 Context 视图写入本地文件 | |
-| `context action prepare-current` | 准备或重试当前生产批次的目录，不会重新提交已接受的文章 | `--revision`、`--input` |
-| `context action complete-current` | 针对确切的当前修订提交语义输出——报告决定、草稿或 Gate 回答 | `--revision`、`--input`、`--managed`、`--multi-agent`、`--preview` |
+| `context action prepare-current` | 准备或重试当前生产批次，或已准备好的修订批次中的每个页面，不会重新提交已接受的内容 | `--revision`、`--input`、`--managed` |
+| `context action complete-current` | 针对确切的当前修订提交语义输出——报告决定、草稿或 Gate 回答；`--preview` 检查单个修订页面或整个已准备的修订批次，不保存任何内容 | `--revision`、`--input`、`--managed`、`--multi-agent`、`--preview` |
 <!-- /context:section -->
 
 <!-- context:section id="tasks" -->
@@ -52,11 +52,12 @@ translation:
 | `context task resume` | 根据已登记的需求和保留的知识，显式重新开启已清除的生产 |
 | `context task adjust` | 调整当前的来源和模块输入或知识地图，不影响无关的工作（`--input`、`--schema`、`--inspect`） |
 | `context task maintain` | 登记限定范围的页面修订、重新生成或已批准输出的重建 |
+| `context task record-fix` | 记录批次批准之后、交付之前做的纯机械性修正（错别字、失效链接）及其原因，无需再次审核 |
 | `context task advance-maintenance` | 执行当前的维护转换 |
 | `context task maintenance-status` | 显示维护请求和当前的取消修订 |
 | `context task cancel-maintenance <id>` | 取消待处理的维护请求，不会丢弃进行中的草稿 |
 | `context task retire` | 预览或执行已批准文章的下线，并清理对它的引用 |
-| `context task recover` | 在正常 Route 之外检查或预览限定范围的恢复 |
+| `context task recover` | 在正常 Route 之外检查或预览限定范围的恢复；`--managed` 保持托管会话的模式 |
 | `context task rollback` | 预览用户选定的确切回退和将被丢弃的草稿；绝不会重置仓库 |
 | `context task finish-rollback` | 在 close 和所有构建成功后完成回滚 |
 | `context update` | 在已确认的范围内，将已获取的来源变更与已批准的知识进行比对（`--input`）；或使用 `--pending`（无需输入文件），处理登记的 commit 已超过已处理版本的代码仓库。两者必须且只能指定一个 |
@@ -68,7 +69,7 @@ translation:
 
 | 命令 | 作用 | 主要选项 |
 | --- | --- | --- |
-| `context review html [collection]` | 生成一份自包含的本地审核报告 | `--all`、`--out`、`--open` |
+| `context review html [collection]` | 生成一份自包含的本地审核报告；没有图形会话时，`--open` 改为输出要打开的路径 | `--all`、`--out`、`--open` |
 | `context review list [collection]` | 在终端中列出草稿候选 | |
 | `context review apply <file>` | 应用限定范围的 JSON 或 JSONL 决定和修订指令 | |
 | `context review approve-all [collection]` | 批准当前审核范围内的全部内容 | `--all`、`--confirmed`（你的确认）、`--managed` |
@@ -84,8 +85,8 @@ translation:
 | `context close` | close（归档）已批准的知识：生成 `structure.yaml` 并执行最终验证 | `--format` |
 | `context verify` | 验证知识工作区 | `--compact`、`--view diagnostics`、`--page-size`、`--page-token` |
 | `context build` | 构建已声明的知识包和站点 | `--verbose` |
-| `context translate status` | 按语言报告翻译是否为最新 | |
-| `context translate prepare` | 为每篇待翻译文章写出草稿——过期的现有译文，或缺失时的已批准原文；当 Git 历史中保有其翻译所依据的版本时附带 `source_diff`；同时写出提交文件 | |
+| `context translate status` | 按语言报告翻译是否为最新，包括原文页面已不存在的译文 | |
+| `context translate prepare` | 为每篇待翻译文章写出草稿——过期的现有译文，或缺失时的已批准原文；附带与上次翻译所依据原文之间的 `source_diff`；同时写出提交文件。只剩已删除页面的译文时，它会删除这些译文并结束本轮 | |
 | `context translate submit` | 校验并保存翻译后的文章和导航标题 | `--input` |
 | `context translate skip` | 暂时以主语言发布待翻译内容 | |
 <!-- /context:section -->
@@ -118,7 +119,7 @@ translation:
 | `context source inspect [name]` | 显示仓库的模块边界，不进行抽取 |
 | `context source ensure [name]` | 检查仓库检出，不执行克隆、检出或重置 |
 | `context source recovery-plan [name]` | 规划缺失仓库检出的恢复，不修改文件 |
-| `context source restore` | 根据明确的本地或克隆决定恢复仓库检出 |
+| `context source restore` | 根据明确的本地或克隆决定恢复仓库检出，或从 Git 历史恢复某个已登记文档的快照 |
 | `context indexer catalog` | 列出内置 Skill 的名称、描述和入口 |
 | `context indexer report-benchmark` | 基于独立加载的 oracle 生成前向测试报告 |
 <!-- /context:section -->

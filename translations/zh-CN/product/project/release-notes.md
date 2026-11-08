@@ -4,8 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: e7867544af0ccd51a9d0a7d30ec3c164e1e86ca011405dc07c90f995674411df
-  translated_at: 2026-11-07T13:55:43.910Z
+  source_digest: 5ae797d3b13e77eae6559fb86c54158a63200a695a168acd50740fbd7aa8e0ce
+  translated_at: 2026-11-08T05:35:11.337Z
 ---
 
 # 发布说明
@@ -13,7 +13,37 @@ translation:
 <!-- context:section id="overview" -->
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
-升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；参见 [安装](../getting-started/installation.md)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；也可以在下次开始生产时让 Agent 来做。参见 [安装](../getting-started/installation.md#versions)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+<!-- /context:section -->
+
+<!-- context:section id="context-0793" -->
+
+## Context 0.7.83 至 0.7.93（2026-10-24 至 2026-11-08）
+
+**让知识保持最新**
+
+- 例行更新：定时运行的 Agent 检查所有已登记来源，分批更新有变化的内容，最后统一发布一次，并汇报需要你处理的事项。见[设置例行更新](../../sop/updates-and-versions/scheduled-updates.md)。
+- 更新只询问引用文字已对不上的页面；只是移动了位置的引用会自动跟随，重新固定版本的仓库无需再说明变更即可处理。见[更新知识](../../sop/updates-and-versions/updating-knowledge.md)。
+- 飞书文档的新副本不完整时，保留上一份完好的副本。见[飞书文档](../../sop/registering-sources/lark-documents.md)。
+- 可以把单个文档恢复到更早的采集版本。见[版本、Changelog 与恢复](../../sop/updates-and-versions/versions-and-changelog.md)。
+
+**审核与修订**
+
+- 批准前追加的修改会并入正在进行的审核；多个修订页面在提交前一起检查；批准后的纯机械性修正无需再次审核。见[修订页面](../../sop/review-and-revision/revising-a-page.md)。
+- 可以在进行中的审核里下线页面，删除任何内容之前报告会先展示计划结果。见[大规模重组](../../sop/review-and-revision/reorganizing-at-scale.md)。
+- 审核报告有“上一页”“下一页”按钮，并列出所有导航变化；全托管运行同样保留报告。见[阅读审核报告](../../sop/review-and-revision/reading-review-reports.md)。
+
+**安装与版本**
+
+- 宿主允许升级 Context 时，缺少的命令行会自动安装一次；命令行、Context 技能和工作区的 SDK 保持在你当前版本线的最新正式版。见[安装](../getting-started/installation.md#versions)。
+
+**知识包与站点**
+
+- 知识包共用一个查询技能，它会检索所有已安装的 Context 知识包，并沿每个页面的来源追溯到记录的代码或文档。见[在 Agent 中使用知识包](../../sop/querying-knowledge/using-packages-in-agents.md)。
+- 网站文章末尾附有来源地图。见[文档站](../../sop/outputs-and-sites/documentation-sites.md)。
+- 已删除页面的译文会自动清理。见[多语言站点](../../sop/outputs-and-sites/multilingual-sites.md)。
+- 大型知识工作区中的状态查询、更新和页面提交更快了。
+
 <!-- /context:section -->
 
 <!-- context:section id="context-0782" -->

@@ -4,7 +4,7 @@ description: How to publish a Context site in several reader languages, how the
   Agent keeps translations up to date each round, and what readers see when a
   translation is outdated or missing.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Multilingual Sites
 
@@ -61,6 +61,7 @@ Translations are stored per language in the workspace's `translations/` folder, 
 <!-- /context:section -->
 
 <!-- context:section id="freshness" -->
+
 ## Freshness
 
 Each translation remembers which version of the approved page it was made from:
@@ -71,7 +72,8 @@ Each translation remembers which version of the approved page it was made from:
 | Outdated | The approved page changed since | Translation shown with an outdated notice and a button to switch to the original |
 | Missing | Not translated yet | Original shown with a notice |
 
-Changes that don't touch a page's title, description or body don't make its translation outdated. Translations of pages that no longer exist are removed the next time translations are saved. The build report lists translated, outdated and missing counts per language.
+Changes that don't touch a page's title, description or body don't make its translation outdated. Translations of pages that no longer exist are removed in the next translation round, even when nothing else needs translating. Translations of pages that a package merely leaves out stay where they are. The build report lists translated, outdated and missing counts per language.
+
 <!-- /context:section -->
 
 <!-- context:section id="reading" -->

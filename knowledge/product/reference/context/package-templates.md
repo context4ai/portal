@@ -3,7 +3,7 @@ title: Package Templates
 description: The kbPackage and llmsPackage declarations, their fields, package
   layout, directory indexes, build behavior and selection rules.
 type: Wiki
-timestamp: 2026-10-28T03:53:56.231Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Package Templates
 
@@ -103,7 +103,7 @@ The default template ships:
 | Owned by | Holds |
 | --- | --- |
 | Approved Markdown | `title`, `type`, `description`, ISO UTC `timestamp`; optional `resource` and `tags` |
-| `knowledge/structure.yaml` | Stable `article_id`, `path`, `collection`, `visibility`, and each section's references (regions from at most three source files and up to eight regions per fragment: `source_ref`, `locator { path, start_line, end_line }`, `content_digest`) |
+| `knowledge/structure.yaml` | Stable `article_id`, `path`, `collection`, `visibility`, and each section's references (regions from at most five source files and up to eight regions per fragment: `source_ref`, `locator { path, start_line, end_line }`, `content_digest`) |
 
 Section markers in Markdown contain only their ID: `<!-- context:section id="usage" -->` … `<!-- /context:section -->`. Package pages keep reader metadata and receive a generated Sources section from the references; repository links include file and line ranges.
 

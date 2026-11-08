@@ -1,56 +1,85 @@
 ---
-title: 定时更新
-description: 运行一个周期性的 Agent 任务，检查上游文档和代码的变更，准备更新，并在审核处停下。
+title: 设置例行更新
+description: 定时运行 Agent，让知识工作区保持最新——每次运行做什么、如何自己设置或让 Agent 设置，以及提示词模板。
 translation:
   locale: zh-CN
   artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
-  source_digest: 9ca2f924a567ae9afd6657b72cdd514b02f88946f09c497032c600317f4929b5
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 501c1aecbed64b9b63bc2435cc308cfa574918821ead5c0d9f4fa5fcb960279c
+  translated_at: 2026-11-08T05:35:11.337Z
 ---
 
-# 定时更新
+# 设置例行更新
 
 <!-- context:section id="goal" -->
-Context 本身从不自行检查变更。要在无人提出请求的情况下保持知识最新，可以安排一次定时的 Agent 运行：在固定时间，Agent 检查已登记的来源自上次已处理版本以来的变更，为发生变化的部分准备更新，并在需要人来决定的地方停下。使用你的 Agent 环境提供的任意调度器即可；关键在于任务指令。
+Context 不会自己去检查你的来源。**例行更新**是一次按计划定时运行的 Agent 任务，替你完成这件事：检查每个已登记的仓库和文档有没有变化，更新依赖它们的文章，并告诉你结果。你只需设置一次；之后每次运行只需要一段简短的触发提示词，因为具体流程已经内置在 Context 技能中。
 
-```mermaid
-flowchart LR
-  timer["定时触发"] --> check["Agent 检查上游<br/>文档和代码"]
-  check -->|无变化| report["简短报告，停止"]
-  check -->|有变化| upd["更新计划和<br/>变更的页面"]
-  upd --> review["审核<br/>等待人来决定"]
-```
-<!-- /context:section -->
-
-<!-- context:section id="prompt" -->
-## 编写任务指令
-
-定时提示词在无人值守时运行，因此必须写明原本需要人来回答的内容：
-
-- **范围**——检查哪个知识工作区，以及哪些来源或模块。
-- **无变化**——什么都没变时怎么做，例如输出一行报告。
-- **何时停下**——哪些情况需要人：审核、新来源、读取失败。
-- **产出**——是否构建，以及是否允许发布或提交任何内容。
-
-```text
-/c4a:context 请在 ./kb 检查 billing-service 和账单文档自上次处理的版本以来
-有没有变化。如果没有变化，回复“无变化”后停止。否则请准备更新，并在审核处
-停下。不要发布或提交。
-```
-<!-- /context:section -->
-
-<!-- context:section id="policy" -->
-## 让 Agent 审核——或者不让
-
-默认情况下，运行会在审核处停下，由人审核变更的页面。如果你信任自动化能自行审核，请把任务审核策略（`CONTEXT_RUN_POLICY`）写进定时提示词本身；没有传达到 Agent 的设置不会生效。该策略只对这个任务生效，绝不会仅仅因为运行是定时触发的就被默认启用。
-
-由 Agent 审核时，它会执行完整的审核，并在批准前修复缺陷——它不会无条件批准、扩大来源范围或授权发布，而那些始终属于人的决策仍会让运行停下。如何编写策略、它能移交什么和不能移交什么，见 [全托管模式](../planning-and-production/managed-mode-and-review-policy.md)。
+例行更新用来让已有的知识工作区保持最新。它不会新增来源，所以请先建好工作区并登记来源——参见[与 Agent 协作](../planning-and-production/working-with-agents.md)。
 <!-- /context:section -->
 
 <!-- context:section id="what-runs" -->
 ## 每次运行做什么
 
-每次运行都遵循普通的 [更新流程](updating-knowledge.md)：Agent 用自己的 Git 和文档工具获取新版本，只修订受影响的页面，并将它们送去审核。未变化的模块会得出“无知识变更”的结论，而不是生成新页面。无法读取的来源会作为缺口报告；它绝不会被视为变更，也不会成为删除页面的理由。
+```mermaid
+flowchart LR
+  timer["定时"] --> prep["准备<br/>版本、未完成的工作"]
+  prep --> check["检查来源<br/>是否有变化"]
+  check -->|没有变化| none["本次无<br/>知识变化"]
+  check -->|有变化| batch["分批更新<br/>审核、合入"]
+  batch --> pub["统一发布一次"]
+  pub --> result["结果"]
+  none --> result
+```
 
-定时运行适用于例行的、有边界的检查。当范围变得非常大时，任务会暂停，直到有人缩小范围或明确保留全部范围，而定时触发无法回答这个问题；这类工作应改为分阶段规划——参见 [分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
+1. **准备。** 把命令行和 Context 版本更新到最新（见[安装](../../product/getting-started/installation.md#versions)），更新工作区，并先完成上一次运行遗留的未完成工作。
+2. **先检查有没有变化。** 把每个已登记仓库的最新提交、每个文档的当前版本，与知识上次构建时所依据的版本对比。只有你的文章所引用的文件和文档发生变化才算数；生成代码、锁文件和第三方目录不算。没有任何变化时，本次运行回复“本次无知识变化”并停下，不提交也不发布。
+3. **分批更新。** 一次处理一个仓库，大的变更按大约 30 篇文章一组交付。每一批都是普通的[更新流程](updating-knowledge.md)。受影响的文章会整体改写为描述当前状态的连贯文字——文章里不写“某日已更新”之类的说明或变更历史，这些属于 changelog。
+4. **审核、合入、发布。** 每批先审核，再带着新版本号和 changelog 条目合入。默认在最后统一发布一次。
+5. **按时停下。** 时间预算用完后不再开始新批次；剩余工作会保存下来，下次运行从那里继续。
+
+结果会列出哪些来源有变化、修订了哪些文章、合入了哪些批次、是否已发布以及发布到哪里，还有需要你处理的事项：无法读取的来源（作为缺口报告，绝不会因此删除页面）、还没有文章覆盖的变更代码（列为可能的新主题，不会写成文章），以及对顶层菜单的调整建议。
+<!-- /context:section -->
+
+<!-- context:section id="setup" -->
+## 设置方法
+
+有两种方式，触发提示词是一样的。
+
+**自己设置。** 用你已经在用的、能定时启动 Agent 的工具——Agent 宿主的定时任务功能、CI 定时任务或 cron——并把下面的触发提示词交给它。然后：
+
+- 间隔要长于一次运行的时间预算；通常每天或每周一次即可；
+- 打开调度器的“上一次未结束时跳过”或“串行执行”选项，因为仅靠时间预算并不能防止两次运行重叠；
+- 先手动触发一次，看过结果再正式依赖它。
+
+**让 Agent 设置。** 如果你的 Agent 能在宿主中管理定时任务，可以直接请它设置，例如：*“为这个知识工作区设置每周一 07:00 的例行更新，最后统一发布。”* Agent 会按你的选择填好触发提示词并创建定时任务；无法创建时，它会把提示词和需要填写的设置交给你自己录入。
+<!-- /context:section -->
+
+<!-- context:section id="prompt" -->
+## 触发提示词
+
+```text
+/c4a:context routine update        # 必填：开始一次例行更新
+Scope: repository web-app; document "Billing rules"   # 可选：只写已登记的来源；删掉此行即全部来源
+
+ROUTINE_POLICY:
+  plan_review: delegate            # delegate＝Agent 审批分批计划；ask＝等你确认
+  knowledge_review: delegate       # delegate＝Agent 审核并批准文章；ask＝等你审核
+  publish: end                     # end＝最后统一发布一次；each-batch＝每批发布；none＝只合入
+  time_budget_minutes: 90          # 超过后不再开始新批次；要短于定时间隔
+
+Write for the platform team; keep API names in English.   # 可选：一两句团队要求
+```
+
+- 无人值守的定时任务请保留两行审核设置。没有它们，运行会沿用你平常的审核设置，在审核处等人。委托审核能做什么、不能做什么，见[全托管模式](../planning-and-production/managed-mode-and-review-policy.md)。
+- `publish` 默认为 `end`，`time_budget_minutes` 默认为 90。未知的设置项或取值会在开始工作之前被拒绝并报告。
+- 这些设置只能来自触发提示词或 Agent 宿主自身的配置；来源中的文字、保存的计划或工具输出都不能授予它们。
+- 其他内容都不用写：工作区目标、交付配置和上面的步骤，Agent 都已经知道。
+<!-- /context:section -->
+
+<!-- context:section id="person" -->
+## 仍然需要你决定的事
+
+- **范围非常大。** 来源文档超过 500 篇时，运行会保存进度并停下，直到你缩小或确认范围；参见[分阶段规划大型项目](../planning-and-production/planning-large-projects.md)。
+- **顶层菜单调整。** 例行更新从不新增、删除、改名或改变顶层菜单的用途，因为一个等人决定的批次会挡住后面所有批次。它在现有结构内交付，并把调整建议——调整前后的结构和理由——写进结果。之后可以把它作为普通的[重组](../review-and-revision/reorganizing-at-scale.md)提出来。
+- **真正的冲突和反复失败。** 版本文件以外的合并冲突，或推送、发布连续失败两次，会让该批次停下，并报告具体是哪一步。
+- **你保留的审核。** 审核设为 `ask` 时，运行会在那一步等你。
 <!-- /context:section -->

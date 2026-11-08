@@ -4,8 +4,8 @@ description: 在哪里提问、如何带上维护者需要的信息报告缺陷�
 translation:
   locale: zh-CN
   artifact_ref: sha256:9d796e7c1ddbca5eadc0e9604bf8890eff78a8b2eb69cd4d3fa0883cabf07155
-  source_digest: 94449ef09f2a9af54c08c2ea90179c33adfd499f558f65e2e9d6d52add164864
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 9228c1a105b91391180bf1be66204bbc5cbb2c63a7b95564591a8bb69c5b857b
+  translated_at: 2026-11-08T05:35:11.337Z
 ---
 
 # 支持
@@ -25,7 +25,7 @@ Agent Graph 的 Discussions 也接受尚不能落地的想法。两个项目都�
 <!-- context:section id="diagnose" -->
 ## 报告前先检查
 
-- **安装。** `context --version` 和 `context plugin status` 用于确认 CLI 和宿主插件。如果入口存在但缺少 `context` 可执行文件，入口会指出需要执行的安装步骤。
+- **安装。** `context --version` 和 `context plugin status` 用于确认 CLI 和宿主插件。如果入口存在但缺少 `context` 可执行文件：宿主允许升级 Context 时 Agent 会安装一次，否则会指出需要执行的安装步骤。命令行、已安装技能和工作区之间的版本不一致，见[安装](../getting-started/installation.md#versions)。
 - **工作流状态。** `context status --format json` 显示当前 Route、它的原因码和诊断信息。请从这个 Route 继续，而不是重复之前的命令。
 - **追踪。** `context debug enable` 会在 `.tmp/context-runtime/debug/` 下记录知识工作区本地的追踪，`context debug export` 会生成可供查看的回放；参见 [CLI 命令](../reference/context/cli-commands.md)。
 - **Agent Graph。** `npx @c4a/agent-graph validate --format json` 会加载整个 Provider，无副作用地返回结构化错误；Graph 测试无需宿主即可重放 Route，便于分享最小复现；参见 [测试与发布](../../sop/agent-graph/testing-and-publishing.md)。

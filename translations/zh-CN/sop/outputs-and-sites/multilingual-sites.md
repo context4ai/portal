@@ -4,8 +4,8 @@ description: 如何用多种读者语言发布 Context 站点，Agent 如何在�
 translation:
   locale: zh-CN
   artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
-  source_digest: a07a8a9726f2cd95dcaecdd8fa3a7a4034d85bf7ec049fae9087005cee239e73
-  translated_at: 2026-10-20T06:16:49.422Z
+  source_digest: 08a92225a4ff3794e0807b53c586fe596ef506e922d46929dc22546877cd4cae
+  translated_at: 2026-11-08T05:31:57.009Z
 ---
 
 # 多语言站点
@@ -73,7 +73,7 @@ site: {
 | 过期 | 已批准的页面此后发生了变化 | 显示翻译，并附带过期提示和一个切换到原文的按钮 |
 | 缺失 | 尚未翻译 | 显示原文并附带提示 |
 
-不涉及页面标题、描述或正文的变化不会让翻译过期。对应页面已不存在的翻译会在下次保存翻译时移除。构建报告会列出每种语言已翻译、已过期和缺失的数量。
+不涉及页面标题、描述或正文的变化不会让翻译过期。对应页面已不存在的翻译会在下一轮翻译时移除，即使没有其他内容需要翻译也是如此。只是被某个包排除在外的页面，其翻译保持不变。构建报告会列出每种语言已翻译、已过期和缺失的数量。
 <!-- /context:section -->
 
 <!-- context:section id="reading" -->

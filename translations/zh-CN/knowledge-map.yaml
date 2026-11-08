@@ -174,9 +174,6 @@ entries:
   guides-sourcegraph/operations:
     title: 运维：日常运维
     source_digest: de48850c9c72a3edc7f5d8cea309ea6865c85077a321baacc0bd40c9bd155f39
-  guides-sourcegraph/reading-code-evidence-remotely:
-    title: 远程读取代码证据
-    source_digest: a48d580af06407c12aa6aa93104d647a42c6ad02bba632929beae13b0d375ce2
   guides-sourcegraph/registering-repositories:
     title: 登记与管理仓库
     source_digest: aa954f7c7b59d00e0da0096b9795aaf0655cc328b2f3b30ed06c58cf67286691
@@ -217,8 +214,8 @@ entries:
     title: 开始新任务与保存工作
     source_digest: 37f2619dbb25482786f6b8d715a21ec7c43a6c4319c69357ef4d8545e63edbd6
   guides-updates/scheduled-updates:
-    title: 定时巡检
-    source_digest: e94c676257c3aafe40ed9ac9a2e49fda156a77f963f16fe27765e372ee1c48f6
+    title: 例行更新
+    source_digest: e0b4bb87b7938b09f25e4a78c3d2777503ce360e924756ca7004499c9f3daba4
   guides-updates/updating-knowledge:
     title: 更新已有知识
     source_digest: da3acc35708703416f1aa4bd1787a2ead1b024924bacb31bde834f07b1a539e5

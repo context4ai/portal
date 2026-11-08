@@ -3,7 +3,7 @@ title: Installation
 description: Install the Context CLI and Agent plugin for Claude Code, Codex or
   Cursor, and check that your Agent can see the entries.
 type: Wiki
-timestamp: 2026-10-22T19:01:38.376Z
+timestamp: 2026-11-08T05:25:45.316Z
 ---
 # Installation
 
@@ -99,7 +99,21 @@ context --version
 context plugin status
 ```
 
-`context plugin status` inspects the global hosts. Both it and `context plugin install` look for the `claude` and `codex` commands on the same `PATH` as the shell you run them from, so if Claude Code or Codex is reported missing, check that its command resolves in that shell. Cursor needs no command on `PATH`; its plugin files are written directly. Then open your Agent and invoke `/c4a:context`. If the entry is present but the `context` executable is missing, the entry reports the exact installation step and stops rather than partially initializing a knowledge workspace.
+`context plugin status` inspects the global hosts. Both it and `context plugin install` look for the `claude` and `codex` commands on the same `PATH` as the shell you run them from, so if Claude Code or Codex is reported missing, check that its command resolves in that shell. Cursor needs no command on `PATH`; its plugin files are written directly. Then open your Agent and invoke `/c4a:context`. If the entry is present but the `context` executable is missing, the Agent installs it once when your host already allows it to upgrade Context to a minimum version, checks `context --version` and continues. Otherwise it shows the install command above and stops, rather than partially initializing a knowledge workspace. A normal "not found" message from Context itself is not mistaken for a missing CLI.
+
+<!-- /context:section -->
+
+<!-- context:section id="versions" -->
+
+## Keep versions together
+
+Three parts carry a Context version: the `context` CLI, the Context Skill installed in your Agent host (its entry states the version it ships with), and the `@c4a/context` SDK that your knowledge workspace depends on. When you start production in a workspace, the Agent compares them once and brings them to the latest release of the version line you are on:
+
+- the CLI is installed at that exact release;
+- Skills installed with `context plugin install` are refreshed; Skills supplied by your host are left as they are and reported, so whoever manages the host can update them;
+- the workspace SDK is raised and installed, and the change is committed together with your next delivery rather than on its own.
+
+When a newer major version exists, the Agent does not move to it by itself. It shows you the latest release of your current major and of the new one, what changes between them, the expected impact on your workspace and a recommendation, and waits for your choice. Nothing is ever downgraded, and if the release list cannot be read the Agent reports it once and continues with the versions you have.
 
 Next: [Quick Start](quick-start.md).
 
