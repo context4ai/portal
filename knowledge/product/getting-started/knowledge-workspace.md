@@ -3,7 +3,7 @@ title: The Context Knowledge Workspace
 description: What a Context knowledge workspace is, what every directory and
   file in it holds, who writes each part, and what goes into Git.
 type: Wiki
-timestamp: 2026-11-07T13:54:53.020Z
+timestamp: 2026-11-08T13:14:14.832Z
 ---
 # The Context Knowledge Workspace
 
@@ -99,16 +99,19 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 <!-- /context:section -->
 
 <!-- context:section id="runtime" -->
+
 ## Runtime and scratch space
 
 | Path | Holds |
 | --- | --- |
 | `.tmp/context-runtime/` | Unfinished workflow state: production stages, candidates, review reports, routes |
+| `.tmp/review-reports/` | A copy of the review report of every approved batch |
 | `.tmp/agent-payloads/` | Command inputs the Agent prepares, such as translations |
 | `.tmp/install/` | Temporary files used while installing dependencies |
 | `.tmp/context-plans/<date-slug>/` | Research for a planned project: `repos/`, `documents/`, `research/`, `stage-inputs/` |
 
 `.tmp/context-runtime/` is not the only record of progress. After a successful delivery the CLI removes completed task state, and approved knowledge with `structure.yaml` keeps what later updates need. Its absence never means accepted work may be replayed. A planned project also keeps `PLAN-YYYYMMDD-slug.md` at the Git root, committed so work can resume; see [Planning Large Projects in Stages](../../sop/planning-and-production/planning-large-projects.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="rules" -->
@@ -117,6 +120,7 @@ Some files appear only when you use the feature they belong to: `imports.yaml`, 
 
 - **Do not edit CLI-owned state by hand.** `sources/`, `knowledge/`, `dist/` and `.tmp/context-runtime/` change only through Context commands. To change a page, ask for a [revision](../../sop/review-and-revision/revising-a-page.md).
 - **One knowledge workspace per directory.** Do not create a hidden second workspace, and do not mix revisions, tasks or `.tmp/` files with a parent directory that is also a knowledge workspace.
+- **Existing knowledge stays in its workspace.** Updates, revisions, recovery and progress checks always use the existing workspace: when you or your Agent host name it, the Agent clones or enters it before starting. A new workspace is created only for a new knowledge base.
 - **Repair through the Route.** When something looks broken, follow the recovery action the current Route returns instead of deleting runtime files.
 
 See also: [Core Concepts](core-concepts.md) explains how these parts relate, and the [CLI Commands reference](../reference/context/cli-commands.md) lists the commands that write them.

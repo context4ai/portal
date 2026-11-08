@@ -4,8 +4,8 @@ description: 熟悉审核报告的布局，从结构、内容和范围三方面�
 translation:
   locale: zh-CN
   artifact_ref: 5b6c8717-a113-4829-8d95-76bcc731fcad
-  source_digest: fa747761da03f4681ce7f2aa4b4584e71b9b3b8bb53209793df2529201d5dcb3
-  translated_at: 2026-11-08T05:31:57.009Z
+  source_digest: 5406e2336de5f5e36c264ae2368689128dbf095c61b742b47096db8de75cc022
+  translated_at: 2026-11-08T13:15:36.841Z
 ---
 
 # 阅读审核报告
@@ -27,7 +27,7 @@ Agent 写的任何内容，在你通过审核批准之前都不会成为知识�
 
 **上一页**和**下一页**（或 `-`、`+` 键）在页面之间逐篇切换。打开某个页面后，浏览器会将其标记为 READ。已读计数和意见只是本地的便利功能，并不代表批准。修订计数器会列出所有带意见的页面，**Copy** 会把它们连同文章 ID 和标题导出为纯文本，方便粘贴到对话中。
 
-在[全托管](../planning-and-production/managed-mode-and-review-policy.md)运行中由 Agent 代你审核，同样的报告也会保留下来，你仍然可以查看批准了什么。
+报告以工作区的语言打开；可以用语言按钮切换，浏览器会记住你的选择。每个批准的批次都会在知识工作区的 `.tmp/review-reports/` 下保留一份报告副本——无论是你确认的，还是在[全托管](../planning-and-production/managed-mode-and-review-policy.md)运行中由 Agent 代你审核的——因此在之后的批次和交付完成后，仍然可以查看较早的批次。
 <!-- /context:section -->
 
 <!-- context:section id="three-checks" -->

@@ -4,8 +4,8 @@ description: Context 知识工作区是什么、其中每个目录和文件存�
 translation:
   locale: zh-CN
   artifact_ref: 32d734a4-1883-47e9-bec9-fa73a4149794
-  source_digest: 32d2d3586ae7a4302982fcbf3aa65d05087fdd60e76b094152b4e4ce7f8e0a41
-  translated_at: 2026-11-07T13:55:43.910Z
+  source_digest: 834a4b6a217aa682efa56945d235435b77e54daecfc09f109f812c6e1b8f30e9
+  translated_at: 2026-11-08T13:15:36.841Z
 ---
 
 # Context 知识工作区
@@ -105,6 +105,7 @@ my-knowledge/
 | 路径 | 存放内容 |
 | --- | --- |
 | `.tmp/context-runtime/` | 未完成的工作流状态：生产阶段、候选、审核报告、Route |
+| `.tmp/review-reports/` | 每个批准批次的审核报告副本 |
 | `.tmp/agent-payloads/` | Agent 准备的命令输入，例如翻译 |
 | `.tmp/install/` | 安装依赖时使用的临时文件 |
 | `.tmp/context-plans/<date-slug>/` | 规划项目的调研材料：`repos/`、`documents/`、`research/`、`stage-inputs/` |
@@ -117,6 +118,7 @@ my-knowledge/
 
 - **不要手动编辑 CLI 管理的状态。** `sources/`、`knowledge/`、`dist/` 和 `.tmp/context-runtime/` 只能通过 Context 命令修改。要修改页面，请申请 [修订](../../sop/review-and-revision/revising-a-page.md)。
 - **每个目录只有一个知识工作区。** 不要创建隐藏的第二个知识工作区，也不要把修订、任务或 `.tmp/` 文件与同样是知识工作区的父目录混在一起。
+- **已有知识留在原工作区。** 更新、修订、恢复和查询进度都使用已有的工作区：你或 Agent 宿主指定了工作区时，Agent 会先克隆或进入它再开始。只有新建知识库时才会创建新工作区。
 - **通过 Route 修复。** 发现异常时，按当前 Route 返回的恢复动作处理，而不是删除运行时文件。
 
 另请参阅：[核心概念](core-concepts.md) 说明这些部分之间的关系，[CLI 命令参考](../reference/context/cli-commands.md) 列出了写入它们的命令。

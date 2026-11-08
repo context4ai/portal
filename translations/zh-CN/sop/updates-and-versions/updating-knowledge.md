@@ -4,8 +4,8 @@ description: 将已有页面更新到新的提交或文档版本——指定范�
 translation:
   locale: zh-CN
   artifact_ref: cc5ba25f-12c6-4554-b327-7abf30e64417
-  source_digest: 0ce80df4d15fc05981cbc0a7dead30bfdec13c382e6060cdd65630c81f9d8959
-  translated_at: 2026-11-08T05:31:57.009Z
+  source_digest: a561c6222e0e107cee5e843e78632a9824e67cf4c3023ddf898850a46d18228e
+  translated_at: 2026-11-08T13:15:36.841Z
 ---
 
 # 更新知识
@@ -22,7 +22,7 @@ flowchart LR
   rev --> build["应用已批准的页面，<br/>重新构建产物"]
 ```
 
-如果你已经用 `context source add repo --ref <sha>` 移动了仓库的固定版本，Agent 会用 `context update --pending` 处理它，无需其他输入。只有引用文字发生变化的页面会被逐个询问；其他引用该仓库的页面，在新增内容影响到它们时也能在同一次决定中修订。这次决定及其修订完成后，新的 commit 才会被记录。
+如果你已经用 `context source add repo --ref <sha>` 移动了仓库的固定版本，Agent 会用 `context update --pending` 处理它，无需其他输入。只有引用文字发生变化的页面会被逐个询问；其他引用该仓库的页面，在新增内容影响到它们时也能在同一次决定中修订。这次决定及其修订完成后，新的 commit 才会被记录。来源检出还没有这个 commit 时会先拉取；无法拉取时，更新会停下并要求检出该 commit，而不是把所有引用都当作缺失。查看状态和校验从不拉取任何内容。
 <!-- /context:section -->
 
 <!-- context:section id="ask" -->

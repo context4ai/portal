@@ -4,7 +4,7 @@ description: Bring existing pages up to a new commit or document version — nam
   the scope, let the Agent find the affected pages, review the changes and know
   when the update is finished.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-08T13:14:14.832Z
 ---
 # Updating Knowledge
 
@@ -21,7 +21,7 @@ flowchart LR
   rev --> build["Approved pages applied,<br/>outputs rebuilt"]
 ```
 
-If you have already moved a repository's pin with `context source add repo --ref <sha>`, the Agent processes it with `context update --pending`, which needs no other input. Only pages whose cited text changed are asked about one by one; every other page that cites the repository can still be revised in the same decision when an addition affects it, and the new commit is recorded once that decision and its revisions are done.
+If you have already moved a repository's pin with `context source add repo --ref <sha>`, the Agent processes it with `context update --pending`, which needs no other input. Only pages whose cited text changed are asked about one by one; every other page that cites the repository can still be revised in the same decision when an addition affects it, and the new commit is recorded once that decision and its revisions are done. When the source checkout does not have that commit yet, it is fetched first; if it cannot be fetched, the update stops and asks for the commit to be checked out instead of treating every citation as missing. Checking status or verifying never fetches anything.
 
 <!-- /context:section -->
 

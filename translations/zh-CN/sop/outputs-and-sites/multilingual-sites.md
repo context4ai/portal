@@ -4,8 +4,8 @@ description: 如何用多种读者语言发布 Context 站点，Agent 如何在�
 translation:
   locale: zh-CN
   artifact_ref: d06659b7-7f4c-4aae-8a9a-0d5a9de20642
-  source_digest: 08a92225a4ff3794e0807b53c586fe596ef506e922d46929dc22546877cd4cae
-  translated_at: 2026-11-08T05:31:57.009Z
+  source_digest: 32c24f6e96d2683e8649a3969071370d72debd487caa1f591c343d073c5aac84
+  translated_at: 2026-11-08T13:15:36.841Z
 ---
 
 # 多语言站点
@@ -53,7 +53,7 @@ site: {
 - **后续各轮**——只更新自上次翻译以来发生变化的内容，并以现有译文为起点。每轮的已批准页面和译文都已提交时效果最好，Agent 会在一轮结束时完成提交。
 - **跳过一轮**——告诉 Agent“本轮跳过翻译”。待翻译的页面暂时以主语言发布，下一轮会再次询问。
 
-翻译会保持页面结构、代码块、命令、路径和链接目标不变；只翻译说明文字、标题和图表标签。只要有任何一个翻译页面未通过这些检查，该批次的内容就都不会保存。底层命令列在 [CLI 命令](../../product/reference/context/cli-commands.md) 中。
+翻译会保持页面结构、代码块、命令、路径和链接目标不变；只翻译说明文字、标题和图表标签。链接到其他页面的某一节时使用章节 ID，例如 `installation.md#versions`：各语言保留相同的章节 ID，而标题锚点由各语言自己的标题生成，在译文中并不存在。指向标题锚点的链接在翻译时原样保留，之后由 Agent 把原文链接改为章节 ID。只要有任何一个翻译页面未通过这些检查，该批次的内容就都不会保存。底层命令列在 [CLI 命令](../../product/reference/context/cli-commands.md) 中。
 <!-- /context:section -->
 
 <!-- context:section id="storage" -->

@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-11-08T05:34:46.443Z
+timestamp: 2026-11-08T13:14:14.832Z
 ---
 # Release Notes
 
@@ -17,12 +17,12 @@ To upgrade Context, run the same two commands as a first installation — `npm i
 
 <!-- context:section id="context-0793" -->
 
-## Context 0.7.83 to 0.7.93 (2026-10-24 to 2026-11-08)
+## Context 0.7.83 to 0.7.94 (2026-10-24 to 2026-11-08)
 
 **Keeping knowledge current**
 
 - Routine updates: a scheduled Agent run checks every registered source, updates what changed in batches, publishes once and reports what needs you. See [Set Up Routine Updates](../../sop/updates-and-versions/scheduled-updates.md).
-- Updates ask only about pages whose cited text no longer matches; citations whose text only moved follow it, and a re-pinned repository is processed without restating the change. See [Updating Knowledge](../../sop/updates-and-versions/updating-knowledge.md).
+- Updates ask only about pages whose cited text no longer matches; citations whose text only moved follow it, and a re-pinned repository is processed without restating the change — its new commit is fetched when the source checkout does not have it yet. See [Updating Knowledge](../../sop/updates-and-versions/updating-knowledge.md).
 - A Lark document whose new copy comes back incomplete keeps its last good copy. See [Lark Documents](../../sop/registering-sources/lark-documents.md).
 - A single document can be restored from an earlier capture. See [Versions, Changelog and Restoring](../../sop/updates-and-versions/versions-and-changelog.md).
 
@@ -30,7 +30,7 @@ To upgrade Context, run the same two commands as a first installation — `npm i
 
 - Further changes asked for before approval join the open review, several revised pages are checked together before they are submitted, and small mechanical fixes after approval need no second review. See [Revising a Page](../../sop/review-and-revision/revising-a-page.md).
 - Pages can be retired inside an open review, which shows the planned result before anything is removed. See [Reorganizing at Scale](../../sop/review-and-revision/reorganizing-at-scale.md).
-- The review report has Previous and Next buttons and lists every navigation change, and fully managed runs keep the report. See [Reading Review Reports](../../sop/review-and-revision/reading-review-reports.md).
+- The review report starts in your workspace's language, has Previous and Next buttons and lists every navigation change, and every approved batch keeps its own copy of the report. See [Reading Review Reports](../../sop/review-and-revision/reading-review-reports.md).
 
 **Installation and versions**
 
@@ -40,7 +40,8 @@ To upgrade Context, run the same two commands as a first installation — `npm i
 
 - Knowledge packages share one query Skill that searches every installed Context package and follows each page's sources back to the recorded code or document. See [Using Knowledge Packages in Agents](../../sop/querying-knowledge/using-packages-in-agents.md).
 - Website articles end with a map of their sources. See [Documentation Sites](../../sop/outputs-and-sites/documentation-sites.md).
-- Translations of removed pages are cleaned up automatically. See [Multilingual Sites](../../sop/outputs-and-sites/multilingual-sites.md).
+- Translations of removed pages are cleaned up automatically, and links to another page's section use its section ID so they work in every language. See [Multilingual Sites](../../sop/outputs-and-sites/multilingual-sites.md).
+- A knowledge workspace kept inside a larger repository compares versions within its own directory. See [Versions, Changelog and Restoring](../../sop/updates-and-versions/versions-and-changelog.md).
 - Status, updates and page submissions are faster on large knowledge workspaces.
 
 <!-- /context:section -->

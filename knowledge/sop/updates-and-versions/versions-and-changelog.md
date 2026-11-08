@@ -4,7 +4,7 @@ description: How a knowledge workspace gets one version and one changelog entry
   per completed round, where readers see the history, and how to go back to an
   earlier version.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-08T13:14:14.832Z
 ---
 # Versions, Changelog and Restoring
 
@@ -25,11 +25,13 @@ The first version is `0.1.0` unless the knowledge workspace already has a higher
 <!-- /context:section -->
 
 <!-- context:section id="record" -->
+
 ## How it is recorded
 
-Near the end of a round, after the pages are approved and before the final build, the Agent looks at what actually changed — article text, assets, structure, navigation and templates — and writes the changelog entry: a title, the main changes and what prompted them, such as a new module, a note, an update or a fix. Related changes are merged so each entry stays short. Entries never contain credentials, raw conversation text, local paths or private account IDs, and the author is taken from your Git identity rather than guessed.
+Near the end of a round, after the pages are approved and before the final build, the Agent looks at what actually changed — article text, assets, structure, navigation and templates — by comparing the workspace with Git, and writes the changelog entry: a title, the main changes and what prompted them, such as a new module, a note, an update or a fix. Related changes are merged so each entry stays short. Entries never contain credentials, raw conversation text, local paths or private account IDs, and the author is taken from your Git identity rather than guessed.
 
-The version number and the changelog are updated together. Recording a version does not by itself publish or deploy anything. The commands behind this are listed in [CLI Commands](../../product/reference/context/cli-commands.md).
+A workspace kept in a subdirectory of a larger repository is compared only within its own directory and against the latest commit by default, because that repository's tags are not versions of the knowledge base; another commit can be named as the comparison base. The version number and the changelog are updated together. Recording a version does not by itself publish or deploy anything. The commands behind this are listed in [CLI Commands](../../product/reference/context/cli-commands.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="retries" -->
