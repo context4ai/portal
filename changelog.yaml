@@ -1,4 +1,15 @@
 entries:
+  - version: 0.16.1
+    date: 2026-11-08T16:54:31.222Z
+    title: Context SDK 0.7.95
+    changes:
+      - Upgrade Context SDK to 0.7.95. Knowledge content is unchanged.
+    triggers:
+      - kind: dist
+        description: Context 0.7.95 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.0
     date: 2026-11-08T13:51:49.637Z
     title: Routine update triggers, workspace preparation and Context 0.7.94

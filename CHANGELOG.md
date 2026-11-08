@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.1 — 2026-11-08
+
+### Context SDK 0.7.95
+
+- Upgrade Context SDK to 0.7.95. Knowledge content is unchanged.
+
+Trigger: dist: Context 0.7.95 release
+User: qiansc (git)
+
 ## 0.16.0 — 2026-11-08
 
 ### Routine update triggers, workspace preparation and Context 0.7.94
