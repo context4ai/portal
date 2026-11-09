@@ -4,8 +4,8 @@ description: 一处汇总 Source Graph 的全部设置：环境变量、构建�
 translation:
   locale: zh-CN
   artifact_ref: f9fdba75-0059-4d7d-8e58-17859b4cfea0
-  source_digest: cd28fa20db35dabe9b0d7c576ba50b0ea22de71031931440d47c06f10ea8d259
-  translated_at: 2026-11-09T01:07:08.071Z
+  source_digest: bb43230033c3bbc72e2b5e3b6b73dfb529ca96cba71f812289a7594d32077f42
+  translated_at: 2026-11-09T02:46:51.575Z
 ---
 
 # 配置
@@ -18,7 +18,7 @@ Source Graph 的配置分为四层，每层的负责人和生效周期各不相�
 | 环境变量 | 进程环境，例如 Fly.io secrets 或容器 env 文件 | 运维人员 | 重启后 |
 | 部署设置 | `config/deployment.json`，构建时嵌入 | 构建镜像的人 | 下次构建后 |
 | 站点设置 | 数据库，在 **Settings**（设置）页面编辑 | 管理员 | 立即生效，带版本校验 |
-| 仓库策略 | 数据库，按仓库在登记时或之后设置 | 管理员 | 下次同步时 |
+| 仓库策略 | 数据库，按仓库在登记时或之后设置 | 站点管理员和仓库管理员 | 下次同步或准备时 |
 
 代码源由部署默认值、网站上的自定义 Git 设置和可选的启动文件合并而成，见 [代码源](#code-sources)。
 

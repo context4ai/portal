@@ -1,4 +1,20 @@
 entries:
+  - version: 0.16.2
+    date: 2026-11-09T02:46:53.759Z
+    title: Source Graph job time limits and repository policy editors
+    changes:
+      - "Day-to-Day Operations: a sync or index job runs for 45 minutes or the
+        repository's Git timeout if longer (at most 60 minutes); a prepare job
+        up to 16 times that."
+      - "Configuration: repository policy is changed by administrators and the
+        repository's managers and takes effect on the next synchronization or
+        preparation."
+    triggers:
+      - kind: repair
+        description: Source Graph documentation review
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.1
     date: 2026-11-09T01:36:23.209Z
     title: Source Graph branch and tag discovery, on-demand snapshots and Context

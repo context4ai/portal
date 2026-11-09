@@ -4,11 +4,12 @@ description: Every Source Graph setting in one place — environment variables,
   build-time deployment settings, code sources, runtime site settings,
   repository policies, plugin limits and the data directory layout.
 type: Wiki
-timestamp: 2026-11-09T00:57:46.373Z
+timestamp: 2026-11-09T02:42:52.164Z
 ---
 # Configuration
 
 <!-- context:section id="layers" -->
+
 Source Graph is configured in four layers, each with a different owner and lifetime:
 
 | Layer | Where | Changed by | Takes effect |
@@ -16,11 +17,12 @@ Source Graph is configured in four layers, each with a different owner and lifet
 | Environment variables | Process environment, for example Fly.io secrets or a container env file | Operator | On restart |
 | Deployment settings | `config/deployment.json`, embedded at build time | Whoever builds the image | On the next build |
 | Site settings | Database, edited on the **Settings** page | Administrators | Immediately, with revision checks |
-| Repository policy | Database, set per repository at registration or later | Administrators | On the next synchronization |
+| Repository policy | Database, set per repository at registration or later | Administrators and the repository's managers | On the next synchronization or preparation |
 
 Code sources combine deployment defaults, the website's custom Git settings and an optional startup file; see [Code sources](#code-sources).
 
 Secrets — GitHub and custom Git tokens, OAuth client secrets, the service token, the credential key and database URLs with passwords — belong only in environment variables or the database, never in the deployment file, the startup file or the image. For deployment steps see [Self-hosting](../../../sop/source-graph/self-hosting.md).
+
 <!-- /context:section -->
 
 <!-- context:section id="environment" -->
