@@ -4,8 +4,8 @@ description: 日常运行 Source Graph 实例——健康检查、后台任务�
 translation:
   locale: zh-CN
   artifact_ref: 6faa0fa3-30db-4bd1-b53c-ade0e7d6e75f
-  source_digest: 9b61555a8a5e0ce72d00663f8791aa25a23b72540609960d5774b8e3a7cffad0
-  translated_at: 2026-11-09T01:07:08.071Z
+  source_digest: 9365dc03137725bd346a8e74c3eb4608b5ab4181892de42cad97934eee82ec3e
+  translated_at: 2026-11-09T02:46:51.575Z
 ---
 
 # 运维：日常运维与排障
@@ -36,7 +36,7 @@ Source Graph 实例基本可以自行运转：后台 worker 会同步仓库、�
 - **状态：** `queued`、`running`、`succeeded`、`failed` 或 `cancelled`。
 - **自动与手动任务** 运行在不同的 worker 上，因此耗时较长的手动准备不会阻塞定时同步。
 - **恢复：** 运行中的任务持有一个 45 秒的租约，由其 worker 续期。如果进程退出，租约到期后会由另一个 worker 接管该任务；重试三次后任务失败并返回 `RECOVERY_EXHAUSTED`。已持久化的任务会在重启后继续执行。
-- **时间预算：** sync 或 index 任务最长可运行 45 分钟；prepare 任务最长可达其 16 倍，逐个路径组依次执行。
+- **时间预算：** sync 或 index 任务最长可运行 45 分钟，若仓库的 Git 超时更长则以其为准（最多 60 分钟）；prepare 任务最长可达其 16 倍，逐个路径组依次执行。
 - **容量：** 每个仓库最多 8 个活跃任务（当 Monorepo 的路径组多于 8 个时，每个路径组一个），最多记录 256 个任务。队列已满时返回 `QUEUE_FULL`。
 - **存储维护：** 任务自己负责让仓库保持在存储预算之内。sync 在 Git 拉取前、prepare 任务在拉取 SHA 前、index 任务在建索引前都会检查预算，必要时释放最旧的未受保护快照。准备和索引任务会先完成该仓库仍待进行的 Git 回收，并在发布后立即应用保留策略。见 [磁盘与存储](#disk-and-storage)。
 

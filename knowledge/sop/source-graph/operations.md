@@ -4,7 +4,7 @@ description: Run a Source Graph instance day to day — health checks, backgroun
   jobs, data retention, rate limits, disk and storage, repository maintenance,
   and what common errors mean.
 type: Guide
-timestamp: 2026-11-09T00:57:46.373Z
+timestamp: 2026-11-09T02:42:52.164Z
 ---
 # Ops: Day-to-Day Operations
 
@@ -37,7 +37,7 @@ Every repository has its own job list, shown on the repository page's jobs tab.
 - **States:** `queued`, `running`, `succeeded`, `failed` or `cancelled`.
 - **Automatic and manual work** run on separate workers, so a long manual preparation does not block scheduled syncs.
 - **Recovery:** a running job holds a 45-second lease that its worker renews. If a process dies, another worker takes the job over after the lease expires; after three attempts it fails with `RECOVERY_EXHAUSTED`. Persisted jobs resume after a restart.
-- **Budgets:** a sync or index job may run for 45 minutes; a prepare job up to 16 times that, one path group after another.
+- **Budgets:** a sync or index job may run for 45 minutes, or for the repository's Git timeout if that is longer (at most 60 minutes); a prepare job up to 16 times that, one path group after another.
 - **Capacity:** up to 8 active jobs per repository (or one per path group when a monorepo has more than 8 groups), and at most 256 recorded jobs. A full queue returns `QUEUE_FULL`.
 - **Storage upkeep:** jobs keep the repository within its storage budget themselves. A sync checks the budget before its Git fetch, a prepare job before fetching a SHA and an index job before it builds, releasing the oldest unprotected snapshots when needed. Preparation and index tasks first finish any Git collection still pending for the repository, and apply retention as soon as they publish. See [Disk and storage](#disk-and-storage).
 
