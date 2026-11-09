@@ -5,8 +5,8 @@ description: 把你自己的 Agent 接入 Source Graph MCP，再给它一段检�
 translation:
   locale: zh-CN
   artifact_ref: 55ac465e-f3c9-4d32-849d-ac08e30ddfa9
-  source_digest: 7efaaa6c608e0bdabd88880c9b775811cf439b61e05fef4051fb193285a59491
-  translated_at: 2026-11-07T13:29:32.690Z
+  source_digest: 7b2adad7ddacabe013de176c7c8419e71fd86d553415d8e8d1cc269b66570d5b
+  translated_at: 2026-11-09T01:07:08.071Z
 ---
 
 # 在 Agent 中通过 MCP 查询
@@ -61,7 +61,7 @@ List the repositories available in context-sourcegraph.
 | `context4ai/sourcegraph` | Source Graph 源码 |
 | `context4ai/agent-graph` | Agent Graph 源码 |
 
-服务提供 `repositories`、`resolve`、`search`、`read`、`read_many`、`list`、`diff` 和 `availability` 这些工具。你不需要自己调用，下面的提示词会告诉 Agent 怎么用。服务还会要求 Agent 为引用的每段代码同时保留仓库、完整提交 SHA 和文件路径，绝不自行重建 SHA 或在其他仓库中复用，从而保证它返回的出处可以追溯。
+服务提供 `repositories`、`refs`、`resolve`、`search`、`read`、`read_many`、`list`、`diff` 和 `availability` 这些工具。你不需要自己调用，下面的提示词会告诉 Agent 怎么用。服务还会要求 Agent 为引用的每段代码同时保留仓库、完整提交 SHA 和文件路径，绝不自行重建 SHA 或在其他仓库中复用，从而保证它返回的出处可以追溯。
 <!-- /context:section -->
 
 <!-- context:section id="prompt" -->
@@ -86,8 +86,10 @@ Retrieve in this order:
    match, read the page with `read` or `read_many`; do not conclude from the
    matching line alone.
 2. Resolve each branch once to a full commit and reuse it for every later search
-   and read in that repository. Cite repository, commit and path together. Never
-   reuse a commit across repositories or make one up.
+   and read in that repository. For a branch or tag the service does not
+   monitor, find it with `refs` if needed and `resolve` it to a full commit
+   before reading. Cite repository, commit and path together. Never reuse a
+   commit across repositories or make one up.
 3. If the knowledge does not answer the question, leaves a real gap or does not
    match it, check the facts in the source repositories with the same terms.
    When the knowledge and the code disagree, follow the code and say so.

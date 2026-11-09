@@ -5,8 +5,8 @@ description: 使用 Docker 或从源码运行你自己的 Source Graph 实例，
 translation:
   locale: zh-CN
   artifact_ref: ee8e6608-6a4a-4146-b856-467974297a1d
-  source_digest: a496c74cfeb7a3759405216549a4d5457f89823cdb146d4e2befa45a0aeb2cfc
-  translated_at: 2026-11-07T13:29:32.690Z
+  source_digest: 877603af50570f7c6daecf984f19d9e977f56f507dab8f3d98a4e112af204fba
+  translated_at: 2026-11-09T01:07:08.071Z
 ---
 
 # 运维：自行部署 Source Graph
@@ -76,7 +76,7 @@ flowchart TB
 <!-- context:section id="single" -->
 ## 运行单实例
 
-- **按裸 Git 仓库及其索引规划卷容量**。让剩余空间保持在 `SOURCEGRAPH_MIN_FREE_BYTES`（默认 1 GiB）之上，低于这个下限时拉取和建索引会停止；此外还要为替换用的 pack 文件和索引构建留出空间。每个仓库还有自己的容量预算，默认 100 GiB，Git 压缩时可能短暂需要超出预算的临时空间。
+- **按裸 Git 仓库及其索引规划卷容量**。每个仓库的存储预算（默认 100 GiB）通过释放其最旧的未受保护快照来落实，因此你登记的各仓库的存储预算决定了它们所用空间的大部分上限。此外，Git 压缩和引用发现的下载还需要数据目录下的临时空间：引用下载合计最多 4 GiB，每次目录刷新最多 256 MiB。让剩余空间保持在 `SOURCEGRAPH_MIN_FREE_BYTES`（默认 1 GiB）之上，它始终是实例级的下限，低于它时拉取、建索引和引用下载会停止；此外还要为替换用的 pack 文件和索引构建留出空间。见 [运维：日常运维与排障](operations.md#disk-and-storage)。
 - **一个卷只对应一台机器**。两个进程绝不能服务同一批仓库或共享同一个数据目录，因为索引归属是按进程划分的。
 - **保留默认的 SQLite 数据库**，除非你已经在运维 PostgreSQL 或 MongoDB。
 - **先测量再调整规格**。索引所需的内存和磁盘取决于仓库大小，因此先观察真实的建索引情况，再改变容量。

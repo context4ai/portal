@@ -2,16 +2,17 @@
 title: Connecting Agents, Scripts and the CLI to Source Graph
 description: Connect your Agent to Source Graph so Context can read cited code
   without cloning, then connect a browser, script or the command-line client,
-  choose the right credential and follow the search-then-read loop.
+  choose the right credential, pick the branch, tag or commit to read and follow
+  the search-then-read loop.
 type: Guide
-timestamp: 2026-11-07T14:10:54.731Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # Connecting Agents, Scripts and the CLI to Source Graph
 
 <!-- context:section id="goal" -->
 Connecting gives your Agent, script or terminal code search and reading at a pinned commit, without cloning the repository first. Most Context users need only one thing: connect their Agent over MCP, as described in the next section, so the Agent can read the code behind an answer remotely. [What Is Source Graph](introduction.md) explains why that matters, when you need it and how to try the live demo.
 
-Every Source Graph instance serves four entry points under the `/sourcegraph/` path of its origin. Pick the one that fits the caller; all of them run the same operations with the same rules, except that only MCP reads several ranges in one call.
+Every Source Graph instance serves four entry points under the `/sourcegraph/` path of its origin. Pick the one that fits the caller; all of them run the same operations with the same rules, except that only MCP reads several ranges in one call and the CLI has no command for listing branches and tags.
 
 | Caller | Entry point |
 | --- | --- |
@@ -80,6 +81,20 @@ Send keys and tokens as `Authorization: Bearer <value>`. An invalid credential i
 
 <!-- /context:section -->
 
+<!-- context:section id="versions" -->
+
+## Choose the version to read
+
+Search, read, list and diff work at a monitored branch — one the instance keeps synchronized, as listed by `repositories` — or at a full 40-character commit SHA. Omitting the revision uses the default branch at its last synchronized head. Any other branch, and every tag, is turned into a full commit first:
+
+1. **Find it with `refs`** when you do not know its exact name. `refs` lists the repository's branches or tags from its remote, newest first, each with its commit, `created_at`, author, title, and whether it is monitored and indexed. Narrow the list with `kind` (`branch`, the default, `tag` or `all`), `query` (part of the name), `author`, `title`, `since` and `until`; sort by `name` instead of creation time; and page with `first` (1–100) and the returned `next_cursor` as `after`.
+2. **Resolve it with `resolve`.** It accepts any branch or tag name of a registered repository, as well as `refs/heads/<name>` and `refs/tags/<name>`, and returns the full `commit`, whether that commit is `indexed`, and how it was found in `source`: `observed` for a monitored branch, which resolves to its last synchronized head and can lag the remote, and `catalog` or `remote` for other branches and tags.
+3. **Read at that SHA** with search, read, list or diff. When `indexed` is false, the commit must be prepared first: a repository manager prepares that full SHA — or this connection itself, if its tools include `prepare` — and the Agent reads at it once availability shows it ready. Listing and resolving never download code or build an index.
+
+Branch and tag names are case-sensitive. A bare name that is both a branch and a tag answers `REF_AMBIGUOUS`; pass `refs/heads/<name>` or `refs/tags/<name>` instead. `REF_NOT_FOUND` means there is no such branch or tag, and `REF_NOT_COMMIT` that a tag does not point to a commit. Short SHAs, `HEAD` and revision expressions are not accepted, and an unmonitored branch name passed straight to search or read answers `BRANCH_NOT_MONITORED`. The first listing of a large repository can answer `REFS_CATALOG_PREPARING`; retry after its `Retry-After` interval, or resolve a complete name meanwhile.
+
+<!-- /context:section -->
+
 <!-- context:section id="http" -->
 ## Call the HTTP API
 
@@ -95,9 +110,17 @@ curl -s -X POST 'https://context4ai.org/sourcegraph/api/search?repo=context4ai/c
 curl -s -X POST 'https://context4ai.org/sourcegraph/v1/repo/read?repo=context4ai/context' \
   -H 'Content-Type: application/json' \
   -d '{"Revision":"<commit>","Path":"README.md","StartLine":1,"EndLine":40}'
+
+# Find the ten newest tags created since 1 October 2026
+curl -s 'https://context4ai.org/sourcegraph/v1/repo/refs?repo=context4ai/context&kind=tag&since=2026-10-01&first=10'
+
+# Resolve a tag to its full commit and check whether it is indexed
+curl -s -X POST 'https://context4ai.org/sourcegraph/v1/repo/resolve?repo=context4ai/context' \
+  -H 'Content-Type: application/json' \
+  -d '{"Revision":"refs/tags/v0.7.95"}'
 ```
 
-`read_many` is available only over MCP; over HTTP, issue several `read` calls.
+`refs` takes its filters as query parameters (`kind`, `query`, `author`, `title`, `since`, `until`, `sort`, `first` and `after`), each at most once. `read_many` is available only over MCP; over HTTP, issue several `read` calls.
 <!-- /context:section -->
 
 <!-- context:section id="cli" -->
@@ -112,7 +135,7 @@ sourcegraph-cli read -repo context4ai/context -revision <commit> \
   -path README.md -start-line 1 -end-line 40
 ```
 
-It prints the raw JSON response and exits with `3` when a request is accepted but not ready yet. All commands and flags are in the [CLI](../../product/reference/source-graph/cli.md) reference.
+`resolve` accepts the same branch, tag and `refs/heads/` or `refs/tags/` forms as the HTTP route, while the other commands take a monitored branch or a full SHA. The CLI has no `refs` command; find branches and tags through the HTTP route or the MCP tool. It prints the raw JSON response and exits with `3` when a request is accepted but not ready yet. All commands and flags are in the [CLI](../../product/reference/source-graph/cli.md) reference.
 <!-- /context:section -->
 
 <!-- context:section id="loop" -->
@@ -121,11 +144,11 @@ It prints the raw JSON response and exits with `3` when a request is accepted bu
 
 Agents get the most from Source Graph with a short loop:
 
-1. **Search** the repository. Omit the revision to use its default branch head, or pass a monitored branch or a full commit you already know.
+1. **Search** the repository. Omit the revision to use its default branch head, or pass a monitored branch or a full commit you already know; for another branch or a tag, resolve it first as described in [Choose the version to read](#choose-the-version-to-read).
 2. **Pin the commit** returned in the result's metadata.
 3. **Read** the decisive ranges at that commit — directly when the file is known, several at once with `read_many`. Keep the repository, full commit SHA and path together for each range, use paths returned by search or list, and group a `read_many` call by repository and commit; `end_line` is an absolute line number, not a count.
 4. **Continue** from the returned next line if the file goes on, and treat `Partial`, `Truncated` and coverage flags as limits, not as proof that something is absent.
 
-List repositories or resolve the revision only when the repository is unknown or a request fails, not before every query. If a request fails — for example `409 INDEX_NOT_READY` when a commit has not been indexed yet — look up the code in [Ops: Day-to-Day Operations](operations.md#common-errors) for what it means and what to do.
+List repositories, look up branches and tags, or resolve the revision only when the repository or version is unknown or a request fails, not before every query. If a request fails — for example `409 INDEX_NOT_READY` when a commit has not been indexed yet — look up the code in [Ops: Day-to-Day Operations](operations.md#common-errors) for what it means and what to do.
 
 <!-- /context:section -->

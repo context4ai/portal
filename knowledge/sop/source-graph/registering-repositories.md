@@ -4,7 +4,7 @@ description: Register a GitHub or custom Git repository with its branches,
   retention window, visibility and sync interval, supply tokens for private
   repositories, and split a monorepo into path groups.
 type: Guide
-timestamp: 2026-11-07T13:27:05.988Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # Registering and Managing Repositories
 
@@ -131,9 +131,9 @@ Once registered, a repository runs on its own:
 2. Each branch head that is not yet indexed is queued for indexing; a head that fails three times is not retried until the next change.
 3. A scanner checks every minute and queues the next sync when the interval has elapsed.
 
-To search a retained older snapshot, or a specific commit that was never a synchronized head, ask for it to be prepared — from the repository page with **Create index**, with `POST /sourcegraph/api/admin/v1/repo/prepare`, or with the MCP `prepare` tool for authorized callers. A full 40-character SHA that has not been synchronized is fetched directly from the code source, without deepening the history; the server must allow fetching that SHA, and a refused request fails rather than using another commit. Preparation is asynchronous; accepted does not mean ready. Manual requests are paced per repository, as described in [Ops: Day-to-Day Operations](operations.md#rate-limits).
+Any other commit — an older snapshot, a commit that was never a synchronized head, the tip of an unmonitored branch or a tag — is prepared by its full 40-character SHA: from the repository page with **Create index**, with `POST /sourcegraph/api/admin/v1/repo/prepare`, or with the MCP `prepare` tool for authorized callers. For a branch or tag name, find its commit first with `refs` or `resolve`, as described in [HTTP and MCP](../../product/reference/source-graph/http-and-mcp.md#query-routes). A SHA that has not been synchronized is fetched directly from the code source, without deepening the history; the server must allow fetching that SHA, and a refused request fails rather than using another commit. The prepared commit is kept as an ordinary snapshot, not a pinned one; see [Snapshots and storage](#snapshots-and-storage). Preparation is asynchronous; accepted does not mean ready. Manual requests are paced per repository, as described in [Ops: Day-to-Day Operations](operations.md#rate-limits).
 
-Editing a repository's branches or retention cancels its queued and running work; the new retention applies at the next successful sync, and pinned snapshots and branch heads stay available. Changing path groups additionally clears the observed heads and versions and waits for a fresh sync. Disabling and deleting keep the data; a deleted, disabled repository can be purged permanently after one minute. [Ops: Day-to-Day Operations](operations.md) covers cleanup and maintenance.
+Editing a repository's branches or retention cancels its queued and running work; the edited retention applies at the next successful sync, preparation or index task, and pinned snapshots and branch heads stay available. Changing path groups additionally clears the observed heads and versions and waits for a fresh sync. Disabling and deleting keep the data; a deleted, disabled repository can be purged permanently after one minute. [Ops: Day-to-Day Operations](operations.md) covers cleanup and maintenance.
 
 An instance started with `SOURCEGRAPH_SEED_DEMO=true` registers the two public example repositories, `context4ai/context` and `context4ai/sourcegraph`, following their default branch with one retained commit and an hourly sync.
 
@@ -143,9 +143,24 @@ An instance started with `SOURCEGRAPH_SEED_DEMO=true` registers the two public e
 
 ## Snapshots and storage
 
-Preparing an explicit SHA pins that snapshot. **Pinned snapshots** in repository settings lists the versions kept regardless of ordinary retention, up to 4096; removing a SHA releases its pin, and it can expire at the next successful sync. Adding a pin alone does not fetch or index an absent snapshot: prepare the SHA first. Ordinary snapshots are kept by days since first observation or by the configured number of most recently observed snapshots; pins, current branch heads and snapshots used by active jobs are always kept, and at most 4096 snapshots are retained per path group. Commit choices on the website show up to 20 observed snapshots, not the full Git history.
+Synchronization records depth-one snapshots of the monitored branch heads; every other commit enters the repository only when it is prepared by full SHA, as described in [After registration](#after-registration). Commit choices on the website show up to 20 observed snapshots, not the full Git history.
 
-Each repository has a **Storage budget**, 100 GiB by default and configurable from 1 GiB to 10 TiB, covering its Git objects, index shards and active preparation files. Preparation stops with `REPOSITORY_STORAGE_LIMIT` when the sampled usage reaches the budget. It is a protective budget, not an exact quota, so short overshoots are possible. When it blocks preparation, raise the budget, or release unused pins and clean old indexes, as described in [Ops: Day-to-Day Operations](operations.md).
+Each path group's snapshots are either protected or ordinary:
 
+- **Protected** — the current branch heads, the **Pinned snapshots** in repository settings and the commits of queued or running jobs. Retention and capacity limits never release them.
+- **Ordinary** — every other snapshot, including commits prepared by SHA. They are kept by days since first observation or by the configured number of most recently observed snapshots. Retention is applied after each successful sync and again as soon as a preparation or index task publishes its index.
+
+Pins are added only in repository settings, by the repository's managers or an administrator, one full SHA per line and up to 4096; preparing a commit never pins it. Adding a pin alone does not fetch or index an absent snapshot, so prepare the SHA first. Removing a SHA releases its pin and returns the snapshot to ordinary retention.
+
+Each repository also has a **Storage budget**, 100 GiB by default and configurable from 1 GiB to 10 TiB, covering its Git objects, index shards and active preparation files. When a path group reaches 4096 snapshots, or the repository reaches its storage budget, the oldest unprotected snapshots (by first observation) and their indexes are released, in batches of at most 64, instead of refusing work. A released version answers `REVISION_NOT_ELIGIBLE` and can be prepared again by its SHA. Releases happen only at safe points between steps, so the budget is a protective limit rather than an exact quota: a running index build is stopped only above 120% of the budget, and Git compaction needs temporary space while it reclaims objects. [Ops: Day-to-Day Operations](operations.md#disk-and-storage) describes the safe points and collection in detail.
+
+A limit becomes an error only when protected snapshots alone fill it:
+
+| Code | Meaning | What to do |
+| --- | --- | --- |
+| `REPOSITORY_STORAGE_LIMIT` | Protected snapshots fill the storage budget, or a running build passed 120% of it | Remove pins you do not need, or raise the budget |
+| `SNAPSHOT_LIMIT` | Protected snapshots fill a path group's 4096 versions | Remove pins you do not need |
+
+`INSUFFICIENT_STORAGE` is different: the instance's free disk space is below its reserve, whatever the repository's budget; see [Ops: Day-to-Day Operations](operations.md#disk-and-storage).
 
 <!-- /context:section -->
