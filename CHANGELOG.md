@@ -1,12 +1,16 @@
 # Changelog
 
-## 0.16.1 — 2026-11-08
+## 0.16.1 — 2026-11-09
 
-### Context SDK 0.7.95
+### Source Graph branch and tag discovery, on-demand snapshots and Context 0.7.95
 
-- Upgrade Context SDK to 0.7.95. Knowledge content is unchanged.
+- Upgrade Context SDK to 0.7.95.
+- Connecting to Source Graph: choose the version to read; find branches and tags with refs, resolve any of them to a full commit, and have a repository manager prepare commits that are not indexed.
+- HTTP and MCP, CLI and Configuration references: the refs route and tool, resolve forms and output fields, ref and capacity error codes, and ref discovery limits.
+- Registering Repositories and Operations: prepared commits are ordinary snapshots; branch heads, pins and active jobs are protected; other snapshots are released oldest first when a path group or the storage budget is full, and unfinished Git collection is completed in the background.
+- Architecture pages, What Is Source Graph, Self-Hosting and Querying via MCP describe the same behavior; Chinese translations updated.
 
-Trigger: dist: Context 0.7.95 release
+Trigger: dist: Context 0.7.95 release; module: Source Graph release with branch and tag discovery and on-demand snapshots
 User: qiansc (git)
 
 ## 0.16.0 — 2026-11-08

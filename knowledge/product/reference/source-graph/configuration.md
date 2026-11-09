@@ -4,7 +4,7 @@ description: Every Source Graph setting in one place — environment variables,
   build-time deployment settings, code sources, runtime site settings,
   repository policies, plugin limits and the data directory layout.
 type: Wiki
-timestamp: 2026-11-07T12:54:24.251Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # Configuration
 
@@ -128,12 +128,19 @@ Each registration has its own policy, initialized from the repository defaults:
 | Git timeout (`git_timeout_minutes`) | 0 to inherit the site default, or 15, 30, 45 or 60 | Inherit |
 | Managers | Up to 50 signed-in users who can manage the repository besides administrators | The registrant |
 | Public repository (`public_read`) | Public or private | Public |
-| Pinned snapshots (`pinned_commits`) | Full SHAs kept regardless of retention, up to 4,096 | None |
-| Storage budget (`max_storage_bytes`) | 1 GiB to 10 TiB, covering Git objects, index shards and active preparation files | 100 GiB |
+| Pinned snapshots (`pinned_commits`) | Full SHAs, up to 4,096, that neither retention nor capacity release ever removes; added only here, never by preparing a commit | None |
+| Storage budget (`max_storage_bytes`) | 1 GiB to 10 TiB, covering Git objects, index shards and active preparation files; when reached, the oldest unprotected snapshots are released | 100 GiB |
 | Code source (`code_provider`) | `github` or `git`, fixed at registration; the registrant's own token for that source is tried first, then the global one | `github` |
 | Code host (`code_host`) | The source's host at registration, kept for every later fetch | — |
 
-A private repository is visible only to its creator, its managers, administrators signed in on the website and the service token; see [Authentication and Access Control](../../../sop/source-graph/authentication-and-access-control.md#public-and-private-repositories). Pinned snapshots, current branch heads and snapshots used by active jobs are always kept, at most 4,096 per path group. See [Registering repositories](../../../sop/source-graph/registering-repositories.md) for how branches, retention and pins decide which commits are searchable.
+A private repository is visible only to its creator, its managers, administrators signed in on the website and the service token; see [Authentication and Access Control](../../../sop/source-graph/authentication-and-access-control.md#public-and-private-repositories).
+
+Pinned snapshots, current branch heads and the commits of queued or running jobs are protected and never released. Every other snapshot is ordinary, including a commit prepared by its full SHA: preparation fetches it on demand but does not pin it. Ordinary snapshots leave in two ways:
+
+- **Retention** applies the days or count rule after each successful sync and again as soon as a preparation publishes its index.
+- **Capacity** releases the oldest unprotected snapshots, by first observation, instead of refusing work: when a path group reaches 4,096 snapshots, and when the storage budget is reached at a safe point — before the Git fetch of a sync or a SHA preparation, before an index build (reserving 1.2 times the group's previous index) and after a preparation or index task. Budget eviction works in batches of at most 64 and measures usage again after each batch.
+
+A released version answers `REVISION_NOT_ELIGIBLE` until it is prepared again. `SNAPSHOT_LIMIT` and `REPOSITORY_STORAGE_LIMIT` appear only when protected snapshots alone fill the 4,096 versions or the budget, or when a running build exceeds 120% of the budget; remove pins you no longer need or raise the budget. Released space is collected by Git in the job that released it and, if that is interrupted, by a background pass every minute that finishes Git collection repository by repository. See [Registering repositories](../../../sop/source-graph/registering-repositories.md) for how branches, retention and pins decide which commits are searchable.
 
 <!-- /context:section -->
 
@@ -159,9 +166,27 @@ Wasm evidence plugins run inside the service under resource guards set by `SOURC
 <!-- /context:section -->
 
 <!-- context:section id="fixed" -->
+
 ## Built-in limits
 
 Some limits are fixed in code and cannot be configured: request bodies up to 64 KiB, a 30-second request deadline, HTTP server timeouts of 5 seconds for headers, 120 seconds for reading and 125 seconds for writing, and the search, read, list and diff page sizes described in [HTTP and MCP](http-and-mcp.md). The search engine runs as a local helper on `127.0.0.1:6070` and is never exposed.
+
+Snapshot capacity is fixed at 4,096 snapshots per path group and 4,096 pinned snapshots per repository; budget eviction releases at most 64 snapshots per batch.
+
+Branch and tag discovery for `refs` and `resolve` keeps its catalogs in memory and uses fixed limits:
+
+| Limit | Value |
+| --- | --- |
+| Catalog size | 200,000 branches and 200,000 tags with commit details; beyond that, names only and marked truncated |
+| Catalogs in memory | 1,000,000 refs across repositories; the least recently used catalogs are dropped beyond that |
+| Catalog freshness | 5 minutes or three times the last refresh duration, whichever is longer |
+| Catalog refreshes | One per repository and 4 per instance at a time |
+| First listing wait | The request's remaining deadline less 2 seconds, then `REFS_CATALOG_PREPARING` with `Retry-After` |
+| Scratch downloads | 256 MiB per catalog refresh, 16 MiB per resolve lookup and 4 GiB across all downloads, checked every second and always within the free-space reserve set by `SOURCEGRAPH_MIN_FREE_BYTES` |
+| Remote lookups | 2 per repository and 8 per instance at a time, at most 64 running or waiting |
+| Lookup cache | 30 seconds, including "not found", at most 10,000 entries |
+| Failure backoff | Per repository, from 10 seconds up to 5 minutes |
+
 <!-- /context:section -->
 
 <!-- context:section id="data" -->
@@ -175,6 +200,7 @@ Some limits are fixed in code and cannot be configured: request bodies up to 64 
 | `storage.json` | Where Git mirrors are stored on this machine | No |
 | `space/` | Bare Git mirrors, unless moved on the **Storage** page | Yes, from the remotes |
 | `index/`, `manifests/` | Search index shards and the manifests that describe them | Yes, by indexing again |
+| `refcache/tmp/` | Scratch downloads of branch and tag objects, without file trees, for `refs` and `resolve`; each is deleted once parsed, and leftovers are removed at startup | Temporary; nothing to back up |
 
 The container runs as an unprivileged user (uid 10001) and needs write access to the whole data root.
 

@@ -4,7 +4,7 @@ description: Connect your own Agent to the Source Graph MCP and give it a
   retrieval prompt, so it answers from a team's knowledge and code without
   installing Context, a knowledge package or any repository.
 type: Guide
-timestamp: 2026-11-07T13:27:05.988Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # Querying Through MCP in Your Agent
 
@@ -59,11 +59,12 @@ On the public demo you should see four repositories:
 | `context4ai/sourcegraph` | Source Graph source code |
 | `context4ai/agent-graph` | Agent Graph source code |
 
-The service offers the tools `repositories`, `resolve`, `search`, `read`, `read_many`, `list`, `diff` and `availability`. You do not call them yourself; the prompt below tells the Agent how to use them. The server also tells the Agent to keep the repository, the full commit SHA and the file path together for every piece of code it cites, and never to rebuild a SHA or reuse it in another repository, so the citations it returns stay traceable.
+The service offers the tools `repositories`, `refs`, `resolve`, `search`, `read`, `read_many`, `list`, `diff` and `availability`. You do not call them yourself; the prompt below tells the Agent how to use them. The server also tells the Agent to keep the repository, the full commit SHA and the file path together for every piece of code it cites, and never to rebuild a SHA or reuse it in another repository, so the citations it returns stay traceable.
 
 <!-- /context:section -->
 
 <!-- context:section id="prompt" -->
+
 ## 3. Give the Agent the retrieval prompt
 
 Copy this template and fill in your repositories:
@@ -85,8 +86,10 @@ Retrieve in this order:
    match, read the page with `read` or `read_many`; do not conclude from the
    matching line alone.
 2. Resolve each branch once to a full commit and reuse it for every later search
-   and read in that repository. Cite repository, commit and path together. Never
-   reuse a commit across repositories or make one up.
+   and read in that repository. For a branch or tag the service does not
+   monitor, find it with `refs` if needed and `resolve` it to a full commit
+   before reading. Cite repository, commit and path together. Never reuse a
+   commit across repositories or make one up.
 3. If the knowledge does not answer the question, leaves a real gap or does not
    match it, check the facts in the source repositories with the same terms.
    When the knowledge and the code disagree, follow the code and say so.
@@ -104,6 +107,7 @@ Retrieve in this order:
 To try it on the demo, fill in `context4ai/portal` (branch `main`, knowledge under `knowledge/`) as the knowledge repository and `context4ai/context` as the source repository. You can then ask the Agent about Context itself.
 
 Each rule has a purpose. Rules 1 and 3 make answers start from reviewed knowledge and fall back to code only when needed. Rules 2 and 5 make every answer checkable at an exact commit. Rule 4 stops the Agent from reporting that something does not exist when the index is simply not ready, and rule 6 keeps text inside repositories from steering the Agent.
+
 <!-- /context:section -->
 
 <!-- context:section id="keep" -->

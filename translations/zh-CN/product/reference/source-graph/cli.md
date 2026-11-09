@@ -4,8 +4,8 @@ description: sourcegraph-cli 的命令、参数、环境变量、输出与退出
 translation:
   locale: zh-CN
   artifact_ref: 524c7555-fd52-4e08-82d0-93f68236b71d
-  source_digest: 524ee877324cad8efc0d480111adb5ac8188dc122abe4e7960ab8e4361768a2d
-  translated_at: 2026-10-20T05:13:06.930Z
+  source_digest: 8222e9aa833ee1671015534bc8e4dcec72f54397ebc2ec794e41a35cc5530486
+  translated_at: 2026-11-09T01:07:08.071Z
 ---
 
 # CLI
@@ -43,7 +43,7 @@ sourcegraph-cli <command> [flags] [arguments]
 | `diff` | `POST /v1/repo/diff` | `-repo`、`-base`、`-head`、`-first`、`-after` |
 | `prepare` | `POST /api/admin/v1/repo/prepare` | `-repo`、`-revision`、`-kind`、`-key` |
 
-没有 `read_many` 命令；请多次调用 `read`，或使用对应的 MCP 工具。`diff` 会比较所有已登记的路径，`prepare` 则作用于所有路径组。`prepare` 属于管理路由，因此需要服务令牌。
+没有 `read_many` 命令；请多次调用 `read`，或使用对应的 MCP 工具。也没有 `refs` 命令；要列出或搜索分支和标签，请使用 `GET /v1/repo/refs` 或 MCP 的 `refs` 工具，再把名称传给 `resolve`。`diff` 会比较所有已登记的路径，`prepare` 则作用于所有路径组。`prepare` 属于管理路由：需要服务令牌，或者仓库管理者或站点管理员的个人 API Key。
 <!-- /context:section -->
 
 <!-- context:section id="flags" -->
@@ -54,7 +54,7 @@ sourcegraph-cli <command> [flags] [arguments]
 | 参数 | 默认值 | 含义 |
 | --- | --- | --- |
 | `-repo` | — | 仓库键，格式为 `owner/repository` |
-| `-revision` | — | 监控分支或完整 SHA；省略时使用默认分支。对 `prepare` 而言，表示要准备的提交 |
+| `-revision` | — | 监控分支或完整 SHA；省略时使用默认分支。`resolve` 还接受已登记仓库的任意分支名或标签名、`refs/heads/<name>` 和 `refs/tags/<name>`，并返回其完整提交供其他命令使用。对 `prepare` 而言，表示要准备的完整 SHA |
 | `-e` | — | 搜索模式，类似 `rg -e`；不指定时取第一个位置参数 |
 | `-F` | `false` | 将模式作为字面量匹配，类似 `rg -F` |
 | `-i` | `false` | 忽略大小写，类似 `rg -i` |
@@ -102,7 +102,7 @@ sourcegraph-cli read -repo context4ai/context -revision <commit> -path README.md
 # List the repository root
 sourcegraph-cli list -repo context4ai/context -first 50
 
-# Ask an instance you administer to index a commit (service token required)
+# Ask an instance you administer to index a commit (service token, or the key of a repository manager)
 SOURCEGRAPH_API_TOKEN=... sourcegraph-cli prepare -repo acme/app -revision <full-sha> -key index-<full-sha>
 ```
 <!-- /context:section -->

@@ -4,7 +4,7 @@ description: What Context Source Graph is, the problem it solves for AI Agents
   reading code, why it is optional for Context users, when it is worth
   connecting and how to start with the live demo or your own instance.
 type: Guide
-timestamp: 2026-11-07T14:10:54.731Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # What Is Source Graph
 
@@ -27,9 +27,9 @@ Source Graph moves that work ahead of the question: it keeps each registered rep
 ## What you get
 
 - **Fast search.** Indexed search typically completes in under 5 ms on the server; in the same region as its callers, a full request including the network stays well under 100 ms. On the demo, a literal search that takes `rg` about 61 ms over a local checkout returns in about 1 ms. [Pinned Search and Reads](../../architecture/source-graph/pinned-search-and-reads.md) explains where the speed comes from.
-- **Reproducible reads.** Branches and tags resolve to one commit before anything is read, so a search hit, the file it points to and a later diff describe the same snapshot.
-- **Ready for Agents.** The same operations — list repositories, search, read one range or several, list a directory, diff two commits — are available on a website, an HTTP API, an MCP server and a command-line client. Any MCP client that speaks Streamable HTTP can connect, and anonymous access is read-only and limited to public repositories. Repositories can also be private, visible only to their creator, managers and administrators.
-- **Snapshot retention.** Shallow synchronization of branch heads, specific commits pinned on demand and a storage budget per repository keep disk use predictable.
+- **Reproducible reads.** Any branch or tag of a registered repository resolves to one full commit before anything is read, so a search hit, the file it points to and a later diff describe the same snapshot. Branches and tags can be listed and searched by name, author, title or date, newest first, so an Agent can find the version a question is about.
+- **Ready for Agents.** The same operations — list repositories, find branches and tags, resolve a version, search, read one range or several, list a directory, diff two commits — are available on a website, an HTTP API, an MCP server and a command-line client. Any MCP client that speaks Streamable HTTP can connect, and anonymous access is read-only and limited to public repositories. Repositories can also be private, visible only to their creator, managers and administrators.
+- **Snapshot retention.** Shallow synchronization of branch heads, snapshots of any commit prepared on demand and a storage budget per repository keep disk use predictable. When a repository reaches its capacity, its oldest snapshots are released first, while current branch heads and versions pinned in its settings are kept.
 - **Small footprint.** One process manages the Git mirrors, the search engine and background indexing. SQLite is the default database; PostgreSQL and MongoDB are supported.
 
 <!-- /context:section -->

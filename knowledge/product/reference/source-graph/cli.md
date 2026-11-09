@@ -3,7 +3,7 @@ title: CLI
 description: Commands, flags, environment variables, output and exit codes of
   sourcegraph-cli, and what the Git credential helper does.
 type: Wiki
-timestamp: 2026-10-14T08:53:29.911Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # CLI
 
@@ -27,6 +27,7 @@ Because the address must be HTTPS, a local instance on `http://localhost` needs 
 <!-- /context:section -->
 
 <!-- context:section id="commands" -->
+
 ## Commands
 
 | Command | Route | Flags used |
@@ -40,10 +41,12 @@ Because the address must be HTTPS, a local instance on `http://localhost` needs 
 | `diff` | `POST /v1/repo/diff` | `-repo`, `-base`, `-head`, `-first`, `-after` |
 | `prepare` | `POST /api/admin/v1/repo/prepare` | `-repo`, `-revision`, `-kind`, `-key` |
 
-There is no `read_many` command; use several `read` calls or the MCP tool. `diff` compares all registered paths, and `prepare` targets all path groups. `prepare` is a management route, so it needs the service token.
+There is no `read_many` command; use several `read` calls or the MCP tool. There is no `refs` command either; to list or search branches and tags, use `GET /v1/repo/refs` or the MCP `refs` tool, then pass the name to `resolve`. `diff` compares all registered paths, and `prepare` targets all path groups. `prepare` is a management route: it needs the service token, or the personal API key of a user who manages the repository or is a site administrator.
+
 <!-- /context:section -->
 
 <!-- context:section id="flags" -->
+
 ## Flags
 
 Flags use Go syntax: one or two leading dashes both work (`-repo` or `--repo`), and every flag must come before positional arguments.
@@ -51,7 +54,7 @@ Flags use Go syntax: one or two leading dashes both work (`-repo` or `--repo`), 
 | Flag | Default | Meaning |
 | --- | --- | --- |
 | `-repo` | — | Repository key, `owner/repository` |
-| `-revision` | — | A monitored branch or a full SHA; omitted means the default branch. For `prepare`, the commit to prepare |
+| `-revision` | — | A monitored branch or a full SHA; omitted means the default branch. `resolve` also accepts any branch or tag name of a registered repository, `refs/heads/<name>` and `refs/tags/<name>`, and returns its full commit for the other commands. For `prepare`, the full SHA to prepare |
 | `-e` | — | Search pattern, like `rg -e`; otherwise the first positional argument |
 | `-F` | `false` | Match the pattern as literal text, like `rg -F` |
 | `-i` | `false` | Ignore case, like `rg -i` |
@@ -67,6 +70,7 @@ Flags use Go syntax: one or two leading dashes both work (`-repo` or `--repo`), 
 | `-kind` | `index` | `index` or `sync`, for `prepare` |
 
 Search arguments after the pattern are directories to search within, like `rg`'s `PATH` arguments.
+
 <!-- /context:section -->
 
 <!-- context:section id="output" -->
@@ -85,6 +89,7 @@ After a timeout, delivery is unknown; inspect `availability` before retrying a `
 <!-- /context:section -->
 
 <!-- context:section id="examples" -->
+
 ## Examples
 
 ```bash
@@ -99,9 +104,10 @@ sourcegraph-cli read -repo context4ai/context -revision <commit> -path README.md
 # List the repository root
 sourcegraph-cli list -repo context4ai/context -first 50
 
-# Ask an instance you administer to index a commit (service token required)
+# Ask an instance you administer to index a commit (service token, or the key of a repository manager)
 SOURCEGRAPH_API_TOKEN=... sourcegraph-cli prepare -repo acme/app -revision <full-sha> -key index-<full-sha>
 ```
+
 <!-- /context:section -->
 
 <!-- context:section id="helper" -->

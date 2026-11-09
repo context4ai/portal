@@ -4,7 +4,7 @@ description: Run your own Source Graph instance with Docker or from source,
   choose between one instance and sharded instances, pick a database, deploy on
   Fly.io and back up what cannot be rebuilt.
 type: Guide
-timestamp: 2026-11-07T13:27:05.988Z
+timestamp: 2026-11-09T00:57:46.373Z
 ---
 # Ops: Self-Hosting Source Graph
 
@@ -78,7 +78,7 @@ flowchart TB
 
 ## Running one instance
 
-- **Size the volume for bare Git repositories plus their indexes.** Keep free space above `SOURCEGRAPH_MIN_FREE_BYTES`, 1 GiB by default, which is the floor below which fetching and indexing stop, plus room for replacement packs and index builds. Each repository also has its own storage budget, 100 GiB by default, and Git compaction can briefly need temporary space beyond it.
+- **Size the volume for bare Git repositories plus their indexes.** Each repository's storage budget, 100 GiB by default, is enforced by releasing its oldest unprotected snapshots, so the budgets of the repositories you register bound most of the space they use. On top of that, Git compaction and ref-discovery downloads need temporary space under the data directory: ref downloads take at most 4 GiB together, each catalog refresh at most 256 MiB. Keep free space above `SOURCEGRAPH_MIN_FREE_BYTES`, 1 GiB by default, which stays the instance-wide floor below which fetching, indexing and ref downloads stop, plus room for replacement packs and index builds. See [Ops: Day-to-Day Operations](operations.md#disk-and-storage).
 - **Run exactly one machine for the volume.** Two processes must never serve the same repositories or share one data directory, because index ownership is per process.
 - **Keep the default SQLite database** unless you already operate PostgreSQL or MongoDB.
 - **Measure before resizing.** Index memory and disk needs depend on repository size, so observe real indexing before changing capacity.
