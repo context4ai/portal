@@ -1,4 +1,15 @@
 entries:
+  - version: 0.16.3
+    date: 2026-11-09T08:14:37.216Z
+    title: Context SDK 0.7.96
+    changes:
+      - Upgrade Context SDK to 0.7.96. Knowledge content is unchanged.
+    triggers:
+      - kind: dist
+        description: Context 0.7.96 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.2
     date: 2026-11-09T02:46:53.759Z
     title: Source Graph job time limits and repository policy editors
