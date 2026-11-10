@@ -1,4 +1,15 @@
 entries:
+  - version: 0.16.4
+    date: 2026-11-10T11:28:16.711Z
+    title: Context SDK 0.7.97
+    changes:
+      - Upgrade Context SDK to 0.7.97. Knowledge content is unchanged.
+    triggers:
+      - kind: dist
+        description: Context 0.7.97 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.3
     date: 2026-11-09T08:14:37.216Z
     title: Context SDK 0.7.96
