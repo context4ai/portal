@@ -1,4 +1,18 @@
 entries:
+  - version: 0.16.6
+    date: 2026-11-13T14:43:25.206Z
+    title: Context SDK upgraded to 0.7.99
+    changes:
+      - "Context SDK and CLI upgraded to 0.7.99 (task rollback fixes: rollbacks
+        no longer get stuck with an unfinished production stage or a partial
+        revision delivery, and production stages prepared later are kept);
+        knowledge content unchanged."
+    triggers:
+      - kind: dist
+        description: "upgrade with the Context 0.7.99 release"
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.5
     date: 2026-11-11T17:08:44.422Z
     title: Context SDK 0.7.98
