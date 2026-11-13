@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.6 — 2026-11-13
+
+### Context SDK upgraded to 0.7.99
+
+- Context SDK and CLI upgraded to 0.7.99 (task rollback fixes: rollbacks no longer get stuck with an unfinished production stage or a partial revision delivery, and production stages prepared later are kept); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.99 release
+User: qiansc (git)
+
 ## 0.16.5 — 2026-11-11
 
 ### Context SDK 0.7.98
