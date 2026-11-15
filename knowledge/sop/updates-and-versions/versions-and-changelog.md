@@ -4,7 +4,7 @@ description: How a knowledge workspace gets one version and one changelog entry
   per completed round, where readers see the history, and how to go back to an
   earlier version.
 type: Guide
-timestamp: 2026-11-08T13:14:14.832Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Versions, Changelog and Restoring
 
@@ -13,6 +13,7 @@ A knowledge workspace has its own version number, in SemVer form. Each completed
 <!-- /context:section -->
 
 <!-- context:section id="bump" -->
+
 ## Which number changes
 
 | Change in the round | Increment |
@@ -21,7 +22,8 @@ A knowledge workspace has its own version number, in SemVer form. Each completed
 | Corrections, updates to existing modules, navigation, persistent status | Patch |
 | Anything you explicitly call a major version | Major — only on your instruction |
 
-The first version is `0.1.0` unless the knowledge workspace already has a higher one or you specify another. Work in progress never changes the version.
+The first version is `0.1.0` unless the knowledge workspace already has a higher one or you specify another. Work in progress never changes the version. A change to the knowledge map alone after delivery — menu titles, order or grouping — is recorded as a patch version.
+
 <!-- /context:section -->
 
 <!-- context:section id="record" -->
@@ -30,7 +32,9 @@ The first version is `0.1.0` unless the knowledge workspace already has a higher
 
 Near the end of a round, after the pages are approved and before the final build, the Agent looks at what actually changed — article text, assets, structure, navigation and templates — by comparing the workspace with Git, and writes the changelog entry: a title, the main changes and what prompted them, such as a new module, a note, an update or a fix. Related changes are merged so each entry stays short. Entries never contain credentials, raw conversation text, local paths or private account IDs, and the author is taken from your Git identity rather than guessed.
 
-A workspace kept in a subdirectory of a larger repository is compared only within its own directory and against the latest commit by default, because that repository's tags are not versions of the knowledge base; another commit can be named as the comparison base. The version number and the changelog are updated together. Recording a version does not by itself publish or deploy anything. The commands behind this are listed in [CLI Commands](../../product/reference/context/cli-commands.md).
+A workspace kept in a subdirectory of a larger repository is compared only within its own directory and against the latest commit by default, because that repository's tags are not versions of the knowledge base; another commit can be named as the comparison base. The version number and the changelog are updated together, and a version cannot be recorded while drafts still wait for review. A version that has already reached the remote default branch is reported as merged and is never reused; only an unmerged one can be amended.
+
+When several intermediate versions were recorded but none was published, they can be merged into one entry: the Agent restores only the version files to the last published version, keeps every knowledge change, compares against that version's commit and records one entry. A version that is already merged or tagged is never rewritten. Recording a version does not by itself publish or deploy anything. The commands behind this are listed in [CLI Commands](../../product/reference/context/cli-commands.md).
 
 <!-- /context:section -->
 

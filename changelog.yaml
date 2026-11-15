@@ -1,4 +1,37 @@
 entries:
+  - version: 0.16.7
+    date: 2026-11-15T02:13:20.171Z
+    title: Knowledge updated to Context 0.7.99
+    changes:
+      - "Routine updates: the trigger content starts with a plain line naming
+        the Context Skill instead of a slash command, because some schedulers
+        expand a leading command and drop the paragraph and ROUTINE_POLICY; runs
+        also assess uncited changes and write at most five new pages (Set Up
+        Routine Updates, Fully Managed Mode)."
+      - "Updates: --pending downloads cited contents missing from partial clones
+        and stops with a reason when it cannot; uncited_changes and suggested
+        citation lines; revisions report every citation problem at once and
+        cannot keep citations the new version no longer confirms (Updating
+        Knowledge, Keeping Knowledge Current, Revising a Page)."
+      - Lark identity fallback on code 3380004 with report and status warning;
+        synced-block permission gaps and saved downgrades (Lark Documents).
+      - "Versions: record refuses with drafts pending, merged versions are not
+        reused, merging unpublished versions, map-only changes become patch
+        versions (Versions and Changelog, Reorganizing at Scale)."
+      - Task rollback with an unfinished production stage, local install
+        resources/, pinned workspace CLI, entry Skill activation, Git fetch time
+        limits (CLI Commands, Installation, Skills, Code Repositories).
+      - New release notes section for 0.7.95 – 0.7.99; 13 Chinese pages
+        translated, including a repaired link in Fully Managed Mode.
+    triggers:
+      - kind: module
+        description: Context repository re-pinned from 3594851b to 0bbb2a76 (releases
+          0.7.95 – 0.7.99 and the routine trigger fix)
+      - kind: translation
+        description: 13 Chinese pages updated
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.6
     date: 2026-11-13T14:43:25.206Z
     title: Context SDK upgraded to 0.7.99
@@ -9,7 +42,7 @@ entries:
         knowledge content unchanged."
     triggers:
       - kind: dist
-        description: "upgrade with the Context 0.7.99 release"
+        description: upgrade with the Context 0.7.99 release
     actor:
       name: qiansc
       kind: git

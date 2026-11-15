@@ -4,7 +4,7 @@ description: Add Lark documents and Wiki pages as sources, choose the read
   identity, know how embedded resources are captured, and choose image handling
   for larger tasks.
 type: Guide
-timestamp: 2026-10-19T18:48:05.928Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Lark Documents
 
@@ -48,17 +48,22 @@ Capture reads the documents, so it needs your permission in the current conversa
 <!-- /context:section -->
 
 <!-- context:section id="identity" -->
+
 ## Read identity
 
 Each document, with all its resources, is read under **one** identity: yours by default, or a Bot's. The choice is the `CONTEXT_LARK_IDENTITY` setting (`user` or `bot`) in the environment where Context runs; a line in a Bot prompt does not change it.
 
 - **As you**, Context reads only as you.
-- **As a Bot**, Context may fall back once to reading as you when the Bot cannot read the body. The fallback restarts the whole document, so a page is never assembled from reads under two identities.
+- **As a Bot**, Context may fall back once to reading as you when the Bot cannot read the body, including when Lark refuses the Bot with code 3380004. The fallback restarts the whole document, so a page is never assembled from reads under two identities.
+
+The capture report records which identity read each document and why the Bot could not, and `context status` keeps showing a fallback until the document is captured again. The Agent tells you which documents were read as you, the risk — content only you can see is now in the snapshot, and later Bot captures may not read it — and the remedy: ask the document's owner to share it with the Bot. An unchanged revision is captured again in full when a different identity reads it than last time, instead of reusing the earlier snapshot.
 
 Once the body is read, every resource uses the same identity. A failed image or sheet never triggers a request for someone else's credentials, and network, rate-limit or format errors do not switch identity.
+
 <!-- /context:section -->
 
 <!-- context:section id="resources" -->
+
 ## What happens to embedded resources
 
 | Resource | Captured as |
@@ -72,9 +77,12 @@ Once the body is read, every resource uses the same identity. A failed image or 
 | Bookmark, sub-document, chat, embed | A stable navigation reference |
 | Video | A reference; downloaded only when you ask to bundle videos |
 
-A required resource that cannot be obtained stops capture. Two cases are recorded and capture continues with a warning: a whiteboard or diagram that Lark confirms was deleted, and an explicit permission denial for one embedded resource. Both leave a visible "unavailable resource" notice; neither is reported as downloaded.
+A required resource that cannot be obtained stops capture. Two cases are recorded and capture continues with a warning: a whiteboard or diagram that Lark confirms was deleted, an explicit permission denial for one embedded resource, and a synced block whose source document the reading identity cannot open. Each leaves a visible "unavailable resource" notice and is listed in the capture result; none is reported as downloaded, and a gap cannot be cited, although the captured text around it can. To close a permission gap, request the missing app scope at https://open.larkoffice.com/app or ask the document's owner to share it, then capture again.
+
+Refreshing a document whose revision has not changed saves the new snapshot even when a resource captured before has become such a gap or a preview, and the result lists each downgrade. A failure that blocks capture keeps the old snapshot, and a body that cannot be read never replaces it.
 
 Captured resources are part of the evidence and are kept with the knowledge workspace in Git, so keep the workspace private when the documents or screenshots are access-controlled.
+
 <!-- /context:section -->
 
 <!-- context:section id="images" -->

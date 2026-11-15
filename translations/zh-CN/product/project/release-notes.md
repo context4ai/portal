@@ -4,8 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: 6e8a980374854fcf233050db0183733a4f62c9a92456e0ba966a8a93b6fdfb8a
-  translated_at: 2026-11-08T13:15:36.841Z
+  source_digest: 74b6fc740a6b3c81888c9c25a441fdad230549c54784d6c7783c0bc9e14c2707
+  translated_at: 2026-11-15T02:13:04.336Z
 ---
 
 # 发布说明
@@ -14,6 +14,38 @@ translation:
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
 升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；也可以在下次开始生产时让 Agent 来做。参见 [安装](../getting-started/installation.md#versions)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+<!-- /context:section -->
+
+<!-- context:section id="context-0799" -->
+
+## Context 0.7.95 至 0.7.99（2026-11-08 至 2026-11-13）
+
+**让知识保持最新**
+
+- `context update --pending` 会下载部分克隆中还没有的被引用文件内容，每个来源一次；下载不了时会停下，并说明来源、文件数和原因。带显式输入文件的更新只读取检出中已有的内容（0.7.95）。见[更新知识](../../sop/updates-and-versions/updating-knowledge.md)。
+- 来源更新会按目录列出没有任何已批准页面引用的变更文件，新模块和接口也会被评估；例行更新会把其中的长期知识写进已有页面，或每次运行最多写五个新页面（0.7.95）。见[设置例行更新](../../sop/updates-and-versions/scheduled-updates.md)。
+- 例行更新会进入宿主指定的工作区，必要时先克隆，从不新建工作区，并在任何其他步骤之前说明生效的审核、发布和时间设置（0.7.95）。它的任务内容现在以一行点名 Context 技能的普通文字开头，而不是斜杠命令，因为有些调度器会展开开头的命令并丢掉后面的设置；请更新已有的定时任务。
+- 耗时较长的 Git 拉取和克隆只要 Git 还在显示进度就会继续，约五分钟没有进度时停止，最长 30 分钟（0.7.97）。见[代码仓库](../../sop/registering-sources/code-repositories.md#clones)。
+
+**审核与修订**
+
+- 预览和提交会一次列出页面或生产阶段文章的所有引用问题，处理某个来源版本的修订不能保留该版本已无法确认的引用，结果会列出章节不再携带的引用（0.7.95 – 0.7.97）。采集缺口不能被引用，它周围已采集的文字可以（0.7.97）。见[修订页面](../../sop/review-and-revision/revising-a-page.md)。
+- 仍有草稿等待审核时 `context version record` 会拒绝执行，已进入远端默认分支的版本不会再被提议复用，交付后只改动知识地图的变更会记录为补丁版本并直接构建（0.7.96 – 0.7.97）。见[版本、Changelog 与恢复](../../sop/updates-and-versions/versions-and-changelog.md)。
+
+**飞书来源**
+
+- 使用 Bot 身份时，Bot 打不开的文档（错误码 3380004）会改以你的身份重新读取；采集报告会记录身份和原因，在文档重新采集之前，`context status` 会一直显示这次回退及其风险（0.7.98）。见[飞书文档](../../sop/registering-sources/lark-documents.md#identity)。
+- 读取身份打不开源文档的同步块会成为权限缺口，并说明如何补上；刷新修订版本未变的文档时会保存快照并列出每一处降级（0.7.97）。
+
+**回滚任务**
+
+- 工作区有未完成的生产阶段时，`context task rollback` 也能完成，预览会说明该阶段是丢弃还是保留；回滚之后才准备的阶段会保留，回滚取消的已请求部分交付会被列出（0.7.99）。见[CLI 命令](../reference/context/cli-commands.md#tasks)。
+
+**安装**
+
+- 本地安装插件时也会安装命令所链接的 `resources/` 目录，并保留每个命令的 front matter；固定了自己 CLI 的工作区会用它运行工作流命令；当你在对话中要求生产、更新、修订、发布或恢复知识时，入口技能就会启动（0.7.96）。见[安装](../getting-started/installation.md#local)。
+- 把命令行输出交给提前结束读取的程序时，命令行不再崩溃（0.7.97）。
+
 <!-- /context:section -->
 
 <!-- context:section id="context-0793" -->

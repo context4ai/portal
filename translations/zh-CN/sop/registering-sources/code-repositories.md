@@ -4,8 +4,8 @@ description: 将一个仓库或 monorepo 中选定的包添加为固定到某个
 translation:
   locale: zh-CN
   artifact_ref: d929e5f1-7f84-4525-93f8-4bfd5729453d
-  source_digest: 284f59cbc3d89eb98cda5a5277a984d5f5e14636a2f37b2055e77368edf5e025
-  translated_at: 2026-10-28T09:51:17.272Z
+  source_digest: 8e338376d66411ffc23472418199e4747db70ec2b9866aa9658d6d4ad39d05b0
+  translated_at: 2026-11-15T02:13:04.336Z
 ---
 
 # 代码仓库
@@ -78,7 +78,7 @@ Git 只保存重新找到代码所需的信息（远程地址、固定的 commit
 2. 指定一个有边界的目录，让它在其中查找匹配的检出；或
 3. 让 Context 把已登记的仓库克隆到知识工作区的临时区域。
 
-克隆始终使用已登记的 commit，因此现有知识保持可复现。在普通模式下，Agent 会在克隆前询问（在 [全托管模式](../planning-and-production/managed-mode-and-review-policy.md) 下，它会在你选定的范围内直接恢复仓库，不询问）；它从不搜索未指定的磁盘根目录，也不会用其他分支或相近的仓库代替。
+克隆始终使用已登记的 commit，因此现有知识保持可复现。克隆是浅克隆，Git 支持时也是部分克隆；当每个登记的模块都限定在某个包目录时，只检出这些目录。知识引用的文件内容会在之后更新需要时再下载。耗时较长的克隆或拉取只要 Git 还在报告进度就会继续，约五分钟没有进度时停止，最长 30 分钟；失败原因会点明来源，并隐藏凭据。在普通模式下，Agent 会在克隆前询问（在 [全托管模式](../planning-and-production/managed-mode-and-review-policy.md) 下，它会在你选定的范围内直接恢复仓库，不询问）；它从不搜索未指定的磁盘根目录，也不会用其他分支或相近的仓库代替。
 <!-- /context:section -->
 
 <!-- context:section id="later" -->

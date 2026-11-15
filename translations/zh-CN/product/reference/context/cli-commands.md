@@ -4,8 +4,8 @@ description: context CLI 的全部命令与子命令，按用途分组，并说�
 translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
-  source_digest: 765e82f8080e67a701d0b69d3a1c07a86a442348457f450fdaf4400771b74609
-  translated_at: 2026-11-08T05:31:57.009Z
+  source_digest: ac4e165f1552e5147e6be9b98ccb1f09557b16c91eb777d0cce34942aad93566
+  translated_at: 2026-11-15T02:13:04.336Z
 ---
 
 # CLI 命令
@@ -40,7 +40,7 @@ translation:
 | `context resource acknowledge-current` | 记录当前 Route 要求的所有资源均已读取 | |
 | `context resource materialize <id>` | 把一个绑定修订的 Context 视图写入本地文件 | |
 | `context action prepare-current` | 准备或重试当前生产批次，或已准备好的修订批次中的每个页面，不会重新提交已接受的内容 | `--revision`、`--input`、`--managed` |
-| `context action complete-current` | 针对确切的当前修订提交语义输出——报告决定、草稿或 Gate 回答；`--preview` 检查单个修订页面或整个已准备的修订批次，不保存任何内容 | `--revision`、`--input`、`--managed`、`--multi-agent`、`--preview` |
+| `context action complete-current` | 针对确切的当前修订提交语义输出——报告决定、草稿或 Gate 回答；`--preview` 检查单个修订页面、整个已准备的修订批次或生产阶段的文章文件，一次列出所有问题，不保存任何内容 | `--revision`、`--input`、`--managed`、`--multi-agent`、`--preview` |
 <!-- /context:section -->
 
 <!-- context:section id="tasks" -->
@@ -58,9 +58,9 @@ translation:
 | `context task cancel-maintenance <id>` | 取消待处理的维护请求，不会丢弃进行中的草稿 |
 | `context task retire` | 预览或执行已批准文章的下线，并清理对它的引用 |
 | `context task recover` | 在正常 Route 之外检查或预览限定范围的恢复；`--managed` 保持托管会话的模式 |
-| `context task rollback` | 预览用户选定的确切回退和将被丢弃的草稿；绝不会重置仓库 |
-| `context task finish-rollback` | 在 close 和所有构建成功后完成回滚 |
-| `context update` | 在已确认的范围内，将已获取的来源变更与已批准的知识进行比对（`--input`）；或使用 `--pending`（无需输入文件），处理登记的 commit 已超过已处理版本的代码仓库。两者必须且只能指定一个 |
+| `context task rollback` | 预览用户选定的确切回退和将被丢弃的草稿，以及进行中的生产阶段将如何处理：`discard-whole-task` 会在清理时删除该阶段及其未完成的任务和工作目录，`keep` 表示只回滚打断了它的页面修订，之后继续该阶段；回滚取消的已请求部分交付也会列出。绝不会重置仓库 |
+| `context task finish-rollback` | 在 close 和所有构建成功后完成回滚，工作区有未完成的生产阶段时也可以 |
+| `context update` | 在已确认的范围内，将已获取的来源变更与已批准的知识进行比对（`--input`，只读取检出中已有的内容）；或使用 `--pending`（无需输入文件），处理登记的 commit 已超过已处理版本的代码仓库，并获取该 commit 以及部分克隆中缺少的被引用文件内容。两者必须且只能指定一个 |
 | `context revise <target>` | 通过 Indexer 生命周期修复一份草稿或一个已批准页面（`--instruction`、`--regenerate`、`--timing after-batch\|priority`、`--move-to`） |
 <!-- /context:section -->
 
@@ -96,8 +96,8 @@ translation:
 
 | 命令 | 作用 | 主要选项 |
 | --- | --- | --- |
-| `context version inspect` | 显示自当前版本标签或指定 ref 以来的正式变更 | `--base` |
-| `context version record` | 记录知识工作区的 SemVer 和 Changelog 条目 | `--input` |
+| `context version inspect` | 显示自当前版本标签或指定 ref 以来的正式变更；已进入远端默认分支的版本报告为 `merged_to`，只有未合入的版本才会作为 `reusable_version` 提供 | `--base` |
+| `context version record` | 记录知识工作区的 SemVer 和 Changelog 条目；仍有草稿等待审核时拒绝执行 | `--input` |
 | `context package site-url <package> <url>` | 在站点地图中记录已部署站点的根地址，不做网络检查 | |
 | `context package template accept [package]` | 显式接受未修改过的生成起始模板 | |
 <!-- /context:section -->

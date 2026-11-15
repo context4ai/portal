@@ -4,7 +4,7 @@ description: Bring existing pages up to a new commit or document version — nam
   the scope, let the Agent find the affected pages, review the changes and know
   when the update is finished.
 type: Guide
-timestamp: 2026-11-08T13:14:14.832Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Updating Knowledge
 
@@ -21,7 +21,7 @@ flowchart LR
   rev --> build["Approved pages applied,<br/>outputs rebuilt"]
 ```
 
-If you have already moved a repository's pin with `context source add repo --ref <sha>`, the Agent processes it with `context update --pending`, which needs no other input. Only pages whose cited text changed are asked about one by one; every other page that cites the repository can still be revised in the same decision when an addition affects it, and the new commit is recorded once that decision and its revisions are done. When the source checkout does not have that commit yet, it is fetched first; if it cannot be fetched, the update stops and asks for the commit to be checked out instead of treating every citation as missing. Checking status or verifying never fetches anything.
+If you have already moved a repository's pin with `context source add repo --ref <sha>`, the Agent processes it with `context update --pending`, which needs no other input. Only pages whose cited text changed are asked about one by one; every other page that cites the repository can still be revised in the same decision when an addition affects it, and the new commit is recorded once that decision and its revisions are done. When the source checkout does not have that commit yet, it is fetched first; if it cannot be fetched, the update stops and asks for the commit to be checked out instead of treating every citation as missing. In a partial clone, the update also downloads the contents of cited files the clone does not have yet, in one request per source; if they cannot be downloaded, it stops and names the source, the number of files and the reason. Only `--pending` uses the network: an update with an explicit input file reads what the checkouts already have and says so when a commit or contents are missing. Checking status or verifying never fetches anything.
 
 <!-- /context:section -->
 
@@ -56,7 +56,7 @@ Context does not watch platforms for changes; the Agent uses its own Git and doc
 
 ## Which pages change
 
-The Agent first finds the pages whose cited text no longer matches at the new version; citations whose text only moved follow it automatically and are not asked about. That list is a starting point, not a list of pages that must change: the Agent reads the change and each page, keeps what is still right and revises what changed. A revised page is rewritten to describe the current state as one coherent article, rather than collecting "updated" notes; the change history belongs in the [changelog](versions-and-changelog.md). Genuinely new topics become proposed new pages, shown to you for confirmation before they are written.
+The Agent first finds the pages whose cited text no longer matches at the new version; citations whose text only moved follow it automatically and are not asked about. For a repository citation it also gets the lines the source diff moved the old text to, which saves working out new line numbers. Changed files that no page cites are listed as well, grouped by directory, so new modules, interfaces or settings are not missed. That list is a starting point, not a list of pages that must change: the Agent reads the change and each page, keeps what is still right and revises what changed. A revised page is rewritten to describe the current state as one coherent article, rather than collecting "updated" notes; the change history belongs in the [changelog](versions-and-changelog.md). Lasting knowledge from those uncited changes goes into an existing page, or, for a genuinely new topic, into a proposed new page, shown to you for confirmation before it is written.
 
 If you name no modules, the whole registered source is in scope.
 
@@ -66,7 +66,7 @@ If you name no modules, the whole registered source is in scope.
 
 ## Review and finishing
 
-Changed pages appear in the review report with their changed blocks next to the previous text. Approve, comment or ask for changes as in [Reading Review Reports](../review-and-revision/reading-review-reports.md).
+Changed pages appear in the review report with their changed blocks next to the previous text. Approve, comment or ask for changes as in [Reading Review Reports](../review-and-revision/reading-review-reports.md). A revised page cannot keep a citation of the updated source that the new version no longer confirms, even in a paragraph the update did not rewrite; the Agent sees every such problem of a page at once, and the submission result lists the citations a section no longer carries.
 
 The update is finished when every selected revision is approved, the approved pages are applied and the outputs rebuilt — or when the Agent concludes that nothing needs to change. Only then is the new version recorded as processed. It is not recorded when the new version is fetched or after the first approved page, so an interrupted update can resume without losing track of what remains.
 

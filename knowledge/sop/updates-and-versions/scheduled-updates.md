@@ -4,7 +4,7 @@ description: Schedule a recurring Agent run that keeps a knowledge workspace
   current — what each run does, how to set it up yourself or through your Agent,
   and a prompt template.
 type: Guide
-timestamp: 2026-11-08T13:50:46.432Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Set Up Routine Updates
 
@@ -30,12 +30,12 @@ flowchart LR
 ```
 
 1. **Gets ready.** Enters the knowledge workspace that your Agent host's configuration names, cloning it first when the run starts in an empty environment, then brings the CLI and Context versions up to date (see [Installation](../../product/getting-started/installation.md#versions)), updates the workspace and finishes anything an earlier run left unfinished. A routine run never creates a new workspace: when none is configured or it cannot be cloned, the run reports that and stops.
-2. **Checks for changes first.** Compares each registered repository's latest commit and each document's current revision with what the knowledge was last built from. Only changes in files and documents your articles cite count; generated code, lock files and third-party directories do not. When nothing changed, the run replies "no knowledge changes this run" and stops without committing or publishing anything.
-3. **Updates in batches.** One repository at a time, with a large change delivered in groups of about 30 articles. Each batch is the ordinary [update flow](updating-knowledge.md). Affected articles are revised to describe the current state as one coherent text — no "updated on…" notes or change history in the article; that belongs in the changelog.
+2. **Checks for changes first.** Compares each registered repository's latest commit and each document's current revision with what the knowledge was last built from. Changes in files and documents your articles cite lead to revisions; generated code, lock files and third-party directories do not count. When nothing changed, or the only changes are in uncited files that hold no lasting knowledge, the run replies "no knowledge changes this run" and stops without committing or publishing anything.
+3. **Updates in batches.** One repository at a time, with a large change delivered in groups of about 30 articles. Each batch is the ordinary [update flow](updating-knowledge.md). Changed code that no article cites is assessed too: what readers still need after this release, such as a new module, public API, configuration or workflow change, goes into an existing article or becomes a new page under the existing top-level menu, at most five new pages per run; the rest goes into the plan for a later run. Affected articles are revised to describe the current state as one coherent text — no "updated on…" notes or change history in the article; that belongs in the changelog.
 4. **Reviews, merges, publishes.** Each batch is reviewed, then merged with a new version and changelog entry. Publishing happens once at the end by default.
 5. **Stops on time.** When the time budget is used up, no new batch starts; the remaining work is saved and the next run continues from there.
 
-The result lists which sources changed and which articles were revised, the merged batches, whether and where it was published, and anything that needs you: sources that could not be read (reported as gaps, never a reason to remove a page), changed code that no article covers yet (listed as possible new topics, not written up), and proposed changes to the top-level menu.
+The result lists which sources changed and which articles were revised, the merged batches, whether and where it was published, the new pages with links, and anything that needs you: sources that could not be read (reported as gaps, never a reason to remove a page), uncited changes it assessed but did not write up, each with a one-line reason or carried into the plan, and proposed changes to the top-level menu.
 
 <!-- /context:section -->
 
@@ -57,12 +57,14 @@ There are two ways; the trigger prompt is the same.
 
 ## The trigger prompt
 
-The trigger has two required parts: a paragraph in plain language and the `ROUTINE_POLICY` block. Lines starting with `#` explain the template and can stay.
+The trigger has three required parts: a first line in plain text that asks for a routine update with the Context Skill, a paragraph in plain language, and the `ROUTINE_POLICY` block. Lines starting with `#` explain the template and can stay.
+
+Do not start the content with a slash command such as `/c4a:context`. Some schedulers expand a leading slash command into the Skill's text and drop everything after it, so the run never sees the paragraph or the block: it treats the task as a plain request to start Context and stops to ask what to do.
 
 ```text
-/c4a:context routine update
+Routine update: use the `c4a:context` Skill and follow its routine update procedure.
 # required paragraph: which knowledge base, what the run should achieve, that the whole run is managed and reviewed by the Agent, and any team guidance
-This is the routine update of the Billing knowledge base. Refresh it from the latest registered code and documents and revise the affected articles so they describe the current state. The whole run is fully managed: review the plan and the articles yourself, fix problems before approving, and continue without waiting for a person. Write for the platform team and keep API names in English.
+This is the routine update of the Billing knowledge base. Refresh it from the latest registered code and documents and revise the affected articles so they describe the current state, and write lasting new content as new pages under the existing top-level categories. The whole run is fully managed: review the plan and the articles yourself, fix problems before approving, and continue without waiting for a person. Write for the platform team and keep API names in English.
 # optional: registered sources only; delete for all sources
 Scope: repository web-app; document "Billing rules"
 # required settings: override your Agent host's review settings and set publishing and the time budget
@@ -77,6 +79,7 @@ ROUTINE_POLICY:
   time_budget_minutes: 90
 ```
 
+- The first line names the Skill and asks for the routine update, so the Agent loads the procedure while the rest of the content stays visible as task instructions.
 - The paragraph names the knowledge base and what the run should achieve, so the Agent can confirm it is in the right workspace and knows what matters; team guidance goes there too, but cannot relax review or add sources. Saying that the whole run is managed and reviewed by the Agent delegates both reviews, the same as the two `delegate` lines.
 - The block's review lines take precedence over review settings in your Agent host's configuration. Keep both for an unattended schedule; if the paragraph and the block disagree, the stricter setting applies and the run reports the conflict. Without either, the run uses your usual review setting and waits at review. What delegated review does and does not allow is described in [Fully Managed Mode](../planning-and-production/managed-mode-and-review-policy.md).
 - `publish` and `time_budget_minutes` are set only in the block; they default to `end` and 90. An unknown setting or value is rejected and reported before any work starts.

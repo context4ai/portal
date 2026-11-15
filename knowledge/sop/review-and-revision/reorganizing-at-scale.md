@@ -4,7 +4,7 @@ description: After the first round, ask the Agent for a clearer directory and
   title structure, then apply it with map adjustments, page moves, splits,
   merges and retirement.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Reorganizing at Scale
 
@@ -37,11 +37,13 @@ flowchart TB
 <!-- /context:section -->
 
 <!-- context:section id="map" -->
+
 ## Knowledge-map adjustments
 
-The knowledge map controls the website navigation and the LLM Docs organization together. Ask in conversation to move a topic, rename a directory, change the order or organize the same articles for another reader task. This works during production or after it, without capturing sources again. Each entry keeps a stable key, so a renamed menu needs no new article and moving a menu entry does not change the article URL.
+The knowledge map controls the website navigation and the LLM Docs organization together. Ask in conversation to move a topic, rename a directory, change the order or organize the same articles for another reader task. This works during production or after it, without capturing sources again. After delivery, a change that only touches the map is recorded as a patch version and built straight away; production is not resumed. Each entry keeps a stable key, so a renamed menu needs no new article and moving a menu entry does not change the article URL.
 
 Prefer, in this order: revise an existing article, add a page to a matching category, add a coherent child category. A **top-level** addition, rename or removal is shown to you as a before/after tree and needs your explicit approval.
+
 <!-- /context:section -->
 
 <!-- context:section id="split" -->
