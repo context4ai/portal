@@ -4,8 +4,8 @@ description: 定时运行 Agent，让知识工作区保持最新——每次运�
 translation:
   locale: zh-CN
   artifact_ref: 9515b4b8-ec59-4015-9d98-ec8869dd930e
-  source_digest: 153caca6752dd0cda5e2cf6af4fa46c43242819736190afa6657de85c72ba527
-  translated_at: 2026-11-08T13:51:33.322Z
+  source_digest: 620935c02f1f1a9de1400e0c86fd669a7af51aa123676b1af44c452ac31282fa
+  translated_at: 2026-11-15T02:13:04.336Z
 ---
 
 # 设置例行更新
@@ -31,12 +31,12 @@ flowchart LR
 ```
 
 1. **准备。** 进入 Agent 宿主配置中指定的知识工作区，运行环境为空时先克隆；再把命令行和 Context 版本更新到最新（见[安装](../../product/getting-started/installation.md#versions)），更新工作区，并完成上一次运行遗留的未完成工作。例行运行从不新建工作区：没有配置工作区或无法克隆时，运行会报告并停下。
-2. **先检查有没有变化。** 把每个已登记仓库的最新提交、每个文档的当前版本，与知识上次构建时所依据的版本对比。只有你的文章所引用的文件和文档发生变化才算数；生成代码、锁文件和第三方目录不算。没有任何变化时，本次运行回复“本次无知识变化”并停下，不提交也不发布。
-3. **分批更新。** 一次处理一个仓库，大的变更按大约 30 篇文章一组交付。每一批都是普通的[更新流程](updating-knowledge.md)。受影响的文章会整体改写为描述当前状态的连贯文字——文章里不写“某日已更新”之类的说明或变更历史，这些属于 changelog。
+2. **先检查有没有变化。** 把每个已登记仓库的最新提交、每个文档的当前版本，与知识上次构建时所依据的版本对比。你的文章所引用的文件和文档发生变化时会修订文章；生成代码、锁文件和第三方目录不算。没有任何变化，或者只有不含长期知识的未引用文件发生变化时，本次运行回复“本次无知识变化”并停下，不提交也不发布。
+3. **分批更新。** 一次处理一个仓库，大的变更按大约 30 篇文章一组交付。每一批都是普通的[更新流程](updating-knowledge.md)。没有文章引用的变更代码也会被评估：读者在这次发布之后仍需要知道的内容，例如新模块、公开 API、配置或工作流变化，会写进已有文章，或在现有顶层菜单下写成新页面，每次运行最多五个新页面；其余的写进计划，留给之后的运行。受影响的文章会整体改写为描述当前状态的连贯文字——文章里不写“某日已更新”之类的说明或变更历史，这些属于 changelog。
 4. **审核、合入、发布。** 每批先审核，再带着新版本号和 changelog 条目合入。默认在最后统一发布一次。
 5. **按时停下。** 时间预算用完后不再开始新批次；剩余工作会保存下来，下次运行从那里继续。
 
-结果会列出哪些来源有变化、修订了哪些文章、合入了哪些批次、是否已发布以及发布到哪里，还有需要你处理的事项：无法读取的来源（作为缺口报告，绝不会因此删除页面）、还没有文章覆盖的变更代码（列为可能的新主题，不会写成文章），以及对顶层菜单的调整建议。
+结果会列出哪些来源有变化、修订了哪些文章、合入了哪些批次、是否已发布以及发布到哪里、新页面及其链接，还有需要你处理的事项：无法读取的来源（作为缺口报告，绝不会因此删除页面）、评估过但没有写成文章的未引用变更（每项附一句理由，或带入计划），以及对顶层菜单的调整建议。
 <!-- /context:section -->
 
 <!-- context:section id="setup" -->
@@ -57,12 +57,14 @@ flowchart LR
 
 ## 触发提示词
 
-触发提示词由两部分组成，都必填：一段自然语言说明和 `ROUTINE_POLICY` 参数块。以 `#` 开头的行是模板说明，可以保留。
+触发提示词由三部分组成，都必填：用普通文字写的第一行，请求使用 Context 技能执行例行更新；一段自然语言说明；以及 `ROUTINE_POLICY` 参数块。以 `#` 开头的行是模板说明，可以保留。
+
+不要以 `/c4a:context` 这样的斜杠命令作为内容开头。有些调度器会把开头的斜杠命令展开成技能正文，并丢掉后面的所有内容，运行就看不到说明段和参数块：它把任务当作一次普通的 Context 启动请求，停下来询问要做什么。
 
 ```text
-/c4a:context routine update
+Routine update: use the `c4a:context` Skill and follow its routine update procedure.
 # 必填说明段：哪个知识库、本次要达到什么效果、整个任务全程托管并由 Agent 自行审核，以及团队要求
-This is the routine update of the Billing knowledge base. Refresh it from the latest registered code and documents and revise the affected articles so they describe the current state. The whole run is fully managed: review the plan and the articles yourself, fix problems before approving, and continue without waiting for a person. Write for the platform team and keep API names in English.
+This is the routine update of the Billing knowledge base. Refresh it from the latest registered code and documents and revise the affected articles so they describe the current state, and write lasting new content as new pages under the existing top-level categories. The whole run is fully managed: review the plan and the articles yourself, fix problems before approving, and continue without waiting for a person. Write for the platform team and keep API names in English.
 # 可选：只写已登记的来源；删掉此行即全部来源
 Scope: repository web-app; document "Billing rules"
 # 必填参数：覆盖 Agent 宿主的审核设置，并设定发布与时间预算
@@ -77,6 +79,7 @@ ROUTINE_POLICY:
   time_budget_minutes: 90
 ```
 
+- 第一行点名技能并请求例行更新，Agent 由此加载例行更新流程，其余内容仍作为任务说明可见。
 - 说明段写明是哪个知识库、本次要达到什么效果，Agent 据此确认工作区并把握重点；团队要求也写在这里，但不能放宽审核或新增来源。说明整个任务全程托管、由 Agent 自行审核，就等同于两行 `delegate`。
 - 参数块中的两行审核设置优先于 Agent 宿主配置中的审核设置。无人值守的定时任务请两行都保留；说明段与参数块不一致时，取更严格的一方，运行会报告冲突。两处都没写时，运行沿用你平常的审核设置，在审核处等人。委托审核能做什么、不能做什么，见[全托管模式](../planning-and-production/managed-mode-and-review-policy.md)。
 - `publish` 和 `time_budget_minutes` 只在参数块中设定，默认分别为 `end` 和 90。未知的设置项或取值会在开始工作之前被拒绝并报告。

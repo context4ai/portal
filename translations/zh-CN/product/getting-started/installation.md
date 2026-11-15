@@ -4,8 +4,8 @@ description: 为 Claude Code、Codex 或 Cursor 安装 Context CLI 和 Agent 插
 translation:
   locale: zh-CN
   artifact_ref: 8b33d042-c5e4-45aa-9a23-a99f9cf50caa
-  source_digest: 2e68939a25e5c51bc4cf85913b2a4aafeda342f7f815be67cc6b4a5e3ceb1576
-  translated_at: 2026-11-08T05:31:57.009Z
+  source_digest: c81973e9fecc607447b768e161d4b6b6f36808b2ff1d7d43bb7952e3e9f9ecb4
+  translated_at: 2026-11-15T02:13:04.336Z
 ---
 
 # 安装
@@ -84,7 +84,7 @@ context plugin install --local /path/to/repo --agent auto-detect
 - `auto-detect` 使用上述目录中已存在的那些，都不存在时回退到 `.agents/skills`；
 - `standalone` 把所有技能直接写入 `<path>/skills`，不包含命令。
 
-每种模式都支持 `--dry-run`。刷新时只替换未被修改过的托管文件；被自定义过的入口会保留，并作为冲突报告出来。本地安装的入口没有插件命名空间。
+每种模式都支持 `--dry-run`。刷新时只替换未被修改过的托管文件；被自定义过的入口会保留，并作为冲突报告出来。本地安装的入口没有插件命名空间。对于 Claude 和 Cursor，本地安装还会复制已安装命令所链接的 `resources/` 目录（例如例行更新和版本对齐的参考文档），并像全局安装一样保留每个命令的 front matter。
 <!-- /context:section -->
 
 <!-- context:section id="verify" -->
@@ -106,7 +106,8 @@ context plugin status
 
 - 命令行安装为这个确切版本；
 - 用 `context plugin install` 安装的技能会被刷新；由宿主提供的技能保持原样并报告出来，以便宿主的维护者更新；
-- 工作区 SDK 提升并安装，这一变化随你的下一次交付一起提交，不单独提交。
+- 工作区 SDK 提升并安装，这一变化随你的下一次交付一起提交，不单独提交；
+- 工作区同时固定了 `@c4a/context-cli` 时，它的 `./node_modules/.bin/context` 就是该工作区的命令行：Agent 用它运行所有工作流命令，并与 SDK 一起对齐版本。
 
 出现更新的主版本时，Agent 不会自行升级过去。它会给你看当前主版本和新主版本各自的最新版、两者之间的变化、对你的工作区的预计影响以及建议，然后等你选择。任何部分都不会降级；如果读不到发布列表，Agent 会报告一次，并继续使用现有版本。
 

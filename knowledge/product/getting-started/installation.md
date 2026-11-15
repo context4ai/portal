@@ -3,7 +3,7 @@ title: Installation
 description: Install the Context CLI and Agent plugin for Claude Code, Codex or
   Cursor, and check that your Agent can see the entries.
 type: Wiki
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Installation
 
@@ -72,6 +72,7 @@ The CLI is still required: install it with `npm install -g @c4a/context-cli@late
 <!-- /context:section -->
 
 <!-- context:section id="local" -->
+
 ## Install into one repository only
 
 If you prefer not to change global configuration, install the entries into a single repository:
@@ -87,7 +88,8 @@ context plugin install --local /path/to/repo --agent auto-detect
 - `auto-detect` uses whichever of those directories already exist and falls back to `.agents/skills`;
 - `standalone` writes all skills directly to `<path>/skills`, without commands.
 
-Every mode supports `--dry-run`. A refresh replaces only unmodified managed files; customized entries are kept and reported as conflicts. Local entries have no plugin namespace.
+Every mode supports `--dry-run`. A refresh replaces only unmodified managed files; customized entries are kept and reported as conflicts. Local entries have no plugin namespace. For Claude and Cursor a local install also copies the `resources/` folders that the installed commands link to, such as the routine update and version alignment references, and keeps each command's front matter as a global install does.
+
 <!-- /context:section -->
 
 <!-- context:section id="verify" -->
@@ -111,7 +113,8 @@ Three parts carry a Context version: the `context` CLI, the Context Skill instal
 
 - the CLI is installed at that exact release;
 - Skills installed with `context plugin install` are refreshed; Skills supplied by your host are left as they are and reported, so whoever manages the host can update them;
-- the workspace SDK is raised and installed, and the change is committed together with your next delivery rather than on its own.
+- the workspace SDK is raised and installed, and the change is committed together with your next delivery rather than on its own;
+- when the workspace also pins `@c4a/context-cli`, its `./node_modules/.bin/context` is the CLI for that workspace: the Agent runs every workflow command with it and aligns it together with the SDK.
 
 When a newer major version exists, the Agent does not move to it by itself. It shows you the latest release of your current major and of the new one, what changes between them, the expected impact on your workspace and a recommendation, and waits for your choice. Nothing is ever downgraded, and if the release list cannot be read the Agent reports it once and continues with the versions you have.
 

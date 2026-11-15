@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-11-08T13:14:14.832Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Release Notes
 
@@ -12,6 +12,38 @@ timestamp: 2026-11-08T13:14:14.832Z
 These notes summarize recent product releases by what readers and Agents notice. The complete history is in the [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) and the [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md). The site's own **Changelog** entry in the More menu is different: it lists the versions of this documentation, not product releases.
 
 To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session, or let the Agent do it when you next start production; see [Installation](../getting-started/installation.md#versions). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+
+<!-- /context:section -->
+
+<!-- context:section id="context-0799" -->
+
+## Context 0.7.95 to 0.7.99 (2026-11-08 to 2026-11-13)
+
+**Keeping knowledge current**
+
+- `context update --pending` downloads the contents of cited files that a partial clone does not have yet, once per source; when it cannot, it stops and names the source, the number of files and the reason. An update with an explicit input file reads only what the checkouts already have (0.7.95). See [Updating Knowledge](../../sop/updates-and-versions/updating-knowledge.md).
+- Source updates list the changed files that no approved page cites, grouped by directory, so new modules and interfaces are assessed too; routine updates write lasting knowledge from them into existing pages or at most five new pages per run (0.7.95). See [Set Up Routine Updates](../../sop/updates-and-versions/scheduled-updates.md).
+- A routine update enters the workspace your host names, cloning it when needed and never creating one, and states its effective review, publishing and time settings before any other step (0.7.95). Its task content now starts with a plain line naming the Context Skill instead of a slash command, because some schedulers expand a leading command and drop the settings after it; update existing schedules.
+- Long Git fetches and clones continue while Git shows progress, stop after about five minutes without progress and after 30 minutes at most (0.7.97). See [Code Repositories](../../sop/registering-sources/code-repositories.md#clones).
+
+**Review and revision**
+
+- Previews and submissions report every citation problem of a page or production article at once, a revision of a source version cannot keep citations that version no longer confirms, and results list citations a section no longer carries (0.7.95 – 0.7.97). A capture gap cannot be cited; the captured text around it can (0.7.97). See [Revising a Page](../../sop/review-and-revision/revising-a-page.md).
+- `context version record` refuses while drafts await review, a version already on the remote default branch is never offered for reuse, and a knowledge-map-only change after delivery is recorded as a patch version and built straight away (0.7.96 – 0.7.97). See [Versions, Changelog and Restoring](../../sop/updates-and-versions/versions-and-changelog.md).
+
+**Lark sources**
+
+- With Bot identity, a document the Bot cannot open (code 3380004) is read again as you; the capture report records the identity and the reason, and `context status` keeps showing the fallback with its risk until the document is captured again (0.7.98). See [Lark Documents](../../sop/registering-sources/lark-documents.md#identity).
+- A synced block whose source the reading identity cannot open becomes a permission gap that says how to close it, and refreshing an unchanged revision saves the snapshot and lists each downgrade (0.7.97).
+
+**Rolling back a task**
+
+- `context task rollback` finishes when the workspace has an unfinished production stage, and its preview says whether that stage is discarded or kept; a stage prepared after the rollback is kept, and a requested partial delivery it cancels is listed (0.7.99). See [CLI Commands](../reference/context/cli-commands.md#tasks).
+
+**Installation**
+
+- Local plugin installs also install the `resources/` folders the commands link to and keep each command's front matter; a workspace that pins its own CLI runs workflow commands with it; the entry Skill starts when you ask in the conversation to produce, update, revise, publish or recover knowledge (0.7.96). See [Installation](../getting-started/installation.md#local).
+- Piping CLI output to a reader that stops early no longer crashes it (0.7.97).
 
 <!-- /context:section -->
 

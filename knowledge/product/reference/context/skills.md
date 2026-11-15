@@ -3,7 +3,7 @@ title: Skills
 description: Every Skill in the Context Agent plugin — who starts it, when it
   activates, what it hands off to, and how each host spells it.
 type: Wiki
-timestamp: 2026-10-15T03:52:07.709Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Skills
 
@@ -17,7 +17,7 @@ The Context Agent plugin contains nine Skills. Four are **entries** you invoke, 
 
 | Skill | Activates when | Does | Hands off to |
 | --- | --- | --- | --- |
-| `context` | You invoke Context explicitly, ask to reorganize an existing knowledge map or site navigation, or continue an active Context workflow to build, inspect, update, recover or package knowledge | Creates or continues a Context knowledge workspace and follows the CLI's current Route through production, review, update and build | The CLI; Indexers selected for each stage |
+| `context` | You invoke Context explicitly, or ask in the conversation to produce, update, revise, publish or recover Context knowledge, including reorganizing an existing knowledge map or site navigation and continuing a workflow to build, inspect or package knowledge | Creates or continues a Context knowledge workspace and follows the CLI's current Route through production, review, update and build | The CLI; Indexers selected for each stage |
 | `context-plan` | You ask for project planning or continue a `PLAN-*.md`, or an authorized Context task involves more than 30 source documents or substantive investigation of at least two repositories | Researches in temporary storage and writes a root `PLAN-YYYYMMDD-topic.md` for review, then runs the project one stage at a time | `context`, which performs each stage |
 | `context-inspect-search` | You ask a knowledge question, or a host or Bot configuration routes questions here | Answers from knowledge packages or approved knowledge and traces answers to their sources; read-only, no workspace required | `context` for accepted improvement suggestions |
 | `context-repo-content` | You want Context to reference docs and authored Skills already maintained in the same repository, or to create or edit them | Maintains `repo-content.yaml` and its symlink view, keeping one original in its project directory; never starts production, builds, publishes or commits | — |

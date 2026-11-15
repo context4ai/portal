@@ -3,7 +3,7 @@ title: Revising a Page
 description: Correct one page, a draft still in review or an already approved
   page, while keeping its identity, URL and source citations.
 type: Guide
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Revising a Page
 
@@ -37,7 +37,9 @@ Once you approve a batch, new requests wait for the next round. The one exceptio
 - Edits one section or the whole page. Sections it does not touch keep their text and their source citations.
 - When the correction needs a source outside the revision's scope, registers it first; it then stays available to the other pages in the same revision.
 
-Before submitting, the Agent can show you the revised page next to the previous text.
+- Keeps every citation checkable. A capture gap in a captured document — a resource that could not be obtained — cannot be cited, while the captured text around it can. When the revision processes a new source version, such as the pages of an update, it cannot keep a citation of that source that the new version no longer confirms, even in a section it does not rewrite.
+
+The Agent's preview and submission list every citation problem of the page at once, with the paragraph and lines, and the result lists any earlier citation a section no longer carries. Before submitting, the Agent can show you the revised page next to the previous text.
 
 <!-- /context:section -->
 

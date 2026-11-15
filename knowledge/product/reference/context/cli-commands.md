@@ -3,7 +3,7 @@ title: CLI Commands
 description: Every command and subcommand of the context CLI, grouped by
   purpose, with what each does and its key options.
 type: Wiki
-timestamp: 2026-11-08T05:25:45.316Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # CLI Commands
 
@@ -38,7 +38,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context resource acknowledge-current` | Records that every resource required by the current Route was read | |
 | `context resource materialize <id>` | Writes one revision-bound Context view to a local file | |
 | `context action prepare-current` | Prepares or retries the current production batch, or every page of a prepared revision batch, without resubmitting accepted work | `--revision`, `--input`, `--managed` |
-| `context action complete-current` | Submits the semantic output — a report decision, drafts, a Gate answer — for the exact current revision; `--preview` checks one revised page, or a whole prepared revision batch, without saving anything | `--revision`, `--input`, `--managed`, `--multi-agent`, `--preview` |
+| `context action complete-current` | Submits the semantic output — a report decision, drafts, a Gate answer — for the exact current revision; `--preview` checks one revised page, a whole prepared revision batch or the article files of a production stage, listing every problem at once without saving anything | `--revision`, `--input`, `--managed`, `--multi-agent`, `--preview` |
 
 <!-- /context:section -->
 
@@ -58,9 +58,9 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context task cancel-maintenance <id>` | Cancels a pending maintenance request without discarding an active draft |
 | `context task retire` | Previews or applies retirement of an approved article and cleanup of references to it |
 | `context task recover` | Inspects or previews scoped recovery outside the normal Route; `--managed` keeps a managed session's mode |
-| `context task rollback` | Previews exact user-selected reversions and discarded drafts; never resets the repository |
-| `context task finish-rollback` | Finishes a rollback after close and all builds succeed |
-| `context update` | Checks acquired source changes against approved knowledge in confirmed scopes (`--input`), or, with `--pending` and no input file, processes registered repositories whose commit moved past the processed version; pass exactly one of the two |
+| `context task rollback` | Previews exact user-selected reversions and discarded drafts, and what happens to the open production stage: `discard-whole-task` deletes it with its unfinished tasks and working directory at cleanup, `keep` resumes it when only a page revision that interrupted it is rolled back; a requested partial delivery that the rollback cancels is listed. Never resets the repository |
+| `context task finish-rollback` | Finishes a rollback after close and all builds succeed, also when the workspace had an unfinished production stage |
+| `context update` | Checks acquired source changes against approved knowledge in confirmed scopes (`--input`, reading only what the checkouts already have), or, with `--pending` and no input file, processes registered repositories whose commit moved past the processed version, fetching that commit and the cited contents a partial clone lacks; pass exactly one of the two |
 | `context revise <target>` | Repairs one draft or approved page through the Indexer lifecycle (`--instruction`, `--regenerate`, `--timing after-batch\|priority`, `--move-to`) |
 
 <!-- /context:section -->
@@ -97,14 +97,16 @@ Run `context <command> --help` for the full option list of any command. For the 
 <!-- /context:section -->
 
 <!-- context:section id="versions" -->
+
 ## Versions and packages
 
 | Command | What it does | Key options |
 | --- | --- | --- |
-| `context version inspect` | Shows formal changes since the current version tag or a given ref | `--base` |
-| `context version record` | Records the workspace SemVer and changelog entry | `--input` |
+| `context version inspect` | Shows formal changes since the current version tag or a given ref; a version already on the remote default branch is reported as `merged_to`, and only an unmerged one is offered as `reusable_version` | `--base` |
+| `context version record` | Records the workspace SemVer and changelog entry; refuses while drafts still await review | `--input` |
 | `context package site-url <package> <url>` | Records a deployed site root in the site maps, without network checks | |
 | `context package template accept [package]` | Explicitly accepts an unchanged generated starter template | |
+
 <!-- /context:section -->
 
 <!-- context:section id="sources" -->

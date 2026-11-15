@@ -4,7 +4,7 @@ description: Add a repository, or selected packages of a monorepo, as a source
   pinned to one commit, and know what happens on another machine and when the
   code moves on.
 type: Guide
-timestamp: 2026-10-28T09:46:19.242Z
+timestamp: 2026-11-15T02:10:58.658Z
 ---
 # Code Repositories
 
@@ -68,6 +68,7 @@ You do not configure parsing per repository; it is part of the selected Indexer.
 <!-- /context:section -->
 
 <!-- context:section id="clones" -->
+
 ## Checkouts on another machine
 
 Git keeps only what is needed to find the code again — the remote, the pinned commit and the module paths — not the checkout itself. When the knowledge workspace is opened elsewhere and a task needs that code, the Agent offers three choices:
@@ -76,7 +77,8 @@ Git keeps only what is needed to find the code again — the remote, the pinned 
 2. name a bounded directory it may search for a matching checkout; or
 3. let Context clone the registered repository into the workspace's temporary area.
 
-A clone always uses the registered commit, so existing knowledge stays reproducible. In ordinary mode the Agent asks before cloning (in [Fully Managed Mode](../planning-and-production/managed-mode-and-review-policy.md) it restores repositories within your selected scope without asking); it never searches an unspecified disk root or substitutes another branch or a similar repository.
+A clone always uses the registered commit, so existing knowledge stays reproducible. It is shallow, and partial where Git supports it; when every registered module is bounded to a package directory, only those directories are checked out; file contents the knowledge cites are downloaded later, when an update needs them. A long clone or fetch keeps going while Git still reports progress, stops after about five minutes without progress and after 30 minutes at most, and its failure names the source without showing credentials. In ordinary mode the Agent asks before cloning (in [Fully Managed Mode](../planning-and-production/managed-mode-and-review-policy.md) it restores repositories within your selected scope without asking); it never searches an unspecified disk root or substitutes another branch or a similar repository.
+
 <!-- /context:section -->
 
 <!-- context:section id="later" -->
