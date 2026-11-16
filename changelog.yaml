@@ -1,4 +1,17 @@
 entries:
+  - version: 0.16.8
+    date: 2026-11-16T14:19:10.759Z
+    title: Context SDK upgraded to 0.7.100
+    changes:
+      - Context SDK and CLI upgraded to 0.7.100 (the first production step's
+        resource commands no longer fail with an invalid workflow revision);
+        knowledge content unchanged.
+    triggers:
+      - kind: dist
+        description: upgrade with the Context 0.7.100 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.16.7
     date: 2026-11-15T02:13:20.171Z
     title: Knowledge updated to Context 0.7.99

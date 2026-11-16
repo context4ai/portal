@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.8 — 2026-11-16
+
+### Context SDK upgraded to 0.7.100
+
+- Context SDK and CLI upgraded to 0.7.100 (the first production step's resource commands no longer fail with an invalid workflow revision); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.100 release
+User: qiansc (git)
+
 ## 0.16.7 — 2026-11-15
 
 ### Knowledge updated to Context 0.7.99
