@@ -4,8 +4,8 @@ description: 近期 Context 与 Agent Graph 版本有哪些变化、升级时哪
 translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
-  source_digest: 74b6fc740a6b3c81888c9c25a441fdad230549c54784d6c7783c0bc9e14c2707
-  translated_at: 2026-11-15T02:13:04.336Z
+  source_digest: ebd65f4bba8c71eac27df6680750602c58eeda08a5f0b152bf8e96fef50d1bba
+  translated_at: 2026-11-24T21:46:18.327Z
 ---
 
 # 发布说明
@@ -14,6 +14,27 @@ translation:
 这里按读者和 Agent 能感知到的变化，汇总近期的产品版本。完整历史见 [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) 和 [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md)。“更多”菜单里本站自己的 **Changelog** 是另一回事：它列出的是这套文档的版本，而不是产品版本。
 
 升级 Context 时，运行与首次安装相同的两条命令——`npm install -g @c4a/context-cli@latest` 和 `context plugin install`——然后重启 Agent 会话；也可以在下次开始生产时让 Agent 来做。参见 [安装](../getting-started/installation.md#versions)。进行中的知识工作区不需要迁移步骤：下一次 `context status` 会为升级后的 CLI 返回新的 Route，任务恢复时也会保留工作流的读取回执。
+<!-- /context:section -->
+
+<!-- context:section id="context-0801" -->
+
+## Context 0.7.100 与 0.7.101（2026-11-16 至 2026-11-24）
+
+**接入已有知识**
+
+- `context-plan` 每次都用同样的方式调研已有知识资料集：与你确定目的和约束，识别每个资料集的类型和真实上游，抽样核对其中的说法与代码是否一致，为每个资料集的接入方式打分，并用内置模板生成结论先行的调研报告（0.7.101）。参见[分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md)和[迁移已有知识库](../../sop/practices/migrating-a-knowledge-base.md)。
+- 文档来源可以跟随其他团队按版本发布的内容：你把确切版本安装为文件，Context 在快照中记录来源和版本，站点链接到该版本。来源还可以保留文件夹和链接的图片、把 JSON 或 YAML 文件作为文档采集，并在原文归档后冻结。链接图片损坏或过大时，现在会报告为资源缺口，而不会中断采集（0.7.101）。参见[跟随版本化内容与归档的资料集](../../sop/registering-sources/versioned-external-content.md)。
+- 需求可以让其页面保持原文：文章保留原有标题、章节、顺序和措辞，与代码矛盾的段落作为修订建议，由你在审核报告中决定（0.7.101）。参见[保持页面原文](../../sop/review-and-revision/keeping-pages-as-written.md)。
+
+**站点与知识包**
+
+- 知识地图中的分组可以隐藏：它不出现在网站菜单和“全部文章”列表中，但保留在知识包和 LLM Docs 里，适合只由知识包承载的内容（0.7.101）。参见[文档站](../../sop/outputs-and-sites/documentation-sites.md#navigation)。
+
+**修复**
+
+- 在尚无需求的新工作区中，第一步的资源命令不再因“workflow revision is invalid”而失败（0.7.100）。
+- 在有大量来源未检出的工作区中更新单个仓库时，每个无法读取的来源只列出一次，使更新指令保持精简；知识地图调整会报告地图自身的输入错误（0.7.101）。
+
 <!-- /context:section -->
 
 <!-- context:section id="context-0799" -->
@@ -146,7 +167,7 @@ translation:
 - 分区落地页把每个一级分组显示为卡片。带 `position: "start"` 的 `site.nav` 链接显示在各分区之前，不属于任何分区的页面不显示侧边栏，首页会高亮指向当前页的导航链接，而不是第一个分区。
 - 主页横幅等自定义插槽在深色模式下不再塌陷，折叠的更新日志卡片会把长标题截断显示在一行内。
 
-参见 [文档站点](../../sop/outputs-and-sites/documentation-sites.md)。
+参见 [文档站](../../sop/outputs-and-sites/documentation-sites.md)。
 <!-- /context:section -->
 
 <!-- context:section id="context-0762" -->

@@ -264,6 +264,12 @@ entries:
     parent: guides
     title: Review and Revision
     order: 30
+  - key: guides-review/keeping-pages-as-written
+    parent: guides-review
+    title: Keeping Pages as Written
+    order: 25
+    target:
+      artifact_ref: sha256:9c860f717092e1a038316a7465118dab3c9aa05db7da7dc6b25a21b386927468
   - key: guides-review/reading-review-reports
     parent: guides-review
     title: Reading Review Reports
@@ -384,6 +390,12 @@ entries:
     order: 10
     target:
       artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
+  - key: guides-sources/versioned-external-content
+    parent: guides-sources
+    title: Following Versioned Content and Archived Collections
+    order: 35
+    target:
+      artifact_ref: sha256:44c05e8b132571a0c84023ce6a0dc8ccb6fe8f91c681416f61eedf01ca3f777b
   - key: guides-updates
     parent: guides
     title: Keeping Knowledge Current
@@ -658,4 +670,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:13446b6f5082c608859890bea39f90768321260cef3171de6548502d7e5d0019
+revision: sha256:a99fc880bb889e0be45df1ab45ff251bd833965a925a110854a8df721cd4d011

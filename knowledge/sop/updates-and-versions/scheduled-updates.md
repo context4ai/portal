@@ -4,7 +4,7 @@ description: Schedule a recurring Agent run that keeps a knowledge workspace
   current — what each run does, how to set it up yourself or through your Agent,
   and a prompt template.
 type: Guide
-timestamp: 2026-11-15T02:10:58.658Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Set Up Routine Updates
 
@@ -30,12 +30,12 @@ flowchart LR
 ```
 
 1. **Gets ready.** Enters the knowledge workspace that your Agent host's configuration names, cloning it first when the run starts in an empty environment, then brings the CLI and Context versions up to date (see [Installation](../../product/getting-started/installation.md#versions)), updates the workspace and finishes anything an earlier run left unfinished. A routine run never creates a new workspace: when none is configured or it cannot be cloned, the run reports that and stops.
-2. **Checks for changes first.** Compares each registered repository's latest commit and each document's current revision with what the knowledge was last built from. Changes in files and documents your articles cite lead to revisions; generated code, lock files and third-party directories do not count. When nothing changed, or the only changes are in uncited files that hold no lasting knowledge, the run replies "no knowledge changes this run" and stops without committing or publishing anything.
-3. **Updates in batches.** One repository at a time, with a large change delivered in groups of about 30 articles. Each batch is the ordinary [update flow](updating-knowledge.md). Changed code that no article cites is assessed too: what readers still need after this release, such as a new module, public API, configuration or workflow change, goes into an existing article or becomes a new page under the existing top-level menu, at most five new pages per run; the rest goes into the plan for a later run. Affected articles are revised to describe the current state as one coherent text — no "updated on…" notes or change history in the article; that belongs in the changelog.
+2. **Checks for changes first.** Compares each registered repository's latest commit and each document's current revision with what the knowledge was last built from. A document source that follows a published version is compared by its latest available version, and a frozen source never counts as changed. Changes in files and documents your articles cite lead to revisions; generated code, lock files and third-party directories do not count. When nothing changed, or the only changes are in uncited files that hold no lasting knowledge, the run replies "no knowledge changes this run" and stops without committing or publishing anything.
+3. **Updates in batches.** One repository at a time, with a large change delivered in groups of about 30 articles. Each batch is the ordinary [update flow](updating-knowledge.md). Changed code that no article cites is assessed too: what readers still need after this release, such as a new module, public API, configuration or workflow change, goes into an existing article or becomes a new page under the existing top-level menu, at most five new pages per run; the rest goes into the plan for a later run. A newer published version is installed beside the old one and the source is moved to it before the pages are revised. For pages you keep as written, a passage that contradicts the changed code is revised in the knowledge base only and listed in the result, and a contradiction you already chose to keep is not raised again unless its code changed. Other affected articles are revised to describe the current state as one coherent text — no "updated on…" notes or change history in the article; that belongs in the changelog.
 4. **Reviews, merges, publishes.** Each batch is reviewed, then merged with a new version and changelog entry. Publishing happens once at the end by default.
 5. **Stops on time.** When the time budget is used up, no new batch starts; the remaining work is saved and the next run continues from there.
 
-The result lists which sources changed and which articles were revised, the merged batches, whether and where it was published, the new pages with links, and anything that needs you: sources that could not be read (reported as gaps, never a reason to remove a page), uncited changes it assessed but did not write up, each with a one-line reason or carried into the plan, and proposed changes to the top-level menu.
+The result lists which sources changed and which articles were revised, the merged batches, whether and where it was published, the new pages with links, and anything that needs you: sources that could not be read (reported as gaps, never a reason to remove a page), revisions made to pages kept as written, uncited changes it assessed but did not write up, each with a one-line reason or carried into the plan, and proposed changes to the top-level menu.
 
 <!-- /context:section -->
 

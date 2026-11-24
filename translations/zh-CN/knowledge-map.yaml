@@ -141,6 +141,9 @@ entries:
   guides-review:
     title: 审核与修订
     source_digest: 67065e2a17c15e76a771246e04955c14ee07276c53260d172337a907d6e6118a
+  guides-review/keeping-pages-as-written:
+    title: 保持页面原文
+    source_digest: a8a502b4023ec05d296c5de51722ae5a97c7c0826861f1a2b26a49fc81dc1b70
   guides-review/reading-review-reports:
     title: 阅读审核报告
     source_digest: 2619f8eeb0ad8b5bd695afd95c99910d07b43e221722867e11aed32011f49edc
@@ -204,6 +207,9 @@ entries:
   guides-sources/source-batches:
     title: 选择添加材料的方式
     source_digest: df9159d607fe8be25b11929ddefd63bfc0badd12d1c70ecfca4df30de3097bc5
+  guides-sources/versioned-external-content:
+    title: 跟随版本化内容与归档的资料集
+    source_digest: 595c7d886b4a0eca08f6bc075b060179d51b47040b13d539e8145441eac60657
   guides-updates:
     title: 保持知识最新
     source_digest: 25b9da86f571c8f0d050b238864ad6566dae74fd88cba2b71b31df68855317c7

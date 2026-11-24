@@ -5,8 +5,8 @@ description: src/index.ts 可以用 @c4a/context SDK 声明哪些内容——来
 translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
-  source_digest: 0dd4aa1364f4fadae5dde8dc61ddef4774e903380ae50de75593f3b776ca30e7
-  translated_at: 2026-10-28T03:56:06.139Z
+  source_digest: f52ca324393f28e6156a2cd6fb62e6bcc11d222eeaa528f74db370266c70077e
+  translated_at: 2026-11-24T21:46:18.327Z
 ---
 
 # Project API
@@ -54,6 +54,17 @@ const everyRepo = allSources("repo"); // spread inside sources: [...everyRepo]
 | --- | --- | --- |
 | `repo`（默认）、`file`、`lark` | `sources/<type>/index.yaml`；名称包含登记日期和模块 | `context source add …` |
 | `note`、`sessions` | 保存在 `sources/note/YYYYMMDD/` 或 `sources/sessions/YYYYMMDD/` 下的 Markdown；没有单独的登记表或采集 phase | `context source import` |
+
+`sources/file/index.yaml` 中的文件条目可以带以下可选字段，都由 `context source add file` 设置：
+
+| 字段 | 含义 |
+| --- | --- |
+| `layout` | `flat`（默认）只保留文件名；`tree` 保留文件夹以及文档链接的图片和小文件 |
+| `documentExtensions` | 除 Markdown 外作为可引用文本采集的扩展名，如 `.json` 或 `.yaml` |
+| `frozen` | `true` 保留最后一次快照可供引用，并停止采集该来源 |
+| `origin` | 已安装版本化内容的 `{ kind, id, version, url? }`，从 `sources/<kind>/<name>@<version>/` 读取；快照记录版本，站点来源链接指向该版本（内置类型：`git`） |
+
+旧版 SDK 会拒绝这些字段，因此使用它们的工作区需要 Context 0.7.101 或更高版本。
 
 保存来源并不等于选用它——还要把它的引用加入 `sources`。来源列表负责启用获取和初始选择；需求以及每个 Indexer 的目标范围和读取范围，决定它负责哪些内容、可以读取哪些内容。
 <!-- /context:section -->
@@ -124,6 +135,8 @@ llmsPackage({
 | `assets` | 否 | `{ delivery: "bundle" }`（默认）、搭配 `urlPrefix` 的 `"git-raw"`，或 `"omit"`；可选 `optimize` |
 | `site` | 否（仅限 `kbPackage`） | 在 `dist/<base>-site/` 生成文档站点，其中 `<base>` 是去掉末尾一个 `-kb` 后的名称 |
 
+导航来自 `src/knowledge-map.yaml` 中的知识地图。带有 `hidden: true` 的条目及其后代不会出现在网站菜单和“全部文章”列表中；其文章仍算作已放置，并保留在知识包导航和 LLM Docs 中。把这些路径加入网站包的 `select.exclude`，即可让这些页面完全不出现在网站上。
+
 知识包只读取已批准的 `knowledge/`；`dist/` 是生成产物。详见 [包模板](./package-templates.md)。
 <!-- /context:section -->
 
@@ -152,7 +165,7 @@ llmsPackage({
 <!-- context:section id="requirements" -->
 ## 需求与 Indexer 技能
 
-当 `src/indexers.yaml` 缺失时，配置 Route 会提供它的 schema。只写 `requirements`——不要写 `protocol`、`indexers`、Provider 选择或 profile。使用哪些已安装的 Indexer 技能及其可选配置，属于临时生产计划中的 `indexer_usage`，而不属于这份长期保存的文件。Agent 在返回的临时目录下写入草稿和引用；CLI 负责接收它们，并掌管候选、审核和正式输出。
+当 `src/indexers.yaml` 缺失时，配置 Route 会提供它的 schema。只写 `requirements`——不要写 `protocol`、`indexers`、Provider 选择或 profile。使用哪些已安装的 Indexer 技能及其可选配置，属于临时生产计划中的 `indexer_usage`，而不属于这份长期保存的文件。需求可以设置 `preserve_original: true`，让其目标页面保持原文：标题、章节、顺序和措辞不变，与代码矛盾之处作为建议提交审核，而不是悄悄修改；请在它的 `evidence_source_scope` 中列出这些页面所描述的代码仓库。参见[保持页面原文](../../../sop/review-and-revision/keeping-pages-as-written.md)。Agent 在返回的临时目录下写入草稿和引用；CLI 负责接收它们，并掌管候选、审核和正式输出。
 <!-- /context:section -->
 
 <!-- context:section id="state" -->

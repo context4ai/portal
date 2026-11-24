@@ -4,7 +4,7 @@ description: When a Context task counts as large, how the Agent researches it
   and splits it into stages, what to check in the PLAN report, how big a stage
   may be, and how to steer, resume and finish.
 type: Guide
-timestamp: 2026-10-28T02:12:23.964Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Planning Large Projects in Stages
 
@@ -42,25 +42,41 @@ In Cursor the command is `/c4a-context-plan`. A very large monorepo with several
 <!-- context:section id="research" -->
 ## What happens during research
 
-The Agent works in scratch space that stays out of Git. It starts from directory listings, versions and existing coverage, reads representative material and code entry points, and expands only as far as needed to divide the work. A branch or "latest" is pinned to an exact commit before it is used as evidence, and the PLAN keeps enough about each source to resume even if the scratch files disappear.
+The Agent works in scratch space that stays out of Git. **It first settles the purpose and constraints.** It reads what you already supplied — meeting notes, proposals, a filled source checklist, earlier PLANs — and then asks, in one exchange, only what is still unknown:
+
+- where knowledge lives today and who maintains it, and whether it stays maintained there or moves into the knowledge workspace;
+- what must keep its original wording;
+- who reads the result (coding Agents, Q&A, on-call, onboarding) and whether different readers need separate packages;
+- structural limits such as keeping the existing top-level sections.
+
+"Not decided yet" is a valid answer; it is recorded as an open decision and does not hold up research. The answers become the criteria the research and the report are judged by.
+
+The Agent then starts from directory listings, versions and existing coverage, reads representative material and code entry points, and expands only as far as needed to divide the work. A branch or "latest" is pinned to an exact commit before it is used as evidence, and the PLAN keeps enough about each source to resume even if the scratch files disappear.
 
 Before proposing any article, it reads how the knowledge workspace is organized today and the relevant approved pages, and decides per topic: **reuse unchanged**, **revise or extend**, **consolidate**, **add**, or **investigate** an unresolved conflict or access gap. Research never changes approved knowledge.
 
+**When you bring existing knowledge collections** — a wiki or knowledge repository, a documentation directory, another workspace or a published package — the Agent also identifies each one's kind and its real upstreams, and audits about ten concrete claims per collection against code at a fixed revision. Each claim is consistent, partly consistent, inconsistent or unverifiable, and problems are grouped into *written wrong* and *went stale*. From that evidence it scores how to bring each collection in; the choices are described in [Migrating an Existing Knowledge Base](../practices/migrating-a-knowledge-base.md).
+
 For a broad source update, each repository is compared between the version the knowledge was built from and the new one, looking only at the files the approved articles actually cite. A changed file is a reason to investigate, not proof that an article must be rewritten.
 
-Before the round starts, planning asks once whether a prepared source checklist exists and takes its link: a filled checklist names each source, its owner and whether the knowledge should depend on it, which shortens the inventory. The `context` Skill carries a template under `references/source-checklist.md`. It is never required — without one, planning continues from the conversation.
+Planning asks once whether a prepared source checklist exists and takes its link. The `context` Skill carries a template under `references/source-checklist.md`. It is never required — without one, planning continues from the conversation.
 <!-- /context:section -->
 
 <!-- context:section id="report" -->
 ## Reading the PLAN report
 
-The report is ordinary Markdown at the project's Git root. Check each part:
+When you must choose between approaches, or the research covers existing knowledge collections, the Agent first gives you a **research report**: a single-page HTML document built from Markdown chapters with the template bundled in the Skill (`templates/research-report/build.mjs`, no dependencies). It puts the conclusions first — the current state, the recommendation per collection with its benefit next to its cost, and the next steps — followed by the approaches and their scores, the recommended plan, the impact on navigation, the packages and their articles, a comparison with existing knowledge, the audit results and the background. Each chapter opens with its own conclusion. Decisions you make while discussing it are recorded in the PLAN before you are asked to approve.
+
+The PLAN itself is ordinary Markdown at the project's Git root. Check each part:
 
 | Section | What to check |
 | --- | --- |
 | Outcome and current position | The readers and requested outcome are yours; the knowledge workspace and repository are right |
+| Purpose, constraints and decisions | Your answers, what was derived from documents, the decision log and the open decisions are recorded as you meant them |
 | Research scope and findings | Every source you meant is listed with an exact version; access gaps are named, not hidden |
+| Existing knowledge collections | Each collection's kind, maintenance, upstreams, unique content, audit result and chosen approach with its reason |
 | Existing knowledge and material relationships | Overlaps with pages you already have are reused or revised, not duplicated |
+| Target structure and packages | The navigation changes and each package's audience and articles |
 | Proposed stages | Each stage has a clear reader outcome, its sources and versions, and sensible prerequisites |
 | Approval and execution choices | Review, progress reporting, publishing destination and Git process match what you intend |
 | Current stage | What the next stage covers and which decisions it must preserve |

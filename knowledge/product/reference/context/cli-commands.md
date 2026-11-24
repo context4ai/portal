@@ -3,7 +3,7 @@ title: CLI Commands
 description: Every command and subcommand of the context CLI, grouped by
   purpose, with what each does and its key options.
 type: Wiki
-timestamp: 2026-11-15T02:10:58.658Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # CLI Commands
 
@@ -50,7 +50,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 | --- | --- |
 | `context task prepare` | Previews or discards current task state; keeps knowledge, sources and other temporary files |
 | `context task resume` | Explicitly reopens cleared production from registered requirements and retained knowledge |
-| `context task adjust` | Adjusts current source and module inputs, or the knowledge map, without disturbing unrelated work (`--input`, `--schema`, `--inspect`) |
+| `context task adjust` | Adjusts current source and module inputs, or the knowledge map, without disturbing unrelated work (`--input`, `--schema`, `--inspect`); an input with `knowledge_map` is checked against the map's own fields, so an error names the map entry to fix |
 | `context task maintain` | Registers a scoped page revision, regeneration or approved-output rebuild |
 | `context task record-fix` | Records a purely mechanical correction (a typo, a broken link) made after a batch's approval and before its delivery, with the reason; it needs no further review |
 | `context task advance-maintenance` | Executes the current maintenance transition |
@@ -77,6 +77,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 | `context review approve-all [collection]` | Approves the whole current review scope | `--all`, `--confirmed` (your confirmation), `--managed` |
 | `context review approve <id>` / `reject <id>` | Approves or rejects one draft candidate | |
 | `context review deprecate <article-id>` | Marks an approved page deprecated without deleting it | |
+| `context review original-revisions` | Lists the revisions proposed for pages kept as written in the current review batch; `--propose` adds proposals from a YAML/JSON file or `-` (Context reads the original passage itself), `--resolve` removes a proposal once its decision is applied to the article | `--propose <file>`, `--resolve <id\|all>` (repeatable), `--format` |
 
 <!-- /context:section -->
 
@@ -117,6 +118,7 @@ Run `context <command> --help` for the full option list of any command. For the 
 | --- | --- |
 | `context source add repo\|file\|lark [date]` | Registers a repository, local file or Lark document module under a `YYYYMMDD` batch |
 | `context source add repo [date] --module <name>` | Registers or updates a repository module. `--local <path>` reads the remote and current commit from a checkout and may point at a monorepo package directory; `--remote <url>` and `--ref <sha>` pin it without a checkout; `--subpath <dir>` names a repository-relative package directory together with `--remote`/`--ref` or a `--local` repository root (a different directory than a `--local` package path is rejected) |
+| `context source add file [date] --module <name>` | Registers or updates a file module. `--local <path>` names the directory or file (an existing source keeps its path when omitted); `--layout tree` keeps folders and the images and small files documents link to (default `flat`); `--document-ext <ext>` also captures that extension as citable text (repeatable, e.g. `.json`, `.yaml`); `--freeze` keeps the current snapshot and stops capturing, `--unfreeze` allows capturing again; `--origin-kind`, `--origin-id`, `--origin-version` and `--origin-url` record the versioned origin of installed content (built-in kind: `git`) — see [Following Versioned Content and Archived Collections](../../../sop/registering-sources/versioned-external-content.md) |
 | `context source add batch [date]` | Registers several modules under one batch from a YAML/JSON `--input`. Repo items accept `type`, `module`, `local`, `remote`, `ref` and `subpath`; an unsupported field is rejected with the list of fields that item type accepts |
 | `context source import` | Imports managed Markdown (notes, session summaries) or prefetched Lark content, singly or in a batch |
 | `context source discover` / `fetch` | Discovers a source inventory, or fetches a portable snapshot, without registering anything |

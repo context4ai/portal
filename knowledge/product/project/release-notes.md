@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-11-15T02:10:58.658Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Release Notes
 
@@ -12,6 +12,27 @@ timestamp: 2026-11-15T02:10:58.658Z
 These notes summarize recent product releases by what readers and Agents notice. The complete history is in the [Context CHANGELOG](https://github.com/context4ai/context/blob/main/CHANGELOG.md) and the [Agent Graph CHANGELOG](https://github.com/context4ai/agent-graph/blob/main/CHANGELOG.md). The site's own **Changelog** entry in the More menu is different: it lists the versions of this documentation, not product releases.
 
 To upgrade Context, run the same two commands as a first installation — `npm install -g @c4a/context-cli@latest` and `context plugin install` — and restart the Agent session, or let the Agent do it when you next start production; see [Installation](../getting-started/installation.md#versions). An active knowledge workspace needs no migration step: the next `context status` returns a fresh Route for the upgraded CLI, and workflow read receipts are kept when a task resumes.
+
+<!-- /context:section -->
+
+<!-- context:section id="context-0801" -->
+
+## Context 0.7.100 and 0.7.101 (2026-11-16 to 2026-11-24)
+
+**Bringing in existing knowledge**
+
+- `context-plan` researches existing knowledge collections the same way every time: it settles purpose and constraints with you, identifies each collection's kind and real upstreams, audits a sample of claims against code, scores the ways to bring each one in, and presents a conclusions-first research report built with a bundled template (0.7.101). See [Planning Large Projects in Stages](../../sop/planning-and-production/planning-large-projects.md) and [Migrating an Existing Knowledge Base](../../sop/practices/migrating-a-knowledge-base.md).
+- A document source can follow content another team publishes as versions: you install the exact version as files, Context records the origin and version in the snapshot and the site links to that version. A source can also keep its folders and linked images, capture JSON or YAML files as documents, and be frozen after its original is archived. A broken or oversized linked image is now reported as an asset gap instead of stopping capture (0.7.101). See [Following Versioned Content and Archived Collections](../../sop/registering-sources/versioned-external-content.md).
+- A requirement can keep its pages as written: articles keep the original titles, sections, order and wording, and passages that contradict the code are proposed as revisions you decide on in the review report (0.7.101). See [Keeping Pages as Written](../../sop/review-and-revision/keeping-pages-as-written.md).
+
+**Sites and packages**
+
+- A knowledge-map group can be hidden: it stays out of the website menus and the "All articles" list but remains in knowledge packages and LLM Docs, for content that only packages should carry (0.7.101). See [Documentation Sites](../../sop/outputs-and-sites/documentation-sites.md#navigation).
+
+**Fixes**
+
+- In a new workspace without requirements, the first step's resource commands no longer fail with "workflow revision is invalid" (0.7.100).
+- Updating one repository in a workspace with many sources not checked out lists each unreadable source once, keeping the update's instructions small; knowledge-map adjustments report the map's own input errors (0.7.101).
 
 <!-- /context:section -->
 

@@ -4,7 +4,7 @@ description: What a Context knowledge package contains, how to choose your
   outputs, what to tell the Agent, and what the build checks before you hand a
   package out.
 type: Guide
-timestamp: 2026-10-28T03:53:56.231Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Knowledge Packages
 
@@ -37,6 +37,12 @@ You can also stop at approved Markdown, and no build runs. Selecting an output i
 To change your choice later, just tell the Agent, for example:
 
 > Add a documentation website to this knowledge package, and leave out everything under `internal/`.
+
+Some content belongs in the package but not on the website — detailed material only Agents need, or a collection you keep as written for one team. Ask for it:
+
+> Put the API field tables in the package only, and link them from the API overview page.
+
+The Agent places those articles under a hidden group in the knowledge map: they stay in the package's navigation and in LLM Docs, count as placed, and are out of the website menus. Linked from an entry article, they remain reachable on the site; to leave them off the website entirely, the Agent also excludes their paths from the website package.
 
 The Agent updates the workspace's package declaration for you; you never need to write it by hand. If you want to see the options it sets, such as which pages a package selects, how directory indexes fold and how images are shipped, they are listed in [Project API](../../product/reference/context/project-api.md) and [Package Templates](../../product/reference/context/package-templates.md).
 <!-- /context:section -->

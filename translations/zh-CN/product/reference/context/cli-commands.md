@@ -4,8 +4,8 @@ description: context CLI 的全部命令与子命令，按用途分组，并说�
 translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
-  source_digest: ac4e165f1552e5147e6be9b98ccb1f09557b16c91eb777d0cce34942aad93566
-  translated_at: 2026-11-15T02:13:04.336Z
+  source_digest: ddf577accbb3bc19ebd5afd3d93046ccf286b10a9deb0535f8031a1ec30a42d5
+  translated_at: 2026-11-24T21:46:18.327Z
 ---
 
 # CLI 命令
@@ -50,7 +50,7 @@ translation:
 | --- | --- |
 | `context task prepare` | 预览或丢弃当前任务状态；保留知识、来源和其他临时文件 |
 | `context task resume` | 根据已登记的需求和保留的知识，显式重新开启已清除的生产 |
-| `context task adjust` | 调整当前的来源和模块输入或知识地图，不影响无关的工作（`--input`、`--schema`、`--inspect`） |
+| `context task adjust` | 调整当前的来源和模块输入或知识地图，不影响无关的工作（`--input`、`--schema`、`--inspect`）；含 `knowledge_map` 的输入按知识地图自身的字段校验，因此错误会指出需要修正的地图条目 |
 | `context task maintain` | 登记限定范围的页面修订、重新生成或已批准输出的重建 |
 | `context task record-fix` | 记录批次批准之后、交付之前做的纯机械性修正（错别字、失效链接）及其原因，无需再次审核 |
 | `context task advance-maintenance` | 执行当前的维护转换 |
@@ -75,6 +75,7 @@ translation:
 | `context review approve-all [collection]` | 批准当前审核范围内的全部内容 | `--all`、`--confirmed`（你的确认）、`--managed` |
 | `context review approve <id>` / `reject <id>` | 批准或拒绝单个草稿候选 | |
 | `context review deprecate <article-id>` | 将已批准页面标记为已弃用，但不删除 | |
+| `context review original-revisions` | 列出当前审核批次中针对保持原文页面提出的修订；`--propose` 从 YAML/JSON 文件或 `-` 添加建议（Context 自己读取原文段落），`--resolve` 在决定已落到文章后移除对应建议 | `--propose <file>`、`--resolve <id\|all>`（可重复）、`--format` |
 <!-- /context:section -->
 
 <!-- context:section id="delivery" -->
@@ -109,6 +110,7 @@ translation:
 | --- | --- |
 | `context source add repo\|file\|lark [date]` | 在某个 `YYYYMMDD` 批次下登记仓库、本地文件或飞书文档模块 |
 | `context source add repo [date] --module <name>` | 登记或更新一个仓库模块。`--local <path>` 从检出目录读取远程地址和当前提交，可以指向 monorepo 中的包目录；`--remote <url>` 和 `--ref <sha>` 无需检出即可固定版本；`--subpath <dir>` 与 `--remote`/`--ref` 或指向仓库根目录的 `--local` 一起使用，指定相对仓库根目录的包目录（若与 `--local` 指向的包目录不同则会被拒绝） |
+| `context source add file [date] --module <name>` | 登记或更新一个文件模块。`--local <path>` 指定目录或文件（已有来源省略时保留原路径）；`--layout tree` 保留文件夹以及文档链接的图片和小文件（默认 `flat`）；`--document-ext <ext>` 让该扩展名也作为可引用文本采集（可重复，如 `.json`、`.yaml`）；`--freeze` 保留当前快照并停止采集，`--unfreeze` 恢复采集；`--origin-kind`、`--origin-id`、`--origin-version` 和 `--origin-url` 记录已安装内容的版本化来源（内置类型：`git`）——参见[跟随版本化内容与归档的资料集](../../../sop/registering-sources/versioned-external-content.md) |
 | `context source add batch [date]` | 通过 YAML/JSON `--input` 在同一批次下登记多个模块。仓库条目接受 `type`、`module`、`local`、`remote`、`ref` 和 `subpath`；不支持的字段会被拒绝，并列出该类条目接受的字段 |
 | `context source import` | 单个或批量导入托管的 Markdown（笔记、会话摘要）或预先抓取的飞书内容 |
 | `context source discover` / `fetch` | 发现来源清单，或抓取可移植的快照，不登记任何内容 |
