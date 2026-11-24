@@ -4,7 +4,7 @@ description: After the first round, ask the Agent for a clearer directory and
   title structure, then apply it with map adjustments, page moves, splits,
   merges and retirement.
 type: Guide
-timestamp: 2026-11-15T02:10:58.658Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Reorganizing at Scale
 
@@ -33,6 +33,7 @@ flowchart TB
 | Rename a directory, reorder, regroup, place a page in a second location | *"Rename the Operations menu to Runbooks and put Alerts first."* | Article identity, URL and prose |
 | Move a page to another path | *"Move the deployment page under Source Graph."* | Identity and section IDs; links from other pages are updated on approval |
 | Split one page, or merge several | *"Split the setup page into install and configure; merge the two FAQ pages."* | Useful detail, until its destination is approved |
+| Keep a group in packages but out of the site menus | *"Hide the Internal Notes directory from the website; keep it in the package."* | Article identity, URL and package placement |
 | Remove pages now covered elsewhere | *"Retire the old guide; point readers to the current guide."* | Sources and shared assets |
 <!-- /context:section -->
 
@@ -41,6 +42,8 @@ flowchart TB
 ## Knowledge-map adjustments
 
 The knowledge map controls the website navigation and the LLM Docs organization together. Ask in conversation to move a topic, rename a directory, change the order or organize the same articles for another reader task. This works during production or after it, without capturing sources again. After delivery, a change that only touches the map is recorded as a patch version and built straight away; production is not resumed. Each entry keeps a stable key, so a renamed menu needs no new article and moving a menu entry does not change the article URL.
+
+A directory can also be **hidden**: it and everything under it stay out of the website menus and the "All articles" list, while its pages still count as placed and remain in knowledge packages and LLM Docs. Use it for material that Agents need but site readers do not browse, and link to it from an entry article; see [Documentation Sites](../outputs-and-sites/documentation-sites.md).
 
 Prefer, in this order: revise an existing article, add a page to a matching category, add a coherent child category. A **top-level** addition, rename or removal is shown to you as a before/after tree and needs your explicit approval.
 

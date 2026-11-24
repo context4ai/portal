@@ -4,7 +4,7 @@ description: Find your way around the review report, judge structure, content
   and scope, answer with approval, revision notes or both, and know what happens
   once pages are approved.
 type: Guide
-timestamp: 2026-11-08T13:14:14.832Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Reading Review Reports
 
@@ -21,6 +21,7 @@ Nothing the Agent writes becomes knowledge until you approve it in review. The A
 | Change overview | The batch at a glance, with the existing navigation and the expected file tree of the knowledge workspace |
 | Navigation | Where each page will sit, and every navigation change the batch makes — including menu entries for pages outside the batch. Pages without a placement are flagged so the Agent can place them before asking you |
 | Planned retirement | When the batch also retires pages: which pages go, how the menu changes, and any draft that still links to them (those drafts are revised before you are asked to approve) |
+| Revision proposals | For pages kept as written: each proposed revision above its page, with the original passage, the revised text, whether the original was wrong from the start or went stale, and the code it rests on. See [Keeping Pages as Written](keeping-pages-as-written.md) |
 | Pages | Each draft's title, path, summary and full rendered content, including diagrams and source citations. New pages are marked *New*; changed pages show the changed blocks next to the previous text |
 | Revision notes | A note box per page; typing in it marks the page for revision |
 

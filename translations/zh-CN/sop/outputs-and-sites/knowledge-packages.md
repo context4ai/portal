@@ -4,8 +4,8 @@ description: Context 知识包包含哪些内容，如何选择产出，要告�
 translation:
   locale: zh-CN
   artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
-  source_digest: 04607e9c14abf56348090caf22932efc5d090d24ac8621bf0b505120737cac01
-  translated_at: 2026-10-28T03:56:06.139Z
+  source_digest: 139b1f1a7b4f0e11eaa1d16071c18321b9197d3e9bbee9b2b7617ce2da93923f
+  translated_at: 2026-11-24T21:46:18.327Z
 ---
 
 # 知识包
@@ -39,6 +39,12 @@ flowchart LR
 之后想改变选择，直接告诉 Agent 即可，例如：
 
 > 为这个知识包加上文档网站，并排除 `internal/` 下的所有内容。
+
+有些内容属于知识包，但不属于网站——只有 Agent 需要的详细材料，或为某个团队保持原文的一组页面。直接提出即可：
+
+> 把 API 字段表只放进知识包，并从 API 概览页链接过去。
+
+Agent 会把这些文章放到知识地图中的隐藏分组下：它们留在知识包的导航和 LLM Docs 中，算作已放置，但不出现在网站菜单里。从入口文章链接后，它们在站点上仍可访问；若要让它们完全不出现在网站上，Agent 还会把它们的路径从网站包中排除。
 
 Agent 会替你更新知识工作区的知识包声明，你无需手写。如果想了解它设置的选项，例如知识包选择哪些页面、目录索引如何折叠、图片如何交付，可参阅 [Project API](../../product/reference/context/project-api.md) 和 [包模板](../../product/reference/context/package-templates.md)。
 <!-- /context:section -->

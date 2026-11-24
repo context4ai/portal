@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.17.0 — 2026-11-24
+
+### Context 0.7.100–0.7.101: existing knowledge, versioned sources and package-only content
+
+- New guides: Following Versioned Content and Archived Collections (install an exact version, upgrade, restore, freeze after archiving) and Keeping Pages as Written (keep a team's wording, decide on code-backed revision proposals in the review report).
+- Planning Large Projects and Migrating an Existing Knowledge Base describe the standardized research for existing collections: purpose and constraints first, collection kinds and upstreams, a sampled audit against code, scored approaches and a conclusions-first research report.
+- Document Directories, Project API and CLI Commands cover folder layout, structured documents, asset gaps, origins, freezing and the original-revisions command; Documentation Sites, Knowledge Packages and Reorganizing at Scale explain hidden, package-only map groups.
+- Release notes add Context 0.7.100 and 0.7.101; routine updates, review reports and two citations follow the new release. Chinese pages updated to match.
+
+Trigger: module: Context 0.7.100–0.7.101 (source moved from 0bbb2a7 to b319dd2)
+User: qiansc (git)
+
 ## 0.16.9 — 2026-11-24
 
 ### Context SDK upgraded to 0.7.101

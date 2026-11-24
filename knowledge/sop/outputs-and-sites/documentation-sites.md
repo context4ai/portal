@@ -4,7 +4,7 @@ description: How to add a documentation website to a knowledge package, what
   readers get, how navigation and homepage cards are set up, and how to preview
   and deploy the site.
 type: Guide
-timestamp: 2026-10-28T02:12:23.964Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Documentation Sites
 
@@ -63,6 +63,8 @@ The knowledge map decides the sidebar. Each entry points to a page by its identi
 The sidebar keeps the order you give the map at every level. Articles and directories can sit side by side in that order: a section can open with an overview and a quick start, followed by a Guides directory and a Reference directory. Each section's landing page follows the same order, showing every directory as a card and gathering consecutive articles that sit outside a directory into one shared card at their place in the sequence. To change the order, ask the Agent to reorder the entries; see [Reorganizing at Scale](../review-and-revision/reorganizing-at-scale.md). Context versions before 0.7.82 always listed directories ahead of their sibling articles, whatever order the map gave.
 
 You can also ask the Agent for extra links in the top bar (for example a link back to a documentation home), items in the More menu (for example release notes kept outside the map), icon links, or a different target for the site title. Links that start with `/` point to the same domain, so a site under `/docs/` can link to a sibling application. The exact settings are in [Project API](../../product/reference/context/project-api.md).
+
+Some content belongs in a knowledge package but not in the site's menus, such as detailed material that only Agents need. Ask the Agent to place it under a hidden group in the knowledge map. A hidden group and everything under it stay out of the sidebar, the top navigation and the "All articles" list, yet its pages still count as placed, keep their URLs when the site selects them and stay in package navigation and LLMS. Link to them from an entry article on the site. To leave those pages off the website entirely, the Agent also excludes them from the website package; see [Knowledge Packages](knowledge-packages.md).
 <!-- /context:section -->
 
 <!-- context:section id="home-cards" -->

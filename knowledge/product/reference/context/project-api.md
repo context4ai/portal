@@ -4,7 +4,7 @@ description: What src/index.ts can declare with the @c4a/context SDK — sources
   capture phases, custom phases, packages and site options — and how it relates
   to src/indexers.yaml.
 type: Wiki
-timestamp: 2026-10-28T03:53:56.231Z
+timestamp: 2026-11-24T21:42:41.958Z
 ---
 # Project API
 
@@ -51,6 +51,17 @@ const everyRepo = allSources("repo"); // spread inside sources: [...everyRepo]
 | --- | --- | --- |
 | `repo` (default), `file`, `lark` | `sources/<type>/index.yaml`; the name includes the registration date and module | `context source add …` |
 | `note`, `sessions` | Saved Markdown under `sources/note/YYYYMMDD/` or `sources/sessions/YYYYMMDD/`; no separate registry or capture phase | `context source import` |
+
+A file entry in `sources/file/index.yaml` can carry these optional fields, all set by `context source add file`:
+
+| Field | Meaning |
+| --- | --- |
+| `layout` | `flat` (default) keeps file names only; `tree` keeps folders and the images and small files documents link to |
+| `documentExtensions` | Extensions captured as citable text besides Markdown, such as `.json` or `.yaml` |
+| `frozen` | `true` keeps the last snapshot citable and stops capturing the source |
+| `origin` | `{ kind, id, version, url? }` for installed versioned content, read from `sources/<kind>/<name>@<version>/`; the snapshot records the version and site provenance links to it (built-in kind: `git`) |
+
+An older SDK rejects these fields, so a workspace that uses them needs Context 0.7.101 or later.
 
 Saving a source does not select it — include its reference in `sources`. The source list enables acquisition and initial selection; the requirements and each Indexer's target and read scopes decide what it owns and may read.
 <!-- /context:section -->
@@ -121,6 +132,8 @@ llmsPackage({
 | `assets` | No | `{ delivery: "bundle" }` (default), `"git-raw"` with `urlPrefix`, or `"omit"`; optional `optimize` |
 | `site` | No (`kbPackage` only) | Adds a documentation site at `dist/<base>-site/`, where `<base>` is the name without one trailing `-kb` |
 
+Navigation comes from the knowledge map in `src/knowledge-map.yaml`. An entry with `hidden: true` keeps itself and its descendants out of the website menus and the "All articles" list; their articles still count as placed and stay in package navigation and LLM Docs. Add the paths to the website package's `select.exclude` to leave those pages off the website.
+
 Packages read approved `knowledge/` only; `dist/` is generated. Details are in [Package Templates](./package-templates.md).
 <!-- /context:section -->
 
@@ -151,7 +164,7 @@ Links accept https or `mailto:` URLs, root-relative paths or page anchors. Custo
 <!-- context:section id="requirements" -->
 ## Requirements and Indexer Skills
 
-When `src/indexers.yaml` is missing, the configuration Route supplies its schema. Write `requirements` only — no `protocol`, `indexers`, Provider selections or profiles. Which installed Indexer Skills to use, and their optional configuration, belongs to `indexer_usage` in the temporary production plan, not to this durable file. The Agent writes drafts and references under the returned temporary directory; the CLI accepts them and owns candidates, review and formal output.
+When `src/indexers.yaml` is missing, the configuration Route supplies its schema. Write `requirements` only — no `protocol`, `indexers`, Provider selections or profiles. Which installed Indexer Skills to use, and their optional configuration, belongs to `indexer_usage` in the temporary production plan, not to this durable file. A requirement may set `preserve_original: true` to keep its target pages as written: titles, sections, order and wording stay, and contradictions with the code are proposed for review instead of silently edited; list the code repositories the pages describe in its `evidence_source_scope`. See [Keeping Pages as Written](../../../sop/review-and-revision/keeping-pages-as-written.md). The Agent writes drafts and references under the returned temporary directory; the CLI accepts them and owns candidates, review and formal output.
 <!-- /context:section -->
 
 <!-- context:section id="state" -->
