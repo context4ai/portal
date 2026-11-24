@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.1 — 2026-11-24
+
+### Context SDK upgraded to 0.7.102
+
+- Context SDK and CLI upgraded to 0.7.102 (moving a repository source to a new checkout replaces its old link instead of failing); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.102 release
+User: qiansc (git)
+
 ## 0.17.0 — 2026-11-24
 
 ### Context 0.7.100–0.7.101: existing knowledge, versioned sources and package-only content
