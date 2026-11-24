@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.9 — 2026-11-24
+
+### Context SDK upgraded to 0.7.101
+
+- Context SDK and CLI upgraded to 0.7.101 (file sources can follow versioned external content, keep folders and be frozen; knowledge map entries can be package-only; requirements can keep pages as written); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.101 release
+User: qiansc (git)
+
 ## 0.16.8 — 2026-11-16
 
 ### Context SDK upgraded to 0.7.100
