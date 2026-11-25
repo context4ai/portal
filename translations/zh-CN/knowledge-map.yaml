@@ -208,8 +208,8 @@ entries:
     title: 选择添加材料的方式
     source_digest: df9159d607fe8be25b11929ddefd63bfc0badd12d1c70ecfca4df30de3097bc5
   guides-sources/versioned-external-content:
-    title: 跟随版本化内容与归档的资料集
-    source_digest: 595c7d886b4a0eca08f6bc075b060179d51b47040b13d539e8145441eac60657
+    title: 按版本发布与即将归档的资料
+    source_digest: 7624cd773b1a3ebfb5da8e4277a3bb4ab725abb254529dc25137e5fc53b34ff7
   guides-updates:
     title: 保持知识最新
     source_digest: 25b9da86f571c8f0d050b238864ad6566dae74fd88cba2b71b31df68855317c7

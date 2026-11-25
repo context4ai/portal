@@ -4,7 +4,7 @@ description: Add local Markdown files or a documentation folder as a source,
   limit it to the parts readers need, and capture a reproducible snapshot that
   pages cite.
 type: Guide
-timestamp: 2026-11-24T21:42:41.958Z
+timestamp: 2026-11-25T02:35:51.926Z
 ---
 # Document Directories
 
@@ -69,5 +69,5 @@ If a page is only a shell that loads its content at runtime, the Agent says so a
 
 Pages keep citing the snapshot they were written from. When the folder changes, ask for an update: the Agent captures the new version and asks which pages need changes. See [Updating Knowledge](../updates-and-versions/updating-knowledge.md).
 
-If the documents are published by another team as versions — a documentation repository or a released knowledge package — or the folder is about to be archived, see [Following Versioned Content and Archived Collections](versioned-external-content.md).
+If the documents are published by another team as versions — a documentation repository or a released knowledge package — or the folder is about to be archived, see [Published and Archived Collections](versioned-external-content.md).
 <!-- /context:section -->

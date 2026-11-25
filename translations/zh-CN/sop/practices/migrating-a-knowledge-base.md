@@ -4,8 +4,8 @@ description: 如何把现有的 LLM Wiki、Skill 集合或类似知识库迁移�
 translation:
   locale: zh-CN
   artifact_ref: f38982c1-617a-487a-b0bd-13a6a28d01cd
-  source_digest: 26c455dd182040b445bde9ca7a316d3d4da62c5c5f14c9f4f7de16eface55f09
-  translated_at: 2026-11-24T21:46:18.327Z
+  source_digest: 5f7b95a72868b2e7333c7ffa7bd56c23c285f817d35393e2e6eb3d5fa29e70dd
+  translated_at: 2026-11-25T02:37:02.309Z
 ---
 
 # 迁移已有知识库
@@ -57,7 +57,7 @@ translation:
 | 基于它产出文章 | 知识需要为你的读者重写并与代码核对；根据代码写成的 wiki 会指出哪些问题重要 | 工作区接手维护该主题后可以归档 |
 | 登记原始上游 | 资料集镜像或总结了你可以直接登记的文档；作者自己的判断转为笔记 | 摘要层可以不再维护 |
 | 保持页面原文 | 团队的页面必须保持措辞，但要放进你的分区并与代码核对。参见[保持页面原文](../review-and-revision/keeping-pages-as-written.md) | 继续在原处维护 |
-| 跟随已发布版本 | 其他团队按版本发布内容（文档仓库或知识包）。参见[跟随版本化内容与归档的资料集](../registering-sources/versioned-external-content.md) | 跟随发布方 |
+| 跟随已发布版本 | 其他团队按版本发布内容（文档仓库或知识包）。参见[按版本发布与即将归档的资料](../registering-sources/versioned-external-content.md) | 跟随发布方 |
 | 留在原处 | 它服务于在自身仓库中工作的 Agent，或只需要一个链接 | 继续在原处维护 |
 
 对于每个资料集，你还要在**跟随**上游——以固定版本登记，由例行更新持续跟进——和**一次性吸收**之间选择：文件作为保留文件夹的文档来源接入，作者的判断转为笔记，原资料归档时冻结该来源。

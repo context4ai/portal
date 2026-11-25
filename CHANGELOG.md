@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.17.2 — 2026-11-25
+
+### Clearer name for the versioned and archived collections guide
+
+- The guide "Following Versioned Content and Archived Collections" is renamed "Published and Archived Collections", matching the other pages under Adding Sources; its menu label and the links to it from five pages follow.
+- The Chinese version of the guide is rewritten to read naturally, and its title now separates material you keep following from material you take in once before it is archived.
+
+Trigger: navigation: rename of the guide and its menu label; translation: Chinese rewrite of the guide and updated link labels
+User: qiansc (git)
+
 ## 0.17.1 — 2026-11-24
 
 ### Context SDK upgraded to 0.7.102

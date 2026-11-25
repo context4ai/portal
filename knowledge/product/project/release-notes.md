@@ -3,7 +3,7 @@ title: Release Notes
 type: Wiki
 description: What changed in recent Context and Agent Graph releases, which
   changes need action when you upgrade, and where the complete changelogs live.
-timestamp: 2026-11-24T21:42:41.958Z
+timestamp: 2026-11-25T02:35:51.926Z
 ---
 # Release Notes
 
@@ -22,7 +22,7 @@ To upgrade Context, run the same two commands as a first installation — `npm i
 **Bringing in existing knowledge**
 
 - `context-plan` researches existing knowledge collections the same way every time: it settles purpose and constraints with you, identifies each collection's kind and real upstreams, audits a sample of claims against code, scores the ways to bring each one in, and presents a conclusions-first research report built with a bundled template (0.7.101). See [Planning Large Projects in Stages](../../sop/planning-and-production/planning-large-projects.md) and [Migrating an Existing Knowledge Base](../../sop/practices/migrating-a-knowledge-base.md).
-- A document source can follow content another team publishes as versions: you install the exact version as files, Context records the origin and version in the snapshot and the site links to that version. A source can also keep its folders and linked images, capture JSON or YAML files as documents, and be frozen after its original is archived. A broken or oversized linked image is now reported as an asset gap instead of stopping capture (0.7.101). See [Following Versioned Content and Archived Collections](../../sop/registering-sources/versioned-external-content.md).
+- A document source can follow content another team publishes as versions: you install the exact version as files, Context records the origin and version in the snapshot and the site links to that version. A source can also keep its folders and linked images, capture JSON or YAML files as documents, and be frozen after its original is archived. A broken or oversized linked image is now reported as an asset gap instead of stopping capture (0.7.101). See [Published and Archived Collections](../../sop/registering-sources/versioned-external-content.md).
 - A requirement can keep its pages as written: articles keep the original titles, sections, order and wording, and passages that contradict the code are proposed as revisions you decide on in the review report (0.7.101). See [Keeping Pages as Written](../../sop/review-and-revision/keeping-pages-as-written.md).
 
 **Sites and packages**

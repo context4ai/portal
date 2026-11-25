@@ -4,8 +4,8 @@ description: 把团队已有的页面原样接入知识库，与代码核对，�
 translation:
   locale: zh-CN
   artifact_ref: sha256:9c860f717092e1a038316a7465118dab3c9aa05db7da7dc6b25a21b386927468
-  source_digest: db05cfd8737506de5f7201c057793c608d08c6616ca38df8c6ee7dddbb1b469c
-  translated_at: 2026-11-24T21:46:18.327Z
+  source_digest: 787241ee5fa8e5fd8025caac568ca83e0d0330e8b7f12cfd90bca839a0087a9b
+  translated_at: 2026-11-25T02:37:02.309Z
 ---
 
 # 保持页面原文
@@ -26,7 +26,7 @@ flowchart LR
 <!-- context:section id="ask" -->
 ## 提出请求
 
-先把资料集登记为[文档来源](../registering-sources/document-directories.md)——保留它的文件夹；如果它仍在变化，就以其仓库和版本作为来源；参见[跟随版本化内容与归档的资料集](../registering-sources/versioned-external-content.md)。然后提出：
+先把资料集登记为[文档来源](../registering-sources/document-directories.md)——保留它的文件夹；如果它仍在变化，就以其仓库和版本作为来源；参见[按版本发布与即将归档的资料](../registering-sources/versioned-external-content.md)。然后提出：
 
 ```text
 把运维 wiki 里的值班页面原样接入。保留标题、章节和措辞；

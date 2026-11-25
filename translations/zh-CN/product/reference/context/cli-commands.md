@@ -4,8 +4,8 @@ description: context CLI 的全部命令与子命令，按用途分组，并说�
 translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
-  source_digest: ddf577accbb3bc19ebd5afd3d93046ccf286b10a9deb0535f8031a1ec30a42d5
-  translated_at: 2026-11-24T21:46:18.327Z
+  source_digest: 86c57408c6776b06a30c216ab215247e785edd7f37678c425b85cbf8959b0d6b
+  translated_at: 2026-11-25T02:37:02.309Z
 ---
 
 # CLI 命令
@@ -110,7 +110,7 @@ translation:
 | --- | --- |
 | `context source add repo\|file\|lark [date]` | 在某个 `YYYYMMDD` 批次下登记仓库、本地文件或飞书文档模块 |
 | `context source add repo [date] --module <name>` | 登记或更新一个仓库模块。`--local <path>` 从检出目录读取远程地址和当前提交，可以指向 monorepo 中的包目录；`--remote <url>` 和 `--ref <sha>` 无需检出即可固定版本；`--subpath <dir>` 与 `--remote`/`--ref` 或指向仓库根目录的 `--local` 一起使用，指定相对仓库根目录的包目录（若与 `--local` 指向的包目录不同则会被拒绝） |
-| `context source add file [date] --module <name>` | 登记或更新一个文件模块。`--local <path>` 指定目录或文件（已有来源省略时保留原路径）；`--layout tree` 保留文件夹以及文档链接的图片和小文件（默认 `flat`）；`--document-ext <ext>` 让该扩展名也作为可引用文本采集（可重复，如 `.json`、`.yaml`）；`--freeze` 保留当前快照并停止采集，`--unfreeze` 恢复采集；`--origin-kind`、`--origin-id`、`--origin-version` 和 `--origin-url` 记录已安装内容的版本化来源（内置类型：`git`）——参见[跟随版本化内容与归档的资料集](../../../sop/registering-sources/versioned-external-content.md) |
+| `context source add file [date] --module <name>` | 登记或更新一个文件模块。`--local <path>` 指定目录或文件（已有来源省略时保留原路径）；`--layout tree` 保留文件夹以及文档链接的图片和小文件（默认 `flat`）；`--document-ext <ext>` 让该扩展名也作为可引用文本采集（可重复，如 `.json`、`.yaml`）；`--freeze` 保留当前快照并停止采集，`--unfreeze` 恢复采集；`--origin-kind`、`--origin-id`、`--origin-version` 和 `--origin-url` 记录已安装内容的版本化来源（内置类型：`git`）——参见[按版本发布与即将归档的资料](../../../sop/registering-sources/versioned-external-content.md) |
 | `context source add batch [date]` | 通过 YAML/JSON `--input` 在同一批次下登记多个模块。仓库条目接受 `type`、`module`、`local`、`remote`、`ref` 和 `subpath`；不支持的字段会被拒绝，并列出该类条目接受的字段 |
 | `context source import` | 单个或批量导入托管的 Markdown（笔记、会话摘要）或预先抓取的飞书内容 |
 | `context source discover` / `fetch` | 发现来源清单，或抓取可移植的快照，不登记任何内容 |
