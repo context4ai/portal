@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: 1feca038-19bc-4153-827e-39ca30832dc6
   source_digest: 86c57408c6776b06a30c216ab215247e785edd7f37678c425b85cbf8959b0d6b
-  translated_at: 2026-11-25T02:37:02.309Z
+  translated_at: 2026-11-25T03:52:09.880Z
 ---
 
 # CLI 命令
@@ -75,7 +75,7 @@ translation:
 | `context review approve-all [collection]` | 批准当前审核范围内的全部内容 | `--all`、`--confirmed`（你的确认）、`--managed` |
 | `context review approve <id>` / `reject <id>` | 批准或拒绝单个草稿候选 | |
 | `context review deprecate <article-id>` | 将已批准页面标记为已弃用，但不删除 | |
-| `context review original-revisions` | 列出当前审核批次中针对保持原文页面提出的修订；`--propose` 从 YAML/JSON 文件或 `-` 添加建议（Context 自己读取原文段落），`--resolve` 在决定已落到文章后移除对应建议 | `--propose <file>`、`--resolve <id\|all>`（可重复）、`--format` |
+| `context review original-revisions` | 列出当前审核批次中针对原样纳入页面提出的修订；`--propose` 从 YAML/JSON 文件或 `-` 添加建议（Context 自己读取原文段落），`--resolve` 在决定已落到文章后移除对应建议 | `--propose <file>`、`--resolve <id\|all>`（可重复）、`--format` |
 <!-- /context:section -->
 
 <!-- context:section id="delivery" -->

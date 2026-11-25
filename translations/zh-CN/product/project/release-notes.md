@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: sha256:6633b4690c3eb582de872f2146b3f64e4a9875065aaadf45701e590516810fd8
   source_digest: e577a84101ad84a980e5a955f1d57f4056b733f330ca67e2d46d0286e1f2a4d1
-  translated_at: 2026-11-25T02:37:02.309Z
+  translated_at: 2026-11-25T03:52:09.880Z
 ---
 
 # 发布说明
@@ -24,7 +24,7 @@ translation:
 
 - `context-plan` 每次都用同样的方式调研已有知识资料集：与你确定目的和约束，识别每个资料集的类型和真实上游，抽样核对其中的说法与代码是否一致，为每个资料集的接入方式打分，并用内置模板生成结论先行的调研报告（0.7.101）。参见[分阶段规划大型项目](../../sop/planning-and-production/planning-large-projects.md)和[迁移已有知识库](../../sop/practices/migrating-a-knowledge-base.md)。
 - 文档来源可以跟随其他团队按版本发布的内容：你把确切版本安装为文件，Context 在快照中记录来源和版本，站点链接到该版本。来源还可以保留文件夹和链接的图片、把 JSON 或 YAML 文件作为文档采集，并在原文归档后冻结。链接图片损坏或过大时，现在会报告为资源缺口，而不会中断采集（0.7.101）。参见[按版本发布与即将归档的资料](../../sop/registering-sources/versioned-external-content.md)。
-- 需求可以让其页面保持原文：文章保留原有标题、章节、顺序和措辞，与代码矛盾的段落作为修订建议，由你在审核报告中决定（0.7.101）。参见[保持页面原文](../../sop/review-and-revision/keeping-pages-as-written.md)。
+- 需求可以设置把页面原样纳入：文章保留原有标题、章节、顺序和措辞，与代码矛盾的段落作为修订建议，由你在审核报告中决定（0.7.101）。参见[原样纳入页面](../../sop/review-and-revision/keeping-pages-as-written.md)。
 
 **站点与知识包**
 

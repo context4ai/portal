@@ -6,7 +6,7 @@ translation:
   locale: zh-CN
   artifact_ref: feb636b9-aed2-4aa4-886e-639810b734fc
   source_digest: f52ca324393f28e6156a2cd6fb62e6bcc11d222eeaa528f74db370266c70077e
-  translated_at: 2026-11-24T21:46:18.327Z
+  translated_at: 2026-11-25T03:52:09.880Z
 ---
 
 # Project API
@@ -165,7 +165,7 @@ llmsPackage({
 <!-- context:section id="requirements" -->
 ## 需求与 Indexer 技能
 
-当 `src/indexers.yaml` 缺失时，配置 Route 会提供它的 schema。只写 `requirements`——不要写 `protocol`、`indexers`、Provider 选择或 profile。使用哪些已安装的 Indexer 技能及其可选配置，属于临时生产计划中的 `indexer_usage`，而不属于这份长期保存的文件。需求可以设置 `preserve_original: true`，让其目标页面保持原文：标题、章节、顺序和措辞不变，与代码矛盾之处作为建议提交审核，而不是悄悄修改；请在它的 `evidence_source_scope` 中列出这些页面所描述的代码仓库。参见[保持页面原文](../../../sop/review-and-revision/keeping-pages-as-written.md)。Agent 在返回的临时目录下写入草稿和引用；CLI 负责接收它们，并掌管候选、审核和正式输出。
+当 `src/indexers.yaml` 缺失时，配置 Route 会提供它的 schema。只写 `requirements`——不要写 `protocol`、`indexers`、Provider 选择或 profile。使用哪些已安装的 Indexer 技能及其可选配置，属于临时生产计划中的 `indexer_usage`，而不属于这份长期保存的文件。需求可以设置 `preserve_original: true`，让目标页面原样纳入：标题、章节、顺序和措辞不变，与代码矛盾之处作为建议提交审核，而不是悄悄修改；请在它的 `evidence_source_scope` 中列出这些页面所描述的代码仓库。参见[原样纳入页面](../../../sop/review-and-revision/keeping-pages-as-written.md)。Agent 在返回的临时目录下写入草稿和引用；CLI 负责接收它们，并掌管候选、审核和正式输出。
 <!-- /context:section -->
 
 <!-- context:section id="state" -->
