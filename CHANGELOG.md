@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.17.3 — 2026-11-25
+
+### More natural Chinese for four guides
+
+- The Chinese text of Keeping Pages as Written, Migrating an Existing Knowledge Base, Planning Large Projects in Stages and Document Directories is rewritten to read naturally; meaning, sections, commands and links are unchanged.
+- Keeping Pages as Written is now 原样纳入页面 in Chinese, and the six pages that refer to it use the same term.
+
+Trigger: translation: Chinese rewrite of four guides and a consistent term for keeping pages as written
+User: qiansc (git)
+
 ## 0.17.2 — 2026-11-25
 
 ### Clearer name for the versioned and archived collections guide

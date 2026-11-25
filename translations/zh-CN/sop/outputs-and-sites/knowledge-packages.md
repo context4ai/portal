@@ -5,7 +5,7 @@ translation:
   locale: zh-CN
   artifact_ref: dd3c374a-bcf7-4e9c-ba89-e83008198efa
   source_digest: 139b1f1a7b4f0e11eaa1d16071c18321b9197d3e9bbee9b2b7617ce2da93923f
-  translated_at: 2026-11-24T21:46:18.327Z
+  translated_at: 2026-11-25T03:52:09.880Z
 ---
 
 # 知识包
@@ -40,7 +40,7 @@ flowchart LR
 
 > 为这个知识包加上文档网站，并排除 `internal/` 下的所有内容。
 
-有些内容属于知识包，但不属于网站——只有 Agent 需要的详细材料，或为某个团队保持原文的一组页面。直接提出即可：
+有些内容属于知识包，但不属于网站——只有 Agent 需要的详细材料，或为某个团队原样纳入的一组页面。直接提出即可：
 
 > 把 API 字段表只放进知识包，并从 API 概览页链接过去。
 
