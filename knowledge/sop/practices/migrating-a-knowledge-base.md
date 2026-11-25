@@ -4,7 +4,7 @@ description: How to move an existing LLM Wiki, Skills collection or similar
   knowledge base into Context without losing what it already does well, usually
   through a staged plan.
 type: Guide
-timestamp: 2026-11-24T21:42:41.958Z
+timestamp: 2026-11-25T02:35:51.926Z
 ---
 # Migrating an Existing Knowledge Base
 
@@ -56,7 +56,7 @@ Each collection, or each part of one, gets its own approach, scored against your
 | Produce articles from it | The knowledge should be rewritten for your readers and checked against code; a wiki written from code points to the questions that matter | Can be archived once the workspace maintains the topic |
 | Register the original upstream | The collection mirrors or summarizes documents you can register directly; the author's own judgments become notes | The summary layer can stop being maintained |
 | Keep pages as written | A team's pages must keep their wording, but should be placed in your sections and checked against code. See [Keeping Pages as Written](../review-and-revision/keeping-pages-as-written.md) | Maintained where it is |
-| Follow a published version | Another team publishes the content as versions (a documentation repository or a knowledge package). See [Following Versioned Content and Archived Collections](../registering-sources/versioned-external-content.md) | Follows the publisher |
+| Follow a published version | Another team publishes the content as versions (a documentation repository or a knowledge package). See [Published and Archived Collections](../registering-sources/versioned-external-content.md) | Follows the publisher |
 | Leave it where it is | It serves Agents working in its own repository, or only needs a link | Maintained where it is |
 
 For each collection you also choose between **following** the upstream — registered with fixed versions, so routine updates track it — and **absorbing it once**: the files come in as a document source that keeps its folders, the author's judgments become notes, and the source is frozen when the original is archived.

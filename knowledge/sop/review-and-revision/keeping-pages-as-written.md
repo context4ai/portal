@@ -4,7 +4,7 @@ type: Guide
 description: Bring a team's existing pages into the knowledge base without
   rewriting them, check them against code, and decide on each proposed
   correction.
-timestamp: 2026-11-24T21:42:41.958Z
+timestamp: 2026-11-25T02:35:51.926Z
 ---
 # Keeping Pages as Written
 
@@ -24,7 +24,7 @@ flowchart LR
 <!-- context:section id="ask" -->
 ## Ask for it
 
-Register the collection as a [document source](../registering-sources/document-directories.md) — keeping its folders, and with its repository and version as origin when it keeps changing; see [Following Versioned Content and Archived Collections](../registering-sources/versioned-external-content.md). Then ask:
+Register the collection as a [document source](../registering-sources/document-directories.md) — keeping its folders, and with its repository and version as origin when it keeps changing; see [Published and Archived Collections](../registering-sources/versioned-external-content.md). Then ask:
 
 ```text
 Bring the on-call pages from the ops wiki in as written. Keep titles, sections

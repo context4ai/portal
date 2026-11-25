@@ -392,7 +392,7 @@ entries:
       artifact_ref: 8d6384ca-b7a3-46ae-8a46-82c64a65008a
   - key: guides-sources/versioned-external-content
     parent: guides-sources
-    title: Following Versioned Content and Archived Collections
+    title: Published and Archived Collections
     order: 35
     target:
       artifact_ref: sha256:44c05e8b132571a0c84023ce6a0dc8ccb6fe8f91c681416f61eedf01ca3f777b
@@ -670,4 +670,4 @@ entries:
     order: 3
     target:
       artifact_ref: 6ef2f1b6-f9a4-499e-9db4-24e747ffd44b
-revision: sha256:a99fc880bb889e0be45df1ab45ff251bd833965a925a110854a8df721cd4d011
+revision: sha256:9754fecef0b9e03dfc01071e6cdace68b4c2f305d9ee933d987a22b548624516

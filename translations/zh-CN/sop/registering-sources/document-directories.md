@@ -4,8 +4,8 @@ description: 将本地 Markdown 文件或文档文件夹添加为来源，只保
 translation:
   locale: zh-CN
   artifact_ref: 8a990784-16a3-4b84-957e-f5058ac73c3f
-  source_digest: 83adacddc45fed0eb0ea6e4d4e08f2ae6097e9aaf6caae261752642451a2dc29
-  translated_at: 2026-11-24T21:46:18.327Z
+  source_digest: e464147f600f89918e05f9be13dce69e4625a776546a17f0bbc25b74c49998c7
+  translated_at: 2026-11-25T02:37:02.309Z
 ---
 
 # 文档目录
@@ -70,5 +70,5 @@ flowchart LR
 
 页面会继续引用其写作时依据的快照。文件夹内容变化后，请发起更新：Agent 会采集新版本，并询问哪些页面需要修改。参见 [更新知识](../updates-and-versions/updating-knowledge.md)。
 
-如果这些文档由其他团队按版本发布——例如文档仓库或已发布的知识包——或者文件夹即将归档，参见[跟随版本化内容与归档的资料集](versioned-external-content.md)。
+如果这些文档由其他团队按版本发布——例如文档仓库或已发布的知识包——或者文件夹即将归档，参见[按版本发布与即将归档的资料](versioned-external-content.md)。
 <!-- /context:section -->

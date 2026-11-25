@@ -1,12 +1,12 @@
 ---
-title: Following Versioned Content and Archived Collections
+title: Published and Archived Collections
 type: Guide
 description: Use documentation that another team publishes as versions, keep
   following its releases, and absorb a collection once before its original is
   archived.
-timestamp: 2026-11-24T21:42:41.958Z
+timestamp: 2026-11-25T02:35:51.926Z
 ---
-# Following Versioned Content and Archived Collections
+# Published and Archived Collections
 
 <!-- context:section id="goal" -->
 Some material you want to cite is not a folder you maintain. Another team publishes it as versions — a documentation repository, a released knowledge package — or a team wiki is about to be archived. Context handles both with a document source:
