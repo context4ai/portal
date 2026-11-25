@@ -1,4 +1,18 @@
 entries:
+  - version: 0.17.4
+    date: 2026-11-25T15:00:54.070Z
+    title: Context SDK upgraded to 0.7.103
+    changes:
+      - Context SDK and CLI upgraded to 0.7.103 (production is no longer blocked
+        by unrelated pending captures; a workspace SDK behind the CLI is
+        reported; the website build checks custom page links and anchors);
+        knowledge content unchanged.
+    triggers:
+      - kind: dist
+        description: upgrade with the Context 0.7.103 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.17.3
     date: 2026-11-25T03:52:22.202Z
     title: More natural Chinese for four guides
