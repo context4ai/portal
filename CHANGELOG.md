@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.4 — 2026-11-25
+
+### Context SDK upgraded to 0.7.103
+
+- Context SDK and CLI upgraded to 0.7.103 (production is no longer blocked by unrelated pending captures; a workspace SDK behind the CLI is reported; the website build checks custom page links and anchors); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.103 release
+User: qiansc (git)
+
 ## 0.17.3 — 2026-11-25
 
 ### More natural Chinese for four guides
