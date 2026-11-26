@@ -1,4 +1,17 @@
 entries:
+  - version: 0.17.5
+    date: 2026-11-26T12:13:51.097Z
+    title: Context SDK upgraded to 0.7.104
+    changes:
+      - Context SDK and CLI upgraded to 0.7.104 (a package declaration can
+        choose with rules which articles ship as Rules and which go to guides;
+        the build warns when Rules are large); knowledge content unchanged.
+    triggers:
+      - kind: dist
+        description: upgrade with the Context 0.7.104 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.17.4
     date: 2026-11-25T15:00:54.070Z
     title: Context SDK upgraded to 0.7.103
