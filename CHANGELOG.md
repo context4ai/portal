@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.5 — 2026-11-26
+
+### Context SDK upgraded to 0.7.104
+
+- Context SDK and CLI upgraded to 0.7.104 (a package declaration can choose with rules which articles ship as Rules and which go to guides; the build warns when Rules are large); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.104 release
+User: qiansc (git)
+
 ## 0.17.4 — 2026-11-25
 
 ### Context SDK upgraded to 0.7.103
