@@ -1,4 +1,18 @@
 entries:
+  - version: 0.17.6
+    date: 2026-11-27T15:47:04.947Z
+    title: Context SDK upgraded to 0.7.105
+    changes:
+      - Context SDK and CLI upgraded to 0.7.105 (Lark capture retries a
+        timed-out or gateway-failed resource by itself, a retry downloads only
+        the missing resources, and attachments and whiteboards can be kept as
+        references); knowledge content unchanged.
+    triggers:
+      - kind: dist
+        description: upgrade with the Context 0.7.105 release
+    actor:
+      name: qiansc
+      kind: git
   - version: 0.17.5
     date: 2026-11-26T12:13:51.097Z
     title: Context SDK upgraded to 0.7.104
