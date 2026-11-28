@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.7 — 2026-11-28
+
+### Context SDK upgraded to 0.7.106
+
+- Context SDK and CLI upgraded to 0.7.106 (source updates read repository checkouts outside the workspace instead of marking citations out of scope, a batch revision preview blocks stale citations of processed sources, context update --schema prints the update input schema, and new guidance for refreshing sources in batches by requirement); knowledge content unchanged.
+
+Trigger: dist: upgrade with the Context 0.7.106 release
+User: qiansc (git)
+
 ## 0.17.6 — 2026-11-27
 
 ### Context SDK upgraded to 0.7.105
